@@ -1,0 +1,36 @@
+Your previous attempt at this Lean 4 proof failed to compile. You will fix it.
+
+Rules:
+- Read the compiler error carefully. It tells you exactly which tactic
+  failed and often what goal state remained — use that goal state, don't
+  guess blind.
+- Change as little as possible. Do not rewrite the whole proof from scratch
+  unless the error indicates the overall strategy (not just one tactic) was
+  wrong.
+- Do NOT introduce `sorry`, `sorryAx`, or `admit` to "pass" — an unsolved
+  goal is still a failure even if the file has no red squiggles in your head.
+- If this is repair attempt 4 or 5 (near the cap) and the same category of
+  error keeps recurring, consider that the Stage A formalization itself may
+  be wrong or unnecessarily hard, and say so explicitly in a comment at the
+  top of your output rather than continuing to flail at tactics.
+- Output ONLY a single Lean 4 code block. No prose before or after (except
+  the optional comment above, as a `--` Lean comment inside the block).
+
+Problem: "{nl_statement}"
+
+Formal statement:
+```lean
+{lean_statement}
+```
+
+Previous failed attempt (repair attempt {attempt_number} of {max_attempts}):
+```lean
+{failed_proof}
+```
+
+Compiler error(s):
+```
+{compiler_errors}
+```
+
+Output the corrected complete Lean 4 proof.

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "arith_001",
+    "nl_statement": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2"
+  },
+  {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)"
+  },
+  {
+    "id": "div_001",
+    "nl_statement": "If a natural number n is even, then n squared is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem even_sq_of_even (n : ℕ) (h : Even n) : Even (n ^ 2)"
+  },
+  {
+    "id": "div_002",
+    "nl_statement": "For any natural number n, n times (n + 1) is always even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem n_mul_succ_even (n : ℕ) : Even (n * (n + 1))"
+  },
+  {
+    "id": "div_003",
+    "nl_statement": "If a natural number n is divisible by 6, then it is divisible by both 2 and 3.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem div6_imp_div2_div3 (n : ℕ) (h : 6 ∣ n) : 2 ∣ n ∧ 3 ∣ n"
+  },
+  {
+    "id": "mod_001",
+    "nl_statement": "For any integers a and b and positive integer m, if a is congruent to b modulo m, then a + 1 is congruent to b + 1 modulo m.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem cong_add_one (a b m : ℤ) (h : a ≡ b [ZMOD m]) : a + 1 ≡ b + 1 [ZMOD m]"
+  },
+  {
+    "id": "mod_002",
+    "nl_statement": "The square of any integer is congruent to 0 or 1 modulo 4.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_four (a : ℤ) : a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1"
+  },
+  {
+    "id": "ind_001",
+    "nl_statement": "For any natural number n, the sum of the first n natural numbers equals n times (n + 1) divided by 2.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem gauss_sum (n : ℕ) : 2 * (Finset.range (n + 1)).sum id = n * (n + 1)"
+  },
+  {
+    "id": "ind_002",
+    "nl_statement": "For any natural number n, the sum of the first n odd numbers equals n squared.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sum_odd_sq (n : ℕ) : (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2"
+  },
+  {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n"
+  },
+  {
+    "id": "div_004",
+    "nl_statement": "The sum of any two odd natural numbers is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sum_two_odd_even (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1) : ∃ k, a + b = 2 * k"
+  },
+  {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2"
+  },
+  {
+    "id": "arith_003",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c"
+  },
+  {
+    "id": "arith_004",
+    "nl_statement": "For natural numbers a and b with b at most a, (a minus b) squared plus 2ab equals a squared plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_sub_nat (a b : ℕ) (h : b ≤ a) : (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2"
+  },
+  {
+    "id": "div_005",
+    "nl_statement": "If a natural number n is odd, then n squared is odd.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem odd_sq_of_odd (n : ℕ) (h : ∃ k, n = 2*k+1) : ∃ j, n ^ 2 = 2*j+1"
+  },
+  {
+    "id": "div_006",
+    "nl_statement": "A natural number's square is even if and only if the number itself is even.",
+    "category": "divisibility",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_even_iff_even (n : ℕ) : (∃ j, n ^ 2 = 2 * j) ↔ (∃ k, n = 2 * k)"
+  },
+  {
+    "id": "ineq_002",
+    "nl_statement": "For any natural numbers a and b, a times b plus 1 is at most (a+1) times (b+1).",
+    "category": "inequality",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem prod_succ_ge (a b : ℕ) : a * b + 1 ≤ (a + 1) * (b + 1)"
+  },
+  {
+    "id": "ineq_003",
+    "nl_statement": "For any natural number n at least 1, n plus 1 is at most 2 to the power n.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem succ_le_two_pow (n : ℕ) (h : 1 ≤ n) : n + 1 ≤ 2 ^ n"
+  },
+  {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n"
+  },
+  {
+    "id": "mod_003",
+    "nl_statement": "The square of any natural number is congruent to 0 or 1 modulo 3.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_three (n : ℕ) : n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1"
+  }
+]

@@ -1,0 +1,39 @@
+You are a formal methods expert translating a natural-language math statement
+into a Lean 4 theorem SIGNATURE (statement only, not the proof).
+
+Rules:
+- Use only Mathlib-standard notation and types (Nat, Int, Real, etc. as appropriate).
+- Prefer `theorem` over `example` so the statement has a name.
+- The body must be exactly `:= by sorry` — you are NOT proving it yet, only
+  stating it. Do not attempt any tactics.
+- Choose the most natural formalization a working mathematician would use.
+  Do not over-generalize (e.g. don't state something for all rings when the
+  problem is clearly about natural numbers) and don't under-generalize.
+- Output ONLY a single Lean 4 code block. No prose before or after.
+
+Example:
+
+NL problem: "For any natural numbers a and b, (a + b) squared equals
+a squared plus 2ab plus b squared."
+
+Output:
+```lean
+theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2 := by
+  sorry
+```
+
+Example 2:
+
+NL problem: "If n is an even natural number, then n squared is even."
+
+Output:
+```lean
+theorem even_sq_of_even (n : ℕ) (h : Even n) : Even (n ^ 2) := by
+  sorry
+```
+
+Now formalize this problem:
+
+NL problem: "{nl_statement}"
+
+Output ONLY the Lean 4 code block.

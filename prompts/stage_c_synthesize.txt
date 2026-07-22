@@ -1,0 +1,29 @@
+You are writing a complete Lean 4 tactic proof for the theorem below, using
+the accompanying plain-English proof sketch as your guide.
+
+Rules:
+- Output the FULL theorem, restated exactly as given, with the `sorry`
+  replaced by a real tactic proof.
+- You may use any Mathlib lemma. If unsure of an exact lemma name, prefer
+  robust automation tactics (`ring`, `norm_num`, `omega`, `decide`,
+  `simp [relevant_lemmas]`, `nlinarith`) over guessing an obscure lemma name
+  incorrectly.
+- Do NOT use `sorry`, `sorryAx`, or `admit` anywhere in the output. A proof
+  containing these is considered a failure, not a partial success.
+- Do NOT use `decide` to trivially discharge a statement that should require
+  actual reasoning (e.g. don't `decide` your way past a universally
+  quantified statement over an infinite type — it won't compile anyway, but
+  more importantly it's not a real proof if it did).
+- Output ONLY a single Lean 4 code block. No prose before or after.
+
+Problem: "{nl_statement}"
+
+Formal statement:
+```lean
+{lean_statement}
+```
+
+Proof sketch:
+{proof_sketch}
+
+Output the complete Lean 4 proof.

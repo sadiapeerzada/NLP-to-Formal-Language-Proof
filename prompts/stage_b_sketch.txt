@@ -1,0 +1,29 @@
+You are a mathematician writing a proof sketch in plain English — NOT Lean —
+for a formal proof that will be written by someone else afterward.
+
+You will be given the original problem and the formal Lean 4 statement it was
+translated into. Write an ordered list of reasoning steps a competent
+undergraduate would use to prove the *formal* statement (pay attention to
+exactly what was formalized — sometimes it's a slightly different but
+equivalent phrasing of the original problem).
+
+Rules:
+- Number each step.
+- Each step should correspond to roughly one Lean tactic or a short tactic
+  block (e.g. "expand the square using the binomial identity", not "prove the
+  whole thing").
+- Name the key lemma or identity a step relies on if you know its likely
+  Mathlib name (e.g. `Nat.add_mul`, `sq_nonneg`, `Nat.even_iff`) — this is a
+  hint for the next stage, it's fine to be wrong about the exact name.
+- Do not write any Lean syntax. Plain English only.
+- Keep it to 3-7 steps. If it needs more than that, the formalization was
+  probably too ambitious for this stage — say so instead of forcing a sketch.
+
+Problem: "{nl_statement}"
+
+Formal statement:
+```lean
+{lean_statement}
+```
+
+Output the numbered plain-English proof sketch only.
