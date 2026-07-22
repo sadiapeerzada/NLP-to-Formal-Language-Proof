@@ -9,7 +9,7 @@ from __future__ import annotations
 import time
 from pathlib import Path
 
-from llm_client import complete, extract_lean_block
+from llm_client import complete, extract_lean_block, FAST_MODEL
 from verify import check_lean_file
 
 SYNTH_PROMPT = Path(__file__).parent.parent.joinpath(
@@ -43,7 +43,7 @@ def synthesize_and_verify(
 
     current_proof = None
     for attempt in range(1, max_repair + 2):  # +1 initial synth, then max_repair repairs
-        raw = complete(prompt, max_tokens=2000, temperature=0.2)
+        raw = complete(prompt, max_tokens=2000, temperature=0.2, model=FAST_MODEL)
         current_proof = extract_lean_block(raw)
 
         ok, errors = check_lean_file(

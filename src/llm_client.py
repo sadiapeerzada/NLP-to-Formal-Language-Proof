@@ -27,18 +27,33 @@ import groq
 # stage and want higher first-attempt pass rates. Check
 # https://console.groq.com/docs/models for the current lineup -- Groq adds
 # and deprecates models often.
-MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+STRONG_MODEL = os.environ.get("GROQ_MODEL_STRONG", "llama-3.3-70b-versatile")
+FAST_MODEL = os.environ.get("GROQ_MODEL_FAST", "llama-3.1-8b-instant")
+MODEL = STRONG_MODEL  # back-compat
 
 _client = groq.Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 
-def complete(prompt: str, max_tokens: int = 2000, temperature: float = 0.2, retries: int = 3) -> str:
+_RETRY_AFTER_RE = __import__("re").compile(r"try again in (?:(\d+)m)?([\d.]+)s")
+
+
+def _parse_retry_after(msg: str):
+    m = _RETRY_AFTER_RE.search(msg)
+    if not m:
+        return None
+    minutes = int(m.group(1)) if m.group(1) else 0
+    seconds = float(m.group(2))
+    return minutes * 60 + seconds
+
+
+def complete(prompt: str, max_tokens: int = 2000, temperature: float = 0.2, retries: int = 3, model: str = None) -> str:
     """Send a single-turn prompt, return the raw text response."""
+    model = model or STRONG_MODEL
     last_err = None
     for attempt in range(retries):
         try:
             resp = _client.chat.completions.create(
-                model=MODEL,
+                model=model,
                 max_tokens=max_tokens,
                 temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
@@ -46,6 +61,12 @@ def complete(prompt: str, max_tokens: int = 2000, temperature: float = 0.2, retr
             return resp.choices[0].message.content or ""
         except groq.RateLimitError as e:
             last_err = e
+            wait_s = _parse_retry_after(str(e))
+            if wait_s is not None:
+                wait_s += 2
+                print(f"[llm_client] rate limit hit on {model}, sleeping {wait_s:.0f}s per Groq retry-after...")
+                time.sleep(wait_s)
+                continue
             time.sleep(2 ** attempt)
         except groq.APIStatusError as e:
             last_err = e

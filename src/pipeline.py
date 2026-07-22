@@ -27,8 +27,23 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
     attempts_dir.mkdir(parents=True, exist_ok=True)
 
     results = []
+    already_done = set()
+    if out_path.exists():
+        for line in out_path.read_text().splitlines():
+            if line.strip():
+                prior = json.loads(line)
+                if prior.get("solved"):
+                    results.append(prior)
+                    already_done.add(prior["id"])
+                # unsolved prior entries are NOT kept and NOT skipped --
+                # they get genuinely retried below, and their old failed
+                # entry will be replaced by whatever this run produces
+        print(f"Resuming: {len(already_done)} already-SOLVED problem(s) found, skipping those. Everything else (including prior failures) will be retried.")
     for problem in problems:
         pid = problem["id"]
+        if pid in already_done:
+            print(f"[{pid}] already in results file, skipping")
+            continue
         print(f"[{pid}] Stage A: formalizing...")
         stmt_ok, lean_statement, stmt_attempts = formalize(
             problem["nl_statement"], lean_project_dir, pid
@@ -73,6 +88,12 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
             "final_lean_statement": lean_statement, "final_proof": result["final_proof"],
             "lean_file_path": lean_file_path, "failure_stage": None if result["solved"] else "synthesize",
         })
+
+        # write after EVERY problem, not just at the end -- a crash or rate
+        # limit mid-run should never lose progress already made
+        with out_path.open("w") as f:
+            for r in results:
+                f.write(json.dumps(r) + "\n")
 
     with out_path.open("w") as f:
         for r in results:
