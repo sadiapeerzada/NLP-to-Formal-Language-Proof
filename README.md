@@ -90,6 +90,22 @@ python src/pipeline.py --input data/seed_problems.json --out data/results/run1.j
 python eval/metrics.py data/results/run1.jsonl
 ```
 
+## Results
+
+Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.md` for the full honest caveats on what this run does and doesn't prove):
+
+### Pass@1 by category
+![Pass@1 by category](docs/figures/pass_at_1_by_category.png)
+
+### Pass@1 by difficulty
+![Pass@1 by difficulty](docs/figures/pass_at_1_by_difficulty.png)
+
+### Repair attempts to success
+![Repair attempts histogram](docs/figures/repair_attempts_histogram.png)
+
+### Difficulty vs. repair attempts (per problem)
+![Difficulty vs repairs](docs/figures/difficulty_vs_repairs.png)
+
 ## Milestone plan
 
 See `docs/roadmap.md`. Short version: 10 problems working end-to-end this week →
