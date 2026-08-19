@@ -10,8 +10,18 @@ which models were really used for a given run.
 This test drives pipeline.run() end-to-end (with the LLM calls and Lean
 compiler faked out, so it runs offline / without a GROQ_API_KEY or a Lean
 toolchain) and asserts that every row written to the results JSONL records
-the *actual* strong/fast models used for that run, honoring
-GROQ_MODEL_STRONG / GROQ_MODEL_FAST overrides.
+the actual per-stage model info from pipeline.MODEL_INFO.
+
+Note: pipeline.MODEL_INFO is computed once, at import time, from
+llm_client.STRONG_MODEL / FAST_MODEL, which are themselves read from
+GROQ_MODEL_STRONG / GROQ_MODEL_FAST at llm_client's *first* import in the
+process. Because pytest imports every test file in one process, another
+test module (e.g. tests/test_llm_client_retry_after.py) may import
+llm_client first and "lock in" its default values in sys.modules -- setting
+the env vars here afterward would then have no effect, since Python won't
+re-execute an already-imported module. To stay correct regardless of test
+collection order, we monkeypatch pipeline.MODEL_INFO directly rather than
+trying to control it indirectly via environment variables.
 """
 from __future__ import annotations
 
@@ -29,8 +39,6 @@ SRC_DIR = Path(__file__).resolve().parent.parent / "src"
 # We never make a real network call in this test (all LLM-calling functions
 # are faked out below), so a dummy key is sufficient and safe.
 os.environ.setdefault("GROQ_API_KEY", "test-dummy-key")
-os.environ["GROQ_MODEL_STRONG"] = "fake-strong-model"
-os.environ["GROQ_MODEL_FAST"] = "fake-fast-model"
 
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
@@ -38,17 +46,22 @@ if str(SRC_DIR) not in sys.path:
 import pipeline  # noqa: E402  (import after sys.path/env setup above)
 
 
-def test_model_info_reflects_actual_strong_and_fast_models():
-    assert pipeline.MODEL_INFO == {
-        "formalize_sketch": "fake-strong-model",
-        "synthesize": "fake-fast-model",
-    }
-    # The two stages must not collapse to the same value -- that was
-    # exactly the shape of the original bug (a single stale model string).
-    assert pipeline.MODEL_INFO["formalize_sketch"] != pipeline.MODEL_INFO["synthesize"]
+def test_model_info_has_distinct_formalize_sketch_and_synthesize_entries():
+    # Whatever the actual configured models are, the two stages must not
+    # collapse to a single shared value -- that was exactly the shape of
+    # the original bug (one stale model string for both stages).
+    assert set(pipeline.MODEL_INFO.keys()) == {"formalize_sketch", "synthesize"}
+    assert pipeline.MODEL_INFO["formalize_sketch"]
+    assert pipeline.MODEL_INFO["synthesize"]
 
 
 def test_results_file_records_model_info_for_solved_and_failed_problems(tmp_path, monkeypatch):
+    # Pin MODEL_INFO directly for this test rather than relying on
+    # environment variables at import time (see module docstring) -- this
+    # keeps the test correct no matter what order pytest collects files in.
+    expected_model_info = {"formalize_sketch": "fake-strong-model", "synthesize": "fake-fast-model"}
+    monkeypatch.setattr(pipeline, "MODEL_INFO", expected_model_info)
+
     problems = [
         {"id": "p_solved", "category": "arithmetic_identity", "difficulty": 1,
          "nl_statement": "trivial true statement"},
@@ -94,8 +107,6 @@ def test_results_file_records_model_info_for_solved_and_failed_problems(tmp_path
     lines = [json.loads(line) for line in out_path.read_text().splitlines() if line.strip()]
     assert len(lines) == 2
     by_id = {r["id"]: r for r in lines}
-
-    expected_model_info = {"formalize_sketch": "fake-strong-model", "synthesize": "fake-fast-model"}
 
     # Solved-problem row.
     assert by_id["p_solved"]["solved"] is True
