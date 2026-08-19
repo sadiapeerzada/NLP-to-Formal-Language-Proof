@@ -26,7 +26,7 @@ Fields:
   "id": "arith_001",
   "category": "arithmetic_identity",
   "difficulty": 1,
-  "model": "llama-3.3-70b-versatile",
+  "model": {"formalize_sketch": "llama-3.3-70b-versatile", "synthesize": "llama-3.1-8b-instant"},
   "prompt_version": "v1",
   "solved": true,
   "repair_attempts": 2,

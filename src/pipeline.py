@@ -8,15 +8,20 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from pathlib import Path
 
 from formalize import formalize
+from llm_client import STRONG_MODEL, FAST_MODEL
 from proof_sketch import sketch
 from synthesize import synthesize_and_verify
 from verify import promote_scratch_to_final
 
-MODEL_NAME = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+# Stage A (formalize) and Stage B (sketch) run on STRONG_MODEL; Stage C/D
+# (synthesize + repair) runs on FAST_MODEL (see src/llm_client.py). A single
+# "model" string can't represent that split accurately, so results record
+# both models actually used rather than a stale GROQ_MODEL env var that no
+# stage reads anymore.
+MODEL_INFO = {"formalize_sketch": STRONG_MODEL, "synthesize": FAST_MODEL}
 PROMPT_VERSION = "v1"
 
 
@@ -52,7 +57,7 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
             print(f"[{pid}] FAILED at Stage A (statement wouldn't elaborate)")
             results.append({
                 "id": pid, "category": problem["category"], "difficulty": problem["difficulty"],
-                "model": MODEL_NAME, "prompt_version": PROMPT_VERSION,
+                "model": MODEL_INFO, "prompt_version": PROMPT_VERSION,
                 "solved": False, "repair_attempts": 0, "wall_clock_seconds": 0,
                 "final_lean_statement": lean_statement, "final_proof": None,
                 "lean_file_path": None, "failure_stage": "formalize",
@@ -82,7 +87,7 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
 
         results.append({
             "id": pid, "category": problem["category"], "difficulty": problem["difficulty"],
-            "model": MODEL_NAME, "prompt_version": PROMPT_VERSION,
+            "model": MODEL_INFO, "prompt_version": PROMPT_VERSION,
             "solved": result["solved"], "repair_attempts": result["repair_attempts"],
             "wall_clock_seconds": result["wall_clock_seconds"],
             "final_lean_statement": lean_statement, "final_proof": result["final_proof"],
