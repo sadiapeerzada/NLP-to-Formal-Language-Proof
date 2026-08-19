@@ -24,12 +24,12 @@ def _contains_forbidden(lean_code: str, allow_sorry: bool = False) -> str | None
 
 
 def check_lean_file(lean_code: str, lean_project_dir: Path, scratch_name: str, allow_sorry: bool = False):
-    lean_project_dir = Path(lean_project_dir).resolve()  # always absolute -- avoids cwd/path-doubling bugs
     """Writes `lean_code` to a scratch file inside the Lean project and runs
     `lake env lean --json` on it.
 
     Returns (success: bool, error_messages: list[str]).
     """
+    lean_project_dir = Path(lean_project_dir).resolve()  # always absolute -- avoids cwd/path-doubling bugs
     forbidden = _contains_forbidden(lean_code, allow_sorry=allow_sorry)
     if forbidden:
         return False, [
@@ -79,9 +79,9 @@ def check_lean_file(lean_code: str, lean_project_dir: Path, scratch_name: str, a
 
 
 def promote_scratch_to_final(lean_project_dir: Path, scratch_name: str, final_id: str) -> Path:
-    lean_project_dir = Path(lean_project_dir).resolve()  # always absolute -- avoids cwd/path-doubling bugs
     """Once a proof is verified, copy it out of the scratch folder into
     generated/<id>.lean as the permanent record."""
+    lean_project_dir = Path(lean_project_dir).resolve()  # always absolute -- avoids cwd/path-doubling bugs
     src = lean_project_dir / "generated" / "_scratch" / f"{scratch_name}.lean"
     dst_dir = lean_project_dir / "generated"
     dst_dir.mkdir(parents=True, exist_ok=True)

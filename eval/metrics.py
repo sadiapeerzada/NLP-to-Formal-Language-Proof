@@ -18,6 +18,9 @@ def load(path: str):
 def main(path: str):
     results = load(path)
     total = len(results)
+    if total == 0:
+        print(f"No results found in {path} (file is empty or has no valid JSON lines).")
+        return
     solved = [r for r in results if r["solved"]]
 
     print(f"Overall pass@1: {len(solved)}/{total} = {len(solved) / total:.1%}\n")

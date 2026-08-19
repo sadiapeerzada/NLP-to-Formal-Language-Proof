@@ -34,7 +34,7 @@ MODEL = STRONG_MODEL  # back-compat
 _client = groq.Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 
-_RETRY_AFTER_RE = __import__("re").compile(r"try again in (?:(\d+)m)?([\d.]+)s")
+_RETRY_AFTER_RE = __import__("re").compile(r"try again in (?:(\d+)m\s*)?([\d.]+)s")
 
 
 def _parse_retry_after(msg: str):
