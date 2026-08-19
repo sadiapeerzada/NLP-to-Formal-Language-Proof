@@ -103,9 +103,6 @@ Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.
 ### Repair attempts to success
 ![Repair attempts histogram](docs/figures/repair_attempts_histogram.png)
 
-### Difficulty vs. repair attempts (per problem)
-![Difficulty vs repairs](docs/figures/difficulty_vs_repairs.png)
-
 ## Milestone plan
 
 See `docs/roadmap.md`. Short version: 10 problems working end-to-end this week →
