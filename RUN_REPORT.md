@@ -129,3 +129,45 @@ so the category mix can expand beyond what's provable with core tactics
 alone (combinatorics, inequalities needing AM-GM-style lemmas, more of
 number theory). Keep a held-out split that prompts are never tuned against
 before reporting a headline pass@1.
+
+## Addendum: generated-proof/results mismatch found and fixed
+
+A later commit (`f967161`, "Update results and generated proofs from
+strong/fast model split run") silently overwrote 4 of this run's 20
+`lean_project/generated/*.lean` files (`arith_001`, `arith_003`, `ineq_001`,
+`mod_002`) with `import Mathlib`-dependent content from a different, later,
+partial run (`data/results/run2_mathlib.jsonl`, which only actually covers
+`arith_001` and `arith_003`). It did **not** update this file or
+`data/results/run1_core_lean.jsonl`, whose `final_proof_path` for those 4
+ids still pointed at the same files -- so for `ineq_001` and `mod_002` in
+particular, the on-disk "evidence" no longer matched what was verified
+(neither run1's original core-Lean claim nor any entry in run2, which
+doesn't cover those two ids at all), and `arith_001`'s Mathlib content
+wasn't backed by anything either (run2's `arith_001` entry has
+`solved: false`).
+
+Fixed by restoring `arith_001.lean`, `ineq_001.lean`, and `mod_002.lean` to
+their original core-Lean-only content (recovered from commit `51f033c`,
+before the overwrite). `mod_002.lean`'s `int_sq` helper needed one small
+adjustment beyond a straight revert: its original `rfl`-based unfolding of
+`a ^ 2 = a ^ 1 * a = a ^ 0 * a` no longer holds definitionally under the
+now-pinned `leanprover/lean4:v4.33.0-rc1` toolchain (this Lean core's `^`
+unfolding behaves differently than under the `4.14.0` this run originally
+used) -- replaced with an explicit `rw [Int.pow_succ, Int.pow_succ,
+Int.pow_zero, Int.one_mul]` chain instead. All three restored files were
+independently compiled against a real, exact `leanprover/lean4:v4.33.0-rc1`
+binary (downloaded directly from GitHub release assets, matching the
+`lean_project/lean-toolchain` pin) and confirmed to produce zero errors and
+no `sorry`/`sorryAx`/`admit`.
+
+`arith_003.lean` was left as-is in its Mathlib form: it's the one file of
+the four that *is* legitimately backed by `run2_mathlib.jsonl` (`solved:
+true`, matching `lean_file_path`, embedded `final_proof` text matching what's
+on disk). That does leave `data/results/run1_core_lean.jsonl`'s own
+`arith_003` entry pointing at a file that no longer contains what it
+verified -- a genuine conflict between two runs' claims about the same
+problem id that wasn't resolved here, since picking a side would destroy
+one run's evidence to satisfy the other. If you want a single canonical
+answer for `arith_003`, worth either giving the two approaches distinct ids
+(e.g. `arith_003_core` / `arith_003_mathlib`) or deciding which run's
+verification should be treated as authoritative going forward.

@@ -1,15 +1,22 @@
-import Mathlib
+theorem int_sq (a : Int) : a ^ 2 = a * a := by
+  rw [Int.pow_succ, Int.pow_succ, Int.pow_zero, Int.one_mul]
 
 theorem sq_mod_four (a : Int) : a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1 := by
-  have h : a % 2 = 0 ∨ a % 2 = 1 := by omega
-  rcases h with h0 | h1
+  rw [int_sq]
+  have hmod2 : a % 2 = 0 ∨ a % 2 = 1 := by omega
+  rcases hmod2 with h0 | h1
   · left
     obtain ⟨k, hk⟩ : ∃ k, a = 2 * k := ⟨a / 2, by omega⟩
-    subst hk
-    ring_nf
+    have expand : a * a = 4 * (k * k) := by
+      rw [hk]
+      simp [Int.mul_add, Int.add_mul, Int.mul_comm, Int.mul_assoc, Int.mul_left_comm]
+    rw [expand]
     omega
   · right
     obtain ⟨k, hk⟩ : ∃ k, a = 2 * k + 1 := ⟨a / 2, by omega⟩
-    subst hk
-    ring_nf
+    have expand : a * a = 4 * (k * k + k) + 1 := by
+      rw [hk]
+      simp [Int.mul_add, Int.add_mul, Int.mul_comm, Int.mul_assoc, Int.mul_left_comm]
+      omega
+    rw [expand]
     omega

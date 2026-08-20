@@ -9,7 +9,9 @@
 > explains an important environment constraint (no Mathlib cache access in
 > the build sandbox) that shaped this run, why 100% pass@1 here is *not* a
 > claim about general capability, and what changes once you run it on your
-> own machine.
+> own machine. (`lean_project/lean-toolchain` has since been updated past
+> 4.14.0 — see the run report's addendum for what that did and didn't
+> affect.)
 >
 > Real charts generated from this run's actual data live in
 > [`docs/figures/`](docs/figures/) — pass@1 by category, pass@1 by
