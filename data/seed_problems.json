@@ -91,6 +91,13 @@
     "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c"
   },
   {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c"
+  },
+  {
     "id": "arith_004",
     "nl_statement": "For natural numbers a and b with b at most a, (a minus b) squared plus 2ab equals a squared plus b squared.",
     "category": "arithmetic_identity",
