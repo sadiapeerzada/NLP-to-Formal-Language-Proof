@@ -108,6 +108,12 @@ Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.
 ### Difficulty vs. repair attempts
 ![Difficulty vs repair attempts](docs/figures/difficulty_vs_repairs.png)
 
+<h3>Repair Performance Across Difficulty Levels</h3>
+
+<div align="center">
+  <img src="docs/nl2lean_difficulty_vs_repairs.png" alt="Difficulty vs. Repair Attempts" width="800">
+</div>
+
 ## Milestone plan
 
 See `docs/roadmap.md`. Short version: 10 problems working end-to-end this week →
