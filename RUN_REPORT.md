@@ -160,14 +160,28 @@ binary (downloaded directly from GitHub release assets, matching the
 `lean_project/lean-toolchain` pin) and confirmed to produce zero errors and
 no `sorry`/`sorryAx`/`admit`.
 
-`arith_003.lean` was left as-is in its Mathlib form: it's the one file of
-the four that *is* legitimately backed by `run2_mathlib.jsonl` (`solved:
-true`, matching `lean_file_path`, embedded `final_proof` text matching what's
-on disk). That does leave `data/results/run1_core_lean.jsonl`'s own
-`arith_003` entry pointing at a file that no longer contains what it
-verified -- a genuine conflict between two runs' claims about the same
-problem id that wasn't resolved here, since picking a side would destroy
-one run's evidence to satisfy the other. If you want a single canonical
-answer for `arith_003`, worth either giving the two approaches distinct ids
-(e.g. `arith_003_core` / `arith_003_mathlib`) or deciding which run's
-verification should be treated as authoritative going forward.
+`arith_003` was the one case with a genuine conflict: `run1_core_lean.jsonl`
+claims a core-Lean verification, `run2_mathlib.jsonl` claims a real,
+independently-verified Mathlib-based one, and both were legitimately backed
+by real evidence -- the file on disk could only hold one of them. Resolved
+by splitting it into two distinct, permanently-recorded ids rather than
+picking a winner:
+
+- `arith_003` keeps the original core-Lean-only proof (`generated/
+  arith_003.lean`, `theorem mul_distrib_left`), matching
+  `run1_core_lean.jsonl`'s claim. Independently recompiled against the real
+  `v4.33.0-rc1` binary as part of this fix -- zero errors, no
+  `sorry`/`sorryAx`/`admit`.
+- `arith_003_mathlib` is a new id for the Mathlib-idiomatic proof
+  (`generated/arith_003_mathlib.lean`, `theorem distributive_nat`),
+  registered in `data/seed_problems.json` with the same natural-language
+  statement, category, and difficulty as `arith_003`. `run2_mathlib.jsonl`'s
+  entry was renamed from `arith_003` to `arith_003_mathlib` and its
+  `lean_file_path` updated to match, so its `solved: true` claim is backed
+  by evidence again instead of pointing at a file that no longer matches
+  it.
+
+Both runs' evidence is preserved; nothing was picked as more "correct" than
+the other since they're genuinely two different valid proofs of the same
+statement under two different environments (core Lean vs. Mathlib
+available).

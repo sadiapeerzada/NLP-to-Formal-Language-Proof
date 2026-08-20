@@ -1,5 +1,2 @@
-import Mathlib
-
--- The distributive property of multiplication over addition for natural numbers
-theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c := by
-  rw [mul_add]
+theorem mul_distrib_left (a b c : Nat) : a * (b + c) = a * b + a * c := by
+  exact Nat.mul_add a b c
