@@ -200,7 +200,10 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
                 "total_synthesis_attempts": result["total_synthesis_attempts"],
                 "wall_clock_seconds": result["wall_clock_seconds"],
                 "final_lean_statement": lean_statement, "final_proof": result["final_proof"],
-                "lean_file_path": lean_file_path, "failure_stage": None if result["solved"] else "synthesize",
+                "lean_file_path": lean_file_path,
+                "failure_stage": (
+                    None if result["solved"] else result.get("failure_stage", "synthesize")
+                ),
             })
 
             _write_results(out_path, results)

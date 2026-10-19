@@ -14,6 +14,7 @@ request/response shape than Anthropic's messages API -- notably:
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import time
@@ -45,6 +46,37 @@ _client = groq.Groq(api_key=os.environ.get("GROQ_API_KEY"))
 #   "Please try again in 8m41.856s."
 #   "Please try again in 45.2s." (no minutes)
 _RETRY_AFTER_RE = re.compile(r"try again in (?:(\d+)m\s*)?([\d.]+)s")
+
+
+def _empty_response_metadata(resp: object, model: str) -> dict[str, object]:
+    """Return scalar diagnostics for an empty completion without response text."""
+    choices = getattr(resp, "choices", [])
+    choice = choices[0] if choices else None
+    message = getattr(choice, "message", None)
+    usage = getattr(resp, "usage", None)
+    reasoning_value = None
+    reasoning_field = None
+    for field in ("reasoning", "reasoning_content"):
+        value = getattr(message, field, None)
+        if value is not None:
+            reasoning_field = field
+            reasoning_value = value
+            break
+    try:
+        reasoning_length = len(reasoning_value) if reasoning_value is not None else 0
+    except TypeError:
+        reasoning_length = None
+    tool_calls = getattr(message, "tool_calls", None)
+    return {
+        "model": model,
+        "finish_reason": getattr(choice, "finish_reason", None),
+        "completion_tokens": getattr(usage, "completion_tokens", None),
+        "refusal_present": getattr(message, "refusal", None) is not None,
+        "reasoning_present": reasoning_field is not None,
+        "reasoning_field": reasoning_field,
+        "reasoning_length": reasoning_length,
+        "tool_calls_present": bool(tool_calls),
+    }
 
 
 def _parse_retry_after(msg: str) -> float | None:
@@ -95,7 +127,13 @@ def complete(
                 temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
             )
-            return resp.choices[0].message.content or ""
+            content = resp.choices[0].message.content or ""
+            if not content.strip():
+                print(
+                    "[llm_client] empty_response "
+                    + json.dumps(_empty_response_metadata(resp, model), sort_keys=True)
+                )
+            return content
         except groq.RateLimitError as e:
             last_err = e
             wait_s = _parse_retry_after(str(e))

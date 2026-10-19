@@ -62,6 +62,9 @@ Each v2 attempt record includes `stage`, `repair_number`,
 `is_initial_synthesis`, `verification` (success, Lean exit code, elapsed
 time, parsed diagnostics, and axiom dependencies), and `run_id`. Final proofs
 are subject to the policy in `docs/verification.md`.
+An attempt with `failure_stage: "llm_output"` has empty or whitespace-only
+model output; its `verification` is `null`, its `compiler_errors` list is
+empty, and `output_error` explains that Lean was not invoked.
 
 Schema-v2 outputs are immutable: the selected `--out` path and its neighboring
 run manifest must not already exist. A manifest has a `running`, `failed`, or

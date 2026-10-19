@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -32,9 +33,28 @@ class LlmClientRetryTests(unittest.TestCase):
         self.addCleanup(self.client_patch.stop)
 
     @staticmethod
-    def response(text: str) -> SimpleNamespace:
+    def response(
+        text: str,
+        *,
+        finish_reason: str | None = None,
+        completion_tokens: int | None = None,
+        refusal: str | None = None,
+        reasoning: str | None = None,
+        tool_calls: object | None = None,
+    ) -> SimpleNamespace:
         return SimpleNamespace(
-            choices=[SimpleNamespace(message=SimpleNamespace(content=text))]
+            choices=[
+                SimpleNamespace(
+                    finish_reason=finish_reason,
+                    message=SimpleNamespace(
+                        content=text,
+                        refusal=refusal,
+                        reasoning=reasoning,
+                        tool_calls=tool_calls,
+                    ),
+                )
+            ],
+            usage=SimpleNamespace(completion_tokens=completion_tokens),
         )
 
     def test_repeated_parseable_rate_limits_stop_at_attempt_limit(self) -> None:
@@ -59,6 +79,60 @@ class LlmClientRetryTests(unittest.TestCase):
         self.assertEqual(result, "completed")
         self.assertEqual(self.create.call_count, 1)
         self.sleep.assert_not_called()
+
+    def test_empty_content_logs_safe_response_metadata(self) -> None:
+        self.create.return_value = self.response(
+            "",
+            finish_reason="length",
+            completion_tokens=2000,
+            refusal="",
+            reasoning="private reasoning",
+            tool_calls=[object()],
+        )
+
+        with patch("builtins.print") as printed:
+            result = llm_client.complete("prompt", model="openai/gpt-oss-20b")
+
+        self.assertEqual(result, "")
+        message = printed.call_args.args[0]
+        self.assertTrue(message.startswith("[llm_client] empty_response "))
+        metadata = json.loads(message.removeprefix("[llm_client] empty_response "))
+        self.assertEqual(metadata["model"], "openai/gpt-oss-20b")
+        self.assertEqual(metadata["finish_reason"], "length")
+        self.assertEqual(metadata["completion_tokens"], 2000)
+        self.assertTrue(metadata["refusal_present"])
+        self.assertTrue(metadata["reasoning_present"])
+        self.assertEqual(metadata["reasoning_length"], len("private reasoning"))
+        self.assertTrue(metadata["tool_calls_present"])
+        self.assertNotIn("private reasoning", message)
+
+    def test_whitespace_content_logs_with_missing_optional_metadata(self) -> None:
+        self.create.return_value = SimpleNamespace(
+            choices=[SimpleNamespace(message=SimpleNamespace(content=" \n\t"))]
+        )
+
+        with patch("builtins.print") as printed:
+            result = llm_client.complete("prompt")
+
+        self.assertEqual(result, " \n\t")
+        metadata = json.loads(
+            printed.call_args.args[0].removeprefix("[llm_client] empty_response ")
+        )
+        self.assertIsNone(metadata["finish_reason"])
+        self.assertIsNone(metadata["completion_tokens"])
+        self.assertFalse(metadata["refusal_present"])
+        self.assertFalse(metadata["reasoning_present"])
+        self.assertEqual(metadata["reasoning_length"], 0)
+        self.assertFalse(metadata["tool_calls_present"])
+
+    def test_normal_content_does_not_log_empty_response_metadata(self) -> None:
+        self.create.return_value = self.response("theorem valid : True := by trivial")
+
+        with patch("builtins.print") as printed:
+            result = llm_client.complete("prompt")
+
+        self.assertEqual(result, "theorem valid : True := by trivial")
+        printed.assert_not_called()
 
     def test_final_attempt_failure_uses_exactly_requested_total_attempts(self) -> None:
         self.create.side_effect = [
