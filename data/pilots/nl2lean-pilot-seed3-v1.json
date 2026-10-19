@@ -1,0 +1,23 @@
+[
+  {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)"
+  },
+  {
+    "id": "div_003",
+    "nl_statement": "If a natural number n is divisible by 6, then it is divisible by both 2 and 3.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem div6_imp_div2_div3 (n : ℕ) (h : 6 ∣ n) : 2 ∣ n ∧ 3 ∣ n"
+  },
+  {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n"
+  }
+]
