@@ -96,6 +96,10 @@ python src/pipeline.py --input data/seed_problems.json --out data/results/run1.j
 python eval/metrics.py data/results/run1.jsonl
 ```
 
+For schema-v2 runs, verified proofs are promoted to
+`lean_project/generated/runs/<run-id>/`. Existing files directly under
+`lean_project/generated/` are historical artifacts and are not overwritten.
+
 ## Results
 
 Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.md` for the full honest caveats on what this run does and doesn't prove):

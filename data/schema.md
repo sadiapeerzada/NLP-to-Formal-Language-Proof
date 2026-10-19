@@ -55,6 +55,8 @@ Each v2 result records `models` for `formalize`, `sketch`, `synthesize`, and
 `repair`; `initial_synthesis_success`; `success_within_repair_budget`; and
 `total_synthesis_attempts`. The latter success field is intentionally not
 labelled `pass@1`: it may include compiler-guided repairs.
+For successful records, `lean_file_path` identifies the promoted proof in the
+run-specific `lean_project/generated/runs/<run-id>/` directory.
 
 Each v2 attempt record includes `stage`, `repair_number`,
 `is_initial_synthesis`, `verification` (success, Lean exit code, elapsed
@@ -65,3 +67,6 @@ Schema-v2 outputs are immutable: the selected `--out` path and its neighboring
 run manifest must not already exist. A manifest has a `running`, `failed`, or
 `completed` status so a partial result file is never presented as a complete
 run. New attempt files are isolated in `results/attempts/<run-id>/`.
+Promoted proofs are likewise isolated in `lean_project/generated/runs/<run-id>/`;
+the pipeline never writes successful experiment proofs over historical files in
+`lean_project/generated/`.

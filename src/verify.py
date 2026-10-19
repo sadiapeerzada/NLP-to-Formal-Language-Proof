@@ -305,19 +305,38 @@ def check_lean_file(
     return result.success, result.errors
 
 
-def promote_scratch_to_final(lean_project_dir: Path, scratch_name: str, final_id: str) -> Path:
+def promote_scratch_to_final(
+    lean_project_dir: Path,
+    scratch_name: str,
+    final_id: str,
+    destination_dir: Path,
+) -> Path:
     """Copy a verified scratch proof into the final generated-proof directory.
 
-    Paths are resolved so promotion works regardless of the invoking
-    directory and remains compatible with the existing generated proofs.
+    The destination must be an existing run-specific directory beneath
+    ``generated/runs``. This prevents a new experiment from replacing the
+    committed generated proof corpus.
     """
 
     if not _safe_filename_component(scratch_name) or not _safe_filename_component(final_id):
         raise ValueError("Scratch and final IDs must be safe filename components.")
     lean_project_dir = Path(lean_project_dir).resolve()
+    destination_dir = Path(destination_dir).resolve()
+    allowed_root = (lean_project_dir / "generated" / "runs").resolve()
+    if (
+        not destination_dir.is_relative_to(allowed_root)
+        or destination_dir.parent != allowed_root
+        or not _safe_filename_component(destination_dir.name)
+    ):
+        raise ValueError(
+            "Final proof destination must be a safe run directory beneath generated/runs."
+        )
+    if not destination_dir.is_dir():
+        raise FileNotFoundError(
+            f"Final proof destination does not exist: {destination_dir}"
+        )
     src = lean_project_dir / "generated" / "_scratch" / f"{scratch_name}.lean"
-    dst_dir = lean_project_dir / "generated"
-    dst_dir.mkdir(parents=True, exist_ok=True)
-    dst = dst_dir / f"{final_id}.lean"
-    dst.write_text(src.read_text())
+    dst = destination_dir / f"{final_id}.lean"
+    with dst.open("x") as output:
+        output.write(src.read_text())
     return dst

@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
-from verify import check_lean_file_detailed
+from verify import check_lean_file_detailed, promote_scratch_to_final
 
 
 def json_diagnostic(severity: str, data: str = "", line: int = 1) -> str:
@@ -171,6 +171,30 @@ class VerifyTests(unittest.TestCase):
         )
         self.assertFalse(result.success)
         self.assertIn("axiom inspection", result.errors[0])
+
+    def test_existing_run_specific_final_proof_fails_without_overwrite(self) -> None:
+        scratch = self.project / "generated" / "_scratch" / "candidate.lean"
+        destination = self.project / "generated" / "runs" / "run-1"
+        scratch.parent.mkdir(parents=True)
+        destination.mkdir(parents=True)
+        scratch.write_text("theorem candidate : True := by trivial")
+        existing = destination / "proof.lean"
+        existing.write_text("existing proof")
+
+        with self.assertRaises(FileExistsError):
+            promote_scratch_to_final(self.project, "candidate", "proof", destination)
+
+        self.assertEqual(existing.read_text(), "existing proof")
+
+    def test_shared_runs_root_is_not_a_final_proof_destination(self) -> None:
+        scratch = self.project / "generated" / "_scratch" / "candidate.lean"
+        destination = self.project / "generated" / "runs"
+        scratch.parent.mkdir(parents=True)
+        destination.mkdir(parents=True)
+        scratch.write_text("theorem candidate : True := by trivial")
+
+        with self.assertRaises(ValueError):
+            promote_scratch_to_final(self.project, "candidate", "proof", destination)
 
     def test_stage_a_allows_sorry_but_not_admit(self) -> None:
         process = subprocess.CompletedProcess([], 0, stdout="", stderr="")

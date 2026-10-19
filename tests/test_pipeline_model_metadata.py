@@ -77,8 +77,8 @@ class PipelineModelMetadataTests(unittest.TestCase):
                 return False, "theorem broken : False := by sorry", []
             return True, "theorem trivial_true : True := by trivial", []
 
-        def fake_promote(_project, _scratch, final_id):
-            return self.lean_project_dir / "generated" / f"{final_id}.lean"
+        def fake_promote(_project, _scratch, final_id, destination_dir):
+            return Path(destination_dir) / f"{final_id}.lean"
 
         with (
             patch.object(pipeline, "STAGE_MODELS", expected_models),

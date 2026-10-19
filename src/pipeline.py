@@ -59,6 +59,14 @@ def _create_attempts_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=False)
 
 
+def _create_final_proofs_dir(lean_project_dir: Path, run_id: str) -> Path:
+    if not _safe_problem_id(run_id):
+        raise ValueError("Run ID is not safe for a proof-output directory.")
+    destination_dir = lean_project_dir / "generated" / "runs" / run_id
+    destination_dir.mkdir(parents=True, exist_ok=False)
+    return destination_dir
+
+
 def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: int):
     input_path = input_path.resolve()
     out_path = out_path.resolve()
@@ -96,9 +104,18 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
     attempts_dir = out_path.parent / "attempts" / run_metadata["run_id"]
     _create_attempts_dir(attempts_dir)
     try:
+        final_proofs_dir = _create_final_proofs_dir(
+            lean_project_dir, run_metadata["run_id"]
+        )
+    except BaseException:
+        attempts_dir.rmdir()
+        raise
+    run_metadata["final_proofs_dir"] = str(final_proofs_dir)
+    try:
         _write_json(metadata_path, run_metadata)
     except BaseException:
         attempts_dir.rmdir()
+        final_proofs_dir.rmdir()
         raise
 
     def write_attempts(problem_id: str, attempts: list[dict]) -> None:
@@ -162,7 +179,12 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
 
             lean_file_path = None
             if result["solved"]:
-                final_path = promote_scratch_to_final(lean_project_dir, result["scratch_name"], pid)
+                final_path = promote_scratch_to_final(
+                    lean_project_dir,
+                    result["scratch_name"],
+                    pid,
+                    final_proofs_dir,
+                )
                 lean_file_path = str(final_path)
                 print(f"[{pid}] SOLVED after {result['repair_attempts']} repair(s) -> {final_path}")
             else:
@@ -200,7 +222,12 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(
+        description=(
+            "Run NL2Lean with immutable result artifacts and run-isolated "
+            "promoted proofs under lean_project/generated/runs/<run-id>."
+        )
+    )
     ap.add_argument("--input", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--lean-project", type=Path, default=Path(__file__).parent.parent / "lean_project")

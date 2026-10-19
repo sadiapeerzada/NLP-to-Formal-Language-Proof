@@ -175,6 +175,95 @@ class PipelineTests(unittest.TestCase):
         self.assertFalse(self.output_path.with_suffix(".run.json").exists())
         self.assertFalse((self.root / "attempts" / "test-run").exists())
 
+    def test_successful_run_promotes_to_isolated_directory(self) -> None:
+        self.write_input([
+            {"id": "p1", "nl_statement": "statement", "category": "cat", "difficulty": 1}
+        ])
+        historical_proof = self.project / "generated" / "p1.lean"
+        historical_proof.parent.mkdir(parents=True)
+        historical_proof.write_text("historical proof")
+        scratch = self.project / "generated" / "_scratch" / "p1_attempt1.lean"
+        scratch.parent.mkdir(parents=True)
+        scratch.write_text("theorem p1 : True := by trivial")
+        result = {
+            "solved": True,
+            "repair_attempts": 0,
+            "initial_synthesis_success": True,
+            "success_within_repair_budget": True,
+            "total_synthesis_attempts": 1,
+            "wall_clock_seconds": 1.0,
+            "final_proof": scratch.read_text(),
+            "scratch_name": "p1_attempt1",
+        }
+
+        with (
+            patch.object(pipeline, "new_run_metadata", self.metadata),
+            patch.object(
+                pipeline,
+                "formalize",
+                return_value=(True, "theorem p1 : True := by sorry", []),
+            ),
+            patch.object(pipeline, "sketch", return_value="sketch"),
+            patch.object(pipeline, "synthesize_and_verify", return_value=(result, [])),
+        ):
+            pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
+
+        isolated_proof = self.project / "generated" / "runs" / "test-run" / "p1.lean"
+        record = json.loads(self.output_path.read_text())
+        self.assertEqual(historical_proof.read_text(), "historical proof")
+        self.assertEqual(isolated_proof.read_text(), result["final_proof"])
+        self.assertEqual(record["lean_file_path"], str(isolated_proof.resolve()))
+
+    def test_existing_run_proof_directory_fails_without_manifest(self) -> None:
+        self.write_input([])
+        collision = self.project / "generated" / "runs" / "test-run"
+        collision.mkdir(parents=True)
+
+        with (
+            patch.object(pipeline, "new_run_metadata", self.metadata),
+            self.assertRaises(FileExistsError),
+        ):
+            pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
+
+        self.assertFalse(self.output_path.with_suffix(".run.json").exists())
+        self.assertFalse((self.root / "attempts" / "test-run").exists())
+        self.assertTrue(collision.is_dir())
+
+    def test_verification_failure_never_promotes_a_proof(self) -> None:
+        self.write_input([
+            {"id": "p1", "nl_statement": "statement", "category": "cat", "difficulty": 1}
+        ])
+        historical_proof = self.project / "generated" / "p1.lean"
+        historical_proof.parent.mkdir(parents=True)
+        historical_proof.write_text("historical proof")
+        result = {
+            "solved": False,
+            "repair_attempts": 1,
+            "initial_synthesis_success": False,
+            "success_within_repair_budget": False,
+            "total_synthesis_attempts": 2,
+            "wall_clock_seconds": 1.0,
+            "final_proof": "theorem p1 : False := by sorry",
+            "scratch_name": None,
+        }
+
+        with (
+            patch.object(pipeline, "new_run_metadata", self.metadata),
+            patch.object(
+                pipeline,
+                "formalize",
+                return_value=(True, "theorem p1 : True := by sorry", []),
+            ),
+            patch.object(pipeline, "sketch", return_value="sketch"),
+            patch.object(pipeline, "synthesize_and_verify", return_value=(result, [])),
+            patch.object(pipeline, "promote_scratch_to_final") as promote,
+        ):
+            pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
+
+        promote.assert_not_called()
+        self.assertEqual(historical_proof.read_text(), "historical proof")
+        self.assertFalse((self.project / "generated" / "runs" / "test-run" / "p1.lean").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
