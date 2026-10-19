@@ -1,123 +1,111 @@
-"""Regression test for the results['model'] metadata bug.
-
-Background: src/pipeline.py used to record a top-level MODEL_NAME sourced
-from the GROQ_MODEL env var. After the strong/fast model split
-(src/llm_client.py -> STRONG_MODEL / FAST_MODEL, used by Stage A/B and
-Stage C/D respectively), that recorded value no longer matched what model
-actually produced each result -- it was stale and misleading regardless of
-which models were really used for a given run.
-
-This test drives pipeline.run() end-to-end (with the LLM calls and Lean
-compiler faked out, so it runs offline / without a GROQ_API_KEY or a Lean
-toolchain) and asserts that every row written to the results JSONL records
-the actual per-stage model info from pipeline.MODEL_INFO.
-
-Note: pipeline.MODEL_INFO is computed once, at import time, from
-llm_client.STRONG_MODEL / FAST_MODEL, which are themselves read from
-GROQ_MODEL_STRONG / GROQ_MODEL_FAST at llm_client's *first* import in the
-process. Because pytest imports every test file in one process, another
-test module (e.g. tests/test_llm_client_retry_after.py) may import
-llm_client first and "lock in" its default values in sys.modules -- setting
-the env vars here afterward would then have no effect, since Python won't
-re-execute an already-imported module. To stay correct regardless of test
-collection order, we monkeypatch pipeline.MODEL_INFO directly rather than
-trying to control it indirectly via environment variables.
-"""
+"""Regression tests for per-stage model metadata in schema-v2 results."""
 from __future__ import annotations
 
 import json
-import os
 import sys
+import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
-import pytest
+sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
-SRC_DIR = Path(__file__).resolve().parent.parent / "src"
-
-# llm_client.py constructs a groq.Groq(...) client at import time, which
-# raises immediately if no API key is present anywhere in the environment.
-# We never make a real network call in this test (all LLM-calling functions
-# are faked out below), so a dummy key is sufficient and safe.
-os.environ.setdefault("GROQ_API_KEY", "test-dummy-key")
-
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
-
-import pipeline  # noqa: E402  (import after sys.path/env setup above)
+import pipeline
 
 
-def test_model_info_has_distinct_formalize_sketch_and_synthesize_entries():
-    # Whatever the actual configured models are, the two stages must not
-    # collapse to a single shared value -- that was exactly the shape of
-    # the original bug (one stale model string for both stages).
-    assert set(pipeline.MODEL_INFO.keys()) == {"formalize_sketch", "synthesize"}
-    assert pipeline.MODEL_INFO["formalize_sketch"]
-    assert pipeline.MODEL_INFO["synthesize"]
+class PipelineModelMetadataTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tempdir = TemporaryDirectory()
+        self.root = Path(self.tempdir.name)
+        self.input_path = self.root / "seed_problems.json"
+        self.output_path = self.root / "results" / "run.jsonl"
+        self.lean_project_dir = self.root / "lean_project"
+        self.input_path.write_text(json.dumps([
+            {
+                "id": "p_solved",
+                "category": "arithmetic_identity",
+                "difficulty": 1,
+                "nl_statement": "trivial true statement",
+            },
+            {
+                "id": "p_stage_a_fail",
+                "category": "arithmetic_identity",
+                "difficulty": 1,
+                "nl_statement": "statement that will not elaborate",
+            },
+        ]))
 
+    def tearDown(self) -> None:
+        self.tempdir.cleanup()
 
-def test_results_file_records_model_info_for_solved_and_failed_problems(tmp_path, monkeypatch):
-    # Pin MODEL_INFO directly for this test rather than relying on
-    # environment variables at import time (see module docstring) -- this
-    # keeps the test correct no matter what order pytest collects files in.
-    expected_model_info = {"formalize_sketch": "fake-strong-model", "synthesize": "fake-fast-model"}
-    monkeypatch.setattr(pipeline, "MODEL_INFO", expected_model_info)
-
-    problems = [
-        {"id": "p_solved", "category": "arithmetic_identity", "difficulty": 1,
-         "nl_statement": "trivial true statement"},
-        {"id": "p_stage_a_fail", "category": "arithmetic_identity", "difficulty": 1,
-         "nl_statement": "statement that will not elaborate"},
-    ]
-    input_path = tmp_path / "seed_problems.json"
-    input_path.write_text(json.dumps(problems))
-    out_path = tmp_path / "results" / "run.jsonl"
-    lean_project_dir = tmp_path / "lean_project"
-
-    def fake_formalize(nl_statement, lean_project_dir, scratch_id, max_attempts=3):
-        if scratch_id == "p_stage_a_fail":
-            return False, "theorem broken := by sorry", [{"attempt": 1, "success": False, "errors": ["boom"]}]
-        return True, "theorem trivial_true : True := by trivial", [{"attempt": 1, "success": True, "errors": []}]
-
-    def fake_sketch(nl_statement, lean_statement):
-        return "1. trivially true"
-
-    def fake_synthesize_and_verify(nl_statement, lean_statement, proof_sketch_text,
-                                    lean_project_dir, pid, max_repair=5):
-        result = {
-            "id": pid, "solved": True, "repair_attempts": 0, "wall_clock_seconds": 0.01,
-            "final_proof": "theorem trivial_true : True := by trivial",
-            "scratch_name": f"{pid}_attempt1",
+    @staticmethod
+    def metadata(*_args, **_kwargs) -> dict:
+        return {
+            "schema_version": 2,
+            "run_id": "model-metadata-test",
+            "started_at_utc": "2026-01-01T00:00:00Z",
         }
-        return result, [{"attempt_number": 1, "proof_text": result["final_proof"], "success": True,
-                          "compiler_errors": [], "timestamp": 0.0}]
 
-    def fake_promote_scratch_to_final(lean_project_dir, scratch_name, final_id):
-        dst = Path(lean_project_dir) / "generated" / f"{final_id}.lean"
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        dst.write_text("theorem trivial_true : True := by trivial")
-        return dst
+    def test_stage_models_are_explicit(self) -> None:
+        self.assertEqual(
+            set(pipeline.STAGE_MODELS),
+            {"formalize", "sketch", "synthesize", "repair"},
+        )
+        self.assertTrue(all(pipeline.STAGE_MODELS.values()))
 
-    monkeypatch.setattr(pipeline, "formalize", fake_formalize)
-    monkeypatch.setattr(pipeline, "sketch", fake_sketch)
-    monkeypatch.setattr(pipeline, "synthesize_and_verify", fake_synthesize_and_verify)
-    monkeypatch.setattr(pipeline, "promote_scratch_to_final", fake_promote_scratch_to_final)
+    def test_results_record_models_for_solved_and_stage_a_failed_problems(self) -> None:
+        expected_models = {
+            "formalize": "fake-strong-model",
+            "sketch": "fake-strong-model",
+            "synthesize": "fake-fast-model",
+            "repair": "fake-fast-model",
+        }
+        solved_result = {
+            "id": "p_solved",
+            "solved": True,
+            "repair_attempts": 0,
+            "initial_synthesis_success": True,
+            "success_within_repair_budget": True,
+            "total_synthesis_attempts": 1,
+            "wall_clock_seconds": 0.01,
+            "final_proof": "theorem trivial_true : True := by trivial",
+            "scratch_name": "p_solved_attempt1",
+        }
 
-    pipeline.run(input_path, out_path, lean_project_dir, max_repair=5)
+        def fake_formalize(_statement, _project, scratch_id, max_attempts=3):
+            if scratch_id == "p_stage_a_fail":
+                return False, "theorem broken : False := by sorry", []
+            return True, "theorem trivial_true : True := by trivial", []
 
-    lines = [json.loads(line) for line in out_path.read_text().splitlines() if line.strip()]
-    assert len(lines) == 2
-    by_id = {r["id"]: r for r in lines}
+        def fake_promote(_project, _scratch, final_id):
+            return self.lean_project_dir / "generated" / f"{final_id}.lean"
 
-    # Solved-problem row.
-    assert by_id["p_solved"]["solved"] is True
-    assert by_id["p_solved"]["model"] == expected_model_info
+        with (
+            patch.object(pipeline, "STAGE_MODELS", expected_models),
+            patch.object(pipeline, "new_run_metadata", self.metadata),
+            patch.object(pipeline, "formalize", side_effect=fake_formalize),
+            patch.object(pipeline, "sketch", return_value="1. trivially true"),
+            patch.object(
+                pipeline,
+                "synthesize_and_verify",
+                return_value=(solved_result, []),
+            ),
+            patch.object(pipeline, "promote_scratch_to_final", side_effect=fake_promote),
+        ):
+            pipeline.run(self.input_path, self.output_path, self.lean_project_dir, max_repair=5)
 
-    # Stage-A-failure row must ALSO carry the correct model info -- this is
-    # the code path the original bug's stale MODEL_NAME still touched too.
-    assert by_id["p_stage_a_fail"]["solved"] is False
-    assert by_id["p_stage_a_fail"]["failure_stage"] == "formalize"
-    assert by_id["p_stage_a_fail"]["model"] == expected_model_info
+        rows = [
+            json.loads(line)
+            for line in self.output_path.read_text().splitlines()
+            if line.strip()
+        ]
+        by_id = {row["id"]: row for row in rows}
+        self.assertEqual(by_id["p_solved"]["models"], expected_models)
+        self.assertTrue(by_id["p_solved"]["solved"])
+        self.assertEqual(by_id["p_stage_a_fail"]["models"], expected_models)
+        self.assertFalse(by_id["p_stage_a_fail"]["solved"])
+        self.assertEqual(by_id["p_stage_a_fail"]["failure_stage"], "formalize")
 
 
 if __name__ == "__main__":
-    sys.exit(pytest.main([__file__, "-v"]))
+    unittest.main()

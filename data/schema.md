@@ -42,3 +42,26 @@ Fields:
 One line per attempt (including the ones that failed), each with:
 `attempt_number`, `proof_text`, `success`, `compiler_errors` (list of strings,
 empty if success), `timestamp`.
+
+## Schema version 2 (new API runs)
+
+Historical JSONL artifacts remain in their original format. New runs from
+`src/pipeline.py` write `schema_version: 2` records and a neighboring
+`<results-stem>.run.json` metadata file. The metadata includes the run ID and
+UTC start time, Git state, input/prompt SHA-256 hashes, Lean and Mathlib
+versions when available, per-stage models, and run configuration.
+
+Each v2 result records `models` for `formalize`, `sketch`, `synthesize`, and
+`repair`; `initial_synthesis_success`; `success_within_repair_budget`; and
+`total_synthesis_attempts`. The latter success field is intentionally not
+labelled `pass@1`: it may include compiler-guided repairs.
+
+Each v2 attempt record includes `stage`, `repair_number`,
+`is_initial_synthesis`, `verification` (success, Lean exit code, elapsed
+time, parsed diagnostics, and axiom dependencies), and `run_id`. Final proofs
+are subject to the policy in `docs/verification.md`.
+
+Schema-v2 outputs are immutable: the selected `--out` path and its neighboring
+run manifest must not already exist. A manifest has a `running`, `failed`, or
+`completed` status so a partial result file is never presented as a complete
+run. New attempt files are isolated in `results/attempts/<run-id>/`.

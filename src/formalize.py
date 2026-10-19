@@ -8,7 +8,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from llm_client import complete, extract_lean_block, STRONG_MODEL
-from verify import check_lean_file
+from verify import check_lean_file_detailed
 
 PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
     "prompts", "stage_a_formalize.txt"
@@ -24,22 +24,29 @@ def formalize(nl_statement: str, lean_project_dir: Path, scratch_id: str, max_at
         raw = complete(prompt, max_tokens=500, model=STRONG_MODEL)
         lean_code = extract_lean_block(raw)
 
-        ok, errors = check_lean_file(lean_code, lean_project_dir, f"{scratch_id}_stmt_check", allow_sorry=True)
+        verification = check_lean_file_detailed(
+            lean_code,
+            lean_project_dir,
+            f"{scratch_id}_stmt_check",
+            allow_sorry=True,
+        )
         attempts_log.append({
             "attempt": attempt,
+            "model": STRONG_MODEL,
             "lean_code": lean_code,
-            "success": ok,
-            "errors": errors,
+            "success": verification.success,
+            "errors": verification.errors,
+            "verification": verification.to_record(),
         })
 
-        if ok:
+        if verification.success:
             return True, lean_code, attempts_log
 
         # feed the elaboration error back and ask for a fix
         prompt = (
             f"{PROMPT_TEMPLATE.format(nl_statement=nl_statement)}\n\n"
             f"Your previous attempt failed to elaborate:\n```lean\n{lean_code}\n```\n"
-            f"Error:\n```\n{chr(10).join(errors)}\n```\n"
+            f"Error:\n```\n{chr(10).join(verification.errors)}\n```\n"
             f"Fix the statement (still `:= by sorry` for the body) and output "
             f"only the corrected Lean 4 code block."
         )

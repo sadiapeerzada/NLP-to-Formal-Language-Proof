@@ -85,7 +85,11 @@ cd lean_project && lake exe cache get   # pulls prebuilt Mathlib oleans, saves h
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 export GROQ_API_KEY=gsk_...
-# optional: export GROQ_MODEL=llama-3.3-70b-versatile   (this is the default)
+# optional: override the defaults used by the two-stage model split
+# export GROQ_MODEL_STRONG=llama-3.3-70b-versatile
+# export GROQ_MODEL_FAST=llama-3.1-8b-instant
+# GROQ_MODEL remains supported as a backward-compatible fallback for
+# GROQ_MODEL_STRONG. It does not select the fast synthesis/repair model.
 
 # 3. Run the pipeline on the seed set
 python src/pipeline.py --input data/seed_problems.json --out data/results/run1.jsonl --max-repair 5
