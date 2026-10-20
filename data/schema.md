@@ -19,6 +19,42 @@ Fields:
 - `difficulty`: 1 (trivial, one `ring`/`norm_num` call) to 5 (genuine multi-step induction or case split)
 - `expected_lean_statement`: human reference, used ONLY to sanity-check Stage A output during development, never fed to the model
 
+The five fields above are required. `category` is a non-empty string so new
+categories can be introduced without changing the validator. `difficulty`
+must be an integer from 1 through 5.
+
+## Optional research-dataset provenance
+
+The following top-level fields document source, licensing, split membership,
+and the reference statement. They are optional for backward compatibility;
+the validator never fills them in or assigns a split:
+
+- `split`: `development` or `test`. Omission means the problem has no recorded
+  split; it must not be treated as a test example by inference.
+- `source_citation`: a human-readable citation, such as author/title/edition
+  or an internal hand-authored source description.
+- `source_url`: a URL identifying the source, when applicable. A citation or
+  URL is required for a fully documented research record.
+- `license`: the applicable license or an explicit, verified rights status.
+- `reference_lean_statement_provenance`: who authored or reviewed
+  `expected_lean_statement`, and how it was checked. This describes provenance;
+  it is not a replacement for the reference statement itself.
+
+A research record is fully documented only when it has a non-empty citation
+or a valid absolute HTTP(S) URL, a non-empty license, and non-empty
+reference-statement provenance. Partially populated records are classified as
+incomplete; records with no supplied provenance fields are classified as
+legacy; records with any invalid supplied provenance field are classified as
+invalid. Run `python src/dataset_validation.py <dataset.json>` to validate
+structural requirements while reporting legacy, incomplete, and invalid
+records. Add
+`--require-provenance` to fail validation when any required provenance item is
+missing; invalid supplied provenance fields are errors in either mode. Error
+messages distinguish missing required provenance from invalid supplied values.
+A supplied `split` is always checked against the allowed values.
+Validation does not establish that a citation, license, or authorship claim is
+truthful; those details require human verification.
+
 ## `results/<run>.jsonl` (output, one line per problem)
 
 ```json

@@ -26,10 +26,24 @@ succeeded, plus full attempt logs (including failures) for every problem.
 See `data/schema.md` in the repo for exact field definitions.
 
 ## Splits
-- `seed` (n=10): hand-curated, used for pipeline development
-- `templated` (n=?): programmatically varied from seed problems
-- `held_out` (n=?): hand-curated, never used during prompt iteration --
-  report this number separately, it's the honest number
+Split membership belongs to each problem record in the `split` field and is
+limited to `development` or `test`. Existing datasets without that field are
+unsplit; they are not automatically assigned to a split. The pilot set is a
+three-problem pipeline smoke test and does not define a research split.
+
+Before reporting test results, publish a frozen list of problem IDs and the
+dataset hash. Do not use test items during prompt iteration. Current repository
+data does not yet document a frozen split or its membership.
+
+Per-problem `source_citation` or `source_url`, `license`, and
+`reference_lean_statement_provenance` fields are required for a fully
+documented research record. Existing records may omit them for backward
+compatibility and are then reported as legacy, incomplete, or invalid by
+`src/dataset_validation.py`. Invalid supplied values do not count as
+documented, and strict validation reports missing requirements separately
+from invalid values. Omission must not be interpreted as known provenance. Do
+not fill in source, license, or reference authorship claims without
+verification.
 
 ## Category breakdown
 [table: category, count, difficulty distribution]
