@@ -1,108 +1,241 @@
-# NL2Lean
+# NL2Lean: Compiler-Guided Repair
 
-**Natural language math problem → decomposed reasoning steps → verified Lean 4 proof.**
+**Research topic:** Compiler-Guided Repair for Natural-Language-to-Lean
+Formalization.
 
-> **Status: a real run has been executed and verified — see [`RUN_REPORT.md`](RUN_REPORT.md).**
-> 20/20 problems solved with genuine repair loops (some took 4-6 real
-> attempts before landing), all proofs independently re-verified by the
-> actual Lean 4.14.0 compiler. Read the run report first — it's short and
-> explains an important environment constraint (no Mathlib cache access in
-> the build sandbox) that shaped this run, why 100% pass@1 here is *not* a
-> claim about general capability, and what changes once you run it on your
-> own machine. (`lean_project/lean-toolchain` has since been updated past
-> 4.14.0 — see the run report's addendum for what that did and didn't
-> affect.)
->
-> Real charts generated from this run's actual data live in
-> [`docs/figures/`](docs/figures/) — pass@1 by category, pass@1 by
-> difficulty, repair-attempts histogram, and difficulty-vs-repairs scatter.
+## Project overview
 
-This repo is a research prototype that turns a plain-English math statement into a
-Lean 4 theorem + tactic proof that actually compiles against Mathlib. It does not
-just "generate Lean-looking text" — every proof in `data/results/` has been run
-through `lake env lean` and passed. Unverified attempts are logged separately and
-never counted toward accuracy numbers.
+This repository contains a research prototype for translating natural-language
+mathematics into Lean and evaluating proof repair. The central research
+question is:
 
-## Why this split works for a two-person team
+> Does compiler-diagnostic feedback improve proof repair compared with
+> equally budgeted retries without compiler feedback, and for which error
+> types?
 
-| Owns | Responsibility |
-|---|---|
-| You | LLM pipeline (formalization, sketch, synthesis, self-repair), infra, eval harness, dataset, plots |
-| Senior / formal-methods partner | Lean 4 / Mathlib correctness review, tactic library curation, adjudicating "is this proof actually meaningful or did the model cheat with `sorry`/`decide`-abuse" |
+The repository includes an end-to-end NL-to-Lean pipeline and a separate
+paired experiment runner. The primary study is designed to compare repair
+conditions from the same fixed Lean theorem and the same initial proof
+candidate, rather than treating ordinary pipeline pass rates as evidence for
+the research question.
+
+## Research status
+
+**In progress — no completed A/B/C evaluation is reported here.** The research
+dataset remains a draft of 21 candidates, with **0 eligible records** under
+the current curation validator. It is not a completed benchmark, frozen test
+set, or experiment-ready dataset.
+
+The existing `RUN_REPORT.md` and result files describe historical prototype
+work, not the controlled A/B/C study. The report explicitly says candidate
+proofs in that run were authored manually rather than generated through model
+API calls; some Lean compilation checks were real, but those checks do not
+turn the run into genuine API-generated experiment outcomes. Do not present
+historical, manual, or simulated results as model-generated results.
 
 ## Pipeline
 
+The original end-to-end pipeline is:
+
 ```mermaid
 flowchart TD
-    A["NL problem\n(plain English)"] --> B["Stage A: Formalize\nLLM -> Lean 4 theorem statement"]
-    B --> C{Statement\ntype-checks?}
-    C -- no --> B2["Repair loop\n(feed elaboration error back)"]
+    A["English problem"] --> B["Stage A: formalize as Lean theorem"]
+    B --> C{"Theorem statement\nverifies?"}
+    C -- no --> B2["Formalization retry"]
     B2 --> B
-    C -- yes --> D["Stage B: Proof sketch\nLLM -> ordered NL reasoning steps"]
-    D --> E["Stage C: Synthesize\nLLM -> Lean 4 tactic proof"]
-    E --> F["Stage D: Verify\nlake env lean --json"]
-    F -- fail --> G["Repair loop\n(feed compiler error, up to N=5 retries)"]
+    C -- yes --> D["Stage B: generate proof sketch"]
+    D --> E["Stage C: synthesize Lean proof"]
+    E --> F["Stage D: verify with Lean"]
+    F -- fail --> G["Pipeline repair loop"]
     G --> E
-    F -- pass --> H["Verified proof\nlogged to data/results/"]
-    H --> I["Eval: pass@1, pass@k,\navg repair iters, category breakdown"]
+    F -- pass --> H["Record verified result"]
 ```
 
-## Repo layout
+This pipeline is separate from the paired repair experiment and its metrics
+must not be interpreted as a controlled comparison of compiler feedback
+against blind retries.
 
-```
-nl2lean/
+## Repository structure
+
+```text
+.
 ├── README.md
-├── lean_project/           # actual Lean 4 + Mathlib project (lakefile, toolchain)
-├── prompts/                # the 4 prompt templates used by the pipeline (see below)
-├── src/                    # Python pipeline
-│   ├── llm_client.py       # Groq API wrapper (shared by all stages)
-│   ├── formalize.py        # Stage A
-│   ├── proof_sketch.py     # Stage B
-│   ├── synthesize.py       # Stage C
-│   ├── verify.py           # Stage D — subprocess wrapper around lake/lean
-│   └── pipeline.py         # end-to-end runner, CLI entrypoint
+├── RUN_REPORT.md                         # historical run and limitations
 ├── data/
 │   ├── schema.md
-│   ├── seed_problems.json  # 20 problems (arithmetic identities / divisibility / induction / inequality / modular arithmetic)
-│   └── results/             # verified proofs get written here as JSONL
+│   ├── seed_problems.json
+│   ├── research_dataset_draft_v0.1.0.json
+│   ├── curation_ledger_v0.1.0.json
+│   ├── research_dataset_manifest_v0.1.0.json
+│   ├── curation_guide.md
+│   ├── curation_audit_v0.1.1.md
+│   └── results/                         # historical and pilot outputs
 ├── eval/
 │   └── metrics.py
-└── docs/
-    ├── architecture.md
-    ├── roadmap.md
-    ├── dataset_card.md
-    └── model_card.md
+├── lean_project/
+│   ├── lean-toolchain
+│   ├── lakefile.toml
+│   └── lake-manifest.json
+├── prompts/
+│   ├── stage_a_formalize.txt
+│   ├── stage_b_sketch.txt
+│   ├── stage_c_synthesize.txt
+│   ├── stage_d_repair.txt
+│   ├── repair_experiment_initial.txt
+│   ├── repair_experiment_blind.txt
+│   └── repair_experiment_compiler_guided.txt
+├── src/
+│   ├── pipeline.py
+│   ├── formalize.py
+│   ├── proof_sketch.py
+│   ├── synthesize.py
+│   ├── verify.py
+│   ├── repair_experiment.py
+│   ├── dataset_validation.py
+│   ├── build_research_dataset_draft.py
+│   └── llm_client.py
+└── tests/
+    ├── test_dataset_validation.py
+    ├── test_repair_experiment.py
+    └── test_verify.py
 ```
 
-## Quickstart
+The full test inventory is under `tests/`; the dataset draft and its curation
+materials are versioned separately from the original seed records.
+
+## Dataset and curation workflow
+
+Before a record can be counted as eligible, curate and document:
+
+1. **Source and rights:** identify a reliable source or document verified
+   hand-authored provenance; check the actual rights/license evidence and
+   permission for redistribution and publication. A public webpage alone is
+   not evidence of a redistribution license.
+2. **Theorem and assumptions:** have a qualified reviewer compare the complete
+   English statement and Lean theorem, including types, quantifiers,
+   assumptions, notation, and boundary cases. Resolve any missing, excessive,
+   or mismatched assumptions.
+3. **Semantic fidelity and self-containment:** record an evidence-based
+   `faithful`, `not faithful`, or `uncertain` label with reviewer provenance.
+   Check required definitions, imports, notation, and the intended Lean
+   environment. Compilation alone does not establish semantic fidelity.
+4. **Duplicates and families:** adjudicate exact-English and likely
+   mathematical duplicates; record family decisions with evidence. Similarity
+   is a review lead, not proof of equivalence. Do not count an unresolved
+   duplicate group as multiple independent examples.
+5. **Splitting:** assign accepted theorem families wholly to development or
+   test. The split must be deterministic, reviewed, and free of family
+   leakage.
+6. **Eligibility and freezing:** validate the metadata and evidence, resolve
+   exclusions, check the final record counts, and independently verify the
+   exact-byte manifest hash. Freeze only after required evidence-based reviews
+   are complete and the target counts are met.
+
+The current pool is far below the target: the proposed split is 15 development
+and 6 test candidates; counting the exact-English duplicate pair at most once
+leaves at most 14 independent development and 6 test candidates. The current
+validator reports zero eligible candidates. The minimum target is at least
+15 development and 60 independent held-out test items; 15–20 development
+items are preferred.
+
+The record-level review leads and freeze checklist are in
+[`data/curation_audit_v0.1.1.md`](data/curation_audit_v0.1.1.md). In
+particular, the exact-English pair `arith_003` / `arith_003_mathlib` still
+requires human adjudication. The draft has no verified source/license
+evidence, and theorem-statement, assumption, semantic-fidelity,
+self-containment, family, and split reviews remain incomplete.
+
+### Structural validation
+
+Using the repository’s Python virtual environment:
 
 ```bash
-# 1. Lean toolchain (elan manages versions per lean-toolchain file)
-curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
-cd lean_project && lake exe cache get   # pulls prebuilt Mathlib oleans, saves hours
-
-# 2. Python side
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-export GROQ_API_KEY=gsk_...
-# optional: override the defaults used by the two-stage model split
-# export GROQ_MODEL_STRONG=llama-3.3-70b-versatile
-# export GROQ_MODEL_FAST=llama-3.1-8b-instant
-# GROQ_MODEL remains supported as a backward-compatible fallback for
-# GROQ_MODEL_STRONG. It does not select the fast synthesis/repair model.
-
-# 3. Run the pipeline on the seed set
-python src/pipeline.py --input data/seed_problems.json --out data/results/run1.jsonl --max-repair 5
-python eval/metrics.py data/results/run1.jsonl
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python src/dataset_validation.py \
+  data/research_dataset_draft_v0.1.0.json \
+  --validate-curation-draft
 ```
 
-For schema-v2 runs, verified proofs are promoted to
-`lean_project/generated/runs/<run-id>/`. Existing files directly under
-`lean_project/generated/` are historical artifacts and are not overwritten.
+This validates draft structure, IDs, allowed metadata, duplicate candidates,
+and family/split consistency, and reports the current eligible count. A
+successful structural validation is **not** proof of mathematical
+correctness, source authenticity, redistribution rights, semantic fidelity,
+or successful Lean compilation.
 
-## Results
+## Experimental design
 
-Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.md` for the full honest caveats on what this run does and doesn't prove):
+The intended controlled comparison has three conditions:
+
+- **A — ONE-SHOT:** generate one initial proof candidate and make no repair
+  calls.
+- **B — BLIND RETRY:** from the same failed initial candidate, make up to
+  three repair calls using the predefined generic retry prompt and previous
+  candidate, without compiler diagnostics.
+- **C — COMPILER-GUIDED REPAIR:** from that exact same failed initial
+  candidate, make up to three repair calls using actual Lean compiler
+  diagnostics.
+
+The B/C comparison must hold the problem and human-reviewed theorem, initial
+candidate, primary LLM/model identifier, repair-call limit, applicable
+decoding settings and comparable prompt/token budgets, and Lean/Mathlib
+environment constant. Outcomes must be paired by problem and initial-candidate
+identity. These experiments have **not** been reported as run.
+
+The runner is `src/repair_experiment.py`; it uses the three
+`prompts/repair_experiment_*.txt` templates. Its configured default is three
+repair calls, and it accepts an explicit model identifier. The runner records
+the requested model identifier as a provider alias, not an immutable model
+revision. `--plan-only` prints the planned configuration without writing
+experiment files or calling the API. Running the experiment itself invokes
+the configured model provider and Lean verifier; do so only after dataset,
+protocol, and API-budget approval.
+
+## Reproducibility and environment
+
+Repository configuration currently specifies:
+
+- Lean toolchain: `leanprover/lean4:v4.33.0-rc1` in
+  `lean_project/lean-toolchain`.
+- Mathlib: the `mathlib4` dependency declared in `lean_project/lakefile.toml`,
+  pinned by `lean_project/lake-manifest.json` to revision
+  `46ff937713b1d85cf6642ff8164d212292e30f6b`.
+- Python API dependency: `groq>=0.9.0` in `requirements.txt`.
+
+These are configured versions and pins, not evidence that every dataset
+candidate compiles. The current draft contains unresolved statements and
+definitions; no compilation result is implied by the configuration.
+
+## Validation and testing
+
+Run the focused offline curation tests with:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python -m pytest \
+  -p no:cacheprovider tests/test_dataset_validation.py -q
+```
+
+Run the offline project tests while excluding the two tests explicitly marked
+to invoke real Lean through Lake with:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python -m pytest \
+  -p no:cacheprovider tests -q -k 'not test_real_lean'
+```
+
+The full suite includes real-Lean integration tests when `lake` is installed;
+those tests compile Lean and should only be run when compilation is intended.
+Python unit-test success does not certify dataset semantics, licensing, or
+Lean compilation.
+
+## Historical prototype artifacts
+
+`RUN_REPORT.md` documents the historical 20-problem core-Lean-adapted run and
+its limitations. The report distinguishes real compiler invocations from
+manually authored proof candidates and explicitly states that the configured
+LLM API was not called for those candidates. Existing result files and charts
+are retained for historical context only; they are not evidence for the
+paired A/B/C research question or a current benchmark.
+
+Charts associated with those historical artifacts:
 
 ### Pass@1 by category
 ![Pass@1 by category](docs/figures/pass_at_1_by_category.png)
@@ -116,14 +249,33 @@ Real charts generated from `data/results/run1_core_lean.jsonl` (see `RUN_REPORT.
 ### Difficulty vs. repair attempts
 ![Difficulty vs repair attempts](docs/figures/difficulty_vs_repairs.png)
 
-<h3>Repair Performance Across Difficulty Levels</h3>
+## Research integrity
 
-<div align="center">
-  <img src="docs/nl2lean_difficulty_vs_repairs.png" alt="Difficulty vs. Repair Attempts" width="800">
-</div>
+Do not report historical, manually authored, or simulated outcomes as genuine
+API-generated experiment results. Record model/provider provenance and the
+actual generation path for any future experiment. Likewise, a theorem that
+compiles is not thereby shown to faithfully formalize its English statement:
+source rights, assumptions, mathematical meaning, and semantic fidelity
+require their own evidence and review.
 
-## Milestone plan
+## Current milestone and next steps
 
-See `docs/roadmap.md`. Short version: 10 problems working end-to-end this week →
-50 by end of week 2 → publish a v0 dataset card + repo → 500 with category
-breakdown and pass@k curves → write it up.
+The current milestone is a **reviewable draft curation audit**, not a frozen
+dataset. Next:
+
+1. Find and verify source and redistribution/license evidence for each
+   candidate, leaving unresolved cases pending.
+2. Review each English/Lean pair, especially the assumption concern in
+   `mod_001`, indexing in `ind_001`, and missing `geomSum` definition in
+   `ind_004`.
+3. Adjudicate the exact-English duplicate and review potential mathematical
+   duplicates and family memberships.
+4. Build a deterministic family-aware split from reviewed, eligible records;
+   acquire legitimate additional source material to meet the held-out target.
+5. Revalidate and prepare a new, reproducible manifest only after the
+   evidence and review requirements are met; then finalize the A/B/C protocol
+   before running experiments.
+
+For broader project context, see [`docs/architecture.md`](docs/architecture.md),
+[`docs/roadmap.md`](docs/roadmap.md), [`docs/dataset_card.md`](docs/dataset_card.md),
+[`docs/model_card.md`](docs/model_card.md), and [`docs/verification.md`](docs/verification.md).
