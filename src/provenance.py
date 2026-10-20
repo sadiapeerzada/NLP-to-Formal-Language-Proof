@@ -69,6 +69,7 @@ def new_run_metadata(
     max_repair: int,
     synthesis_max_completion_tokens: int = 2000,
     synthesis_reasoning_effort: str | None = None,
+    experiment_config: str = "full_pipeline",
 ) -> dict[str, object]:
     started_at = datetime.now(UTC)
     return {
@@ -87,6 +88,7 @@ def new_run_metadata(
         "lean": _lean_metadata(lean_project_dir),
         "models": stage_models,
         "configuration": {
+            "experiment_config": experiment_config,
             "max_repair": max_repair,
             "formalize_max_attempts": 3,
             "synthesis_max_completion_tokens": synthesis_max_completion_tokens,

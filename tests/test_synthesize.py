@@ -77,6 +77,43 @@ class SynthesizeTests(unittest.TestCase):
         self.assertTrue(attempts[0]["reasoning_present"])
         self.assertNotIn("reasoning", attempts[0])
 
+    def test_model_override_reaches_completion_and_attempt_metadata(self) -> None:
+        model = "openai/gpt-oss-20b"
+        completion = CompletionResult(
+            content="theorem target : True := by trivial",
+            metadata={"model": model},
+        )
+        verification = SimpleNamespace(
+            success=True,
+            errors=[],
+            to_record=lambda: {"success": True},
+        )
+        with TemporaryDirectory() as directory:
+            with (
+                patch.object(
+                    synthesize,
+                    "complete_with_metadata",
+                    return_value=completion,
+                ) as complete,
+                patch.object(
+                    synthesize,
+                    "check_lean_file_detailed",
+                    return_value=verification,
+                ),
+            ):
+                _result, attempts = synthesize.synthesize_and_verify(
+                    "natural-language statement",
+                    "theorem target : True := by sorry",
+                    "proof sketch",
+                    Path(directory),
+                    "problem",
+                    model=model,
+                )
+
+        self.assertEqual(complete.call_args.kwargs["model"], model)
+        self.assertEqual(complete.call_args.kwargs["reasoning_effort"], "low")
+        self.assertEqual(attempts[0]["model"], model)
+
     def test_empty_repair_output_stops_and_counts_only_calls_made(self) -> None:
         completions = [
             CompletionResult(

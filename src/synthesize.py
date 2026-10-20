@@ -38,11 +38,14 @@ def synthesize_and_verify(
     lean_project_dir: Path,
     problem_id: str,
     max_repair: int = 5,
+    model: str | None = None,
 ):
     """Returns a dict matching the results/<run>.jsonl schema (minus the
     top-level 'model'/'prompt_version' fields, added by the caller) plus the
     full per-attempt log for data/results/attempts/<id>.jsonl.
     """
+    model = model or FAST_MODEL
+    reasoning_effort = reasoning_effort_for_model(model)
     start = time.time()
     attempts_log = []
     prompt = SYNTH_PROMPT.format(
@@ -57,8 +60,8 @@ def synthesize_and_verify(
             prompt,
             max_tokens=SYNTHESIS_MAX_COMPLETION_TOKENS,
             temperature=0.2,
-            model=FAST_MODEL,
-            reasoning_effort=SYNTHESIS_REASONING_EFFORT,
+            model=model,
+            reasoning_effort=reasoning_effort,
         )
         current_proof = extract_lean_block(completion.content)
         if not current_proof:
@@ -68,7 +71,7 @@ def synthesize_and_verify(
                     "attempt_number": attempt,
                     "repair_number": attempt - 1,
                     "is_initial_synthesis": attempt == 1,
-                    "model": FAST_MODEL,
+                    "model": model,
                     "proof_text": current_proof,
                     **completion.metadata,
                     "success": False,
@@ -90,7 +93,7 @@ def synthesize_and_verify(
                     "attempt_number": attempt,
                     "repair_number": attempt - 1,
                     "is_initial_synthesis": attempt == 1,
-                    "model": FAST_MODEL,
+                    "model": model,
                     "proof_text": current_proof,
                     **completion.metadata,
                     "success": verification.success,

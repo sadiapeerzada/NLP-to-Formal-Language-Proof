@@ -45,6 +45,9 @@ class PipelineModelMetadataTests(unittest.TestCase):
             "schema_version": 2,
             "run_id": "model-metadata-test",
             "started_at_utc": "2026-01-01T00:00:00Z",
+            "configuration": {
+                "experiment_config": _kwargs.get("experiment_config")
+            },
         }
 
     def test_stage_models_are_explicit(self) -> None:
@@ -73,7 +76,9 @@ class PipelineModelMetadataTests(unittest.TestCase):
             "scratch_name": "p_solved_attempt1",
         }
 
-        def fake_formalize(_statement, _project, scratch_id, max_attempts=3):
+        def fake_formalize(
+            _statement, _project, scratch_id, max_attempts=3, model=None
+        ):
             if scratch_id == "p_stage_a_fail":
                 return False, "theorem broken : False := by sorry", []
             return True, "theorem trivial_true : True := by trivial", []
@@ -106,10 +111,171 @@ class PipelineModelMetadataTests(unittest.TestCase):
         ]
         by_id = {row["id"]: row for row in rows}
         self.assertEqual(by_id["p_solved"]["models"], expected_models)
+        self.assertEqual(by_id["p_solved"]["experiment_config"], "full_pipeline")
         self.assertTrue(by_id["p_solved"]["solved"])
         self.assertEqual(by_id["p_stage_a_fail"]["models"], expected_models)
+        self.assertEqual(by_id["p_stage_a_fail"]["experiment_config"], "full_pipeline")
         self.assertFalse(by_id["p_stage_a_fail"]["solved"])
         self.assertEqual(by_id["p_stage_a_fail"]["failure_stage"], "formalize")
+        manifest = json.loads(self.output_path.with_suffix(".run.json").read_text())
+        self.assertEqual(
+            manifest["configuration"]["experiment_config"], "full_pipeline"
+        )
+
+    def _run_single_problem(self, *, cli_args: list[str] | None = None, **kwargs):
+        self.input_path.write_text(json.dumps([
+            {
+                "id": "p1",
+                "category": "arithmetic_identity",
+                "difficulty": 1,
+                "nl_statement": "trivial true statement",
+            }
+        ]))
+        synthesis_result = {
+            "solved": True,
+            "repair_attempts": 0,
+            "initial_synthesis_success": True,
+            "success_within_repair_budget": True,
+            "total_synthesis_attempts": 1,
+            "wall_clock_seconds": 0.01,
+            "final_proof": "theorem p1 : True := by trivial",
+            "scratch_name": "p1_attempt1",
+        }
+        synthesis_attempts = [
+            {
+                "is_initial_synthesis": True,
+                "attempt_number": 1,
+                "model": "synthesis-model",
+            }
+        ]
+
+        with (
+            patch.object(pipeline, "new_run_metadata", self.metadata),
+            patch.object(
+                pipeline,
+                "formalize",
+                return_value=(True, "theorem p1 : True := by sorry", []),
+            ) as formalize_call,
+            patch.object(
+                pipeline,
+                "sketch_with_metadata",
+                return_value=SimpleNamespace(
+                    content="a sketch",
+                    metadata={"model": "sketch-model"},
+                ),
+            ) as sketch_call,
+            patch.object(
+                pipeline,
+                "synthesize_and_verify",
+                return_value=(synthesis_result, synthesis_attempts),
+            ) as synthesize_call,
+            patch.object(
+                pipeline,
+                "promote_scratch_to_final",
+                return_value=self.root / "final.lean",
+            ),
+        ):
+            if cli_args is not None:
+                pipeline.main(cli_args)
+            else:
+                pipeline.run(
+                    self.input_path,
+                    self.output_path,
+                    self.lean_project_dir,
+                    max_repair=1,
+                    **kwargs,
+                )
+
+        result = json.loads(self.output_path.read_text())
+        manifest = json.loads(self.output_path.with_suffix(".run.json").read_text())
+        attempt_records = [
+            json.loads(line)
+            for line in (
+                self.root / "results" / "attempts" / "model-metadata-test" / "p1.jsonl"
+            ).read_text().splitlines()
+        ]
+        return result, manifest, attempt_records, formalize_call, sketch_call, synthesize_call
+
+    def test_no_sketch_cli_skips_only_sketch_stage(self) -> None:
+        result, manifest, attempts, formalize, sketch, synthesize = (
+            self._run_single_problem(
+                cli_args=[
+                    "--input", str(self.input_path),
+                    "--out", str(self.output_path),
+                    "--lean-project", str(self.lean_project_dir),
+                    "--no-sketch",
+                ]
+            )
+        )
+
+        sketch.assert_not_called()
+        self.assertEqual(formalize.call_args.kwargs["model"], pipeline.STRONG_MODEL)
+        self.assertEqual(synthesize.call_args.args[2], "")
+        self.assertEqual(synthesize.call_args.kwargs["model"], pipeline.FAST_MODEL)
+        self.assertEqual(result["experiment_config"], "no_sketch")
+        self.assertEqual(
+            result["models"],
+            {"formalize": pipeline.STRONG_MODEL,
+             "synthesize": pipeline.FAST_MODEL,
+             "repair": pipeline.FAST_MODEL},
+        )
+        self.assertEqual(
+            manifest["configuration"]["experiment_config"], "no_sketch"
+        )
+        self.assertNotIn("sketch", [record["stage"] for record in attempts])
+        self.assertTrue(
+            all(record["experiment_config"] == "no_sketch" for record in attempts)
+        )
+
+    def test_fast_model_only_uses_fast_model_for_every_stage(self) -> None:
+        result, manifest, _attempts, formalize, sketch, synthesize = (
+            self._run_single_problem(experiment_config="fast_model_only")
+        )
+
+        self.assertEqual(formalize.call_args.kwargs["model"], pipeline.FAST_MODEL)
+        self.assertEqual(sketch.call_args.kwargs["model"], pipeline.FAST_MODEL)
+        self.assertEqual(synthesize.call_args.kwargs["model"], pipeline.FAST_MODEL)
+        self.assertEqual(
+            result["models"],
+            {
+                "formalize": pipeline.FAST_MODEL,
+                "sketch": pipeline.FAST_MODEL,
+                "synthesize": pipeline.FAST_MODEL,
+                "repair": pipeline.FAST_MODEL,
+            },
+        )
+        self.assertEqual(result["experiment_config"], "fast_model_only")
+        self.assertEqual(
+            manifest["configuration"]["experiment_config"], "fast_model_only"
+        )
+
+    def test_model_overrides_select_their_applicable_stages(self) -> None:
+        result, _manifest, _attempts, formalize, sketch, synthesize = (
+            self._run_single_problem(
+                strong_model="custom-strong",
+                fast_model="custom-fast",
+            )
+        )
+
+        self.assertEqual(formalize.call_args.kwargs["model"], "custom-strong")
+        self.assertEqual(sketch.call_args.kwargs["model"], "custom-strong")
+        self.assertEqual(synthesize.call_args.kwargs["model"], "custom-fast")
+        self.assertEqual(
+            result["models"],
+            {
+                "formalize": "custom-strong",
+                "sketch": "custom-strong",
+                "synthesize": "custom-fast",
+                "repair": "custom-fast",
+            },
+        )
+
+    def test_contradictory_config_and_no_sketch_flag_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "--no-sketch conflicts"):
+            pipeline.resolve_experiment_config(
+                "fast_model_only",
+                no_sketch=True,
+            )
 
 
 if __name__ == "__main__":

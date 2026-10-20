@@ -44,6 +44,7 @@ class ProvenanceTests(unittest.TestCase):
                 max_repair=1,
                 synthesis_max_completion_tokens=2000,
                 synthesis_reasoning_effort="low",
+                experiment_config="fast_model_only",
             )
 
         self.assertRegex(metadata["started_at_utc"], r"Z$")
@@ -59,6 +60,10 @@ class ProvenanceTests(unittest.TestCase):
         self.assertEqual(
             metadata["configuration"]["synthesis_reasoning_effort"],
             "low",
+        )
+        self.assertEqual(
+            metadata["configuration"]["experiment_config"],
+            "fast_model_only",
         )
         self.assertNotIn("GROQ_API_KEY", json.dumps(metadata))
 

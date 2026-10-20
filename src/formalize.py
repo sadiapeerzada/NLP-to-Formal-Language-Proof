@@ -15,14 +15,21 @@ PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
 ).read_text()
 
 
-def formalize(nl_statement: str, lean_project_dir: Path, scratch_id: str, max_attempts: int = 3):
+def formalize(
+    nl_statement: str,
+    lean_project_dir: Path,
+    scratch_id: str,
+    max_attempts: int = 3,
+    model: str | None = None,
+):
     """Returns (success: bool, lean_statement: str, attempts_log: list[dict])."""
+    model = model or STRONG_MODEL
     prompt = PROMPT_TEMPLATE.format(nl_statement=nl_statement)
     attempts_log = []
 
     for attempt in range(1, max_attempts + 1):
         completion = complete_with_metadata(
-            prompt, max_tokens=500, model=STRONG_MODEL
+            prompt, max_tokens=500, model=model
         )
         lean_code = extract_lean_block(completion.content)
 
@@ -34,7 +41,7 @@ def formalize(nl_statement: str, lean_project_dir: Path, scratch_id: str, max_at
         )
         attempts_log.append({
             "attempt": attempt,
-            "model": STRONG_MODEL,
+            "model": model,
             **completion.metadata,
             "lean_code": lean_code,
             "success": verification.success,

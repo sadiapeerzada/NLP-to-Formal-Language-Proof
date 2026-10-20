@@ -21,12 +21,14 @@ PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
 ).read_text()
 
 
-def sketch_with_metadata(nl_statement: str, lean_statement: str) -> CompletionResult:
+def sketch_with_metadata(
+    nl_statement: str, lean_statement: str, model: str | None = None
+) -> CompletionResult:
     prompt = PROMPT_TEMPLATE.format(
         nl_statement=nl_statement, lean_statement=lean_statement
     )
     return complete_with_metadata(
-        prompt, max_tokens=600, temperature=0.3, model=STRONG_MODEL
+        prompt, max_tokens=600, temperature=0.3, model=model or STRONG_MODEL
     )
 
 
