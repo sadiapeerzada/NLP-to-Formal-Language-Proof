@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from llm_client import complete, extract_lean_block, STRONG_MODEL
+from llm_client import STRONG_MODEL, complete_with_metadata, extract_lean_block
 from verify import check_lean_file_detailed
 
 PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
@@ -21,8 +21,10 @@ def formalize(nl_statement: str, lean_project_dir: Path, scratch_id: str, max_at
     attempts_log = []
 
     for attempt in range(1, max_attempts + 1):
-        raw = complete(prompt, max_tokens=500, model=STRONG_MODEL)
-        lean_code = extract_lean_block(raw)
+        completion = complete_with_metadata(
+            prompt, max_tokens=500, model=STRONG_MODEL
+        )
+        lean_code = extract_lean_block(completion.content)
 
         verification = check_lean_file_detailed(
             lean_code,
@@ -33,6 +35,7 @@ def formalize(nl_statement: str, lean_project_dir: Path, scratch_id: str, max_at
         attempts_log.append({
             "attempt": attempt,
             "model": STRONG_MODEL,
+            **completion.metadata,
             "lean_code": lean_code,
             "success": verification.success,
             "errors": verification.errors,

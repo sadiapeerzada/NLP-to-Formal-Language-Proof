@@ -13,9 +13,13 @@ from pathlib import Path
 
 from formalize import formalize
 from llm_client import FAST_MODEL, STRONG_MODEL
-from proof_sketch import sketch
+from proof_sketch import sketch_with_metadata
 from provenance import new_run_metadata
-from synthesize import synthesize_and_verify
+from synthesize import (
+    SYNTHESIS_MAX_COMPLETION_TOKENS,
+    SYNTHESIS_REASONING_EFFORT,
+    synthesize_and_verify,
+)
 from verify import promote_scratch_to_final
 
 REPOSITORY_ROOT = Path(__file__).parent.parent
@@ -93,6 +97,8 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
         PROMPT_PATHS,
         STAGE_MODELS,
         max_repair,
+        synthesis_max_completion_tokens=SYNTHESIS_MAX_COMPLETION_TOKENS,
+        synthesis_reasoning_effort=SYNTHESIS_REASONING_EFFORT,
     )
     run_metadata["status"] = "running"
     run_metadata["completed_problem_count"] = 0
@@ -157,7 +163,10 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
                 continue
 
             print(f"[{pid}] Stage B: sketching proof...")
-            proof_sketch_text = sketch(problem["nl_statement"], lean_statement)
+            sketch_completion = sketch_with_metadata(
+                problem["nl_statement"], lean_statement
+            )
+            proof_sketch_text = sketch_completion.content
 
             print(f"[{pid}] Stage C/D: synthesizing + verifying (max {max_repair} repairs)...")
             result, attempts_log = synthesize_and_verify(
@@ -168,6 +177,13 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
             write_attempts(
                 pid,
                 [{"stage": "formalize", **attempt} for attempt in stmt_attempts]
+                + [
+                    {
+                        "stage": "sketch",
+                        "attempt_number": 1,
+                        **sketch_completion.metadata,
+                    }
+                ]
                 + [
                     {
                         "stage": "synthesize" if attempt["is_initial_synthesis"] else "repair",
@@ -188,7 +204,7 @@ def run(input_path: Path, out_path: Path, lean_project_dir: Path, max_repair: in
                 lean_file_path = str(final_path)
                 print(f"[{pid}] SOLVED after {result['repair_attempts']} repair(s) -> {final_path}")
             else:
-                print(f"[{pid}] FAILED after {max_repair} repair attempts")
+                print(f"[{pid}] FAILED after {result['repair_attempts']} repair attempts")
 
             results.append({
                 "schema_version": 2, "run_id": run_metadata["run_id"],

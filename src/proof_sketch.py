@@ -9,15 +9,26 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from llm_client import complete, STRONG_MODEL
+from llm_client import (
+    STRONG_MODEL,
+    CompletionResult,
+    complete,
+    complete_with_metadata,
+)
 
 PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
     "prompts", "stage_b_sketch.txt"
 ).read_text()
 
 
-def sketch(nl_statement: str, lean_statement: str) -> str:
+def sketch_with_metadata(nl_statement: str, lean_statement: str) -> CompletionResult:
     prompt = PROMPT_TEMPLATE.format(
         nl_statement=nl_statement, lean_statement=lean_statement
     )
-    return complete(prompt, max_tokens=600, temperature=0.3, model=STRONG_MODEL)
+    return complete_with_metadata(
+        prompt, max_tokens=600, temperature=0.3, model=STRONG_MODEL
+    )
+
+
+def sketch(nl_statement: str, lean_statement: str) -> str:
+    return sketch_with_metadata(nl_statement, lean_statement).content

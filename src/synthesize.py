@@ -8,7 +8,12 @@ from __future__ import annotations
 import time
 from pathlib import Path
 
-from llm_client import complete, extract_lean_block, FAST_MODEL
+from llm_client import (
+    FAST_MODEL,
+    complete_with_metadata,
+    extract_lean_block,
+    reasoning_effort_for_model,
+)
 from verify import check_lean_file_detailed
 
 SYNTH_PROMPT = Path(__file__).parent.parent.joinpath(
@@ -18,8 +23,12 @@ REPAIR_PROMPT = Path(__file__).parent.parent.joinpath(
     "prompts", "stage_d_repair.txt"
 ).read_text()
 EMPTY_OUTPUT_ERROR = (
-    "LLM returned empty or whitespace-only output; Lean verification was not run."
+    "LLM returned empty or whitespace-only assistant content; reasoning is not "
+    "used as proof, Lean verification was not run, and no further repair call "
+    "was sent."
 )
+SYNTHESIS_MAX_COMPLETION_TOKENS = 2000
+SYNTHESIS_REASONING_EFFORT = reasoning_effort_for_model(FAST_MODEL)
 
 
 def synthesize_and_verify(
@@ -44,8 +53,14 @@ def synthesize_and_verify(
     current_proof = None
     failure_stage = "synthesize"
     for attempt in range(1, max_repair + 2):  # +1 initial synth, then max_repair repairs
-        raw = complete(prompt, max_tokens=2000, temperature=0.2, model=FAST_MODEL)
-        current_proof = extract_lean_block(raw)
+        completion = complete_with_metadata(
+            prompt,
+            max_tokens=SYNTHESIS_MAX_COMPLETION_TOKENS,
+            temperature=0.2,
+            model=FAST_MODEL,
+            reasoning_effort=SYNTHESIS_REASONING_EFFORT,
+        )
+        current_proof = extract_lean_block(completion.content)
         if not current_proof:
             failure_stage = "llm_output"
             attempts_log.append(
@@ -55,6 +70,7 @@ def synthesize_and_verify(
                     "is_initial_synthesis": attempt == 1,
                     "model": FAST_MODEL,
                     "proof_text": current_proof,
+                    **completion.metadata,
                     "success": False,
                     "failure_stage": failure_stage,
                     "output_error": EMPTY_OUTPUT_ERROR,
@@ -76,6 +92,7 @@ def synthesize_and_verify(
                     "is_initial_synthesis": attempt == 1,
                     "model": FAST_MODEL,
                     "proof_text": current_proof,
+                    **completion.metadata,
                     "success": verification.success,
                     "compiler_errors": verification.errors,
                     "verification": verification.to_record(),
@@ -95,6 +112,8 @@ def synthesize_and_verify(
                     "scratch_name": f"{problem_id}_attempt{attempt}",
                 }, attempts_log
             repair_feedback = "\n".join(verification.errors)
+        if failure_stage == "llm_output":
+            break
         if attempt > max_repair:
             break
         prompt = REPAIR_PROMPT.format(
@@ -110,8 +129,8 @@ def synthesize_and_verify(
         "solved": False,
         "initial_synthesis_success": False,
         "success_within_repair_budget": False,
-        "total_synthesis_attempts": max_repair + 1,
-        "repair_attempts": max_repair,
+        "total_synthesis_attempts": len(attempts_log),
+        "repair_attempts": max(0, len(attempts_log) - 1),
         "wall_clock_seconds": round(time.time() - start, 2),
         "final_proof": current_proof,
         "scratch_name": None,

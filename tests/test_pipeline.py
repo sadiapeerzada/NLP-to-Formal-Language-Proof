@@ -5,6 +5,7 @@ import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
@@ -114,14 +115,52 @@ class PipelineTests(unittest.TestCase):
             "scratch_name": None,
         }
         attempts = [
-            {"is_initial_synthesis": True, "model": pipeline.FAST_MODEL, "verification": {}},
-            {"is_initial_synthesis": False, "model": pipeline.FAST_MODEL, "verification": {}},
+            {
+                "is_initial_synthesis": True,
+                "model": pipeline.FAST_MODEL,
+                "finish_reason": "stop",
+                "completion_tokens": 20,
+                "content_empty": False,
+                "refusal_present": False,
+                "reasoning_present": False,
+                "reasoning_length": 0,
+                "tool_calls_present": False,
+                "verification": {},
+            },
+            {
+                "is_initial_synthesis": False,
+                "model": pipeline.FAST_MODEL,
+                "finish_reason": "stop",
+                "completion_tokens": 25,
+                "content_empty": False,
+                "refusal_present": False,
+                "reasoning_present": False,
+                "reasoning_length": 0,
+                "tool_calls_present": False,
+                "verification": {},
+            },
         ]
 
         with (
             patch.object(pipeline, "new_run_metadata", self.metadata),
             patch.object(pipeline, "formalize", return_value=(True, "theorem p1 : True := by sorry", [])),
-            patch.object(pipeline, "sketch", return_value="sketch"),
+            patch.object(
+                pipeline,
+                "sketch_with_metadata",
+                return_value=SimpleNamespace(
+                    content="sketch",
+                    metadata={
+                        "model": pipeline.STRONG_MODEL,
+                        "finish_reason": "stop",
+                        "completion_tokens": 10,
+                        "content_empty": False,
+                        "refusal_present": False,
+                        "reasoning_present": False,
+                        "reasoning_length": 0,
+                        "tool_calls_present": False,
+                    },
+                ),
+            ),
             patch.object(pipeline, "synthesize_and_verify", return_value=(result, attempts)),
         ):
             pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
@@ -130,9 +169,15 @@ class PipelineTests(unittest.TestCase):
             json.loads(line)
             for line in (self.root / "attempts" / "test-run" / "p1.jsonl").read_text().splitlines()
         ]
-        self.assertEqual([record["stage"] for record in records], ["synthesize", "repair"])
-        self.assertTrue(records[0]["is_initial_synthesis"])
-        self.assertFalse(records[1]["is_initial_synthesis"])
+        self.assertEqual(
+            [record["stage"] for record in records],
+            ["sketch", "synthesize", "repair"],
+        )
+        self.assertEqual(records[0]["completion_tokens"], 10)
+        self.assertEqual(records[1]["completion_tokens"], 20)
+        self.assertEqual(records[2]["completion_tokens"], 25)
+        self.assertTrue(records[1]["is_initial_synthesis"])
+        self.assertFalse(records[2]["is_initial_synthesis"])
 
     def test_exception_marks_manifest_failed(self) -> None:
         self.write_input([
@@ -203,7 +248,11 @@ class PipelineTests(unittest.TestCase):
                 "formalize",
                 return_value=(True, "theorem p1 : True := by sorry", []),
             ),
-            patch.object(pipeline, "sketch", return_value="sketch"),
+            patch.object(
+                pipeline,
+                "sketch_with_metadata",
+                return_value=SimpleNamespace(content="sketch", metadata={}),
+            ),
             patch.object(pipeline, "synthesize_and_verify", return_value=(result, [])),
         ):
             pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
@@ -254,7 +303,11 @@ class PipelineTests(unittest.TestCase):
                 "formalize",
                 return_value=(True, "theorem p1 : True := by sorry", []),
             ),
-            patch.object(pipeline, "sketch", return_value="sketch"),
+            patch.object(
+                pipeline,
+                "sketch_with_metadata",
+                return_value=SimpleNamespace(content="sketch", metadata={}),
+            ),
             patch.object(pipeline, "synthesize_and_verify", return_value=(result, [])),
             patch.object(pipeline, "promote_scratch_to_final") as promote,
         ):

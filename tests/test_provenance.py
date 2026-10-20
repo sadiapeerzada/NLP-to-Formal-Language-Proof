@@ -42,6 +42,8 @@ class ProvenanceTests(unittest.TestCase):
                 {"formalize": prompt_path},
                 {"formalize": "model-name"},
                 max_repair=1,
+                synthesis_max_completion_tokens=2000,
+                synthesis_reasoning_effort="low",
             )
 
         self.assertRegex(metadata["started_at_utc"], r"Z$")
@@ -51,6 +53,13 @@ class ProvenanceTests(unittest.TestCase):
         self.assertEqual(metadata["lean"]["lean_version"], provenance.UNAVAILABLE)
         self.assertEqual(metadata["lean"]["mathlib_revision"], provenance.UNAVAILABLE)
         self.assertEqual(metadata["input"]["sha256"], provenance.sha256_file(input_path))
+        self.assertEqual(
+            metadata["configuration"]["synthesis_max_completion_tokens"], 2000
+        )
+        self.assertEqual(
+            metadata["configuration"]["synthesis_reasoning_effort"],
+            "low",
+        )
         self.assertNotIn("GROQ_API_KEY", json.dumps(metadata))
 
 

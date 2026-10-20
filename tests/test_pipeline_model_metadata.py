@@ -6,6 +6,7 @@ import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
@@ -84,7 +85,11 @@ class PipelineModelMetadataTests(unittest.TestCase):
             patch.object(pipeline, "STAGE_MODELS", expected_models),
             patch.object(pipeline, "new_run_metadata", self.metadata),
             patch.object(pipeline, "formalize", side_effect=fake_formalize),
-            patch.object(pipeline, "sketch", return_value="1. trivially true"),
+            patch.object(
+                pipeline,
+                "sketch_with_metadata",
+                return_value=SimpleNamespace(content="1. trivially true", metadata={}),
+            ),
             patch.object(
                 pipeline,
                 "synthesize_and_verify",

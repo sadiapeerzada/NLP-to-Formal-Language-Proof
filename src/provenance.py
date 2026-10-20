@@ -67,6 +67,8 @@ def new_run_metadata(
     prompt_paths: dict[str, Path],
     stage_models: dict[str, str],
     max_repair: int,
+    synthesis_max_completion_tokens: int = 2000,
+    synthesis_reasoning_effort: str | None = None,
 ) -> dict[str, object]:
     started_at = datetime.now(UTC)
     return {
@@ -87,7 +89,8 @@ def new_run_metadata(
         "configuration": {
             "max_repair": max_repair,
             "formalize_max_attempts": 3,
-            "synthesis_max_tokens": 2000,
+            "synthesis_max_completion_tokens": synthesis_max_completion_tokens,
+            "synthesis_reasoning_effort": synthesis_reasoning_effort or "model_default",
             "synthesis_temperature": 0.2,
         },
     }

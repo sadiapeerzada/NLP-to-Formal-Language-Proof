@@ -19,6 +19,7 @@ import os
 import re
 import time
 from collections.abc import Callable
+from dataclasses import dataclass
 
 import groq
 
@@ -48,9 +49,22 @@ _client = groq.Groq(api_key=os.environ.get("GROQ_API_KEY"))
 _RETRY_AFTER_RE = re.compile(r"try again in (?:(\d+)m\s*)?([\d.]+)s")
 
 
-def _empty_response_metadata(resp: object, model: str) -> dict[str, object]:
-    """Return scalar diagnostics for an empty completion without response text."""
-    choices = getattr(resp, "choices", [])
+@dataclass(frozen=True)
+class CompletionResult:
+    content: str
+    metadata: dict[str, object]
+
+
+def reasoning_effort_for_model(model: str) -> str | None:
+    """Limit GPT-OSS reasoning overhead for code-oriented synthesis calls."""
+    if model in {"openai/gpt-oss-20b", "openai/gpt-oss-120b"}:
+        return "low"
+    return None
+
+
+def _response_metadata(resp: object, model: str, content: str) -> dict[str, object]:
+    """Return safe scalar completion diagnostics; never include response text."""
+    choices = getattr(resp, "choices", None) or []
     choice = choices[0] if choices else None
     message = getattr(choice, "message", None)
     usage = getattr(resp, "usage", None)
@@ -71,6 +85,7 @@ def _empty_response_metadata(resp: object, model: str) -> dict[str, object]:
         "model": model,
         "finish_reason": getattr(choice, "finish_reason", None),
         "completion_tokens": getattr(usage, "completion_tokens", None),
+        "content_empty": not content.strip(),
         "refusal_present": getattr(message, "refusal", None) is not None,
         "reasoning_present": reasoning_field is not None,
         "reasoning_field": reasoning_field,
@@ -79,20 +94,7 @@ def _empty_response_metadata(resp: object, model: str) -> dict[str, object]:
     }
 
 
-def _parse_retry_after(msg: str) -> float | None:
-    """Extract the wait time Groq tells us to use, in seconds. Returns None
-    if the message doesn't contain a parseable wait time (e.g. some other
-    kind of 429, or a transient server-side rate limit rather than the
-    daily token cap)."""
-    m = _RETRY_AFTER_RE.search(msg)
-    if not m:
-        return None
-    minutes = int(m.group(1)) if m.group(1) else 0
-    seconds = float(m.group(2))
-    return minutes * 60 + seconds
-
-
-def complete(
+def complete_with_metadata(
     prompt: str,
     max_tokens: int = 2000,
     temperature: float = 0.2,
@@ -101,15 +103,9 @@ def complete(
     max_retry_after_seconds: float = 300,
     max_total_wait_seconds: float = 600,
     sleep: Callable[[float], None] | None = None,
-) -> str:
-    """Send a single-turn prompt, return the raw text response.
-
-    model defaults to STRONG_MODEL; pass FAST_MODEL explicitly for
-    high-volume, lower-stakes calls (e.g. the repair loop) to spread load
-    across Groq's per-model daily quota. ``retries`` is the total number of
-    API attempts, including the initial request, matching the prior
-    ``range(retries)`` behavior.
-    """
+    reasoning_effort: str | None = None,
+) -> CompletionResult:
+    """Send a chat completion and return text with safe scalar diagnostics."""
     if retries < 1:
         raise ValueError("retries must be at least 1")
     if max_retry_after_seconds < 0 or max_total_wait_seconds < 0:
@@ -121,19 +117,26 @@ def complete(
     last_err: Exception | None = None
     for attempt in range(retries):
         try:
-            resp = _client.chat.completions.create(
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            content = resp.choices[0].message.content or ""
-            if not content.strip():
+            request: dict[str, object] = {
+                "model": model,
+                "max_completion_tokens": max_tokens,
+                "temperature": temperature,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+            if reasoning_effort is not None:
+                request["reasoning_effort"] = reasoning_effort
+            resp = _client.chat.completions.create(**request)
+            choices = getattr(resp, "choices", None) or []
+            message = getattr(choices[0], "message", None) if choices else None
+            raw_content = getattr(message, "content", None)
+            content = raw_content if isinstance(raw_content, str) else ""
+            metadata = _response_metadata(resp, model, content)
+            if metadata["content_empty"]:
                 print(
                     "[llm_client] empty_response "
-                    + json.dumps(_empty_response_metadata(resp, model), sort_keys=True)
+                    + json.dumps(metadata, sort_keys=True)
                 )
-            return content
+            return CompletionResult(content=content, metadata=metadata)
         except groq.RateLimitError as e:
             last_err = e
             wait_s = _parse_retry_after(str(e))
@@ -175,6 +178,49 @@ def complete(
         f"LLM call failed after {retries} attempts and {total_wait_seconds:.0f}s "
         f"of retry waiting: {last_err}"
     ) from last_err
+
+
+def _parse_retry_after(msg: str) -> float | None:
+    """Extract the wait time Groq tells us to use, in seconds. Returns None
+    if the message doesn't contain a parseable wait time (e.g. some other
+    kind of 429, or a transient server-side rate limit rather than the
+    daily token cap)."""
+    m = _RETRY_AFTER_RE.search(msg)
+    if not m:
+        return None
+    minutes = int(m.group(1)) if m.group(1) else 0
+    seconds = float(m.group(2))
+    return minutes * 60 + seconds
+
+
+def complete(
+    prompt: str,
+    max_tokens: int = 2000,
+    temperature: float = 0.2,
+    retries: int = 3,
+    model: str | None = None,
+    max_retry_after_seconds: float = 300,
+    max_total_wait_seconds: float = 600,
+    sleep: Callable[[float], None] | None = None,
+) -> str:
+    """Send a single-turn prompt, return the raw text response.
+
+    model defaults to STRONG_MODEL; pass FAST_MODEL explicitly for
+    high-volume, lower-stakes calls (e.g. the repair loop) to spread load
+    across Groq's per-model daily quota. ``retries`` is the total number of
+    API attempts, including the initial request, matching the prior
+    ``range(retries)`` behavior.
+    """
+    return complete_with_metadata(
+        prompt,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        retries=retries,
+        model=model,
+        max_retry_after_seconds=max_retry_after_seconds,
+        max_total_wait_seconds=max_total_wait_seconds,
+        sleep=sleep,
+    ).content
 
 
 _LEAN_BLOCK_RE = re.compile(r"```lean\s*(.*?)```", re.DOTALL)

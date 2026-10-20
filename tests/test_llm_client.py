@@ -100,11 +100,16 @@ class LlmClientRetryTests(unittest.TestCase):
         self.assertEqual(metadata["model"], "openai/gpt-oss-20b")
         self.assertEqual(metadata["finish_reason"], "length")
         self.assertEqual(metadata["completion_tokens"], 2000)
+        self.assertTrue(metadata["content_empty"])
         self.assertTrue(metadata["refusal_present"])
         self.assertTrue(metadata["reasoning_present"])
         self.assertEqual(metadata["reasoning_length"], len("private reasoning"))
         self.assertTrue(metadata["tool_calls_present"])
         self.assertNotIn("private reasoning", message)
+        self.assertEqual(
+            self.create.call_args.kwargs["max_completion_tokens"], 2000
+        )
+        self.assertNotIn("max_tokens", self.create.call_args.kwargs)
 
     def test_whitespace_content_logs_with_missing_optional_metadata(self) -> None:
         self.create.return_value = SimpleNamespace(
@@ -118,6 +123,7 @@ class LlmClientRetryTests(unittest.TestCase):
         metadata = json.loads(
             printed.call_args.args[0].removeprefix("[llm_client] empty_response ")
         )
+        self.assertTrue(metadata["content_empty"])
         self.assertIsNone(metadata["finish_reason"])
         self.assertIsNone(metadata["completion_tokens"])
         self.assertFalse(metadata["refusal_present"])
@@ -133,6 +139,28 @@ class LlmClientRetryTests(unittest.TestCase):
 
         self.assertEqual(result, "theorem valid : True := by trivial")
         printed.assert_not_called()
+
+    def test_gpt_oss_reasoning_effort_is_supported_and_other_models_omit_it(self) -> None:
+        self.create.return_value = self.response("proof")
+
+        llm_client.complete_with_metadata(
+            "prompt",
+            model="openai/gpt-oss-20b",
+            reasoning_effort=llm_client.reasoning_effort_for_model(
+                "openai/gpt-oss-20b"
+            ),
+        )
+        self.assertEqual(self.create.call_args.kwargs["reasoning_effort"], "low")
+
+        self.create.reset_mock()
+        llm_client.complete_with_metadata(
+            "prompt",
+            model="llama-3.1-8b-instant",
+            reasoning_effort=llm_client.reasoning_effort_for_model(
+                "llama-3.1-8b-instant"
+            ),
+        )
+        self.assertNotIn("reasoning_effort", self.create.call_args.kwargs)
 
     def test_final_attempt_failure_uses_exactly_requested_total_attempts(self) -> None:
         self.create.side_effect = [
