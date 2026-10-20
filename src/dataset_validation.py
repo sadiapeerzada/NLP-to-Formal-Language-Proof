@@ -116,6 +116,7 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
 
     family_splits: dict[str, tuple[str, str]] = {}
     family_problem_ids: dict[str, list[str]] = {}
+    family_reviews_complete: dict[str, list[bool]] = {}
     split_inconsistent_families: set[str] = set()
     records_by_duplicate_key: dict[str, list[dict[str, Any]]] = {}
     eligible_by_id: dict[str, bool] = {}
@@ -231,20 +232,31 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
         split = curation.get("split")
         if not _valid_text(family):
             errors.append(f"{label}: curation.problem_family must be non-empty text.")
-        if not isinstance(split, str) or split not in ALLOWED_SPLITS:
-            errors.append(f"{label}: curation.split must be development or test.")
-        elif _valid_text(family):
+        else:
             if normalized_id:
                 family_problem_ids.setdefault(family, []).append(normalized_id)
-            previous = family_splits.get(family)
-            if previous is not None and previous[0] != split:
-                split_inconsistent_families.add(family)
-                errors.append(
-                    f"{label}: family {family!r} is split across "
-                    f"{previous[0]!r} and {split!r}."
+                family_reviews_complete.setdefault(family, []).append(
+                    family_review_status == "verified"
+                    and _valid_text(curation.get("family_review_note"))
+                    and _valid_text(curation.get("family_reviewer_provenance"))
+                    and split_review_status == "verified"
+                    and _valid_text(curation.get("split_review_note"))
+                    and _valid_text(curation.get("split_reviewer_provenance"))
+                    and isinstance(split, str)
+                    and split in ALLOWED_SPLITS
                 )
+            if not isinstance(split, str) or split not in ALLOWED_SPLITS:
+                errors.append(f"{label}: curation.split must be development or test.")
             else:
-                family_splits[family] = (split, label)
+                previous = family_splits.get(family)
+                if previous is not None and previous[0] != split:
+                    split_inconsistent_families.add(family)
+                    errors.append(
+                        f"{label}: family {family!r} is split across "
+                        f"{previous[0]!r} and {split!r}."
+                    )
+                else:
+                    family_splits[family] = (split, label)
 
         fidelity = curation.get("semantic_fidelity")
         if not isinstance(fidelity, dict):
@@ -464,6 +476,10 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
     for family in split_inconsistent_families:
         for problem_id in family_problem_ids.get(family, []):
             eligible_by_id[problem_id] = False
+    for family, reviews_complete in family_reviews_complete.items():
+        if not all(reviews_complete):
+            for problem_id in family_problem_ids[family]:
+                eligible_by_id[problem_id] = False
 
     return CurationDraftValidationReport(
         errors=tuple(errors),

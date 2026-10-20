@@ -286,6 +286,41 @@ def _eligible_counts(
     }
 
 
+def _family_proposals(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    proposals: dict[str, dict[str, Any]] = {}
+    for record in records:
+        curation = record["curation"]
+        family = curation["problem_family"]
+        split = curation["split"]
+        proposal = proposals.setdefault(
+            family,
+            {"split": split, "member_ids": [], "rationales": set()},
+        )
+        if proposal["split"] != split:
+            raise ValueError(
+                f"Family {family!r} has conflicting proposed splits "
+                f"{proposal['split']!r} and {split!r}."
+            )
+        proposal["member_ids"].append(record["id"])
+        rationale = curation["family_review_note"]
+        if isinstance(rationale, str) and rationale.strip():
+            proposal["rationales"].add(rationale.strip())
+
+    return [
+        {
+            "problem_family": family,
+            "split": proposal["split"],
+            "member_ids": proposal["member_ids"],
+            "status": "needs_review",
+            "rationale": (
+                "; ".join(sorted(proposal["rationales"]))
+                or "No documented rationale; pending human review."
+            ),
+        }
+        for family, proposal in sorted(proposals.items())
+    ]
+
+
 def build() -> None:
     existing_outputs = [path for path in OUTPUTS.values() if path.exists()]
     if existing_outputs:
@@ -400,29 +435,7 @@ def build() -> None:
         "status": "draft",
         "policy": "No source, license, theorem review, semantic-fidelity label, or family decision is asserted without evidence. All original seed records and IDs are retained.",
         "record_audits": ledger_records,
-        "family_proposals": [
-            {
-                "problem_family": family,
-                "split": split,
-                "member_ids": [
-                    record["id"]
-                    for record in records
-                    if record["curation"]["problem_family"] == family
-                ],
-                "status": "needs_review",
-                "rationale": rationale,
-            }
-            for family, split, rationale in sorted(
-                {
-                    (
-                        record["curation"]["problem_family"],
-                        record["curation"]["split"],
-                        record["curation"]["family_review_note"],
-                    )
-                    for record in records
-                }
-            )
-        ],
+        "family_proposals": _family_proposals(records),
     }
     outputs = {
         "dataset": dataset_bytes,

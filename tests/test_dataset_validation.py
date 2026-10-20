@@ -17,7 +17,7 @@ from dataset_validation import (
     validate_curation_draft,
     validate_research_dataset,
 )
-from build_research_dataset_draft import _eligible_counts
+from build_research_dataset_draft import _eligible_counts, _family_proposals
 
 
 class DatasetValidationTests(unittest.TestCase):
@@ -247,6 +247,69 @@ class DatasetValidationTests(unittest.TestCase):
 
         self.assertTrue(report.is_valid, report.errors)
         self.assertEqual(report.eligible_problem_ids, ("reviewed",))
+
+    def test_family_is_ineligible_until_every_member_family_review_is_complete(
+        self,
+    ) -> None:
+        reviewed = self.curation_record(
+            "reviewed_member", "shared_family", "development"
+        )
+        pending = self.curation_record(
+            "pending_member", "shared_family", "development"
+        )
+        reviewed["nl_statement"] = "A reviewed family theorem."
+        pending["nl_statement"] = "A different family theorem."
+        self.complete_curation_review(reviewed)
+
+        report = validate_curation_draft([reviewed, pending])
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_consistently_reviewed_family_members_remain_eligible(self) -> None:
+        first = self.curation_record("family_first", "shared_family", "test")
+        second = self.curation_record("family_second", "shared_family", "test")
+        first["nl_statement"] = "The first theorem in this family."
+        second["nl_statement"] = "The second theorem in this family."
+        self.complete_curation_review(first)
+        self.complete_curation_review(second)
+
+        report = validate_curation_draft([first, second])
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(
+            report.eligible_problem_ids, ("family_first", "family_second")
+        )
+
+    def test_builder_emits_one_deterministic_proposal_per_family(self) -> None:
+        first = self.curation_record("family_a", "shared_family", "development")
+        second = self.curation_record("family_b", "shared_family", "development")
+        first["curation"]["family_review_note"] = "First rationale."
+        second["curation"]["family_review_note"] = "Second rationale."
+
+        proposals = _family_proposals([first, second])
+
+        self.assertEqual(len(proposals), 1)
+        self.assertEqual(
+            proposals[0],
+            {
+                "problem_family": "shared_family",
+                "split": "development",
+                "member_ids": ["family_a", "family_b"],
+                "status": "needs_review",
+                "rationale": "First rationale.; Second rationale.",
+            },
+        )
+        self.assertEqual(proposals, _family_proposals([first, second]))
+
+    def test_builder_rejects_conflicting_splits_for_one_family(self) -> None:
+        development = self.curation_record(
+            "family_dev", "shared_family", "development"
+        )
+        test = self.curation_record("family_test", "shared_family", "test")
+
+        with self.assertRaisesRegex(ValueError, "conflicting proposed splits"):
+            _family_proposals([development, test])
 
     def test_curation_validator_detects_exact_english_duplicate_candidates(self) -> None:
         first = self.curation_record("duplicate_001", "same_family", "development")
