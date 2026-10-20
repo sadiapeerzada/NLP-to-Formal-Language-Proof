@@ -77,6 +77,51 @@ def _theorem_name(lean_code: str) -> str | None:
     return match.group(1) if match else None
 
 
+def _theorem_names(lean_code: str) -> list[str]:
+    return re.findall(
+        r"(?m)^\s*theorem\s+([A-Za-z_][A-Za-z0-9_'.]*)\b",
+        lean_code,
+    )
+
+
+def _verification_source(
+    lean_code: str,
+    expected_statement: str,
+    theorem_name: str,
+    *,
+    inspect_axioms: bool,
+) -> tuple[str, str]:
+    imports: set[str] = set()
+
+    def remove_imports(source: str) -> str:
+        def collect(match: re.Match[str]) -> str:
+            imports.update(match.group(1).split())
+            return ""
+
+        return re.sub(r"(?m)^\s*import\s+([^\n]+)\s*$", collect, source)
+
+    expected_source = remove_imports(expected_statement)
+    candidate_source = remove_imports(lean_code)
+    if "Mathlib" not in imports:
+        imports.add("Mathlib")
+
+    expected_theorem = f"Nl2LeanExpected.{theorem_name}"
+    candidate_theorem = f"Nl2LeanCandidate.{theorem_name}"
+    source = (
+        "\n".join(f"import {module}" for module in sorted(imports))
+        + "\n\nnamespace Nl2LeanExpected\n"
+        + expected_source
+        + "\nend Nl2LeanExpected\n\nnamespace Nl2LeanCandidate\n"
+        + candidate_source
+        + "\nend Nl2LeanCandidate\n\n"
+        + f"example : {expected_theorem} = {candidate_theorem} := by\n"
+        + "  exact Subsingleton.elim _ _\n"
+    )
+    if inspect_axioms:
+        source += f"#print axioms {candidate_theorem}\n"
+    return source, candidate_theorem
+
+
 def _diagnostics(stdout: str) -> tuple[list[dict[str, object]], list[str]]:
     diagnostics = []
     malformed = []
@@ -145,6 +190,7 @@ def check_lean_file_detailed(
     scratch_name: str,
     allow_sorry: bool = False,
     policy: VerificationPolicy = DEFAULT_POLICY,
+    expected_statement: str | None = None,
 ) -> VerificationResult:
     """Compile one candidate and, for final proofs, inspect theorem axioms.
 
@@ -153,6 +199,8 @@ def check_lean_file_detailed(
     axiom inspection all fail closed. Stage A uses ``allow_sorry=True`` to
     check only statement elaboration; final proofs must be named theorems so
     their dependencies can be checked with Lean's ``#print axioms`` command.
+    When ``expected_statement`` is supplied, Lean must also establish that
+    the named final theorem has the same elaborated type as Stage A.
     """
     prohibited = _find_prohibited_source(lean_code, allow_sorry, policy)
     if prohibited:
@@ -171,11 +219,37 @@ def check_lean_file_detailed(
             ["Final proof must declare a named theorem for axiom inspection."],
         )
 
-    source = lean_code
-    if "import Mathlib" not in source:
-        source = "import Mathlib\n\n" + source
-    if not allow_sorry and policy.inspect_axioms:
-        source = f"{source.rstrip()}\n\n#print axioms {theorem_name}\n"
+    if expected_statement is not None:
+        expected_names = _theorem_names(expected_statement)
+        if len(expected_names) != 1:
+            return VerificationResult(
+                False,
+                [
+                    "Stage A statement must declare exactly one named theorem "
+                    "for final statement comparison."
+                ],
+            )
+        theorem_name = expected_names[0]
+        if _theorem_names(lean_code).count(theorem_name) != 1:
+            return VerificationResult(
+                False,
+                [
+                    "Final proof must declare the Stage A theorem "
+                    f"'{theorem_name}' exactly once."
+                ],
+            )
+        source, theorem_name = _verification_source(
+            lean_code,
+            expected_statement,
+            theorem_name,
+            inspect_axioms=not allow_sorry and policy.inspect_axioms,
+        )
+    else:
+        source = lean_code
+        if "import Mathlib" not in source:
+            source = "import Mathlib\n\n" + source
+        if not allow_sorry and policy.inspect_axioms:
+            source = f"{source.rstrip()}\n\n#print axioms {theorem_name}\n"
 
     if not _safe_filename_component(scratch_name):
         return VerificationResult(False, ["Scratch name must not contain a path separator."])

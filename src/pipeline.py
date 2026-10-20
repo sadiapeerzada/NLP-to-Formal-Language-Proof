@@ -11,12 +11,22 @@ import json
 import os
 from pathlib import Path
 
-from formalize import formalize
+from formalize import (
+    FORMALIZE_MAX_ATTEMPTS,
+    FORMALIZE_MAX_COMPLETION_TOKENS,
+    FORMALIZE_TEMPERATURE,
+    formalize,
+)
 from llm_client import FAST_MODEL, STRONG_MODEL, reasoning_effort_for_model
-from proof_sketch import sketch_with_metadata
+from proof_sketch import (
+    SKETCH_MAX_COMPLETION_TOKENS,
+    SKETCH_TEMPERATURE,
+    sketch_with_metadata,
+)
 from provenance import new_run_metadata
 from synthesize import (
     SYNTHESIS_MAX_COMPLETION_TOKENS,
+    SYNTHESIS_TEMPERATURE,
     synthesize_and_verify,
 )
 from verify import promote_scratch_to_final
@@ -87,6 +97,34 @@ def resolve_experiment_config(
     if config_name == "no_sketch":
         models.pop("sketch")
     return config_name, models
+
+
+def stage_settings_for(stage_models: dict[str, str]) -> dict[str, dict[str, object]]:
+    """Declared generation settings for each active stage.
+
+    ``reasoning_effort`` is ``None`` when the stage does not request one.
+    """
+    settings: dict[str, dict[str, object]] = {
+        "formalize": {
+            "max_completion_tokens": FORMALIZE_MAX_COMPLETION_TOKENS,
+            "temperature": FORMALIZE_TEMPERATURE,
+            "reasoning_effort": None,
+            "max_attempts": FORMALIZE_MAX_ATTEMPTS,
+        },
+        "sketch": {
+            "max_completion_tokens": SKETCH_MAX_COMPLETION_TOKENS,
+            "temperature": SKETCH_TEMPERATURE,
+            "reasoning_effort": None,
+            "max_attempts": 1,
+        },
+    }
+    for stage in ("synthesize", "repair"):
+        settings[stage] = {
+            "max_completion_tokens": SYNTHESIS_MAX_COMPLETION_TOKENS,
+            "temperature": SYNTHESIS_TEMPERATURE,
+            "reasoning_effort": reasoning_effort_for_model(stage_models[stage]),
+        }
+    return {stage: value for stage, value in settings.items() if stage in stage_models}
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -170,6 +208,7 @@ def run(
             stage_models["synthesize"]
         ),
         experiment_config=config_name,
+        stage_settings=stage_settings_for(stage_models),
     )
     run_metadata["status"] = "running"
     run_metadata["completed_problem_count"] = 0
@@ -261,6 +300,7 @@ def run(
                 problem["nl_statement"], lean_statement, proof_sketch_text,
                 lean_project_dir, pid, max_repair=max_repair,
                 model=stage_models["synthesize"],
+                expected_statement=lean_statement,
             )
 
             write_attempts(

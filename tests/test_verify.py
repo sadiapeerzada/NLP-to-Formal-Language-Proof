@@ -7,6 +7,7 @@ from pathlib import Path
 from shutil import which
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
+from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
@@ -45,6 +46,111 @@ class VerifyTests(unittest.TestCase):
         self.assertTrue(result.success)
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(result.axiom_dependencies, ["propext", "Classical.choice", "Quot.sound"])
+
+    def test_expected_statement_selects_matching_theorem_not_first_theorem(self) -> None:
+        code = (
+            "theorem helper : True := by trivial\n"
+            "theorem target (n : Nat) : n = n := by rfl"
+        )
+        expected = "theorem target (n : Nat) : n = n := by sorry"
+
+        def compile_candidate(command, **_kwargs):
+            source = Path(command[-1]).read_text()
+            self.assertIn(
+                "example : Nl2LeanExpected.target = Nl2LeanCandidate.target := by",
+                source,
+            )
+            self.assertIn("#print axioms Nl2LeanCandidate.target", source)
+            return subprocess.CompletedProcess(
+                command,
+                0,
+                stdout=json_diagnostic(
+                    "information",
+                    "'Nl2LeanCandidate.target' does not depend on any axioms",
+                ),
+                stderr="",
+            )
+
+        with patch("verify.subprocess.run", side_effect=compile_candidate):
+            result = check_lean_file_detailed(
+                code,
+                self.project,
+                "statement_match",
+                expected_statement=expected,
+            )
+
+        self.assertTrue(result.success, result.errors)
+        self.assertEqual(result.axiom_dependencies, [])
+
+    def test_expected_statement_mismatch_fails_lean_type_check(self) -> None:
+        code = "theorem target : False := by contradiction"
+        expected = "theorem target : True := by sorry"
+
+        def compile_candidate(command, **_kwargs):
+            source = Path(command[-1]).read_text()
+            self.assertIn(
+                "example : Nl2LeanExpected.target = Nl2LeanCandidate.target := by",
+                source,
+            )
+            return subprocess.CompletedProcess(
+                command,
+                1,
+                stdout=json_diagnostic("error", "type mismatch", 12),
+                stderr="",
+            )
+
+        with patch("verify.subprocess.run", side_effect=compile_candidate):
+            result = check_lean_file_detailed(
+                code,
+                self.project,
+                "statement_mismatch",
+                expected_statement=expected,
+            )
+
+        self.assertFalse(result.success)
+        self.assertIn("type mismatch", result.errors[0])
+
+    def test_expected_statement_path_preserves_final_proof_safety_policy(self) -> None:
+        expected = "theorem target : True := by sorry"
+        for code, token in (
+            ("theorem target : True := by sorryAx", "sorryAx"),
+            ("theorem target : True := by admit", "admit"),
+            ("opaque hidden : False\ntheorem target : True := by trivial", "opaque"),
+            ("constant hidden : False\ntheorem target : True := by trivial", "constant"),
+            ("axiom hidden : False\ntheorem target : True := by trivial", "axiom"),
+        ):
+            with self.subTest(token=token):
+                result = check_lean_file_detailed(
+                    code,
+                    self.project,
+                    f"unsafe_{token}",
+                    expected_statement=expected,
+                )
+                self.assertFalse(result.success)
+                self.assertIn(token, result.errors[0])
+
+    def test_expected_statement_path_rejects_unapproved_theorem_axioms(self) -> None:
+        with patch(
+            "verify.subprocess.run",
+            return_value=subprocess.CompletedProcess(
+                [],
+                0,
+                stdout=json_diagnostic(
+                    "information",
+                    "'Nl2LeanCandidate.target' depends on axioms: "
+                    "[propext, attacker.unsound]",
+                ),
+                stderr="",
+            ),
+        ):
+            result = check_lean_file_detailed(
+                "theorem target : True := by trivial",
+                self.project,
+                "unapproved_expected_axiom",
+                expected_statement="theorem target : True := by sorry",
+            )
+        self.assertFalse(result.success)
+        self.assertIn("attacker.unsound", result.errors[0])
 
     def test_unapproved_axiom_dependency_fails(self) -> None:
         process = subprocess.CompletedProcess(
@@ -225,6 +331,39 @@ class VerifyTests(unittest.TestCase):
             scratch.unlink(missing_ok=True)
         self.assertTrue(result.success, result.errors)
         self.assertEqual(result.exit_code, 0)
+
+    @unittest.skipUnless(which("lake"), "lake is not installed")
+    def test_real_lean_checks_stage_a_statement_and_selects_named_theorem(self) -> None:
+        project = Path(__file__).parents[1] / "lean_project"
+        scratch_dir = project / "generated" / "_scratch"
+        suffix = uuid4().hex
+        scratch_names = (
+            f"test_verify_statement_match_{suffix}",
+            f"test_verify_statement_mismatch_{suffix}",
+        )
+        try:
+            matching = check_lean_file_detailed(
+                "theorem helper : True := by trivial\n"
+                "theorem target (n : Nat) : n = n := by rfl",
+                project,
+                scratch_names[0],
+                expected_statement=(
+                    "theorem target (n : Nat) : n = n := by sorry"
+                ),
+            )
+            mismatch = check_lean_file_detailed(
+                "theorem target : 1 = 1 := by rfl",
+                project,
+                scratch_names[1],
+                expected_statement="theorem target : True := by sorry",
+            )
+        finally:
+            for scratch_name in scratch_names:
+                (scratch_dir / f"{scratch_name}.lean").unlink(missing_ok=True)
+
+        self.assertTrue(matching.success, matching.errors)
+        self.assertFalse(mismatch.success)
+        self.assertTrue(mismatch.errors)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.metadata
 import json
+import platform
 import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
@@ -60,6 +62,22 @@ def _lean_metadata(lean_project_dir: Path) -> dict[str, str]:
     return {"lean_version": lean_version, "mathlib_revision": mathlib_revision}
 
 
+def _package_version(name: str) -> str:
+    try:
+        return importlib.metadata.version(name)
+    except importlib.metadata.PackageNotFoundError:
+        return UNAVAILABLE
+
+
+def _environment_metadata() -> dict[str, str]:
+    return {
+        "python_version": platform.python_version(),
+        "python_implementation": platform.python_implementation(),
+        "platform": platform.platform(),
+        "groq_sdk_version": _package_version("groq"),
+    }
+
+
 def new_run_metadata(
     repository_root: Path,
     input_path: Path,
@@ -70,6 +88,7 @@ def new_run_metadata(
     synthesis_max_completion_tokens: int = 2000,
     synthesis_reasoning_effort: str | None = None,
     experiment_config: str = "full_pipeline",
+    stage_settings: dict[str, dict[str, object]] | None = None,
 ) -> dict[str, object]:
     started_at = datetime.now(UTC)
     return {
@@ -87,6 +106,12 @@ def new_run_metadata(
         },
         "lean": _lean_metadata(lean_project_dir),
         "models": stage_models,
+        # Models are provider aliases as configured; no immutable revision is
+        # pinned or verified. Per-call `response_model` is recorded when the
+        # API reports one.
+        "model_identifier_semantics": "provider_alias_not_pinned",
+        "environment": _environment_metadata(),
+        "stage_settings": stage_settings if stage_settings is not None else {},
         "configuration": {
             "experiment_config": experiment_config,
             "max_repair": max_repair,

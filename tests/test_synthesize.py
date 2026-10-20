@@ -203,7 +203,7 @@ class SynthesizeTests(unittest.TestCase):
                     synthesize,
                     "check_lean_file_detailed",
                     return_value=verification,
-                ),
+                ) as verify,
             ):
                 result, attempts = synthesize.synthesize_and_verify(
                     "natural-language statement",
@@ -212,6 +212,7 @@ class SynthesizeTests(unittest.TestCase):
                     Path(directory),
                     "problem",
                     max_repair=2,
+                    expected_statement="theorem target : True := by sorry",
                 )
 
         self.assertTrue(result["solved"])
@@ -220,6 +221,10 @@ class SynthesizeTests(unittest.TestCase):
         self.assertEqual(result["total_synthesis_attempts"], 1)
         self.assertEqual(result["repair_attempts"], 0)
         self.assertEqual(complete.call_count, 1)
+        self.assertEqual(
+            verify.call_args.kwargs["expected_statement"],
+            "theorem target : True := by sorry",
+        )
         self.assertEqual(attempts[0]["completion_tokens"], 24)
         self.assertFalse(attempts[0]["content_empty"])
 
@@ -250,7 +255,7 @@ class SynthesizeTests(unittest.TestCase):
                     synthesize,
                     "check_lean_file_detailed",
                     side_effect=verifications,
-                ),
+                ) as verify,
             ):
                 result, attempts = synthesize.synthesize_and_verify(
                     "natural-language statement",
@@ -259,6 +264,7 @@ class SynthesizeTests(unittest.TestCase):
                     Path(directory),
                     "problem",
                     max_repair=2,
+                    expected_statement="theorem target : True := by sorry",
                 )
 
         self.assertTrue(result["solved"])
@@ -267,6 +273,14 @@ class SynthesizeTests(unittest.TestCase):
         self.assertEqual(result["total_synthesis_attempts"], 2)
         self.assertEqual(result["repair_attempts"], 1)
         self.assertEqual(complete.call_count, 2)
+        self.assertEqual(verify.call_count, 2)
+        self.assertTrue(
+            all(
+                call.kwargs["expected_statement"]
+                == "theorem target : True := by sorry"
+                for call in verify.call_args_list
+            )
+        )
         self.assertEqual(
             [attempt["is_initial_synthesis"] for attempt in attempts],
             [True, False],

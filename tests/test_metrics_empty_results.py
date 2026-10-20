@@ -25,7 +25,10 @@ def test_empty_results_file_does_not_crash(tmp_path, capsys):
     metrics.main(str(empty_file))  # must not raise ZeroDivisionError
 
     out = capsys.readouterr().out
-    assert "No results found" in out
+    assert "Total problems: 0" in out
+    assert "Final verified successes: n/a (0 problems)" in out
+    assert "Attempt-0 success (initial synthesis candidate): n/a (0 problems)" in out
+    assert "Post-repair success within configured repair budget: n/a (0 problems)" in out
 
 
 def test_blank_lines_only_does_not_crash(tmp_path, capsys):
@@ -35,7 +38,10 @@ def test_blank_lines_only_does_not_crash(tmp_path, capsys):
     metrics.main(str(blank_file))  # must not raise ZeroDivisionError
 
     out = capsys.readouterr().out
-    assert "No results found" in out
+    assert "Total problems: 0" in out
+    assert "Final verified successes: n/a (0 problems)" in out
+    assert "Attempt-0 success (initial synthesis candidate): n/a (0 problems)" in out
+    assert "Post-repair success within configured repair budget: n/a (0 problems)" in out
 
 
 def test_nonempty_results_file_still_reports_normally(tmp_path, capsys):
@@ -52,7 +58,10 @@ def test_nonempty_results_file_still_reports_normally(tmp_path, capsys):
     metrics.main(str(results_file))
 
     out = capsys.readouterr().out
-    assert "Overall pass@1: 1/2 = 50.0%" in out
+    assert (
+        "Historical recorded final solved rate "
+        "(not attempt-0 pass@1): 1/2 = 50.0%"
+    ) in out
 
 
 if __name__ == "__main__":

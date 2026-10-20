@@ -28,6 +28,7 @@ EMPTY_OUTPUT_ERROR = (
     "was sent."
 )
 SYNTHESIS_MAX_COMPLETION_TOKENS = 2000
+SYNTHESIS_TEMPERATURE = 0.2
 SYNTHESIS_REASONING_EFFORT = reasoning_effort_for_model(FAST_MODEL)
 
 
@@ -39,6 +40,7 @@ def synthesize_and_verify(
     problem_id: str,
     max_repair: int = 5,
     model: str | None = None,
+    expected_statement: str | None = None,
 ):
     """Returns a dict matching the results/<run>.jsonl schema (minus the
     top-level 'model'/'prompt_version' fields, added by the caller) plus the
@@ -59,7 +61,7 @@ def synthesize_and_verify(
         completion = complete_with_metadata(
             prompt,
             max_tokens=SYNTHESIS_MAX_COMPLETION_TOKENS,
-            temperature=0.2,
+            temperature=SYNTHESIS_TEMPERATURE,
             model=model,
             reasoning_effort=reasoning_effort,
         )
@@ -85,7 +87,10 @@ def synthesize_and_verify(
             repair_feedback = EMPTY_OUTPUT_ERROR
         else:
             verification = check_lean_file_detailed(
-                current_proof, lean_project_dir, f"{problem_id}_attempt{attempt}"
+                current_proof,
+                lean_project_dir,
+                f"{problem_id}_attempt{attempt}",
+                expected_statement=expected_statement,
             )
             failure_stage = "synthesize"
             attempts_log.append(

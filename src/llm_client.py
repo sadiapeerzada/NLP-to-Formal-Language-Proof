@@ -62,8 +62,21 @@ def reasoning_effort_for_model(model: str) -> str | None:
     return None
 
 
+def _optional_int(value: object) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return None
+    return value
+
+
+def _optional_text(value: object) -> str | None:
+    return value if isinstance(value, str) and value else None
+
+
 def _response_metadata(resp: object, model: str, content: str) -> dict[str, object]:
-    """Return safe scalar completion diagnostics; never include response text."""
+    """Return safe scalar completion diagnostics; never include response text.
+
+    Absent optional provider fields are ``None`` (unavailable), never zero.
+    """
     choices = getattr(resp, "choices", None) or []
     choice = choices[0] if choices else None
     message = getattr(choice, "message", None)
@@ -85,6 +98,12 @@ def _response_metadata(resp: object, model: str, content: str) -> dict[str, obje
         "model": model,
         "finish_reason": getattr(choice, "finish_reason", None),
         "completion_tokens": getattr(usage, "completion_tokens", None),
+        "prompt_tokens": _optional_int(getattr(usage, "prompt_tokens", None)),
+        "total_tokens": _optional_int(getattr(usage, "total_tokens", None)),
+        "response_model": _optional_text(getattr(resp, "model", None)),
+        "system_fingerprint": _optional_text(
+            getattr(resp, "system_fingerprint", None)
+        ),
         "content_empty": not content.strip(),
         "refusal_present": getattr(message, "refusal", None) is not None,
         "reasoning_present": reasoning_field is not None,
@@ -115,6 +134,18 @@ def complete_with_metadata(
     sleep = sleep or time.sleep
     total_wait_seconds = 0.0
     last_err: Exception | None = None
+    retry_events: list[dict[str, object]] = []
+
+    def record_retry(attempt: int, error: Exception, delay: float) -> None:
+        retry_events.append(
+            {
+                "api_attempt": attempt + 1,
+                "error_type": type(error).__name__,
+                "status_code": _optional_int(getattr(error, "status_code", None)),
+                "delay_seconds": delay,
+            }
+        )
+
     for attempt in range(retries):
         try:
             request: dict[str, object] = {
@@ -125,12 +156,24 @@ def complete_with_metadata(
             }
             if reasoning_effort is not None:
                 request["reasoning_effort"] = reasoning_effort
+            request_started = time.monotonic()
             resp = _client.chat.completions.create(**request)
+            latency_seconds = round(time.monotonic() - request_started, 3)
             choices = getattr(resp, "choices", None) or []
             message = getattr(choices[0], "message", None) if choices else None
             raw_content = getattr(message, "content", None)
             content = raw_content if isinstance(raw_content, str) else ""
             metadata = _response_metadata(resp, model, content)
+            metadata.update(
+                {
+                    "max_completion_tokens": max_tokens,
+                    "temperature": temperature,
+                    "reasoning_effort": reasoning_effort,
+                    "latency_seconds": latency_seconds,
+                    "api_attempts": attempt + 1,
+                    "retry_events": retry_events,
+                }
+            )
             if metadata["content_empty"]:
                 print(
                     "[llm_client] empty_response "
@@ -158,6 +201,7 @@ def complete_with_metadata(
                     "exceeded."
                 ) from e
             total_wait_seconds += delay
+            record_retry(attempt, e, delay)
             print(
                 f"[llm_client] rate limit hit on {model}, "
                 f"sleeping {delay:.0f}s before retry {attempt + 2}/{retries}..."
@@ -173,6 +217,7 @@ def complete_with_metadata(
                     "exceeded."
                 ) from e
             total_wait_seconds += 1
+            record_retry(attempt, e, 1)
             sleep(1)
     raise RuntimeError(
         f"LLM call failed after {retries} attempts and {total_wait_seconds:.0f}s "

@@ -276,6 +276,46 @@ class PipelineModelMetadataTests(unittest.TestCase):
                 "fast_model_only",
                 no_sketch=True,
             )
+    def test_stage_settings_cover_only_active_stages_with_effective_values(self) -> None:
+        full = pipeline.stage_settings_for(
+            {
+                "formalize": "openai/gpt-oss-120b",
+                "sketch": "openai/gpt-oss-120b",
+                "synthesize": "openai/gpt-oss-20b",
+                "repair": "openai/gpt-oss-20b",
+            }
+        )
+        self.assertEqual(set(full), {"formalize", "sketch", "synthesize", "repair"})
+        self.assertEqual(full["formalize"]["max_completion_tokens"], 500)
+        self.assertEqual(full["sketch"]["max_completion_tokens"], 600)
+        self.assertEqual(full["sketch"]["temperature"], 0.3)
+        self.assertIsNone(full["formalize"]["reasoning_effort"])
+        self.assertEqual(full["synthesize"]["reasoning_effort"], "low")
+        self.assertEqual(full["repair"], full["synthesize"])
+
+        no_sketch = pipeline.stage_settings_for(
+            {"formalize": "a", "synthesize": "b", "repair": "b"}
+        )
+        self.assertNotIn("sketch", no_sketch)
+        self.assertIsNone(no_sketch["synthesize"]["reasoning_effort"])
+
+    def test_run_passes_stage_settings_to_manifest_metadata(self) -> None:
+        captured = {}
+
+        original = PipelineModelMetadataTests.metadata
+
+        def capture(*args, **kwargs):
+            captured.update(kwargs)
+            return original(*args, **kwargs)
+
+        with patch.object(
+            PipelineModelMetadataTests, "metadata", staticmethod(capture)
+        ):
+            self._run_single_problem(experiment_config="no_sketch")
+
+        self.assertEqual(
+            set(captured["stage_settings"]), {"formalize", "synthesize", "repair"}
+        )
 
 
 if __name__ == "__main__":

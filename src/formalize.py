@@ -15,11 +15,16 @@ PROMPT_TEMPLATE = Path(__file__).parent.parent.joinpath(
 ).read_text()
 
 
+FORMALIZE_MAX_COMPLETION_TOKENS = 500
+FORMALIZE_TEMPERATURE = 0.2  # matches complete_with_metadata's default
+FORMALIZE_MAX_ATTEMPTS = 3
+
+
 def formalize(
     nl_statement: str,
     lean_project_dir: Path,
     scratch_id: str,
-    max_attempts: int = 3,
+    max_attempts: int = FORMALIZE_MAX_ATTEMPTS,
     model: str | None = None,
 ):
     """Returns (success: bool, lean_statement: str, attempts_log: list[dict])."""
@@ -29,7 +34,10 @@ def formalize(
 
     for attempt in range(1, max_attempts + 1):
         completion = complete_with_metadata(
-            prompt, max_tokens=500, model=model
+            prompt,
+            max_tokens=FORMALIZE_MAX_COMPLETION_TOKENS,
+            temperature=FORMALIZE_TEMPERATURE,
+            model=model,
         )
         lean_code = extract_lean_block(completion.content)
 

@@ -228,6 +228,82 @@ class LlmClientRetryTests(unittest.TestCase):
             )
 
         self.sleep.assert_called_once_with(4.0)
+    def test_metadata_records_usage_settings_latency_and_served_model(self) -> None:
+        response = self.response(
+            "proof", finish_reason="stop", completion_tokens=7
+        )
+        response.usage.prompt_tokens = 30
+        response.usage.total_tokens = 37
+        response.model = "provider-served-model"
+        response.system_fingerprint = "fp_abc"
+        self.create.return_value = response
+
+        result = llm_client.complete_with_metadata(
+            "SECRET PROMPT TEXT",
+            max_tokens=123,
+            temperature=0.3,
+            model="alias-model",
+            reasoning_effort="low",
+        )
+
+        metadata = result.metadata
+        self.assertEqual(metadata["model"], "alias-model")
+        self.assertEqual(metadata["response_model"], "provider-served-model")
+        self.assertEqual(metadata["system_fingerprint"], "fp_abc")
+        self.assertEqual(metadata["prompt_tokens"], 30)
+        self.assertEqual(metadata["completion_tokens"], 7)
+        self.assertEqual(metadata["total_tokens"], 37)
+        self.assertEqual(metadata["max_completion_tokens"], 123)
+        self.assertEqual(metadata["temperature"], 0.3)
+        self.assertEqual(metadata["reasoning_effort"], "low")
+        self.assertIsInstance(metadata["latency_seconds"], float)
+        self.assertGreaterEqual(metadata["latency_seconds"], 0)
+        self.assertEqual(metadata["api_attempts"], 1)
+        self.assertEqual(metadata["retry_events"], [])
+        serialized = json.dumps(metadata)
+        self.assertNotIn("SECRET PROMPT TEXT", serialized)
+        self.assertNotIn("api_key", serialized.lower())
+
+    def test_absent_optional_telemetry_is_none_not_zero(self) -> None:
+        self.create.return_value = SimpleNamespace(
+            choices=[SimpleNamespace(message=SimpleNamespace(content="proof"))]
+        )
+
+        metadata = llm_client.complete_with_metadata("prompt").metadata
+
+        for field in (
+            "prompt_tokens",
+            "completion_tokens",
+            "total_tokens",
+            "response_model",
+            "system_fingerprint",
+            "finish_reason",
+            "reasoning_effort",
+        ):
+            self.assertIsNone(metadata[field], field)
+
+    def test_retry_events_record_safe_failure_details_only(self) -> None:
+        rate_limit = FakeRateLimitError("Please try again in 4s. key=SECRET")
+        rate_limit.status_code = 429
+        self.create.side_effect = [rate_limit, self.response("completed")]
+
+        metadata = llm_client.complete_with_metadata(
+            "prompt", retries=2, sleep=self.sleep
+        ).metadata
+
+        self.assertEqual(metadata["api_attempts"], 2)
+        self.assertEqual(
+            metadata["retry_events"],
+            [
+                {
+                    "api_attempt": 1,
+                    "error_type": "FakeRateLimitError",
+                    "status_code": 429,
+                    "delay_seconds": 4.0,
+                }
+            ],
+        )
+        self.assertNotIn("SECRET", json.dumps(metadata))
 
 
 if __name__ == "__main__":

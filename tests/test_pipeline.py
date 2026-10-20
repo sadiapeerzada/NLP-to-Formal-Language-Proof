@@ -161,7 +161,11 @@ class PipelineTests(unittest.TestCase):
                     },
                 ),
             ),
-            patch.object(pipeline, "synthesize_and_verify", return_value=(result, attempts)),
+            patch.object(
+                pipeline,
+                "synthesize_and_verify",
+                return_value=(result, attempts),
+            ) as synthesize_call,
         ):
             pipeline.run(self.input_path, self.output_path, self.project, max_repair=1)
 
@@ -172,6 +176,10 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(
             [record["stage"] for record in records],
             ["sketch", "synthesize", "repair"],
+        )
+        self.assertEqual(
+            synthesize_call.call_args.kwargs["expected_statement"],
+            "theorem p1 : True := by sorry",
         )
         self.assertEqual(records[0]["completion_tokens"], 10)
         self.assertEqual(records[1]["completion_tokens"], 20)

@@ -39,6 +39,10 @@ the validator never fills them in or assigns a split:
 - `reference_lean_statement_provenance`: who authored or reviewed
   `expected_lean_statement`, and how it was checked. This describes provenance;
   it is not a replacement for the reference statement itself.
+- `problem_family` (optional): a non-empty curator-assigned identifier for
+  related mathematical problems or environment/formulation variants. Multiple
+  records may share one family identifier; validation does not merge or remove
+  them.
 
 A research record is fully documented only when it has a non-empty citation
 or a valid absolute HTTP(S) URL, a non-empty license, and non-empty
@@ -54,6 +58,72 @@ messages distinguish missing required provenance from invalid supplied values.
 A supplied `split` is always checked against the allowed values.
 Validation does not establish that a citation, license, or authorship claim is
 truthful; those details require human verification.
+
+## Strict research validation
+
+The compatibility validator above does not require split membership or a
+frozen manifest. For a curated research dataset, run:
+
+```text
+python src/dataset_validation.py <dataset.json> --research-manifest <manifest.json>
+```
+
+Research mode requires all structural fields, unique problem IDs, complete
+structurally valid provenance, and an explicit valid split for every problem.
+If `problem_family` is supplied, it must be a non-empty string; shared family
+identifiers are allowed and are never automatically merged.
+
+The JSON manifest must contain:
+
+```json
+{
+  "dataset_version": "curator-assigned version",
+  "expected_ids": ["problem_001"],
+  "dataset_sha256": "64-character SHA-256 of the exact dataset file bytes"
+}
+```
+
+The validator checks the input file's exact SHA-256 and compares the dataset
+IDs with `expected_ids`, reporting missing and unexpected IDs separately.
+`dataset_version` is required manifest metadata. Because dataset files are JSON
+arrays without an embedded version, the validator cannot independently compare
+the manifest's version with an in-file version. It verifies the expected IDs
+and exact dataset hash. The validator does not create or freeze a manifest.
+
+## Frozen-run completeness analysis
+
+The metrics entry point remains exploratory by default. To gate a final
+condition comparison, pass all result files and a frozen manifest that also
+lists the required experiment conditions:
+
+```json
+{
+  "dataset_version": "curator-assigned version",
+  "expected_ids": ["problem_001"],
+  "dataset_sha256": "64-character SHA-256 of the exact dataset file bytes",
+  "required_configurations": ["full_pipeline", "no_sketch"]
+}
+```
+
+```text
+python eval/metrics.py --frozen-manifest frozen-test-manifest.json \
+  results/full-pipeline.jsonl results/no-sketch.jsonl
+```
+
+Frozen mode requires one completed schema-v2 run per required configuration.
+It checks the run status and completed count, the run's input hash, result/run
+IDs, configuration identity, and exactly one result for every expected ID.
+Missing, unexpected, and duplicate problem IDs, absent conditions, and
+configuration mismatches block reporting. Failed or interrupted runs are not
+complete, even if they contain result rows. A result with `solved: false` is
+still a valid terminal outcome when the run completed.
+
+The frozen manifest's `expected_ids` and hash are the test-set boundary; this
+repository currently does not provide a frozen test manifest or test split.
+The run manifest records the input hash but not `dataset_version`, so exact
+hash agreement is enforceable while independent version-label agreement is
+not. Normal metrics invocation without `--frozen-manifest` remains available
+for exploratory or development analysis and does not assert run completeness.
 
 ## `results/<run>.jsonl` (output, one line per problem)
 

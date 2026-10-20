@@ -67,6 +67,67 @@ class ProvenanceTests(unittest.TestCase):
         )
         self.assertNotIn("GROQ_API_KEY", json.dumps(metadata))
 
+    def test_metadata_records_environment_stage_settings_and_alias_semantics(
+        self,
+    ) -> None:
+        input_path = self.root / "input.json"
+        prompt_path = self.root / "prompt.txt"
+        input_path.write_text("[]")
+        prompt_path.write_text("prompt")
+        stage_settings = {
+            "synthesize": {
+                "max_completion_tokens": 2000,
+                "temperature": 0.2,
+                "reasoning_effort": None,
+            }
+        }
+
+        with patch("provenance._command_output", return_value=None):
+            metadata = provenance.new_run_metadata(
+                self.root,
+                input_path,
+                self.root,
+                {"synthesize": prompt_path},
+                {"synthesize": "alias-model"},
+                max_repair=1,
+                stage_settings=stage_settings,
+            )
+
+        self.assertEqual(metadata["stage_settings"], stage_settings)
+        self.assertEqual(
+            metadata["model_identifier_semantics"], "provider_alias_not_pinned"
+        )
+        environment = metadata["environment"]
+        self.assertRegex(environment["python_version"], r"^\d+\.\d+")
+        self.assertTrue(environment["platform"])
+        self.assertTrue(environment["groq_sdk_version"])
+        self.assertEqual(
+            metadata["prompts"]["synthesize"]["sha256"],
+            provenance.sha256_file(prompt_path),
+        )
+        json.dumps(metadata)
+
+    def test_missing_package_version_is_unavailable(self) -> None:
+        with patch(
+            "provenance.importlib.metadata.version",
+            side_effect=provenance.importlib.metadata.PackageNotFoundError,
+        ):
+            self.assertEqual(
+                provenance._environment_metadata()["groq_sdk_version"],
+                provenance.UNAVAILABLE,
+            )
+
+    def test_stage_settings_default_is_empty_for_existing_callers(self) -> None:
+        input_path = self.root / "input.json"
+        prompt_path = self.root / "prompt.txt"
+        input_path.write_text("[]")
+        prompt_path.write_text("prompt")
+        with patch("provenance._command_output", return_value=None):
+            metadata = provenance.new_run_metadata(
+                self.root, input_path, self.root, {"a": prompt_path}, {"a": "m"}, 1
+            )
+        self.assertEqual(metadata["stage_settings"], {})
+
 
 if __name__ == "__main__":
     unittest.main()

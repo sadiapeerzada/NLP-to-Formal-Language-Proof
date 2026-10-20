@@ -45,6 +45,15 @@ from invalid values. Omission must not be interpreted as known provenance. Do
 not fill in source, license, or reference authorship claims without
 verification.
 
+For curated research inputs, use `--research-manifest` to require complete
+structural/provenance validation, explicit split membership, unique IDs, and
+agreement with a frozen manifest's expected IDs and exact dataset-file hash.
+The manifest must also carry a curator-assigned dataset version. Optional
+`problem_family` values can group related formulations or environment variants;
+grouping does not merge records or establish that they are independent samples.
+This strict mode is separate from compatibility validation and does not create
+splits or manifests.
+
 ## Category breakdown
 [table: category, count, difficulty distribution]
 
