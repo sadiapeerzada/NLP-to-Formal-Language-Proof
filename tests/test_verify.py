@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import subprocess
 import sys
 import unittest
@@ -109,6 +111,50 @@ class VerifyTests(unittest.TestCase):
 
         self.assertFalse(result.success)
         self.assertIn("type mismatch", result.errors[0])
+        self.assertEqual(result.diagnostic_state, "available")
+
+    def test_source_hash_matches_exact_written_bytes_and_candidate_hash_is_separate(self) -> None:
+        candidate = "theorem target : True := by trivial"
+        expected = "theorem target : True := by sorry"
+        captured: dict[str, bytes] = {}
+        raw_diagnostic = {
+            "severity": "error",
+            "data": "type mismatch",
+            "pos": {"line": 4, "column": 7},
+            "endPos": {"line": 4, "column": 12},
+            "fileName": "Generated.lean",
+            "customField": {"preserved": True},
+        }
+
+        def compile_candidate(command, **_kwargs):
+            source_path = Path(command[-1])
+            captured["source"] = source_path.read_bytes()
+            return subprocess.CompletedProcess(
+                command, 1, stdout=json.dumps(raw_diagnostic), stderr=""
+            )
+
+        with patch("verify.subprocess.run", side_effect=compile_candidate):
+            result = check_lean_file_detailed(
+                candidate,
+                self.project,
+                "exact_source",
+                expected_statement=expected,
+            )
+
+        source_bytes = captured["source"]
+        self.assertEqual(
+            result.verification_source_sha256,
+            hashlib.sha256(source_bytes).hexdigest(),
+        )
+        self.assertEqual(result.verification_source_text.encode("utf-8"), source_bytes)
+        self.assertEqual(
+            result.candidate_sha256,
+            hashlib.sha256(candidate.encode("utf-8")).hexdigest(),
+        )
+        self.assertNotEqual(result.candidate_sha256, result.verification_source_sha256)
+        self.assertEqual(result.diagnostics, [raw_diagnostic])
+        self.assertEqual(result.diagnostic_state, "available")
+        self.assertEqual(result.diagnostic_text, "line 4: type mismatch")
 
     def test_expected_statement_path_preserves_final_proof_safety_policy(self) -> None:
         expected = "theorem target : True := by sorry"
@@ -173,6 +219,8 @@ class VerifyTests(unittest.TestCase):
         result = self.run_result("theorem bad : True := by", process)
         self.assertFalse(result.success)
         self.assertIn("line 3", result.errors[0])
+        self.assertEqual(result.failure_kind, "compiler_error")
+        self.assertEqual(result.diagnostic_text, result.errors[0])
 
     def test_dependency_failure_with_empty_output_fails(self) -> None:
         result = self.run_result(
@@ -181,6 +229,7 @@ class VerifyTests(unittest.TestCase):
         )
         self.assertFalse(result.success)
         self.assertIn("nonzero without a parseable", result.errors[0])
+        self.assertEqual(result.failure_kind, "infrastructure_error")
 
     def test_nonzero_unparseable_output_fails(self) -> None:
         result = self.run_result(
@@ -197,6 +246,19 @@ class VerifyTests(unittest.TestCase):
         )
         self.assertFalse(result.success)
         self.assertIn("malformed", result.errors[0])
+        self.assertEqual(result.diagnostic_state, "malformed")
+        self.assertEqual(result.malformed_diagnostics, ["not JSON"])
+        self.assertEqual(result.diagnostics, [])
+
+    def test_absent_diagnostics_are_explicit(self) -> None:
+        result = self.run_result(
+            "theorem bad : True := by trivial",
+            subprocess.CompletedProcess([], 0, stdout="", stderr=""),
+            allow_sorry=True,
+        )
+        self.assertTrue(result.success)
+        self.assertEqual(result.diagnostic_state, "absent")
+        self.assertEqual(result.diagnostics, [])
 
     def test_success_with_ambiguous_stderr_fails(self) -> None:
         result = self.run_result(
@@ -234,6 +296,20 @@ class VerifyTests(unittest.TestCase):
             result = check_lean_file_detailed("theorem valid : True := by trivial", self.project, "candidate")
         self.assertFalse(result.success)
         self.assertIn("Could not invoke Lean", result.errors[0])
+        self.assertEqual(result.failure_kind, "infrastructure_error")
+
+    def test_lean_timeout_is_classified_separately(self) -> None:
+        with patch(
+            "verify.subprocess.run",
+            side_effect=subprocess.TimeoutExpired(["lake", "lean"], 60),
+        ):
+            result = check_lean_file_detailed(
+                "theorem valid : True := by trivial", self.project, "lean_timeout"
+            )
+        self.assertFalse(result.success)
+        self.assertEqual(result.failure_kind, "timeout")
+        self.assertEqual(result.diagnostic_state, "unavailable")
+        self.assertIsNone(result.diagnostics)
 
     def test_placeholder_tokens_are_rejected_for_final_proofs(self) -> None:
         process = subprocess.CompletedProcess([], 0, stdout="", stderr="")

@@ -1,0 +1,993 @@
+[
+  {
+    "id": "arith_001",
+    "nl_statement": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square identities; keep related algebraic variants together.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Have a Lean/math reviewer compare the universal natural-number identity with the English statement and record evidence."
+    }
+  },
+  {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square and difference-of-squares identity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the hypothesis is sufficient and that the intended subtraction is natural-number truncated subtraction."
+    }
+  },
+  {
+    "id": "div_001",
+    "nl_statement": "If a natural number n is even, then n squared is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem even_sq_of_even (n : ℕ) (h : Even n) : Even (n ^ 2)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the Even definition/import context and theorem statement against the English claim."
+    }
+  },
+  {
+    "id": "div_002",
+    "nl_statement": "For any natural number n, n times (n + 1) is always even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem n_mul_succ_even (n : ℕ) : Even (n * (n + 1))",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_parity_products",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity result for product of consecutive natural numbers.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify the intended product ordering and that the Lean Even predicate matches the wording."
+    }
+  },
+  {
+    "id": "div_003",
+    "nl_statement": "If a natural number n is divisible by 6, then it is divisible by both 2 and 3.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem div6_imp_div2_div3 (n : ℕ) (h : 6 ∣ n) : 2 ∣ n ∧ 3 ∣ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_divisibility_factorization",
+      "family_review_status": "needs_review",
+      "family_review_note": "Single divisibility implication; singleton family proposal.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify divisibility conventions and the reference theorem, then record a source and review evidence."
+    }
+  },
+  {
+    "id": "mod_001",
+    "nl_statement": "For any integers a and b and positive integer m, if a is congruent to b modulo m, then a + 1 is congruent to b + 1 modulo m.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem cong_add_one (a b m : ℤ) (h : a ≡ b [ZMOD m]) : a + 1 ≡ b + 1 [ZMOD m]",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "integer_congruence_translation",
+      "family_review_status": "needs_review",
+      "family_review_note": "Congruence preserved by translation; singleton family proposal.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Decide whether positivity is essential to the intended English statement; amend only after human approval and record the decision."
+    }
+  },
+  {
+    "id": "mod_002",
+    "nl_statement": "The square of any integer is congruent to 0 or 1 modulo 4.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_four (a : ℤ) : a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "square_residue_classes",
+      "family_review_status": "needs_review",
+      "family_review_note": "Square residue class theorem; related residue theorem grouped.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the intended congruence/remainder convention, especially for negative integers, and confirm exact equivalence."
+    }
+  },
+  {
+    "id": "ind_001",
+    "nl_statement": "For any natural number n, the sum of the first n natural numbers equals n times (n + 1) divided by 2.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem gauss_sum (n : ℕ) : 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the range endpoints and algebraic equivalence, then rewrite the English wording or Lean statement if needed."
+    }
+  },
+  {
+    "id": "ind_002",
+    "nl_statement": "For any natural number n, the sum of the first n odd numbers equals n squared.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sum_odd_sq (n : ℕ) : (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the zero-based enumeration and that the resulting sum is the intended one."
+    }
+  },
+  {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exponential growth comparison over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check boundary cases and document theorem-statement and fidelity review."
+    }
+  },
+  {
+    "id": "div_004",
+    "nl_statement": "The sum of any two odd natural numbers is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sum_two_odd_even (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1) : ∃ k, a + b = 2 * k",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_parity_products",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity result for a sum of odd natural numbers.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm witness formulation, natural-number multiplication notation, and fidelity to ordinary oddness."
+    }
+  },
+  {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number lower bound involving a square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check all boundary cases and compare the natural-number theorem with the English universal claim."
+    }
+  },
+  {
+    "id": "arith_003",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number distributivity statement.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003_mathlib"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "recommended_curator_action": "Adjudicate the duplicate group; do not count both as independent test examples."
+    }
+  },
+  {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exact English duplicate and propositionally identical distributivity candidate.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "recommended_curator_action": "Adjudicate whether this is an environment variant or duplicate; retain family grouping and exclude duplicate count unless justified."
+    }
+  },
+  {
+    "id": "arith_004",
+    "nl_statement": "For natural numbers a and b with b at most a, (a minus b) squared plus 2ab equals a squared plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_sub_nat (a b : ℕ) (h : b ≤ a) : (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square identity using truncated subtraction.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check truncated subtraction and verify the condition captures the intended algebraic identity."
+    }
+  },
+  {
+    "id": "div_005",
+    "nl_statement": "If a natural number n is odd, then n squared is odd.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem odd_sq_of_odd (n : ℕ) (h : ∃ k, n = 2*k+1) : ∃ j, n ^ 2 = 2*j+1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review equivalence of the witness encoding and confirm imported arithmetic definitions."
+    }
+  },
+  {
+    "id": "div_006",
+    "nl_statement": "A natural number's square is even if and only if the number itself is even.",
+    "category": "divisibility",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_even_iff_even (n : ℕ) : (∃ j, n ^ 2 = 2 * j) ↔ (∃ k, n = 2 * k)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Converse/equivalence variant of natural-number square parity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify the iff theorem, witness encodings, and natural-number boundary cases."
+    }
+  },
+  {
+    "id": "ineq_002",
+    "nl_statement": "For any natural numbers a and b, a times b plus 1 is at most (a+1) times (b+1).",
+    "category": "inequality",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem prod_succ_ge (a b : ℕ) : a * b + 1 ≤ (a + 1) * (b + 1)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_product_bound",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number product lower/upper bound; singleton family proposal.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check the quantified statement and boundary cases, then record review provenance."
+    }
+  },
+  {
+    "id": "ineq_003",
+    "nl_statement": "For any natural number n at least 1, n plus 1 is at most 2 to the power n.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem succ_le_two_pow (n : ℕ) (h : 1 ≤ n) : n + 1 ≤ 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Related exponential upper-bound theorem over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the assumption and boundary case, then record theorem/fidelity decisions."
+    }
+  },
+  {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Geometric finite sum claim; definition/self-containment is unresolved.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Locate and cite the intended definition or replace the statement with a self-contained Finset/closed-form expression after review."
+    }
+  },
+  {
+    "id": "mod_003",
+    "nl_statement": "The square of any natural number is congruent to 0 or 1 modulo 3.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_three (n : ℕ) : n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "square_residue_classes",
+      "family_review_status": "needs_review",
+      "family_review_note": "Square residue class theorem over naturals; grouped conservatively.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the intended canonical remainder semantics and assess relation to mod_002 as a family, not as an assumed duplicate."
+    }
+  }
+]

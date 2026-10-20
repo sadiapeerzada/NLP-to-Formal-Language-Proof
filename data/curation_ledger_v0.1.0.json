@@ -1,0 +1,711 @@
+{
+  "dataset_version": "nl2lean-repair-v0.1.0-draft",
+  "status": "draft",
+  "policy": "No source, license, theorem review, semantic-fidelity label, or family decision is asserted without evidence. All original seed records and IDs are retained.",
+  "record_audits": [
+    {
+      "id": "arith_001",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Natural-number square identities; keep related algebraic variants together."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed.",
+      "recommended_curator_action": "Have a Lean/math reviewer compare the universal natural-number identity with the English statement and record evidence.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "arith_002",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Natural-number square and difference-of-squares identity."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review.",
+      "recommended_curator_action": "Confirm the hypothesis is sufficient and that the intended subtraction is natural-number truncated subtraction.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_001",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Parity property of a natural-number square."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed.",
+      "recommended_curator_action": "Review the Even definition/import context and theorem statement against the English claim.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_002",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_parity_products",
+        "status": "needs_review",
+        "rationale": "Parity result for product of consecutive natural numbers."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The English parity claim is represented using Even; no source or independent theorem review is recorded.",
+      "recommended_curator_action": "Verify the intended product ordering and that the Lean Even predicate matches the wording.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_003",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_divisibility_factorization",
+        "status": "needs_review",
+        "rationale": "Single divisibility implication; singleton family proposal."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent.",
+      "recommended_curator_action": "Verify divisibility conventions and the reference theorem, then record a source and review evidence.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "mod_001",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "integer_congruence_translation",
+        "status": "needs_review",
+        "rationale": "Congruence preserved by translation; singleton family proposal."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved.",
+      "recommended_curator_action": "Decide whether positivity is essential to the intended English statement; amend only after human approval and record the decision.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "mod_002",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "square_residue_classes",
+        "status": "needs_review",
+        "rationale": "Square residue class theorem; related residue theorem grouped."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4.",
+      "recommended_curator_action": "Review the intended congruence/remainder convention, especially for negative integers, and confirm exact equivalence.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ind_001",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_finite_sum_identities",
+        "status": "needs_review",
+        "rationale": "Finite sum identity over a natural-number range."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit.",
+      "recommended_curator_action": "Review the range endpoints and algebraic equivalence, then rewrite the English wording or Lean statement if needed.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ind_002",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_finite_sum_identities",
+        "status": "needs_review",
+        "rationale": "Finite sum identity over a natural-number range."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1.",
+      "recommended_curator_action": "Confirm the zero-based enumeration and that the resulting sum is the intended one.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ind_003",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_power_growth",
+        "status": "needs_review",
+        "rationale": "Exponential growth comparison over natural numbers."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review.",
+      "recommended_curator_action": "Check boundary cases and document theorem-statement and fidelity review.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_004",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_parity_products",
+        "status": "needs_review",
+        "rationale": "Parity result for a sum of odd natural numbers."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates.",
+      "recommended_curator_action": "Confirm witness formulation, natural-number multiplication notation, and fidelity to ordinary oddness.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ineq_001",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Natural-number lower bound involving a square."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review.",
+      "recommended_curator_action": "Check all boundary cases and compare the natural-number theorem with the English universal claim.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "arith_003",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_distributivity",
+        "status": "needs_review",
+        "rationale": "Natural-number distributivity statement."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": "exact_english_duplicate_arith_003",
+      "audit_finding": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name.",
+      "recommended_curator_action": "Adjudicate the duplicate group; do not count both as independent test examples.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "arith_003_mathlib",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_distributivity",
+        "status": "needs_review",
+        "rationale": "Exact English duplicate and propositionally identical distributivity candidate."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": "exact_english_duplicate_arith_003",
+      "audit_finding": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name.",
+      "recommended_curator_action": "Adjudicate whether this is an environment variant or duplicate; retain family grouping and exclude duplicate count unless justified.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "arith_004",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Natural-number square identity using truncated subtraction."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review.",
+      "recommended_curator_action": "Check truncated subtraction and verify the condition captures the intended algebraic identity.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_005",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Parity property of a natural-number square."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate.",
+      "recommended_curator_action": "Review equivalence of the witness encoding and confirm imported arithmetic definitions.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "div_006",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_square_identities",
+        "status": "needs_review",
+        "rationale": "Converse/equivalence variant of natural-number square parity."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "Both directions use existential evenness encodings; no explicit family or reference review is recorded.",
+      "recommended_curator_action": "Verify the iff theorem, witness encodings, and natural-number boundary cases.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ineq_002",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_product_bound",
+        "status": "needs_review",
+        "rationale": "Natural-number product lower/upper bound; singleton family proposal."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed.",
+      "recommended_curator_action": "Check the quantified statement and boundary cases, then record review provenance.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ineq_003",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_power_growth",
+        "status": "needs_review",
+        "rationale": "Related exponential upper-bound theorem over natural numbers."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n.",
+      "recommended_curator_action": "Review the assumption and boundary case, then record theorem/fidelity decisions.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "ind_004",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "nat_finite_sum_identities",
+        "status": "needs_review",
+        "rationale": "Geometric finite sum claim; definition/self-containment is unresolved."
+      },
+      "split_proposal": {
+        "split": "development",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished.",
+      "recommended_curator_action": "Locate and cite the intended definition or replace the statement with a self-contained Finset/closed-form expression after review.",
+      "human_review_status": "pending"
+    },
+    {
+      "id": "mod_003",
+      "candidate_status": "review_pending",
+      "source_and_license": {
+        "status": "pending",
+        "evidence": "No source or license evidence is recorded in the source seed record; none was added by this offline curation pass.",
+        "recommended_action": "Identify the original source or document verified hand-authored provenance, then verify applicable rights/license."
+      },
+      "family_proposal": {
+        "id": "square_residue_classes",
+        "status": "needs_review",
+        "rationale": "Square residue class theorem over naturals; grouped conservatively."
+      },
+      "split_proposal": {
+        "split": "test",
+        "status": "pending",
+        "method": "Deterministic, explicit family map in src/build_research_dataset_draft.py; not a frozen assignment."
+      },
+      "duplicate_candidate_group": null,
+      "audit_finding": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review.",
+      "recommended_curator_action": "Confirm the intended canonical remainder semantics and assess relation to mod_002 as a family, not as an assumed duplicate.",
+      "human_review_status": "pending"
+    }
+  ],
+  "family_proposals": [
+    {
+      "problem_family": "integer_congruence_translation",
+      "split": "test",
+      "member_ids": [
+        "mod_001"
+      ],
+      "status": "needs_review",
+      "rationale": "Congruence preserved by translation; singleton family proposal."
+    },
+    {
+      "problem_family": "nat_distributivity",
+      "split": "development",
+      "member_ids": [
+        "arith_003",
+        "arith_003_mathlib"
+      ],
+      "status": "needs_review",
+      "rationale": "Exact English duplicate and propositionally identical distributivity candidate."
+    },
+    {
+      "problem_family": "nat_distributivity",
+      "split": "development",
+      "member_ids": [
+        "arith_003",
+        "arith_003_mathlib"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number distributivity statement."
+    },
+    {
+      "problem_family": "nat_divisibility_factorization",
+      "split": "test",
+      "member_ids": [
+        "div_003"
+      ],
+      "status": "needs_review",
+      "rationale": "Single divisibility implication; singleton family proposal."
+    },
+    {
+      "problem_family": "nat_finite_sum_identities",
+      "split": "development",
+      "member_ids": [
+        "ind_001",
+        "ind_002",
+        "ind_004"
+      ],
+      "status": "needs_review",
+      "rationale": "Finite sum identity over a natural-number range."
+    },
+    {
+      "problem_family": "nat_finite_sum_identities",
+      "split": "development",
+      "member_ids": [
+        "ind_001",
+        "ind_002",
+        "ind_004"
+      ],
+      "status": "needs_review",
+      "rationale": "Geometric finite sum claim; definition/self-containment is unresolved."
+    },
+    {
+      "problem_family": "nat_parity_products",
+      "split": "test",
+      "member_ids": [
+        "div_002",
+        "div_004"
+      ],
+      "status": "needs_review",
+      "rationale": "Parity result for a sum of odd natural numbers."
+    },
+    {
+      "problem_family": "nat_parity_products",
+      "split": "test",
+      "member_ids": [
+        "div_002",
+        "div_004"
+      ],
+      "status": "needs_review",
+      "rationale": "Parity result for product of consecutive natural numbers."
+    },
+    {
+      "problem_family": "nat_power_growth",
+      "split": "development",
+      "member_ids": [
+        "ind_003",
+        "ineq_003"
+      ],
+      "status": "needs_review",
+      "rationale": "Exponential growth comparison over natural numbers."
+    },
+    {
+      "problem_family": "nat_power_growth",
+      "split": "development",
+      "member_ids": [
+        "ind_003",
+        "ineq_003"
+      ],
+      "status": "needs_review",
+      "rationale": "Related exponential upper-bound theorem over natural numbers."
+    },
+    {
+      "problem_family": "nat_product_bound",
+      "split": "development",
+      "member_ids": [
+        "ineq_002"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number product lower/upper bound; singleton family proposal."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Converse/equivalence variant of natural-number square parity."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number lower bound involving a square."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number square and difference-of-squares identity."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number square identities; keep related algebraic variants together."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Natural-number square identity using truncated subtraction."
+    },
+    {
+      "problem_family": "nat_square_identities",
+      "split": "development",
+      "member_ids": [
+        "arith_001",
+        "arith_002",
+        "div_001",
+        "ineq_001",
+        "arith_004",
+        "div_005",
+        "div_006"
+      ],
+      "status": "needs_review",
+      "rationale": "Parity property of a natural-number square."
+    },
+    {
+      "problem_family": "square_residue_classes",
+      "split": "test",
+      "member_ids": [
+        "mod_002",
+        "mod_003"
+      ],
+      "status": "needs_review",
+      "rationale": "Square residue class theorem over naturals; grouped conservatively."
+    },
+    {
+      "problem_family": "square_residue_classes",
+      "split": "test",
+      "member_ids": [
+        "mod_002",
+        "mod_003"
+      ],
+      "status": "needs_review",
+      "rationale": "Square residue class theorem; related residue theorem grouped."
+    }
+  ]
+}

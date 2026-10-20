@@ -1,0 +1,91 @@
+{
+  "dataset_version": "nl2lean-repair-v0.1.0-draft",
+  "status": "draft",
+  "not_frozen": true,
+  "record_count": 21,
+  "ordered_ids": [
+    "arith_001",
+    "arith_002",
+    "div_001",
+    "div_002",
+    "div_003",
+    "mod_001",
+    "mod_002",
+    "ind_001",
+    "ind_002",
+    "ind_003",
+    "div_004",
+    "ineq_001",
+    "arith_003",
+    "arith_003_mathlib",
+    "arith_004",
+    "div_005",
+    "div_006",
+    "ineq_002",
+    "ineq_003",
+    "ind_004",
+    "mod_003"
+  ],
+  "dataset_sha256": "fec50bc77cb2782edba29ce08b680c63eb145092868853b3fc5efb947f025514",
+  "proposed_split_counts": {
+    "development": 15,
+    "test": 6
+  },
+  "eligible_record_count": 0,
+  "eligible_split_counts": {
+    "development": 0,
+    "test": 0
+  },
+  "category_counts": {
+    "arithmetic_identity": 5,
+    "divisibility": 6,
+    "induction": 4,
+    "inequality": 3,
+    "modular_arithmetic": 3
+  },
+  "duplicate_review_status": "unresolved_candidate_requires_human_review",
+  "duplicate_candidate_groups": [
+    {
+      "candidate_group": "exact_english_duplicate_arith_003",
+      "ids": [
+        "arith_003",
+        "arith_003_mathlib"
+      ],
+      "status": "needs_review",
+      "independent_example_count": 1
+    }
+  ],
+  "review_completion_counts": {
+    "source_status": {
+      "pending": 21
+    },
+    "source_license_verification_status": {
+      "pending": 21
+    },
+    "family_review_status": {
+      "needs_review": 21
+    },
+    "split_status": {
+      "pending": 21
+    },
+    "semantic_fidelity": {
+      "pending": 21
+    },
+    "theorem_statement_review": {
+      "pending": 21
+    },
+    "assumption_mismatch_review": {
+      "pending": 21
+    },
+    "self_containment_review": {
+      "pending": 21
+    },
+    "duplicate_review": {
+      "pending": 19,
+      "needs_review": 2
+    }
+  },
+  "family_split_rule": "All records with the same proposed problem_family are assigned to the same proposed split; family assignments remain pending human review.",
+  "source_dataset": "data/seed_problems.json",
+  "source_dataset_sha256": "f0cebc68ce536704f90d0e2d7895904af37a79f38ce6867c335274ddcda09529"
+}

@@ -1,0 +1,542 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import Mock, patch
+
+import pytest
+
+sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
+
+import repair_experiment as experiment
+import verify as verifier
+from llm_client import CompletionResult
+from verify import VerificationResult
+
+
+THEOREM = "theorem target : True := by sorry"
+INITIAL_CANDIDATE = "theorem target : True := by exact False.elim (by trivial)"
+DIAGNOSTIC_INITIAL = "line 1: initial Lean diagnostic"
+DIAGNOSTIC_LATEST = "line 2: latest Lean diagnostic"
+
+
+def completion(content: str, *, prompt_tokens: int | None = 17) -> CompletionResult:
+    return CompletionResult(
+        content=content,
+        metadata={
+            "model": experiment.DEFAULT_MODEL,
+            "response_model": "provider-returned-model",
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": 23,
+            "total_tokens": 40 if prompt_tokens is not None else None,
+            "api_attempts": 1,
+            "retry_events": [],
+        },
+    )
+
+
+def failed_verification(diagnostic: str = DIAGNOSTIC_INITIAL) -> VerificationResult:
+    return VerificationResult(
+        success=False,
+        errors=[diagnostic],
+        exit_code=1,
+        diagnostics_parsed=1,
+        failure_kind="compiler_error",
+        diagnostic_text=diagnostic,
+        diagnostics=[
+            {
+                "severity": "error",
+                "data": diagnostic,
+                "pos": {"line": 1, "column": 3},
+            }
+        ],
+        diagnostic_state="available",
+    )
+
+
+def successful_verification() -> VerificationResult:
+    return VerificationResult(
+        success=True,
+        exit_code=0,
+        diagnostics_parsed=1,
+        failure_kind=None,
+    )
+
+
+def run_in(
+    root: Path,
+    completion_fn,
+    verification_fn,
+    *,
+    max_repair: int = 3,
+    experiment_id: str | None = None,
+) -> Path:
+    return experiment.run_experiment(
+        "problem_001",
+        THEOREM,
+        root / "lean_project",
+        root / "runs",
+        completion_fn=completion_fn,
+        verification_fn=verification_fn,
+        max_repair=max_repair,
+        experiment_id=experiment_id,
+    )
+
+
+def read_manifest(path: Path) -> dict:
+    return json.loads(path.read_text())
+
+
+def test_one_shot_makes_no_repair_calls_and_verifies_initial_once(tmp_path: Path) -> None:
+    completion_fn = Mock(return_value=completion(INITIAL_CANDIDATE))
+    verification_fn = Mock(return_value=successful_verification())
+
+    path = run_in(tmp_path, completion_fn, verification_fn)
+    manifest = read_manifest(path)
+
+    assert completion_fn.call_count == 1
+    assert verification_fn.call_count == 1
+    assert manifest["conditions"]["A"]["repair_calls_made"] == 0
+    assert manifest["conditions"]["B"]["status"] == "not_needed_initial_success"
+    assert manifest["conditions"]["C"]["status"] == "not_needed_initial_success"
+    assert manifest["status"] == "completed"
+
+
+def test_blind_and_guided_share_initial_candidate_and_hash(tmp_path: Path) -> None:
+    completion_fn = Mock(
+        side_effect=[
+            completion(INITIAL_CANDIDATE),
+            completion("theorem target : True := by trivial"),
+            completion("theorem target : True := by trivial"),
+        ]
+    )
+    verification_fn = Mock(
+        side_effect=[failed_verification(), successful_verification(), successful_verification()]
+    )
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn, max_repair=1))
+    initial = manifest["initial_candidate"]
+    initial_bytes = Path(initial["candidate_path"]).read_bytes()
+    initial_hash = hashlib.sha256(initial_bytes).hexdigest()
+
+    assert initial_bytes.decode() == INITIAL_CANDIDATE
+    assert initial["candidate_sha256"] == initial_hash
+    assert initial["candidate_id"] == f"problem_001-{initial_hash}"
+    for condition in ("A", "B", "C"):
+        result = manifest["conditions"][condition]
+        assert result["starting_candidate_id"] == initial["candidate_id"]
+        assert result["starting_candidate_sha256"] == initial_hash
+    assert manifest["conditions"]["B"]["milestones"]["0"]["candidate_sha256"] == initial_hash
+    assert manifest["conditions"]["C"]["milestones"]["0"]["candidate_sha256"] == initial_hash
+
+
+def test_blind_prompt_never_receives_compiler_diagnostics(tmp_path: Path) -> None:
+    prompts: list[str] = []
+
+    def complete_fn(prompt: str, **_kwargs) -> CompletionResult:
+        prompts.append(prompt)
+        return completion(
+            INITIAL_CANDIDATE
+            if len(prompts) == 1
+            else "theorem target : True := by trivial"
+        )
+
+    def verify_fn(candidate: str, *_args, **_kwargs) -> VerificationResult:
+        if candidate == INITIAL_CANDIDATE:
+            result = failed_verification("SECRET_DIAGNOSTIC_TEXT")
+            result.errors = ["VERIFIER_EXCEPTION_DETAIL must never reach B"]
+            return result
+        return successful_verification()
+
+    run_in(tmp_path, complete_fn, verify_fn, max_repair=1)
+
+    blind_prompt = prompts[1]
+    guided_prompt = prompts[2]
+    assert "SECRET_DIAGNOSTIC_TEXT" not in blind_prompt
+    assert "VERIFIER_EXCEPTION_DETAIL" not in blind_prompt
+    assert experiment.BLIND_FEEDBACK_FIELD in blind_prompt
+    assert "SECRET_DIAGNOSTIC_TEXT" in guided_prompt
+    assert "VERIFIER_EXCEPTION_DETAIL" not in guided_prompt
+    assert "SECRET_DIAGNOSTIC_TEXT" not in prompts[0]
+
+
+def test_compiler_guided_receives_initial_and_latest_actual_diagnostics(
+    tmp_path: Path,
+) -> None:
+    prompts: list[str] = []
+    repair_responses = iter(
+        [
+            "theorem target : True := by trivial",
+            "theorem target : True := by exact True.intro",
+            "theorem target : True := by trivial",
+        ]
+    )
+
+    def complete_fn(prompt: str, **_kwargs) -> CompletionResult:
+        prompts.append(prompt)
+        if len(prompts) == 1:
+            return completion(INITIAL_CANDIDATE)
+        return completion(next(repair_responses))
+
+    def verify_fn(
+        candidate: str, _project: Path, scratch_name: str, **_kwargs
+    ) -> VerificationResult:
+        if candidate == INITIAL_CANDIDATE:
+            return failed_verification(DIAGNOSTIC_INITIAL)
+        if "_B_" in scratch_name:
+            return successful_verification()
+        if "_C_1" in scratch_name:
+            return failed_verification(DIAGNOSTIC_LATEST)
+        return successful_verification()
+
+    manifest = read_manifest(
+        run_in(tmp_path, complete_fn, verify_fn, max_repair=2)
+    )
+
+    assert DIAGNOSTIC_INITIAL in prompts[2]
+    assert DIAGNOSTIC_LATEST in prompts[3]
+    first_payload = manifest["conditions"]["C"]["attempts"][0][
+        "compiler_diagnostics_payload"
+    ]
+    second_payload = manifest["conditions"]["C"]["attempts"][1][
+        "compiler_diagnostics_payload"
+    ]
+    assert json.loads(first_payload)["diagnostics"][0]["data"] == DIAGNOSTIC_INITIAL
+    assert json.loads(second_payload)["diagnostics"][0]["data"] == DIAGNOSTIC_LATEST
+    assert manifest["conditions"]["C"]["attempts"][0][
+        "compiler_diagnostics_payload_kind"
+    ] == "raw_structured_json"
+    assert manifest["conditions"]["C"]["attempts"][0][
+        "compiler_diagnostics_supplied_text"
+    ] == first_payload
+    assert first_payload in prompts[2]
+    assert second_payload in prompts[3]
+    assert manifest["conditions"]["C"]["status"] == "success"
+    assert manifest["conditions"]["C"]["repair_calls_made"] == 2
+
+
+def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> None:
+    prompts: list[str] = []
+
+    def complete_fn(prompt: str, **kwargs) -> CompletionResult:
+        prompts.append(prompt)
+        assert kwargs == {
+            "max_tokens": experiment.DEFAULT_MAX_COMPLETION_TOKENS,
+            "temperature": experiment.DEFAULT_TEMPERATURE,
+            "retries": experiment.TRANSPORT_RETRIES,
+            "model": experiment.DEFAULT_MODEL,
+            "reasoning_effort": "low",
+        }
+        candidate = INITIAL_CANDIDATE if len(prompts) == 1 else (
+            f"theorem target : True := by trivial -- response {len(prompts)}"
+        )
+        return completion(candidate, prompt_tokens=None)
+
+    completion_fn = Mock(side_effect=complete_fn)
+    verification_fn = Mock(side_effect=lambda *_args, **_kwargs: failed_verification())
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
+
+    assert len(prompts) == 1 + 2 * 3
+    for condition in ("B", "C"):
+        result = manifest["conditions"][condition]
+        assert result["repair_calls_made"] == 3
+        assert len(result["attempts"]) == 3
+        assert result["status"] == "repair_budget_exhausted"
+        assert [item["repair_calls"] for item in result["milestones"].values()] == [0, 1, 2, 3]
+        assert all(item["prompt_tokens"] is None for item in result["attempts"])
+    assert manifest["configuration"]["max_repair_calls"] == 3
+    assert manifest["status"] == "completed"
+
+
+def test_success_stops_repairs_and_repair_prompt_hashes_are_logged(
+    tmp_path: Path,
+) -> None:
+    completion_fn = Mock(
+        side_effect=[
+            completion(INITIAL_CANDIDATE),
+            completion("theorem target : True := by trivial"),
+            completion("theorem target : True := by trivial"),
+        ]
+    )
+    verification_fn = Mock(
+        side_effect=[failed_verification(), successful_verification(), successful_verification()]
+    )
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
+
+    assert manifest["conditions"]["B"]["repair_calls_made"] == 1
+    assert manifest["conditions"]["C"]["repair_calls_made"] == 1
+    assert all(item["status"] == "success" for condition in ("B", "C")
+               for item in manifest["conditions"][condition]["attempts"])
+    assert all(
+        len(item["prompt_sha256"]) == 64
+        for condition in ("B", "C")
+        for item in manifest["conditions"][condition]["attempts"]
+    )
+    assert manifest["status"] == "completed"
+
+
+def test_empty_repair_output_is_distinct_and_stops_that_condition(
+    tmp_path: Path,
+) -> None:
+    completion_fn = Mock(
+        side_effect=[
+            completion(INITIAL_CANDIDATE),
+            completion(""),
+            completion(""),
+        ]
+    )
+    verification_fn = Mock(return_value=failed_verification())
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
+
+    assert manifest["conditions"]["B"]["status"] == "empty_output"
+    assert manifest["conditions"]["C"]["status"] == "empty_output"
+    assert manifest["conditions"]["B"]["repair_calls_made"] == 1
+    assert verification_fn.call_count == 1
+    assert manifest["status"] == "completed_with_failures"
+
+
+def test_provider_error_is_not_recorded_as_a_proof_failure(tmp_path: Path) -> None:
+    calls = 0
+
+    def complete_fn(_prompt: str, **_kwargs) -> CompletionResult:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return completion(INITIAL_CANDIDATE)
+        if calls == 2:
+            raise RuntimeError("provider unavailable")
+        return completion("")
+
+    manifest = read_manifest(
+        run_in(tmp_path, complete_fn, lambda *_args, **_kwargs: failed_verification(), max_repair=1)
+    )
+
+    assert manifest["conditions"]["B"]["status"] == "provider_error"
+    assert manifest["conditions"]["B"]["attempts"][0]["failure_kind"] == "provider_error"
+    assert manifest["conditions"]["C"]["status"] == "empty_output"
+    assert manifest["status"] == "completed_with_failures"
+
+
+def test_timeout_and_compiler_failure_are_distinct_and_timeout_is_incomplete(
+    tmp_path: Path,
+) -> None:
+    completion_fn = Mock(return_value=completion(INITIAL_CANDIDATE))
+    timeout = VerificationResult(
+        success=False,
+        errors=["Compilation timed out."],
+        failure_kind="timeout",
+    )
+    verification_fn = Mock(return_value=timeout)
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
+
+    assert manifest["initial_verification"]["status"] == "timeout"
+    assert manifest["status"] == "incomplete"
+    assert manifest["conditions"]["B"]["status"] == "not_run_initial_verification_unavailable"
+    assert completion_fn.call_count == 1
+    assert verification_fn.call_count == 1
+    assert failed_verification().failure_kind == "compiler_error"
+
+
+def test_interrupted_run_remains_running_not_completed(tmp_path: Path) -> None:
+    def interrupt(_prompt: str, **_kwargs) -> CompletionResult:
+        raise KeyboardInterrupt
+
+    with pytest.raises(KeyboardInterrupt):
+        run_in(
+            tmp_path,
+            interrupt,
+            lambda *_args, **_kwargs: successful_verification(),
+            experiment_id="interrupted",
+        )
+
+    manifest = read_manifest(tmp_path / "runs/interrupted/manifest.json")
+    assert manifest["status"] == "running"
+    assert manifest["finished_at_utc"] is None
+
+
+def test_interrupted_c_call_has_its_exact_payload_persisted(tmp_path: Path) -> None:
+    calls = 0
+    prompts: list[str] = []
+
+    def complete_fn(prompt: str, **_kwargs) -> CompletionResult:
+        nonlocal calls
+        calls += 1
+        prompts.append(prompt)
+        if calls == 1:
+            return completion(INITIAL_CANDIDATE)
+        if calls == 2:
+            return completion("theorem target : True := by trivial")
+        raise KeyboardInterrupt
+
+    def verify_fn(candidate: str, *_args, **_kwargs) -> VerificationResult:
+        if candidate == INITIAL_CANDIDATE:
+            return failed_verification("INITIAL_RAW_DIAGNOSTIC")
+        return successful_verification()
+
+    with pytest.raises(KeyboardInterrupt):
+        run_in(
+            tmp_path,
+            complete_fn,
+            verify_fn,
+            max_repair=1,
+            experiment_id="interrupted-guided-call",
+        )
+
+    manifest = read_manifest(
+        tmp_path / "runs/interrupted-guided-call/manifest.json"
+    )
+    c_attempt = manifest["conditions"]["C"]["attempts"][0]
+    assert manifest["status"] == "running"
+    assert c_attempt["compiler_diagnostics_payload_kind"] == "raw_structured_json"
+    assert c_attempt["compiler_diagnostics_payload"] in prompts[2]
+    assert c_attempt["compiler_diagnostics_payload"] == (
+        c_attempt["compiler_diagnostics_supplied_text"]
+    )
+
+
+def test_existing_experiment_artifacts_are_not_overwritten(tmp_path: Path) -> None:
+    path = run_in(
+        tmp_path,
+        Mock(return_value=completion(INITIAL_CANDIDATE)),
+        Mock(return_value=successful_verification()),
+        experiment_id="existing-run",
+    )
+    before = path.read_bytes()
+
+    with pytest.raises(FileExistsError):
+        run_in(
+            tmp_path,
+            Mock(return_value=completion("replacement")),
+            Mock(return_value=successful_verification()),
+            experiment_id="existing-run",
+        )
+
+    assert path.read_bytes() == before
+
+
+def test_plan_only_has_prompt_hashes_and_is_explicitly_api_free() -> None:
+    plan = experiment._plan("problem_001", THEOREM, experiment.DEFAULT_MODEL, 3)
+
+    assert plan["api_calls_will_be_made"] is False
+    assert set(plan["prompt_templates"]) == {"initial", "blind", "compiler_guided"}
+    assert plan["prompt_templates"]["blind"] == plan["prompt_templates"]["compiler_guided"]
+    assert experiment.BLIND_PROMPT_TEMPLATE == experiment.COMPILER_GUIDED_PROMPT_TEMPLATE
+
+
+def test_verifier_structured_diagnostics_reach_only_c_and_are_logged_exactly(
+    tmp_path: Path,
+) -> None:
+    raw_diagnostic = {
+        "severity": "error",
+        "data": "mocked Lean error",
+        "pos": {"line": 8, "column": 11},
+        "endPos": {"line": 8, "column": 16},
+        "fileName": "generated.lean",
+        "extensionField": {"kept": ["as", "returned"]},
+    }
+    diagnostic_line = json.dumps(raw_diagnostic)
+    prompts: list[str] = []
+
+    def complete_fn(prompt: str, **_kwargs) -> CompletionResult:
+        prompts.append(prompt)
+        return completion(INITIAL_CANDIDATE)
+
+    def verification_fn(
+        candidate: str, project: Path, scratch_name: str, **kwargs
+    ) -> VerificationResult:
+        with patch(
+            "verify.subprocess.run",
+            return_value=subprocess.CompletedProcess(
+                [], 1, stdout=diagnostic_line, stderr=""
+            ),
+        ):
+            return verifier.check_lean_file_detailed(
+                candidate, project, scratch_name, **kwargs
+            )
+
+    manifest = read_manifest(
+        run_in(
+            tmp_path,
+            complete_fn,
+            verification_fn,
+            max_repair=1,
+        )
+    )
+
+    assert len(prompts) == 3
+    assert "mocked Lean error" not in prompts[1]
+    assert "extensionField" not in prompts[1]
+    c_attempt = manifest["conditions"]["C"]["attempts"][0]
+    supplied_payload = c_attempt["compiler_diagnostics_payload"]
+    assert c_attempt["compiler_diagnostics_payload_kind"] == "raw_structured_json"
+    assert supplied_payload in prompts[2]
+    parsed_payload = json.loads(supplied_payload)
+    assert parsed_payload["diagnostics"] == [raw_diagnostic]
+    assert c_attempt["compiler_diagnostics_supplied_text"] == supplied_payload
+    assert manifest["initial_verification"]["diagnostics"] == [raw_diagnostic]
+    assert manifest["initial_verification"]["diagnostic_state"] == "available"
+    initial_verification = manifest["initial_verification"]
+    initial_source_bytes = initial_verification["verification_source_text"].encode("utf-8")
+    assert initial_verification["verification_source_sha256"] == hashlib.sha256(
+        initial_source_bytes
+    ).hexdigest()
+    assert initial_verification["candidate_sha256"] == manifest["initial_candidate"][
+        "candidate_sha256"
+    ]
+    assert initial_verification["candidate_sha256"] != initial_verification[
+        "verification_source_sha256"
+    ]
+    repair_verification = c_attempt["verification"]
+    assert repair_verification["verification_source_sha256"] == hashlib.sha256(
+        repair_verification["verification_source_text"].encode("utf-8")
+    ).hexdigest()
+    assert c_attempt["verification_source_sha256"] == repair_verification[
+        "verification_source_sha256"
+    ]
+
+
+def test_malformed_initial_diagnostics_are_not_supplied_as_compiler_feedback(
+    tmp_path: Path,
+) -> None:
+    verification = VerificationResult(
+        success=False,
+        errors=["Lean emitted malformed diagnostics."],
+        failure_kind="compiler_error",
+        diagnostics=[],
+        malformed_diagnostics=["not-json"],
+        diagnostic_state="malformed",
+    )
+    completion_fn = Mock(return_value=completion(INITIAL_CANDIDATE))
+    verification_fn = Mock(return_value=verification)
+
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
+
+    assert manifest["initial_verification"]["diagnostic_state"] == "malformed"
+    assert manifest["initial_verification"]["malformed_diagnostics"] == ["not-json"]
+    for condition in ("B", "C"):
+        assert manifest["conditions"][condition]["status"] == (
+            "malformed_compiler_diagnostics"
+        )
+    assert completion_fn.call_count == 1
+    assert verification_fn.call_count == 1
+
+
+def test_invalid_repair_budget_fails_before_creating_output(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="from 0 through 3"):
+        run_in(
+            tmp_path,
+            Mock(),
+            Mock(),
+            max_repair=4,
+            experiment_id="invalid-budget",
+        )
+
+    assert not (tmp_path / "runs").exists()

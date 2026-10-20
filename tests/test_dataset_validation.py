@@ -14,8 +14,10 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 from dataset_validation import (
     main as dataset_validation_main,
     validate_dataset,
+    validate_curation_draft,
     validate_research_dataset,
 )
+from build_research_dataset_draft import _eligible_counts
 
 
 class DatasetValidationTests(unittest.TestCase):
@@ -40,6 +42,89 @@ class DatasetValidationTests(unittest.TestCase):
                 "Written and reviewed by the dataset authors."
             ),
         }
+
+    @staticmethod
+    def curation_record(problem_id: str, family: str, split: str) -> dict:
+        pending_review = {
+            "status": "pending",
+            "reviewer_provenance": None,
+            "review_notes": None,
+        }
+        return {
+            **DatasetValidationTests.legacy_problem(problem_id),
+            "curation": {
+                "source_url": None,
+                "source_citation": None,
+                "source_status": "pending",
+                "source_license": None,
+                "source_license_verification_status": "pending",
+                "problem_family": family,
+                "family_review_status": "needs_review",
+                "family_review_note": None,
+                "split": split,
+                "split_status": "pending",
+                "semantic_fidelity": {
+                    "label": None,
+                    "review_status": "pending",
+                    "reviewer_provenance": None,
+                    "evidence": None,
+                },
+                "theorem_statement_review": dict(pending_review),
+                "assumption_mismatch_review": dict(pending_review),
+                "self_containment_review": dict(pending_review),
+                "duplicate_review": {
+                    "candidate_group": None,
+                    "related_ids": [],
+                    "status": "pending",
+                    "notes": None,
+                },
+            },
+        }
+
+    @staticmethod
+    def complete_curation_review(record: dict) -> None:
+        curation = record["curation"]
+        curation.update(
+            {
+                "source_status": "verified",
+                "source_url": "https://example.org/source",
+                "source_license_verification_status": "verified",
+                "source_license": "CC0",
+                "family_review_status": "verified",
+                "family_review_note": "Reviewed theorem-family grouping.",
+                "family_reviewer_provenance": "reviewer:test",
+                "split_status": "verified",
+                "split_review_note": "Reviewed family-aware split assignment.",
+                "split_reviewer_provenance": "reviewer:test",
+            }
+        )
+        curation["semantic_fidelity"].update(
+            {
+                "review_status": "verified",
+                "label": "uncertain",
+                "reviewer_provenance": "reviewer:test",
+                "evidence": "The reviewed pair remains semantically uncertain.",
+            }
+        )
+        for review_field in (
+            "theorem_statement_review",
+            "assumption_mismatch_review",
+            "self_containment_review",
+        ):
+            curation[review_field].update(
+                {
+                    "status": "verified",
+                    "reviewer_provenance": "reviewer:test",
+                    "review_notes": "Reviewed for the regression test.",
+                }
+            )
+        curation["duplicate_review"].update(
+            {
+                "status": "verified",
+                "reviewer_provenance": "reviewer:test",
+                "notes": "Reviewed for the regression test.",
+            }
+        )
 
     @staticmethod
     def research_manifest(
@@ -76,6 +161,353 @@ class DatasetValidationTests(unittest.TestCase):
         self.assertTrue(report.is_valid)
         self.assertEqual(report.problems[0].status, "documented")
         self.assertEqual(report.problems[0].split, "development")
+
+    def test_pending_curation_draft_metadata_is_valid_but_not_complete(self) -> None:
+        record = self.curation_record("draft_001", "family_one", "development")
+
+        report = validate_curation_draft([record])
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.duplicate_candidate_groups, ())
+        self.assertEqual(record["curation"]["semantic_fidelity"]["label"], None)
+        self.assertEqual(record["curation"]["source_license"], None)
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_builder_eligibility_counts_match_validator_for_eligible_record(self) -> None:
+        records = [
+            self.curation_record("eligible_dev", "family_dev", "development"),
+            self.curation_record("eligible_test", "family_test", "test"),
+        ]
+        records[0]["nl_statement"] = "A distinct development theorem."
+        records[1]["nl_statement"] = "A distinct test theorem."
+        for record in records:
+            self.complete_curation_review(record)
+
+        report = validate_curation_draft(records)
+        counts, split_counts = _eligible_counts(records)
+        expected_split_counts = {
+            split: sum(
+                record["id"] in report.eligible_problem_ids
+                and record["curation"]["split"] == split
+                for record in records
+            )
+            for split in ("development", "test")
+        }
+
+        self.assertEqual(counts, len(report.eligible_problem_ids))
+        self.assertEqual(split_counts, expected_split_counts)
+        self.assertEqual(counts, 2)
+        self.assertEqual(split_counts, {"development": 1, "test": 1})
+
+    def test_builder_eligibility_counts_exclude_unresolved_duplicates_and_incomplete_evidence(
+        self,
+    ) -> None:
+        duplicate_a = self.curation_record(
+            "unresolved_a", "duplicate_family", "test"
+        )
+        duplicate_b = self.curation_record(
+            "unresolved_b", "duplicate_family", "test"
+        )
+        incomplete = self.curation_record(
+            "incomplete", "incomplete_family", "development"
+        )
+        duplicate_b["nl_statement"] = duplicate_a["nl_statement"]
+        incomplete["nl_statement"] = "A separate theorem with incomplete review."
+        for record in (duplicate_a, duplicate_b, incomplete):
+            self.complete_curation_review(record)
+        for record, related_id in (
+            (duplicate_a, "unresolved_b"),
+            (duplicate_b, "unresolved_a"),
+        ):
+            record["curation"]["duplicate_review"].update(
+                {
+                    "status": "needs_review",
+                    "reviewer_provenance": None,
+                    "candidate_group": "unresolved_english",
+                    "related_ids": [related_id],
+                }
+            )
+        del incomplete["curation"]["split_reviewer_provenance"]
+
+        report = validate_curation_draft([duplicate_a, duplicate_b, incomplete])
+        counts, split_counts = _eligible_counts(
+            [duplicate_a, duplicate_b, incomplete]
+        )
+
+        self.assertFalse(report.is_valid)
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertEqual(counts, len(report.eligible_problem_ids))
+        self.assertEqual(split_counts, {"development": 0, "test": 0})
+
+    def test_completed_reviews_with_documented_evidence_are_eligible(self) -> None:
+        record = self.curation_record("reviewed", "family_one", "development")
+        self.complete_curation_review(record)
+
+        report = validate_curation_draft([record])
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.eligible_problem_ids, ("reviewed",))
+
+    def test_curation_validator_detects_exact_english_duplicate_candidates(self) -> None:
+        first = self.curation_record("duplicate_001", "same_family", "development")
+        second = self.curation_record("duplicate_002", "same_family", "development")
+        second["expected_lean_statement"] = "theorem renamed : True"
+        for record, related_id in (
+            (first, "duplicate_002"),
+            (second, "duplicate_001"),
+        ):
+            record["curation"]["duplicate_review"]["status"] = "needs_review"
+            record["curation"]["duplicate_review"].update(
+                {
+                    "candidate_group": "same_english",
+                    "related_ids": [related_id],
+                }
+            )
+
+        report = validate_curation_draft([first, second])
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(
+            report.duplicate_candidate_groups,
+            (("duplicate_001", "duplicate_002"),),
+        )
+
+    def test_curation_validator_rejects_family_split_leakage(self) -> None:
+        development = self.curation_record(
+            "family_dev", "shared_family", "development"
+        )
+        test = self.curation_record("family_test", "shared_family", "test")
+
+        report = validate_curation_draft([development, test])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("family 'shared_family' is split across" in error for error in report.errors)
+        )
+
+    def test_curation_validator_rejects_invalid_status_and_fidelity_label(self) -> None:
+        record = self.curation_record("invalid_review", "family_one", "development")
+        record["curation"]["source_status"] = "guessed"
+        record["curation"]["semantic_fidelity"]["label"] = "probably faithful"
+        record["curation"]["self_containment_review"]["status"] = "done"
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(any("source_status must be one of" in error for error in report.errors))
+        self.assertTrue(any("semantic_fidelity.label is invalid" in error for error in report.errors))
+        self.assertTrue(
+            any("self_containment_review.status is invalid" in error
+                for error in report.errors)
+        )
+
+    def test_curation_validator_rejects_unsupported_split_label(self) -> None:
+        record = self.curation_record("bad_split", "family_one", "development")
+        record["curation"]["split"] = "held_out"
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("curation.split must be development or test" in error
+                for error in report.errors)
+        )
+
+    def test_verified_fidelity_requires_label_and_reviewer_provenance(self) -> None:
+        record = self.curation_record("unsubstantiated", "family_one", "development")
+        record["curation"]["semantic_fidelity"].update(
+            {"review_status": "verified", "label": "faithful"}
+        )
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("requires reviewer provenance" in error for error in report.errors)
+        )
+
+    def test_pending_fidelity_rejects_non_null_label(self) -> None:
+        record = self.curation_record("pending_with_label", "family_one", "development")
+        record["curation"]["semantic_fidelity"]["label"] = "uncertain"
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("pending semantic fidelity must have a null label" in error
+                for error in report.errors)
+        )
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_verified_source_and_license_require_evidence_values(self) -> None:
+        record = self.curation_record("no_evidence", "family_one", "development")
+        record["curation"].update(
+            {
+                "source_status": "verified",
+                "source_license_verification_status": "verified",
+            }
+        )
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("verified source status requires a source URL or citation" in error
+                for error in report.errors)
+        )
+        self.assertTrue(
+            any("verified license status requires source_license" in error
+                for error in report.errors)
+        )
+
+    def test_curation_validator_requires_explicit_nullable_metadata_fields(self) -> None:
+        record = self.curation_record("missing_metadata", "family_one", "development")
+        del record["curation"]["source_url"]
+        del record["curation"]["semantic_fidelity"]["reviewer_provenance"]
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("missing required curation field 'source_url'" in error
+                for error in report.errors)
+        )
+        self.assertTrue(
+            any("missing curation.semantic_fidelity.reviewer_provenance" in error
+                for error in report.errors)
+        )
+
+    def test_curation_cli_uses_only_local_json_validation(self) -> None:
+        record = self.curation_record("cli_draft", "family_one", "development")
+        with TemporaryDirectory() as directory:
+            dataset_path = Path(directory) / "draft.json"
+            dataset_path.write_text(json.dumps([record]), encoding="utf-8")
+            stdout = StringIO()
+            stderr = StringIO()
+
+            with redirect_stdout(stdout), redirect_stderr(stderr):
+                exit_code = dataset_validation_main(
+                    [str(dataset_path), "--validate-curation-draft"]
+                )
+
+        self.assertEqual(exit_code, 0, stderr.getvalue())
+        self.assertIn("Records: 1; duplicate candidate groups: 0", stdout.getvalue())
+
+    def test_verified_duplicate_group_counts_at_most_one_eligible_record(self) -> None:
+        records = [
+            self.curation_record("duplicate_b", "shared", "development"),
+            self.curation_record("duplicate_a", "shared", "development"),
+        ]
+        for record, related_id in (
+            (records[0], "duplicate_a"),
+            (records[1], "duplicate_b"),
+        ):
+            self.complete_curation_review(record)
+            record["curation"]["duplicate_review"].update(
+                {
+                    "candidate_group": "same_english",
+                    "related_ids": [related_id],
+                }
+            )
+
+        report = validate_curation_draft(records)
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.eligible_problem_ids, ("duplicate_a",))
+
+    def test_unresolved_exact_duplicate_group_has_no_eligible_member(self) -> None:
+        records = [
+            self.curation_record("unresolved_a", "shared", "development"),
+            self.curation_record("unresolved_b", "shared", "development"),
+        ]
+        for record, related_id in (
+            (records[0], "unresolved_b"),
+            (records[1], "unresolved_a"),
+        ):
+            self.complete_curation_review(record)
+            record["curation"]["duplicate_review"].update(
+                {
+                    "status": "needs_review",
+                    "reviewer_provenance": None,
+                    "candidate_group": "unresolved_pair",
+                    "related_ids": [related_id],
+                }
+            )
+
+        report = validate_curation_draft(records)
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_exact_duplicates_require_consistent_group_metadata(self) -> None:
+        first = self.curation_record("group_a", "shared", "development")
+        second = self.curation_record("group_b", "shared", "development")
+        first["curation"]["duplicate_review"].update(
+            {"candidate_group": "group_one", "related_ids": ["group_b"]}
+        )
+        second["curation"]["duplicate_review"].update(
+            {"candidate_group": "group_two", "related_ids": ["group_a"]}
+        )
+
+        report = validate_curation_draft([first, second])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("must share one duplicate_review.candidate_group" in error
+                for error in report.errors)
+        )
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_exact_duplicates_without_group_metadata_are_invalid(self) -> None:
+        first = self.curation_record("no_group_a", "shared", "development")
+        second = self.curation_record("no_group_b", "shared", "development")
+
+        report = validate_curation_draft([first, second])
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(
+            any("requires a non-empty duplicate_review.candidate_group" in error
+                for error in report.errors)
+        )
+        self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_statuses_alone_do_not_make_record_eligible(self) -> None:
+        record = self.curation_record("status_only", "family_one", "development")
+        curation = record["curation"]
+        curation.update(
+            {
+                "source_status": "verified",
+                "source_url": "https://example.org/source",
+                "source_license_verification_status": "verified",
+                "source_license": "CC0",
+                "family_review_status": "verified",
+                "split_status": "verified",
+            }
+        )
+        curation["semantic_fidelity"].update(
+            {"review_status": "verified", "label": "faithful"}
+        )
+        for field in (
+            "theorem_statement_review",
+            "assumption_mismatch_review",
+            "self_containment_review",
+        ):
+            curation[field]["status"] = "verified"
+        curation["duplicate_review"]["status"] = "verified"
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(
+            any("family_reviewer_provenance" in error for error in report.errors)
+        )
+        self.assertTrue(
+            any("split_reviewer_provenance" in error for error in report.errors)
+        )
+        self.assertTrue(
+            any("requires evidence" in error for error in report.errors)
+        )
 
     def test_source_url_can_substitute_for_source_citation(self) -> None:
         problem = self.documented_problem()

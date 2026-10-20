@@ -90,6 +90,31 @@ arrays without an embedded version, the validator cannot independently compare
 the manifest's version with an in-file version. It verifies the expected IDs
 and exact dataset hash. The validator does not create or freeze a manifest.
 
+## Versioned research-curation draft
+
+`research_dataset_draft_v0.1.0.json` is a separate draft copied from the
+existing seed records. It preserves the original top-level fields consumed by
+the pipeline and adds a nested `curation` object. Its proposed family/split
+assignments are pending review, not frozen assignments. Unknown sources and
+licenses remain null with `pending` statuses; no fidelity or theorem-review
+labels are inferred. The accompanying ledger records per-record review leads
+and recommended actions. The generated manifest is explicitly marked `draft`
+and records zero currently eligible research items until required reviews are
+completed.
+
+Validate its metadata, allowed statuses/labels, exact-English duplicate
+candidates, and family-to-split consistency without changing legacy validation:
+
+```text
+python src/dataset_validation.py --validate-curation-draft \
+  data/research_dataset_draft_v0.1.0.json
+```
+
+Use `data/curation_guide.md` to complete reviews. Passing structural draft
+validation does not mean the draft is reviewed, frozen, or ready for
+experiments. The versioned draft builder refuses to overwrite any existing
+draft, ledger, or manifest output.
+
 ## Frozen-run completeness analysis
 
 The metrics entry point remains exploratory by default. To gate a final

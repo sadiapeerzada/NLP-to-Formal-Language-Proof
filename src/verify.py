@@ -1,6 +1,7 @@
 """Run generated Lean candidates through a strict, auditable verifier."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -45,6 +46,14 @@ class VerificationResult:
     elapsed_seconds: float = 0.0
     diagnostics_parsed: int = 0
     axiom_dependencies: list[str] | None = None
+    failure_kind: str | None = None
+    diagnostic_text: str | None = None
+    candidate_sha256: str | None = None
+    verification_source_text: str | None = None
+    verification_source_sha256: str | None = None
+    diagnostics: list[dict[str, object]] | None = None
+    malformed_diagnostics: list[str] = field(default_factory=list)
+    diagnostic_state: str = "unavailable"
 
     def to_record(self) -> dict[str, object]:
         return {
@@ -54,6 +63,14 @@ class VerificationResult:
             "elapsed_seconds": round(self.elapsed_seconds, 3),
             "diagnostics_parsed": self.diagnostics_parsed,
             "axiom_dependencies": self.axiom_dependencies,
+            "failure_kind": self.failure_kind,
+            "diagnostic_text": self.diagnostic_text,
+            "candidate_sha256": self.candidate_sha256,
+            "verification_source_text": self.verification_source_text,
+            "verification_source_sha256": self.verification_source_sha256,
+            "diagnostics": self.diagnostics,
+            "malformed_diagnostics": self.malformed_diagnostics,
+            "diagnostic_state": self.diagnostic_state,
         }
 
 
@@ -202,6 +219,7 @@ def check_lean_file_detailed(
     When ``expected_statement`` is supplied, Lean must also establish that
     the named final theorem has the same elaborated type as Stage A.
     """
+    candidate_sha256 = hashlib.sha256(lean_code.encode("utf-8")).hexdigest()
     prohibited = _find_prohibited_source(lean_code, allow_sorry, policy)
     if prohibited:
         return VerificationResult(
@@ -210,6 +228,8 @@ def check_lean_file_detailed(
                 f"Candidate rejected before compilation: prohibited source token "
                 f"or declaration '{prohibited}'."
             ],
+            failure_kind="proof_rejected",
+            candidate_sha256=candidate_sha256,
         )
 
     theorem_name = _theorem_name(lean_code)
@@ -217,6 +237,8 @@ def check_lean_file_detailed(
         return VerificationResult(
             False,
             ["Final proof must declare a named theorem for axiom inspection."],
+            failure_kind="proof_rejected",
+            candidate_sha256=candidate_sha256,
         )
 
     if expected_statement is not None:
@@ -228,6 +250,8 @@ def check_lean_file_detailed(
                     "Stage A statement must declare exactly one named theorem "
                     "for final statement comparison."
                 ],
+                failure_kind="input_error",
+                candidate_sha256=candidate_sha256,
             )
         theorem_name = expected_names[0]
         if _theorem_names(lean_code).count(theorem_name) != 1:
@@ -237,6 +261,8 @@ def check_lean_file_detailed(
                     "Final proof must declare the Stage A theorem "
                     f"'{theorem_name}' exactly once."
                 ],
+                failure_kind="proof_rejected",
+                candidate_sha256=candidate_sha256,
             )
         source, theorem_name = _verification_source(
             lean_code,
@@ -252,12 +278,24 @@ def check_lean_file_detailed(
             source = f"{source.rstrip()}\n\n#print axioms {theorem_name}\n"
 
     if not _safe_filename_component(scratch_name):
-        return VerificationResult(False, ["Scratch name must not contain a path separator."])
+        return VerificationResult(
+            False,
+            ["Scratch name must not contain a path separator."],
+            failure_kind="input_error",
+            candidate_sha256=candidate_sha256,
+        )
     lean_project_dir = Path(lean_project_dir).resolve()
     scratch_dir = lean_project_dir / "generated" / "_scratch"
     scratch_dir.mkdir(parents=True, exist_ok=True)
     file_path = scratch_dir / f"{scratch_name}.lean"
-    file_path.write_text(source)
+    source_bytes = source.encode("utf-8")
+    source_sha256 = hashlib.sha256(source_bytes).hexdigest()
+    file_path.write_bytes(source_bytes)
+    source_provenance = {
+        "candidate_sha256": candidate_sha256,
+        "verification_source_text": source_bytes.decode("utf-8"),
+        "verification_source_sha256": source_sha256,
+    }
 
     started = time.monotonic()
     try:
@@ -273,16 +311,28 @@ def check_lean_file_detailed(
             False,
             [f"Compilation timed out after {policy.timeout_seconds}s."],
             elapsed_seconds=time.monotonic() - started,
+            failure_kind="timeout",
+            **source_provenance,
         )
     except OSError as error:
         return VerificationResult(
             False,
             [f"Could not invoke Lean via lake: {error}"],
             elapsed_seconds=time.monotonic() - started,
+            failure_kind="infrastructure_error",
+            **source_provenance,
         )
 
     elapsed = time.monotonic() - started
     diagnostics, malformed = _diagnostics(process.stdout or "")
+    diagnostic_state = (
+        "malformed" if malformed else "available" if diagnostics else "absent"
+    )
+    diagnostic_provenance = {
+        "diagnostics": diagnostics,
+        "malformed_diagnostics": malformed,
+        "diagnostic_state": diagnostic_state,
+    }
     errors = [
         _format_diagnostic(diagnostic)
         for diagnostic in diagnostics
@@ -290,6 +340,7 @@ def check_lean_file_detailed(
     ]
 
     if process.returncode != 0:
+        has_compiler_errors = bool(errors)
         if not errors:
             errors.append(
                 "Lean exited nonzero without a parseable error diagnostic. "
@@ -301,6 +352,10 @@ def check_lean_file_detailed(
             exit_code=process.returncode,
             elapsed_seconds=elapsed,
             diagnostics_parsed=len(diagnostics),
+            failure_kind="compiler_error" if has_compiler_errors else "infrastructure_error",
+            diagnostic_text="\n".join(errors) if has_compiler_errors else None,
+            **source_provenance,
+            **diagnostic_provenance,
         )
 
     if malformed:
@@ -310,6 +365,9 @@ def check_lean_file_detailed(
             exit_code=process.returncode,
             elapsed_seconds=elapsed,
             diagnostics_parsed=len(diagnostics),
+            failure_kind="verifier_error",
+            **source_provenance,
+            **diagnostic_provenance,
         )
 
     stderr_error = _stderr_error(process.stderr or "")
@@ -320,6 +378,9 @@ def check_lean_file_detailed(
             exit_code=process.returncode,
             elapsed_seconds=elapsed,
             diagnostics_parsed=len(diagnostics),
+            failure_kind="infrastructure_error",
+            **source_provenance,
+            **diagnostic_provenance,
         )
 
     if errors:
@@ -329,6 +390,10 @@ def check_lean_file_detailed(
             exit_code=process.returncode,
             elapsed_seconds=elapsed,
             diagnostics_parsed=len(diagnostics),
+            failure_kind="compiler_error",
+            diagnostic_text="\n".join(errors),
+            **source_provenance,
+            **diagnostic_provenance,
         )
 
     axiom_dependencies = None
@@ -341,6 +406,9 @@ def check_lean_file_detailed(
                 exit_code=process.returncode,
                 elapsed_seconds=elapsed,
                 diagnostics_parsed=len(diagnostics),
+                failure_kind="verifier_error",
+                **source_provenance,
+                **diagnostic_provenance,
             )
         unapproved = sorted(set(axiom_dependencies) - set(policy.allowed_axioms))
         if unapproved:
@@ -351,6 +419,9 @@ def check_lean_file_detailed(
                 elapsed_seconds=elapsed,
                 diagnostics_parsed=len(diagnostics),
                 axiom_dependencies=axiom_dependencies,
+                failure_kind="proof_rejected",
+                **source_provenance,
+                **diagnostic_provenance,
             )
 
     return VerificationResult(
@@ -359,6 +430,8 @@ def check_lean_file_detailed(
         elapsed_seconds=elapsed,
         diagnostics_parsed=len(diagnostics),
         axiom_dependencies=axiom_dependencies,
+        **source_provenance,
+        **diagnostic_provenance,
     )
 
 

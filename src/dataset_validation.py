@@ -10,6 +10,7 @@ import hashlib
 import json
 import re
 import sys
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -29,6 +30,12 @@ PROVENANCE_FIELDS = (
     "source_url",
     "license",
     "reference_lean_statement_provenance",
+)
+CURATION_STATUSES = frozenset(
+    {"pending", "verified", "rejected", "needs_review"}
+)
+SEMANTIC_FIDELITY_LABELS = frozenset(
+    {"faithful", "not faithful", "uncertain"}
 )
 
 
@@ -58,6 +65,17 @@ class DatasetValidationReport:
         return not self.errors
 
 
+@dataclass(frozen=True)
+class CurationDraftValidationReport:
+    errors: tuple[str, ...]
+    duplicate_candidate_groups: tuple[tuple[str, ...], ...]
+    eligible_problem_ids: tuple[str, ...] = ()
+
+    @property
+    def is_valid(self) -> bool:
+        return not self.errors
+
+
 def _valid_text(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
@@ -78,6 +96,428 @@ def _valid_source_url(value: object) -> bool:
         )
     except ValueError:
         return False
+
+
+def _duplicate_candidate_key(record: dict[str, Any]) -> str | None:
+    statement = record.get("nl_statement")
+    if not _valid_text(statement):
+        return None
+    normalized = unicodedata.normalize("NFKC", statement).casefold()
+    normalized = re.sub(r"[^\w]+", " ", normalized, flags=re.UNICODE)
+    return " ".join(normalized.split())
+
+
+def validate_curation_draft(value: object) -> CurationDraftValidationReport:
+    """Validate research curation metadata without changing legacy validation."""
+    base = validate_dataset(value)
+    errors = list(base.errors)
+    if not isinstance(value, list):
+        return CurationDraftValidationReport(tuple(errors), ())
+
+    family_splits: dict[str, tuple[str, str]] = {}
+    family_problem_ids: dict[str, list[str]] = {}
+    split_inconsistent_families: set[str] = set()
+    records_by_duplicate_key: dict[str, list[dict[str, Any]]] = {}
+    eligible_by_id: dict[str, bool] = {}
+    status_fields = (
+        "source_status",
+        "source_license_verification_status",
+        "family_review_status",
+        "split_status",
+    )
+
+    for index, record in enumerate(value, start=1):
+        if not isinstance(record, dict):
+            continue
+        problem_id = record.get("id")
+        normalized_id = (
+            problem_id.strip() if isinstance(problem_id, str) else ""
+        )
+        label = (
+            f"problem {problem_id!r}"
+            if isinstance(problem_id, str) and problem_id
+            else f"record {index}"
+        )
+        record_error_count = len(errors)
+        key = _duplicate_candidate_key(record)
+        if key:
+            records_by_duplicate_key.setdefault(key, []).append(record)
+
+        curation = record.get("curation")
+        if not isinstance(curation, dict):
+            errors.append(f"{label}: missing required object 'curation'.")
+            if normalized_id:
+                eligible_by_id[normalized_id] = False
+            continue
+
+        required_curation_fields = (
+            "source_url",
+            "source_citation",
+            "source_status",
+            "source_license",
+            "source_license_verification_status",
+            "problem_family",
+            "family_review_status",
+            "family_review_note",
+            "split",
+            "split_status",
+            "semantic_fidelity",
+            "theorem_statement_review",
+            "assumption_mismatch_review",
+            "self_containment_review",
+            "duplicate_review",
+        )
+        for field in required_curation_fields:
+            if field not in curation:
+                errors.append(f"{label}: missing required curation field {field!r}.")
+
+        for field in status_fields:
+            status = curation.get(field)
+            if not isinstance(status, str) or status not in CURATION_STATUSES:
+                errors.append(
+                    f"{label}: curation.{field} must be one of "
+                    f"{', '.join(sorted(CURATION_STATUSES))}."
+                )
+
+        for field in ("source_url", "source_citation", "source_license"):
+            source_value = curation.get(field)
+            if source_value is not None and not _valid_text(source_value):
+                errors.append(
+                    f"{label}: curation.{field} must be non-empty text or null."
+                )
+        source_url = curation.get("source_url")
+        if source_url is not None and not _valid_source_url(source_url):
+            errors.append(
+                f"{label}: curation.source_url must be an absolute HTTP(S) URL."
+            )
+        if (
+            curation.get("source_status") == "verified"
+            and not (curation.get("source_url") or curation.get("source_citation"))
+        ):
+            errors.append(
+                f"{label}: verified source status requires a source URL or citation."
+            )
+        if (
+            curation.get("source_license_verification_status") == "verified"
+            and not _valid_text(curation.get("source_license"))
+        ):
+            errors.append(
+                f"{label}: verified license status requires source_license."
+            )
+        family_review_status = curation.get("family_review_status")
+        if family_review_status == "verified":
+            if not _valid_text(curation.get("family_review_note")):
+                errors.append(
+                    f"{label}: verified family review requires family_review_note."
+                )
+            if not _valid_text(curation.get("family_reviewer_provenance")):
+                errors.append(
+                    f"{label}: verified family review requires "
+                    "family_reviewer_provenance."
+                )
+        split_review_status = curation.get("split_status")
+        if split_review_status == "verified":
+            if not _valid_text(curation.get("split_review_note")):
+                errors.append(
+                    f"{label}: verified split review requires split_review_note."
+                )
+            if not _valid_text(curation.get("split_reviewer_provenance")):
+                errors.append(
+                    f"{label}: verified split review requires "
+                    "split_reviewer_provenance."
+                )
+
+        family = curation.get("problem_family")
+        split = curation.get("split")
+        if not _valid_text(family):
+            errors.append(f"{label}: curation.problem_family must be non-empty text.")
+        if not isinstance(split, str) or split not in ALLOWED_SPLITS:
+            errors.append(f"{label}: curation.split must be development or test.")
+        elif _valid_text(family):
+            if normalized_id:
+                family_problem_ids.setdefault(family, []).append(normalized_id)
+            previous = family_splits.get(family)
+            if previous is not None and previous[0] != split:
+                split_inconsistent_families.add(family)
+                errors.append(
+                    f"{label}: family {family!r} is split across "
+                    f"{previous[0]!r} and {split!r}."
+                )
+            else:
+                family_splits[family] = (split, label)
+
+        fidelity = curation.get("semantic_fidelity")
+        if not isinstance(fidelity, dict):
+            errors.append(f"{label}: missing object 'curation.semantic_fidelity'.")
+        else:
+            fidelity_status = fidelity.get("review_status")
+            fidelity_label = fidelity.get("label")
+            for field in ("label", "review_status", "reviewer_provenance", "evidence"):
+                if field not in fidelity:
+                    errors.append(
+                        f"{label}: missing curation.semantic_fidelity.{field}."
+                    )
+            if (
+                not isinstance(fidelity_status, str)
+                or fidelity_status not in CURATION_STATUSES
+            ):
+                errors.append(
+                    f"{label}: semantic_fidelity.review_status is invalid."
+                )
+            if (
+                fidelity_label is not None
+                and (
+                    not isinstance(fidelity_label, str)
+                    or fidelity_label not in SEMANTIC_FIDELITY_LABELS
+                )
+            ):
+                errors.append(f"{label}: semantic_fidelity.label is invalid.")
+            if fidelity_status == "pending" and fidelity_label is not None:
+                errors.append(
+                    f"{label}: pending semantic fidelity must have a null label."
+                )
+            if fidelity_status == "verified":
+                if (
+                    not isinstance(fidelity_label, str)
+                    or fidelity_label not in SEMANTIC_FIDELITY_LABELS
+                ):
+                    errors.append(
+                        f"{label}: verified semantic fidelity requires an allowed label."
+                    )
+                if not _valid_text(fidelity.get("reviewer_provenance")):
+                    errors.append(
+                        f"{label}: verified semantic fidelity requires reviewer provenance."
+                    )
+                if not _valid_text(fidelity.get("evidence")):
+                    errors.append(
+                        f"{label}: verified semantic fidelity requires evidence."
+                    )
+
+        for review_field in (
+            "theorem_statement_review",
+            "assumption_mismatch_review",
+            "self_containment_review",
+        ):
+            review = curation.get(review_field)
+            if not isinstance(review, dict):
+                errors.append(f"{label}: missing object 'curation.{review_field}'.")
+                continue
+            status = review.get("status")
+            if not isinstance(status, str) or status not in CURATION_STATUSES:
+                errors.append(f"{label}: curation.{review_field}.status is invalid.")
+            for field in ("reviewer_provenance", "review_notes"):
+                if field not in review:
+                    errors.append(
+                        f"{label}: missing curation.{review_field}.{field}."
+                    )
+            if status == "verified" and not _valid_text(
+                review.get("reviewer_provenance")
+            ):
+                errors.append(
+                    f"{label}: verified {review_field} requires reviewer provenance."
+                )
+            if status == "verified" and not _valid_text(review.get("review_notes")):
+                errors.append(
+                    f"{label}: verified {review_field} requires review_notes evidence."
+                )
+
+        duplicate_review = curation.get("duplicate_review")
+        if not isinstance(duplicate_review, dict):
+            errors.append(f"{label}: missing object 'curation.duplicate_review'.")
+        elif (
+            not isinstance(duplicate_review.get("status"), str)
+            or duplicate_review.get("status") not in CURATION_STATUSES
+        ):
+            errors.append(f"{label}: curation.duplicate_review.status is invalid.")
+        else:
+            if duplicate_review.get("status") == "verified":
+                if not _valid_text(duplicate_review.get("reviewer_provenance")):
+                    errors.append(
+                        f"{label}: verified duplicate review requires reviewer provenance."
+                    )
+                if not _valid_text(duplicate_review.get("notes")):
+                    errors.append(
+                        f"{label}: verified duplicate review requires notes evidence."
+                    )
+            if "candidate_group" not in duplicate_review:
+                errors.append(
+                    f"{label}: missing curation.duplicate_review.candidate_group."
+                )
+            elif duplicate_review["candidate_group"] is not None and not _valid_text(
+                duplicate_review["candidate_group"]
+            ):
+                errors.append(
+                    f"{label}: curation.duplicate_review.candidate_group "
+                    "must be non-empty text or null."
+                )
+            if not isinstance(duplicate_review.get("related_ids"), list) or not all(
+                _valid_text(related_id)
+                for related_id in duplicate_review.get("related_ids", [])
+            ):
+                errors.append(
+                    f"{label}: curation.duplicate_review.related_ids must be "
+                    "a list of non-empty IDs."
+                )
+            if "notes" not in duplicate_review:
+                errors.append(f"{label}: missing curation.duplicate_review.notes.")
+
+        eligible_by_id[normalized_id] = (
+            _curation_has_eligibility_evidence(curation)
+            and len(errors) == record_error_count
+            and not base.errors
+        )
+
+    duplicate_groups: list[tuple[str, ...]] = []
+    duplicate_group_keys: dict[str, str] = {}
+    duplicate_group_members: dict[str, set[str]] = {}
+    for duplicate_key, records in records_by_duplicate_key.items():
+        if len(records) < 2:
+            continue
+        ids = tuple(
+            record["id"].strip()
+            for record in records
+            if isinstance(record.get("id"), str)
+        )
+        duplicate_groups.append(ids)
+        expected_related_ids = set(ids)
+        group_ids: set[str] = set()
+        group_statuses: list[str] = []
+        metadata_valid = True
+        for record in records:
+            record_id = record.get("id")
+            curation = record.get("curation")
+            review = (
+                curation.get("duplicate_review")
+                if isinstance(curation, dict)
+                else None
+            )
+            if (
+                not isinstance(review, dict)
+                or review.get("status") not in {"needs_review", "verified", "rejected"}
+            ):
+                errors.append(
+                    f"problem {record.get('id')!r}: exact duplicate candidate "
+                    "requires duplicate_review status needs_review, verified, or rejected."
+                )
+            if not isinstance(review, dict):
+                if isinstance(record_id, str):
+                    eligible_by_id[record_id.strip()] = False
+                continue
+
+            candidate_group = review.get("candidate_group")
+            related_ids = review.get("related_ids")
+            if not _valid_text(candidate_group):
+                metadata_valid = False
+                errors.append(
+                    f"problem {record_id!r}: exact duplicate candidate requires "
+                    "a non-empty duplicate_review.candidate_group."
+                )
+            else:
+                group_ids.add(candidate_group.strip())
+            if not isinstance(related_ids, list) or {
+                related_id.strip()
+                for related_id in related_ids
+                if isinstance(related_id, str)
+            } != expected_related_ids - {
+                record_id.strip() if isinstance(record_id, str) else ""
+            }:
+                metadata_valid = False
+                errors.append(
+                    f"problem {record_id!r}: duplicate_review.related_ids must "
+                    "list every other exact-English duplicate candidate."
+                )
+            group_status = review.get("status")
+            if isinstance(group_status, str):
+                group_statuses.append(group_status)
+            if isinstance(record_id, str) and group_status != "verified":
+                eligible_by_id[record_id.strip()] = False
+        if len(group_ids) > 1:
+            metadata_valid = False
+            errors.append(
+                "exact duplicate candidates must share one duplicate_review.candidate_group."
+            )
+        if len(group_ids) == 1:
+            candidate_group = next(iter(group_ids))
+            previous_key = duplicate_group_keys.get(candidate_group)
+            if previous_key is not None and previous_key != duplicate_key:
+                metadata_valid = False
+                errors.append(
+                    f"duplicate_review.candidate_group {candidate_group!r} "
+                    "cannot identify multiple English statements."
+                )
+                for problem_id in duplicate_group_members[candidate_group]:
+                    eligible_by_id[problem_id] = False
+            duplicate_group_keys[candidate_group] = duplicate_key
+            duplicate_group_members.setdefault(candidate_group, set()).update(
+                expected_related_ids
+            )
+        if group_statuses and any(status != "verified" for status in group_statuses):
+            for record_id in ids:
+                eligible_by_id[record_id] = False
+        elif not metadata_valid:
+            for record_id in ids:
+                eligible_by_id[record_id] = False
+        elif len(ids) > 1:
+            for record_id in sorted(ids)[1:]:
+                eligible_by_id[record_id] = False
+
+    for family in split_inconsistent_families:
+        for problem_id in family_problem_ids.get(family, []):
+            eligible_by_id[problem_id] = False
+
+    return CurationDraftValidationReport(
+        errors=tuple(errors),
+        duplicate_candidate_groups=tuple(sorted(duplicate_groups)),
+        eligible_problem_ids=tuple(
+            sorted(problem_id for problem_id, is_eligible in eligible_by_id.items()
+                   if problem_id and is_eligible)
+        ),
+    )
+
+
+def _curation_has_eligibility_evidence(curation: dict[str, Any]) -> bool:
+    """Return whether recorded curation fields support counting this record."""
+    fidelity = curation.get("semantic_fidelity")
+    duplicate_review = curation.get("duplicate_review")
+    if not isinstance(fidelity, dict) or not isinstance(duplicate_review, dict):
+        return False
+    if not (
+        curation.get("source_status") == "verified"
+        and (
+            _valid_text(curation.get("source_url"))
+            or _valid_text(curation.get("source_citation"))
+        )
+        and curation.get("source_license_verification_status") == "verified"
+        and _valid_text(curation.get("source_license"))
+        and curation.get("family_review_status") == "verified"
+        and _valid_text(curation.get("problem_family"))
+        and _valid_text(curation.get("family_review_note"))
+        and _valid_text(curation.get("family_reviewer_provenance"))
+        and curation.get("split_status") == "verified"
+        and _valid_text(curation.get("split_review_note"))
+        and _valid_text(curation.get("split_reviewer_provenance"))
+        and fidelity.get("review_status") == "verified"
+        and fidelity.get("label") in SEMANTIC_FIDELITY_LABELS
+        and _valid_text(fidelity.get("reviewer_provenance"))
+        and _valid_text(fidelity.get("evidence"))
+        and duplicate_review.get("status") == "verified"
+        and _valid_text(duplicate_review.get("reviewer_provenance"))
+        and _valid_text(duplicate_review.get("notes"))
+        and isinstance(curation.get("split"), str)
+        and curation.get("split") in ALLOWED_SPLITS
+    ):
+        return False
+    return all(
+        isinstance(review, dict)
+        and review.get("status") == "verified"
+        and _valid_text(review.get("reviewer_provenance"))
+        and _valid_text(review.get("review_notes"))
+        for review in (
+            curation.get("theorem_statement_review"),
+            curation.get("assumption_mismatch_review"),
+            curation.get("self_containment_review"),
+        )
+    )
 
 
 def validate_dataset(
@@ -411,8 +851,33 @@ def main(argv: list[str] | None = None) -> int:
             "with dataset_version, expected_ids, and dataset_sha256"
         ),
     )
+    parser.add_argument(
+        "--validate-curation-draft",
+        action="store_true",
+        help="validate nested research-curation draft metadata",
+    )
     args = parser.parse_args(argv)
 
+    if args.validate_curation_draft and args.research_manifest:
+        parser.error("--validate-curation-draft cannot be combined with --research-manifest")
+
+    if args.validate_curation_draft:
+        try:
+            value = _load_json(args.dataset)
+        except ValueError as error:
+            print(error, file=sys.stderr)
+            return 1
+        report = validate_curation_draft(value)
+        record_count = len(value) if isinstance(value, list) else 0
+        print(
+            f"Records: {record_count}; duplicate candidate groups: "
+            f"{len(report.duplicate_candidate_groups)}; "
+            f"eligible records: {len(report.eligible_problem_ids)}; "
+            f"validation errors: {len(report.errors)}"
+        )
+        for error in report.errors:
+            print(f"error: {error}", file=sys.stderr)
+        return 0 if report.is_valid else 1
     if args.research_manifest:
         try:
             value, dataset_sha256 = _load_json_with_hash(args.dataset)

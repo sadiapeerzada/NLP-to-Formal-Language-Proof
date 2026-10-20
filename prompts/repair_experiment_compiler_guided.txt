@@ -1,0 +1,20 @@
+Repair the previous Lean proof for the fixed theorem below.
+
+Output only the complete Lean theorem in a Lean code block. Do not change the
+theorem statement, add axioms, or use sorry, sorryAx, or admit.
+
+Use this generic retry instruction: inspect your previous candidate, reconsider
+the proof, and make a focused correction. Do not assume any compiler feedback.
+
+Fixed theorem:
+```lean
+{theorem_statement}
+```
+
+Previous candidate:
+```lean
+{previous_candidate}
+```
+
+Feedback field:
+{feedback}
