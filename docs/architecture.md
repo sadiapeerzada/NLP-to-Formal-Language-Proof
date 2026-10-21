@@ -1,5 +1,12 @@
 # Architecture & required figures
 
+> The figures and pass@1 labels below are historical prototype artifacts.
+> `RUN_REPORT.md` states that proofs were manually authored and then checked
+> with Lean; they are not autonomous model pass@1 or paired A/B/C results.
+> The current paired-study figure is unavailable because the dataset has zero
+> eligible records and no paired API run manifests exist. See
+> [`paper/claims_to_evidence.md`](../paper/claims_to_evidence.md).
+
 ## Pipeline diagram
 Already in the main README as a Mermaid diagram. For a paper/slide deck,
 re-render it as a clean vector figure (draw.io or a quick matplotlib/graphviz

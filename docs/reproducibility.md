@@ -1,0 +1,128 @@
+# Reproducibility package
+
+## Current evidence state
+
+The paired analysis is currently blocked: the dataset manifest is draft,
+there are 31 candidates and zero eligible records, and there are no paired
+API experiment manifests. Thus the only valid current analysis output is a
+readiness audit; it does not contain study results. See
+[`paper/claims_to_evidence.md`](../paper/claims_to_evidence.md).
+
+## Repository and input identity
+
+Record the commit and exact working-tree state used for any reproduction:
+
+```sh
+git rev-parse HEAD
+git status --short
+shasum -a 256 configs/repair_experiment_protocol_v0.2.0.json
+shasum -a 256 prompts/repair_experiment_initial.txt prompts/repair_experiment_blind.txt prompts/repair_experiment_compiler_guided.txt
+shasum -a 256 data/research_dataset_draft_v0.1.0.json data/research_dataset_manifest_v0.1.0.json
+```
+
+The protocol references each prompt's SHA-256 and records the Lean/Mathlib
+configuration. Do not infer exact model weights from the configured
+`openai/gpt-oss-120b` provider alias; its revision and account generation
+access remain unverified. No API call is authorized by this guide.
+
+At the current protocol v0.2.0, the protocol SHA-256 is
+`ced0e392772700181188bddf3b59e67a5794980a28a0deaa4e03f5110e280861`.
+The initial prompt hash is
+`00ec7bc08fdf14274d021a308ebc27a51e17e46198b4dbc29002b958a1e04990`;
+blind and compiler-guided template file hashes are each
+`98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745`.
+The Lean toolchain is `leanprover/lean4:v4.32.0`; Mathlib is pinned to
+`81a5d257c8e410db227a6665ed08f64fea08e997` in the lockfile.
+
+## Python environment and tests
+
+Use the repository's declared Python dependencies and local environment:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pytest -q -k 'not test_real_lean'
+```
+
+The excluded tests are explicitly marked to run actual Lean integration. The
+full suite may include those integration checks; report commands and outcomes
+without treating a timeout or interruption as a passing suite.
+
+## Lean and Mathlib
+
+The pinned inputs are `lean_project/lean-toolchain` and
+`lean_project/lake-manifest.json`. From a machine with the required toolchain
+and dependencies installed:
+
+```sh
+cd lean_project
+lake --version
+lake build
+```
+
+To verify an individual theorem or candidate under that project environment,
+use the documented verifier (`src/verify.py`) or run the exact verification
+command stored with its evidence. Preserve the compiler output, command,
+return code, toolchain and theorem/source hashes. Lean acceptance is not a
+semantic-fidelity decision.
+
+## Dataset validation and inventory
+
+The present draft-only structural audit is:
+
+```sh
+.venv/bin/python src/dataset_validation.py \
+  data/research_dataset_draft_v0.1.0.json --validate-curation-draft
+```
+
+Regenerate the candidate-only composition and semantic-review tables and the
+manual trace illustrations included with the pre-results paper:
+
+```sh
+.venv/bin/python paper/scripts/generate_inventory_tables.py
+```
+
+These tables are sourced from versioned candidate records and legacy manual
+attempt logs. They are not A/B/C metrics. The current held-out split is not
+frozen. Once a legitimate freeze exists, validate exact bytes, ordered IDs,
+family separation, duplicate dispositions, source/legal evidence, theorem
+hashes, and review records using the frozen-curation validator before any
+test evaluation.
+
+## Readiness and paired analysis
+
+Generate a readiness audit in a new output directory without overwriting
+existing research artifacts:
+
+```sh
+.venv/bin/python eval/paired_analysis.py --audit-current \
+  --output-dir /tmp/nl2lean-analysis-readiness
+```
+
+After a dataset is frozen and the protocol/run prerequisites are met, generate
+study outputs into a new analysis directory:
+
+```sh
+.venv/bin/python eval/paired_analysis.py \
+  --test-dataset data/frozen/test.json \
+  --development-dataset data/frozen/development.json \
+  --freeze-manifest data/frozen/manifest.json \
+  --runs-dir data/experiments \
+  --output-dir data/analysis/<new-analysis-id>
+```
+
+The pipeline validates frozen inputs before producing tables or figures. It
+records input/output hashes, analysis script hash, protocol/configuration
+hashes, Wilson interval settings, bootstrap seed/resamples, McNemar tests, and
+Holm comparisons. Use a fresh output directory because outputs are
+append-only. Do not run prompt/model selection against the held-out test set.
+
+## Paper build
+
+`paper/main.tex` uses Springer LNCS (`llncs.cls`) and `splncs04.bst`. Obtain
+these files from the official [Springer LNCS proceedings author
+resources](https://www.springer.com/gp/computer-science/lncs/forthcoming-proceedings);
+they are not vendored. Then follow `paper/README.md`. Current results sections
+are explicitly unavailable and must be populated only from a validated
+analysis output, never by copying values from historical charts or manually
+authored proofs.

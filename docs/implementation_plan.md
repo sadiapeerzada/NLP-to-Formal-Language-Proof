@@ -1,5 +1,12 @@
 # Compiler-Guided Repair: Implementation Plan
 
+> **Historical audit snapshot.** The phase descriptions and worktree/test
+> observations below record an earlier planning pass and are not the current
+> completion status. For current dataset, protocol, analysis, and paper
+> readiness, see [`roadmap.md`](roadmap.md),
+> [`reproducibility.md`](reproducibility.md), and
+> [`paper/claims_to_evidence.md`](../paper/claims_to_evidence.md).
+
 **Research title:** Compiler-Guided Repair for Natural-Language-to-Lean
 Formalization
 

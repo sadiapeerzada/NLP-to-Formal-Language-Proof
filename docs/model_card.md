@@ -1,77 +1,60 @@
-# NL2Lean Pipeline Card
+# NL2Lean System Card
 
-## Paired repair study protocol
+## System status
 
-The paired A/B/C study is specified in protocol version `0.2.0` at
-[`configs/repair_experiment_protocol_v0.2.0.json`](../configs/repair_experiment_protocol_v0.2.0.json).
-Its requested primary model is the mutable Groq alias
-`openai/gpt-oss-120b`; account-specific generation access and an immutable
-revision are unverified. The protocol and run manifests identify exact prompt
-and Lean/Mathlib configuration bytes by SHA-256. API execution remains
-disabled, and the proposed model choice is not evidence of access or results.
+This repository contains a research prototype, not a released or validated
+model. It has an end-to-end natural-language-to-Lean pipeline and a separate
+paired repair runner. No completed paired A/B/C evaluation exists. The current
+dataset inventory has 31 candidates and zero eligible examples; no frozen
+test set or paired API run manifests exist.
 
-The general pipeline described below has separate model defaults and is not
-the paired study. Its completion path now requires a persisted cost guard
-before any Groq request; no pipeline API run is enabled by this card.
+## Model and provider configuration
 
-This isn't a fine-tuned model -- it's a prompting + verification pipeline on
-top of a Groq-hosted model (default `llama-3.3-70b-versatile`, see
-GROQ_MODEL). Documenting it like a model card anyway because
-reviewers will ask the same questions.
+The paired protocol v0.2.0 proposes the Groq alias
+`openai/gpt-oss-120b` for initial generation and all repairs. The alias is
+mutable; account-specific generation access and an immutable model revision
+are unverified. Protocol status remains
+`proposed_locked_for_review_not_preregistered`; API execution is disabled.
+The ordinary pipeline uses separate configurable strong/fast model aliases
+from `src/llm_client.py` and is not the paired experiment. A model string in a
+historical run manifest does not by itself prove that the provider was called.
 
-## Intended use
-Research prototype for studying LLM-assisted formalization and automated
-theorem proving on a curated set of undergraduate-level number theory and
-arithmetic problems. Not intended as a general-purpose autoformalization tool
-for research-level mathematics.
+## Intended use and limitations
 
-## Pipeline stages
-See README.md for the diagram. Four stages: formalize, sketch, synthesize,
-verify+repair. Prompts are versioned in `prompts/` -- report `prompt_version`
-alongside every result, since prompt changes materially affect pass@1.
+The intended research task is proof repair for undergraduate-level
+mathematical statements after a human-reviewed Lean theorem has been fixed.
+This research tool is not a substitute for mathematical or formal-methods
+review. A Lean-accepted proof establishes proof validity for the supplied Lean
+statement under the recorded environment; it does not establish that the
+statement faithfully formalizes the English problem.
 
-## Evaluation
-Schema-v2 `initial_synthesis_success` is the first Stage C call's verified
-outcome and is `null` when Stage A did not produce an elaborating statement.
-The reported initial-synthesis rate is conditional on Stage A having succeeded;
-it is the no-repair Stage C pass@1, not the rate after repair. A no-repair
-success uses exactly one Stage C model call and no Stage D calls.
-`success_within_repair_budget` is the verified outcome after the initial call
-and up to the configured number of Stage D calls. `total_synthesis_attempts`
-counts actual Stage C/Stage D calls, and `repair_attempts` counts actual Stage D
-calls, including an empty response. Empty assistant content terminates the
-sequence immediately rather than prompting the model again with identical
-empty-output feedback. Stage A failures are excluded from conditional Stage C
-pass@1, but remain failures in the end-to-end verified-success rate.
+Historical manually authored proofs and compiler checks are demonstrations of
+the verification workflow only. They are not autonomous model pass@1, model
+repair success, or evidence of a controlled A/B/C comparison.
 
-Legacy result files do not distinguish initial synthesis from repaired success;
-their recorded final solved rate must not be interpreted as pass@1.
+## Evaluation and safety
 
-Metrics also include per-category and per-difficulty breakdown,
-repair-attempts-to-success, and failure taxonomy.
-[Insert final numbers once the n=500 run is complete.]
+The proposed A/B/C design shares one initial candidate: A makes no repair, B
+uses at most three blind repairs, and C uses at most three repairs with real
+Lean diagnostics. No experimental outcomes are available. No success rate,
+error-category effect, token usage, latency, or cost estimate is reported.
+Pricing evidence and generation access remain unverified. The cost guard and
+API-off execution gate remain in place.
 
-## Completion diagnostics
-Attempt JSONL records add safe scalar API metadata alongside stage output and
-verification records: requested model, finish reason, completion-token count,
-whether assistant content was empty, refusal presence, reasoning-field
-presence and length, and tool-call presence. Reasoning content, prompts, and
-credentials are never stored in these metadata fields.
-GPT-OSS synthesis/repair requests use Groq's `max_completion_tokens` with the
-existing 2,000-token cap and `reasoning_effort="low"`; other configured models
-omit the unsupported reasoning-effort parameter. Reasoning output is never
-treated as a Lean proof.
+The verifier rejects `sorry`, `sorryAx`, and `admit`, plus unapproved
+assumptions under its configured policy. Independent semantic-fidelity review
+is required separately; no current dataset candidate has a completed
+semantic review.
 
-## Verification guarantee
-A result is marked `solved: true` if and only if `lake env lean` returned
-zero errors on the final proof AND the proof contains none of
-`sorry`/`sorryAx`/`admit`. This is checked automatically in `src/verify.py`,
-not asserted by the LLM.
+## Reproduction identifiers
 
-## Known failure modes
-[Fill in from the failure taxonomy chart -- be specific about categories,
-not just "sometimes it fails."]
+- Protocol: `configs/repair_experiment_protocol_v0.2.0.json`.
+- Prompt files: `prompts/repair_experiment_initial.txt`,
+  `prompts/repair_experiment_blind.txt`, and
+  `prompts/repair_experiment_compiler_guided.txt`, with hashes in the protocol.
+- Lean toolchain: `lean_project/lean-toolchain`.
+- Mathlib lock: `lean_project/lake-manifest.json`.
+- Analysis: `eval/paired_analysis.py`; currently it can produce only a
+  readiness audit because there is no validated frozen dataset.
 
-## Compute / cost
-[Fill in: total API calls, total tokens, approximate cost for the n=500 run,
-average repair attempts, so someone reproducing this can budget correctly.]
+No benchmark performance or deployment capability is claimed.

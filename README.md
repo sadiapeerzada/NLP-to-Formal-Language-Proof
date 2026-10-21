@@ -33,6 +33,13 @@ API calls; some Lean compilation checks were real, but those checks do not
 turn the run into genuine API-generated experiment outcomes. Do not present
 historical, manual, or simulated results as model-generated results.
 
+The Springer LNCS manuscript draft and its claims-to-evidence audit are in
+[`paper/`](paper/). The draft reports no A/B/C findings because the dataset
+has zero eligible records and there are no paired API run manifests. See
+[`docs/reproducibility.md`](docs/reproducibility.md) for exact environment,
+validation, analysis, and paper-build instructions. This repository does not
+yet have a submission-ready paper or reproducibility package.
+
 ## Pipeline
 
 The original end-to-end pipeline is:
