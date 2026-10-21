@@ -193,11 +193,11 @@ protocol, and API-budget approval.
 
 Repository configuration currently specifies:
 
-- Lean toolchain: `leanprover/lean4:v4.33.0-rc1` in
+- Lean toolchain: `leanprover/lean4:v4.32.0` in
   `lean_project/lean-toolchain`.
 - Mathlib: the `mathlib4` dependency declared in `lean_project/lakefile.toml`,
   pinned by `lean_project/lake-manifest.json` to revision
-  `46ff937713b1d85cf6642ff8164d212292e30f6b`.
+  `81a5d257c8e410db227a6665ed08f64fea08e997`.
 - Python API dependency: `groq>=0.9.0` in `requirements.txt`.
 
 These are configured versions and pins, not evidence that every dataset
