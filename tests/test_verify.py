@@ -13,7 +13,12 @@ from uuid import uuid4
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
-from verify import check_lean_file_detailed, promote_scratch_to_final
+from verify import (
+    DEFAULT_POLICY,
+    VerificationPolicy,
+    check_lean_file_detailed,
+    promote_scratch_to_final,
+)
 
 
 def json_diagnostic(severity: str, data: str = "", line: int = 1) -> str:
@@ -27,6 +32,14 @@ class VerifyTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.tempdir.cleanup()
+
+    def test_default_timeout_has_headroom_for_pinned_mathlib_startup(self) -> None:
+        # A valid theorem took 63.64 seconds to verify in the pinned environment.
+        self.assertGreaterEqual(DEFAULT_POLICY.timeout_seconds, 120)
+        self.assertEqual(
+            DEFAULT_POLICY.timeout_seconds,
+            VerificationPolicy().timeout_seconds,
+        )
 
     def run_result(
         self, code: str, process: subprocess.CompletedProcess[str], *, allow_sorry: bool = False

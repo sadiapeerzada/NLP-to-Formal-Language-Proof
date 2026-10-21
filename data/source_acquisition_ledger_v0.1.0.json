@@ -1,6 +1,6 @@
 {
   "ledger_version": "nl2lean-source-acquisition-v0.1.0",
-  "status": "discovery_only",
+  "status": "candidate_acquisition_in_progress",
   "created_on": "2026-10-21",
   "purpose": "Track source leads separately from the research dataset. Entries below are repository or publication leads only; none establishes item-level provenance, redistribution rights, candidate eligibility, or dataset inclusion.",
   "candidate_records": [
@@ -59,6 +59,30 @@
       "candidate_file": "data/curation_batches/v0.1.4/candidate_records.json",
       "status": "candidate_pending_review",
       "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_006",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec2.5-postage-threshold-28",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "div_010",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec5.2-exercise-1",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "test"
+    },
+    {
+      "candidate_id": "div_011",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec5.2-exercise-2",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "test"
     }
   ],
   "source_leads": [
@@ -139,8 +163,8 @@
       "license_observation": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
       "license_evidence_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (PDF page 3) and https://discrete.openmathbooks.org/dmoi3.html (license section)",
       "license_terms_observed": "Attribution and share-alike; no noncommercial restriction stated for this edition. Adapted batch designated CC BY-SA 4.0.",
-      "item_level_source_trace_status": "seven source items located and cited in versioned candidate batch files",
-      "item_level_rights_review_status": "edition license checked; independent/legal review not recorded",
+      "item_level_source_trace_status": "10 cited items located in versioned candidate batch files; source-page bytes not archived; independent semantic/source review pending.",
+      "item_level_rights_review_status": "Publisher CC BY-SA 4.0 statement observed; independent rights/redistribution compatibility review pending; not cleared.",
       "candidate_ids": [
         "div_007",
         "div_008",
@@ -148,13 +172,20 @@
         "ind_005",
         "ineq_004",
         "mod_004",
-        "arith_005"
+        "arith_005",
+        "ind_006",
+        "div_010",
+        "div_011"
       ],
-      "candidate_count": 7,
-      "acquisition_decision": "candidate_material_added; review pending; not eligible",
+      "candidate_count": 10,
+      "acquisition_decision": "candidate_material_added; rights and human reviews pending; not eligible",
       "evidence_checked_on": "2026-10-21",
       "source_pdf_sha256": null,
-      "source_pdf_sha256_status": "not_captured"
+      "source_pdf_sha256_status": "not_captured",
+      "blockers": [
+        "Archive source-page/PDF bytes and capture their hashes for newly acquired items.",
+        "Obtain independent source/license compatibility review and all required theorem/family/split reviews."
+      ]
     }
   ],
   "recording_rules": [

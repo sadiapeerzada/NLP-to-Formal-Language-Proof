@@ -1,0 +1,40 @@
+{
+  "batch_version": "nl2lean-curation-batch-v0.1.5",
+  "status": "candidate_batch_not_frozen",
+  "content_license_observed": "CC BY-SA 4.0; candidate redistribution rights remain pending independent review",
+  "source_id": "dmoi3",
+  "retrieved_on": "2026-10-21",
+  "source_items": [
+    "DMOI3-sec2.5-postage-threshold-28",
+    "DMOI3-sec5.2-exercise-1",
+    "DMOI3-sec5.2-exercise-2"
+  ],
+  "candidate_count": 3,
+  "verified_lean_count": 3,
+  "review_complete_count": 0,
+  "eligible_count": 0,
+  "candidate_split_counts": {
+    "development": 1,
+    "test": 2
+  },
+  "eligible_split_counts": {
+    "development": 0,
+    "test": 0
+  },
+  "candidate_category_counts": {
+    "induction": 1,
+    "divisibility": 2
+  },
+  "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+  "candidate_file_sha256": "8fe355435b6247f4d40030ddf5d88c001e1aeb51bc82949d16fe8baf3f956423",
+  "verification_log": "data/curation_batches/v0.1.5/verification.log",
+  "verification_log_sha256": "c448753ebeac4f14f89b4af9e3006998260a0ca90823d78a91f6f5f8ecac0c96",
+  "candidate_ids": [
+    "ind_006",
+    "div_010",
+    "div_011"
+  ],
+  "independent_reviewers_recorded": 0,
+  "source_content_bytes_archived": false,
+  "source_page_sha256_captured": false
+}

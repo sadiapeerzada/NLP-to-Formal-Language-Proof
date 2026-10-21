@@ -11,6 +11,7 @@ import importlib.metadata
 import json
 import os
 import platform
+import re
 import time
 from datetime import UTC, datetime
 from pathlib import Path
@@ -71,6 +72,13 @@ ExecutionMode = Literal["api", "mock", "manual"]
 
 def _sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _canonical_sha256(value: object) -> str:
+    serialized = json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    )
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def _safe_id(value: str) -> bool:
@@ -385,6 +393,29 @@ def _write_candidate(path: Path, candidate: str) -> None:
         os.fsync(output.fileno())
 
 
+def _stamp_condition_context(
+    manifest: dict[str, object],
+    *,
+    dataset_sha256: str | None,
+    dataset_hash_status: str,
+    protocol_sha256: str,
+    configuration_sha256: str,
+) -> None:
+    conditions = manifest.get("conditions")
+    if not isinstance(conditions, dict):
+        return
+    for result in conditions.values():
+        if isinstance(result, dict):
+            result["dataset_sha256"] = dataset_sha256
+            result["dataset_hash_status"] = dataset_hash_status
+            result["protocol_sha256"] = protocol_sha256
+            result["configuration_sha256"] = configuration_sha256
+            if result.get("stopping_reason") is None:
+                result["stopping_reason"] = (
+                    f"terminal_status_{result.get('status', 'unknown')}"
+                )
+
+
 def _provider_error_record(error: Exception) -> dict[str, object]:
     cause = error.__cause__
     underlying = cause if cause is not None else error
@@ -407,7 +438,12 @@ def _provider_error_record(error: Exception) -> dict[str, object]:
         "error_type": type(error).__name__,
         "underlying_error_type": type(underlying).__name__,
         "status_code": status_code if isinstance(status_code, int) else None,
-        "transport_retry_events": None,
+        "transport_retry_events": getattr(error, "metadata", {}).get(
+            "wrapper_retry_events"
+        ) if isinstance(getattr(error, "metadata", None), dict) else None,
+        "transport_attempt_metadata": getattr(error, "metadata", None),
+        "raw_response_status": "unavailable_request_returned_no_response_object",
+        "token_usage_status": "unavailable_no_response_metadata",
     }
     if isinstance(error, MissingGroqApiKeyError):
         record["error_code"] = "missing_groq_api_key"
@@ -455,6 +491,10 @@ def _run_condition(
     verification_fn: VerificationFunction,
     manifest: dict[str, object],
     manifest_path: Path,
+    dataset_sha256: str | None,
+    dataset_hash_status: str,
+    configuration_sha256: str,
+    protocol_sha256: str,
 ) -> dict[str, object]:
     initial_status = _verification_status(initial_verification)
     condition_result: dict[str, object] = {
@@ -475,15 +515,18 @@ def _run_condition(
             }
         },
         "attempts": [],
+        "stopping_reason": None,
     }
     conditions = manifest["conditions"]
     assert isinstance(conditions, dict)
     conditions[condition] = condition_result
     if initial_verification.success:
         condition_result["status"] = "not_needed_initial_success"
+        condition_result["stopping_reason"] = "shared_initial_candidate_verified"
         return condition_result
     if initial_verification.failure_kind != "compiler_error":
         condition_result["status"] = "not_eligible_initial_failure"
+        condition_result["stopping_reason"] = f"initial_verification_{initial_status}"
         return condition_result
 
     diagnostic_state = initial_verification.diagnostic_state
@@ -497,6 +540,7 @@ def _run_condition(
             if diagnostic_state == "absent"
             else f"{diagnostic_state}_compiler_diagnostics"
         )
+        condition_result["stopping_reason"] = "guided_diagnostics_unavailable"
         return condition_result
 
     current_candidate = initial_candidate
@@ -533,11 +577,41 @@ def _run_condition(
             "configured_provider": MODEL_PROVIDER,
             "requested_model": model,
             "compiler_diagnostics_supplied": condition == "C",
+            "compiler_diagnostics_status": (
+                "supplied" if condition == "C" else "not_supplied_by_design"
+            ),
+            "dataset_sha256": dataset_sha256,
+            "dataset_hash_status": dataset_hash_status,
+            "protocol_sha256": protocol_sha256,
+            "configuration_sha256": configuration_sha256,
+            "attempt_index": repair_call_number,
+            "retry_reason": (
+                "previous_candidate_failed_compilation"
+                if condition == "B"
+                else "previous_candidate_failed_compilation_with_diagnostics"
+            ),
+            "previous_candidate_text": current_candidate,
+            "previous_candidate_sha256": _sha256_text(current_candidate),
+            "prompt_text": prompt,
         }
         if condition == "C":
             attempt["compiler_diagnostics_payload"] = diagnostic_payload
             attempt["compiler_diagnostics_payload_kind"] = "raw_structured_json"
             attempt["compiler_diagnostics_supplied_text"] = diagnostic_payload
+            diagnostic_source = (
+                initial_verification
+                if repair_call_number == 1
+                else previous_verification
+            )
+            attempt["compiler_diagnostics_candidate_sha256"] = _sha256_text(
+                current_candidate
+            )
+            attempt["compiler_diagnostics_verification_source_sha256"] = (
+                diagnostic_source.verification_source_sha256
+            )
+        else:
+            attempt["compiler_diagnostics_payload"] = None
+            attempt["compiler_diagnostics_candidate_sha256"] = None
 
         attempts = condition_result["attempts"]
         assert isinstance(attempts, list)
@@ -557,6 +631,7 @@ def _run_condition(
                 time.monotonic() - attempt_started_monotonic, 3
             )
             condition_result["status"] = "provider_error"
+            condition_result["stopping_reason"] = "model_completion_failed"
             milestones = condition_result["milestones"]
             assert isinstance(milestones, dict)
             milestones[str(repair_call_number)] = {
@@ -599,6 +674,7 @@ def _run_condition(
                 time.monotonic() - attempt_started_monotonic, 3
             )
             condition_result["status"] = "empty_output"
+            condition_result["stopping_reason"] = "empty_or_malformed_model_output"
             milestones = condition_result["milestones"]
             assert isinstance(milestones, dict)
             milestones[str(repair_call_number)] = {
@@ -627,6 +703,7 @@ def _run_condition(
                 time.monotonic() - attempt_started_monotonic, 3
             )
             condition_result["status"] = "infrastructure_error"
+            condition_result["stopping_reason"] = "verifier_infrastructure_error"
             milestones = condition_result["milestones"]
             assert isinstance(milestones, dict)
             milestones[str(repair_call_number)] = {
@@ -668,9 +745,11 @@ def _run_condition(
 
         if verification.success:
             condition_result["status"] = "success"
+            condition_result["stopping_reason"] = "verified_success"
             return condition_result
         if verification.failure_kind != "compiler_error":
             condition_result["status"] = verification_status
+            condition_result["stopping_reason"] = f"verifier_{verification_status}"
             return condition_result
 
         if condition == "C" and (
@@ -683,11 +762,13 @@ def _run_condition(
                 if verification.diagnostic_state == "absent"
                 else f"{verification.diagnostic_state}_compiler_diagnostics"
             )
+            condition_result["stopping_reason"] = "guided_diagnostics_unavailable"
             return condition_result
         previous_verification = verification
         current_candidate = candidate
 
     condition_result["status"] = "repair_budget_exhausted"
+    condition_result["stopping_reason"] = "maximum_repair_calls_reached"
     return condition_result
 
 
@@ -703,6 +784,8 @@ def run_experiment(
     completion_fn: CompletionFunction = complete_with_metadata,
     verification_fn: VerificationFunction = check_lean_file_detailed,
     experiment_id: str | None = None,
+    dataset_sha256: str | None = None,
+    dataset_path: Path | None = None,
 ) -> Path:
     """Run A/B/C, returning the run manifest path.
 
@@ -713,6 +796,25 @@ def run_experiment(
         raise ValueError("Problem ID must be a safe filename component.")
     if not theorem_statement.strip():
         raise ValueError("The fixed Lean theorem statement must not be empty.")
+    if dataset_sha256 is not None and not re.fullmatch(
+        r"[0-9a-f]{64}", dataset_sha256
+    ):
+        raise ValueError("dataset_sha256 must be a lowercase SHA-256 digest.")
+    if dataset_path is not None:
+        dataset_path = Path(dataset_path).resolve()
+        if not dataset_path.is_file():
+            raise ValueError("dataset_path must reference an existing dataset file.")
+        computed_dataset_sha256 = hashlib.sha256(dataset_path.read_bytes()).hexdigest()
+        if dataset_sha256 is not None and dataset_sha256 != computed_dataset_sha256:
+            raise ValueError("dataset_sha256 does not match the dataset file bytes.")
+        dataset_sha256 = computed_dataset_sha256
+    dataset_hash_status = (
+        "computed_from_file"
+        if dataset_path
+        else "caller_supplied_unverified"
+        if dataset_sha256
+        else "unavailable_mock_or_manual_run"
+    )
     if not isinstance(model, str) or not model.strip():
         raise ValueError("Model identifier must be a non-empty string.")
     if execution_mode not in {"api", "mock", "manual"}:
@@ -752,6 +854,10 @@ def run_experiment(
             ) from error
         if not API_EXECUTION_ENABLED:
             raise ValueError(API_EXECUTION_BLOCKED_REASON)
+        if dataset_path is None:
+            raise ValueError(
+                "API execution requires the exact frozen dataset artifact file."
+            )
 
     run_id = experiment_id or _new_experiment_id()
     if not _safe_id(run_id):
@@ -767,6 +873,20 @@ def run_experiment(
     started_monotonic = time.monotonic()
     api_completion = execution_mode == "api"
     theorem_sha256 = _sha256_text(theorem_statement)
+    configuration = {
+        "provider": MODEL_PROVIDER,
+        "requested_model": model,
+        "temperature": DEFAULT_TEMPERATURE,
+        "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
+        "reasoning_effort": reasoning_effort_for_model(model),
+        "max_repair_calls": max_repair,
+        "transport_attempts_per_model_call": TRANSPORT_ATTEMPTS,
+        "groq_sdk_max_retries": SDK_MAX_RETRIES,
+        "lean_project_dir": str(lean_project_dir),
+        "execution_mode": execution_mode,
+        "dataset_sha256": dataset_sha256,
+    }
+    configuration_sha256 = _canonical_sha256(configuration)
     manifest: dict[str, object] = {
         "schema_version": 1,
         "experiment_type": "paired_compiler_guided_repair",
@@ -778,6 +898,10 @@ def run_experiment(
         "execution_mode": execution_mode,
         "api_generation_confirmed": False,
         "problem_id": problem_id,
+        "dataset_sha256": dataset_sha256,
+        "dataset_hash_status": dataset_hash_status,
+        "dataset_path": str(dataset_path) if dataset_path else None,
+        "configuration_sha256": configuration_sha256,
         "status": "running",
         "started_at_utc": started_at.isoformat().replace("+00:00", "Z"),
         "finished_at_utc": None,
@@ -793,17 +917,7 @@ def run_experiment(
             for name, path in PROMPT_PATHS.items()
         },
         "model_identifier_semantics": "provider_alias_not_pinned",
-        "configuration": {
-            "provider": MODEL_PROVIDER,
-            "requested_model": model,
-            "temperature": DEFAULT_TEMPERATURE,
-            "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
-            "reasoning_effort": reasoning_effort_for_model(model),
-            "max_repair_calls": max_repair,
-            "transport_attempts_per_model_call": TRANSPORT_ATTEMPTS,
-            "groq_sdk_max_retries": SDK_MAX_RETRIES,
-            "lean_project_dir": str(Path(lean_project_dir).resolve()),
-        },
+        "configuration": configuration,
         "environment": environment,
         "cost_guard": cost_guard.snapshot() if cost_guard is not None else None,
         "initial_candidate": None,
@@ -836,6 +950,12 @@ def run_experiment(
             "attempt_id": initial_attempt_id,
             "generation_source": execution_mode,
             "prompt_sha256": initial_prompt_sha256,
+            "prompt_text": initial_prompt,
+            "dataset_sha256": dataset_sha256,
+            "protocol_sha256": protocol_record["sha256"],
+            "configuration_sha256": configuration_sha256,
+            "attempt_index": 0,
+            "retry_reason": "initial_generation",
             "provider": MODEL_PROVIDER if api_completion else None,
             "configured_provider": MODEL_PROVIDER,
             "requested_model": model,
@@ -870,6 +990,13 @@ def run_experiment(
         manifest["incomplete_reason"] = "initial_provider_error"
         manifest["finished_at_utc"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
         manifest["wall_clock_seconds"] = round(time.monotonic() - started_monotonic, 3)
+        _stamp_condition_context(
+            manifest,
+            dataset_sha256=dataset_sha256,
+            dataset_hash_status=dataset_hash_status,
+            protocol_sha256=protocol_record["sha256"],
+            configuration_sha256=configuration_sha256,
+        )
         _atomic_manifest_update(manifest_path, manifest)
         return manifest_path
 
@@ -883,13 +1010,20 @@ def run_experiment(
         "status": "empty_output" if not initial_candidate else "generated",
         "attempt_id": initial_attempt_id,
         "generation_source": execution_mode,
+        "dataset_sha256": dataset_sha256,
+        "dataset_hash_status": dataset_hash_status,
+        "protocol_sha256": protocol_record["sha256"],
+        "configuration_sha256": configuration_sha256,
+        "attempt_index": 0,
+        "retry_reason": "initial_generation",
         "candidate_id": initial_candidate_id,
         "candidate_sha256": initial_candidate_sha256,
         "candidate_text": initial_candidate,
         "candidate_path": str(initial_candidate_path),
         "response_text": initial_completion.content,
         "prompt_sha256": initial_prompt_sha256,
-        "provider": MODEL_PROVIDER,
+        "prompt_text": initial_prompt,
+        "provider": MODEL_PROVIDER if api_completion else None,
         "requested_model": model,
         "returned_model": initial_completion.metadata.get("response_model"),
         "completion_metadata": initial_completion.metadata,
@@ -941,6 +1075,13 @@ def run_experiment(
         manifest["status"] = "completed_with_failures"
         manifest["finished_at_utc"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
         manifest["wall_clock_seconds"] = round(time.monotonic() - started_monotonic, 3)
+        _stamp_condition_context(
+            manifest,
+            dataset_sha256=dataset_sha256,
+            dataset_hash_status=dataset_hash_status,
+            protocol_sha256=protocol_record["sha256"],
+            configuration_sha256=configuration_sha256,
+        )
         _atomic_manifest_update(manifest_path, manifest)
         return manifest_path
 
@@ -1027,6 +1168,13 @@ def run_experiment(
         manifest["incomplete_reason"] = "initial_verification_unavailable"
         manifest["finished_at_utc"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
         manifest["wall_clock_seconds"] = round(time.monotonic() - started_monotonic, 3)
+        _stamp_condition_context(
+            manifest,
+            dataset_sha256=dataset_sha256,
+            dataset_hash_status=dataset_hash_status,
+            protocol_sha256=protocol_record["sha256"],
+            configuration_sha256=configuration_sha256,
+        )
         _atomic_manifest_update(manifest_path, manifest)
         return manifest_path
 
@@ -1070,6 +1218,10 @@ def run_experiment(
                 verification_fn=verification_fn,
                 manifest=manifest,
                 manifest_path=manifest_path,
+                dataset_sha256=dataset_sha256,
+                dataset_hash_status=dataset_hash_status,
+                configuration_sha256=configuration_sha256,
+                protocol_sha256=protocol_record["sha256"],
             )
             _atomic_manifest_update(manifest_path, manifest)
     else:
@@ -1108,6 +1260,13 @@ def run_experiment(
     )
     manifest["finished_at_utc"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
     manifest["wall_clock_seconds"] = round(time.monotonic() - started_monotonic, 3)
+    _stamp_condition_context(
+        manifest,
+        dataset_sha256=dataset_sha256,
+        dataset_hash_status=dataset_hash_status,
+        protocol_sha256=protocol_record["sha256"],
+        configuration_sha256=configuration_sha256,
+    )
     _atomic_manifest_update(manifest_path, manifest)
     return manifest_path
 
@@ -1118,11 +1277,32 @@ def _plan(
     model: str,
     max_repair: int,
     output_root: Path | None = None,
+    dataset_sha256: str | None = None,
+    dataset_path: Path | None = None,
 ) -> dict[str, object]:
     if not _safe_id(problem_id):
         raise ValueError("Problem ID must be a safe filename component.")
     if not theorem_statement.strip():
         raise ValueError("The fixed Lean theorem statement must not be empty.")
+    if dataset_sha256 is not None and not re.fullmatch(
+        r"[0-9a-f]{64}", dataset_sha256
+    ):
+        raise ValueError("dataset_sha256 must be a lowercase SHA-256 digest.")
+    if dataset_path is not None:
+        dataset_path = Path(dataset_path).resolve()
+        if not dataset_path.is_file():
+            raise ValueError("dataset_path must reference an existing dataset file.")
+        actual_sha256 = hashlib.sha256(dataset_path.read_bytes()).hexdigest()
+        if dataset_sha256 is not None and dataset_sha256 != actual_sha256:
+            raise ValueError("dataset_sha256 does not match the dataset file bytes.")
+        dataset_sha256 = actual_sha256
+    dataset_hash_status = (
+        "computed_from_file"
+        if dataset_path
+        else "caller_supplied_unverified"
+        if dataset_sha256
+        else "not_provided"
+    )
     if not isinstance(model, str) or not model.strip():
         raise ValueError("Model identifier must be a non-empty string.")
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
@@ -1138,6 +1318,9 @@ def _plan(
         "experiment_type": "paired_compiler_guided_repair",
         "protocol": protocol_record,
         "problem_id": problem_id,
+        "dataset_sha256": dataset_sha256,
+        "dataset_hash_status": dataset_hash_status,
+        "dataset_path": str(dataset_path) if dataset_path else None,
         "theorem_sha256": _sha256_text(theorem_statement),
         "theorem_review_status": "not_verified_by_harness",
         **_review_record_summary(problem_id),
@@ -1153,6 +1336,7 @@ def _plan(
             **_completion_settings(model),
             "max_repair_calls": max_repair,
             "groq_sdk_max_retries": SDK_MAX_RETRIES,
+            "dataset_sha256": dataset_sha256,
         },
         "worst_case_call_bounds": {
             "initial_completion_shared_across_conditions": True,
@@ -1192,6 +1376,15 @@ def main(argv: list[str] | None = None) -> None:
     )
     parser.add_argument("--max-repair", type=int, default=DEFAULT_MAX_REPAIRS)
     parser.add_argument(
+        "--dataset-sha256",
+        help="Optional SHA-256 check for the exact frozen dataset artifact file",
+    )
+    parser.add_argument(
+        "--dataset-file",
+        type=Path,
+        help="Exact dataset artifact file; its SHA-256 is computed into the run record",
+    )
+    parser.add_argument(
         "--plan-only",
         action="store_true",
         help="validate and print configuration without writing files or calling the API",
@@ -1208,6 +1401,8 @@ def main(argv: list[str] | None = None) -> None:
                         args.model,
                         args.max_repair,
                         args.output_root,
+                        args.dataset_sha256,
+                        args.dataset_file,
                     ),
                     indent=2,
                 )
@@ -1220,6 +1415,8 @@ def main(argv: list[str] | None = None) -> None:
             args.output_root,
             model=args.model,
             max_repair=args.max_repair,
+            dataset_sha256=args.dataset_sha256,
+            dataset_path=args.dataset_file,
         )
     except ValueError as error:
         parser.error(str(error))

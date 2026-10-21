@@ -1,0 +1,279 @@
+{
+  "inventory_version": "nl2lean-research-dataset-inventory-v0.2.0",
+  "status": "construction_in_progress_not_frozen",
+  "generated_on": "2026-10-21",
+  "candidate_count": 31,
+  "candidate_ids_ordered": [
+    "arith_001",
+    "arith_002",
+    "div_001",
+    "div_002",
+    "div_003",
+    "mod_001",
+    "mod_002",
+    "ind_001",
+    "ind_002",
+    "ind_003",
+    "div_004",
+    "ineq_001",
+    "arith_003",
+    "arith_003_mathlib",
+    "arith_004",
+    "div_005",
+    "div_006",
+    "ineq_002",
+    "ineq_003",
+    "ind_004",
+    "mod_003",
+    "div_007",
+    "div_008",
+    "div_009",
+    "ind_005",
+    "ineq_004",
+    "mod_004",
+    "arith_005",
+    "ind_006",
+    "div_010",
+    "div_011"
+  ],
+  "candidate_record_file_sha256": {
+    "data/research_dataset_draft_v0.1.0.json": "fec50bc77cb2782edba29ce08b680c63eb145092868853b3fc5efb947f025514",
+    "data/curation_batches/v0.1.0/candidate_records.json": "6082871fb51437bb2e2a3ccea9ee6c9392d9f3f4bf259e7cd0cc90ac57710eef",
+    "data/curation_batches/v0.1.1/candidate_records.json": "32dfab2e90fafd1c46accca8af6c7a41f34cbf518f932e203bd7710bbf129d0a",
+    "data/curation_batches/v0.1.2/candidate_records.json": "c1b748222eb968d80e9339e404bf75e76893d88041ab882b1c7e0e83296cdbc4",
+    "data/curation_batches/v0.1.3/candidate_records.json": "612a839f3404a2c4b8c3828f748513190ed3acfa5c40af8923c3572d80b5e17d",
+    "data/curation_batches/v0.1.4/candidate_records.json": "66c387a7004056bc95ab834f32fd985ff2e1f19d0941f2fe829f2627d40ccd58",
+    "data/curation_batches/v0.1.5/candidate_records.json": "8fe355435b6247f4d40030ddf5d88c001e1aeb51bc82949d16fe8baf3f956423"
+  },
+  "source_batches": [
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.0",
+      "candidate_ids": [
+        "div_007",
+        "div_008",
+        "div_009"
+      ],
+      "candidate_count": 3,
+      "verified_lean_count": null,
+      "review_complete_count": null,
+      "eligible_count": 0,
+      "candidate_file_sha256": null,
+      "source_content_bytes_archived": null,
+      "source_page_sha256_captured": null
+    },
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.1",
+      "candidate_ids": [
+        "ind_005"
+      ],
+      "candidate_count": 1,
+      "verified_lean_count": null,
+      "review_complete_count": null,
+      "eligible_count": 0,
+      "candidate_file_sha256": null,
+      "source_content_bytes_archived": null,
+      "source_page_sha256_captured": null
+    },
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.2",
+      "candidate_ids": [
+        "ineq_004"
+      ],
+      "candidate_count": 1,
+      "verified_lean_count": null,
+      "review_complete_count": null,
+      "eligible_count": 0,
+      "candidate_file_sha256": null,
+      "source_content_bytes_archived": null,
+      "source_page_sha256_captured": null
+    },
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.3",
+      "candidate_ids": [
+        "mod_004"
+      ],
+      "candidate_count": 1,
+      "verified_lean_count": null,
+      "review_complete_count": null,
+      "eligible_count": 0,
+      "candidate_file_sha256": null,
+      "source_content_bytes_archived": null,
+      "source_page_sha256_captured": null
+    },
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.4",
+      "candidate_ids": [
+        "arith_005"
+      ],
+      "candidate_count": 1,
+      "verified_lean_count": null,
+      "review_complete_count": null,
+      "eligible_count": 0,
+      "candidate_file_sha256": null,
+      "source_content_bytes_archived": null,
+      "source_page_sha256_captured": null
+    },
+    {
+      "batch_version": "nl2lean-curation-batch-v0.1.5",
+      "candidate_ids": [
+        "ind_006",
+        "div_010",
+        "div_011"
+      ],
+      "candidate_count": 3,
+      "verified_lean_count": 3,
+      "review_complete_count": 0,
+      "eligible_count": 0,
+      "candidate_file_sha256": "8fe355435b6247f4d40030ddf5d88c001e1aeb51bc82949d16fe8baf3f956423",
+      "source_content_bytes_archived": false,
+      "source_page_sha256_captured": false
+    }
+  ],
+  "candidate_split_counts": {
+    "test": 8,
+    "development": 23
+  },
+  "eligible_split_counts": {
+    "test": 0,
+    "development": 0
+  },
+  "candidate_category_counts": {
+    "arithmetic_identity": 6,
+    "divisibility": 11,
+    "induction": 6,
+    "inequality": 4,
+    "modular_arithmetic": 4
+  },
+  "strict_lean_verified_count": 10,
+  "strict_lean_verified_ids": [
+    "div_007",
+    "div_008",
+    "div_009",
+    "ind_005",
+    "ineq_004",
+    "mod_004",
+    "arith_005",
+    "ind_006",
+    "div_010",
+    "div_011"
+  ],
+  "review_complete_count": 0,
+  "eligible_count": 0,
+  "validator_errors": [],
+  "validator_review_warning_count": 79,
+  "validator_review_warnings": [
+    "Likely statement similarity between 'arith_003' and 'arith_003_mathlib'; human theorem/family duplicate review required.",
+    "Likely statement similarity between 'div_001' and 'div_005'; human theorem/family duplicate review required.",
+    "Likely statement similarity between 'mod_002' and 'mod_003'; human theorem/family duplicate review required.",
+    "problem 'arith_001': curation.review_records must be an array.",
+    "problem 'arith_001': source/license evidence is incomplete; record is ineligible.",
+    "problem 'arith_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'arith_002': curation.review_records must be an array.",
+    "problem 'arith_002': source/license evidence is incomplete; record is ineligible.",
+    "problem 'arith_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'arith_003': curation.review_records must be an array.",
+    "problem 'arith_003': source/license evidence is incomplete; record is ineligible.",
+    "problem 'arith_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'arith_003_mathlib': curation.review_records must be an array.",
+    "problem 'arith_003_mathlib': source/license evidence is incomplete; record is ineligible.",
+    "problem 'arith_003_mathlib': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'arith_004': curation.review_records must be an array.",
+    "problem 'arith_004': source/license evidence is incomplete; record is ineligible.",
+    "problem 'arith_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'arith_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_001': curation.review_records must be an array.",
+    "problem 'div_001': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_002': curation.review_records must be an array.",
+    "problem 'div_002': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_003': curation.review_records must be an array.",
+    "problem 'div_003': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_004': curation.review_records must be an array.",
+    "problem 'div_004': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_005': curation.review_records must be an array.",
+    "problem 'div_005': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_005': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_006': curation.review_records must be an array.",
+    "problem 'div_006': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_006': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'div_007': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_008': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_009': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_010': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_010': source/license evidence is incomplete; record is ineligible.",
+    "problem 'div_011': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'div_011': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ind_001': curation.review_records must be an array.",
+    "problem 'ind_001': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ind_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ind_002': curation.review_records must be an array.",
+    "problem 'ind_002': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ind_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ind_003': curation.review_records must be an array.",
+    "problem 'ind_003': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ind_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ind_004': curation.review_records must be an array.",
+    "problem 'ind_004': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ind_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ind_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'ind_006': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'ind_006': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ineq_001': curation.review_records must be an array.",
+    "problem 'ineq_001': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ineq_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ineq_002': curation.review_records must be an array.",
+    "problem 'ineq_002': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ineq_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ineq_003': curation.review_records must be an array.",
+    "problem 'ineq_003': source/license evidence is incomplete; record is ineligible.",
+    "problem 'ineq_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'ineq_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+    "problem 'mod_001': curation.review_records must be an array.",
+    "problem 'mod_001': source/license evidence is incomplete; record is ineligible.",
+    "problem 'mod_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'mod_002': curation.review_records must be an array.",
+    "problem 'mod_002': source/license evidence is incomplete; record is ineligible.",
+    "problem 'mod_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'mod_003': curation.review_records must be an array.",
+    "problem 'mod_003': source/license evidence is incomplete; record is ineligible.",
+    "problem 'mod_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+    "problem 'mod_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+  ],
+  "likely_duplicate_pairs_pending_human_adjudication": [
+    [
+      "arith_003",
+      "arith_003_mathlib"
+    ],
+    [
+      "div_001",
+      "div_005"
+    ],
+    [
+      "mod_002",
+      "mod_003"
+    ]
+  ],
+  "cross_split_declared_family_groups": [],
+  "known_family_split_concern": [
+    {
+      "ids": [
+        "mod_001",
+        "mod_004"
+      ],
+      "note": "Both are integer congruence/addition family candidates in test/development respectively; existing family labels differ and no independent family review has adjudicated whether this is leakage."
+    }
+  ],
+  "source_bytes_archived_for_new_batch": false,
+  "source_page_sha256_for_new_batch_captured": false,
+  "human_reviews_completed_in_new_batch": 0,
+  "freeze_performed": false,
+  "held_out_test_evaluation_performed": false,
+  "notes": [
+    "Proposed split assignments are not eligibility decisions.",
+    "The source transcription hashes stored in v0.1.5 are hashes of the recorded UTF-8 transcriptions, not hashes of source webpage/PDF bytes.",
+    "Rights, attribution sufficiency, source fidelity, theorem semantics, category/difficulty, duplicate/family membership, and split assignments remain pending the independent reviews required by the curation guide."
+  ]
+}

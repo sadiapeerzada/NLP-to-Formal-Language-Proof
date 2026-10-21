@@ -56,6 +56,9 @@ def failed_verification(diagnostic: str = DIAGNOSTIC_INITIAL) -> VerificationRes
             }
         ],
         diagnostic_state="available",
+        verification_source_sha256=hashlib.sha256(
+            f"mock-verification:{diagnostic}".encode()
+        ).hexdigest(),
     )
 
 
@@ -87,6 +90,7 @@ def run_in(
         max_repair=max_repair,
         execution_mode=execution_mode,
         experiment_id=experiment_id,
+        dataset_sha256=hashlib.sha256(b"mock-dataset-fixture").hexdigest(),
     )
 
 
@@ -226,6 +230,17 @@ def test_compiler_guided_receives_initial_and_latest_actual_diagnostics(
     assert second_payload in prompts[3]
     assert manifest["conditions"]["C"]["status"] == "success"
     assert manifest["conditions"]["C"]["repair_calls_made"] == 2
+    c_attempts = manifest["conditions"]["C"]["attempts"]
+    assert c_attempts[0]["compiler_diagnostics_verification_source_sha256"] == (
+        manifest["initial_verification"]["verification_source_sha256"]
+    )
+    assert c_attempts[1]["compiler_diagnostics_verification_source_sha256"] == (
+        c_attempts[0]["verification"]["verification_source_sha256"]
+    )
+    for attempt in c_attempts:
+        assert attempt["compiler_diagnostics_candidate_sha256"] == attempt[
+            "previous_candidate_sha256"
+        ]
 
 
 def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> None:
@@ -294,6 +309,87 @@ def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> No
         for attempt in manifest["conditions"][condition]["attempts"]
     )
     assert manifest["status"] == "completed"
+
+
+def test_trace_records_dataset_protocol_config_prompts_and_candidate_links(
+    tmp_path: Path,
+) -> None:
+    completion_fn = Mock(
+        side_effect=[
+            completion(INITIAL_CANDIDATE),
+            completion("theorem target : True := by trivial"),
+            completion("theorem target : True := by trivial"),
+        ]
+    )
+    verification_fn = Mock(
+        side_effect=[
+            failed_verification(),
+            successful_verification(),
+            successful_verification(),
+        ]
+    )
+    manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn, max_repair=1))
+    initial = manifest["initial_candidate"]
+    assert initial["dataset_sha256"] == manifest["dataset_sha256"]
+    assert initial["protocol_sha256"] == manifest["protocol"]["sha256"]
+    assert initial["configuration_sha256"] == manifest["configuration_sha256"]
+    assert hashlib.sha256(initial["prompt_text"].encode()).hexdigest() == initial[
+        "prompt_sha256"
+    ]
+    for condition in ("A", "B", "C"):
+        result = manifest["conditions"][condition]
+        assert result["dataset_sha256"] == manifest["dataset_sha256"]
+        assert result["protocol_sha256"] == manifest["protocol"]["sha256"]
+        assert result["configuration_sha256"] == manifest["configuration_sha256"]
+    b_attempt = manifest["conditions"]["B"]["attempts"][0]
+    c_attempt = manifest["conditions"]["C"]["attempts"][0]
+    assert b_attempt["compiler_diagnostics_supplied"] is False
+    assert b_attempt["compiler_diagnostics_payload"] is None
+    assert b_attempt["previous_candidate_sha256"] == initial["candidate_sha256"]
+    assert c_attempt["compiler_diagnostics_supplied"] is True
+    assert c_attempt["compiler_diagnostics_candidate_sha256"] == initial[
+        "candidate_sha256"
+    ]
+    for attempt in (b_attempt, c_attempt):
+        assert hashlib.sha256(attempt["prompt_text"].encode()).hexdigest() == attempt[
+            "prompt_sha256"
+        ]
+        assert attempt["response_text"]
+        assert attempt["attempt_index"] == 1
+        assert attempt["retry_reason"]
+        assert attempt["started_at_utc"] and attempt["finished_at_utc"]
+        assert attempt["completion_metadata"]["api_attempts"] == 1
+
+
+def test_invalid_dataset_hash_is_rejected_before_creating_run(tmp_path: Path) -> None:
+    output_root = tmp_path / "runs"
+    with pytest.raises(ValueError, match="dataset_sha256"):
+        experiment.run_experiment(
+            "problem_001",
+            THEOREM,
+            tmp_path / "lean_project",
+            output_root,
+            completion_fn=Mock(return_value=completion(INITIAL_CANDIDATE)),
+            verification_fn=Mock(return_value=successful_verification()),
+            execution_mode="mock",
+            dataset_sha256="not-a-hash",
+        )
+    assert not output_root.exists()
+
+
+def test_dataset_hash_is_computed_from_supplied_artifact(tmp_path: Path) -> None:
+    dataset_file = tmp_path / "dataset.json"
+    dataset_file.write_bytes(b'{"problems": []}\n')
+    plan = experiment._plan(
+        "problem_001",
+        THEOREM,
+        experiment.DEFAULT_MODEL,
+        3,
+        dataset_path=dataset_file,
+    )
+    assert plan["dataset_sha256"] == hashlib.sha256(dataset_file.read_bytes()).hexdigest()
+    assert plan["dataset_hash_status"] == "computed_from_file"
+    assert plan["dataset_path"] == str(dataset_file.resolve())
 
 
 def test_success_stops_repairs_and_repair_prompt_hashes_are_logged(
@@ -371,6 +467,48 @@ def test_provider_error_is_not_recorded_as_a_proof_failure(tmp_path: Path) -> No
     assert manifest["conditions"]["B"]["attempts"][0]["failure_kind"] == "provider_error"
     assert manifest["conditions"]["C"]["status"] == "empty_output"
     assert manifest["status"] == "completed_with_failures"
+
+
+def test_failed_completion_retains_wrapper_retries_and_cost_reservations(
+    tmp_path: Path,
+) -> None:
+    calls = 0
+
+    def complete_fn(_prompt: str, **_kwargs) -> CompletionResult:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return completion(INITIAL_CANDIDATE)
+        if calls == 2:
+            raise llm_client.CompletionRequestError(
+                "failed after wrapper retries",
+                {
+                    "wrapper_attempts_made": 3,
+                    "wrapper_attempt_limit": 3,
+                    "wrapper_retry_events": [{"api_attempt": 1}],
+                    "sdk_http_attempt_count": None,
+                    "sdk_http_attempt_count_status": "not_exposed_by_groq_sdk",
+                    "cost_reservation": {"reservations": [{"may_have_been_billed": True}]},
+                },
+            )
+        return completion("")
+
+    manifest = read_manifest(
+        run_in(
+            tmp_path,
+            complete_fn,
+            lambda *_args, **_kwargs: failed_verification(),
+            max_repair=1,
+        )
+    )
+    failed_attempt = manifest["conditions"]["B"]["attempts"][0]
+    assert failed_attempt["transport_retry_events"] == [{"api_attempt": 1}]
+    metadata = failed_attempt["transport_attempt_metadata"]
+    assert metadata["sdk_http_attempt_count"] is None
+    assert metadata["cost_reservation"]["reservations"][0]["may_have_been_billed"]
+    assert failed_attempt["raw_response_status"] == (
+        "unavailable_request_returned_no_response_object"
+    )
 
 
 def test_provider_timeout_and_model_access_errors_are_classified_actionably() -> None:

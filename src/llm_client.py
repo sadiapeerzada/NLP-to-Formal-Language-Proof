@@ -51,6 +51,14 @@ class MissingGroqApiKeyError(RuntimeError):
     """Raised when an API-backed completion is requested without credentials."""
 
 
+class CompletionRequestError(RuntimeError):
+    """Failed logical completion with known wrapper and reservation metadata."""
+
+    def __init__(self, message: str, metadata: dict[str, object]) -> None:
+        super().__init__(message)
+        self.metadata = metadata
+
+
 def _get_client() -> groq.Groq:
     global _client
     api_key = os.environ.get("GROQ_API_KEY")
@@ -180,6 +188,22 @@ def complete_with_metadata(
     last_err: Exception | None = None
     retry_events: list[dict[str, object]] = []
 
+    def request_failure(
+        message: str, *, wrapper_attempts_made: int
+    ) -> CompletionRequestError:
+        return CompletionRequestError(
+            message,
+            {
+                "wrapper_attempts_made": wrapper_attempts_made,
+                "wrapper_attempt_limit": retries,
+                "wrapper_retry_events": list(retry_events),
+                "sdk_max_retries_per_wrapper_attempt": SDK_MAX_RETRIES,
+                "sdk_http_attempt_count": None,
+                "sdk_http_attempt_count_status": "not_exposed_by_groq_sdk",
+                "cost_reservation": cost_guard.snapshot(),
+            },
+        )
+
     def record_retry(attempt: int, error: Exception, delay: float) -> None:
         retry_events.append(
             {
@@ -243,9 +267,10 @@ def complete_with_metadata(
             wait_s = _parse_retry_after(str(e))
             if wait_s is not None:
                 if wait_s > max_retry_after_seconds:
-                    raise RuntimeError(
+                    raise request_failure(
                         f"Groq requested a {wait_s:.0f}s retry delay, exceeding "
-                        f"the {max_retry_after_seconds:.0f}s per-retry budget."
+                        f"the {max_retry_after_seconds:.0f}s per-retry budget.",
+                        wrapper_attempts_made=attempt + 1,
                     ) from e
                 delay = wait_s
             else:
@@ -254,9 +279,10 @@ def complete_with_metadata(
             if attempt == retries - 1:
                 break
             if total_wait_seconds + delay > max_total_wait_seconds:
-                raise RuntimeError(
+                raise request_failure(
                     f"Retry wait budget of {max_total_wait_seconds:.0f}s would be "
-                    "exceeded."
+                    "exceeded.",
+                    wrapper_attempts_made=attempt + 1,
                 ) from e
             total_wait_seconds += delay
             record_retry(attempt, e, delay)
@@ -270,16 +296,24 @@ def complete_with_metadata(
             if attempt == retries - 1:
                 break
             if total_wait_seconds + 1 > max_total_wait_seconds:
-                raise RuntimeError(
+                raise request_failure(
                     f"Retry wait budget of {max_total_wait_seconds:.0f}s would be "
-                    "exceeded."
+                    "exceeded.",
+                    wrapper_attempts_made=attempt + 1,
                 ) from e
             total_wait_seconds += 1
             record_retry(attempt, e, 1)
             sleep(1)
-    raise RuntimeError(
+        except groq.APIError as e:
+            raise request_failure(
+                f"LLM request failed after wrapper attempt {attempt + 1}: "
+                f"{type(e).__name__}",
+                wrapper_attempts_made=attempt + 1,
+            ) from e
+    raise request_failure(
         f"LLM call failed after {retries} attempts and {total_wait_seconds:.0f}s "
-        f"of retry waiting: {last_err}"
+        f"of retry waiting: {last_err}",
+        wrapper_attempts_made=retries,
     ) from last_err
 
 

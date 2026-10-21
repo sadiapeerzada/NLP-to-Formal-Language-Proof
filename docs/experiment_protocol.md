@@ -202,6 +202,38 @@ outcomes for A, B, and C.
 - Historical manually authored proofs are development/debugging artifacts,
   not model-generated outputs and never model pass@1 results.
 
+### Reproducible analysis implementation
+
+`eval/paired_analysis.py` is the analysis entry point. It writes study tables
+and the success-by-budget SVG only after the development/test files and freeze
+manifest pass `validate_frozen_curation`, and every API run matches the frozen
+test hash and a single protocol/configuration hash. Use a fresh output path:
+
+```sh
+python eval/paired_analysis.py \
+  --test-dataset data/frozen/test.json \
+  --development-dataset data/frozen/development.json \
+  --freeze-manifest data/frozen/manifest.json \
+  --runs-dir data/experiments \
+  --output-dir data/analysis/<new-analysis-id>
+```
+
+`--audit-current` writes only an inventory/readiness JSON and never produces
+experimental metrics. Legacy pipeline results and mock/manual manifests are
+listed or excluded, not interpreted as API outcomes. For study tables, the
+full eligible test set is the denominator and missing/incomplete outcomes are
+counted as failures; observed counts and missing counts remain separate.
+McNemar uses complete matched pairs only, with the full-denominator result
+reported as a separate conservative sensitivity. Relative differences are
+undefined when the reference full-denominator rate is zero. Output manifests
+record input/output hashes, script hash, configuration/protocol hashes, and
+the fixed bootstrap settings. No run is analyzed as a replicate if more than
+one manifest exists for the same problem under the one-replicate protocol.
+
+The pipeline reports cost estimates only when authenticated, reviewed price
+inputs are made available; absent pricing is not converted into a guessed
+cost. Token totals likewise use returned metadata and missing-usage counts.
+
 ## 6. Dataset and freeze requirements
 
 Use the curation schema and validator in [schema.md](../data/schema.md),
@@ -361,6 +393,22 @@ Raw artifacts are append-only and must be written to a new unique output
 directory. Mock/manual/API provenance must remain distinguishable. Missing
 metadata is recorded as missing, never inferred from configuration. Preserve
 failed and timed-out attempts, not only successful outcomes.
+
+The paired runner persists each rendered initial/repair prompt alongside its
+SHA-256, the protocol hash, a canonical configuration hash, and (when supplied)
+the dataset artifact SHA-256. Passing the dataset file causes the runner to
+compute the hash from its exact bytes; a caller-supplied hash without the file
+is marked unverified and cannot satisfy the API execution prerequisite. Each repair trace links the previous candidate
+text/hash to the attempt; compiler-guided traces additionally bind the supplied
+diagnostic payload to that candidate and the verifier source hash. Blind traces
+record that no diagnostics were supplied. Mock/manual runs without a dataset
+hash explicitly record it as unavailable. The current Groq SDK does not expose
+the number of HTTP transmissions made internally for a wrapper call, so traces
+retain the configured retry bound and all pre-reserved SDK attempts without
+claiming exact observed SDK transmission counts. Failed logical completions do
+retain wrapper retry events, the SDK retry bound, reservation snapshots, and an
+explicit unavailable status for observed SDK-internal HTTP counts. API mode
+remains blocked; these trace additions do not authorize a live run.
 
 ## 9. Execution gates
 

@@ -107,6 +107,18 @@ class LlmClientRetryTests(unittest.TestCase):
             )
 
         self.assertIsInstance(context.exception.__cause__, FakeRateLimitError)
+        self.assertEqual(
+            context.exception.metadata["wrapper_attempts_made"], 3
+        )
+        self.assertEqual(len(context.exception.metadata["wrapper_retry_events"]), 2)
+        self.assertIsNone(context.exception.metadata["sdk_http_attempt_count"])
+        self.assertEqual(
+            context.exception.metadata["sdk_http_attempt_count_status"],
+            "not_exposed_by_groq_sdk",
+        )
+        self.assertEqual(
+            len(context.exception.metadata["cost_reservation"]["reservations"]), 9
+        )
         self.assertEqual(self.create.call_count, 3)
         self.assertEqual(self.sleep.call_args_list, [((2.0,), {}), ((2.0,), {})])
 
