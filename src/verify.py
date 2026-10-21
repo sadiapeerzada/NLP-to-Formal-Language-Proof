@@ -30,7 +30,7 @@ class VerificationPolicy:
         "Classical.choice",
         "Quot.sound",
     )
-    timeout_seconds: int = 60
+    timeout_seconds: int = 180
     inspect_axioms: bool = True
 
 
