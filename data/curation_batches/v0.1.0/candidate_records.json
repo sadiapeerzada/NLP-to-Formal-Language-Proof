@@ -1,0 +1,269 @@
+[
+  {
+    "id": "div_007",
+    "nl_statement": "For all integers a and b, if a and b are even, then a + b is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "difficulty_rationale": "Direct parity closure claim with an explicit witness construction; provisional proof-obligation rating, pending rubric review.",
+    "lean_file": "data/curation_batches/v0.1.0/div_007_even_sum.lean",
+    "expected_lean_statement": "theorem even_add_of_even (a b : ℤ) (ha : Even a) (hb : Even b) : Even (a + b)",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, section 3.2, printed p. 218, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+        "source_location": "Section 3.2, printed page 218; PDF parser page 233.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "f24381d9c42f5a34579eb2d1508dee8133bf05fdc456ad2850574d1b98e439fc",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section/item as cited; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_007_even_sum.lean",
+        "theorem_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47",
+        "evidence": "Repository strict verifier returned success=True, exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=c28371cd622af661141bb01f4a46fc453b0cdef9ca251df2d0df8774eb22bbca. Full record in data/curation_batches/v0.1.0/verification.log."
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-section-3.2-even-sum-claim by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    },
+    "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+    "source_location": "Section 3.2, printed page 218; PDF parser page 233. Claim in discussion immediately before the proof that even integers sum to an even integer."
+  },
+  {
+    "id": "div_008",
+    "nl_statement": "Prove that for all integers n, it is the case that n is even if and only if 3n is even. That is, prove both implications: if n is even, then 3n is even, and if 3n is even, then n is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Two implication directions, including recovering parity from a constant multiple; provisional proof-obligation rating, pending rubric review.",
+    "lean_file": "data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+    "expected_lean_statement": "theorem even_iff_even_three_mul (n : ℤ) : Even n ↔ Even (3 * n)",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, exercise 3.2.5, printed p. 223, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "05b9760863e9e1db0e4172b00041b5c2029e8da9bca46330ffd65743b22174b4"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-exercise-3.2.5",
+        "source_location": "Exercise 3.2.5, printed page 223; PDF parser page 238.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "eb907768019dc4eaac75036601a3bfe3aa2d2a506318cdeeb5bd6e472ee38e9a",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section/item as cited; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+        "theorem_sha256": "05b9760863e9e1db0e4172b00041b5c2029e8da9bca46330ffd65743b22174b4",
+        "evidence": "Repository strict verifier returned success=True, exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=e24c2968cca8625c529cf5b6c8aa853d5e308e0f4f841168482e11cfb271a0e1. Full record in data/curation_batches/v0.1.0/verification.log."
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-exercise-3.2.5 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    },
+    "source_item_id": "DMOI3-exercise-3.2.5",
+    "source_location": "Exercise 3.2.5, printed page 223; PDF parser page 238."
+  },
+  {
+    "id": "div_009",
+    "nl_statement": "For any integer n, the number n^3 − n is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "A short parity case split followed by polynomial normalization; provisional proof-obligation rating, pending rubric review.",
+    "expected_lean_statement": "theorem even_cube_sub_self (n : ℤ) : Even (n ^ 3 - n)",
+    "source_item_id": "DMOI3-example-3.2.11",
+    "source_location": "Example 3.2.11, printed page 222; PDF parser page 237.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, example 3.2.11, printed p. 222, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "8daacec71a934099f1ceea0f53d19937e41e4fbd54f6113874f8cf1104647b13"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-example-3.2.11",
+        "source_location": "Example 3.2.11, printed page 222; PDF parser page 237.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "c82202ec5907ead6d204f4cc3bff8817616b7b988def4b379efd845531019800",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), example 3.2.11; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_009_cube_sub_self_even.lean",
+        "theorem_sha256": "8daacec71a934099f1ceea0f53d19937e41e4fbd54f6113874f8cf1104647b13",
+        "evidence": "Repository strict verifier succeeded with its existing acceptance policy and configured timeout_seconds=180; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=df5145191f15491416d612c167d9b6dc9d24aae902b6f24d90201399a40b2b7a. The earlier 60s timeout is retained in data/curation_batches/v0.1.0/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-example-3.2.11 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    }
+  }
+]

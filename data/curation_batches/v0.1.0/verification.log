@@ -1,0 +1,42 @@
+Repository verifier evidence (strict final-proof policy)
+Toolchain: leanprover/lean4:v4.32.0
+Mathlib revision: 81a5d257c8e410db227a6665ed08f64fea08e997
+Policy: no sorry/sorryAx/admit; no axiom/constant/opaque declarations; inspect axioms.
+
+Candidate: div_007
+Scratch: lean_project/generated/_scratch/candidate_batch_v010_div_007_strict.lean
+success: True
+exit_code: 0
+axiom_dependencies: ["propext", "Classical.choice", "Quot.sound"]
+candidate_sha256: 0bf4b0a25baf4a8935da937d982a82d12d62c561cd2ff2a04405ad5af7da1205
+verification_source_sha256: c28371cd622af661141bb01f4a46fc453b0cdef9ca251df2d0df8774eb22bbca
+errors: []
+
+Candidate: div_008
+Scratch: lean_project/generated/_scratch/candidate_batch_v010_div_008_strict.lean
+success: True
+exit_code: 0
+axiom_dependencies: ["propext", "Classical.choice", "Quot.sound"]
+candidate_sha256: 75aa196d496401043456e249262f9cea96e7011de8a0705b508b6f197afd3da9
+verification_source_sha256: e24c2968cca8625c529cf5b6c8aa853d5e308e0f4f841168482e11cfb271a0e1
+errors: []
+
+Candidate: div_009
+Scratch: lean_project/generated/_scratch/candidate_batch_v010_div_009_strict.lean
+success: False
+exit_code: None
+axiom_dependencies: null
+candidate_sha256: 7cde4ee6be6c4143fbfe34913b90054022e199d93ccd8fef63c6cdbc0c725e02
+verification_source_sha256: df5145191f15491416d612c167d9b6dc9d24aae902b6f24d90201399a40b2b7a
+errors: ["Compilation timed out after 60s."]
+
+Candidate: div_009 strict retry (configured timeout 180s; verifier acceptance policy unchanged)
+Scratch: lean_project/generated/_scratch/candidate_batch_v010_div_009_strict_180s.lean
+success: True
+exit_code: 0
+elapsed_seconds: 45.490
+axiom_dependencies: ["propext", "Classical.choice", "Quot.sound"]
+candidate_sha256: 7cde4ee6be6c4143fbfe34913b90054022e199d93ccd8fef63c6cdbc0c725e02
+verification_source_sha256: df5145191f15491416d612c167d9b6dc9d24aae902b6f24d90201399a40b2b7a
+failure_kind: None
+errors: []

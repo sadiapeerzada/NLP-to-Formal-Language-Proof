@@ -1,0 +1,14 @@
+Repository strict verifier evidence
+Toolchain: leanprover/lean4:v4.32.0
+Mathlib revision: 81a5d257c8e410db227a6665ed08f64fea08e997
+Policy: no sorry/sorryAx/admit; no axiom/constant/opaque declarations; inspect axioms.
+Configured timeout_seconds: 180 (acceptance criteria unchanged)
+Command: cd lean_project && lake env lean ../data/curation_batches/v0.1.1/ind_005_pascal_row_sum.lean
+Strict verifier scratch: lean_project/generated/_scratch/candidate_batch_v011_ind_005_strict.lean
+success: True
+exit_code: 0
+elapsed_seconds: 60.277
+axiom_dependencies: ["propext", "Classical.choice", "Quot.sound"]
+candidate_sha256: d0ffb7da6e50ac516e5efeb0765aeaafa80acf2e3803bd22b3a51eb9e7ab24a1
+verification_source_sha256: 758c82457b7a001a1313aed3a5b1c1b162c8b8e0df744a6bf91d9d767dade679
+errors: []

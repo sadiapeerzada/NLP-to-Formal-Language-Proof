@@ -153,6 +153,17 @@ class LlmClientRetryTests(unittest.TestCase):
 
         self.create.assert_not_called()
 
+    def test_sdk_retry_limit_is_explicit_and_matches_audited_default(self) -> None:
+        fake_client = object()
+        with (
+            patch.object(llm_client, "_client", None),
+            patch.object(llm_client.groq, "Groq", return_value=fake_client) as factory,
+        ):
+            client = llm_client._get_client()
+
+        self.assertIs(client, fake_client)
+        factory.assert_called_once_with(api_key="test-key", max_retries=2)
+
     def test_gpt_oss_reasoning_effort_is_supported_and_other_models_omit_it(self) -> None:
         self.create.return_value = self.response("proof")
 

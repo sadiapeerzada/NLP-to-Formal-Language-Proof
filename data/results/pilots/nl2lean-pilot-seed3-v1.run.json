@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "run_id": "20261019T133737Z-7f70f8de",
+  "started_at_utc": "2026-10-19T13:37:37.095293Z",
+  "git": {
+    "commit": "9a5f5a457adf93848559613c4f599e847a9b92dd",
+    "dirty": "unavailable"
+  },
+  "input": {
+    "path": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/pilots/nl2lean-pilot-seed3-v1.json",
+    "sha256": "5d7ebd4f29593c73ffc0ab17222146f5c7d9e9789332544abf5ed89ec34491ec"
+  },
+  "prompts": {
+    "formalize": {
+      "path": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/prompts/stage_a_formalize.txt",
+      "sha256": "31cbfcb410e5b9b575d6708dd35fee37fb4c752664fe9e47815c4d529f7b1ac1"
+    },
+    "sketch": {
+      "path": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/prompts/stage_b_sketch.txt",
+      "sha256": "a73cebb393117d84ec4c4724eceb2bb43ca6a771a22bbd8294604f5eee8148b2"
+    },
+    "synthesize": {
+      "path": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/prompts/stage_c_synthesize.txt",
+      "sha256": "3c187998680ebfc60cafd856e21c747dd6f3587ec4b9bb47da6806f7e48b98f0"
+    },
+    "repair": {
+      "path": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/prompts/stage_d_repair.txt",
+      "sha256": "7957584e2c74600e1763fe4e9b9bba7d0121192985dae406ef23f6bda73e8b27"
+    }
+  },
+  "lean": {
+    "lean_version": "Lean (version 4.33.0-rc1, arm64-apple-darwin24.6.0, commit 62eed1db4d67327ec8120be05f1a1b0847d74561, Release)",
+    "mathlib_revision": "46ff937713b1d85cf6642ff8164d212292e30f6b"
+  },
+  "models": {
+    "formalize": "llama-3.3-70b-versatile",
+    "sketch": "llama-3.3-70b-versatile",
+    "synthesize": "llama-3.1-8b-instant",
+    "repair": "llama-3.1-8b-instant"
+  },
+  "configuration": {
+    "max_repair": 2,
+    "formalize_max_attempts": 3,
+    "synthesis_max_tokens": 2000,
+    "synthesis_temperature": 0.2
+  },
+  "status": "failed",
+  "completed_problem_count": 0,
+  "final_proofs_dir": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/lean_project/generated/runs/20261019T133737Z-7f70f8de",
+  "failure_type": "RuntimeError"
+}

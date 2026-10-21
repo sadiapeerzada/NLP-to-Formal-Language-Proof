@@ -289,3 +289,58 @@ genuine API generation or pilot has run. Before launch, review the proposed
 model, select a human-reviewed development theorem, reserve a new output
 directory, and explicitly approve the API-call and spend budget. Held-out
 dataset curation and all later research phases remain incomplete.
+
+## Focused pilot safety audit (21 October 2026)
+
+The requested `arith_001` plan-only invocation was run with:
+
+```text
+.venv/bin/python src/repair_experiment.py --problem-id arith_001 --theorem-file data/pilot_inputs/arith_001_statement.lean --lean-project lean_project --output-root data/experiments/phase1-pilot-001 --model openai/gpt-oss-120b --max-repair 3 --plan-only
+```
+
+It reported the reviewed statement-file SHA-256
+`5e12ab27a670e19eafb7fa1c597cff6c18b18c132df53b0fdf78e0fd2d363669`.
+The record at `data/pilot_inputs/arith_001_review.json` is an author
+self-review, marked `needs_review`, and explicitly says it is not independent.
+It is not an independent semantic review.
+
+### Execution and retry audit
+
+- The initial completion is generated once. Its candidate is then used for A,
+  B, and C; A performs no repair, while B and C each allow up to three repairs.
+- The maximum is seven logical completions: one shared initial completion and
+  six repairs.
+- The runner calls the Groq wrapper up to three total attempts per logical
+  completion. Groq SDK 1.5.0 separately defaults to two retries (three HTTP
+  attempts per wrapper call). The SDK retry count is now explicit, not implicit.
+- Therefore the current worst-case bound is 63 HTTP attempts for the
+  one-problem A/B/C run. Existing completion metadata records the wrapper-level
+  attempt count and retry events, but not a complete trace of SDK-internal
+  attempts. No experiment has run under this path.
+- The initial candidate is shared across conditions; B does not receive
+  compiler diagnostics, and C receives the recorded diagnostics from its
+  corresponding Lean verification. Existing tests exercise those invariants.
+
+### Cost and output safeguards
+
+The available official Groq model documentation
+(`https://console.groq.com/docs/models`) did not expose a per-token price for
+`openai/gpt-oss-120b`; `https://groq.com/pricing` redirected to the general
+homepage during this audit. No price was inferred. Consequently, the runner
+now fails closed before creating output or invoking the API until a dated
+official input/output price is verified and a per-attempt reservation guard is
+available. Plan-only records the $0.10 intended budget, unknown pricing, and
+no cost estimate. This is a preflight-only restriction, not a billing cap.
+Even after a future local token estimate is added, it cannot guarantee the
+provider's final bill exactly.
+
+The runner now requires the output root itself to be new, so an existing
+directory cannot be reused as an output location. The requested path
+`data/experiments/phase1-pilot-001` was absent during this audit. Plan-only
+does not create it. No existing pilot result or generated Lean run artifact was
+modified.
+
+The next required steps are to verify the model's published token prices from
+an official source, implement and test per-HTTP-attempt budget reservation
+using a conservative input-token bound, and obtain independent semantic review
+of the theorem. No API generation or paid experiment was run.

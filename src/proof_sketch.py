@@ -9,7 +9,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from llm_client import (
+from l.venv/bin/python -m pytest -q tests/test_repair_experiment.py tests/test_llm_client.py tests/test_llm_client_retry_after.py
+.venv/bin/python src/repair_experiment.py --problem-id arith_001 --theorem-file data/pilot_inputs/arith_001_statement.lean --lean-project lean_project --output-root data/experiments/phase1-pilot-001 --model openai/gpt-oss-120b --max-repair 3 --plan-only
+git diff --checklm_client import (
     STRONG_MODEL,
     CompletionResult,
     complete,

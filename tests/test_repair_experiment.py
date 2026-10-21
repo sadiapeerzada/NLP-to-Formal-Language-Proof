@@ -12,6 +12,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
+import llm_client
 import repair_experiment as experiment
 import verify as verifier
 from llm_client import CompletionResult
@@ -235,7 +236,7 @@ def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> No
         assert kwargs == {
             "max_tokens": experiment.DEFAULT_MAX_COMPLETION_TOKENS,
             "temperature": experiment.DEFAULT_TEMPERATURE,
-            "retries": experiment.TRANSPORT_RETRIES,
+            "retries": experiment.TRANSPORT_ATTEMPTS,
             "model": experiment.DEFAULT_MODEL,
             "reasoning_effort": "low",
         }
@@ -482,15 +483,113 @@ def test_existing_experiment_artifacts_are_not_overwritten(tmp_path: Path) -> No
     assert path.read_bytes() == before
 
 
+def test_existing_output_root_is_rejected_without_modification(tmp_path: Path) -> None:
+    output_root = tmp_path / "runs"
+    output_root.mkdir()
+    marker = output_root / "preserve.txt"
+    marker.write_text("existing pilot data", encoding="utf-8")
+
+    with pytest.raises(FileExistsError):
+        experiment.run_experiment(
+            "problem_001",
+            THEOREM,
+            tmp_path / "lean_project",
+            output_root,
+            completion_fn=Mock(return_value=completion(INITIAL_CANDIDATE)),
+            verification_fn=Mock(return_value=successful_verification()),
+            execution_mode="mock",
+            experiment_id="new-run",
+        )
+
+    assert marker.read_text(encoding="utf-8") == "existing pilot data"
+    assert sorted(path.name for path in output_root.iterdir()) == ["preserve.txt"]
+
+
 def test_plan_only_has_prompt_hashes_and_is_explicitly_api_free() -> None:
-    plan = experiment._plan("problem_001", THEOREM, experiment.DEFAULT_MODEL, 3)
+    plan = experiment._plan("arith_001", THEOREM, experiment.DEFAULT_MODEL, 3)
 
     assert plan["api_calls_will_be_made"] is False
     assert plan["provider"] == "groq"
     assert plan["model_identifier"] == experiment.DEFAULT_MODEL
+    assert plan["review_record_status"] == "needs_review"
+    assert plan["review_independence"] == "not_independent"
+    assert plan["worst_case_call_bounds"] == {
+        "initial_completion_shared_across_conditions": True,
+        "maximum_logical_completions": 7,
+        "wrapper_attempts_per_completion": 3,
+        "groq_sdk_retries_per_wrapper_attempt": 2,
+        "maximum_http_attempts_per_completion": 9,
+        "maximum_http_attempts_total": 63,
+    }
+    assert plan["cost_guard"]["status"] == "blocked_preflight_only"
+    assert plan["cost_guard"]["budget_usd"] == 0.10
+    assert plan["cost_guard"]["pricing_status"] == "unverified"
+    assert plan["cost_guard"]["estimated_max_cost_usd"] is None
     assert set(plan["prompt_templates"]) == {"initial", "blind", "compiler_guided"}
     assert plan["prompt_templates"]["blind"] == plan["prompt_templates"]["compiler_guided"]
     assert experiment.BLIND_PROMPT_TEMPLATE == experiment.COMPILER_GUIDED_PROMPT_TEMPLATE
+
+
+def test_plan_only_cli_does_not_start_api_or_write_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    theorem_file = tmp_path / "statement.lean"
+    theorem_file.write_text(THEOREM, encoding="utf-8")
+    output_root = tmp_path / "fresh-output"
+    run = Mock()
+    monkeypatch.setattr(experiment, "run_experiment", run)
+
+    experiment.main(
+        [
+            "--problem-id",
+            "problem_001",
+            "--theorem-file",
+            str(theorem_file),
+            "--output-root",
+            str(output_root),
+            "--plan-only",
+        ]
+    )
+
+    plan = json.loads(capsys.readouterr().out)
+    run.assert_not_called()
+    assert plan["api_calls_will_be_made"] is False
+    assert plan["output_root_is_fresh"] is True
+    assert not output_root.exists()
+
+
+def test_unverified_pricing_blocks_api_before_client_or_output(
+    tmp_path: Path,
+) -> None:
+    output_root = tmp_path / "runs"
+    with patch.object(llm_client, "_get_client", side_effect=AssertionError("must not transmit")) as get_client:
+        with pytest.raises(ValueError, match="pricing.*verified"):
+            experiment.run_experiment(
+                "problem_001",
+                THEOREM,
+                tmp_path / "lean_project",
+                output_root,
+                execution_mode="api",
+                verification_fn=Mock(return_value=successful_verification()),
+                experiment_id="pricing-unverified",
+            )
+
+    get_client.assert_not_called()
+    assert not output_root.exists()
+
+
+def test_api_key_is_not_written_to_mock_run_manifest(
+    tmp_path: Path,
+) -> None:
+    secret = "test-secret-never-persist"
+    with patch.dict("os.environ", {"GROQ_API_KEY": secret}):
+        path = run_in(
+            tmp_path,
+            Mock(return_value=completion(INITIAL_CANDIDATE)),
+            Mock(return_value=successful_verification()),
+        )
+
+    assert secret not in path.read_text(encoding="utf-8")
 
 
 def test_verifier_structured_diagnostics_reach_only_c_and_are_logged_exactly(
@@ -597,32 +696,31 @@ def test_blind_retries_continue_without_diagnostics_but_guided_condition_stops(
     assert "Lean emitted malformed diagnostics." not in prompts[1]
 
 
-def test_missing_api_credentials_cannot_be_recorded_as_generated_success(
+def test_api_run_is_blocked_before_missing_credentials_are_consulted(
     tmp_path: Path,
 ) -> None:
-    from llm_client import complete_with_metadata
-
-    with patch.dict("os.environ", {"GROQ_API_KEY": ""}):
-        path = experiment.run_experiment(
+    with (
+        patch.dict("os.environ", {"GROQ_API_KEY": ""}),
+        patch.object(
+            llm_client,
+            "_get_client",
+            side_effect=AssertionError("pricing gate must stop execution first"),
+        ) as get_client,
+        pytest.raises(ValueError, match="pricing.*verified"),
+    ):
+        experiment.run_experiment(
             "problem_001",
             THEOREM,
             tmp_path / "lean_project",
             tmp_path / "runs",
             model=experiment.DEFAULT_MODEL,
             execution_mode="api",
-            completion_fn=complete_with_metadata,
             verification_fn=Mock(return_value=successful_verification()),
-            experiment_id="missing-api-key",
+            experiment_id="pricing-unverified",
         )
 
-    manifest = read_manifest(path)
-    assert manifest["execution_mode"] == "api"
-    assert manifest["provider"] == "groq"
-    assert manifest["api_generation_confirmed"] is False
-    assert manifest["status"] == "incomplete"
-    assert manifest["initial_candidate"]["status"] == "provider_error"
-    assert manifest["initial_candidate"]["error_code"] == "missing_groq_api_key"
-    assert manifest["initial_candidate"]["action"].startswith("Set GROQ_API_KEY")
+    get_client.assert_not_called()
+    assert not (tmp_path / "runs").exists()
 
 
 def test_injected_completion_cannot_be_labeled_as_api(tmp_path: Path) -> None:

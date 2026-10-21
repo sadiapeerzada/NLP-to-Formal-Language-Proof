@@ -1,0 +1,14 @@
+Repository strict verifier evidence
+Toolchain: leanprover/lean4:v4.32.0
+Mathlib revision: 81a5d257c8e410db227a6665ed08f64fea08e997
+Policy: no sorry/sorryAx/admit; no axiom/constant/opaque declarations; inspect axioms.
+Configured timeout_seconds: 180 (acceptance criteria unchanged)
+Command: cd lean_project && lake env lean ../data/curation_batches/v0.1.2/ineq_004_linear_inequality.lean
+Scratch: lean_project/generated/_scratch/candidate_batch_v012_ineq_004_strict.lean
+success: True
+exit_code: 0
+elapsed_seconds: 51.548
+axiom_dependencies: ["propext", "Quot.sound"]
+candidate_sha256: 6385daa430f7efd874c0e3cc1923c884ca0ec9f50859e70f49cdf2cc7043db0d
+verification_source_sha256: c279934855ee88f2e042de13d558c0f9cd8993d65a9bdf6b58a8784650fa0874
+errors: []
