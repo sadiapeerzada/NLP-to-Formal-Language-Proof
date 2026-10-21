@@ -1,0 +1,22 @@
+{
+  "problem_id": "arith_001",
+  "purpose": "development pilot input only; not a research-dataset eligibility record",
+  "statement_file": "data/pilot_inputs/arith_001_statement.lean",
+  "statement_sha256": "5e12ab27a670e19eafb7fa1c597cff6c18b18c132df53b0fdf78e0fd2d363669",
+  "english": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+  "lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+  "semantic_fidelity": {
+    "label": "faithful",
+    "review_status": "needs_review",
+    "reviewer_provenance": "Sadia Peerzada, author self-review with Copilot-assisted comparison; not independent",
+    "date": "2026-10-21",
+    "evidence": "Both statements quantify over all a, b in N with no extra assumptions; 2 * a * b parses as (2 * a) * b = 2ab; identity holds including 0; only Mathlib needed."
+  },
+  "not_yet_reviewed": [
+    "source",
+    "license",
+    "family",
+    "split",
+    "independent reviewer"
+  ]
+}
