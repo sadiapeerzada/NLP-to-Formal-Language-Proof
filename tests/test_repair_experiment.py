@@ -664,3 +664,20 @@ def test_invalid_repair_budget_fails_before_creating_output(tmp_path: Path) -> N
         )
 
     assert not (tmp_path / "runs").exists()
+
+
+def test_compiler_payload_drops_reference_sorry_warning() -> None:
+    import json
+    from types import SimpleNamespace
+
+    verification = SimpleNamespace(
+        diagnostic_state="available",
+        diagnostics=[
+            {"kind": "hasSorry", "severity": "warning", "data": "declaration uses `sorry`"},
+            {"kind": "[anonymous]", "severity": "error", "data": "unsolved goals"},
+        ],
+    )
+
+    payload = json.loads(experiment._compiler_diagnostic_payload(verification))
+
+    assert [item["data"] for item in payload["diagnostics"]] == ["unsolved goals"]
