@@ -7,7 +7,7 @@ import re
 import threading
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import urlparse
@@ -62,6 +62,25 @@ def _required_environment(name: str) -> str:
     return value.strip()
 
 
+def _required_text(name: str, value: object) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise CostGuardConfigurationError(f"{name} must be non-empty text.")
+    return value.strip()
+
+
+def _valid_date(name: str, value: object) -> None:
+    if not isinstance(value, str):
+        raise CostGuardConfigurationError(f"{name} must be an ISO-8601 date.")
+    try:
+        parsed = date.fromisoformat(value)
+    except ValueError:
+        raise CostGuardConfigurationError(
+            f"{name} must be an ISO-8601 date."
+        ) from None
+    if parsed.isoformat() != value:
+        raise CostGuardConfigurationError(f"{name} must use YYYY-MM-DD format.")
+
+
 @dataclass(frozen=True)
 class CostGuardConfig:
     model_id: str
@@ -76,9 +95,17 @@ class CostGuardConfig:
     wrapper_attempts_per_completion: int
     sdk_max_retries_per_wrapper_attempt: int
     pricing_source_url: str
-    pricing_verified_at_utc: str
+    pricing_retrieved_on: str
+    pricing_currency: str
+    pricing_review_status: str
+    pricing_reviewed_on: str
+    pricing_reviewer_id: str
     pricing_evidence_path: str
     pricing_evidence_sha256: str
+    input_bound_review_status: str
+    input_bound_reviewed_on: str
+    input_bound_reviewer_id: str
+    input_bound_evidence: str
 
     def __post_init__(self) -> None:
         if not isinstance(self.model_id, str) or not self.model_id.strip():
@@ -117,23 +144,24 @@ class CostGuardConfig:
             raise CostGuardConfigurationError(
                 "pricing_source_url must reference an official HTTPS Groq domain."
             )
-        if self.pricing_verified_at_utc:
-            try:
-                verified_at = datetime.fromisoformat(
-                    self.pricing_verified_at_utc.replace("Z", "+00:00")
-                )
-            except ValueError:
-                raise CostGuardConfigurationError(
-                    "pricing_verified_at_utc must be an ISO-8601 timestamp."
-                ) from None
-            if verified_at.tzinfo is None:
-                raise CostGuardConfigurationError(
-                    "pricing_verified_at_utc must include a timezone."
-                )
-        else:
+        _valid_date("pricing_retrieved_on", self.pricing_retrieved_on)
+        if self.pricing_currency != "USD":
             raise CostGuardConfigurationError(
-                "pricing_verified_at_utc must be a non-empty ISO-8601 timestamp."
+                "pricing_currency must be USD because cost limits are USD-denominated."
             )
+        if self.pricing_review_status != "human_reviewed":
+            raise CostGuardConfigurationError(
+                "pricing_review_status must be 'human_reviewed'."
+            )
+        _valid_date("pricing_reviewed_on", self.pricing_reviewed_on)
+        _required_text("pricing_reviewer_id", self.pricing_reviewer_id)
+        if self.input_bound_review_status != "human_reviewed":
+            raise CostGuardConfigurationError(
+                "input_bound_review_status must be 'human_reviewed'."
+            )
+        _valid_date("input_bound_reviewed_on", self.input_bound_reviewed_on)
+        _required_text("input_bound_reviewer_id", self.input_bound_reviewer_id)
+        _required_text("input_bound_evidence", self.input_bound_evidence)
         if not SHA256_RE.fullmatch(self.pricing_evidence_sha256):
             raise CostGuardConfigurationError(
                 "pricing_evidence_sha256 must be a lowercase SHA-256 digest."
@@ -188,9 +216,17 @@ class CostGuardConfig:
             "GROQ_COST_TOTAL_BUDGET_USD": "total_budget_usd",
             "GROQ_COST_PRICING_SOURCE_URL": "pricing_source_url",
             "GROQ_COST_PRICING_MODEL_ID": "pricing_model_id",
-            "GROQ_COST_PRICING_VERIFIED_AT_UTC": "pricing_verified_at_utc",
+            "GROQ_COST_PRICING_RETRIEVED_ON": "pricing_retrieved_on",
+            "GROQ_COST_PRICING_CURRENCY": "pricing_currency",
+            "GROQ_COST_PRICING_REVIEW_STATUS": "pricing_review_status",
+            "GROQ_COST_PRICING_REVIEWED_ON": "pricing_reviewed_on",
+            "GROQ_COST_PRICING_REVIEWER_ID": "pricing_reviewer_id",
             "GROQ_COST_PRICING_EVIDENCE_PATH": "pricing_evidence_path",
             "GROQ_COST_PRICING_EVIDENCE_SHA256": "pricing_evidence_sha256",
+            "GROQ_COST_INPUT_BOUND_REVIEW_STATUS": "input_bound_review_status",
+            "GROQ_COST_INPUT_BOUND_REVIEWED_ON": "input_bound_reviewed_on",
+            "GROQ_COST_INPUT_BOUND_REVIEWER_ID": "input_bound_reviewer_id",
+            "GROQ_COST_INPUT_BOUND_EVIDENCE": "input_bound_evidence",
         }
         values = {name: _required_environment(name) for name in required}
         if values["GROQ_COST_PRICING_MODEL_ID"] != model_id:
@@ -246,9 +282,17 @@ class CostGuardConfig:
             wrapper_attempts_per_completion=wrapper_attempts_per_completion,
             sdk_max_retries_per_wrapper_attempt=sdk_max_retries_per_wrapper_attempt,
             pricing_source_url=parsed["pricing_source_url"],
-            pricing_verified_at_utc=parsed["pricing_verified_at_utc"],
+            pricing_retrieved_on=parsed["pricing_retrieved_on"],
+            pricing_currency=parsed["pricing_currency"],
+            pricing_review_status=parsed["pricing_review_status"],
+            pricing_reviewed_on=parsed["pricing_reviewed_on"],
+            pricing_reviewer_id=parsed["pricing_reviewer_id"],
             pricing_evidence_path=parsed["pricing_evidence_path"],
             pricing_evidence_sha256=parsed["pricing_evidence_sha256"],
+            input_bound_review_status=parsed["input_bound_review_status"],
+            input_bound_reviewed_on=parsed["input_bound_reviewed_on"],
+            input_bound_reviewer_id=parsed["input_bound_reviewer_id"],
+            input_bound_evidence=parsed["input_bound_evidence"],
         )
 
 
@@ -279,6 +323,10 @@ class CostReservationGuard:
         requested_output_tokens: int,
         wrapper_attempt_number: int,
     ) -> dict[str, object]:
+        if self._persist_snapshot is None:
+            raise CostReservationError(
+                "A persistence callback is required before reserving an HTTP attempt."
+            )
         if not isinstance(prompt, str):
             raise CostReservationError("Prompt must be text to enforce input bounds.")
         if (
@@ -350,10 +398,25 @@ class CostReservationGuard:
         if outcome not in {"response_received", "ambiguous_may_be_billed"}:
             raise ValueError("Unsupported reservation outcome.")
         with self._lock:
-            for reservation in self._reservations:
+            batch = [
+                reservation
+                for reservation in self._reservations
                 if reservation["reservation_id"].startswith(
                     f"{reservation_batch_id}-http-"
-                ):
+                )
+            ]
+            if not batch:
+                raise CostReservationError(
+                    f"Unknown reservation batch {reservation_batch_id!r}."
+                )
+            if outcome == "response_received":
+                # The SDK may have retried internally; absent HTTP transport
+                # instrumentation, do not claim which reserved request replied.
+                batch[0]["status"] = "response_received_at_least_one_unknown"
+                for reservation in batch[1:]:
+                    reservation["status"] = "unused_or_ambiguous_may_be_billed"
+            else:
+                for reservation in batch:
                     reservation["status"] = outcome
         self._persist()
 
@@ -361,6 +424,10 @@ class CostReservationGuard:
         self, callback: Callable[[dict[str, object]], None]
     ) -> None:
         self._persist_snapshot = callback
+
+    @property
+    def has_persistence_callback(self) -> bool:
+        return self._persist_snapshot is not None
 
     def _persist(self) -> None:
         if self._persist_snapshot is not None:
@@ -371,9 +438,17 @@ class CostReservationGuard:
             return {
                 "model_id": self.config.model_id,
                 "pricing_source_url": self.config.pricing_source_url,
-                "pricing_verified_at_utc": self.config.pricing_verified_at_utc,
+                "pricing_retrieved_on": self.config.pricing_retrieved_on,
+                "pricing_currency": self.config.pricing_currency,
+                "pricing_review_status": self.config.pricing_review_status,
+                "pricing_reviewed_on": self.config.pricing_reviewed_on,
+                "pricing_reviewer_id": self.config.pricing_reviewer_id,
                 "pricing_evidence_path": self.config.pricing_evidence_path,
                 "pricing_evidence_sha256": self.config.pricing_evidence_sha256,
+                "input_bound_review_status": self.config.input_bound_review_status,
+                "input_bound_reviewed_on": self.config.input_bound_reviewed_on,
+                "input_bound_reviewer_id": self.config.input_bound_reviewer_id,
+                "input_bound_evidence": self.config.input_bound_evidence,
                 "input_usd_per_million_tokens": str(
                     self.config.input_usd_per_million_tokens
                 ),

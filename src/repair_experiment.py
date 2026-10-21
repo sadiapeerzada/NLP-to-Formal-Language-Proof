@@ -33,6 +33,7 @@ from llm_client import (
     reasoning_effort_for_model,
 )
 from verify import VerificationResult, check_lean_file_detailed
+from verify import DEFAULT_POLICY
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
@@ -43,6 +44,9 @@ PROMPT_PATHS = {
         REPOSITORY_ROOT / "prompts" / "repair_experiment_compiler_guided.txt"
     ),
 }
+PROTOCOL_PATH = (
+    REPOSITORY_ROOT / "configs" / "repair_experiment_protocol_v0.2.0.json"
+)
 INITIAL_PROMPT_TEMPLATE = PROMPT_PATHS["initial"].read_text()
 BLIND_PROMPT_TEMPLATE = PROMPT_PATHS["blind"].read_text()
 COMPILER_GUIDED_PROMPT_TEMPLATE = PROMPT_PATHS["compiler_guided"].read_text()
@@ -87,6 +91,95 @@ def _prompt_hashes() -> dict[str, str]:
     return {
         name: hashlib.sha256(path.read_bytes()).hexdigest()
         for name, path in PROMPT_PATHS.items()
+    }
+
+
+def _protocol_metadata() -> dict[str, str]:
+    """Validate and identify the machine-readable protocol bound to a run."""
+    protocol_bytes = PROTOCOL_PATH.read_bytes()
+    try:
+        protocol = json.loads(protocol_bytes)
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise RuntimeError(f"Experiment protocol is not valid JSON: {error}") from error
+    if not isinstance(protocol, dict):
+        raise RuntimeError("Experiment protocol must be a JSON object.")
+
+    expected_prompt_hashes = {
+        name: value.get("sha256")
+        for name, value in protocol.get("prompt_templates", {}).items()
+        if isinstance(value, dict)
+    }
+    if expected_prompt_hashes != _prompt_hashes():
+        raise RuntimeError(
+            "Experiment prompt files do not match the hashes in the locked protocol."
+        )
+    model = protocol.get("model", {})
+    decoding = protocol.get("decoding", {})
+    retry = protocol.get("retry_and_stopping", {})
+    execution_gate = protocol.get("execution_gate", {})
+    if (
+        not isinstance(model, dict)
+        or model.get("requested_model_id") != DEFAULT_MODEL
+        or model.get("provider") != MODEL_PROVIDER
+        or not isinstance(decoding, dict)
+        or decoding.get("temperature") != DEFAULT_TEMPERATURE
+        or decoding.get("max_completion_tokens") != DEFAULT_MAX_COMPLETION_TOKENS
+        or decoding.get("reasoning_effort") != reasoning_effort_for_model(DEFAULT_MODEL)
+        or not isinstance(retry, dict)
+        or retry.get("maximum_wrapper_attempts_per_logical_completion")
+        != TRANSPORT_ATTEMPTS
+        or retry.get("maximum_groq_sdk_retries_per_wrapper_attempt")
+        != SDK_MAX_RETRIES
+        or protocol.get("conditions", {}).get("B", {}).get(
+            "maximum_repair_calls"
+        )
+        != DEFAULT_MAX_REPAIRS
+        or protocol.get("conditions", {}).get("C", {}).get(
+            "maximum_repair_calls"
+        )
+        != DEFAULT_MAX_REPAIRS
+        or not isinstance(execution_gate, dict)
+        or execution_gate.get("api_execution_enabled") != API_EXECUTION_ENABLED
+    ):
+        raise RuntimeError(
+            "Experiment runner settings do not match the locked protocol."
+        )
+
+    environment = protocol.get("lean_environment", {})
+    expected_environment_hashes = {
+        "lean-toolchain": environment.get("lean_toolchain_sha256"),
+        "lake-manifest.json": environment.get("lake_manifest_sha256"),
+        "lakefile.toml": environment.get("lakefile_sha256"),
+    } if isinstance(environment, dict) else {}
+    actual_environment_hashes = {
+        "lean-toolchain": hashlib.sha256(
+            (REPOSITORY_ROOT / "lean_project" / "lean-toolchain").read_bytes()
+        ).hexdigest(),
+        "lake-manifest.json": hashlib.sha256(
+            (REPOSITORY_ROOT / "lean_project" / "lake-manifest.json").read_bytes()
+        ).hexdigest(),
+        "lakefile.toml": hashlib.sha256(
+            (REPOSITORY_ROOT / "lean_project" / "lakefile.toml").read_bytes()
+        ).hexdigest(),
+    }
+    if expected_environment_hashes != actual_environment_hashes:
+        raise RuntimeError(
+            "Lean/Mathlib project files do not match the locked protocol."
+        )
+    if protocol.get("proof_safety") != {
+        "forbidden_source_tokens": list(DEFAULT_POLICY.prohibited_proof_tokens),
+        "forbidden_declarations": list(DEFAULT_POLICY.prohibited_declarations),
+        "allowed_axiom_dependencies": list(DEFAULT_POLICY.allowed_axioms),
+        "lean_compilation_establishes_semantic_fidelity": False,
+    }:
+        raise RuntimeError(
+            "Verifier proof-safety policy does not match the locked protocol."
+        )
+    return {
+        "version": str(protocol.get("protocol_version", "")),
+        "status": str(protocol.get("protocol_status", "")),
+        "path": str(PROTOCOL_PATH.relative_to(REPOSITORY_ROOT)),
+        "sha256": hashlib.sha256(protocol_bytes).hexdigest(),
     }
 
 
@@ -632,6 +725,16 @@ def run_experiment(
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
 
+    protocol_record = _protocol_metadata()
+    if execution_mode == "api" and model != DEFAULT_MODEL:
+        raise ValueError(
+            "API mode requires the primary model recorded in the locked protocol."
+        )
+    if execution_mode == "api" and max_repair != DEFAULT_MAX_REPAIRS:
+        raise ValueError(
+            "API mode requires the locked three-repair budget for conditions B and C."
+        )
+
     cost_guard: CostReservationGuard | None = None
     if execution_mode == "api":
         try:
@@ -667,6 +770,7 @@ def run_experiment(
     manifest: dict[str, object] = {
         "schema_version": 1,
         "experiment_type": "paired_compiler_guided_repair",
+        "protocol": protocol_record,
         "experiment_id": run_id,
         "provider": MODEL_PROVIDER if api_completion else None,
         "configured_provider": MODEL_PROVIDER,
@@ -1023,10 +1127,16 @@ def _plan(
         raise ValueError("Model identifier must be a non-empty string.")
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
+    protocol_record = _protocol_metadata()
+    if model != DEFAULT_MODEL:
+        raise ValueError("Plan must use the primary model recorded in the protocol.")
+    if max_repair != DEFAULT_MAX_REPAIRS:
+        raise ValueError("Plan must use the locked three-repair budget for B and C.")
     max_logical_completions = 1 + (2 * max_repair)
     max_http_attempts_per_completion = TRANSPORT_ATTEMPTS * (SDK_MAX_RETRIES + 1)
     return {
         "experiment_type": "paired_compiler_guided_repair",
+        "protocol": protocol_record,
         "problem_id": problem_id,
         "theorem_sha256": _sha256_text(theorem_statement),
         "theorem_review_status": "not_verified_by_harness",

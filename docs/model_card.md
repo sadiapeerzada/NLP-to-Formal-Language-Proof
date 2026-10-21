@@ -1,5 +1,19 @@
 # NL2Lean Pipeline Card
 
+## Paired repair study protocol
+
+The paired A/B/C study is specified in protocol version `0.2.0` at
+[`configs/repair_experiment_protocol_v0.2.0.json`](../configs/repair_experiment_protocol_v0.2.0.json).
+Its requested primary model is the mutable Groq alias
+`openai/gpt-oss-120b`; account-specific generation access and an immutable
+revision are unverified. The protocol and run manifests identify exact prompt
+and Lean/Mathlib configuration bytes by SHA-256. API execution remains
+disabled, and the proposed model choice is not evidence of access or results.
+
+The general pipeline described below has separate model defaults and is not
+the paired study. Its completion path now requires a persisted cost guard
+before any Groq request; no pipeline API run is enabled by this card.
+
 This isn't a fine-tuned model -- it's a prompting + verification pipeline on
 top of a Groq-hosted model (default `llama-3.3-70b-versatile`, see
 GROQ_MODEL). Documenting it like a model card anyway because

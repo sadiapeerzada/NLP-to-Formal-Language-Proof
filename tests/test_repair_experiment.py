@@ -251,6 +251,10 @@ def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> No
     manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
 
     assert len(prompts) == 1 + 2 * 3
+    assert manifest["protocol"]["version"] == "0.2.0"
+    assert manifest["protocol"]["sha256"] == experiment._protocol_metadata()[
+        "sha256"
+    ]
     for condition in ("B", "C"):
         result = manifest["conditions"][condition]
         assert result["repair_calls_made"] == 3
@@ -509,6 +513,14 @@ def test_plan_only_has_prompt_hashes_and_is_explicitly_api_free() -> None:
     plan = experiment._plan("arith_001", THEOREM, experiment.DEFAULT_MODEL, 3)
 
     assert plan["api_calls_will_be_made"] is False
+    assert plan["protocol"]["version"] == "0.2.0"
+    assert plan["protocol"]["status"] == (
+        "proposed_locked_for_review_not_preregistered"
+    )
+    assert len(plan["protocol"]["sha256"]) == 64
+    assert plan["protocol"]["path"] == (
+        "configs/repair_experiment_protocol_v0.2.0.json"
+    )
     assert plan["provider"] == "groq"
     assert plan["model_identifier"] == experiment.DEFAULT_MODEL
     assert plan["review_record_status"] == "needs_review"
@@ -526,8 +538,27 @@ def test_plan_only_has_prompt_hashes_and_is_explicitly_api_free() -> None:
     assert plan["cost_guard"]["pricing_status"] == "unverified"
     assert plan["cost_guard"]["estimated_max_cost_usd"] is None
     assert set(plan["prompt_templates"]) == {"initial", "blind", "compiler_guided"}
+    assert plan["prompt_templates"] == {
+        "initial": "00ec7bc08fdf14274d021a308ebc27a51e17e46198b4dbc29002b958a1e04990",
+        "blind": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745",
+        "compiler_guided": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745",
+    }
     assert plan["prompt_templates"]["blind"] == plan["prompt_templates"]["compiler_guided"]
     assert experiment.BLIND_PROMPT_TEMPLATE == experiment.COMPILER_GUIDED_PROMPT_TEMPLATE
+
+
+def test_protocol_rejects_runner_configuration_drift(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(experiment, "DEFAULT_TEMPERATURE", 0.7)
+
+    with pytest.raises(RuntimeError, match="do not match the locked protocol"):
+        experiment._protocol_metadata()
+
+
+def test_plan_rejects_non_protocol_repair_budget() -> None:
+    with pytest.raises(ValueError, match="locked three-repair budget"):
+        experiment._plan("arith_001", THEOREM, experiment.DEFAULT_MODEL, 2)
 
 
 def test_plan_only_cli_does_not_start_api_or_write_output(

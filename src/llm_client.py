@@ -23,7 +23,7 @@ from dataclasses import dataclass
 
 import groq
 
-from cost_guard import CostReservationGuard
+from cost_guard import CostReservationError, CostReservationGuard
 
 # Two-tier model setup: reasoning-heavy stages (formalizing NL -> Lean,
 # sketching the proof strategy) need the strong model to get well-typed
@@ -148,19 +148,29 @@ def complete_with_metadata(
     cost_guard: CostReservationGuard | None = None,
 ) -> CompletionResult:
     """Send a chat completion and return text with safe scalar diagnostics."""
+    if cost_guard is None:
+        raise CostReservationError(
+            "A persisted cost guard is required before any Groq HTTP request."
+        )
+    if not cost_guard.has_persistence_callback:
+        raise CostReservationError(
+            "The cost guard must persist reservations before any Groq HTTP request."
+        )
     if retries < 1:
         raise ValueError("retries must be at least 1")
     if max_retry_after_seconds < 0 or max_total_wait_seconds < 0:
         raise ValueError("retry wait budgets must be non-negative")
-    if cost_guard is not None and retries > (
-        cost_guard.config.wrapper_attempts_per_completion
-    ):
+    if retries != cost_guard.config.wrapper_attempts_per_completion:
         raise ValueError(
-            "Requested wrapper attempts exceed the cost guard configuration."
+            "Requested wrapper attempts must match the cost guard configuration."
+        )
+    if cost_guard.config.sdk_max_retries_per_wrapper_attempt != SDK_MAX_RETRIES:
+        raise ValueError(
+            "Cost guard SDK retry count does not match the configured Groq client."
         )
 
     model = model or STRONG_MODEL
-    if cost_guard is not None and model != cost_guard.config.model_id:
+    if model != cost_guard.config.model_id:
         raise ValueError(
             "Requested model does not match the model bound to the cost guard."
         )
@@ -181,13 +191,11 @@ def complete_with_metadata(
         )
 
     for attempt in range(retries):
-        reservation = None
-        if cost_guard is not None:
-            reservation = cost_guard.reserve_wrapper_attempt(
-                prompt,
-                requested_output_tokens=max_tokens,
-                wrapper_attempt_number=attempt + 1,
-            )
+        reservation = cost_guard.reserve_wrapper_attempt(
+            prompt,
+            requested_output_tokens=max_tokens,
+            wrapper_attempt_number=attempt + 1,
+        )
         try:
             request: dict[str, object] = {
                 "model": model,
@@ -203,11 +211,10 @@ def complete_with_metadata(
                 resp = client.chat.completions.create(**request)
                 reservation_outcome = "response_received"
             finally:
-                if cost_guard is not None and reservation is not None:
-                    cost_guard.record_wrapper_outcome(
-                        reservation["reservation_batch_id"],
-                        outcome=reservation_outcome,
-                    )
+                cost_guard.record_wrapper_outcome(
+                    reservation["reservation_batch_id"],
+                    outcome=reservation_outcome,
+                )
             latency_seconds = round(time.monotonic() - request_started, 3)
             choices = getattr(resp, "choices", None) or []
             message = getattr(choices[0], "message", None) if choices else None
@@ -222,9 +229,7 @@ def complete_with_metadata(
                     "latency_seconds": latency_seconds,
                     "api_attempts": attempt + 1,
                     "retry_events": retry_events,
-                    "cost_reservation": (
-                        cost_guard.snapshot() if cost_guard is not None else None
-                    ),
+                    "cost_reservation": cost_guard.snapshot(),
                 }
             )
             if metadata["content_empty"]:
@@ -300,6 +305,7 @@ def complete(
     max_retry_after_seconds: float = 300,
     max_total_wait_seconds: float = 600,
     sleep: Callable[[float], None] | None = None,
+    cost_guard: CostReservationGuard | None = None,
 ) -> str:
     """Send a single-turn prompt, return the raw text response.
 
@@ -318,6 +324,7 @@ def complete(
         max_retry_after_seconds=max_retry_after_seconds,
         max_total_wait_seconds=max_total_wait_seconds,
         sleep=sleep,
+        cost_guard=cost_guard,
     ).content
 
 

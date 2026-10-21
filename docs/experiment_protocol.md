@@ -1,8 +1,9 @@
 # Compiler-Guided Repair Experiment Protocol
 
-**Status:** protocol proposal for review; not yet reviewed, preregistered, or
-frozen.  
-**Version:** 0.1.0  
+**Status:** proposed machine-readable specification; implementation-locked for
+reproducibility checks, but not independently reviewed, preregistered, or
+authorized for API execution.
+**Version:** 0.2.0
 **Prepared:** 21 October 2026  
 **Study:** *Compiler-Guided Repair for Natural-Language-to-Lean
 Formalization*
@@ -11,6 +12,14 @@ This document defines the intended empirical comparison and its execution
 gates. It records protocol decisions separately from implemented safeguards.
 No experiment result, independent review, dataset freeze, pricing verification,
 or API pilot is asserted here.
+
+The machine-readable specification is
+[`configs/repair_experiment_protocol_v0.2.0.json`](../configs/repair_experiment_protocol_v0.2.0.json).
+It identifies exact prompt files by SHA-256, the requested model alias,
+decoding, retry limits, analysis plan, and pinned Lean/Mathlib project files.
+Each run plan and manifest records that configuration's SHA-256. Hashes bind
+bytes to an identifier; they do not authenticate pricing, reviewers, or other
+claims in those bytes.
 
 ## 1. Research question and outcomes
 
@@ -29,6 +38,9 @@ compilation alone is not a fidelity label.
 
 - **Proposed provider:** Groq.
 - **Proposed requested model ID:** `openai/gpt-oss-120b`.
+- This is a mutable provider alias. Account-specific generation access and an
+  immutable model revision are unverified; model-list membership is not proof
+  of generation access. There is no fallback model.
 - The model choice remains **provisional** until an explicitly approved,
   cost-limited real generation pilot completes successfully and the returned
   provider/model metadata are audited.
@@ -36,7 +48,7 @@ compilation alone is not a fidelity label.
   successful API response, together with provider metadata, Groq SDK version,
   timestamps, finish reason, usage, decoding parameters, and errors. Missing
   response metadata remains missing; it is not replaced with the requested ID.
-- Current runner defaults are temperature `0.2`, maximum completion tokens
+- Locked runner settings are temperature `0.2`, maximum completion tokens
   `2000`, and `reasoning_effort="low"` for GPT-OSS. The run configuration must
   record the actual values sent. The ordinary end-to-end pipeline uses
   separately configurable strong/fast model defaults and is not the paired
@@ -44,7 +56,10 @@ compilation alone is not a fidelity label.
 - Treat the model string as a provider alias, not an immutable model snapshot.
   Record it exactly, but do not claim that it pins model weights or a serving
   implementation.
-- No API call is authorized by this document.
+- No generation seed is sent, so provider sampling is not claimed deterministic.
+  The protocol uses one matched trajectory per problem; transport attempts are
+  not independent samples. The paired bootstrap uses 10,000 problem-level
+  resamples and seed `20271021`. No API call is authorized by this document.
 
 ## 3. Paired A/B/C design
 
@@ -223,23 +238,26 @@ control; a manifest declaration alone cannot enforce it.
 
 ### Price reference and verification status
 
-The official source to check is Groq's [pricing page](https://groq.com/pricing),
-with model identity cross-checked against [Groq model
-documentation](https://console.groq.com/docs/models). During this audit, the
-pricing URL redirected to a general Groq page and the model documentation did
-not provide model-specific token rates. Therefore the exact input and output
-rates for `openai/gpt-oss-120b` are **not verified**; no numeric price is
-configured or inferred. The earlier figures ($0.15/M input, $0.60/M output,
-$0.075/M cached input) are unverified protocol notes, not pricing evidence,
-and must not be used to authorize a run.
+The model-specific official reference is Groq's [GPT-OSS 120B model
+documentation](https://console.groq.com/docs/model/openai/gpt-oss-120b). Its
+displayed rates were observed during preparation, but the page has not been
+archived in this repository or independently reviewed, account/region terms
+have not been checked, and no pricing values are configured. Therefore rates
+and billable behavior remain **unverified** and must not be used to authorize a
+run. A model-list response establishes neither generation access nor pricing.
 
 Before any future run, archive official evidence showing the exact model ID,
-input USD per million tokens, output USD per million tokens, and any applicable
-account/region conditions. Record its retrieval timestamp and SHA-256. Cached
+input and output rates, currency, and any applicable account/region
+conditions. Record its retrieval date, source URL, and SHA-256, then have a
+named human reviewer inspect the archived bytes and model-specific rates.
+Cached
 input discounts must not be assumed; calculate with the non-cached input rate.
-The current implementation requires those fields through `GROQ_COST_*`
-environment settings but API execution remains disabled in code even when
-configuration is present.
+The implementation requires these declarations through `GROQ_COST_*`
+environment settings. A hash only checks byte identity; it cannot prove that
+the archived source is official, current, model-specific, or interpreted
+correctly. Human-review status and reviewer fields are assertions, not
+cryptographic authentication. API execution remains disabled in code even
+when configuration is present.
 
 ### Conservative reservation formula
 
@@ -278,11 +296,11 @@ Required settings are
 `GROQ_COST_INPUT_OVERHEAD_TOKEN_BOUND`,
 `GROQ_COST_MAX_PER_HTTP_ATTEMPT_USD`,
 `GROQ_COST_PER_PROBLEM_BUDGET_USD`, `GROQ_COST_TOTAL_BUDGET_USD`,
-`GROQ_COST_PRICING_SOURCE_URL`, `GROQ_COST_PRICING_MODEL_ID`,
-`GROQ_COST_PRICING_VERIFIED_AT_UTC`,
-`GROQ_COST_PRICING_EVIDENCE_PATH`, and
-`GROQ_COST_PRICING_EVIDENCE_SHA256`. No pricing values are presently
-configured. The configured evidence path must be readable and its exact bytes
+`GROQ_COST_PRICING_SOURCE_URL`, `GROQ_COST_PRICING_MODEL_ID`, retrieval date,
+currency, pricing review status/date/reviewer, archived evidence path/hash,
+and input-bound review status/date/reviewer/evidence. No pricing values or
+reviewed bounds are presently configured. The evidence path must be readable
+and its exact bytes
 must match the declared SHA-256. This integrity check does not validate that
 the archived content is genuine official pricing evidence. The input check
 counts UTF-8 prompt bytes plus the operator-supplied
@@ -355,10 +373,12 @@ No larger experiment may begin until all gates have documented approval:
    counts, independent review and duplicate disposition requirements, family
    separation, exact hashes, and access controls. Current draft status does
    not pass this gate.
-3. **Pricing and cost guard verified:** recheck official pricing immediately
-   before execution; implement and test a fail-closed input-token bound,
-   per-HTTP-attempt reservation, retry accounting, timeout treatment, and
-   per-problem/total caps. Current code does not pass this gate.
+3. **Pricing and cost guard verified:** archive and human-review official
+   model-specific pricing and account terms; substantiate input framing/token
+   bounds; verify fail-closed per-HTTP-attempt reservations persisted before
+   transmission, retry accounting, ambiguous timeout treatment, and
+   per-problem/total caps. Mock tests cover these controls, but evidence and
+   bounds remain unreviewed and API execution remains disabled.
 4. **One approved, cost-limited API pilot succeeds end to end:** obtain
    explicit approval for the exact development problem, model, request
    settings, fresh output directory, and maximum spend; then verify genuine

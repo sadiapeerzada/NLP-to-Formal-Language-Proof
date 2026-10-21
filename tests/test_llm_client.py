@@ -4,6 +4,7 @@ import json
 import os
 import sys
 import unittest
+from decimal import Decimal
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
@@ -11,6 +12,7 @@ from unittest.mock import Mock, patch
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 import llm_client
+from cost_guard import CostGuardConfig, CostReservationError, CostReservationGuard
 
 
 class FakeRateLimitError(Exception):
@@ -35,6 +37,37 @@ class LlmClientRetryTests(unittest.TestCase):
         self.client_patch = patch.object(llm_client, "_client", self.client)
         self.client_patch.start()
         self.addCleanup(self.client_patch.stop)
+
+    @staticmethod
+    def cost_guard(
+        model: str = "llama-3.3-70b-versatile", retries: int = 3, sdk_retries: int = 2
+    ) -> CostReservationGuard:
+        config = CostGuardConfig(
+            model_id=model,
+            input_usd_per_million_tokens=Decimal("1"),
+            output_usd_per_million_tokens=Decimal("1"),
+            max_input_tokens=10000,
+            max_output_tokens=2000,
+            input_overhead_token_bound=128,
+            max_cost_per_http_attempt_usd=Decimal("1"),
+            per_problem_budget_usd=Decimal("100"),
+            total_budget_usd=Decimal("100"),
+            wrapper_attempts_per_completion=retries,
+            sdk_max_retries_per_wrapper_attempt=sdk_retries,
+            pricing_source_url="https://console.groq.com/docs/model/openai/gpt-oss-120b",
+            pricing_retrieved_on="2026-10-21",
+            pricing_currency="USD",
+            pricing_review_status="human_reviewed",
+            pricing_reviewed_on="2026-10-21",
+            pricing_reviewer_id="test-fixture-reviewer",
+            pricing_evidence_path="synthetic-test-fixture",
+            pricing_evidence_sha256="a" * 64,
+            input_bound_review_status="human_reviewed",
+            input_bound_reviewed_on="2026-10-21",
+            input_bound_reviewer_id="test-fixture-reviewer",
+            input_bound_evidence="synthetic test fixture only",
+        )
+        return CostReservationGuard(config, persist_snapshot=lambda _snapshot: None)
 
     @staticmethod
     def response(
@@ -69,7 +102,9 @@ class LlmClientRetryTests(unittest.TestCase):
         ]
 
         with self.assertRaisesRegex(RuntimeError, "after 3 attempts") as context:
-            llm_client.complete("prompt", retries=3, sleep=self.sleep)
+            llm_client.complete(
+                "prompt", retries=3, sleep=self.sleep, cost_guard=self.cost_guard()
+            )
 
         self.assertIsInstance(context.exception.__cause__, FakeRateLimitError)
         self.assertEqual(self.create.call_count, 3)
@@ -78,7 +113,9 @@ class LlmClientRetryTests(unittest.TestCase):
     def test_immediate_success_uses_one_total_attempt(self) -> None:
         self.create.return_value = self.response("completed")
 
-        result = llm_client.complete("prompt", retries=3, sleep=self.sleep)
+        result = llm_client.complete(
+            "prompt", retries=3, sleep=self.sleep, cost_guard=self.cost_guard()
+        )
 
         self.assertEqual(result, "completed")
         self.assertEqual(self.create.call_count, 1)
@@ -95,7 +132,11 @@ class LlmClientRetryTests(unittest.TestCase):
         )
 
         with patch("builtins.print") as printed:
-            result = llm_client.complete("prompt", model="openai/gpt-oss-20b")
+            result = llm_client.complete(
+                "prompt",
+                model="openai/gpt-oss-20b",
+                cost_guard=self.cost_guard(model="openai/gpt-oss-20b"),
+            )
 
         self.assertEqual(result, "")
         message = printed.call_args.args[0]
@@ -121,7 +162,7 @@ class LlmClientRetryTests(unittest.TestCase):
         )
 
         with patch("builtins.print") as printed:
-            result = llm_client.complete("prompt")
+            result = llm_client.complete("prompt", cost_guard=self.cost_guard())
 
         self.assertEqual(result, " \n\t")
         metadata = json.loads(
@@ -139,7 +180,7 @@ class LlmClientRetryTests(unittest.TestCase):
         self.create.return_value = self.response("theorem valid : True := by trivial")
 
         with patch("builtins.print") as printed:
-            result = llm_client.complete("prompt")
+            result = llm_client.complete("prompt", cost_guard=self.cost_guard())
 
         self.assertEqual(result, "theorem valid : True := by trivial")
         printed.assert_not_called()
@@ -149,8 +190,20 @@ class LlmClientRetryTests(unittest.TestCase):
             with self.assertRaisesRegex(
                 llm_client.MissingGroqApiKeyError, "GROQ_API_KEY is not set"
             ):
-                llm_client.complete_with_metadata("prompt")
+                llm_client.complete_with_metadata(
+                    "prompt", cost_guard=self.cost_guard()
+                )
 
+        self.create.assert_not_called()
+
+    def test_missing_cost_guard_blocks_before_client_or_http_request(self) -> None:
+        with (
+            patch.object(llm_client, "_get_client") as get_client,
+            self.assertRaisesRegex(CostReservationError, "persisted cost guard"),
+        ):
+            llm_client.complete_with_metadata("prompt")
+
+        get_client.assert_not_called()
         self.create.assert_not_called()
 
     def test_sdk_retry_limit_is_explicit_and_matches_audited_default(self) -> None:
@@ -173,6 +226,7 @@ class LlmClientRetryTests(unittest.TestCase):
             reasoning_effort=llm_client.reasoning_effort_for_model(
                 "openai/gpt-oss-20b"
             ),
+            cost_guard=self.cost_guard(model="openai/gpt-oss-20b"),
         )
         self.assertEqual(self.create.call_args.kwargs["reasoning_effort"], "low")
 
@@ -183,6 +237,7 @@ class LlmClientRetryTests(unittest.TestCase):
             reasoning_effort=llm_client.reasoning_effort_for_model(
                 "llama-3.1-8b-instant"
             ),
+            cost_guard=self.cost_guard(model="llama-3.1-8b-instant"),
         )
         self.assertNotIn("reasoning_effort", self.create.call_args.kwargs)
 
@@ -194,7 +249,9 @@ class LlmClientRetryTests(unittest.TestCase):
         ]
 
         with self.assertRaisesRegex(RuntimeError, "after 3 attempts") as context:
-            llm_client.complete("prompt", retries=3, sleep=self.sleep)
+            llm_client.complete(
+                "prompt", retries=3, sleep=self.sleep, cost_guard=self.cost_guard()
+            )
 
         self.assertIsInstance(context.exception.__cause__, FakeRateLimitError)
         self.assertEqual(self.create.call_count, 3)
@@ -208,6 +265,7 @@ class LlmClientRetryTests(unittest.TestCase):
                 "prompt",
                 max_retry_after_seconds=300,
                 sleep=self.sleep,
+                cost_guard=self.cost_guard(),
             )
 
         self.assertIsInstance(context.exception.__cause__, FakeRateLimitError)
@@ -221,7 +279,9 @@ class LlmClientRetryTests(unittest.TestCase):
             self.response("completed"),
         ]
 
-        result = llm_client.complete("prompt", retries=3, sleep=self.sleep)
+        result = llm_client.complete(
+            "prompt", retries=3, sleep=self.sleep, cost_guard=self.cost_guard()
+        )
 
         self.assertEqual(result, "completed")
         self.assertEqual(self.sleep.call_args_list, [((1.0,), {}), ((2.0,), {})])
@@ -232,7 +292,9 @@ class LlmClientRetryTests(unittest.TestCase):
             self.response("completed"),
         ]
 
-        result = llm_client.complete("prompt", retries=2, sleep=self.sleep)
+        result = llm_client.complete(
+            "prompt", retries=2, sleep=self.sleep, cost_guard=self.cost_guard(retries=2)
+        )
 
         self.assertEqual(result, "completed")
         self.sleep.assert_called_once_with(4.0)
@@ -249,6 +311,7 @@ class LlmClientRetryTests(unittest.TestCase):
                 retries=3,
                 max_total_wait_seconds=5,
                 sleep=self.sleep,
+                cost_guard=self.cost_guard(),
             )
 
         self.sleep.assert_called_once_with(4.0)
@@ -268,6 +331,7 @@ class LlmClientRetryTests(unittest.TestCase):
             temperature=0.3,
             model="alias-model",
             reasoning_effort="low",
+            cost_guard=self.cost_guard(model="alias-model"),
         )
 
         metadata = result.metadata
@@ -293,7 +357,9 @@ class LlmClientRetryTests(unittest.TestCase):
             choices=[SimpleNamespace(message=SimpleNamespace(content="proof"))]
         )
 
-        metadata = llm_client.complete_with_metadata("prompt").metadata
+        metadata = llm_client.complete_with_metadata(
+            "prompt", cost_guard=self.cost_guard()
+        ).metadata
 
         for field in (
             "prompt_tokens",
@@ -312,7 +378,10 @@ class LlmClientRetryTests(unittest.TestCase):
         self.create.side_effect = [rate_limit, self.response("completed")]
 
         metadata = llm_client.complete_with_metadata(
-            "prompt", retries=2, sleep=self.sleep
+            "prompt",
+            retries=2,
+            sleep=self.sleep,
+            cost_guard=self.cost_guard(retries=2),
         ).metadata
 
         self.assertEqual(metadata["api_attempts"], 2)

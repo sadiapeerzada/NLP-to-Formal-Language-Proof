@@ -5,7 +5,8 @@ Formalization
 
 **Revision baseline:** 20 October 2026 major-revision report
 **Current status:** Phase 0 complete; Phase 1 preparation complete (no API pilot
-run); later phases have not been implemented or certified by this plan. This document records repository evidence and decisions
+run); Phase 2 protocol and cost-safety implementation is in progress in the
+current worktree and has not yet been validated. This document records repository evidence and decisions
 that must be reviewed before the 22 October milestone. It is not evidence that
 the experiments or dataset are complete.
 
@@ -323,15 +324,15 @@ It is not an independent semantic review.
 
 ### Cost and output safeguards
 
-The available official Groq model documentation
-(`https://console.groq.com/docs/models`) did not expose a per-token price for
-`openai/gpt-oss-120b`; `https://groq.com/pricing` redirected to the general
-homepage during this audit. No price was inferred. Consequently, the runner
-now fails closed before creating output or invoking the API until a dated
-official input/output price is verified and a per-attempt reservation guard is
-available. Plan-only records the $0.10 intended budget, unknown pricing, and
-no cost estimate. This is a preflight-only restriction, not a billing cap.
-Even after a future local token estimate is added, it cannot guarantee the
+The official Groq GPT-OSS 120B model page displays token rates, but that page
+has not been archived or independently reviewed here and account/region
+conditions have not been checked. The exact applicable prices remain
+unverified, no pricing is configured, and the runner fails closed before any
+API client transmission. The cost guard now requires a dated source, archived
+evidence hash, explicit human-review fields, and a separately reviewed input
+bound; those self-reported fields do not authenticate evidence. Plan-only
+records the $0.10 intended budget and no cost estimate. This is a preflight
+restriction, not a billing cap. A local token estimate cannot guarantee the
 provider's final bill exactly.
 
 The runner now requires the output root itself to be new, so an existing
@@ -340,7 +341,34 @@ directory cannot be reused as an output location. The requested path
 does not create it. No existing pilot result or generated Lean run artifact was
 modified.
 
-The next required steps are to verify the model's published token prices from
-an official source, implement and test per-HTTP-attempt budget reservation
-using a conservative input-token bound, and obtain independent semantic review
-of the theorem. No API generation or paid experiment was run.
+The next required steps are to archive and review the applicable model prices,
+substantiate the input bound, obtain independent semantic review of the theorem,
+and complete the Phase 2 mocked test audit. No API generation or paid
+experiment was run.
+
+## Phase 2 — protocol and cost-safety implementation (21 October 2026)
+
+The current worktree proposes machine-readable protocol `0.2.0` in
+`configs/repair_experiment_protocol_v0.2.0.json`. The runner checks prompt
+hashes, requested model/provider and decoding, wrapper/SDK retry limits,
+repair limits, API-off state, Lean/Mathlib file hashes, and proof-safety policy
+against that configuration, then records its hash in plans and manifests.
+The specified design uses one initial candidate shared by A/B/C, up to three
+repair calls in B and C, one trajectory per problem, and predefined paired
+comparisons and uncertainty procedures. The model remains a mutable alias;
+account generation access is unverified.
+
+The client now fails closed unless every Groq request receives a cost guard
+with a persistence callback. The guard checks configured token/rate/budget
+limits and reserves all possible SDK attempts before each wrapper transmission;
+ambiguous failures retain their reservations. Cost metadata requires an
+archived evidence path and hash, source URL, retrieval date, currency, model ID,
+human-review fields, and separate human-reviewed input-bound evidence. These
+fields do not authenticate the source or reviewer, and no actual pricing
+archive or reviewed token bound is present. `API_EXECUTION_ENABLED` remains
+false. The ordinary pipeline does not yet pass a configured guard and therefore
+fails closed at the client boundary.
+
+This phase is not complete until focused mocked tests and `git diff --check`
+pass. No dataset freeze, API request, pilot, or result generation is part of
+this phase.
