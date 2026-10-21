@@ -161,8 +161,18 @@ def test_empty_and_sparse_error_categories_are_classified_descriptively() -> Non
 
 def test_current_repository_audit_does_not_emit_fake_metrics(tmp_path: Path) -> None:
     report = analysis.audit_current_repository(tmp_path)
+    draft_path = analysis.REPOSITORY_ROOT / "data/research_dataset_draft_v0.1.0.json"
+    draft_records = json.loads(draft_path.read_text(encoding="utf-8"))
+    batch_paths = sorted(
+        (analysis.REPOSITORY_ROOT / "data/curation_batches").glob(
+            "*/candidate_records.json"
+        )
+    )
+    batch_count = sum(
+        len(json.loads(path.read_text(encoding="utf-8"))) for path in batch_paths
+    )
     assert report["analysis_status"].startswith("blocked")
-    assert report["all_current_candidate_count"] == 31
+    assert report["all_current_candidate_count"] == len(draft_records) + batch_count
     assert report["draft_eligible_count"] == 0
     assert report["paired_experiment_manifests_found"] == 0
     assert report["metrics_computed"] is False
