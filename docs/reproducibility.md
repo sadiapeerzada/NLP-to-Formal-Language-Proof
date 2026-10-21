@@ -3,7 +3,7 @@
 ## Current evidence state
 
 The paired analysis is currently blocked: the dataset manifest is draft,
-there are 31 candidates and zero eligible records, and there are no paired
+there are 35 candidates and zero eligible records, and there are no paired
 API experiment manifests. Thus the only valid current analysis output is a
 readiness audit; it does not contain study results. See
 [`paper/claims_to_evidence.md`](../paper/claims_to_evidence.md).

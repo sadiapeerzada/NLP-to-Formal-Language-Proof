@@ -1,0 +1,12 @@
+[
+  {
+    "source_item_id": "DMOI3-section-2.5-exercise-13",
+    "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 13 (online text).",
+    "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+    "source_statement_transcription": "Prove that n + 3 < n + 7 for all values of n ∈ ℕ.",
+    "screening_status": "excluded_from_active_candidates_as_likely_duplicate",
+    "likely_duplicate_of": "ineq_004",
+    "rationale": "The source item is DMOI3 section 2.5 exercise 13; existing ineq_004 records the same inequality and exercise, with the source adding an induction instruction. Do not count as a distinct theorem candidate. Independent human duplicate disposition remains pending.",
+    "review_status": "pending_independent_duplicate_adjudication"
+  }
+]

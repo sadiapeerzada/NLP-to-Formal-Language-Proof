@@ -1,0 +1,5 @@
+mod_005 — Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 3 (online text).
+Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.
+
+ineq_005 — Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 13 (online text).
+Prove that n + 3 < n + 7 for all values of n ∈ ℕ.

@@ -1,0 +1,60 @@
+{
+  "batch_version": "nl2lean-curation-batch-v0.1.7",
+  "status": "candidate_batch_not_frozen",
+  "content_license_observed": "CC BY-SA 4.0 observed on publisher colophon; compatibility review pending",
+  "source_id": "dmoi3",
+  "source_name": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition",
+  "retrieved_on": "2026-10-21",
+  "source_items": [
+    "DMOI3-section-2.5-exercise-10",
+    "DMOI3-section-2.5-exercise-19",
+    "DMOI3-section-2.5-exercise-24"
+  ],
+  "candidate_ids": [
+    "ind_007",
+    "ind_008",
+    "ind_009"
+  ],
+  "candidate_count": 3,
+  "verified_lean_count": 0,
+  "statement_elaboration_count": 3,
+  "proof_verified_count": 0,
+  "review_complete_count": 0,
+  "eligible_count": 0,
+  "candidate_split_counts": {
+    "development": 3,
+    "test": 0
+  },
+  "eligible_split_counts": {
+    "development": 0,
+    "test": 0
+  },
+  "candidate_category_counts": {
+    "induction": 3
+  },
+  "candidate_file": "data/curation_batches/v0.1.7/candidate_records.json",
+  "candidate_file_sha256": "f70d531079a827b0a40fd17fc85003cf1e66aa854bce85bb59963f7bb7d61474",
+  "source_statement_transcriptions_file": "data/curation_batches/v0.1.7/source_statement_transcriptions.txt",
+  "source_statement_transcriptions_sha256": "4688c9bef6f8be40c6bb3a3c5a3fa8b403428bf6dcae55e59d2aed61dbbda05e",
+  "statement_check_file": "data/curation_batches/v0.1.7/statement_check.lean",
+  "statement_check_file_sha256": "f9b060a42495cdeefd4415477aa4ae35f9713f50df3e4e3ec2914478fe1fd8a7",
+  "verification_log": "data/curation_batches/v0.1.7/verification.log",
+  "verification_log_sha256": "a737ed734d5e9f0b2e2b401c53df5680e79dc38cbdab9d0f0fa11f89c34d3f0c",
+  "source_page_bytes_archived": false,
+  "source_page_sha256": null,
+  "independent_reviewers_recorded": 0,
+  "screened_out_items_file": "data/curation_batches/v0.1.7/screened_out_items.json",
+  "notes": [
+    "All three source statements are from DMOI3 §2.5, exercises 10, 19, and 24.",
+    "Statements were type-elaborated with sorry placeholders; no theorem proof was checked.",
+    "Source/license, semantic, theorem, category/difficulty, family/split, and duplicate reviews remain pending."
+  ],
+  "source_page_capture_attempt": {
+    "attempted_on": "2026-10-21",
+    "command_template": "curl --location --fail --max-time 20 --output <private-temp-file> <publisher source URL>",
+    "result": "failed_network_dns",
+    "error": "curl: (6) Could not resolve host: discrete.openmathbooks.org",
+    "source_bytes_archived": false,
+    "sha256": null
+  }
+}

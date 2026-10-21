@@ -1,0 +1,8 @@
+ind_007 — Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 10 (online text).
+Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.
+
+ind_008 — Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 19 (online text).
+Prove that every positive integer is either a power of 2, or can be written as the sum of distinct powers of 2.
+
+ind_009 — Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 24 (online text).
+Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).

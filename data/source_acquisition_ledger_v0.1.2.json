@@ -1,0 +1,271 @@
+{
+  "ledger_version": "nl2lean-source-acquisition-v0.1.2",
+  "status": "candidate_acquisition_in_progress",
+  "created_on": "2026-10-21",
+  "purpose": "Track source leads separately from the research dataset. Entries below are repository or publication leads only; none establishes item-level provenance, redistribution rights, candidate eligibility, or dataset inclusion.",
+  "candidate_records": [
+    {
+      "candidate_id": "div_007",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+      "candidate_file": "data/curation_batches/v0.1.0/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "div_008",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-exercise-3.2.5",
+      "candidate_file": "data/curation_batches/v0.1.0/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "div_009",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-example-3.2.11",
+      "candidate_file": "data/curation_batches/v0.1.0/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_005",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-exercise-2.5.23",
+      "candidate_file": "data/curation_batches/v0.1.1/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ineq_004",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-exercise-2.5.13",
+      "candidate_file": "data/curation_batches/v0.1.2/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "mod_004",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-congruence-and-arithmetic-item-1",
+      "candidate_file": "data/curation_batches/v0.1.3/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "arith_005",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-example-1.4.2",
+      "candidate_file": "data/curation_batches/v0.1.4/candidate_records.json",
+      "status": "candidate_pending_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_006",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec2.5-postage-threshold-28",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "div_010",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec5.2-exercise-1",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "test"
+    },
+    {
+      "candidate_id": "div_011",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-sec5.2-exercise-2",
+      "candidate_file": "data/curation_batches/v0.1.5/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_and_semantic_review",
+      "split_proposal": "test"
+    },
+    {
+      "candidate_id": "mod_005",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-2.5-exercise-3",
+      "candidate_file": "data/curation_batches/v0.1.6/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_semantic_and_family_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_007",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-2.5-exercise-10",
+      "candidate_file": "data/curation_batches/v0.1.7/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_semantic_and_family_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_008",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-2.5-exercise-19",
+      "candidate_file": "data/curation_batches/v0.1.7/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_semantic_and_family_review",
+      "split_proposal": "development"
+    },
+    {
+      "candidate_id": "ind_009",
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-2.5-exercise-24",
+      "candidate_file": "data/curation_batches/v0.1.7/candidate_records.json",
+      "status": "candidate_pending_independent_source_license_semantic_and_family_review",
+      "split_proposal": "development"
+    }
+  ],
+  "source_leads": [
+    {
+      "lead_id": "proofnet",
+      "name": "ProofNet",
+      "source_kind": "benchmark_repository",
+      "discovery_url": "https://github.com/zhangir-azerbayev/ProofNet",
+      "repository_license_url": "https://github.com/zhangir-azerbayev/ProofNet/blob/main/LICENSE",
+      "repository_license_observation": "The repository advertises an MIT license. This is repository-level information only; it does not establish rights in upstream textbook-derived statements.",
+      "repository_revision": null,
+      "source_revision_status": "not_pinned",
+      "candidate_count": null,
+      "undergraduate_level_basis": "Repository describes itself as a benchmark for undergraduate-level formal mathematics.",
+      "item_level_source_trace_status": "not_started",
+      "item_level_rights_review_status": "not_started",
+      "lean_environment_status": "not_assessed",
+      "acquisition_decision": "discovery_lead_only",
+      "blockers": [
+        "Pin an immutable repository revision before item review.",
+        "Trace each selected statement to its original source and verify that source's rights independently of the repository license.",
+        "Review any Lean 3 statement and revalidate it in the intended Lean environment."
+      ],
+      "evidence_checked_on": "2026-10-21"
+    },
+    {
+      "lead_id": "minif2f",
+      "name": "miniF2F",
+      "source_kind": "benchmark_repository",
+      "discovery_url": "https://github.com/google-deepmind/miniF2F",
+      "repository_license_url": "https://github.com/google-deepmind/miniF2F/blob/main/LICENSE",
+      "repository_license_observation": "The repository identifies an Apache-2.0 license. This is repository-level information only; upstream contest or collection rights and attribution remain unverified.",
+      "repository_revision": null,
+      "source_revision_status": "not_pinned",
+      "candidate_count": null,
+      "undergraduate_level_basis": "The repository is a formal mathematics benchmark lead; individual problems require review for undergraduate-level fit.",
+      "item_level_source_trace_status": "not_started",
+      "item_level_rights_review_status": "not_started",
+      "lean_environment_status": "not_assessed",
+      "acquisition_decision": "discovery_lead_only",
+      "blockers": [
+        "Pin an immutable repository revision before item review.",
+        "Trace each selected description to its original source; repository licensing does not resolve upstream rights.",
+        "Review each English description for source accuracy and each theorem for semantic fidelity."
+      ],
+      "evidence_checked_on": "2026-10-21"
+    },
+    {
+      "lead_id": "openstax_calculus",
+      "name": "OpenStax Calculus",
+      "source_kind": "undergraduate_textbook_series",
+      "discovery_url": "https://openstax.org/details/books/calculus-volume-1",
+      "license_information_url": "https://help.openstax.org/s/article/Licensing-information-of-OpenStax-textbooks",
+      "repository_revision": null,
+      "source_revision_status": "not_pinned",
+      "candidate_count": null,
+      "undergraduate_level_basis": "OpenStax Calculus is an undergraduate textbook lead; individual theorem statements still require level and suitability review.",
+      "license_observation": "OpenStax states its textbooks use CC BY-NC-SA 4.0, with attribution, noncommercial, and share-alike terms. This ledger does not determine whether those terms fit the intended release or publication.",
+      "item_level_source_trace_status": "not_started",
+      "item_level_rights_review_status": "not_started",
+      "lean_environment_status": "not_assessed",
+      "acquisition_decision": "discovery_lead_only",
+      "blockers": [
+        "Pin the exact edition and chapter/page for each selected statement.",
+        "Review CC BY-NC-SA compatibility with the intended dataset distribution and research publication; request permission if necessary.",
+        "Record item-level attribution and any third-party content exclusions."
+      ],
+      "evidence_checked_on": "2026-10-21"
+    },
+    {
+      "lead_id": "dmoi3",
+      "name": "Discrete Mathematics: An Open Introduction, 3rd edition",
+      "source_kind": "undergraduate_textbook",
+      "discovery_url": "https://discrete.openmathbooks.org/dmoi3.html",
+      "item_source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+      "source_revision_status": "edition_and_printing_identified; PDF content hash not recorded",
+      "license_observation": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "license_evidence_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (PDF page 3) and https://discrete.openmathbooks.org/dmoi3.html (license section)",
+      "license_terms_observed": "Attribution and share-alike; no noncommercial restriction stated for this edition. Adapted batch designated CC BY-SA 4.0.",
+      "item_level_source_trace_status": "14 cited candidate items across versioned batches; source-page bytes not archived for v0.1.6–v0.1.7; independent reviews pending.",
+      "item_level_rights_review_status": "Publisher CC BY-SA 4.0 statement observed; independent rights/redistribution compatibility review pending; not cleared.",
+      "candidate_ids": [
+        "div_007",
+        "div_008",
+        "div_009",
+        "ind_005",
+        "ineq_004",
+        "mod_004",
+        "arith_005",
+        "ind_006",
+        "div_010",
+        "div_011",
+        "mod_005",
+        "ind_007",
+        "ind_008",
+        "ind_009"
+      ],
+      "candidate_count": 14,
+      "acquisition_decision": "candidate_material_added; rights and human reviews pending; not eligible",
+      "evidence_checked_on": "2026-10-21",
+      "source_pdf_sha256": null,
+      "source_pdf_sha256_status": "not_captured",
+      "blockers": [
+        "Archive source-page/PDF bytes and capture their hashes for newly acquired items.",
+        "Obtain independent source/license compatibility review and all required theorem/family/split reviews.",
+        "For batch v0.1.6, archive exact source-page/PDF bytes and hash them; complete independent source/license, semantic, theorem/family/split, category/difficulty and duplicate reviews.",
+        "For batches v0.1.6 and v0.1.7, capture source page bytes and hash them; obtain independent source/license and semantic/family/split/duplicate review."
+      ]
+    }
+  ],
+  "recording_rules": [
+    "Do not add a candidate record until its exact source item and immutable source revision are identified.",
+    "Record the original source, exact attribution, applicable license or rights evidence, retrieval date, and redistribution decision per candidate.",
+    "Keep unknowns null or explicitly not_started; do not infer permission from public access or repository-level licenses.",
+    "Do not copy theorem wording into this source-lead ledger. Store candidate text only in a versioned candidate record after its provenance and rights have been reviewed.",
+    "This ledger is not an eligibility, licensing, or freeze artifact."
+  ],
+  "screened_out_items": [
+    {
+      "source_lead_id": "dmoi3",
+      "source_item_id": "DMOI3-section-2.5-exercise-13",
+      "source_item_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "status": "screened_out_likely_duplicate",
+      "likely_duplicate_of": "ineq_004",
+      "independent_adjudication": "pending",
+      "rationale": "Same inequality and source exercise as existing ineq_004; not counted as a distinct candidate."
+    },
+    {
+      "source_item_id": "DMOI3-section-2.5-exercise-2",
+      "source_location": "Section 2.5, exercise 2, page lines 766–780",
+      "status": "screened_out_likely_duplicate",
+      "likely_duplicate_of": "ind_004",
+      "independent_adjudication": "pending",
+      "rationale": "Geometric sum identity is an index-shifted form of the existing sum-of-powers-of-two identity; not counted as a separate family."
+    },
+    {
+      "source_item_id": "DMOI3-section-2.5-exercise-21",
+      "source_location": "Section 2.5, exercise 21, page lines 1106–1118",
+      "status": "screened_out_likely_duplicate",
+      "likely_duplicate_of": "ind_001",
+      "independent_adjudication": "pending",
+      "rationale": "Handshake total n(n-1)/2 is the same triangular-number sum family as the existing sum of the first n natural numbers; not counted as a distinct family."
+    },
+    {
+      "source_item_id": "DMOI3-section-2.5-exercise-23",
+      "source_location": "Section 2.5, exercise 23, page lines 1139–1147",
+      "status": "screened_out_duplicate",
+      "likely_duplicate_of": "ind_005",
+      "independent_adjudication": "pending",
+      "rationale": "Same Pascal-row binomial coefficient sum equals 2^n as existing ind_005; not assigned a new ID."
+    }
+  ]
+}

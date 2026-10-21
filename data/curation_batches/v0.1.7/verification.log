@@ -1,0 +1,13 @@
+Candidate statement elaboration check
+Command: cd lean_project && lake env lean --json ../data/curation_batches/v0.1.7/statement_check.lean
+Lean toolchain: leanprover/lean4:v4.32.0 (repository lean-toolchain)
+Mathlib revision: 81a5d257c8e410db227a6665ed08f64fea08e997 (lake-manifest.json)
+Statement check file SHA-256: f9b060a42495cdeefd4415477aa4ae35f9713f50df3e4e3ec2914478fe1fd8a7
+Candidate records SHA-256: f70d531079a827b0a40fd17fc85003cf1e66aa854bce85bb59963f7bb7d61474
+Exit code: 0
+Scope: three theorem propositions elaborated with by-sorry placeholders. No proof or axiom verification is claimed.
+Stdout JSON diagnostics:
+{"caption":"","data":"declaration uses `sorry`","endPos":{"column":31,"line":5},"fileName":"../data/curation_batches/v0.1.7/statement_check.lean","isSilent":false,"keepFullRange":false,"kind":"hasSorry","pos":{"column":8,"line":5},"severity":"warning"}
+{"caption":"","data":"declaration uses `sorry`","endPos":{"column":44,"line":8},"fileName":"../data/curation_batches/v0.1.7/statement_check.lean","isSilent":false,"keepFullRange":false,"kind":"hasSorry","pos":{"column":8,"line":8},"severity":"warning"}
+{"caption":"","data":"declaration uses `sorry`","endPos":{"column":38,"line":11},"fileName":"../data/curation_batches/v0.1.7/statement_check.lean","isSilent":false,"keepFullRange":false,"kind":"hasSorry","pos":{"column":8,"line":11},"severity":"warning"}
+Stderr: (empty)

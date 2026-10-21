@@ -1,0 +1,111 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "mod_004",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_source_and_statement": {
+    "candidate_natural_language_statement": "Suppose a, b, c, and d are integers and n is a positive integer. If a is congruent to b modulo n and c is congruent to d modulo n, then a + c is congruent to b + d modulo n.",
+    "original_source_statement": null,
+    "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, section 5.2 “Congruence and Arithmetic,” item 1, printed p. 314, University of Northern Colorado.",
+    "source_item_id": "DMOI3-congruence-and-arithmetic-item-1",
+    "source_location": "Section 5.2, “Congruence and Arithmetic,” printed page 314; PDF parser page 328.",
+    "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+    "license_observed": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "license_evidence_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+    "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section 5.2; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+    "adaptation_history": "The source claim was transcribed with normalized wording and formula spacing. The Lean formalization uses Int.ModEq and includes the stated positive-modulus assumption. No independent semantic-fidelity review has occurred.",
+    "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+    "source_page_sha256": null,
+    "source_page_sha256_status": "not_recorded",
+    "source_review_status": "verified"
+  },
+  "proposed_formalization": {
+    "lean_statement": "theorem modEq_add_two (a b c d n : ℤ) (_hn : 0 < n) (hab : a ≡ b [ZMOD n]) (hcd : c ≡ d [ZMOD n]) : a + c ≡ b + d [ZMOD n]",
+    "lean_statement_sha256": "f10f56441682b039739b6945f82aa3b46a6ae2326e6446c98688b6e6856d7a8f",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "problem_family": "integer_congruence_addition",
+    "proposed_split": "development",
+    "theorem_verification": {
+      "status": "verified",
+      "success": true,
+      "lean_toolchain": "leanprover/lean4:v4.32.0",
+      "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.3/mod_004_congruence_add.lean",
+      "theorem_sha256": "f10f56441682b039739b6945f82aa3b46a6ae2326e6446c98688b6e6856d7a8f",
+      "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=4042e19bdbeef51578110ce29457ec5d3b1fd1879537321739e7d5fae0133fc3. Full record in data/curation_batches/v0.1.3/verification.log.",
+      "strict_verifier_timeout_seconds": 180
+    }
+  },
+  "reviewer_instructions": "Independently compare the cited source with the candidate English and Lean proposition. Check quantifiers, domains, assumptions, boundaries, notation, conclusion, self-containment, source rights, category/difficulty, family, split, and duplicate status. Compilation alone is not semantic review. Use an actual independent reviewer ID/date/evidence; otherwise leave pending."
+}

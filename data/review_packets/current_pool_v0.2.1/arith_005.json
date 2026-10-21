@@ -1,0 +1,111 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "arith_005",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_source_and_statement": {
+    "candidate_natural_language_statement": "Explain why the binomial coefficient “n choose 0” equals 1 and the binomial coefficient “n choose n” equals 1.",
+    "original_source_statement": null,
+    "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, example 1.4.2, section 1.4, printed p. 92, University of Northern Colorado.",
+    "source_item_id": "DMOI3-example-1.4.2",
+    "source_location": "Example 1.4.2, section 1.4, printed page 92; PDF parser page 106.",
+    "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+    "license_observed": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "source_page_sha256": null,
+    "source_page_sha256_status": "not_recorded",
+    "source_review_status": "verified",
+    "license_evidence_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+    "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), example 1.4.2; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+    "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+    "adaptation_history": "The source statement was transcribed with normalized wording and expanded binomial-coefficient notation; the Lean formalization uses Nat.choose and a conjunction. No independent semantic-fidelity review has occurred."
+  },
+  "proposed_formalization": {
+    "lean_statement": "theorem choose_zero_and_self (n : ℕ) : Nat.choose n 0 = 1 ∧ Nat.choose n n = 1",
+    "lean_statement_sha256": "c500d07706cc31193ffc87b4d639d9d873b5dce2965cff1ffef62bef5055a851",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "problem_family": "binomial_coefficient_boundary_values",
+    "proposed_split": "development",
+    "theorem_verification": {
+      "status": "verified",
+      "success": true,
+      "lean_toolchain": "leanprover/lean4:v4.32.0",
+      "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.4/arith_005_binomial_boundary_values.lean",
+      "theorem_sha256": "c500d07706cc31193ffc87b4d639d9d873b5dce2965cff1ffef62bef5055a851",
+      "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=1a3c0db6d132e53da0c2359bbb3bcc88c3fe006dad8b6e1c29b80fb262091173. Full record in data/curation_batches/v0.1.4/verification.log.",
+      "strict_verifier_timeout_seconds": 180
+    }
+  },
+  "reviewer_instructions": "Independently compare the cited original problem with the candidate English and Lean proposition. Check quantifiers, domains, assumptions, boundaries, notation, and conclusion. Check statement self-containment and Lean assumptions. Compilation alone is not semantic review. Review family/split/near-duplicates and source rights. Record real reviewer ID/date/evidence; leave pending if not performed."
+}

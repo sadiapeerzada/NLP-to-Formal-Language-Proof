@@ -1,0 +1,98 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "mod_005",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "source_evidence": {
+    "original_statement": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+    "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 3 (online text).",
+    "source_item_id": "DMOI3-section-2.5-exercise-3",
+    "source_location": "Section 2.5, Exercises, item 3 (browser-rendered source page lines 789–803); exact item asks to prove the displayed divisibility claim for all natural n.",
+    "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+    "license_observed": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "license_evidence_url": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locator)",
+    "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 3 (DMOI3-section-2.5-exercise-3); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+    "source_page_sha256": null,
+    "source_page_sha256_status": "not_captured"
+  },
+  "proposed_record": {
+    "natural_language_statement": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+    "lean_statement": "theorem pow_seven_sub_one_dvd_six (n : ℕ) : 6 ∣ 7 ^ n - 1",
+    "lean_statement_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "problem_family": "seven_power_congruence_mod_six",
+    "proposed_split": "development"
+  },
+  "reviewer_instructions": "Compare the source statement and proposed Lean type. Assess quantifiers, domains, arithmetic semantics, hypotheses and conclusion. Compilation is not semantic review. Record actual independent reviewer ID/date/evidence; keep pending until completed."
+}

@@ -1,0 +1,66 @@
+{
+  "batch_version": "nl2lean-curation-batch-v0.1.6",
+  "status": "candidate_batch_not_frozen",
+  "source_id": "dmoi3",
+  "source_name": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition",
+  "source_item_ids": [
+    "DMOI3-section-2.5-exercise-3"
+  ],
+  "retrieved_on": "2026-10-21",
+  "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+  "license_evidence_url": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html",
+  "license_observed": "CC BY-SA 4.0; redistribution compatibility pending independent review",
+  "candidate_count": 1,
+  "candidate_ids": [
+    "mod_005"
+  ],
+  "candidate_file": "data/curation_batches/v0.1.6/candidate_records.json",
+  "candidate_file_sha256": "43a3e2d11da143b4853d4153a35e8a4f17522dc5788cfdbff206bcfe81cd3ff3",
+  "statement_check_file": "data/curation_batches/v0.1.6/statement_check.lean",
+  "statement_check_file_sha256": "2e257a01159e9fbc7153d45bc856abd48a1f4590c61be7885db1d08d75840b7d",
+  "source_transcriptions_file": "data/curation_batches/v0.1.6/source_statement_transcriptions.txt",
+  "source_transcriptions_sha256": "22e448b94b23319a4d499964efcbe89013ee6a17713cbe4060db388639b795a3",
+  "verification_log": "data/curation_batches/v0.1.6/verification.log",
+  "verification_log_sha256": "5e8151e125f1566d16bceeef8a2f00d60d9afe053221794bfe9fd2a1590dcc1d",
+  "statement_elaboration_count": 1,
+  "proof_verified_count": 0,
+  "independent_review_count": 0,
+  "eligible_count": 0,
+  "candidate_split_counts": {
+    "development": 1,
+    "test": 0
+  },
+  "eligible_split_counts": {
+    "development": 0,
+    "test": 0
+  },
+  "source_page_bytes_archived": false,
+  "source_page_sha256": null,
+  "source_statement_hash_scope": "Hashes refer to stored UTF-8 transcriptions; source webpage/PDF bytes were not captured.",
+  "screened_out_items_file": "data/curation_batches/v0.1.6/screened_out_items.json",
+  "notes": [
+    "One source-located theorem candidate added.",
+    "A second source item, DMOI3 §2.5 Exercise 13, was screened out because it duplicates existing ineq_004; see screened_out_items.json.",
+    "No proof was checked; statement elaboration used a sorry placeholder.",
+    "All human source/license, semantic, theorem, family, split, category/difficulty, and duplicate reviews remain pending."
+  ],
+  "content_license_observed": "CC BY-SA 4.0 observed on publisher colophon; compatibility review pending",
+  "source_items": [
+    "DMOI3-section-2.5-exercise-3"
+  ],
+  "verified_lean_count": 0,
+  "candidate_category_counts": {
+    "modular_arithmetic": 1
+  },
+  "independent_reviewers_recorded": 0,
+  "source_content_bytes_archived": false,
+  "source_page_sha256_captured": false,
+  "source_page_capture_attempt": {
+    "attempted_on": "2026-10-21",
+    "command_template": "curl --location --fail --max-time 20 --output <private-temp-file> <publisher source URL>",
+    "result": "failed_network_dns",
+    "error": "curl: (6) Could not resolve host: discrete.openmathbooks.org",
+    "source_bytes_archived": false,
+    "sha256": null
+  }
+}

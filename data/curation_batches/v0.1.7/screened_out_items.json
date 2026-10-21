@@ -1,0 +1,26 @@
+[
+  {
+    "source_item_id": "DMOI3-section-2.5-exercise-2",
+    "source_location": "Section 2.5, exercise 2, page lines 766–780",
+    "status": "screened_out_likely_duplicate",
+    "likely_duplicate_of": "ind_004",
+    "independent_adjudication": "pending",
+    "rationale": "Geometric sum identity is an index-shifted form of the existing sum-of-powers-of-two identity; not counted as a separate family."
+  },
+  {
+    "source_item_id": "DMOI3-section-2.5-exercise-21",
+    "source_location": "Section 2.5, exercise 21, page lines 1106–1118",
+    "status": "screened_out_likely_duplicate",
+    "likely_duplicate_of": "ind_001",
+    "independent_adjudication": "pending",
+    "rationale": "Handshake total n(n-1)/2 is the same triangular-number sum family as the existing sum of the first n natural numbers; not counted as a distinct family."
+  },
+  {
+    "source_item_id": "DMOI3-section-2.5-exercise-23",
+    "source_location": "Section 2.5, exercise 23, page lines 1139–1147",
+    "status": "screened_out_duplicate",
+    "likely_duplicate_of": "ind_005",
+    "independent_adjudication": "pending",
+    "rationale": "Same Pascal-row binomial coefficient sum equals 2^n as existing ind_005; not assigned a new ID."
+  }
+]

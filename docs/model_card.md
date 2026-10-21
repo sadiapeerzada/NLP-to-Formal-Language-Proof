@@ -5,7 +5,7 @@
 This repository contains a research prototype, not a released or validated
 model. It has an end-to-end natural-language-to-Lean pipeline and a separate
 paired repair runner. No completed paired A/B/C evaluation exists. The current
-dataset inventory has 31 candidates and zero eligible examples; no frozen
+dataset inventory has 35 candidates and zero eligible examples; no frozen
 test set or paired API run manifests exist.
 
 ## Model and provider configuration

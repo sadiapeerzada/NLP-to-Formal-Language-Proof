@@ -16,7 +16,7 @@ Does compiler diagnostic feedback improve repair compared with equally
 budgeted retries, and for which errors? We describe a planned paired study of
 one-shot generation (A), blind retry (B), and compiler-guided repair (C),
 where B and C share one initial candidate and receive at most three repairs.
-This repository currently contains 31 dataset candidates, none eligible under
+This repository currently contains 35 dataset candidates, none eligible under
 the curation validator, and no qualifying paired API run artifacts. The
 proposed protocol is not independently approved or preregistered, and API
 execution remains disabled. Comparative results, uncertainty intervals,
@@ -44,7 +44,7 @@ diagnostics from the candidate being repaired. The primary comparison is C
 versus B; C versus A and B versus A are secondary.
 
 The repository is not yet at the evidence stage for answering this question.
-The current inventory has 31 candidates and zero eligible records; the test
+The current inventory has 35 candidates and zero eligible records; the test
 split is not frozen; the protocol remains proposed; and no paired API run
 manifest exists. We make no performance claim. Contributions at this stage
 are an experiment runner and analysis specification, a transparent candidate
@@ -103,17 +103,19 @@ family, split, and semantic fidelity. Compilation is not evidence of semantic
 equivalence.
 
 \section{Dataset Construction and Review}
-The draft has 21 baseline candidates. Six acquisition batches add 10, for 31
-total: 23 proposed development and 8 proposed test records. The inventory
-contains five categories and four difficulty levels. Ten candidates cite
+The draft has 21 baseline candidates. Eight acquisition batches add 14, for 35
+total: 27 proposed development and 8 proposed test records. The inventory
+contains five categories and four difficulty levels. Fourteen candidates cite
 Oscar Levin's \emph{Discrete Mathematics: An Open Introduction}; 21 baseline
 records have no item-level citation in their current records. Levin identifies
 a CC BY-SA 4.0 license, but repository rights review and exact source-byte
 archiving remain incomplete~\cite{levin2021dmoi}. Public availability is not
 itself a redistribution rights determination.
 
-The curation inventory records 10 strictly Lean-verified candidates, zero
-completed independent reviews, and zero eligible records. Candidate records
+The curation inventory records 10 strictly theorem-proof-verified candidates
+and four additional statement-only Lean checks using `sorry` placeholders; no
+proof is claimed for those four. It records zero completed independent
+reviews and zero eligible records. Candidate records
 also have unresolved duplicate/family warnings. The target is at least 60
 eligible held-out test examples and 15--20 separate eligible development
 examples, with each mathematical family in one split. Proposed split labels
@@ -208,7 +210,7 @@ not counted as independent problems. These are analysis rules, not findings.
 No statistical power claim is made.
 
 \subsection{Semantic fidelity and end-to-end success}
-All 31 candidate records lack an adjudicated semantic-fidelity label. There
+All 35 candidate records lack an adjudicated semantic-fidelity label. There
 is no frozen test split or independent review result. Table~\ref{tab:fidelity}
 reports only the review state of the candidate pool; it is not a test-set
 faithfulness estimate. Fixed-theorem repair and end-to-end formalization are

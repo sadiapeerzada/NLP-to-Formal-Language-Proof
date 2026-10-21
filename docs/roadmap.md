@@ -6,7 +6,7 @@ passed merely because an earlier roadmap listed it.
 
 ## Current state
 
-- The curation inventory contains 31 candidates and zero eligible records.
+- The curation inventory contains 35 candidates and zero eligible records.
   Proposed splits are not frozen.
 - The paired A/B/C protocol is version 0.2.0, proposed for review but not
   independently approved or preregistered.

@@ -1,0 +1,102 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "mod_003",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_source_and_statement": {
+    "candidate_natural_language_statement": "The square of any natural number is congruent to 0 or 1 modulo 3.",
+    "original_source_statement": null,
+    "source_citation": null,
+    "source_item_id": null,
+    "source_location": null,
+    "source_url": null,
+    "license_observed": null,
+    "license_evidence_url": null,
+    "required_attribution": null,
+    "adaptation_history": null,
+    "rights_scope_note": null,
+    "source_page_sha256": null,
+    "source_page_sha256_status": "not_recorded",
+    "source_review_status": "pending"
+  },
+  "proposed_formalization": {
+    "lean_statement": "theorem sq_mod_three (n : ℕ) : n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+    "lean_statement_sha256": "60ba6c0198f85f92cb445a33aab7321c1c2b5eed0bebdb6ad182d41ac641483f",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "problem_family": "square_residue_classes",
+    "proposed_split": "test",
+    "theorem_verification": null
+  },
+  "reviewer_instructions": "Independently compare the cited source with the candidate English and Lean proposition. Check quantifiers, domains, assumptions, boundaries, notation, conclusion, self-containment, source rights, category/difficulty, family, split, and duplicate status. Compilation alone is not semantic review. Use an actual independent reviewer ID/date/evidence; otherwise leave pending."
+}
