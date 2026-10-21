@@ -102,6 +102,81 @@ and recommended actions. The generated manifest is explicitly marked `draft`
 and records zero currently eligible research items until required reviews are
 completed.
 
+### Eligibility evidence and explicit freeze validation
+
+The curation validator now reports candidate and eligible counts separately
+for `development` and `test`. Research eligibility requires a controlled
+category (`arithmetic_identity`, `divisibility`, `modular_arithmetic`,
+`induction`, or `inequality`), integer difficulty 1–5, verified source and
+license metadata with a dated evidence reference, completed family/split and
+statement reviews, semantic-fidelity evidence, and a successful Lean
+verification record. `curation.theorem_verification` must include
+`status: "verified"`, `success: true`, the Lean toolchain, Mathlib revision,
+verification command, evidence, and the SHA-256 of the exact
+`expected_lean_statement` string. The verified
+`curation.source_license_evidence` must also include `statement_sha256`,
+computed from that exact statement string encoded as UTF-8 with no trimming,
+normalization, or newline conversion. Both recorded hashes must match the
+same exact string.
+
+For the independence-sensitive reviews, `curation.review_records` is an array
+of records with `review_type`, `reviewer_kind`, `reviewer_id`, ISO
+`reviewed_on`, and evidence. `reviewer_kind` distinguishes
+`author_self_review`, `assisted_review`, and `independent_human_review`.
+Self-review and assisted review do not satisfy the required independent
+review dimensions. At freeze validation, the manifest must list
+`dataset_author_ids`; any reviewer ID also listed as an author is rejected.
+These are recorded assertions. Code cannot independently authenticate a
+person, determine undisclosed conflicts, or prove that an asserted
+independent human review actually occurred.
+
+Potential near-duplicates are output as a review queue using string similarity
+over English and Lean statements. This heuristic can produce false positives
+and false negatives; it never adjudicates semantic/theorem equivalence.
+Exact normalized-English duplicates remain grouped by the existing duplicate
+review. Human theorem/family adjudication is required before eligibility.
+Before freezing, every flagged pair across the combined development and test
+files must have exactly one entry in the freeze manifest's
+`likely_duplicate_dispositions` array. Each entry contains lexicographically
+ordered `problem_ids`, `decision` (`duplicate` or `not_duplicate`),
+`reviewer_kind: "independent_human_review"`, `reviewer_id`, ISO `reviewed_on`,
+and non-empty `evidence`. `not_duplicate` records the human rationale and may
+pass freeze validation. A `duplicate` decision blocks freezing until one
+record is removed or excluded and the datasets and hashes are recalculated.
+The code never infers either decision from similarity.
+
+A frozen curation manifest must declare `status: "frozen"`,
+`freeze_approved: true`, an ISO `frozen_on` date and
+`freeze_approval_evidence`, separate `development_dataset` and `test_dataset`
+objects (each with exact `expected_ids` and matching exact-byte
+`dataset_sha256`), candidate and eligible counts by split, dataset author IDs,
+a locked protocol SHA-256, and a test-access policy that excludes test results
+from tuning and restricts test inputs until protocol lock. `expected_ids`
+must match the exact dataset ID order, with no duplicates, omissions, or
+extras. Validate both separate files together:
+
+```text
+.venv/bin/python src/dataset_validation.py --validate-frozen-curation \
+  --freeze-manifest data/research_dataset_manifest_vX.json \
+  --development-dataset data/research_dataset_dev_vX.json \
+  data/research_dataset_test_vX.json
+```
+
+Freeze validation requires at least 60 eligible test records and 15–20
+eligible development records. The supplied dataset/manifest counts must match
+the validated record counts, the included IDs must all be eligible, and the
+hash is checked against the exact JSON bytes. Do not pass the current draft
+manifest to this command except to confirm it is rejected.
+
+The validator enforces those fields, hashes, counts, and manifest policy
+declarations when invoked. It does not control access to files or prevent a
+person from viewing held-out records or using held-out results to tune a
+prompt/model/repair policy. That boundary requires procedural controls:
+separate development and test files, restricted test-set access, a custodian
+who does not tune the system, locked prompts/configuration before test access,
+and a recorded audit of test access. Do not interpret a passing manifest check
+as technical proof of non-leakage.
+
 Validate its metadata, allowed statuses/labels, exact-English duplicate
 candidates, and family-to-split consistency without changing legacy validation:
 

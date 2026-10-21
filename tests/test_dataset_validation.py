@@ -15,6 +15,7 @@ from dataset_validation import (
     main as dataset_validation_main,
     validate_dataset,
     validate_curation_draft,
+    validate_frozen_curation,
     validate_research_dataset,
 )
 from build_research_dataset_draft import _eligible_counts, _family_proposals
@@ -58,6 +59,11 @@ class DatasetValidationTests(unittest.TestCase):
                 "source_status": "pending",
                 "source_license": None,
                 "source_license_verification_status": "pending",
+                "source_license_evidence": {
+                    "status": "pending",
+                    "evidence_reference": None,
+                    "reviewed_on": None,
+                },
                 "problem_family": family,
                 "family_review_status": "needs_review",
                 "family_review_note": None,
@@ -78,6 +84,16 @@ class DatasetValidationTests(unittest.TestCase):
                     "status": "pending",
                     "notes": None,
                 },
+                "review_records": [],
+                "theorem_verification": {
+                    "status": "pending",
+                    "success": None,
+                    "lean_toolchain": None,
+                    "mathlib_revision": None,
+                    "command": None,
+                    "theorem_sha256": None,
+                    "evidence": None,
+                },
             },
         }
 
@@ -90,6 +106,14 @@ class DatasetValidationTests(unittest.TestCase):
                 "source_url": "https://example.org/source",
                 "source_license_verification_status": "verified",
                 "source_license": "CC0",
+                "source_license_evidence": {
+                    "status": "verified",
+                    "evidence_reference": "https://example.org/license",
+                    "reviewed_on": "2026-10-21",
+                    "statement_sha256": hashlib.sha256(
+                        record["expected_lean_statement"].encode("utf-8")
+                    ).hexdigest(),
+                },
                 "family_review_status": "verified",
                 "family_review_note": "Reviewed theorem-family grouping.",
                 "family_reviewer_provenance": "reviewer:test",
@@ -125,6 +149,35 @@ class DatasetValidationTests(unittest.TestCase):
                 "notes": "Reviewed for the regression test.",
             }
         )
+        curation["review_records"] = [
+            {
+                "review_type": review_type,
+                "reviewer_kind": "independent_human_review",
+                "reviewer_id": "reviewer:test",
+                "reviewed_on": "2026-10-21",
+                "evidence": f"Reviewed {review_type} for the regression test.",
+            }
+            for review_type in (
+                "semantic_fidelity",
+                "theorem_statement",
+                "assumption_mismatch",
+                "self_containment",
+                "problem_family",
+                "split_assignment",
+                "duplicate_review",
+            )
+        ]
+        curation["theorem_verification"] = {
+            "status": "verified",
+            "success": True,
+            "lean_toolchain": "leanprover/lean4:v4.32.0",
+            "mathlib_revision": "test-revision",
+            "command": "lake env lean theorem.lean",
+            "theorem_sha256": hashlib.sha256(
+                record["expected_lean_statement"].encode("utf-8")
+            ).hexdigest(),
+            "evidence": "Successful mocked validation fixture.",
+        }
 
     @staticmethod
     def research_manifest(
@@ -135,6 +188,65 @@ class DatasetValidationTests(unittest.TestCase):
             "expected_ids": problem_ids,
             "dataset_sha256": dataset_hash,
         }
+
+    def complete_frozen_fixture(self) -> tuple[list[dict], list[dict], dict, str, str]:
+        records_by_split: dict[str, list[dict]] = {
+            "development": [],
+            "test": [],
+        }
+        for split, count in (("development", 15), ("test", 60)):
+            for index in range(count):
+                record = self.curation_record(
+                    f"{split}_{index:03d}", f"{split}_family_{index:03d}", split
+                )
+                record["nl_statement"] = (
+                    f"A distinct {split} theorem marker "
+                    f"{chr(0x4E00 + index + (1000 if split == 'test' else 0)) * 50}."
+                )
+                self.complete_curation_review(record)
+                records_by_split[split].append(record)
+        hashes = {
+            split: hashlib.sha256(
+                json.dumps(records, ensure_ascii=False).encode("utf-8")
+            ).hexdigest()
+            for split, records in records_by_split.items()
+        }
+        manifest = {
+            "dataset_version": "research-v1-frozen",
+            "status": "frozen",
+            "freeze_approved": True,
+            "frozen_on": "2026-10-21",
+            "freeze_approval_evidence": "test-only approval fixture",
+            "development_dataset": {
+                "expected_ids": [
+                    record["id"] for record in records_by_split["development"]
+                ],
+                "dataset_sha256": hashes["development"],
+            },
+            "test_dataset": {
+                "expected_ids": [record["id"] for record in records_by_split["test"]],
+                "dataset_sha256": hashes["test"],
+            },
+            "candidate_split_counts": {"development": 15, "test": 60},
+            "eligible_split_counts": {"development": 15, "test": 60},
+            "dataset_author_ids": ["author:test"],
+            "locked_protocol_sha256": "b" * 64,
+            "test_access_policy": {
+                "test_results_excluded_from_tuning": True,
+                "test_inputs_restricted_until_protocol_lock": True,
+                "procedure": (
+                    "Development-only tuning; custodial test release after protocol lock."
+                ),
+            },
+            "likely_duplicate_dispositions": [],
+        }
+        return (
+            records_by_split["development"],
+            records_by_split["test"],
+            manifest,
+            hashes["development"],
+            hashes["test"],
+        )
 
     def test_existing_pilot_records_remain_usable_as_legacy(self) -> None:
         pilot_path = (
@@ -172,6 +284,8 @@ class DatasetValidationTests(unittest.TestCase):
         self.assertEqual(record["curation"]["semantic_fidelity"]["label"], None)
         self.assertEqual(record["curation"]["source_license"], None)
         self.assertEqual(report.eligible_problem_ids, ())
+        self.assertEqual(report.candidate_split_counts, {"development": 1, "test": 0})
+        self.assertEqual(report.eligible_split_counts, {"development": 0, "test": 0})
 
     def test_builder_eligibility_counts_match_validator_for_eligible_record(self) -> None:
         records = [
@@ -247,6 +361,396 @@ class DatasetValidationTests(unittest.TestCase):
 
         self.assertTrue(report.is_valid, report.errors)
         self.assertEqual(report.eligible_problem_ids, ("reviewed",))
+
+    def test_missing_license_or_theorem_evidence_prevents_eligibility(self) -> None:
+        record = self.curation_record("missing_evidence", "family_one", "development")
+        self.complete_curation_review(record)
+        record["curation"]["source_license_evidence"] = None
+        record["curation"]["theorem_verification"]["success"] = False
+
+        report = validate_curation_draft([record])
+
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(any("source/license evidence is incomplete" in item
+                            for item in report.review_warnings))
+        self.assertTrue(any("theorem verification" in item
+                            for item in report.review_warnings))
+
+    def test_source_license_statement_hash_must_match_exact_utf8_statement(self) -> None:
+        record = self.curation_record("license_hash", "family_one", "development")
+        self.complete_curation_review(record)
+        evidence = record["curation"]["source_license_evidence"]
+        valid_hash = evidence["statement_sha256"]
+        self.assertEqual(
+            valid_hash,
+            hashlib.sha256(
+                record["expected_lean_statement"].encode("utf-8")
+            ).hexdigest(),
+        )
+
+        for invalid_hash in (None, "not-a-hash", "0" * 64):
+            with self.subTest(invalid_hash=invalid_hash):
+                evidence["statement_sha256"] = invalid_hash
+                report = validate_curation_draft([record])
+                self.assertEqual(report.eligible_problem_ids, ())
+                self.assertTrue(any(
+                    "statement_sha256 matching the exact" in error
+                    for error in report.errors
+                ))
+                self.assertTrue(any(
+                    "source/license evidence is incomplete" in warning
+                    for warning in report.review_warnings
+                ))
+
+        evidence["statement_sha256"] = valid_hash
+        record["expected_lean_statement"] += " "
+        record["curation"]["theorem_verification"]["theorem_sha256"] = (
+            hashlib.sha256(
+                record["expected_lean_statement"].encode("utf-8")
+            ).hexdigest()
+        )
+        report = validate_curation_draft([record])
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(any(
+            "statement_sha256 matching the exact" in error
+            for error in report.errors
+        ))
+
+    def test_category_difficulty_and_reference_hash_are_eligibility_requirements(
+        self,
+    ) -> None:
+        record = self.curation_record("invalid_labels", "family_one", "development")
+        self.complete_curation_review(record)
+        record["category"] = "unreviewed_category"
+        record["difficulty"] = 6
+        record["curation"]["theorem_verification"]["theorem_sha256"] = "a" * 64
+
+        report = validate_curation_draft([record])
+
+        self.assertFalse(report.is_valid)
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(any("category must be one of" in error
+                            for error in report.errors))
+        self.assertTrue(any("difficulty must be an integer" in error
+                            for error in report.errors))
+        self.assertTrue(any("theorem verification" in warning
+                            for warning in report.review_warnings))
+
+    def test_author_self_review_and_assisted_review_do_not_establish_independence(
+        self,
+    ) -> None:
+        record = self.curation_record("self_review", "family_one", "development")
+        self.complete_curation_review(record)
+        for review in record["curation"]["review_records"]:
+            review["reviewer_kind"] = (
+                "assisted_review" if review["review_type"] == "semantic_fidelity"
+                else "author_self_review"
+            )
+
+        report = validate_curation_draft([record])
+
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(any("missing independent human review records"
+                            in item for item in report.review_warnings))
+
+    def test_similar_statements_are_reported_for_human_duplicate_review(self) -> None:
+        first = self.curation_record("similar_a", "family_a", "development")
+        second = self.curation_record("similar_b", "family_b", "development")
+        first["nl_statement"] = "For every natural number n, n squared is even."
+        second["nl_statement"] = "For every natural number n, n squared is odd."
+
+        report = validate_curation_draft([first, second])
+
+        self.assertTrue(any("human theorem/family duplicate review required"
+                            in warning for warning in report.review_warnings))
+
+    def test_freeze_requires_minimum_eligible_counts_and_frozen_state(self) -> None:
+        development = [
+            self.curation_record("dev_only", "dev_family", "development")
+        ]
+        self.complete_curation_review(development[0])
+        test: list[dict] = []
+        development_hash = hashlib.sha256(
+            json.dumps(development).encode("utf-8")
+        ).hexdigest()
+        test_hash = hashlib.sha256(json.dumps(test).encode("utf-8")).hexdigest()
+        manifest = {
+            "dataset_version": "draft",
+            "status": "draft",
+            "freeze_approved": False,
+            "frozen_on": None,
+            "freeze_approval_evidence": None,
+            "development_dataset": {
+                "expected_ids": ["dev_only"],
+                "dataset_sha256": development_hash,
+            },
+            "test_dataset": {"expected_ids": [], "dataset_sha256": test_hash},
+            "candidate_split_counts": {"development": 1, "test": 0},
+            "eligible_split_counts": {"development": 1, "test": 0},
+            "dataset_author_ids": ["author:test"],
+            "locked_protocol_sha256": "b" * 64,
+            "test_access_policy": {
+                "test_results_excluded_from_tuning": True,
+                "test_inputs_restricted_until_protocol_lock": True,
+                "procedure": "not frozen",
+            },
+        }
+
+        report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(any("status must be 'frozen'" in error
+                            for error in report.errors))
+        self.assertTrue(any("at least 60 eligible test" in error
+                            for error in report.errors))
+        self.assertTrue(any("15–20 eligible development" in error
+                            for error in report.errors))
+
+    def test_frozen_dataset_accepts_required_counts_and_evidence(self) -> None:
+        development, test, manifest, development_hash, test_hash = (
+            self.complete_frozen_fixture()
+        )
+
+        report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.candidate_split_counts, {"development": 15, "test": 60})
+        self.assertEqual(report.eligible_split_counts, {"development": 15, "test": 60})
+
+    def test_frozen_dataset_rejects_bad_hash_author_reviewer_and_test_tuning(
+        self,
+    ) -> None:
+        development, test, manifest, development_hash, test_hash = (
+            self.complete_frozen_fixture()
+        )
+        manifest["test_dataset"]["dataset_sha256"] = "c" * 64
+        manifest["dataset_author_ids"] = ["reviewer:test"]
+        manifest["test_access_policy"]["test_results_excluded_from_tuning"] = False
+
+        report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertFalse(report.is_valid)
+        self.assertTrue(any("test_dataset hash does not match" in error
+                            for error in report.errors))
+        self.assertTrue(any("listed as a dataset author" in error
+                            for error in report.errors))
+        self.assertTrue(any("test_access_policy" in error
+                            for error in report.errors))
+
+    def test_frozen_validation_rejects_reordered_missing_and_extra_expected_ids(
+        self,
+    ) -> None:
+        for change in ("reordered", "missing", "unexpected"):
+            with self.subTest(change=change):
+                development, test, manifest, development_hash, test_hash = (
+                    self.complete_frozen_fixture()
+                )
+                expected_ids = manifest["test_dataset"]["expected_ids"]
+                if change == "reordered":
+                    manifest["test_dataset"]["expected_ids"] = list(
+                        reversed(expected_ids)
+                    )
+                elif change == "missing":
+                    manifest["test_dataset"]["expected_ids"] = expected_ids[:-1]
+                else:
+                    manifest["test_dataset"]["expected_ids"] = [
+                        *expected_ids,
+                        "unexpected_problem",
+                    ]
+
+                report = validate_frozen_curation(
+                    test,
+                    manifest,
+                    test_hash,
+                    development_value=development,
+                    development_dataset_sha256=development_hash,
+                )
+
+                self.assertTrue(any(
+                    "expected_ids must exactly match unique dataset IDs" in error
+                    for error in report.errors
+                ))
+
+    def test_frozen_validation_rejects_duplicate_actual_ids(self) -> None:
+        development, test, manifest, development_hash, _ = (
+            self.complete_frozen_fixture()
+        )
+        test[1]["id"] = test[0]["id"]
+        duplicate_ids = [record["id"] for record in test]
+        manifest["test_dataset"]["expected_ids"] = duplicate_ids
+        test_hash = hashlib.sha256(
+            json.dumps(test, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+        manifest["test_dataset"]["dataset_sha256"] = test_hash
+
+        report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertTrue(any("duplicate value for field 'id'" in error
+                            for error in report.errors))
+        self.assertTrue(any("contains duplicate problem IDs" in error
+                            for error in report.errors))
+
+    def test_likely_duplicate_warning_requires_audited_disposition_to_freeze(
+        self,
+    ) -> None:
+        development, test, manifest, development_hash, _ = (
+            self.complete_frozen_fixture()
+        )
+        test[0]["nl_statement"] = "For every n, n squared is even."
+        test[1]["nl_statement"] = "For every n, n squared is odd."
+        test_hash = hashlib.sha256(
+            json.dumps(test, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+        manifest["test_dataset"]["dataset_sha256"] = test_hash
+
+        unresolved_report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertTrue(any(
+            "lacks an independent human disposition" in error
+            for error in unresolved_report.errors
+        ))
+        pair_ids = sorted((test[0]["id"], test[1]["id"]))
+        manifest["likely_duplicate_dispositions"] = [{
+            "problem_ids": pair_ids,
+            "decision": "not_duplicate",
+            "reviewer_kind": "independent_human_review",
+            "reviewer_id": "reviewer:duplicate-audit",
+            "reviewed_on": "2026-10-21",
+            "evidence": (
+                "Human comparison records the proposition-level distinction "
+                "and why the statements are not duplicates."
+            ),
+        }]
+
+        resolved_report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+
+        self.assertTrue(resolved_report.is_valid, resolved_report.errors)
+
+    def test_duplicate_disposition_must_be_valid_independent_and_non_duplicate(
+        self,
+    ) -> None:
+        development, test, manifest, development_hash, _ = (
+            self.complete_frozen_fixture()
+        )
+        test[0]["nl_statement"] = "For every n, n squared is even."
+        test[1]["nl_statement"] = "For every n, n squared is odd."
+        test_hash = hashlib.sha256(
+            json.dumps(test, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+        manifest["test_dataset"]["dataset_sha256"] = test_hash
+        disposition = {
+            "problem_ids": sorted((test[0]["id"], test[1]["id"])),
+            "decision": "not_duplicate",
+            "reviewer_kind": "independent_human_review",
+            "reviewer_id": "reviewer:duplicate-audit",
+            "reviewed_on": "2026-10-21",
+            "evidence": "Documented human comparison.",
+        }
+        manifest["likely_duplicate_dispositions"] = [disposition]
+
+        for field, invalid_value in (
+            ("decision", "uncertain"),
+            ("reviewer_kind", "assisted_review"),
+            ("reviewer_id", "author:test"),
+            ("reviewed_on", "not-a-date"),
+            ("evidence", ""),
+        ):
+            with self.subTest(field=field):
+                disposition[field] = invalid_value
+                report = validate_frozen_curation(
+                    test,
+                    manifest,
+                    test_hash,
+                    development_value=development,
+                    development_dataset_sha256=development_hash,
+                )
+                self.assertFalse(report.is_valid)
+                disposition[field] = {
+                    "decision": "not_duplicate",
+                    "reviewer_kind": "independent_human_review",
+                    "reviewer_id": "reviewer:duplicate-audit",
+                    "reviewed_on": "2026-10-21",
+                    "evidence": "Documented human comparison.",
+                }[field]
+
+        disposition["decision"] = "duplicate"
+        duplicate_report = validate_frozen_curation(
+            test,
+            manifest,
+            test_hash,
+            development_value=development,
+            development_dataset_sha256=development_hash,
+        )
+        self.assertTrue(any(
+            "remove or exclude one record" in error
+            for error in duplicate_report.errors
+        ))
+
+    def test_frozen_validation_detects_family_leakage_across_separate_files(
+        self,
+    ) -> None:
+        development, test, manifest, _, _ = self.complete_frozen_fixture()
+        test[0]["curation"]["problem_family"] = development[0]["curation"][
+            "problem_family"
+        ]
+        hashes = {
+            "development": hashlib.sha256(
+                json.dumps(development, ensure_ascii=False).encode("utf-8")
+            ).hexdigest(),
+            "test": hashlib.sha256(
+                json.dumps(test, ensure_ascii=False).encode("utf-8")
+            ).hexdigest(),
+        }
+        manifest["development_dataset"]["dataset_sha256"] = hashes["development"]
+        manifest["test_dataset"]["dataset_sha256"] = hashes["test"]
+
+        report = validate_frozen_curation(
+            test,
+            manifest,
+            hashes["test"],
+            development_value=development,
+            development_dataset_sha256=hashes["development"],
+        )
+
+        self.assertTrue(any("family '" in error and "is split across" in error
+                            for error in report.errors))
+        self.assertLess(report.eligible_split_counts["test"], 60)
 
     def test_family_is_ineligible_until_every_member_family_review_is_complete(
         self,

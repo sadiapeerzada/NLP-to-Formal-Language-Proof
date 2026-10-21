@@ -6,12 +6,14 @@ inputs remain usable until a dataset has been reviewed and documented.
 from __future__ import annotations
 
 import argparse
+import difflib
 import hashlib
 import json
 import re
 import sys
 import unicodedata
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -36,6 +38,29 @@ CURATION_STATUSES = frozenset(
 )
 SEMANTIC_FIDELITY_LABELS = frozenset(
     {"faithful", "not faithful", "uncertain"}
+)
+RESEARCH_CATEGORIES = frozenset(
+    {
+        "arithmetic_identity",
+        "divisibility",
+        "modular_arithmetic",
+        "induction",
+        "inequality",
+    }
+)
+MINIMUM_TEST_RECORDS = 60
+MINIMUM_DEVELOPMENT_RECORDS = 15
+MAXIMUM_DEVELOPMENT_RECORDS = 20
+REQUIRED_INDEPENDENT_REVIEW_TYPES = frozenset(
+    {
+        "semantic_fidelity",
+        "theorem_statement",
+        "assumption_mismatch",
+        "self_containment",
+        "problem_family",
+        "split_assignment",
+        "duplicate_review",
+    }
 )
 
 
@@ -70,6 +95,22 @@ class CurationDraftValidationReport:
     errors: tuple[str, ...]
     duplicate_candidate_groups: tuple[tuple[str, ...], ...]
     eligible_problem_ids: tuple[str, ...] = ()
+    candidate_split_counts: dict[str, int] | None = None
+    eligible_split_counts: dict[str, int] | None = None
+    review_warnings: tuple[str, ...] = ()
+
+    @property
+    def is_valid(self) -> bool:
+        return not self.errors
+
+
+@dataclass(frozen=True)
+class FrozenCurationValidationReport:
+    errors: tuple[str, ...]
+    candidate_split_counts: dict[str, int]
+    eligible_split_counts: dict[str, int]
+    dataset_sha256: str
+    development_dataset_sha256: str | None = None
 
     @property
     def is_valid(self) -> bool:
@@ -78,6 +119,16 @@ class CurationDraftValidationReport:
 
 def _valid_text(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _valid_iso_date(value: object) -> bool:
+    if not _valid_text(value):
+        return False
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
 
 
 def _valid_source_url(value: object) -> bool:
@@ -107,12 +158,132 @@ def _duplicate_candidate_key(record: dict[str, Any]) -> str | None:
     return " ".join(normalized.split())
 
 
+def _review_record_errors(curation: dict[str, Any], label: str) -> list[str]:
+    reviews = curation.get("review_records")
+    if not isinstance(reviews, list):
+        return [f"{label}: curation.review_records must be an array."]
+    independent_types: set[str] = set()
+    errors: list[str] = []
+    for index, review in enumerate(reviews, start=1):
+        review_label = f"{label}: review_records[{index}]"
+        if not isinstance(review, dict):
+            errors.append(f"{review_label} must be an object.")
+            continue
+        review_type = review.get("review_type")
+        reviewer_kind = review.get("reviewer_kind")
+        if not _valid_text(review_type):
+            errors.append(f"{review_label}.review_type must be non-empty text.")
+        if not isinstance(reviewer_kind, str) or reviewer_kind not in {
+            "author_self_review",
+            "assisted_review",
+            "independent_human_review",
+        }:
+            errors.append(
+                f"{review_label}.reviewer_kind must distinguish author_self_review, "
+                "assisted_review, or independent_human_review."
+            )
+        for field in ("reviewer_id", "reviewed_on", "evidence"):
+            if not _valid_text(review.get(field)):
+                errors.append(f"{review_label}.{field} must be non-empty text.")
+        if not _valid_iso_date(review.get("reviewed_on")):
+            errors.append(f"{review_label}.reviewed_on must be an ISO date.")
+        if reviewer_kind == "independent_human_review" and _valid_text(review_type):
+            independent_types.add(review_type)
+    missing = sorted(REQUIRED_INDEPENDENT_REVIEW_TYPES - independent_types)
+    if missing:
+        errors.append(
+            f"{label}: missing independent human review records for "
+            + ", ".join(missing)
+            + "."
+        )
+    return errors
+
+
+def _theorem_verification_is_valid(record: dict[str, Any]) -> bool:
+    curation = record.get("curation")
+    if not isinstance(curation, dict):
+        return False
+    verification = curation.get("theorem_verification")
+    theorem_statement = record.get("expected_lean_statement")
+    return (
+        isinstance(verification, dict)
+        and verification.get("status") == "verified"
+        and verification.get("success") is True
+        and _valid_text(verification.get("lean_toolchain"))
+        and _valid_text(verification.get("mathlib_revision"))
+        and _valid_text(verification.get("command"))
+        and re.fullmatch(
+            r"[0-9a-fA-F]{64}",
+            verification.get("theorem_sha256", "")
+            if isinstance(verification.get("theorem_sha256"), str)
+            else "",
+        )
+        is not None
+        and isinstance(theorem_statement, str)
+        and verification.get("theorem_sha256")
+        == hashlib.sha256(theorem_statement.encode("utf-8")).hexdigest()
+        and _valid_text(verification.get("evidence"))
+    )
+
+
+def _likely_duplicate_pairs(
+    records: list[dict[str, Any]], threshold: float = 0.82
+) -> tuple[tuple[str, str], ...]:
+    pairs: set[tuple[str, str]] = set()
+    for index, first in enumerate(records):
+        first_id = first.get("id")
+        if not _valid_text(first_id):
+            continue
+        for second in records[index + 1 :]:
+            second_id = second.get("id")
+            if not _valid_text(second_id) or first_id.strip() == second_id.strip():
+                continue
+            comparisons = (
+                (first.get("nl_statement"), second.get("nl_statement")),
+                (
+                    first.get("expected_lean_statement"),
+                    second.get("expected_lean_statement"),
+                ),
+            )
+            for left, right in comparisons:
+                if not (_valid_text(left) and _valid_text(right)):
+                    continue
+                left_key = re.sub(r"\s+", " ", left.strip().casefold())
+                right_key = re.sub(r"\s+", " ", right.strip().casefold())
+                if left_key == right_key:
+                    continue
+                similarity = difflib.SequenceMatcher(
+                    None, left_key, right_key
+                ).ratio()
+                if similarity >= threshold:
+                    pairs.add(tuple(sorted((first_id.strip(), second_id.strip()))))
+                    break
+    return tuple(sorted(pairs))
+
+
+def _likely_duplicate_warnings(
+    records: list[dict[str, Any]], threshold: float = 0.82
+) -> tuple[str, ...]:
+    warnings: list[str] = []
+    for first_id, second_id in _likely_duplicate_pairs(records, threshold):
+        warnings.append(
+            f"Likely statement similarity between {first_id!r} and "
+            f"{second_id!r}; human theorem/family duplicate review required."
+        )
+    return tuple(sorted(set(warnings)))
+
+
 def validate_curation_draft(value: object) -> CurationDraftValidationReport:
     """Validate research curation metadata without changing legacy validation."""
     base = validate_dataset(value)
     errors = list(base.errors)
     if not isinstance(value, list):
-        return CurationDraftValidationReport(tuple(errors), ())
+        return CurationDraftValidationReport(
+            tuple(errors),
+            (),
+            candidate_split_counts={"development": 0, "test": 0},
+            eligible_split_counts={"development": 0, "test": 0},
+        )
 
     family_splits: dict[str, tuple[str, str]] = {}
     family_problem_ids: dict[str, list[str]] = {}
@@ -120,6 +291,7 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
     split_inconsistent_families: set[str] = set()
     records_by_duplicate_key: dict[str, list[dict[str, Any]]] = {}
     eligible_by_id: dict[str, bool] = {}
+    evidence_warnings: list[str] = []
     status_fields = (
         "source_status",
         "source_license_verification_status",
@@ -150,6 +322,21 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
             if normalized_id:
                 eligible_by_id[normalized_id] = False
             continue
+
+        category = record.get("category")
+        if not isinstance(category, str) or category not in RESEARCH_CATEGORIES:
+            errors.append(
+                f"{label}: category must be one of "
+                + ", ".join(sorted(RESEARCH_CATEGORIES))
+                + "."
+            )
+        difficulty = record.get("difficulty")
+        if (
+            isinstance(difficulty, bool)
+            or not isinstance(difficulty, int)
+            or not 1 <= difficulty <= 5
+        ):
+            errors.append(f"{label}: difficulty must be an integer from 1 to 5.")
 
         required_curation_fields = (
             "source_url",
@@ -204,6 +391,47 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
         ):
             errors.append(
                 f"{label}: verified license status requires source_license."
+            )
+        license_evidence = curation.get("source_license_evidence")
+        theorem_statement = record.get("expected_lean_statement")
+        source_license_statement_sha256 = (
+            license_evidence.get("statement_sha256")
+            if isinstance(license_evidence, dict)
+            else None
+        )
+        license_evidence_complete = (
+            isinstance(license_evidence, dict)
+            and license_evidence.get("status") == "verified"
+            and _valid_text(license_evidence.get("evidence_reference"))
+            and _valid_iso_date(license_evidence.get("reviewed_on"))
+            and isinstance(theorem_statement, str)
+            and isinstance(source_license_statement_sha256, str)
+            and re.fullmatch(r"[0-9a-fA-F]{64}", source_license_statement_sha256)
+            is not None
+            and source_license_statement_sha256.lower()
+            == hashlib.sha256(theorem_statement.encode("utf-8")).hexdigest()
+        )
+        if (
+            isinstance(license_evidence, dict)
+            and license_evidence.get("status") == "verified"
+            and not license_evidence_complete
+        ):
+            errors.append(
+                f"{label}: verified source/license evidence must include a valid "
+                "statement_sha256 matching the exact expected_lean_statement UTF-8 bytes."
+            )
+        review_evidence_errors = _review_record_errors(curation, label)
+        theorem_verification_complete = _theorem_verification_is_valid(record)
+        if not license_evidence_complete:
+            evidence_warnings.append(
+                f"{label}: source/license evidence is incomplete; record is ineligible."
+            )
+        if review_evidence_errors:
+            evidence_warnings.extend(review_evidence_errors)
+        if not theorem_verification_complete:
+            evidence_warnings.append(
+                f"{label}: successful pinned-environment theorem verification is "
+                "missing; record is ineligible."
             )
         family_review_status = curation.get("family_review_status")
         if family_review_status == "verified":
@@ -375,6 +603,9 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
 
         eligible_by_id[normalized_id] = (
             _curation_has_eligibility_evidence(curation)
+            and license_evidence_complete
+            and not review_evidence_errors
+            and theorem_verification_complete
             and len(errors) == record_error_count
             and not base.errors
         )
@@ -481,12 +712,42 @@ def validate_curation_draft(value: object) -> CurationDraftValidationReport:
             for problem_id in family_problem_ids[family]:
                 eligible_by_id[problem_id] = False
 
+    candidate_split_counts = {
+        split: sum(
+            isinstance(record, dict)
+            and isinstance(record.get("curation"), dict)
+            and record["curation"].get("split") == split
+            for record in value
+        )
+        for split in ALLOWED_SPLITS
+    }
+    eligible_split_counts = {
+        split: sum(
+            eligible_by_id.get(record_id, False)
+            and isinstance(record, dict)
+            and isinstance(record.get("curation"), dict)
+            and record["curation"].get("split") == split
+            for record in value
+            for record_id in (
+                [record["id"].strip()]
+                if isinstance(record, dict) and _valid_text(record.get("id"))
+                else [""]
+            )
+        )
+        for split in ALLOWED_SPLITS
+    }
+
     return CurationDraftValidationReport(
         errors=tuple(errors),
         duplicate_candidate_groups=tuple(sorted(duplicate_groups)),
         eligible_problem_ids=tuple(
             sorted(problem_id for problem_id, is_eligible in eligible_by_id.items()
                    if problem_id and is_eligible)
+        ),
+        candidate_split_counts=candidate_split_counts,
+        eligible_split_counts=eligible_split_counts,
+        review_warnings=tuple(
+            sorted(set(evidence_warnings).union(_likely_duplicate_warnings(value)))
         ),
     )
 
@@ -521,6 +782,14 @@ def _curation_has_eligibility_evidence(curation: dict[str, Any]) -> bool:
         and _valid_text(duplicate_review.get("notes"))
         and isinstance(curation.get("split"), str)
         and curation.get("split") in ALLOWED_SPLITS
+        and isinstance(curation.get("source_license_evidence"), dict)
+        and curation["source_license_evidence"].get("status") == "verified"
+        and _valid_text(
+            curation["source_license_evidence"].get("evidence_reference")
+        )
+        and _valid_text(curation["source_license_evidence"].get("reviewed_on"))
+        and isinstance(curation["source_license_evidence"].get("statement_sha256"), str)
+        and isinstance(curation.get("theorem_verification"), dict)
     ):
         return False
     return all(
@@ -533,6 +802,271 @@ def _curation_has_eligibility_evidence(curation: dict[str, Any]) -> bool:
             curation.get("assumption_mismatch_review"),
             curation.get("self_containment_review"),
         )
+    )
+
+
+def validate_frozen_curation(
+    test_value: object,
+    manifest: object,
+    test_dataset_sha256: str,
+    *,
+    development_value: object | None = None,
+    development_dataset_sha256: str | None = None,
+) -> FrozenCurationValidationReport:
+    """Require an explicitly frozen, independently reviewed research dataset."""
+    errors: list[str] = []
+    test_report = validate_curation_draft(test_value)
+    errors.extend(test_report.errors)
+    development_report = validate_curation_draft(development_value)
+    errors.extend(development_report.errors)
+    combined_records = [
+        *(
+            development_value
+            if isinstance(development_value, list)
+            else []
+        ),
+        *(test_value if isinstance(test_value, list) else []),
+    ]
+    combined_report = validate_curation_draft(combined_records)
+    errors.extend(combined_report.errors)
+    candidate_counts = {
+        "development": (development_report.candidate_split_counts or {}).get(
+            "development", 0
+        ),
+        "test": (test_report.candidate_split_counts or {}).get("test", 0),
+    }
+    eligible_counts = combined_report.eligible_split_counts or {
+        "development": 0,
+        "test": 0,
+    }
+    if development_value is None or development_dataset_sha256 is None:
+        errors.append(
+            "a separately supplied development dataset and its exact-byte hash are required."
+        )
+
+    for label, value, expected_split in (
+        ("development", development_value, "development"),
+        ("test", test_value, "test"),
+    ):
+        if isinstance(value, list):
+            for record in value:
+                if (
+                    isinstance(record, dict)
+                    and isinstance(record.get("curation"), dict)
+                    and record["curation"].get("split") != expected_split
+                ):
+                    errors.append(
+                        f"{label} dataset contains a record not assigned to "
+                        f"{expected_split!r}."
+                    )
+    if not isinstance(manifest, dict):
+        errors.append("freeze manifest must be an object.")
+        return FrozenCurationValidationReport(
+            tuple(errors),
+            candidate_counts,
+            eligible_counts,
+            test_dataset_sha256,
+            development_dataset_sha256,
+        )
+
+    if manifest.get("status") != "frozen":
+        errors.append("freeze manifest status must be 'frozen'; draft/unfrozen sets are rejected.")
+    if manifest.get("freeze_approved") is not True:
+        errors.append("freeze manifest must record freeze_approved: true.")
+    if not _valid_iso_date(manifest.get("frozen_on")):
+        errors.append("freeze manifest frozen_on must be an ISO date.")
+    if not _valid_text(manifest.get("freeze_approval_evidence")):
+        errors.append("freeze manifest requires freeze_approval_evidence.")
+    if not _valid_text(manifest.get("dataset_version")):
+        errors.append("freeze manifest dataset_version must be non-empty.")
+    dataset_records = {
+        "development": (development_value, development_dataset_sha256),
+        "test": (test_value, test_dataset_sha256),
+    }
+    for split, (records, actual_hash) in dataset_records.items():
+        section = manifest.get(f"{split}_dataset")
+        label = f"{split}_dataset"
+        if not isinstance(section, dict):
+            errors.append(f"freeze manifest {label} must be an object.")
+            continue
+        declared_hash = section.get("dataset_sha256")
+        if (
+            not isinstance(declared_hash, str)
+            or re.fullmatch(r"[0-9a-fA-F]{64}", declared_hash) is None
+        ):
+            errors.append(f"{label}.dataset_sha256 must be a 64-character SHA-256.")
+        elif not isinstance(actual_hash, str) or actual_hash.lower() != declared_hash.lower():
+            errors.append(f"{label} hash does not match the exact dataset bytes.")
+        expected_ids = section.get("expected_ids")
+        actual_ids = [
+            record["id"].strip()
+            for record in records
+            if isinstance(records, list)
+            and isinstance(record, dict)
+            and _valid_text(record.get("id"))
+        ] if isinstance(records, list) else []
+        if not isinstance(expected_ids, list) or any(
+            not _valid_text(problem_id) for problem_id in expected_ids
+        ):
+            errors.append(f"{label}.expected_ids must be an array of non-empty IDs.")
+        elif (
+            len(expected_ids) != len(set(expected_ids))
+            or expected_ids != actual_ids
+        ):
+            errors.append(f"{label}.expected_ids must exactly match unique dataset IDs.")
+        if len(actual_ids) != len(set(actual_ids)):
+            errors.append(f"{label} contains duplicate problem IDs.")
+
+    if eligible_counts["test"] < MINIMUM_TEST_RECORDS:
+        errors.append(
+            f"frozen dataset requires at least {MINIMUM_TEST_RECORDS} eligible test records; "
+            f"found {eligible_counts['test']}."
+        )
+    if not (
+        MINIMUM_DEVELOPMENT_RECORDS
+        <= eligible_counts["development"]
+        <= MAXIMUM_DEVELOPMENT_RECORDS
+    ):
+        errors.append(
+            f"frozen dataset requires {MINIMUM_DEVELOPMENT_RECORDS}–"
+            f"{MAXIMUM_DEVELOPMENT_RECORDS} eligible development records; "
+            f"found {eligible_counts['development']}."
+        )
+    if candidate_counts != {
+        split: eligible_counts[split] for split in ("development", "test")
+    }:
+        errors.append(
+            "frozen dataset contains candidate records that are not all eligible."
+        )
+    declared_counts = manifest.get("candidate_split_counts")
+    if declared_counts != candidate_counts:
+        errors.append(
+            "manifest candidate_split_counts do not match current candidate counts."
+        )
+    declared_eligible = manifest.get("eligible_split_counts")
+    if declared_eligible != eligible_counts:
+        errors.append(
+            "manifest eligible_split_counts do not match validated eligible counts."
+        )
+
+    authors = manifest.get("dataset_author_ids")
+    if not isinstance(authors, list) or not authors or any(
+        not _valid_text(author_id) for author_id in authors
+    ):
+        errors.append(
+            "freeze manifest dataset_author_ids must identify dataset authors "
+            "for reviewer-independence checks."
+        )
+        author_ids: set[str] = set()
+    else:
+        author_ids = set(authors)
+        if len(authors) != len(author_ids):
+            errors.append("freeze manifest dataset_author_ids must be unique.")
+
+    for records, _ in dataset_records.values():
+        if isinstance(records, list):
+            for record in records:
+                if not isinstance(record, dict) or not isinstance(
+                    record.get("curation"), dict
+                ):
+                    continue
+                review_records = record["curation"].get("review_records", [])
+                if not isinstance(review_records, list):
+                    continue
+                for review in review_records:
+                    if (
+                        isinstance(review, dict)
+                        and review.get("reviewer_kind") == "independent_human_review"
+                        and review.get("reviewer_id") in author_ids
+                    ):
+                        errors.append(
+                            f"problem {record.get('id')!r}: independent reviewer ID "
+                            "is listed as a dataset author."
+                        )
+
+    protocol_hash = manifest.get("locked_protocol_sha256")
+    if not isinstance(protocol_hash, str) or re.fullmatch(
+        r"[0-9a-fA-F]{64}", protocol_hash
+    ) is None:
+        errors.append("freeze manifest requires locked_protocol_sha256.")
+    test_policy = manifest.get("test_access_policy")
+    if (
+        not isinstance(test_policy, dict)
+        or test_policy.get("test_results_excluded_from_tuning") is not True
+        or test_policy.get("test_inputs_restricted_until_protocol_lock") is not True
+        or not _valid_text(test_policy.get("procedure"))
+    ):
+        errors.append(
+            "freeze manifest requires a test_access_policy excluding test results "
+            "from tuning and restricting inputs until protocol lock."
+        )
+    dispositions = manifest.get("likely_duplicate_dispositions")
+    if not isinstance(dispositions, list):
+        errors.append(
+            "freeze manifest likely_duplicate_dispositions must be an array."
+        )
+    else:
+        expected_pairs = set(_likely_duplicate_pairs(combined_records))
+        disposition_pairs: set[tuple[str, str]] = set()
+        for index, disposition in enumerate(dispositions, start=1):
+            label = f"likely_duplicate_dispositions[{index}]"
+            if not isinstance(disposition, dict):
+                errors.append(f"{label} must be an object.")
+                continue
+            pair_ids = disposition.get("problem_ids")
+            if (
+                not isinstance(pair_ids, list)
+                or len(pair_ids) != 2
+                or any(not _valid_text(problem_id) for problem_id in pair_ids)
+                or pair_ids != sorted(pair_ids)
+                or pair_ids[0] == pair_ids[1]
+            ):
+                errors.append(
+                    f"{label}.problem_ids must contain two distinct IDs in "
+                    "lexicographic order."
+                )
+                continue
+            pair = (pair_ids[0], pair_ids[1])
+            if pair in disposition_pairs:
+                errors.append(f"{label} duplicates a likely-duplicate disposition.")
+            disposition_pairs.add(pair)
+            if pair not in expected_pairs:
+                errors.append(
+                    f"{label} does not match a currently flagged likely-duplicate pair."
+                )
+            if disposition.get("decision") not in {"duplicate", "not_duplicate"}:
+                errors.append(
+                    f"{label}.decision must be 'duplicate' or 'not_duplicate'."
+                )
+            if disposition.get("reviewer_kind") != "independent_human_review":
+                errors.append(
+                    f"{label}.reviewer_kind must be 'independent_human_review'."
+                )
+            if not _valid_text(disposition.get("reviewer_id")):
+                errors.append(f"{label}.reviewer_id must be non-empty text.")
+            elif disposition.get("reviewer_id") in author_ids:
+                errors.append(f"{label}.reviewer_id must not identify a dataset author.")
+            if not _valid_iso_date(disposition.get("reviewed_on")):
+                errors.append(f"{label}.reviewed_on must be an ISO date.")
+            if not _valid_text(disposition.get("evidence")):
+                errors.append(f"{label}.evidence must be non-empty text.")
+            if disposition.get("decision") == "duplicate":
+                errors.append(
+                    f"{label} identifies a duplicate pair; remove or exclude one "
+                    "record before freezing the dataset."
+                )
+        missing_pairs = expected_pairs - disposition_pairs
+        for first_id, second_id in sorted(missing_pairs):
+            errors.append(
+                f"likely-duplicate pair {first_id!r}, {second_id!r} lacks an "
+                "independent human disposition."
+            )
+    return FrozenCurationValidationReport(
+        tuple(errors),
+        candidate_counts,
+        eligible_counts,
+        test_dataset_sha256,
+        development_dataset_sha256,
     )
 
 
@@ -872,10 +1406,40 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="validate nested research-curation draft metadata",
     )
+    parser.add_argument(
+        "--validate-frozen-curation",
+        action="store_true",
+        help="validate eligibility, minimum sizes, independence, and freeze controls",
+    )
+    parser.add_argument(
+        "--freeze-manifest",
+        type=Path,
+        help="freeze manifest required by --validate-frozen-curation",
+    )
+    parser.add_argument(
+        "--development-dataset",
+        type=Path,
+        help="separate development JSON file required by freeze validation",
+    )
     args = parser.parse_args(argv)
 
-    if args.validate_curation_draft and args.research_manifest:
-        parser.error("--validate-curation-draft cannot be combined with --research-manifest")
+    if args.validate_curation_draft and (
+        args.research_manifest or args.validate_frozen_curation
+    ):
+        parser.error(
+            "--validate-curation-draft cannot be combined with strict/frozen validation"
+        )
+    if args.validate_frozen_curation and (
+        not args.freeze_manifest or not args.development_dataset or args.research_manifest
+    ):
+        parser.error(
+            "--validate-frozen-curation requires --freeze-manifest and "
+            "--development-dataset, and cannot be combined with --research-manifest"
+        )
+    if args.freeze_manifest and not args.validate_frozen_curation:
+        parser.error("--freeze-manifest requires --validate-frozen-curation")
+    if args.development_dataset and not args.validate_frozen_curation:
+        parser.error("--development-dataset requires --validate-frozen-curation")
 
     if args.validate_curation_draft:
         try:
@@ -888,8 +1452,38 @@ def main(argv: list[str] | None = None) -> int:
         print(
             f"Records: {record_count}; duplicate candidate groups: "
             f"{len(report.duplicate_candidate_groups)}; "
-            f"eligible records: {len(report.eligible_problem_ids)}; "
+            f"candidate development/test: {report.candidate_split_counts}; "
+            f"eligible development/test: {report.eligible_split_counts}; "
             f"validation errors: {len(report.errors)}"
+        )
+        for error in report.errors:
+            print(f"error: {error}", file=sys.stderr)
+        for warning in report.review_warnings:
+            print(f"review queue: {warning}", file=sys.stderr)
+        return 0 if report.is_valid else 1
+    if args.validate_frozen_curation:
+        try:
+            test_value, test_dataset_sha256 = _load_json_with_hash(args.dataset)
+            development_value, development_dataset_sha256 = _load_json_with_hash(
+                args.development_dataset
+            )
+            manifest = _load_json(args.freeze_manifest)
+        except ValueError as error:
+            print(error, file=sys.stderr)
+            return 1
+        report = validate_frozen_curation(
+            test_value,
+            manifest,
+            test_dataset_sha256,
+            development_value=development_value,
+            development_dataset_sha256=development_dataset_sha256,
+        )
+        print(
+            f"SHA-256 development/test: {report.development_dataset_sha256}/"
+            f"{report.dataset_sha256}; candidate development/test: "
+            f"{report.candidate_split_counts}; eligible development/test: "
+            f"{report.eligible_split_counts}; validation errors: "
+            f"{len(report.errors)}"
         )
         for error in report.errors:
             print(f"error: {error}", file=sys.stderr)
