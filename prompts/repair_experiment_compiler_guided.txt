@@ -3,8 +3,9 @@ Repair the previous Lean proof for the fixed theorem below.
 Output only the complete Lean theorem in a Lean code block. Do not change the
 theorem statement, add axioms, or use sorry, sorryAx, or admit.
 
-Use this generic retry instruction: inspect your previous candidate, reconsider
-the proof, and make a focused correction. Do not assume any compiler feedback.
+Use this retry instruction: inspect your previous candidate, reconsider the
+proof, and make a focused correction. Use the feedback field below as given;
+do not assume any information that it does not contain.
 
 Fixed theorem:
 ```lean
