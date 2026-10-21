@@ -40,7 +40,24 @@ FAST_MODEL = os.environ.get("GROQ_MODEL_FAST", "llama-3.1-8b-instant")
 # at the strong model.
 MODEL = STRONG_MODEL
 
-_client = groq.Groq(api_key=os.environ.get("GROQ_API_KEY"))
+_client: groq.Groq | None = None
+
+
+class MissingGroqApiKeyError(RuntimeError):
+    """Raised when an API-backed completion is requested without credentials."""
+
+
+def _get_client() -> groq.Groq:
+    global _client
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise MissingGroqApiKeyError(
+            "GROQ_API_KEY is not set. Configure it in the environment before "
+            "running an API-backed completion."
+        )
+    if _client is None:
+        _client = groq.Groq(api_key=api_key)
+    return _client
 
 # Matches Groq's rate-limit error body, e.g.:
 #   "Please try again in 13m17.472s."
@@ -95,6 +112,7 @@ def _response_metadata(resp: object, model: str, content: str) -> dict[str, obje
         reasoning_length = None
     tool_calls = getattr(message, "tool_calls", None)
     return {
+        "provider": "groq",
         "model": model,
         "finish_reason": getattr(choice, "finish_reason", None),
         "completion_tokens": getattr(usage, "completion_tokens", None),
@@ -131,6 +149,7 @@ def complete_with_metadata(
         raise ValueError("retry wait budgets must be non-negative")
 
     model = model or STRONG_MODEL
+    client = _get_client()
     sleep = sleep or time.sleep
     total_wait_seconds = 0.0
     last_err: Exception | None = None
@@ -157,7 +176,7 @@ def complete_with_metadata(
             if reasoning_effort is not None:
                 request["reasoning_effort"] = reasoning_effort
             request_started = time.monotonic()
-            resp = _client.chat.completions.create(**request)
+            resp = client.chat.completions.create(**request)
             latency_seconds = round(time.monotonic() - request_started, 3)
             choices = getattr(resp, "choices", None) or []
             message = getattr(choices[0], "message", None) if choices else None

@@ -74,6 +74,7 @@ def run_in(
     *,
     max_repair: int = 3,
     experiment_id: str | None = None,
+    execution_mode: experiment.ExecutionMode = "mock",
 ) -> Path:
     return experiment.run_experiment(
         "problem_001",
@@ -83,6 +84,7 @@ def run_in(
         completion_fn=completion_fn,
         verification_fn=verification_fn,
         max_repair=max_repair,
+        execution_mode=execution_mode,
         experiment_id=experiment_id,
     )
 
@@ -104,12 +106,15 @@ def test_one_shot_makes_no_repair_calls_and_verifies_initial_once(tmp_path: Path
     assert manifest["conditions"]["B"]["status"] == "not_needed_initial_success"
     assert manifest["conditions"]["C"]["status"] == "not_needed_initial_success"
     assert manifest["status"] == "completed"
+    assert manifest["execution_mode"] == "mock"
+    assert manifest["api_generation_confirmed"] is False
+    assert manifest["initial_candidate"]["generation_source"] == "mock"
 
 
 def test_blind_and_guided_share_initial_candidate_and_hash(tmp_path: Path) -> None:
     completion_fn = Mock(
         side_effect=[
-            completion(INITIAL_CANDIDATE),
+            completion(f"```lean\n{INITIAL_CANDIDATE}\n```"),
             completion("theorem target : True := by trivial"),
             completion("theorem target : True := by trivial"),
         ]
@@ -126,6 +131,9 @@ def test_blind_and_guided_share_initial_candidate_and_hash(tmp_path: Path) -> No
     assert initial_bytes.decode() == INITIAL_CANDIDATE
     assert initial["candidate_sha256"] == initial_hash
     assert initial["candidate_id"] == f"problem_001-{initial_hash}"
+    assert initial["response_text"] == f"```lean\n{INITIAL_CANDIDATE}\n```"
+    assert initial["candidate_text"] == INITIAL_CANDIDATE
+    assert initial["attempt_id"].endswith("-initial")
     for condition in ("A", "B", "C"):
         result = manifest["conditions"][condition]
         assert result["starting_candidate_id"] == initial["candidate_id"]
@@ -250,6 +258,36 @@ def test_b_and_c_share_model_decoding_and_three_call_limit(tmp_path: Path) -> No
         assert [item["repair_calls"] for item in result["milestones"].values()] == [0, 1, 2, 3]
         assert all(item["prompt_tokens"] is None for item in result["attempts"])
     assert manifest["configuration"]["max_repair_calls"] == 3
+    assert manifest["provider"] is None
+    assert manifest["configured_provider"] == "groq"
+    assert manifest["model_identifier"] == experiment.DEFAULT_MODEL
+    assert manifest["execution_mode"] == "mock"
+    assert manifest["initial_candidate"]["generation_source"] == "mock"
+    assert manifest["initial_candidate"]["requested_model"] == manifest["model_identifier"]
+    assert manifest["provider"] is None
+    assert manifest["configured_provider"] == "groq"
+    attempts = [
+        manifest["initial_candidate"],
+        *(
+            attempt
+            for condition in ("B", "C")
+            for attempt in manifest["conditions"][condition]["attempts"]
+        ),
+    ]
+    assert len({attempt["attempt_id"] for attempt in attempts}) == len(attempts)
+    assert all(
+        attempt["started_at_utc"] and attempt["finished_at_utc"]
+        for attempt in attempts
+    )
+    assert all(
+        attempt["provider"] is None
+        and attempt["configured_provider"] == "groq"
+        and attempt["requested_model"] == manifest["model_identifier"]
+        and attempt["response_text"]
+        and attempt["attempt_id"]
+        for condition in ("B", "C")
+        for attempt in manifest["conditions"][condition]["attempts"]
+    )
     assert manifest["status"] == "completed"
 
 
@@ -273,6 +311,12 @@ def test_success_stops_repairs_and_repair_prompt_hashes_are_logged(
     assert manifest["conditions"]["C"]["repair_calls_made"] == 1
     assert all(item["status"] == "success" for condition in ("B", "C")
                for item in manifest["conditions"][condition]["attempts"])
+    assert all(
+        item["verification"]["success"] is True
+        and item["finished_at_utc"]
+        for condition in ("B", "C")
+        for item in manifest["conditions"][condition]["attempts"]
+    )
     assert all(
         len(item["prompt_sha256"]) == 64
         for condition in ("B", "C")
@@ -322,6 +366,22 @@ def test_provider_error_is_not_recorded_as_a_proof_failure(tmp_path: Path) -> No
     assert manifest["conditions"]["B"]["attempts"][0]["failure_kind"] == "provider_error"
     assert manifest["conditions"]["C"]["status"] == "empty_output"
     assert manifest["status"] == "completed_with_failures"
+
+
+def test_provider_timeout_and_model_access_errors_are_classified_actionably() -> None:
+    class ModelNotAvailableError(RuntimeError):
+        status_code = 404
+
+    timeout_record = experiment._provider_error_record(TimeoutError("timed out"))
+    model_record = experiment._provider_error_record(
+        ModelNotAvailableError("model unavailable")
+    )
+
+    assert timeout_record["error_category"] == "timeout"
+    assert "retry only under" in timeout_record["action"]
+    assert model_record["error_category"] == "model_access"
+    assert model_record["status_code"] == 404
+    assert "no fallback model" in model_record["action"]
 
 
 def test_timeout_and_compiler_failure_are_distinct_and_timeout_is_incomplete(
@@ -426,6 +486,8 @@ def test_plan_only_has_prompt_hashes_and_is_explicitly_api_free() -> None:
     plan = experiment._plan("problem_001", THEOREM, experiment.DEFAULT_MODEL, 3)
 
     assert plan["api_calls_will_be_made"] is False
+    assert plan["provider"] == "groq"
+    assert plan["model_identifier"] == experiment.DEFAULT_MODEL
     assert set(plan["prompt_templates"]) == {"initial", "blind", "compiler_guided"}
     assert plan["prompt_templates"]["blind"] == plan["prompt_templates"]["compiler_guided"]
     assert experiment.BLIND_PROMPT_TEMPLATE == experiment.COMPILER_GUIDED_PROMPT_TEMPLATE
@@ -503,7 +565,7 @@ def test_verifier_structured_diagnostics_reach_only_c_and_are_logged_exactly(
     ]
 
 
-def test_malformed_initial_diagnostics_are_not_supplied_as_compiler_feedback(
+def test_blind_retries_continue_without_diagnostics_but_guided_condition_stops(
     tmp_path: Path,
 ) -> None:
     verification = VerificationResult(
@@ -514,19 +576,81 @@ def test_malformed_initial_diagnostics_are_not_supplied_as_compiler_feedback(
         malformed_diagnostics=["not-json"],
         diagnostic_state="malformed",
     )
-    completion_fn = Mock(return_value=completion(INITIAL_CANDIDATE))
+    prompts: list[str] = []
+
+    def complete_fn(prompt: str, **_kwargs) -> CompletionResult:
+        prompts.append(prompt)
+        return completion(INITIAL_CANDIDATE)
+
+    completion_fn = Mock(side_effect=complete_fn)
     verification_fn = Mock(return_value=verification)
 
     manifest = read_manifest(run_in(tmp_path, completion_fn, verification_fn))
 
     assert manifest["initial_verification"]["diagnostic_state"] == "malformed"
     assert manifest["initial_verification"]["malformed_diagnostics"] == ["not-json"]
-    for condition in ("B", "C"):
-        assert manifest["conditions"][condition]["status"] == (
-            "malformed_compiler_diagnostics"
+    assert manifest["conditions"]["B"]["status"] == "repair_budget_exhausted"
+    assert manifest["conditions"]["B"]["repair_calls_made"] == 3
+    assert manifest["conditions"]["C"]["status"] == "malformed_compiler_diagnostics"
+    assert completion_fn.call_count == 1 + 3
+    assert verification_fn.call_count == 1 + 3
+    assert "Lean emitted malformed diagnostics." not in prompts[1]
+
+
+def test_missing_api_credentials_cannot_be_recorded_as_generated_success(
+    tmp_path: Path,
+) -> None:
+    from llm_client import complete_with_metadata
+
+    with patch.dict("os.environ", {"GROQ_API_KEY": ""}):
+        path = experiment.run_experiment(
+            "problem_001",
+            THEOREM,
+            tmp_path / "lean_project",
+            tmp_path / "runs",
+            model=experiment.DEFAULT_MODEL,
+            execution_mode="api",
+            completion_fn=complete_with_metadata,
+            verification_fn=Mock(return_value=successful_verification()),
+            experiment_id="missing-api-key",
         )
-    assert completion_fn.call_count == 1
-    assert verification_fn.call_count == 1
+
+    manifest = read_manifest(path)
+    assert manifest["execution_mode"] == "api"
+    assert manifest["provider"] == "groq"
+    assert manifest["api_generation_confirmed"] is False
+    assert manifest["status"] == "incomplete"
+    assert manifest["initial_candidate"]["status"] == "provider_error"
+    assert manifest["initial_candidate"]["error_code"] == "missing_groq_api_key"
+    assert manifest["initial_candidate"]["action"].startswith("Set GROQ_API_KEY")
+
+
+def test_injected_completion_cannot_be_labeled_as_api(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="API mode requires the Groq completion client"):
+        run_in(
+            tmp_path,
+            Mock(return_value=completion(INITIAL_CANDIDATE)),
+            Mock(return_value=successful_verification()),
+            execution_mode="api",
+            experiment_id="injected-as-api",
+        )
+
+    assert not (tmp_path / "runs").exists()
+
+
+def test_manual_completion_is_distinct_from_api_and_mock(tmp_path: Path) -> None:
+    path = run_in(
+        tmp_path,
+        Mock(return_value=completion(INITIAL_CANDIDATE)),
+        Mock(return_value=successful_verification()),
+        execution_mode="manual",
+    )
+
+    manifest = read_manifest(path)
+    assert manifest["execution_mode"] == "manual"
+    assert manifest["api_generation_confirmed"] is False
+    assert manifest["provider"] is None
+    assert manifest["initial_candidate"]["generation_source"] == "manual"
 
 
 def test_invalid_repair_budget_fails_before_creating_output(tmp_path: Path) -> None:

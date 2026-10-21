@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -18,6 +19,9 @@ class FakeRateLimitError(Exception):
 
 class LlmClientRetryTests(unittest.TestCase):
     def setUp(self) -> None:
+        self.api_key_patch = patch.dict(os.environ, {"GROQ_API_KEY": "test-key"})
+        self.api_key_patch.start()
+        self.addCleanup(self.api_key_patch.stop)
         self.sleep = Mock()
         self.create = Mock()
         self.client = SimpleNamespace(
@@ -139,6 +143,15 @@ class LlmClientRetryTests(unittest.TestCase):
 
         self.assertEqual(result, "theorem valid : True := by trivial")
         printed.assert_not_called()
+
+    def test_missing_api_key_fails_actionably_without_request(self) -> None:
+        with patch.dict(os.environ, {"GROQ_API_KEY": ""}):
+            with self.assertRaisesRegex(
+                llm_client.MissingGroqApiKeyError, "GROQ_API_KEY is not set"
+            ):
+                llm_client.complete_with_metadata("prompt")
+
+        self.create.assert_not_called()
 
     def test_gpt_oss_reasoning_effort_is_supported_and_other_models_omit_it(self) -> None:
         self.create.return_value = self.response("proof")

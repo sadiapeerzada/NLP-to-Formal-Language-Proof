@@ -14,13 +14,14 @@ import platform
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Literal
 from uuid import uuid4
 
 import groq
 
 from llm_client import (
     CompletionResult,
+    MissingGroqApiKeyError,
     complete_with_metadata,
     extract_lean_block,
     reasoning_effort_for_model,
@@ -40,6 +41,7 @@ INITIAL_PROMPT_TEMPLATE = PROMPT_PATHS["initial"].read_text()
 BLIND_PROMPT_TEMPLATE = PROMPT_PATHS["blind"].read_text()
 COMPILER_GUIDED_PROMPT_TEMPLATE = PROMPT_PATHS["compiler_guided"].read_text()
 DEFAULT_MODEL = "openai/gpt-oss-120b"
+MODEL_PROVIDER = "groq"
 DEFAULT_MAX_REPAIRS = 3
 DEFAULT_MAX_COMPLETION_TOKENS = 2000
 DEFAULT_TEMPERATURE = 0.2
@@ -48,6 +50,7 @@ BLIND_FEEDBACK_FIELD = "No compiler diagnostics are provided in the blind-retry 
 
 CompletionFunction = Callable[..., CompletionResult]
 VerificationFunction = Callable[..., VerificationResult]
+ExecutionMode = Literal["api", "mock", "manual"]
 
 
 def _sha256_text(value: str) -> str:
@@ -116,6 +119,7 @@ def _compiler_diagnostic_payload(verification: VerificationResult) -> str:
 
 def _completion_settings(model: str) -> dict[str, object]:
     return {
+        "provider": MODEL_PROVIDER,
         "requested_model": model,
         "temperature": DEFAULT_TEMPERATURE,
         "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
@@ -237,13 +241,50 @@ def _provider_error_record(error: Exception) -> dict[str, object]:
     cause = error.__cause__
     underlying = cause if cause is not None else error
     status_code = getattr(underlying, "status_code", None)
-    return {
+    if isinstance(error, MissingGroqApiKeyError):
+        error_category = "missing_credentials"
+    elif isinstance(underlying, groq.RateLimitError):
+        error_category = "rate_limit"
+    elif "timeout" in type(underlying).__name__.lower():
+        error_category = "timeout"
+    elif status_code in {401, 403}:
+        error_category = "authentication"
+    elif status_code == 404:
+        error_category = "model_access"
+    else:
+        error_category = "api_error"
+    record: dict[str, object] = {
         "failure_kind": "provider_error",
+        "error_category": error_category,
         "error_type": type(error).__name__,
         "underlying_error_type": type(underlying).__name__,
         "status_code": status_code if isinstance(status_code, int) else None,
         "transport_retry_events": None,
     }
+    if isinstance(error, MissingGroqApiKeyError):
+        record["error_code"] = "missing_groq_api_key"
+        record["action"] = (
+            "Set GROQ_API_KEY in the environment before starting the API run."
+        )
+    elif error_category == "authentication":
+        record["action"] = (
+            "Verify that GROQ_API_KEY is valid and authorized for this model."
+        )
+    elif error_category == "model_access":
+        record["action"] = (
+            "Verify the configured model ID and account access; no fallback model "
+            "was selected."
+        )
+    elif error_category == "rate_limit":
+        record["action"] = (
+            "Review Groq rate limits and quota; no fallback model was selected."
+        )
+    elif error_category == "timeout":
+        record["action"] = (
+            "Check provider/network availability and retry only under the approved "
+            "experiment protocol."
+        )
+    return record
 
 
 def _run_condition(
@@ -260,6 +301,7 @@ def _run_condition(
     lean_project_dir: Path,
     model: str,
     max_repair: int,
+    execution_mode: ExecutionMode,
     completion_fn: CompletionFunction,
     verification_fn: VerificationFunction,
     manifest: dict[str, object],
@@ -297,7 +339,9 @@ def _run_condition(
 
     diagnostic_state = initial_verification.diagnostic_state
     diagnostics = initial_verification.diagnostics
-    if diagnostic_state != "available" or not diagnostics:
+    if condition == "C" and (
+        diagnostic_state != "available" or not diagnostics
+    ):
         condition_result["diagnostic_state"] = diagnostic_state
         condition_result["status"] = (
             "missing_compiler_diagnostics"
@@ -331,9 +375,13 @@ def _run_condition(
         attempt_started = datetime.now(UTC).isoformat()
         attempt_started_monotonic = time.monotonic()
         attempt: dict[str, object] = {
+            "attempt_id": f"{run_id}-{condition}-repair-{repair_call_number}",
+            "generation_source": execution_mode,
             "repair_call_number": repair_call_number,
             "prompt_sha256": prompt_sha256,
             "started_at_utc": attempt_started,
+            "provider": MODEL_PROVIDER if execution_mode == "api" else None,
+            "configured_provider": MODEL_PROVIDER,
             "requested_model": model,
             "compiler_diagnostics_supplied": condition == "C",
         }
@@ -379,6 +427,7 @@ def _run_condition(
                 "candidate_sha256": candidate_sha256,
                 "candidate_text": candidate,
                 "candidate_path": str(candidate_path),
+                "response_text": completion.content,
                 "completion_metadata": completion.metadata,
                 "prompt_tokens": completion.metadata.get("prompt_tokens"),
                 "completion_tokens": completion.metadata.get("completion_tokens"),
@@ -471,7 +520,10 @@ def _run_condition(
             condition_result["status"] = verification_status
             return condition_result
 
-        if verification.diagnostic_state != "available" or not verification.diagnostics:
+        if condition == "C" and (
+            verification.diagnostic_state != "available"
+            or not verification.diagnostics
+        ):
             condition_result["diagnostic_state"] = verification.diagnostic_state
             condition_result["status"] = (
                 "missing_compiler_diagnostics"
@@ -494,6 +546,7 @@ def run_experiment(
     *,
     model: str = DEFAULT_MODEL,
     max_repair: int = DEFAULT_MAX_REPAIRS,
+    execution_mode: ExecutionMode = "api",
     completion_fn: CompletionFunction = complete_with_metadata,
     verification_fn: VerificationFunction = check_lean_file_detailed,
     experiment_id: str | None = None,
@@ -509,6 +562,13 @@ def run_experiment(
         raise ValueError("The fixed Lean theorem statement must not be empty.")
     if not isinstance(model, str) or not model.strip():
         raise ValueError("Model identifier must be a non-empty string.")
+    if execution_mode not in {"api", "mock", "manual"}:
+        raise ValueError("execution_mode must be 'api', 'mock', or 'manual'.")
+    if (execution_mode == "api") != (completion_fn is complete_with_metadata):
+        raise ValueError(
+            "API mode requires the Groq completion client; injected completion "
+            "functions must be labeled 'mock' or 'manual'."
+        )
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
 
@@ -524,11 +584,17 @@ def run_experiment(
     manifest_path = experiment_dir / "manifest.json"
     started_at = datetime.now(UTC)
     started_monotonic = time.monotonic()
+    api_completion = execution_mode == "api"
     theorem_sha256 = _sha256_text(theorem_statement)
     manifest: dict[str, object] = {
         "schema_version": 1,
         "experiment_type": "paired_compiler_guided_repair",
         "experiment_id": run_id,
+        "provider": MODEL_PROVIDER if api_completion else None,
+        "configured_provider": MODEL_PROVIDER,
+        "model_identifier": model,
+        "execution_mode": execution_mode,
+        "api_generation_confirmed": False,
         "problem_id": problem_id,
         "status": "running",
         "started_at_utc": started_at.isoformat().replace("+00:00", "Z"),
@@ -546,6 +612,7 @@ def run_experiment(
         },
         "model_identifier_semantics": "provider_alias_not_pinned",
         "configuration": {
+            "provider": MODEL_PROVIDER,
             "requested_model": model,
             "temperature": DEFAULT_TEMPERATURE,
             "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
@@ -563,13 +630,21 @@ def run_experiment(
 
     initial_prompt = _render_initial_prompt(theorem_statement)
     initial_prompt_sha256 = _sha256_text(initial_prompt)
+    initial_attempt_id = f"{run_id}-initial"
     initial_started = time.monotonic()
+    initial_started_at = datetime.now(UTC).isoformat()
     try:
         initial_completion = _call_model(completion_fn, initial_prompt, model=model)
     except (groq.APIError, RuntimeError) as error:
         manifest["initial_candidate"] = {
             "status": "provider_error",
+            "attempt_id": initial_attempt_id,
+            "generation_source": execution_mode,
             "prompt_sha256": initial_prompt_sha256,
+            "provider": MODEL_PROVIDER if api_completion else None,
+            "configured_provider": MODEL_PROVIDER,
+            "requested_model": model,
+            "started_at_utc": initial_started_at,
             **_provider_error_record(error),
             "finished_at_utc": datetime.now(UTC).isoformat(),
             "wall_clock_seconds": round(time.monotonic() - initial_started, 3),
@@ -603,17 +678,22 @@ def run_experiment(
         return manifest_path
 
     initial_candidate = extract_lean_block(initial_completion.content)
+    manifest["api_generation_confirmed"] = api_completion
     initial_candidate_sha256 = _sha256_text(initial_candidate)
     initial_candidate_id = _candidate_id(problem_id, initial_candidate_sha256)
     initial_candidate_path = experiment_dir / "initial_candidate.lean"
     _write_candidate(initial_candidate_path, initial_candidate)
     manifest["initial_candidate"] = {
         "status": "empty_output" if not initial_candidate else "generated",
+        "attempt_id": initial_attempt_id,
+        "generation_source": execution_mode,
         "candidate_id": initial_candidate_id,
         "candidate_sha256": initial_candidate_sha256,
         "candidate_text": initial_candidate,
         "candidate_path": str(initial_candidate_path),
+        "response_text": initial_completion.content,
         "prompt_sha256": initial_prompt_sha256,
+        "provider": MODEL_PROVIDER,
         "requested_model": model,
         "returned_model": initial_completion.metadata.get("response_model"),
         "completion_metadata": initial_completion.metadata,
@@ -622,6 +702,8 @@ def run_experiment(
         "total_tokens": initial_completion.metadata.get("total_tokens"),
         "transport_api_attempts": initial_completion.metadata.get("api_attempts"),
         "transport_retry_events": initial_completion.metadata.get("retry_events"),
+        "started_at_utc": initial_started_at,
+        "finished_at_utc": datetime.now(UTC).isoformat(),
         "wall_clock_seconds": round(time.monotonic() - initial_started, 3),
     }
     manifest["initial_candidate_id"] = initial_candidate_id
@@ -786,6 +868,7 @@ def run_experiment(
                 lean_project_dir=Path(lean_project_dir),
                 model=model,
                 max_repair=max_repair,
+                execution_mode=execution_mode,
                 completion_fn=completion_fn,
                 verification_fn=verification_fn,
                 manifest=manifest,
@@ -852,6 +935,9 @@ def _plan(
         "theorem_sha256": _sha256_text(theorem_statement),
         "theorem_review_status": "not_verified_by_harness",
         "model_identifier_semantics": "provider_alias_not_pinned",
+        "provider": MODEL_PROVIDER,
+        "model_identifier": model,
+        "execution_mode": "plan_only",
         "configuration": {
             **_completion_settings(model),
             "max_repair_calls": max_repair,
@@ -869,7 +955,11 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--theorem-file", required=True, type=Path)
     parser.add_argument("--lean-project", type=Path, default=REPOSITORY_ROOT / "lean_project")
     parser.add_argument("--output-root", type=Path, default=REPOSITORY_ROOT / "data/experiments")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help="explicit model ID for every A/B/C call (default: proposed primary candidate)",
+    )
     parser.add_argument("--max-repair", type=int, default=DEFAULT_MAX_REPAIRS)
     parser.add_argument(
         "--plan-only",
