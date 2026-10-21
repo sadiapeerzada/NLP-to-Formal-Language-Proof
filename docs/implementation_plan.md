@@ -4,8 +4,8 @@
 Formalization
 
 **Revision baseline:** 20 October 2026 major-revision report
-**Current status:** Phase 0 complete; later phases have not been implemented or
-certified by this plan. This document records repository evidence and decisions
+**Current status:** Phase 0 complete; Phase 1 preparation complete (no API pilot
+run); later phases have not been implemented or certified by this plan. This document records repository evidence and decisions
 that must be reviewed before the 22 October milestone. It is not evidence that
 the experiments or dataset are complete.
 
@@ -168,10 +168,10 @@ lake build Nl2Lean.Basic
 The stable Mathlib cache fetched/decompressed 8,638 files in the project
 environment; Mathlib built successfully (8,654 jobs). The documented
 `Nl2Lean.Basic` target built successfully, and `generated/arith_001.lean`
-compiled when checked with `import Mathlib` under Lean 4.32.0. The broader
-`lake build Nl2Lean` target still fails with “some modules have bad imports”;
-the minimal module target and verifier tests pass, but the library-root target
-should be investigated separately before claiming that target builds.
+compiled when checked with `import Mathlib` under Lean 4.32.0. The library-root target
+initially failed with “some modules have bad imports” because no root module
+existed. Adding `lean_project/Nl2Lean.lean` (which imports `Nl2Lean.Basic`)
+fixed this, and `lake build Nl2Lean` now passes (8,657 jobs).
 
 ### Test and CLI validation
 
