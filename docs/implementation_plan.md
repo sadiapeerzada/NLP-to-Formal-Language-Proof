@@ -239,6 +239,30 @@ up to three transport attempts per logical call. Estimate cost using current
 account pricing before approval. Do not place a real API key in shell history
 or output.
 
+## Phase 1 — protocol fixes before the pilot (21 October 2026)
+
+- **Repair templates.** `prompts/repair_experiment_blind.txt` and
+  `prompts/repair_experiment_compiler_guided.txt` are byte-identical, so the
+  B and C prompts differ only in the `{feedback}` field. The shared
+  instruction no longer says to assume no compiler feedback, which would have
+  contradicted condition C.
+- **Reference-theorem warning.** The fixed theorem is compiled with `sorry` as
+  a reference, so Lean reports a `hasSorry` warning that describes the
+  reference, not the candidate. Candidates containing `sorry` are rejected
+  before compilation. Condition C feedback now excludes `hasSorry`
+  diagnostics. If nothing else remains, C stops with a recorded status
+  instead of raising. Raw verifier output is unchanged.
+- **Statement-only pilot input.** `data/pilot_inputs/arith_001_statement.lean`
+  holds the theorem statement with a `sorry` body. The historical manual proof
+  in `lean_project/generated/arith_001.lean` must not be used as pilot input,
+  because the runner places the file contents in the prompt. An offline check
+  accepted the manual proof against this reference and rejected a candidate
+  containing `sorry`; no API call was made.
+- **Tests.** Full suite: 160 passed, 8 subtests passed.
+
+Status: no API generation has run, and `arith_001` has no recorded
+human review (its curation fields remain pending).
+
 ## Later phases — gated, not completed
 
 - **Phase 2:** enforce and test matched A/B/C traces using the selected single
