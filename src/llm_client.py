@@ -23,6 +23,8 @@ from dataclasses import dataclass
 
 import groq
 
+from cost_guard import CostReservationGuard
+
 # Two-tier model setup: reasoning-heavy stages (formalizing NL -> Lean,
 # sketching the proof strategy) need the strong model to get well-typed
 # output; the repair loop (Stage C/D) is higher-volume and more mechanical,
@@ -40,6 +42,8 @@ FAST_MODEL = os.environ.get("GROQ_MODEL_FAST", "llama-3.1-8b-instant")
 # at the strong model.
 MODEL = STRONG_MODEL
 
+SDK_MAX_RETRIES = 2
+
 _client: groq.Groq | None = None
 
 
@@ -56,7 +60,7 @@ def _get_client() -> groq.Groq:
             "running an API-backed completion."
         )
     if _client is None:
-        _client = groq.Groq(api_key=api_key)
+        _client = groq.Groq(api_key=api_key, max_retries=SDK_MAX_RETRIES)
     return _client
 
 # Matches Groq's rate-limit error body, e.g.:
@@ -141,14 +145,25 @@ def complete_with_metadata(
     max_total_wait_seconds: float = 600,
     sleep: Callable[[float], None] | None = None,
     reasoning_effort: str | None = None,
+    cost_guard: CostReservationGuard | None = None,
 ) -> CompletionResult:
     """Send a chat completion and return text with safe scalar diagnostics."""
     if retries < 1:
         raise ValueError("retries must be at least 1")
     if max_retry_after_seconds < 0 or max_total_wait_seconds < 0:
         raise ValueError("retry wait budgets must be non-negative")
+    if cost_guard is not None and retries > (
+        cost_guard.config.wrapper_attempts_per_completion
+    ):
+        raise ValueError(
+            "Requested wrapper attempts exceed the cost guard configuration."
+        )
 
     model = model or STRONG_MODEL
+    if cost_guard is not None and model != cost_guard.config.model_id:
+        raise ValueError(
+            "Requested model does not match the model bound to the cost guard."
+        )
     client = _get_client()
     sleep = sleep or time.sleep
     total_wait_seconds = 0.0
@@ -166,6 +181,13 @@ def complete_with_metadata(
         )
 
     for attempt in range(retries):
+        reservation = None
+        if cost_guard is not None:
+            reservation = cost_guard.reserve_wrapper_attempt(
+                prompt,
+                requested_output_tokens=max_tokens,
+                wrapper_attempt_number=attempt + 1,
+            )
         try:
             request: dict[str, object] = {
                 "model": model,
@@ -176,7 +198,16 @@ def complete_with_metadata(
             if reasoning_effort is not None:
                 request["reasoning_effort"] = reasoning_effort
             request_started = time.monotonic()
-            resp = client.chat.completions.create(**request)
+            reservation_outcome = "ambiguous_may_be_billed"
+            try:
+                resp = client.chat.completions.create(**request)
+                reservation_outcome = "response_received"
+            finally:
+                if cost_guard is not None and reservation is not None:
+                    cost_guard.record_wrapper_outcome(
+                        reservation["reservation_batch_id"],
+                        outcome=reservation_outcome,
+                    )
             latency_seconds = round(time.monotonic() - request_started, 3)
             choices = getattr(resp, "choices", None) or []
             message = getattr(choices[0], "message", None) if choices else None
@@ -191,6 +222,9 @@ def complete_with_metadata(
                     "latency_seconds": latency_seconds,
                     "api_attempts": attempt + 1,
                     "retry_events": retry_events,
+                    "cost_reservation": (
+                        cost_guard.snapshot() if cost_guard is not None else None
+                    ),
                 }
             )
             if metadata["content_empty"]:

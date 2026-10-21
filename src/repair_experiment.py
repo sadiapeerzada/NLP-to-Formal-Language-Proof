@@ -19,9 +19,15 @@ from uuid import uuid4
 
 import groq
 
+from cost_guard import (
+    CostGuardConfig,
+    CostGuardConfigurationError,
+    CostReservationGuard,
+)
 from llm_client import (
     CompletionResult,
     MissingGroqApiKeyError,
+    SDK_MAX_RETRIES,
     complete_with_metadata,
     extract_lean_block,
     reasoning_effort_for_model,
@@ -45,7 +51,13 @@ MODEL_PROVIDER = "groq"
 DEFAULT_MAX_REPAIRS = 3
 DEFAULT_MAX_COMPLETION_TOKENS = 2000
 DEFAULT_TEMPERATURE = 0.2
-TRANSPORT_RETRIES = 3
+TRANSPORT_ATTEMPTS = 3
+PILOT_BUDGET_USD = 0.10
+API_EXECUTION_ENABLED = False
+API_EXECUTION_BLOCKED_REASON = (
+    "API execution remains disabled pending human approval, verified official "
+    "model pricing, and audit of the cost guard."
+)
 BLIND_FEEDBACK_FIELD = "No compiler diagnostics are provided in the blind-retry condition."
 
 CompletionFunction = Callable[..., CompletionResult]
@@ -139,7 +151,7 @@ def _completion_settings(model: str) -> dict[str, object]:
         "temperature": DEFAULT_TEMPERATURE,
         "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
         "reasoning_effort": reasoning_effort_for_model(model),
-        "max_transport_retries": TRANSPORT_RETRIES,
+        "max_transport_attempts": TRANSPORT_ATTEMPTS,
     }
 
 
@@ -148,15 +160,18 @@ def _call_model(
     prompt: str,
     *,
     model: str,
+    cost_guard: CostReservationGuard | None = None,
 ) -> CompletionResult:
-    return completion_fn(
-        prompt,
-        max_tokens=DEFAULT_MAX_COMPLETION_TOKENS,
-        temperature=DEFAULT_TEMPERATURE,
-        retries=TRANSPORT_RETRIES,
-        model=model,
-        reasoning_effort=reasoning_effort_for_model(model),
-    )
+    arguments: dict[str, object] = {
+        "max_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
+        "temperature": DEFAULT_TEMPERATURE,
+        "retries": TRANSPORT_ATTEMPTS,
+        "model": model,
+        "reasoning_effort": reasoning_effort_for_model(model),
+    }
+    if cost_guard is not None:
+        arguments["cost_guard"] = cost_guard
+    return completion_fn(prompt, **arguments)
 
 
 def _candidate_id(problem_id: str, candidate_sha256: str) -> str:
@@ -223,6 +238,31 @@ def _verification_status(verification: VerificationResult) -> str:
 
 def _verification_record(verification: VerificationResult) -> dict[str, object]:
     return verification.to_record()
+
+
+def _review_record_summary(problem_id: str) -> dict[str, str]:
+    review_path = REPOSITORY_ROOT / "data" / "pilot_inputs" / f"{problem_id}_review.json"
+    if not review_path.is_file():
+        return {
+            "review_record_status": "not_provided",
+            "review_independence": "not_established",
+        }
+    review_record = json.loads(review_path.read_text(encoding="utf-8"))
+    semantic_fidelity = review_record.get("semantic_fidelity", {})
+    review_status = semantic_fidelity.get("review_status")
+    reviewer_provenance = semantic_fidelity.get("reviewer_provenance", "")
+    independence = (
+        "not_independent"
+        if isinstance(reviewer_provenance, str)
+        and "not independent" in reviewer_provenance.lower()
+        else "not_established"
+    )
+    return {
+        "review_record_status": (
+            review_status if isinstance(review_status, str) else "not_recorded"
+        ),
+        "review_independence": independence,
+    }
 
 
 def _atomic_manifest_update(manifest_path: Path, manifest: dict[str, object]) -> None:
@@ -318,6 +358,7 @@ def _run_condition(
     max_repair: int,
     execution_mode: ExecutionMode,
     completion_fn: CompletionFunction,
+    cost_guard: CostReservationGuard | None,
     verification_fn: VerificationFunction,
     manifest: dict[str, object],
     manifest_path: Path,
@@ -411,9 +452,13 @@ def _run_condition(
         condition_result["repair_calls_made"] = repair_call_number
         _atomic_manifest_update(manifest_path, manifest)
         try:
-            completion = _call_model(completion_fn, prompt, model=model)
+            completion = _call_model(
+                completion_fn, prompt, model=model, cost_guard=cost_guard
+            )
         except (groq.APIError, RuntimeError) as error:
             attempt.update(_provider_error_record(error))
+            if cost_guard is not None:
+                attempt["cost_guard"] = cost_guard.snapshot()
             attempt["finished_at_utc"] = datetime.now(UTC).isoformat()
             attempt["wall_clock_seconds"] = round(
                 time.monotonic() - attempt_started_monotonic, 3
@@ -587,6 +632,24 @@ def run_experiment(
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
 
+    cost_guard: CostReservationGuard | None = None
+    if execution_mode == "api":
+        try:
+            cost_guard = CostReservationGuard(
+                CostGuardConfig.from_environment(
+                    model_id=model,
+                    wrapper_attempts_per_completion=TRANSPORT_ATTEMPTS,
+                    sdk_max_retries_per_wrapper_attempt=SDK_MAX_RETRIES,
+                )
+            )
+        except CostGuardConfigurationError as error:
+            raise ValueError(
+                "Official pricing or cost-guard configuration is missing or "
+                f"unverified: {error}"
+            ) from error
+        if not API_EXECUTION_ENABLED:
+            raise ValueError(API_EXECUTION_BLOCKED_REASON)
+
     run_id = experiment_id or _new_experiment_id()
     if not _safe_id(run_id):
         raise ValueError("Experiment ID must be a safe filename component.")
@@ -594,7 +657,7 @@ def run_experiment(
     environment = _lean_environment(lean_project_dir)
     output_root = Path(output_root).resolve()
     experiment_dir = output_root / run_id
-    output_root.mkdir(parents=True, exist_ok=True)
+    output_root.mkdir(parents=True, exist_ok=False)
     experiment_dir.mkdir(exist_ok=False)
     manifest_path = experiment_dir / "manifest.json"
     started_at = datetime.now(UTC)
@@ -633,15 +696,23 @@ def run_experiment(
             "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
             "reasoning_effort": reasoning_effort_for_model(model),
             "max_repair_calls": max_repair,
-            "transport_retries_per_model_call": TRANSPORT_RETRIES,
+            "transport_attempts_per_model_call": TRANSPORT_ATTEMPTS,
+            "groq_sdk_max_retries": SDK_MAX_RETRIES,
             "lean_project_dir": str(Path(lean_project_dir).resolve()),
         },
         "environment": environment,
+        "cost_guard": cost_guard.snapshot() if cost_guard is not None else None,
         "initial_candidate": None,
         "initial_verification": None,
         "conditions": {},
     }
     _write_initial_manifest(manifest_path, manifest)
+    if cost_guard is not None:
+        def persist_cost_guard(snapshot: dict[str, object]) -> None:
+            manifest["cost_guard"] = snapshot
+            _atomic_manifest_update(manifest_path, manifest)
+
+        cost_guard.set_persist_callback(persist_cost_guard)
 
     initial_prompt = _render_initial_prompt(theorem_statement)
     initial_prompt_sha256 = _sha256_text(initial_prompt)
@@ -649,7 +720,12 @@ def run_experiment(
     initial_started = time.monotonic()
     initial_started_at = datetime.now(UTC).isoformat()
     try:
-        initial_completion = _call_model(completion_fn, initial_prompt, model=model)
+        initial_completion = _call_model(
+            completion_fn,
+            initial_prompt,
+            model=model,
+            cost_guard=cost_guard,
+        )
     except (groq.APIError, RuntimeError) as error:
         manifest["initial_candidate"] = {
             "status": "provider_error",
@@ -661,6 +737,7 @@ def run_experiment(
             "requested_model": model,
             "started_at_utc": initial_started_at,
             **_provider_error_record(error),
+            "cost_guard": cost_guard.snapshot() if cost_guard is not None else None,
             "finished_at_utc": datetime.now(UTC).isoformat(),
             "wall_clock_seconds": round(time.monotonic() - initial_started, 3),
         }
@@ -885,6 +962,7 @@ def run_experiment(
                 max_repair=max_repair,
                 execution_mode=execution_mode,
                 completion_fn=completion_fn,
+                cost_guard=cost_guard,
                 verification_fn=verification_fn,
                 manifest=manifest,
                 manifest_path=manifest_path,
@@ -935,6 +1013,7 @@ def _plan(
     theorem_statement: str,
     model: str,
     max_repair: int,
+    output_root: Path | None = None,
 ) -> dict[str, object]:
     if not _safe_id(problem_id):
         raise ValueError("Problem ID must be a safe filename component.")
@@ -944,18 +1023,44 @@ def _plan(
         raise ValueError("Model identifier must be a non-empty string.")
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
+    max_logical_completions = 1 + (2 * max_repair)
+    max_http_attempts_per_completion = TRANSPORT_ATTEMPTS * (SDK_MAX_RETRIES + 1)
     return {
         "experiment_type": "paired_compiler_guided_repair",
         "problem_id": problem_id,
         "theorem_sha256": _sha256_text(theorem_statement),
         "theorem_review_status": "not_verified_by_harness",
+        **_review_record_summary(problem_id),
         "model_identifier_semantics": "provider_alias_not_pinned",
         "provider": MODEL_PROVIDER,
         "model_identifier": model,
         "execution_mode": "plan_only",
+        "output_root": str(Path(output_root).resolve()) if output_root else None,
+        "output_root_is_fresh": (
+            not Path(output_root).exists() if output_root else None
+        ),
         "configuration": {
             **_completion_settings(model),
             "max_repair_calls": max_repair,
+            "groq_sdk_max_retries": SDK_MAX_RETRIES,
+        },
+        "worst_case_call_bounds": {
+            "initial_completion_shared_across_conditions": True,
+            "maximum_logical_completions": max_logical_completions,
+            "wrapper_attempts_per_completion": TRANSPORT_ATTEMPTS,
+            "groq_sdk_retries_per_wrapper_attempt": SDK_MAX_RETRIES,
+            "maximum_http_attempts_per_completion": max_http_attempts_per_completion,
+            "maximum_http_attempts_total": (
+                max_logical_completions * max_http_attempts_per_completion
+            ),
+        },
+        "cost_guard": {
+            "status": "blocked_preflight_only",
+            "budget_usd": PILOT_BUDGET_USD,
+            "pricing_status": "unverified",
+            "estimated_max_cost_usd": None,
+            "pricing_source": None,
+            "reason": API_EXECUTION_BLOCKED_REASON,
         },
         "prompt_templates": _prompt_hashes(),
         "api_calls_will_be_made": False,
@@ -987,7 +1092,13 @@ def main(argv: list[str] | None = None) -> None:
         if args.plan_only:
             print(
                 json.dumps(
-                    _plan(args.problem_id, theorem_statement, args.model, args.max_repair),
+                    _plan(
+                        args.problem_id,
+                        theorem_statement,
+                        args.model,
+                        args.max_repair,
+                        args.output_root,
+                    ),
                     indent=2,
                 )
             )
