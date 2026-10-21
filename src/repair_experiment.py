@@ -104,15 +104,22 @@ def _render_compiler_guided_prompt(
     )
 
 
+def _candidate_diagnostics(verification: VerificationResult) -> list:
+    """Diagnostics about the candidate, excluding the reference-theorem sorry warning."""
+    return [
+        item
+        for item in (verification.diagnostics or [])
+        if item.get("kind") != "hasSorry"
+    ]
+
+
 def _compiler_diagnostic_payload(verification: VerificationResult) -> str:
     if verification.diagnostic_state != "available" or not verification.diagnostics:
         raise ValueError("Only available structured Lean diagnostics can be supplied.")
     # The fixed reference theorem is compiled with `sorry`, and candidates that
     # contain `sorry` are rejected before compilation. Any hasSorry warning
     # therefore describes the reference, not the candidate, and is not feedback.
-    diagnostics = [
-        item for item in verification.diagnostics if item.get("kind") != "hasSorry"
-    ]
+    diagnostics = _candidate_diagnostics(verification)
     if not diagnostics:
         raise ValueError("No candidate-related Lean diagnostics are available.")
     return json.dumps(
@@ -346,7 +353,7 @@ def _run_condition(
         return condition_result
 
     diagnostic_state = initial_verification.diagnostic_state
-    diagnostics = initial_verification.diagnostics
+    diagnostics = _candidate_diagnostics(initial_verification)
     if condition == "C" and (
         diagnostic_state != "available" or not diagnostics
     ):
@@ -530,7 +537,7 @@ def _run_condition(
 
         if condition == "C" and (
             verification.diagnostic_state != "available"
-            or not verification.diagnostics
+            or not _candidate_diagnostics(verification)
         ):
             condition_result["diagnostic_state"] = verification.diagnostic_state
             condition_result["status"] = (

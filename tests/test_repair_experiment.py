@@ -681,3 +681,16 @@ def test_compiler_payload_drops_reference_sorry_warning() -> None:
     payload = json.loads(experiment._compiler_diagnostic_payload(verification))
 
     assert [item["data"] for item in payload["diagnostics"]] == ["unsolved goals"]
+
+
+def test_candidate_diagnostics_handles_only_reference_sorry_and_none() -> None:
+    from types import SimpleNamespace
+
+    only_sorry = SimpleNamespace(
+        diagnostic_state="available",
+        diagnostics=[{"kind": "hasSorry", "severity": "warning", "data": "x"}],
+    )
+    missing = SimpleNamespace(diagnostic_state="absent", diagnostics=None)
+
+    assert experiment._candidate_diagnostics(only_sorry) == []
+    assert experiment._candidate_diagnostics(missing) == []
