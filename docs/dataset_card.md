@@ -3,7 +3,7 @@
 ## Status and intended use
 
 Dataset construction is in progress. This repository does not currently
-contain a released or frozen research dataset. The inventory contains 35
+contain a released or frozen research dataset. The inventory contains 37
 candidate records and zero eligible records. Do not use the candidate pool as
 a held-out benchmark or report metrics on its proposed test labels.
 
@@ -15,22 +15,23 @@ faithfulness.
 
 ## Current candidate inventory
 
-- 21 baseline draft candidates and 14 candidates in acquisition batches.
-- Proposed split counts: 27 development and 8 test; these are not frozen
+- 21 baseline draft candidates and 16 candidates in acquisition batches.
+- Proposed split counts: 29 development and 8 test; these are not frozen
   split counts.
-- Category counts: divisibility 11, arithmetic identity 6, induction 9,
-  inequality 4, modular arithmetic 5.
-- Difficulty counts: level 1: 10; level 2: 13; level 3: 9; level 4: 3.
-- Ten candidates have recorded strict theorem-proof verification; four more
+- Category counts: divisibility 12, arithmetic identity 6, induction 9,
+  inequality 4, modular arithmetic 6.
+- Difficulty counts: level 1: 10; level 2: 15; level 3: 9; level 4: 3.
+- Twelve candidates have recorded strict theorem-proof verification; four more
   have statement-type checks only, using `sorry` placeholders. There are zero
   completed independent human-review records and zero eligible records.
-- Fourteen candidates carry item-level citations to Oscar Levin's
+- Sixteen candidates carry item-level citations to Oscar Levin's
   *Discrete Mathematics: An Open Introduction*; the remaining 21 baseline
   records have no item-level citation in their current records.
 
 The source identifies a CC BY-SA 4.0 license. Independent rights and
-redistribution review remains incomplete, and the exact source text/page bytes
-and source-page hashes have not been archived for the latest batch. This card
+redistribution review remains incomplete. Exact publisher source-page and PDF
+bytes with hashes were archived on 27 October 2026; this does not retroactively
+authenticate historical acquisitions. Two new reference proofs passed after initial timeouts; both attempts are preserved. This card
 does not clear any record for reuse or publication. See
 [`data/source_acquisition_ledger_v0.1.2.json`](../data/source_acquisition_ledger_v0.1.2.json)
 and `data/curation_batches/` for provenance status.
@@ -70,3 +71,5 @@ There are no eligible records, no frozen split, and no completed semantic
 reviews. The proposed test set is far below the target. Consequently, there
 are no dataset-level A/B/C results, and no statement about performance or
 faithfulness can be made.
+
+Current completion evidence (27 October 2026): [final readiness audit](../data/analysis/verified_readiness_20261027/readiness.json) and [completion report](FINAL_COMPLETION_REPORT.md). The pool has 37 candidates (29 proposed development, 8 proposed test), zero eligible records, and 95 review warnings. Exact source bytes are now archived separately under `data/source_archives/20261027_curl/`; source compatibility and independent semantic reviews remain pending.

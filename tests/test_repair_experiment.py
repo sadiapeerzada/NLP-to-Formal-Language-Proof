@@ -783,7 +783,7 @@ def test_verifier_structured_diagnostics_reach_only_c_and_are_logged_exactly(
         candidate: str, project: Path, scratch_name: str, **kwargs
     ) -> VerificationResult:
         with patch(
-            "verify.subprocess.run",
+            "verify._run_compiler",
             return_value=subprocess.CompletedProcess(
                 [], 1, stdout=diagnostic_line, stderr=""
             ),

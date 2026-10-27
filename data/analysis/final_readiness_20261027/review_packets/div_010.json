@@ -1,0 +1,176 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "div_010",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "div_010",
+    "nl_statement": "For integers a, b, and c, if a divides b, then a divides the product bc.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "difficulty_rationale": "A direct application of the witness definition of divisibility. Provisional pending rubric review.",
+    "expected_lean_statement": "theorem dvd_mul_right_int (a b c : ℤ) (hab : a ∣ b) : a ∣ b * c",
+    "source_item_id": "DMOI3-sec5.2-exercise-1",
+    "source_location": "Section 5.2, Introduction to Number Theory, exercise 1; HTML lines 1118–1130 in the retrieved page.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 5.2, exercise 1 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3.html (license section); https://creativecommons.org/licenses/by-sa/4.0/; item locator: https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "c9a2c2c1baeb4f8ab08a1903335f15059dd518e19459fef453cf3db3f03dd16c",
+        "rights_note": "Publisher page states CC BY-SA 4.0 and permits adaptation with attribution. No independent source/license review or legal compatibility determination is recorded; do not treat this as rights clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text; edition identified on publisher page; individual print-page/printing not asserted.",
+        "source_item_id": "DMOI3-sec5.2-exercise-1",
+        "source_location": "Section 5.2, Introduction to Number Theory, exercise 1; HTML lines 1118–1130 in the retrieved page.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Suppose a, b, and c are integers. Prove that if a divides b, then a divides bc.",
+        "source_statement_sha256": "f703c885f1f4c29b04c6f4e855f8db24551d1605fa0788d9af0db8b7fa48bcd9",
+        "source_statement_hash_scope": "SHA-256 of the exact UTF-8 transcription stored in source_statement_transcription; not a hash of the source webpage or PDF bytes.",
+        "rights_scope_note": "The publisher page identifies CC BY-SA 4.0. Item-level upstream rights and compatibility with intended redistribution require human review.",
+        "provenance_status": "item located on publisher-hosted edition page; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, DMOI3-sec5.2-exercise-1; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Reworded the exercise as a declarative theorem; retained the integer domain and divisibility relation.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_divisibility_closure",
+      "family_review_status": "needs_review",
+      "family_review_note": "Grouped with div_011 as closure properties of integer divisibility; both provisionally assigned to test to keep this family together.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean --json ../lean_project/generated/_scratch/candidate_v015_div_010_strict.lean (repository strict verifier; type-compared against the exact statement with a proof placeholder)",
+        "theorem_sha256": "c9a2c2c1baeb4f8ab08a1903335f15059dd518e19459fef453cf3db3f03dd16c",
+        "evidence": "success=True; exit_code=0; axiom_dependencies=[\"propext\"]; candidate_sha256=696a265cb8f1df894822144b73faebb8a964b85dd719989cc5685e05965c7849; verification_source_sha256=94bbf1df62f262a38146cc4ca975a808cc9750179b57a5b07a2b67c79dd85294; errors=[]. Full result in this batch verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared by repository curation from DMOI3-sec5.2-exercise-1; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional family-aware split proposal; requires independent review before inclusion."
+    }
+  },
+  "candidate_record_sha256": "0e3d44e3a5bd2f73c97234671670139c427e46f8c9b195311d27762db29f892d",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}

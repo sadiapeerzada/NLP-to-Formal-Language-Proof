@@ -1,0 +1,67 @@
+review queue: Likely statement similarity between 'arith_003' and 'arith_003_mathlib'; human theorem/family duplicate review required.
+review queue: Likely statement similarity between 'div_001' and 'div_005'; human theorem/family duplicate review required.
+review queue: Likely statement similarity between 'mod_002' and 'mod_003'; human theorem/family duplicate review required.
+review queue: problem 'arith_001': curation.review_records must be an array.
+review queue: problem 'arith_001': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'arith_001': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'arith_002': curation.review_records must be an array.
+review queue: problem 'arith_002': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'arith_002': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'arith_003': curation.review_records must be an array.
+review queue: problem 'arith_003': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'arith_003': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'arith_003_mathlib': curation.review_records must be an array.
+review queue: problem 'arith_003_mathlib': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'arith_003_mathlib': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'arith_004': curation.review_records must be an array.
+review queue: problem 'arith_004': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'arith_004': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_001': curation.review_records must be an array.
+review queue: problem 'div_001': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_001': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_002': curation.review_records must be an array.
+review queue: problem 'div_002': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_002': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_003': curation.review_records must be an array.
+review queue: problem 'div_003': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_003': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_004': curation.review_records must be an array.
+review queue: problem 'div_004': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_004': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_005': curation.review_records must be an array.
+review queue: problem 'div_005': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_005': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'div_006': curation.review_records must be an array.
+review queue: problem 'div_006': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'div_006': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ind_001': curation.review_records must be an array.
+review queue: problem 'ind_001': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ind_001': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ind_002': curation.review_records must be an array.
+review queue: problem 'ind_002': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ind_002': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ind_003': curation.review_records must be an array.
+review queue: problem 'ind_003': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ind_003': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ind_004': curation.review_records must be an array.
+review queue: problem 'ind_004': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ind_004': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ineq_001': curation.review_records must be an array.
+review queue: problem 'ineq_001': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ineq_001': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ineq_002': curation.review_records must be an array.
+review queue: problem 'ineq_002': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ineq_002': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'ineq_003': curation.review_records must be an array.
+review queue: problem 'ineq_003': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'ineq_003': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'mod_001': curation.review_records must be an array.
+review queue: problem 'mod_001': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'mod_001': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'mod_002': curation.review_records must be an array.
+review queue: problem 'mod_002': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'mod_002': successful pinned-environment theorem verification is missing; record is ineligible.
+review queue: problem 'mod_003': curation.review_records must be an array.
+review queue: problem 'mod_003': source/license evidence is incomplete; record is ineligible.
+review queue: problem 'mod_003': successful pinned-environment theorem verification is missing; record is ineligible.
+Records: 21; duplicate candidate groups: 1; candidate development/test: {'test': 6, 'development': 15}; eligible development/test: {'test': 0, 'development': 0}; validation errors: 0

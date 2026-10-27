@@ -16,7 +16,7 @@ Does compiler diagnostic feedback improve repair compared with equally
 budgeted retries, and for which errors? We describe a planned paired study of
 one-shot generation (A), blind retry (B), and compiler-guided repair (C),
 where B and C share one initial candidate and receive at most three repairs.
-This repository currently contains 35 dataset candidates, none eligible under
+This repository currently contains 37 dataset candidates, none eligible under
 the curation validator, and no qualifying paired API run artifacts. The
 proposed protocol is not independently approved or preregistered, and API
 execution remains disabled. Comparative results, uncertainty intervals,
@@ -44,7 +44,7 @@ diagnostics from the candidate being repaired. The primary comparison is C
 versus B; C versus A and B versus A are secondary.
 
 The repository is not yet at the evidence stage for answering this question.
-The current inventory has 35 candidates and zero eligible records; the test
+The current inventory has 37 candidates and zero eligible records; the test
 split is not frozen; the protocol remains proposed; and no paired API run
 manifest exists. We make no performance claim. Contributions at this stage
 are an experiment runner and analysis specification, a transparent candidate
@@ -103,16 +103,15 @@ family, split, and semantic fidelity. Compilation is not evidence of semantic
 equivalence.
 
 \section{Dataset Construction and Review}
-The draft has 21 baseline candidates. Eight acquisition batches add 14, for 35
-total: 27 proposed development and 8 proposed test records. The inventory
-contains five categories and four difficulty levels. Fourteen candidates cite
+The draft has 21 baseline candidates. Nine acquisition batches add 16, for 37
+total: 29 proposed development and 8 proposed test records. The inventory
+contains five categories and four difficulty levels. Sixteen candidates cite
 Oscar Levin's \emph{Discrete Mathematics: An Open Introduction}; 21 baseline
 records have no item-level citation in their current records. Levin identifies
-a CC BY-SA 4.0 license, but repository rights review and exact source-byte
-archiving remain incomplete~\cite{levin2021dmoi}. Public availability is not
+a CC BY-SA 4.0 license, but repository rights review remains incomplete; source pages and the textbook PDF were archived on 27 October 2026~\cite{levin2021dmoi}. Public availability is not
 itself a redistribution rights determination.
 
-The curation inventory records 10 strictly theorem-proof-verified candidates
+The curation inventory records 12 strictly theorem-proof-verified candidates
 and four additional statement-only Lean checks using `sorry` placeholders; no
 proof is claimed for those four. It records zero completed independent
 reviews and zero eligible records. Candidate records
@@ -141,6 +140,8 @@ each. B receives no compiler feedback; C receives diagnostics from the
 corresponding failed verification. The configured environment is Lean
 \texttt{leanprover/lean4:v4.32.0} with Mathlib pinned by
 \texttt{lean\_project/lake-manifest.json}.
+
+The B and C template files intentionally have identical bytes: B inserts a fixed no-diagnostics message into the feedback field, while C inserts the immediately preceding structured compiler diagnostics. Rendered prompts and their hashes distinguish conditions.
 
 The protocol has not passed independent review or preregistration. Pricing and
 model access evidence are incomplete, so API mode is not authorized. A valid
@@ -210,7 +211,7 @@ not counted as independent problems. These are analysis rules, not findings.
 No statistical power claim is made.
 
 \subsection{Semantic fidelity and end-to-end success}
-All 35 candidate records lack an adjudicated semantic-fidelity label. There
+All 37 candidate records lack an adjudicated semantic-fidelity label. There
 is no frozen test split or independent review result. Table~\ref{tab:fidelity}
 reports only the review state of the candidate pool; it is not a test-set
 faithfulness estimate. Fixed-theorem repair and end-to-end formalization are
@@ -244,6 +245,20 @@ formal proposition and trusted environment, not faithfulness to English.
 Independent review may be limited by reviewer expertise and disagreement;
 reviewer provenance and adjudication must be recorded. No submission gate is
 claimed to have passed.
+
+\section{Reproducibility}
+The offline preparation command is
+\texttt{scripts/research\_readiness.py --output-dir <fresh-directory>},
+run with the repository Python environment. It records exact input hashes,
+combined candidate validation, failed freeze requirements and pending review
+packets. Existing study artifacts are preserved. The current environment
+records Python 3.13, Groq SDK 1.5.0 and Lean 4.32.0; the package snapshot and
+verification logs are stored separately from model experiment traces.
+Timeouts terminate the compiler process group, and partial compiler output
+is retained. No local test or manual reference proof counts as an API outcome.
+The final completion report lists the actual checks and external dependencies.
+The manuscript remains incomplete pending genuine paired results, five
+authentic model repair examples, author metadata and a successful LaTeX build.
 
 \section{Conclusion}
 The repository defines a paired design for compiler-guided Lean proof repair,

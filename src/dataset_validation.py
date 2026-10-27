@@ -51,6 +51,8 @@ RESEARCH_CATEGORIES = frozenset(
 MINIMUM_TEST_RECORDS = 60
 MINIMUM_DEVELOPMENT_RECORDS = 15
 MAXIMUM_DEVELOPMENT_RECORDS = 20
+REQUIRED_LEAN_TOOLCHAIN = "leanprover/lean4:v4.32.0"
+REQUIRED_MATHLIB_REVISION = "81a5d257c8e410db227a6665ed08f64fea08e997"
 REQUIRED_INDEPENDENT_REVIEW_TYPES = frozenset(
     {
         "semantic_fidelity",
@@ -209,8 +211,15 @@ def _theorem_verification_is_valid(record: dict[str, Any]) -> bool:
         isinstance(verification, dict)
         and verification.get("status") == "verified"
         and verification.get("success") is True
-        and _valid_text(verification.get("lean_toolchain"))
-        and _valid_text(verification.get("mathlib_revision"))
+        # Statement elaboration with a placeholder is not proof evidence.
+        # Older strict-proof records omit scope; retain that legacy schema,
+        # but never accept a scope explicitly limited to type elaboration.
+        and (
+            verification.get("verification_scope") is None
+            or verification.get("verification_scope") == "strict_proof"
+        )
+        and verification.get("lean_toolchain") == REQUIRED_LEAN_TOOLCHAIN
+        and verification.get("mathlib_revision") == REQUIRED_MATHLIB_REVISION
         and _valid_text(verification.get("command"))
         and re.fullmatch(
             r"[0-9a-fA-F]{64}",

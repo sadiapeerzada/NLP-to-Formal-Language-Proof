@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import signal
 import subprocess
 import time
 from dataclasses import dataclass, field
@@ -54,6 +56,8 @@ class VerificationResult:
     diagnostics: list[dict[str, object]] | None = None
     malformed_diagnostics: list[str] = field(default_factory=list)
     diagnostic_state: str = "unavailable"
+    compiler_stdout: str | None = None
+    compiler_stderr: str | None = None
 
     def to_record(self) -> dict[str, object]:
         return {
@@ -71,6 +75,8 @@ class VerificationResult:
             "diagnostics": self.diagnostics,
             "malformed_diagnostics": self.malformed_diagnostics,
             "diagnostic_state": self.diagnostic_state,
+            "compiler_stdout": self.compiler_stdout,
+            "compiler_stderr": self.compiler_stderr,
         }
 
 
@@ -84,7 +90,7 @@ def _find_prohibited_source(
             return token
 
     for declaration in policy.prohibited_declarations:
-        if re.search(rf"(?m)^\s*{re.escape(declaration)}\b", lean_code):
+        if re.search(rf"\b{re.escape(declaration)}\b", lean_code):
             return declaration
     return None
 
@@ -167,19 +173,24 @@ def _axioms_from_diagnostics(
     diagnostics: list[dict[str, object]], theorem_name: str
 ) -> list[str] | None:
     expected_prefix = f"'{theorem_name}' "
+    dependencies: dict[str, None] = {}
+    found = False
     for diagnostic in diagnostics:
         data = diagnostic.get("data")
         if not isinstance(data, str) or not data.startswith(expected_prefix):
             continue
         if "axioms:" not in data:
             if "does not depend on any axioms" in data:
-                return []
+                found = True
             continue
         match = re.search(r"axioms:\s*\[([^\]]*)\]", data)
         if match is None:
             return None
-        return [item.strip() for item in match.group(1).split(",") if item.strip()]
-    return None
+        found = True
+        dependencies.update({item.strip(): None for item in match.group(1).split(",") if item.strip()})
+    # A candidate can emit an earlier information message. Never let an
+    # earlier empty/allowed list mask later unapproved dependencies.
+    return list(dependencies) if found else None
 
 
 def _safe_filename_component(value: str) -> bool:
@@ -199,6 +210,29 @@ def _stderr_error(stderr: str) -> str | None:
     if ambiguous:
         return "Lean exited successfully but wrote ambiguous stderr: " + "\n".join(ambiguous)
     return None
+
+
+def _run_compiler(command: list[str], *, cwd: str, capture_output: bool,
+                  text: bool, timeout: int) -> subprocess.CompletedProcess:
+    """Terminate Lake and its Lean child together when the deadline expires."""
+    with subprocess.Popen(
+        command, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        text=text, start_new_session=True,
+    ) as process:
+        try:
+            stdout, stderr = process.communicate(timeout=timeout)
+        except BaseException as error:
+            # Killing only Lake leaves its Lean subprocess computing after the
+            # verifier has reported a timeout. A new session owns this group.
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            stdout, stderr = process.communicate()
+            if isinstance(error, subprocess.TimeoutExpired):
+                error.output, error.stderr = stdout, stderr
+            raise
+        return subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
 
 
 def check_lean_file_detailed(
@@ -299,19 +333,24 @@ def check_lean_file_detailed(
 
     started = time.monotonic()
     try:
-        process = subprocess.run(
+        process = _run_compiler(
             ["lake", "env", "lean", "--json", str(file_path)],
             cwd=str(lean_project_dir),
             capture_output=True,
             text=True,
             timeout=policy.timeout_seconds,
         )
-    except subprocess.TimeoutExpired:
+    except subprocess.TimeoutExpired as error:
+        def partial_text(value: str | bytes | None) -> str | None:
+            return value.decode("utf-8", errors="replace") if isinstance(value, bytes) else value
+
         return VerificationResult(
             False,
             [f"Compilation timed out after {policy.timeout_seconds}s."],
             elapsed_seconds=time.monotonic() - started,
             failure_kind="timeout",
+            compiler_stdout=partial_text(error.stdout),
+            compiler_stderr=partial_text(error.stderr),
             **source_provenance,
         )
     except OSError as error:
@@ -329,6 +368,8 @@ def check_lean_file_detailed(
         "malformed" if malformed else "available" if diagnostics else "absent"
     )
     diagnostic_provenance = {
+        "compiler_stdout": process.stdout,
+        "compiler_stderr": process.stderr,
         "diagnostics": diagnostics,
         "malformed_diagnostics": malformed,
         "diagnostic_state": diagnostic_state,

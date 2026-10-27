@@ -1,0 +1,42 @@
+{
+  "retrieved_on": "2026-10-27",
+  "review_status": "pending_independent_review",
+  "note": "Source bytes and public provider documentation only; no account access, legal clearance, or generation approval implied. Existing historical records are unchanged.",
+  "entries": [
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://console.groq.com/docs/model/openai/gpt-oss-120b",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://console.groq.com/docs/rate-limits",
+      "status": "failed",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://console.groq.com/docs/reasoning",
+      "status": "failed",
+      "error_type": "URLError"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "analysis_status": "blocked_no_frozen_dataset_or_paired_api_runs",
+  "frozen_dataset_manifest_status": "draft",
+  "draft_candidate_count": 21,
+  "acquisition_batch_candidate_count": 14,
+  "all_current_candidate_count": 35,
+  "draft_eligible_count": 0,
+  "draft_eligible_split_counts": {
+    "development": 0,
+    "test": 0
+  },
+  "paired_experiment_manifests_found": 0,
+  "legacy_pipeline_run_manifests": [
+    {
+      "path": "data/results/pilots/nl2lean-pilot-seed3-v1-v2.run.json",
+      "sha256": "e8beb641de5d10925d0d126d9935a3223e2ed7252b75022f7f7812278517261f",
+      "schema_version": 2,
+      "status": "completed",
+      "execution_mode": "not_recorded",
+      "has_paired_conditions": false
+    },
+    {
+      "path": "data/results/pilots/nl2lean-pilot-seed3-v1-v3.run.json",
+      "sha256": "45e1b85765579dfabb51f54837402096a2413ae865925a0dfeaa154cf8b6a00d",
+      "schema_version": 2,
+      "status": "completed",
+      "execution_mode": "not_recorded",
+      "has_paired_conditions": false
+    },
+    {
+      "path": "data/results/pilots/nl2lean-pilot-seed3-v1.run.json",
+      "sha256": "c03b1cc57eb4b3066369949615f1049030ce50dc5b4eeec091cded5df2e399ed",
+      "schema_version": 2,
+      "status": "failed",
+      "execution_mode": "not_recorded",
+      "has_paired_conditions": false
+    }
+  ],
+  "legacy_jsonl_artifacts": [
+    {
+      "path": "data/results/attempts/arith_001.jsonl",
+      "sha256": "397097a0893c963792add3a539942a5f3b6899bf14c6116cd6075a2520fa1a25",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/arith_002.jsonl",
+      "sha256": "088c9b00ae0bdd7f32b1171199038aa0326c108b3b36ffa936ddfcf6c76ded6e",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/arith_003.jsonl",
+      "sha256": "cf545d68281ebe1e13689a29f3df259e4c46130bb27e5117f999ca8972232cf0",
+      "nonempty_record_lines": 4,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/arith_004.jsonl",
+      "sha256": "ae3b1a0771169f4f29c99d4ae0e0acbe83b6b492b786cda66b7a084a72c27f29",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_001.jsonl",
+      "sha256": "ded5137a83024d4ea108aab1bdb63b9c9b3a17b69b536429224ce317bce99baf",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_002.jsonl",
+      "sha256": "ba8290d09481e6d61a56ec9a5ee770a8cafa9bb22828fa47846abfd47b6723c9",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_003.jsonl",
+      "sha256": "49185dfda49ba78a950d3455f6fb61ca78033977e47f0a0c33d21d6fad91793a",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_004.jsonl",
+      "sha256": "823d7137e245e1d2e86f1b1d1234579822a4126a53174510e427ebeb41686d86",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_005.jsonl",
+      "sha256": "7611d059c3b1e912174383165c96ed1f8301874fb85673d279fd30bd8fbb49c9",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/div_006.jsonl",
+      "sha256": "ac9cb74d5ec8c6f025c5310b1418c5e75519bcf0d53d9c29c513a6a429113dd8",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/ind_003.jsonl",
+      "sha256": "60c37c3af2f5cd2ea43c2ac73fc7802a3765b1b3ab2694a5d6e0e84bb918adba",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/ineq_001.jsonl",
+      "sha256": "869394dcfdb67b4998a99f65629baac2ae8a290ce83c08a9b56265dd9a1ed6dc",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/ineq_002.jsonl",
+      "sha256": "82b9be526e0009743c65ae43510197821d36908d2afd318ae7942905511dd9a7",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/ineq_003.jsonl",
+      "sha256": "aa3671272485b540c17e51df694cd7d4a698e89f2a9e8d2d5b87b313cccfa3f0",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/mod_002.jsonl",
+      "sha256": "fa67021ce1062467eea051f273632dd2e1687c5c46c74155d77896e94904400f",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/attempts/mod_003.jsonl",
+      "sha256": "1c66930394103706b2ec54e35ef32a3e0d24bf0532e73b15e5f74b82934b5a90",
+      "nonempty_record_lines": 6,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261019T133844Z-2640a501/arith_002.jsonl",
+      "sha256": "fa71d08fbf0effd4c848175290736044420e28e267fcaf70d349b8a1036b555d",
+      "nonempty_record_lines": 5,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261019T133844Z-2640a501/div_003.jsonl",
+      "sha256": "fc0ba60673342179f14b01074bf1a83104679c24a580fb192a7f12d33b0a5b85",
+      "nonempty_record_lines": 3,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261019T133844Z-2640a501/ind_003.jsonl",
+      "sha256": "d441a9644c53f6efb6456432d2a48463268397d233d5b7ae3b64bf46c17f2080",
+      "nonempty_record_lines": 4,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261020T054134Z-bb9e90a4/arith_002.jsonl",
+      "sha256": "001a0140007ee6bf36b38b92c607a30246e287bcdafa3a751635b4a46d2772fa",
+      "nonempty_record_lines": 5,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261020T054134Z-bb9e90a4/div_003.jsonl",
+      "sha256": "9014cabebadf6a01e7e14d82e1c5d3fd691d6a490af8c70bad9ce7a75300f7e6",
+      "nonempty_record_lines": 2,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/attempts/20261020T054134Z-bb9e90a4/ind_003.jsonl",
+      "sha256": "769ab0c59b05078bad5592b3862d14f0ee314ce4236213a6b51ed015b67bda33",
+      "nonempty_record_lines": 4,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/nl2lean-pilot-seed3-v1-v2.jsonl",
+      "sha256": "572226baf5dc1e5544058d5a636ab0cbb76ac6dbd8b38edef61c4429d2d19a87",
+      "nonempty_record_lines": 3,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/pilots/nl2lean-pilot-seed3-v1-v3.jsonl",
+      "sha256": "d220f7d4380a7d822a5130ed06edeafc564f7937c2752d3547d02bbf803b5939",
+      "nonempty_record_lines": 3,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/run1_core_lean.jsonl",
+      "sha256": "59fa6d476f07781672fceb4af643b42bd0803b1c526c2018c6c65e903c671b77",
+      "nonempty_record_lines": 20,
+      "malformed_lines": 0
+    },
+    {
+      "path": "data/results/run2_mathlib.jsonl",
+      "sha256": "0473383af6480a08d03c0a28705105d0651035b3e241d2af065241dbe4ba81b0",
+      "nonempty_record_lines": 2,
+      "malformed_lines": 0
+    }
+  ],
+  "legacy_jsonl_record_line_count": 145,
+  "legacy_runs_used_as_paired_results": 0,
+  "malformed_paired_manifests": [],
+  "metrics_computed": false,
+  "study_tables_or_figure_generated": false,
+  "blockers": [
+    "The research dataset manifest is draft and declares zero eligible records.",
+    "No saved manifests matching the paired A/B/C experiment schema were found under data/experiments.",
+    "Existing pilot manifests are legacy pipeline runs without execution_mode and paired conditions; they are excluded, not treated as API model pass@1."
+  ]
+}

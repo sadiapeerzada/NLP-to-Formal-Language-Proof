@@ -1,0 +1,22 @@
+{
+  "status": "candidate_batch_not_frozen",
+  "candidate_count": 2,
+  "candidate_ids": [
+    "mod_006",
+    "div_012"
+  ],
+  "candidate_file": "data/curation_batches/v0.1.8/candidate_records.json",
+  "candidate_file_sha256": "d0fc6b34163789ebf0e44629b3c68a67efb906db91ae93ebe3edd63654c3e6f2",
+  "proof_verified_count": 2,
+  "eligible_count": 0,
+  "review_complete_count": 0,
+  "source_archive_manifest": "data/source_archives/20261027_curl/manifest.json",
+  "verification_evidence": "data/curation_batches/v0.1.8/verification.json",
+  "notes": [
+    "Both initial strict verification attempts timed out; no proof success claimed.",
+    "Distinct greatest-modulus optimization and Diophantine parameterization families; provisional development assignments only.",
+    "Both reference proofs passed strict checks after narrowing imports; initial timeouts retained. Independent reviews and eligibility remain pending."
+  ],
+  "successful_verification_evidence": "data/curation_batches/v0.1.8/verification_minimal.json",
+  "successful_verification_evidence_sha256": "7dee6a8ef765396081f29a554ba8afe7048446bbcfeffbecef81afa410b7b1d0"
+}

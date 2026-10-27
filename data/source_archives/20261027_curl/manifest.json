@@ -1,0 +1,56 @@
+{
+  "retrieved_on": "2026-10-27",
+  "review_status": "pending_independent_review",
+  "note": "Public source bytes only; no legal clearance, account access, or API generation approval implied. New capture does not establish historical source bytes.",
+  "entries": [
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html",
+      "path": "data/source_archives/20261027_curl/dmoi3-colophon.html",
+      "sha256": "3bf48c2629a5ac34339c234c65de0d5af10dc8f47c2e9bb8eb60a3e4013695e8",
+      "bytes": 42981,
+      "status": "archived"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "path": "data/source_archives/20261027_curl/dmoi3-number-theory.html",
+      "sha256": "55ee675093b26253d2db46280ac1cee2b95820e48e37c06323e5a9b2fef8d96b",
+      "bytes": 202822,
+      "status": "archived"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "path": "data/source_archives/20261027_curl/dmoi3-induction.html",
+      "sha256": "9609bb11c4f90f91530dfb936abdc7f00ad9f7131d58d3bd415fab55d7706297",
+      "bytes": 215686,
+      "status": "archived"
+    },
+    {
+      "url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "path": "data/source_archives/20261027_curl/dmoi3-tablet.pdf",
+      "sha256": "9baf67f2ec90cf5020430bc502aa5aacad1cf482df47b1bb7495c02d3c9bf99e",
+      "bytes": 2011484,
+      "status": "archived"
+    },
+    {
+      "url": "https://console.groq.com/docs/model/openai/gpt-oss-120b",
+      "path": "data/source_archives/20261027_curl/groq-model.html",
+      "sha256": "222cf7076f85079fc53209a7d2b3a2455983baebb62cd14b6bece0173e5267a6",
+      "bytes": 351941,
+      "status": "archived"
+    },
+    {
+      "url": "https://console.groq.com/docs/rate-limits",
+      "path": "data/source_archives/20261027_curl/groq-rate-limits.html",
+      "sha256": "1a2a14a1fcd8390ef729dd8ba252fb72214accbefbc8b4eb5d195b8fb55f19fb",
+      "bytes": 321036,
+      "status": "archived"
+    },
+    {
+      "url": "https://console.groq.com/docs/reasoning",
+      "path": "data/source_archives/20261027_curl/groq-reasoning.html",
+      "sha256": "c1eb3331e295d827dbcca6a886cabacd1dcafe884684f4732053c1aa69bd7063",
+      "bytes": 480647,
+      "status": "archived"
+    }
+  ]
+}

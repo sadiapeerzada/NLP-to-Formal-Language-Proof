@@ -1,0 +1,177 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "ind_007",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "ind_007",
+    "nl_statement": "Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.",
+    "category": "induction",
+    "difficulty": 3,
+    "difficulty_rationale": "Provisional source-driven rating; independent category and difficulty review pending.",
+    "expected_lean_statement": "theorem sum_squares_closed_form (n : ℕ) : (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6",
+    "source_item_id": "DMOI3-section-2.5-exercise-10",
+    "source_location": "Section 2.5, Exercises, item 10; publisher page lines 911–914.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 10 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locators)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "9b1a45c9477e00f074b0ccfabfdc9f4d6cbb19d2bee827eaf82980c81c19dcd7",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-10",
+        "source_location": "Section 2.5, exercise 10; publisher page lines 911–914.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.",
+        "source_statement_sha256": "e216cad282108670d95bd2c760fe0dc62939c715c1fd88e19aeed72e775c87e7",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Publisher-hosted item and CC BY-SA notice observed; source page bytes were not archived and redistribution review is pending.",
+        "provenance_status": "item and rendered statement inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 10 (DMOI3-section-2.5-exercise-10); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Represented the sum from 1 through n by a Finset sum over 0 through n; the added zero term is 0. The right side uses natural-number division by 6.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "sum_of_first_squares",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family label; independent family assignment and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean --json ../data/curation_batches/v0.1.7/statement_check.lean",
+        "theorem_sha256": "9b1a45c9477e00f074b0ccfabfdc9f4d6cbb19d2bee827eaf82980c81c19dcd7",
+        "verification_file_sha256": "f9b060a42495cdeefd4415477aa4ae35f9713f50df3e4e3ec2914478fe1fd8a7",
+        "evidence": "Lean exited 0. Source diagnostics contain hasSorry warning for ind_007's explicit proof placeholder; proposition elaborated. Proof correctness and theorem axioms were not checked. Full output in verification.log."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional development proposal; no test use until family and split are reviewed."
+    }
+  },
+  "candidate_record_sha256": "01f6d4697db4a56d309a84bc79d5e942ee7828d1f254c58bc8bd4c277ec58740",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}
