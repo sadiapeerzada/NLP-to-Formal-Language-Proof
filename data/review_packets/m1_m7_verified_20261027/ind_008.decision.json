@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "ind_008",
+  "binding_sha256": "d283226a4dc09c044fba57944a4c433527e0ca02a9553ae027a558bb299a5cc2",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

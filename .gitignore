@@ -8,3 +8,5 @@ src/__pycache__/
 # Public provider documentation snapshots have no redistribution clearance.
 # Exact hashes and public retrieval URLs are retained in the archive manifest.
 data/source_archives/20261027_curl/groq-*.html
+# Reproducible paper build intermediates; a clearly named draft PDF is saved separately.
+paper/build/

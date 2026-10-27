@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "lib_d_euclid",
+  "binding_sha256": "a930fc0debb9bf41a8356f3d3550166c816dd47cb6de99c10d7b0b98322ea91a",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

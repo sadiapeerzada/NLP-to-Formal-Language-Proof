@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "lib_a_trig_unit",
+  "binding_sha256": "3d30519a0207e81e77c144fd665584619cd1ba0444d71a1cefa8e502549b1911",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

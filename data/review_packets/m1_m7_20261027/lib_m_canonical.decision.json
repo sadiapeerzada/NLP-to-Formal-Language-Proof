@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "lib_m_canonical",
+  "binding_sha256": "c4cdf545ae6c6171168dd3fdffc6b1f67f92160e278aac607b7936c0e664c749",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

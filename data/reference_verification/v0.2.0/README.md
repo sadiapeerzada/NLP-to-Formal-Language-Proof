@@ -1,0 +1,7 @@
+# Remaining five reference proofs
+
+All five remaining original reference statements now have strict target-proof evidence: modular power divisibility, square-sum closed form, binary representation by distinct powers of two, the hockey-stick identity, and geometric sum. `verification_final_checked.json` records actual compiler exit 0, exact source bytes, target axiom lists and Lean type comparisons against the recorded propositions. Candidate proofs contain no placeholders; expected-statement placeholders check types only and do not supply proof evidence. Failed authoring/context checks remain preserved separately.
+
+The geometric-sum record previously used an undefined `geomSum`. Its original file is unchanged. The explicit pending-review definition now lives in `lean_project/Nl2Lean/CandidateDefinitions.lean`; the overlay prepares a new expected-source context importing that module and showing its definition in a comment for reviewers/model prompts. No mathematical claim is silently altered or declared faithful. The definition's exact hash is bound in the overlay, semantic review binding and proposed local protocol. Kernel type comparison uses the same imported function on both sides; independently declared recursive functions were correctly rejected by the earlier check.
+
+`proof_overlay.json` is append-only preparation evidence, not an independent semantic/source/split review or dataset freeze. The new module and project root built under the unchanged Lean/Mathlib pins. Complete human review is still required.

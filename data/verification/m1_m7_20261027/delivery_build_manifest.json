@@ -1,0 +1,14 @@
+{
+  "status": "compiled_pre_results_not_submission_ready",
+  "build_exit_code": 0,
+  "remaining_warnings": "underfull boxes; see actual log",
+  "files_sha256": {
+    "paper/main.tex": "213925f283b3f822b6491212b32aa15898702417e1a219889b3a42d151acdebf",
+    "paper/references.bib": "c7b43d4cd6bf4a07cc48c86edea9f5849cf9ab50808733d5e666a3af35aced9a",
+    "paper/generated/table4_semantic_review_inventory.tex": "9e61a5b1329dc99742147b24c04c7eaaa4b0d25160e1e2ff09dbf9f852e37788",
+    "paper/generated/manual_compiler_examples.tex": "1b5ffb245f223e52df366ddf47e4f3adb8a86fd4aad2e878805ed80d717a5b23",
+    "paper/generated/table1_candidate_inventory.tex": "10a18ebb36720bed527767d65b36c861f215e0fa1ed4b9916172ad1a75d33017",
+    "paper/compiled_pre_results.pdf": "d3f6adac9171802b7d94f53a1e8c7eb9e56a465dbf0323d30d9dbbcddf2fb1b4",
+    "data/verification/m1_m7_20261027/latex_build_packaged.log": "f9f8594fcf35ba5f76fc2331f7b00c031c190ab54dda70fc6c0e5eb04f115bfd"
+  }
+}

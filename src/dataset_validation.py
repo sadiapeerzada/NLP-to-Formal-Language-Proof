@@ -220,7 +220,14 @@ def _theorem_verification_is_valid(record: dict[str, Any]) -> bool:
         )
         and verification.get("lean_toolchain") == REQUIRED_LEAN_TOOLCHAIN
         and verification.get("mathlib_revision") == REQUIRED_MATHLIB_REVISION
-        and _valid_text(verification.get("command"))
+        and (
+            _valid_text(verification.get("command"))
+            or (
+                isinstance(verification.get("command"), list)
+                and bool(verification["command"])
+                and all(_valid_text(argument) for argument in verification["command"])
+            )
+        )
         and re.fullmatch(
             r"[0-9a-fA-F]{64}",
             verification.get("theorem_sha256", "")

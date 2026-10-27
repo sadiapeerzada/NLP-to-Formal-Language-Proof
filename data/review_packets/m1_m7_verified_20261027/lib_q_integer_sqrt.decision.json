@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "lib_q_integer_sqrt",
+  "binding_sha256": "1a04c145dbaaf5794ca3f730ba7304a0c5f417dcc6534b62e883ae2cff60ddd6",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

@@ -1,0 +1,99 @@
+note: Running TeX ...
+note: downloading xurl.sty
+warning: main.tex:90: Underfull \hbox (badness 2073) in paragraph at lines 82--90
+warning: main.tex:203: Underfull \hbox (badness 2707) in paragraph at lines 203--203
+warning: main.tex:230: Underfull \hbox (badness 10000) in paragraph at lines 230--230
+warning: main.tex:230: Underfull \hbox (badness 3838) in paragraph at lines 230--230
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+warning: generated/manual_compiler_examples.tex:35: Underfull \hbox (badness 10000) in paragraph at lines 30--35
+warning: generated/manual_compiler_examples.tex:37: Underfull \hbox (badness 10000) in paragraph at lines 36--37
+warning: generated/manual_compiler_examples.tex:46: Underfull \hbox (badness 10000) in paragraph at lines 38--46
+warning: generated/manual_compiler_examples.tex:47: Underfull \hbox (badness 10000) in paragraph at lines 46--47
+warning: generated/manual_compiler_examples.tex:56: Underfull \hbox (badness 10000) in paragraph at lines 51--56
+warning: generated/manual_compiler_examples.tex:58: Underfull \hbox (badness 10000) in paragraph at lines 57--58
+warning: generated/manual_compiler_examples.tex:67: Underfull \hbox (badness 10000) in paragraph at lines 59--67
+warning: generated/manual_compiler_examples.tex:68: Underfull \hbox (badness 10000) in paragraph at lines 67--68
+warning: generated/manual_compiler_examples.tex:77: Underfull \hbox (badness 10000) in paragraph at lines 72--77
+warning: generated/manual_compiler_examples.tex:81: Underfull \hbox (badness 10000) in paragraph at lines 78--81
+warning: generated/manual_compiler_examples.tex:90: Underfull \hbox (badness 10000) in paragraph at lines 82--90
+warning: generated/manual_compiler_examples.tex:91: Underfull \hbox (badness 10000) in paragraph at lines 90--91
+warning: generated/manual_compiler_examples.tex:100: Underfull \hbox (badness 10000) in paragraph at lines 95--100
+warning: generated/manual_compiler_examples.tex:102: Underfull \hbox (badness 10000) in paragraph at lines 101--102
+warning: generated/manual_compiler_examples.tex:111: Underfull \hbox (badness 10000) in paragraph at lines 103--111
+warning: generated/manual_compiler_examples.tex:112: Underfull \hbox (badness 10000) in paragraph at lines 111--112
+note: Running BibTeX on main.aux ...
+note: warnings were issued by BibTeX; use --print and/or --keep-logs for details.
+note: Rerunning TeX because bibtex was run ...
+warning: main.tex:90: Underfull \hbox (badness 2073) in paragraph at lines 82--90
+warning: main.tex:203: Underfull \hbox (badness 2707) in paragraph at lines 203--203
+warning: main.tex:230: Underfull \hbox (badness 10000) in paragraph at lines 230--230
+warning: main.tex:230: Underfull \hbox (badness 3838) in paragraph at lines 230--230
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+warning: generated/manual_compiler_examples.tex:35: Underfull \hbox (badness 10000) in paragraph at lines 30--35
+warning: generated/manual_compiler_examples.tex:37: Underfull \hbox (badness 10000) in paragraph at lines 36--37
+warning: generated/manual_compiler_examples.tex:46: Underfull \hbox (badness 10000) in paragraph at lines 38--46
+warning: generated/manual_compiler_examples.tex:47: Underfull \hbox (badness 10000) in paragraph at lines 46--47
+warning: generated/manual_compiler_examples.tex:56: Underfull \hbox (badness 10000) in paragraph at lines 51--56
+warning: generated/manual_compiler_examples.tex:58: Underfull \hbox (badness 10000) in paragraph at lines 57--58
+warning: generated/manual_compiler_examples.tex:67: Underfull \hbox (badness 10000) in paragraph at lines 59--67
+warning: generated/manual_compiler_examples.tex:68: Underfull \hbox (badness 10000) in paragraph at lines 67--68
+warning: generated/manual_compiler_examples.tex:77: Underfull \hbox (badness 10000) in paragraph at lines 72--77
+warning: generated/manual_compiler_examples.tex:81: Underfull \hbox (badness 10000) in paragraph at lines 78--81
+warning: generated/manual_compiler_examples.tex:90: Underfull \hbox (badness 10000) in paragraph at lines 82--90
+warning: generated/manual_compiler_examples.tex:91: Underfull \hbox (badness 10000) in paragraph at lines 90--91
+warning: generated/manual_compiler_examples.tex:100: Underfull \hbox (badness 10000) in paragraph at lines 95--100
+warning: generated/manual_compiler_examples.tex:102: Underfull \hbox (badness 10000) in paragraph at lines 101--102
+warning: generated/manual_compiler_examples.tex:111: Underfull \hbox (badness 10000) in paragraph at lines 103--111
+warning: generated/manual_compiler_examples.tex:112: Underfull \hbox (badness 10000) in paragraph at lines 111--112
+warning: main.bbl:11: Underfull \hbox (badness 2644) in paragraph at lines 7--11
+warning: main.bbl:11: Underfull \hbox (badness 5460) in paragraph at lines 7--11
+note: Rerunning TeX because "main.aux" changed ...
+warning: main.tex:90: Underfull \hbox (badness 2073) in paragraph at lines 82--90
+warning: main.tex:203: Underfull \hbox (badness 2707) in paragraph at lines 203--203
+warning: main.tex:230: Underfull \hbox (badness 10000) in paragraph at lines 230--230
+warning: main.tex:230: Underfull \hbox (badness 3838) in paragraph at lines 230--230
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:10: Underfull \hbox (badness 10000) in paragraph at lines 5--10
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:17: Underfull \hbox (badness 10000) in paragraph at lines 11--17
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:25: Underfull \hbox (badness 10000) in paragraph at lines 18--25
+warning: generated/manual_compiler_examples.tex:26: Underfull \hbox (badness 10000) in paragraph at lines 25--26
+warning: generated/manual_compiler_examples.tex:35: Underfull \hbox (badness 10000) in paragraph at lines 30--35
+warning: generated/manual_compiler_examples.tex:37: Underfull \hbox (badness 10000) in paragraph at lines 36--37
+warning: generated/manual_compiler_examples.tex:46: Underfull \hbox (badness 10000) in paragraph at lines 38--46
+warning: generated/manual_compiler_examples.tex:47: Underfull \hbox (badness 10000) in paragraph at lines 46--47
+warning: generated/manual_compiler_examples.tex:56: Underfull \hbox (badness 10000) in paragraph at lines 51--56
+warning: generated/manual_compiler_examples.tex:58: Underfull \hbox (badness 10000) in paragraph at lines 57--58
+warning: generated/manual_compiler_examples.tex:67: Underfull \hbox (badness 10000) in paragraph at lines 59--67
+warning: generated/manual_compiler_examples.tex:68: Underfull \hbox (badness 10000) in paragraph at lines 67--68
+warning: generated/manual_compiler_examples.tex:77: Underfull \hbox (badness 10000) in paragraph at lines 72--77
+warning: generated/manual_compiler_examples.tex:81: Underfull \hbox (badness 10000) in paragraph at lines 78--81
+warning: generated/manual_compiler_examples.tex:90: Underfull \hbox (badness 10000) in paragraph at lines 82--90
+warning: generated/manual_compiler_examples.tex:91: Underfull \hbox (badness 10000) in paragraph at lines 90--91
+warning: generated/manual_compiler_examples.tex:100: Underfull \hbox (badness 10000) in paragraph at lines 95--100
+warning: generated/manual_compiler_examples.tex:102: Underfull \hbox (badness 10000) in paragraph at lines 101--102
+warning: generated/manual_compiler_examples.tex:111: Underfull \hbox (badness 10000) in paragraph at lines 103--111
+warning: generated/manual_compiler_examples.tex:112: Underfull \hbox (badness 10000) in paragraph at lines 111--112
+warning: main.bbl:11: Underfull \hbox (badness 2644) in paragraph at lines 7--11
+warning: main.bbl:11: Underfull \hbox (badness 5460) in paragraph at lines 7--11
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Not writing `DescriptionTexts.txt`: it would be empty.
+note: Writing `/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/paper/build/main.blg` (312 B)
+note: Writing `/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/paper/build/main.aux` (4.3095703125 KiB)
+note: Writing `/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/paper/build/main.log` (10.4228515625 KiB)
+note: Writing `/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/paper/build/main.bbl` (2.6806640625 KiB)
+note: Writing `/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/paper/build/main.pdf` (71.9638671875 KiB)

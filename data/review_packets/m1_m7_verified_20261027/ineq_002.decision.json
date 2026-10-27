@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "ineq_002",
+  "binding_sha256": "9723f559c091ef900ca2cf79c65116fdb95f9e0aad0172e961ef5d8ce1b03949",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

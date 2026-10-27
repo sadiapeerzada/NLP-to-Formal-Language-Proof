@@ -1,0 +1,65 @@
+[
+  [
+    "q_rational_density",
+    "inequality",
+    "rational_density_in_reals",
+    "Between any two distinct real numbers x<y there is a rational number q with x<q<y.",
+    "(x y : ℝ) (h : x < y) : ∃ q : ℚ, x < q ∧ (q : ℝ) < y",
+    "exact exists_rat_btwn h",
+    "exists_rat_btwn"
+  ],
+  [
+    "i_stirling",
+    "induction",
+    "stirling_second_recurrence",
+    "The Stirling numbers of the second kind satisfy S(n+1,k+1)=(k+1)*S(n,k+1)+S(n,k) for natural n and k.",
+    "(n k : ℕ) : Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k",
+    "exact Nat.stirlingSecond_succ_succ n k",
+    "stirlingSecond_succ_succ"
+  ],
+  [
+    "i_catalan",
+    "induction",
+    "catalan_convolution_recurrence",
+    "For every natural n, the (n+1)st Catalan number is the sum of C(i)*C(n-i) over natural i from zero through n.",
+    "(n : ℕ) : catalan (n + 1) = ∑ i : Fin n.succ, catalan i * catalan (n - i)",
+    "exact catalan_succ n",
+    "catalan_succ"
+  ],
+  [
+    "q_rearrangement",
+    "inequality",
+    "two_term_rearrangement",
+    "For real numbers a≤b and c≤d, a*d+b*c is at most a*c+b*d.",
+    "(a b c d : ℝ) (hab : a ≤ b) (hcd : c ≤ d) : a * d + b * c ≤ a * c + b * d",
+    "nlinarith [mul_nonneg (sub_nonneg.mpr hab) (sub_nonneg.mpr hcd)]",
+    "mul_add_mul_le_mul_add_mul"
+  ],
+  [
+    "q_pigeonhole",
+    "inequality",
+    "finite_pigeonhole_collision",
+    "If a function maps a finite set s of natural numbers into a smaller finite set t, two distinct elements of s have the same image.",
+    "(s t : Finset ℕ) (f : ℕ → ℕ) (h : t.card < s.card) (hm : ∀ x ∈ s, f x ∈ t) : ∃ x ∈ s, ∃ y ∈ s, x ≠ y ∧ f x = f y",
+    "exact Finset.exists_ne_map_eq_of_card_lt_of_maps_to h hm",
+    "exists_ne_map_eq_of_card_lt_of_maps_to"
+  ],
+  [
+    "d_prime_factor_exists",
+    "divisibility",
+    "existence_of_prime_divisor",
+    "Every natural number n at least two has a prime divisor.",
+    "(n : ℕ) (hn : 2 ≤ n) : ∃ p : ℕ, p.Prime ∧ p ∣ n",
+    "exact Nat.exists_prime_and_dvd (by omega)",
+    "exists_prime_and_dvd"
+  ],
+  [
+    "d_euclidean_gcd",
+    "divisibility",
+    "euclidean_gcd_remainder_step",
+    "For natural m and n, gcd(m,n) equals gcd(n modulo m,m), including m=0 under totalized natural remainder.",
+    "(m n : ℕ) : Nat.gcd m n = Nat.gcd (n % m) m",
+    "exact Nat.gcd_rec m n",
+    "gcd_rec"
+  ]
+]

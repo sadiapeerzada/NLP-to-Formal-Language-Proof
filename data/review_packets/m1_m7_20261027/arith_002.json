@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square and difference-of-squares identity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the hypothesis is sufficient and that the intended subtraction is natural-number truncated subtraction."
+    }
+  },
+  "binding_sha256": "5c1d1d7a37640934ea38567b0c4dc8045f4e94b82c5bf28af4dab9a3a633bc2c",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "arith_002",
+    "binding_sha256": "5c1d1d7a37640934ea38567b0c4dc8045f4e94b82c5bf28af4dab9a3a633bc2c",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

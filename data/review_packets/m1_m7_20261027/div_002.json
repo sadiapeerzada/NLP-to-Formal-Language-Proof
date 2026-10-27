@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "div_002",
+    "nl_statement": "For any natural number n, n times (n + 1) is always even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem n_mul_succ_even (n : ℕ) : Even (n * (n + 1))",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_parity_products",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity result for product of consecutive natural numbers.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English parity claim is represented using Even; no source or independent theorem review is recorded."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify the intended product ordering and that the Lean Even predicate matches the wording."
+    }
+  },
+  "binding_sha256": "4091d96b1b0e48c41884e4b1d36db7b9d16f3c40bbb5dd56f59086fe04fb5953",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_002",
+    "binding_sha256": "4091d96b1b0e48c41884e4b1d36db7b9d16f3c40bbb5dd56f59086fe04fb5953",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

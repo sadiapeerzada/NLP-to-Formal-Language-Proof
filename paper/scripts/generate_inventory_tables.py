@@ -11,6 +11,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from dataset_validation import validate_curation_draft
+from candidate_inventory import load_candidates
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parents[1] / "generated"
@@ -26,14 +27,14 @@ def tex_escape(value: str) -> str:
 
 
 def code_excerpt(value: str) -> str:
+    translations = {"ℕ":"Nat", "ℤ":"Int", "ℝ":"Real", "ℚ":"Rat", "∨":"or", "∧":"and", "≤":"<=", "≥":">=", "⊢":"|-", "→":"->", "←":"<-", "∀":"forall", "∃":"exists", "¬":"not "}
+    value = "".join(translations.get(c, c) for c in value)
     lines = value.splitlines() or [""]
-    return "\n".join(tex_escape(line[:108] + ("..." if len(line) > 108 else "")) + r"\\" for line in lines[:8])
+    return "\n".join(tex_escape(line[:55] + ("..." if len(line) > 55 else "")) + r"\\" for line in lines[:8])
 
 
 def read_candidates() -> list[dict]:
-    records = json.loads((ROOT / "data/research_dataset_draft_v0.1.0.json").read_text())
-    for path in sorted((ROOT / "data/curation_batches").glob("*/candidate_records.json")):
-        records.extend(json.loads(path.read_text()))
+    records = load_candidates(ROOT)
     ids = [record.get("id") for record in records]
     if len(ids) != len(set(ids)):
         raise ValueError("Candidate IDs are not unique across the current inventory.")
@@ -90,7 +91,7 @@ def semantic_table(records: list[dict]) -> str:
 
 def historical_examples() -> str:
     selected = ("arith_001", "arith_004", "arith_003", "ineq_001", "mod_002")
-    blocks = [r"\noindent\textbf{Evidence note.} These are manual historical trace slices; `success` below means only the saved attempt record's compiler-verification outcome. No API provenance is claimed."]
+    blocks = [r"\noindent\textbf{Evidence note.} These are ASCII-transliterated, truncated manual historical trace slices; exact UTF-8 text remains in the saved source artifacts; `success` below means only the saved attempt record's compiler-verification outcome. No API provenance is claimed."]
     for problem_id in selected:
         path = ROOT / "data/results/attempts" / f"{problem_id}.jsonl"
         attempts = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]

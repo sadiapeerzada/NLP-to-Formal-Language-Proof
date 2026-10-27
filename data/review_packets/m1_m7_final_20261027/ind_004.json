@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Geometric finite sum claim; definition/self-containment is unresolved.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Locate and cite the intended definition or replace the statement with a self-contained Finset/closed-form expression after review."
+    }
+  },
+  "binding_sha256": "867a1673785d573675b8fd801a3ea84471cef528a5b8731c4b603864678f88a9",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_004",
+    "binding_sha256": "867a1673785d573675b8fd801a3ea84471cef528a5b8731c4b603864678f88a9",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

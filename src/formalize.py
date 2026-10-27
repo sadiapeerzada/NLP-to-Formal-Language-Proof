@@ -26,14 +26,16 @@ def formalize(
     scratch_id: str,
     max_attempts: int = FORMALIZE_MAX_ATTEMPTS,
     model: str | None = None,
+    completion_fn=None,
 ):
     """Returns (success: bool, lean_statement: str, attempts_log: list[dict])."""
-    model = model or STRONG_MODEL
+    completion_fn = completion_fn or complete_with_metadata
+    model = model or getattr(completion_fn, "model_id", STRONG_MODEL)
     prompt = PROMPT_TEMPLATE.format(nl_statement=nl_statement)
     attempts_log = []
 
     for attempt in range(1, max_attempts + 1):
-        completion = complete_with_metadata(
+        completion = completion_fn(
             prompt,
             max_tokens=FORMALIZE_MAX_COMPLETION_TOKENS,
             temperature=FORMALIZE_TEMPERATURE,

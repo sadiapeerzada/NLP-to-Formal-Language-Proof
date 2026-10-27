@@ -1,0 +1,88 @@
+{
+  "record": {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number lower bound involving a square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check all boundary cases and compare the natural-number theorem with the English universal claim.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "c40a79a816c13efc680305aa6a80628a6aa0f77c99d97e7efd7ceb67385165d2",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  "binding_sha256": "2cb04623b5f3631f5ef44cffb1f5941713fc6d2ec3a55951c1f5c4b2992e817c",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ineq_001",
+    "binding_sha256": "2cb04623b5f3631f5ef44cffb1f5941713fc6d2ec3a55951c1f5c4b2992e817c",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

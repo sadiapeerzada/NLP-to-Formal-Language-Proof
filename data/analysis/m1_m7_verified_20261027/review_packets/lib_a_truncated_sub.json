@@ -1,0 +1,190 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "lib_a_truncated_sub",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "lib_a_truncated_sub",
+    "nl_statement": "For natural numbers a and b with b at most a, adding b to a-b recovers a.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_truncated_sub (a b : ℕ) (h : b ≤ a) : a - b + b = a",
+    "source_item_id": "sub_add_cancel",
+    "source_location": "Init/Data/Nat/Basic.lean:991",
+    "curation": {
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Basic.lean#L991",
+      "source_citation": "leanprover/lean4 at 8c9756b28d64dab099da31a4c09229a9e6a2ef35, Init/Data/Nat/Basic.lean:991, formal item sub_add_cancel. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.0/source_archive/LEAN_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "ec027b77e1b1aa02acb541550fcb37543faf5246df39fe04e110c4efa6545e6b",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover/lean4",
+        "source_item_id": "sub_add_cancel",
+        "source_location": "Init/Data/Nat/Basic.lean:991",
+        "revision": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+        "source_page_archive": "data/curation_batches/v0.2.0/source_archive/4f5e4f1ae65f_Basic.lean",
+        "source_page_sha256": "4f5e4f1ae65f0c8744ec2921159215627c85dc77ba6d57e73fe277b6f46a5062",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover/lean4, revision 8c9756b28d64dab099da31a4c09229a9e6a2ef35; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "truncated_subtraction_recovery",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.0/references_expanded.lean"
+        ],
+        "theorem_sha256": "ec027b77e1b1aa02acb541550fcb37543faf5246df39fe04e110c4efa6545e6b",
+        "reference_code_sha256": "c874139ccffc2efad8fdf943a7922949ac0879fbec496cd78af602c8223f0f38",
+        "verification_source_sha256": "7b116ce104b59338fdcdf3e736fe4392c39b77f32db73dabef9afcd005680367",
+        "axiom_dependencies": [
+          "propext"
+        ],
+        "evidence": "data/curation_batches/v0.2.0/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (a b",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_a_truncated_sub (a b : ℕ) (h : b ≤ a) : a - b + b = a := by\n  exact Nat.sub_add_cancel h\n"
+  },
+  "candidate_record_sha256": "4f8f18194e6ba37d1be4208fcaab08b56134803cce6b0ea569dfabcd33bee925",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}

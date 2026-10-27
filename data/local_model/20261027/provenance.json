@@ -1,0 +1,14 @@
+{
+  "model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "snapshot_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+  "model_card_url": "https://huggingface.co/mlx-community/Qwen2.5-7B-Instruct-4bit/resolve/c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed/README.md",
+  "model_card_sha256": "bcc928c815d856439e238f1977b50c93580ec5e79118e588b20f03aba1a215f5",
+  "upstream_license_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/LICENSE",
+  "upstream_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+  "license_note": "Apache-2.0 observed; compatibility review pending. Upstream license URL retrieved at mutable main, archived bytes identify actual evidence. Cached weights and tokenizer bytes have exact hashes in model_inventory.json.",
+  "hardware_ram_bytes": 17179869184,
+  "free_disk_observed_gib": 22,
+  "backend_selection": "Existing 7B instruction checkpoint, 4-bit group size 64; 4.28 GB weights. Cached 3B checkpoint lacked an instruction model card; no new weights downloaded.",
+  "paid_services_used": false,
+  "supervisor_local_substitution_approved": false
+}

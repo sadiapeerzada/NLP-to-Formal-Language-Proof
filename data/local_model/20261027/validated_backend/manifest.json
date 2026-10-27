@@ -1,0 +1,55 @@
+{
+  "purpose": "neutral_backend_smoke_not_a_pilot_or_mathematical_experiment",
+  "paid_inference_requests": 0,
+  "input": "Reply with the single word READY.",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "source_hashes": {
+    "src/local_llm_client.py": "e73609d80c9f2a644ab9a756934ef47c38bc15371d94fa009e22d7031dfe0a3b",
+    "src/model_client.py": "1db8406961c6abd746bea384fb0ff0eb94fd08674debbc870d3f847baaa9fe51"
+  },
+  "package_versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.21.0"
+  },
+  "hardware": {
+    "device_name": "Apple M4",
+    "max_recommended_working_set_size": 12713115648,
+    "memory_size": 17179869184,
+    "architecture": "applegpu_g16g",
+    "max_buffer_length": 9534832640,
+    "resource_limit": 499000
+  },
+  "success": true,
+  "response": "READY",
+  "metadata": {
+    "provider": "mlx_local",
+    "model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "response_model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "snapshot_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "base_seed": 2027,
+    "generation_seed": 1301725576,
+    "generation_context": "neutral-smoke/initial",
+    "seed_policy": "sha256(base_seed:context:prompt_sha256)_first_uint32",
+    "prompt_sha256": "a48ba54e9a3e9424e093278ebb22ab78048172fd5d87c7b54c01441252d7e719",
+    "rendered_chat_text": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nReply with the single word READY.<|im_end|>\n<|im_start|>assistant\n",
+    "rendered_chat_sha256": "063ba685963b6000c74b32ee7accfb7e8d968cb677d8c8ce622c25a3fd812f34",
+    "chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+    "prompt_tokens": 36,
+    "completion_tokens": 2,
+    "total_tokens": 38,
+    "finish_reason": "stop",
+    "max_completion_tokens": 8,
+    "temperature": 0.2,
+    "top_p": 1.0,
+    "latency_seconds": 2.2527288340061205,
+    "api_attempts": 0,
+    "logical_generations": 1,
+    "retry_events": [],
+    "content_empty": false,
+    "mlx_version": "0.32.4",
+    "mlx_lm_version": "0.32.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "peak_memory_gb": 4.43112994
+  }
+}

@@ -26,16 +26,17 @@ SKETCH_TEMPERATURE = 0.3
 
 
 def sketch_with_metadata(
-    nl_statement: str, lean_statement: str, model: str | None = None
+    nl_statement: str, lean_statement: str, model: str | None = None, completion_fn=None
 ) -> CompletionResult:
     prompt = PROMPT_TEMPLATE.format(
         nl_statement=nl_statement, lean_statement=lean_statement
     )
-    return complete_with_metadata(
+    completion_fn = completion_fn or complete_with_metadata
+    return completion_fn(
         prompt,
         max_tokens=SKETCH_MAX_COMPLETION_TOKENS,
         temperature=SKETCH_TEMPERATURE,
-        model=model or STRONG_MODEL,
+        model=model or getattr(completion_fn, "model_id", STRONG_MODEL),
     )
 
 

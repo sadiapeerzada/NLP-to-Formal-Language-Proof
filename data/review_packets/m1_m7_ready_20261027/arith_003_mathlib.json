@@ -1,0 +1,86 @@
+{
+  "record": {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exact English duplicate and propositionally identical distributivity candidate.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "recommended_curator_action": "Adjudicate whether this is an environment variant or duplicate; retain family grouping and exclude duplicate count unless justified.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "c3ebe91cf40cfdf918706406b345be1ccfc1eab8e15fc45311379bffb9613faa",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  "binding_sha256": "2dd963ce116f41c2d3a007f08396ad3c2e40e0614da440313985ce589b4d88a2",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "arith_003_mathlib",
+    "binding_sha256": "2dd963ce116f41c2d3a007f08396ad3c2e40e0614da440313985ce589b4d88a2",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

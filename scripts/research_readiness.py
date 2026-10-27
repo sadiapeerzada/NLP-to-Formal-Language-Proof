@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from dataset_validation import validate_curation_draft, validate_frozen_curation
 from repair_experiment import _protocol_metadata, _prompt_hashes
+from candidate_inventory import load_candidates
 
 
 def digest(path: Path) -> str:
@@ -24,7 +25,9 @@ def prepare(output: Path) -> dict:
     output.mkdir(parents=True, exist_ok=False)
     sources = [ROOT / 'data/research_dataset_draft_v0.1.0.json']
     sources += sorted((ROOT / 'data/curation_batches').glob('*/candidate_records.json'))
-    records = [record for path in sources for record in json.loads(path.read_text())]
+    records = load_candidates(ROOT)
+    sources += sorted((ROOT / "data/reference_verification").glob("*/*.json"))
+    sources += sorted((ROOT / "data/reference_verification").glob("*/*.lean"))
     report = validate_curation_draft(records)
     splits = {split: [r for r in records if r['curation']['split'] == split]
               for split in ('development', 'test')}

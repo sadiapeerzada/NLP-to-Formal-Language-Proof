@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "mod_004",
+  "binding_sha256": "6bc188d1852c3ea9d38619a83392012afdcc3770eb654114c968a53bc991d649",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "arith_002",
+  "binding_sha256": "3d3a18b676ec29888604641961d444e478f5d8ae3eadf7baaf07d050c6b8b1b2",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

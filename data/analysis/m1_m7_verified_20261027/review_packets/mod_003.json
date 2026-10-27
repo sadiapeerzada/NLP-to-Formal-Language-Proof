@@ -1,0 +1,154 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "mod_003",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "mod_003",
+    "nl_statement": "The square of any natural number is congruent to 0 or 1 modulo 3.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_three (n : ℕ) : n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "square_residue_classes",
+      "family_review_status": "needs_review",
+      "family_review_note": "Square residue class theorem over naturals; grouped conservatively.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English describes congruence modulo 3; Lean states a Nat remainder disjunction. The remainder convention and correspondence need review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the intended canonical remainder semantics and assess relation to mod_002 as a family, not as an assumed duplicate.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "60ba6c0198f85f92cb445a33aab7321c1c2b5eed0bebdb6ad182d41ac641483f",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  "candidate_record_sha256": "9c4492fd0ff0b30a32f460bde092a8b59e81e62ed53500da3fa4e15d1c59704a",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}

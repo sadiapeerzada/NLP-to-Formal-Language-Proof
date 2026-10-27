@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "mod_002",
+    "nl_statement": "The square of any integer is congruent to 0 or 1 modulo 4.",
+    "category": "modular_arithmetic",
+    "difficulty": 4,
+    "expected_lean_statement": "theorem sq_mod_four (a : ℤ) : a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "square_residue_classes",
+      "family_review_status": "needs_review",
+      "family_review_note": "Square residue class theorem; related residue theorem grouped.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Integer remainder convention for negative inputs is not stated in English; the Lean expression uses integer remainder modulo 4."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the intended congruence/remainder convention, especially for negative integers, and confirm exact equivalence."
+    }
+  },
+  "binding_sha256": "9d01a8ba4476dd9327e87a6b32ca27d6202d2ca646cd148d1f83cd67b349b680",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "mod_002",
+    "binding_sha256": "9d01a8ba4476dd9327e87a6b32ca27d6202d2ca646cd148d1f83cd67b349b680",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

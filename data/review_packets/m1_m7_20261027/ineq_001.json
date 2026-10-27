@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number lower bound involving a square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check all boundary cases and compare the natural-number theorem with the English universal claim."
+    }
+  },
+  "binding_sha256": "8f081563633a6804b85423a6da112e1d047e119222c74b81cac94149d2b6f219",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ineq_001",
+    "binding_sha256": "8f081563633a6804b85423a6da112e1d047e119222c74b81cac94149d2b6f219",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

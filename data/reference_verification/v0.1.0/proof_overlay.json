@@ -1,0 +1,92 @@
+{
+  "candidate_source": "data/reference_verification/v0.1.0/references.lean",
+  "candidate_source_sha256": "ced97ccf92d44590baf68201739b22f19dfa2e2bef827f0bbe26bbf98c4430df",
+  "checked_source": "data/reference_verification/v0.1.0/references_checked.lean",
+  "checked_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+  "verification_file": "data/reference_verification/v0.1.0/verification_checked.json",
+  "verification_sha256": "eaca6acbd1ce4680b21447efb9d2f09bdafc7f8b95b817de17c44e0fb380e5c8",
+  "lean_toolchain": "leanprover/lean4:v4.32.0",
+  "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+  "records": [
+    {
+      "id": "arith_001",
+      "statement_sha256": "8aa2507ef8087049c265267ab36560cfbf928f35a0c321d5f2023006e753d649"
+    },
+    {
+      "id": "arith_002",
+      "statement_sha256": "ade996b0fd58fc4c5dd9cadf71cd51ed001593a261ea5e6b8c922362384d6eaa"
+    },
+    {
+      "id": "div_001",
+      "statement_sha256": "27699ec76ae920b80676e6cd3f36ecc637b60270f00591ee30c387d12d61c710"
+    },
+    {
+      "id": "div_002",
+      "statement_sha256": "6e1c9c3e7c702cc0656a065207fba94353e77b8b1aa63cab8eefd3767ad81418"
+    },
+    {
+      "id": "div_003",
+      "statement_sha256": "7852d1e31cce78ba186cb1f1c575672517ce379c6c30c77047419866d09b7698"
+    },
+    {
+      "id": "mod_001",
+      "statement_sha256": "fb24e795f43840cfec3cd5caabce7ab58976500b85f00142f33822d47a75eebc"
+    },
+    {
+      "id": "mod_002",
+      "statement_sha256": "96163b0ec67b8462038d9492e8f660b5d9c940ee0ccb188759a0d88fbe66b5c9"
+    },
+    {
+      "id": "ind_001",
+      "statement_sha256": "e4cb250b19802868466e306428f55fd9319a6ac3e7df3fcba5b1dc5c1524d0c7"
+    },
+    {
+      "id": "ind_002",
+      "statement_sha256": "98541a2287bc63c9cf923fa343d158a3feadaef0a2136f5f4c07087f128fb05e"
+    },
+    {
+      "id": "ind_003",
+      "statement_sha256": "05a723b0710a38250fae28abed4aa7cb9ddc3cc79ba9719d094bf7ce68d8b9ce"
+    },
+    {
+      "id": "div_004",
+      "statement_sha256": "0e04a3afbc42e84cfc8a8d53b74bcbc9e3bc5e90c2457400c128bc1d814cbcf6"
+    },
+    {
+      "id": "ineq_001",
+      "statement_sha256": "c40a79a816c13efc680305aa6a80628a6aa0f77c99d97e7efd7ceb67385165d2"
+    },
+    {
+      "id": "arith_003",
+      "statement_sha256": "f6753dfc6a44f9da8a9408aee308175c68c5b27769f1e043ffdb3ce8c0aba0f5"
+    },
+    {
+      "id": "arith_003_mathlib",
+      "statement_sha256": "c3ebe91cf40cfdf918706406b345be1ccfc1eab8e15fc45311379bffb9613faa"
+    },
+    {
+      "id": "arith_004",
+      "statement_sha256": "2fb27c4682c2e2a727a529be908489dda11db38179fd7ccbc63e2fdd3f454aa7"
+    },
+    {
+      "id": "div_005",
+      "statement_sha256": "7dcf22396430210f36f777a29cba9fac0f57eda7258f713f74f022758095c9fd"
+    },
+    {
+      "id": "div_006",
+      "statement_sha256": "34d8efee4fce00c92f6e4a2199afc96cd444708d66b8bf7fdc5b15d5df377708"
+    },
+    {
+      "id": "ineq_002",
+      "statement_sha256": "529e4bf97f0d8c867d05933e0b4a46d91eb6c234f7bf05d85a8eb4fcb41f6d68"
+    },
+    {
+      "id": "ineq_003",
+      "statement_sha256": "a2507539f9a6b380eb8ea0bb5bc1156106793cc73359ebcb8d2aace0917da42e"
+    },
+    {
+      "id": "mod_003",
+      "statement_sha256": "60ba6c0198f85f92cb445a33aab7321c1c2b5eed0bebdb6ad182d41ac641483f"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "arith_003_mathlib",
+  "binding_sha256": "5a2d7451cd9079f2c0bac3a6beeeb01ada0dae571c7c00db1e8fac15b66b5f95",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

@@ -21,7 +21,7 @@ import time
 from collections.abc import Callable
 from dataclasses import dataclass
 
-import groq
+from groq_compat import groq
 
 from cost_guard import CostReservationError, CostReservationGuard
 
@@ -68,6 +68,8 @@ def _get_client() -> groq.Groq:
             "running an API-backed completion."
         )
     if _client is None:
+        if groq.Groq is None:
+            raise RuntimeError("Install the optional groq package to use the legacy API backend.")
         _client = groq.Groq(api_key=api_key, max_retries=SDK_MAX_RETRIES)
     return _client
 
@@ -78,10 +80,7 @@ def _get_client() -> groq.Groq:
 _RETRY_AFTER_RE = re.compile(r"try again in (?:(\d+)m\s*)?([\d.]+)s")
 
 
-@dataclass(frozen=True)
-class CompletionResult:
-    content: str
-    metadata: dict[str, object]
+from model_client import CompletionResult, extract_lean_block
 
 
 def reasoning_effort_for_model(model: str) -> str | None:
@@ -368,20 +367,3 @@ def complete(
         sleep=sleep,
         cost_guard=cost_guard,
     ).content
-
-
-_LEAN_BLOCK_RE = re.compile(r"```lean\s*(.*?)```", re.DOTALL)
-
-
-def extract_lean_block(text: str) -> str:
-    """Pull the code out of a ```lean ... ``` fenced block. Falls back to the
-    raw text (stripped) if the model forgot to fence it -- this happens more
-    often than you'd hope, so don't assume compliance. Groq's smaller/faster
-    models in particular are more likely to add a stray sentence before or
-    after the block than Claude tends to -- worth keeping an eye on this in
-    data/results/attempts/*.jsonl if pass@1 looks lower than expected; a
-    parsing miss looks identical to a real proof failure unless you check."""
-    match = _LEAN_BLOCK_RE.search(text)
-    if match:
-        return match.group(1).strip()
-    return text.strip()

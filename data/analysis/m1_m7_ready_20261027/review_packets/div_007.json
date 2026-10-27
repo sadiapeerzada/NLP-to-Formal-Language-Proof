@@ -1,0 +1,172 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "div_007",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "div_007",
+    "nl_statement": "For all integers a and b, if a and b are even, then a + b is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "difficulty_rationale": "Direct parity closure claim with an explicit witness construction; provisional proof-obligation rating, pending rubric review.",
+    "lean_file": "data/curation_batches/v0.1.0/div_007_even_sum.lean",
+    "expected_lean_statement": "theorem even_add_of_even (a b : ℤ) (ha : Even a) (hb : Even b) : Even (a + b)",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, section 3.2, printed p. 218, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+        "source_location": "Section 3.2, printed page 218; PDF parser page 233.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "f24381d9c42f5a34579eb2d1508dee8133bf05fdc456ad2850574d1b98e439fc",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section/item as cited; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_007_even_sum.lean",
+        "theorem_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47",
+        "evidence": "Repository strict verifier returned success=True, exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=c28371cd622af661141bb01f4a46fc453b0cdef9ca251df2d0df8774eb22bbca. Full record in data/curation_batches/v0.1.0/verification.log."
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-section-3.2-even-sum-claim by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    },
+    "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+    "source_location": "Section 3.2, printed page 218; PDF parser page 233. Claim in discussion immediately before the proof that even integers sum to an even integer."
+  },
+  "candidate_record_sha256": "f342e27ed46a8a938c777acdfce837395d146adcc40698363f419bafddcde8dd",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}

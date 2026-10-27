@@ -1,0 +1,125 @@
+{
+  "record": {
+    "id": "lib_m_power",
+    "nl_statement": "For integers a,b,m and a natural exponent n, congruence of a and b modulo m implies congruence of their nth powers modulo m.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_m_power (a b m : ℤ) (n : ℕ) (h : Int.ModEq m a b) : Int.ModEq m (a ^ n) (b ^ n)",
+    "source_item_id": "ModEq.pow",
+    "source_location": "Mathlib/Data/Int/ModEq.lean:196",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Int/ModEq.lean#L196",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Data/Int/ModEq.lean:196, formal item ModEq.pow. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.0/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "c5ec70f85fc3052513ae63bba837b7f83f7a6a226e4a0e99c3080315f8b846eb",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "ModEq.pow",
+        "source_location": "Mathlib/Data/Int/ModEq.lean:196",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.0/source_archive/d237580efab0_ModEq.lean",
+        "source_page_sha256": "d237580efab0126e0f53d266b49b536274d41564db5134a4a0ab7944418146a3",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "congruence_power_preservation",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.0/references_expanded.lean"
+        ],
+        "theorem_sha256": "c5ec70f85fc3052513ae63bba837b7f83f7a6a226e4a0e99c3080315f8b846eb",
+        "reference_code_sha256": "db6532298b412b25218c74eaec5c679c525f6278f0badc05b7f822d0a72e553d",
+        "verification_source_sha256": "7b116ce104b59338fdcdf3e736fe4392c39b77f32db73dabef9afcd005680367",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.0/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (a b m",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_m_power (a b m : ℤ) (n : ℕ) (h : Int.ModEq m a b) : Int.ModEq m (a ^ n) (b ^ n) := by\n  exact h.pow n\n"
+  },
+  "binding_sha256": "d1f64481f7b53654f1f3585523180ff0ec4a35f3b03309896f702d84b5462bbf",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "lib_m_power",
+    "binding_sha256": "d1f64481f7b53654f1f3585523180ff0ec4a35f3b03309896f702d84b5462bbf",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

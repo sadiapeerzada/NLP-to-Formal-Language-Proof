@@ -1,0 +1,191 @@
+{
+  "template_version": "nl2lean-research-candidate-review-v0.1.0",
+  "candidate_id": "mod_005",
+  "review_policy": "Use independent human reviewers for eligibility-sensitive reviews. Codex or automated checks do not satisfy independent human review. Keep unknown fields pending; do not invent reviewer identities, dates, or evidence.",
+  "source_license_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "source_item_locator_checked": null,
+    "license_text_and_scope_checked": null,
+    "attribution_requirements_checked": null,
+    "redistribution_compatibility_decision": null,
+    "evidence_reference": null
+  },
+  "semantic_fidelity_review": {
+    "status": "pending",
+    "label": null,
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "quantifiers_types_assumptions_boundaries_notation_checked": null,
+    "evidence": null
+  },
+  "theorem_statement_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "exact_statement_and_hash_checked": null,
+    "evidence": null
+  },
+  "assumption_mismatch_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "evidence": null
+  },
+  "self_containment_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "imports_and_local_definitions_checked": null,
+    "evidence": null
+  },
+  "category_difficulty_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "category_decision": null,
+    "difficulty_decision": null,
+    "evidence": null
+  },
+  "family_split_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "related_problem_ids_checked": null,
+    "family_decision": null,
+    "split_decision": null,
+    "evidence": null
+  },
+  "duplicate_review": {
+    "status": "pending",
+    "reviewer_kind": null,
+    "reviewer_id": null,
+    "reviewed_on": null,
+    "candidate_pairs_checked": null,
+    "disposition": null,
+    "evidence": null
+  },
+  "candidate_record": {
+    "id": "mod_005",
+    "nl_statement": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: an induction/divisibility argument; difficulty requires curator review.",
+    "expected_lean_statement": "theorem pow_seven_sub_one_dvd_six (n : ℕ) : 6 ∣ 7 ^ n - 1",
+    "source_item_id": "DMOI3-section-2.5-exercise-3",
+    "source_location": "Section 2.5, Exercises, item 3 (browser-rendered source page lines 789–803); exact item asks to prove the displayed divisibility claim for all natural n.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 3 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locator)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent source/license review and compatibility with dataset redistribution/publication are not complete; this is not rights clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-3",
+        "source_location": "Section 2.5, Exercises, item 3 (browser-rendered source page lines 789–803); exact item asks to prove the displayed divisibility claim for all natural n.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+        "source_statement_sha256": "911aa025373350a18c4d11d156778dcc1aefc0f3a019b97e957f6d0f94f784e5",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription stored here; not a hash of source webpage/PDF bytes.",
+        "rights_scope_note": "Item is in the publisher-hosted DMOI3 text; page/PDF bytes are not archived. Publisher CC BY-SA notice observed; redistribution review pending.",
+        "provenance_status": "item locator and rendered wording inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 3 (DMOI3-section-2.5-exercise-3); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Converted “is a multiple of 6” to natural-number divisibility 6 ∣ 7^n - 1. Source solution explicitly treats n = 0; natural numbers are represented by ℕ.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "seven_power_congruence_mod_six",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family label; independent family and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic and theorem review pending.",
+      "proposed_split_rationale": "Provisional development placement to avoid treating an unreviewed record as held-out test data."
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  "candidate_record_sha256": "75dda6f6454fb638d861399bca7f5f4b7e9df921eaa4624b1dd61ceec3cc5b80",
+  "allowed_semantic_labels": [
+    "faithful",
+    "not faithful",
+    "uncertain"
+  ],
+  "reviewer_instructions": "Compare English and Lean quantifiers, domains, assumptions, boundary cases, and conclusion. Inspect imports and definitions, category, difficulty, source rights, family, split and duplicates. Keep actual reviewer identity, date, decisions and evidence pending until independent human review."
+}

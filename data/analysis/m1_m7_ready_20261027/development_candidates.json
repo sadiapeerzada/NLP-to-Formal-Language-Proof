@@ -1,0 +1,2435 @@
+[
+  {
+    "id": "arith_001",
+    "nl_statement": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square identities; keep related algebraic variants together.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Have a Lean/math reviewer compare the universal natural-number identity with the English statement and record evidence.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "8aa2507ef8087049c265267ab36560cfbf928f35a0c321d5f2023006e753d649",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square and difference-of-squares identity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition 'a is at least b' corresponds to Lean hypothesis b ≤ a; natural subtraction semantics still require review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the hypothesis is sufficient and that the intended subtraction is natural-number truncated subtraction.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "ade996b0fd58fc4c5dd9cadf71cd51ed001593a261ea5e6b8c922362384d6eaa",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "div_001",
+    "nl_statement": "If a natural number n is even, then n squared is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem even_sq_of_even (n : ℕ) (h : Even n) : Even (n ^ 2)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'even' is represented by Lean's Even predicate; required import/context and semantic correspondence remain unreviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the Even definition/import context and theorem statement against the English claim.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "27699ec76ae920b80676e6cd3f36ecc637b60270f00591ee30c387d12d61c710",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_001",
+    "nl_statement": "For any natural number n, the sum of the first n natural numbers equals n times (n + 1) divided by 2.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem gauss_sum (n : ℕ) : 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the range endpoints and algebraic equivalence, then rewrite the English wording or Lean statement if needed.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "e4cb250b19802868466e306428f55fd9319a6ac3e7df3fcba5b1dc5c1524d0c7",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_002",
+    "nl_statement": "For any natural number n, the sum of the first n odd numbers equals n squared.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sum_odd_sq (n : ℕ) : (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the zero-based enumeration and that the resulting sum is the intended one.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "98541a2287bc63c9cf923fa343d158a3feadaef0a2136f5f4c07087f128fb05e",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exponential growth comparison over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check boundary cases and document theorem-statement and fidelity review.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "05a723b0710a38250fae28abed4aa7cb9ddc3cc79ba9719d094bf7ce68d8b9ce",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number lower bound involving a square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The universal natural-number inequality has no explicit lower-bound assumption; its n = 0 boundary is relevant to human review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check all boundary cases and compare the natural-number theorem with the English universal claim.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "c40a79a816c13efc680305aa6a80628a6aa0f77c99d97e7efd7ceb67385165d2",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "arith_003",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number distributivity statement.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003_mathlib"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "recommended_curator_action": "Adjudicate the duplicate group; do not count both as independent test examples.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "f6753dfc6a44f9da8a9408aee308175c68c5b27769f1e043ffdb3ce8c0aba0f5",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exact English duplicate and propositionally identical distributivity candidate.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "recommended_curator_action": "Adjudicate whether this is an environment variant or duplicate; retain family grouping and exclude duplicate count unless justified.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "c3ebe91cf40cfdf918706406b345be1ccfc1eab8e15fc45311379bffb9613faa",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "arith_004",
+    "nl_statement": "For natural numbers a and b with b at most a, (a minus b) squared plus 2ab equals a squared plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_sub_nat (a b : ℕ) (h : b ≤ a) : (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square identity using truncated subtraction.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English condition b ≤ a is present in Lean, but the equation uses natural subtraction and requires semantic review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check truncated subtraction and verify the condition captures the intended algebraic identity.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "2fb27c4682c2e2a727a529be908489dda11db38179fd7ccbc63e2fdd3f454aa7",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "div_005",
+    "nl_statement": "If a natural number n is odd, then n squared is odd.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem odd_sq_of_odd (n : ℕ) (h : ∃ k, n = 2*k+1) : ∃ j, n ^ 2 = 2*j+1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review equivalence of the witness encoding and confirm imported arithmetic definitions.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "7dcf22396430210f36f777a29cba9fac0f57eda7258f713f74f022758095c9fd",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "div_006",
+    "nl_statement": "A natural number's square is even if and only if the number itself is even.",
+    "category": "divisibility",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_even_iff_even (n : ℕ) : (∃ j, n ^ 2 = 2 * j) ↔ (∃ k, n = 2 * k)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Converse/equivalence variant of natural-number square parity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify the iff theorem, witness encodings, and natural-number boundary cases.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "34d8efee4fce00c92f6e4a2199afc96cd444708d66b8bf7fdc5b15d5df377708",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ineq_002",
+    "nl_statement": "For any natural numbers a and b, a times b plus 1 is at most (a+1) times (b+1).",
+    "category": "inequality",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem prod_succ_ge (a b : ℕ) : a * b + 1 ≤ (a + 1) * (b + 1)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_product_bound",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number product lower/upper bound; singleton family proposal.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English phrase 'at most' maps to ≤; the expanded product and boundary cases have not been reviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check the quantified statement and boundary cases, then record review provenance.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "529e4bf97f0d8c867d05933e0b4a46d91eb6c234f7bf05d85a8eb4fcb41f6d68",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ineq_003",
+    "nl_statement": "For any natural number n at least 1, n plus 1 is at most 2 to the power n.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem succ_le_two_pow (n : ℕ) (h : 1 ≤ n) : n + 1 ≤ 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Related exponential upper-bound theorem over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the assumption and boundary case, then record theorem/fidelity decisions.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "a2507539f9a6b380eb8ea0bb5bc1156106793cc73359ebcb8d2aace0917da42e",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "import Nl2Lean.CandidateDefinitions\n/- Imported candidate definition (do not redeclare):\ndef geomSum : Nat → Nat\n  | 0 => 0\n  | n + 1 => geomSum n + 2 ^ n\n-/\ntheorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Geometric finite sum claim; definition/self-containment is unresolved.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Locate and cite the intended definition or replace the statement with a self-contained Finset/closed-form expression after review.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "12f7654f3f6859bbfb7e923c87d382b20bb7ba5d24d18aeeb9dc0f0d562a4816",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "statement_preparation_note": "Explicit candidate definition/import context added; independent review remains pending. Original statement and evidence retained in historical file.",
+    "required_definitions": [
+      {
+        "path": "lean_project/Nl2Lean/CandidateDefinitions.lean",
+        "sha256": "b2998e3cbc82131b33b90691a00ab1347c0488b0850c988699aaba03d78c1d77",
+        "import": "Nl2Lean.CandidateDefinitions",
+        "review_status": "pending_independent_semantic_review"
+      }
+    ],
+    "required_imports": [
+      "Mathlib",
+      "Nl2Lean.CandidateDefinitions"
+    ]
+  },
+  {
+    "id": "div_007",
+    "nl_statement": "For all integers a and b, if a and b are even, then a + b is even.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "difficulty_rationale": "Direct parity closure claim with an explicit witness construction; provisional proof-obligation rating, pending rubric review.",
+    "lean_file": "data/curation_batches/v0.1.0/div_007_even_sum.lean",
+    "expected_lean_statement": "theorem even_add_of_even (a b : ℤ) (ha : Even a) (hb : Even b) : Even (a + b)",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, section 3.2, printed p. 218, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+        "source_location": "Section 3.2, printed page 218; PDF parser page 233.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "f24381d9c42f5a34579eb2d1508dee8133bf05fdc456ad2850574d1b98e439fc",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section/item as cited; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_007_even_sum.lean",
+        "theorem_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47",
+        "evidence": "Repository strict verifier returned success=True, exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=c28371cd622af661141bb01f4a46fc453b0cdef9ca251df2d0df8774eb22bbca. Full record in data/curation_batches/v0.1.0/verification.log."
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-section-3.2-even-sum-claim by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    },
+    "source_item_id": "DMOI3-section-3.2-even-sum-claim",
+    "source_location": "Section 3.2, printed page 218; PDF parser page 233. Claim in discussion immediately before the proof that even integers sum to an even integer."
+  },
+  {
+    "id": "div_008",
+    "nl_statement": "Prove that for all integers n, it is the case that n is even if and only if 3n is even. That is, prove both implications: if n is even, then 3n is even, and if 3n is even, then n is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Two implication directions, including recovering parity from a constant multiple; provisional proof-obligation rating, pending rubric review.",
+    "lean_file": "data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+    "expected_lean_statement": "theorem even_iff_even_three_mul (n : ℤ) : Even n ↔ Even (3 * n)",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, exercise 3.2.5, printed p. 223, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "05b9760863e9e1db0e4172b00041b5c2029e8da9bca46330ffd65743b22174b4"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-exercise-3.2.5",
+        "source_location": "Exercise 3.2.5, printed page 223; PDF parser page 238.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "eb907768019dc4eaac75036601a3bfe3aa2d2a506318cdeeb5bd6e472ee38e9a",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section/item as cited; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+        "theorem_sha256": "05b9760863e9e1db0e4172b00041b5c2029e8da9bca46330ffd65743b22174b4",
+        "evidence": "Repository strict verifier returned success=True, exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=e24c2968cca8625c529cf5b6c8aa853d5e308e0f4f841168482e11cfb271a0e1. Full record in data/curation_batches/v0.1.0/verification.log."
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-exercise-3.2.5 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    },
+    "source_item_id": "DMOI3-exercise-3.2.5",
+    "source_location": "Exercise 3.2.5, printed page 223; PDF parser page 238."
+  },
+  {
+    "id": "div_009",
+    "nl_statement": "For any integer n, the number n^3 − n is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "A short parity case split followed by polynomial normalization; provisional proof-obligation rating, pending rubric review.",
+    "expected_lean_statement": "theorem even_cube_sub_self (n : ℤ) : Even (n ^ 3 - n)",
+    "source_item_id": "DMOI3-example-3.2.11",
+    "source_location": "Example 3.2.11, printed page 222; PDF parser page 237.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, example 3.2.11, printed p. 222, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "8daacec71a934099f1ceea0f53d19937e41e4fbd54f6113874f8cf1104647b13"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-example-3.2.11",
+        "source_location": "Example 3.2.11, printed page 222; PDF parser page 237.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "c82202ec5907ead6d204f4cc3bff8817616b7b988def4b379efd845531019800",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), example 3.2.11; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed into the repository schema with normalized whitespace and punctuation. The Lean formalization uses Lean 4 integer and Even notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_parity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed common family for integer parity claims. Related-family leads in the existing draft: div_001, div_004, and div_006. The existing split proposals place these related leads on both sides; all family/split statuses remain pending, and no final split is asserted.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.0/div_009_cube_sub_self_even.lean",
+        "theorem_sha256": "8daacec71a934099f1ceea0f53d19937e41e4fbd54f6113874f8cf1104647b13",
+        "evidence": "Repository strict verifier succeeded with its existing acceptance policy and configured timeout_seconds=180; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=df5145191f15491416d612c167d9b6dc9d24aae902b6f24d90201399a40b2b7a. The earlier 60s timeout is retained in data/curation_batches/v0.1.0/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-example-3.2.11 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending review; do not expose for test-set claims.",
+      "related_family_review_ids": [
+        "div_001",
+        "div_004",
+        "div_006"
+      ]
+    }
+  },
+  {
+    "id": "ind_005",
+    "nl_statement": "Use induction to prove ∑_{k=0}^{n} (n choose k) = 2^n. That is, the sum of the nth row of Pascal’s Triangle is 2^n.",
+    "category": "induction",
+    "difficulty": 2,
+    "difficulty_rationale": "A finite binomial-sum identity; source asks for induction. Rating is provisional and pending rubric review.",
+    "expected_lean_statement": "theorem pascal_row_sum (n : ℕ) : ∑ k ∈ Finset.range (n + 1), Nat.choose n k = 2 ^ n",
+    "source_item_id": "DMOI3-exercise-2.5.23",
+    "source_location": "Exercise 2.5.23, printed page 191; PDF parser page 206.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, exercise 2.5.23, printed p. 191, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "b516fed7d21e8d697e102b7ac1edfcca3c7c900eff1869c50c8e311d2f9f7dcc"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-exercise-2.5.23",
+        "source_location": "Exercise 2.5.23, printed page 191; PDF parser page 206.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "6980abb0e60e84006e4aabcee3987c6db210f7ea2a85c4229b6704d18acd0ac5",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), exercise 2.5.23; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source statement was transcribed with normalized mathematical typography into the repository schema; Lean formalization uses Nat.choose and Finset notation. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "pascal_triangle_row_sum",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed family for the binomial coefficient sum of a Pascal row; pending independent human review. Related to finite-sum induction candidates and must be checked against ind_001, ind_002, and ind_004 before split approval.",
+      "related_family_review_ids": [
+        "ind_001",
+        "ind_002",
+        "ind_004"
+      ],
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.1/ind_005_pascal_row_sum.lean",
+        "theorem_sha256": "b516fed7d21e8d697e102b7ac1edfcca3c7c900eff1869c50c8e311d2f9f7dcc",
+        "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=758c82457b7a001a1313aed3a5b1c1b162c8b8e0df744a6bf91d9d767dade679. Full record in data/curation_batches/v0.1.1/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-exercise-2.5.23 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending family review; do not expose for test-set claims."
+    }
+  },
+  {
+    "id": "ineq_004",
+    "nl_statement": "Prove that n + 3 < n + 7 for all values of n ∈ ℕ. You can do this proof with algebra (without induction), but the goal of this exercise is to write out a valid induction proof.",
+    "category": "inequality",
+    "difficulty": 1,
+    "difficulty_rationale": "Linear arithmetic inequality discharged by normalization; the exercise context asks for an induction proof. Provisional rating pending rubric review.",
+    "expected_lean_statement": "theorem add_three_lt_add_seven (n : ℕ) : n + 3 < n + 7",
+    "source_item_id": "DMOI3-exercise-2.5.13",
+    "source_location": "Exercise 2.5.13, section 2.5, printed page 189; PDF parser page 204.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, exercise 2.5.13, section 2.5, printed p. 189, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "4e211a2bdbb298f2e60e1c74bf395df4ca3a9bf5f0a84a22bf8efcd7371b0cc7"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-exercise-2.5.13",
+        "source_location": "Exercise 2.5.13, section 2.5, printed page 189; PDF parser page 204.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "dcc02d6e0fb07e701f3d6552a0a49281844a3170de8152c231f7a0cf39006237",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), exercise 2.5.13; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source statement was transcribed with normalized mathematical typography into the repository schema; the Lean statement formalizes the natural-number quantifier. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "linear_inequality_by_induction",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed family for this linear inequality exercise. Review relationship to existing ineq_001, ineq_002, and ineq_003 before split approval.",
+      "related_family_review_ids": [
+        "ineq_001",
+        "ineq_002",
+        "ineq_003"
+      ],
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.2/ineq_004_linear_inequality.lean",
+        "theorem_sha256": "4e211a2bdbb298f2e60e1c74bf395df4ca3a9bf5f0a84a22bf8efcd7371b0cc7",
+        "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Quot.sound\"]; verification_source_sha256=c279934855ee88f2e042de13d558c0f9cd8993d65a9bdf6b58a8784650fa0874. Full record in data/curation_batches/v0.1.2/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-exercise-2.5.13 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending family review; do not expose for test-set claims."
+    }
+  },
+  {
+    "id": "mod_004",
+    "nl_statement": "Suppose a, b, c, and d are integers and n is a positive integer. If a is congruent to b modulo n and c is congruent to d modulo n, then a + c is congruent to b + d modulo n.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "One congruence-preserving operation using two hypotheses; provisional rating pending rubric calibration.",
+    "expected_lean_statement": "theorem modEq_add_two (a b c d n : ℤ) (_hn : 0 < n) (hab : a ≡ b [ZMOD n]) (hcd : c ≡ d [ZMOD n]) : a + c ≡ b + d [ZMOD n]",
+    "source_item_id": "DMOI3-congruence-and-arithmetic-item-1",
+    "source_location": "Section 5.2, “Congruence and Arithmetic,” printed page 314; PDF parser page 328.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, section 5.2 “Congruence and Arithmetic,” item 1, printed p. 314, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "f10f56441682b039739b6945f82aa3b46a6ae2326e6446c98688b6e6856d7a8f"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-congruence-and-arithmetic-item-1",
+        "source_location": "Section 5.2, “Congruence and Arithmetic,” item 1, printed page 314; PDF parser page 328.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "58a5813d10dcafc7da6bb98a370c350b69e4e16b5230b0381ac83490afcec4e7",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), section 5.2; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source claim was transcribed with normalized wording and formula spacing. The Lean formalization uses Int.ModEq and includes the stated positive-modulus assumption. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_congruence_addition",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed family for congruence preservation under addition. Related-family lead mod_001 is in the existing draft with a test split proposal; keep family and split decisions pending and reconcile before any holdout use.",
+      "related_family_review_ids": [
+        "mod_001"
+      ],
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.3/mod_004_congruence_add.lean",
+        "theorem_sha256": "f10f56441682b039739b6945f82aa3b46a6ae2326e6446c98688b6e6856d7a8f",
+        "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=4042e19bdbeef51578110ce29457ec5d3b1fd1879537321739e7d5fae0133fc3. Full record in data/curation_batches/v0.1.3/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-congruence-and-arithmetic-item-1 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending family review; do not expose for test-set claims."
+    }
+  },
+  {
+    "id": "arith_005",
+    "nl_statement": "Explain why the binomial coefficient “n choose 0” equals 1 and the binomial coefficient “n choose n” equals 1.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "difficulty_rationale": "Both parts are boundary identities for binomial coefficients and simplify by their definitions; provisional rating pending rubric review.",
+    "expected_lean_statement": "theorem choose_zero_and_self (n : ℕ) : Nat.choose n 0 = 1 ∧ Nat.choose n n = 1",
+    "source_item_id": "DMOI3-example-1.4.2",
+    "source_location": "Example 1.4.2, section 1.4, printed page 92; PDF parser page 106.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf",
+      "source_citation": "Levin, Oscar. Discrete Mathematics: An Open Introduction, 3rd ed., 5th printing, example 1.4.2, section 1.4, printed p. 92, University of Northern Colorado.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "verified",
+      "source_license_evidence": {
+        "status": "verified",
+        "evidence_reference": "https://discrete.openmathbooks.org/pdfs/dmoi3-tablet.pdf (front matter, PDF page 3); https://discrete.openmathbooks.org/dmoi3.html (license section)",
+        "reviewed_on": "2026-10-21",
+        "statement_sha256": "c500d07706cc31193ffc87b4d639d9d873b5dce2965cff1ffef62bef5055a851"
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, 5th printing; date printed as 1/7/2021 (locale interpretation not assumed)",
+        "source_item_id": "DMOI3-example-1.4.2",
+        "source_location": "Example 1.4.2, section 1.4, printed page 92; PDF parser page 106.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_sha256": "7828543d5ea927eb61787db0983f3c196a84cd872be0f125523dc4668628a8c3",
+        "rights_scope_note": "The cited edition states CC BY-SA 4.0. Attribution is retained here and this batch is designated CC BY-SA 4.0 to meet share-alike. This is not a legal opinion.",
+        "provenance_status": "item located in cited edition; source and edition license checked; no independent semantic review recorded",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, 5th printing (2021), example 1.4.2; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "The source statement was transcribed with normalized wording and expanded binomial-coefficient notation; the Lean formalization uses Nat.choose and a conjunction. No independent semantic-fidelity review has occurred.",
+        "source_pdf_sha256": null,
+        "source_pdf_sha256_status": "not_captured"
+      },
+      "problem_family": "binomial_coefficient_boundary_values",
+      "family_review_status": "needs_review",
+      "family_review_note": "Proposed family for the two boundary values of Nat.choose. Review relation to Pascal-row identity candidate ind_005 before approving family and split.",
+      "related_family_review_ids": [
+        "ind_005"
+      ],
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean ../data/curation_batches/v0.1.4/arith_005_binomial_boundary_values.lean",
+        "theorem_sha256": "c500d07706cc31193ffc87b4d639d9d873b5dce2965cff1ffef62bef5055a851",
+        "evidence": "Repository strict verifier succeeded; exit_code=0; axiom_dependencies=[\"propext\", \"Classical.choice\", \"Quot.sound\"]; verification_source_sha256=1a3c0db6d132e53da0c2359bbb3bcc88c3fe006dad8b6e1c29b80fb262091173. Full record in data/curation_batches/v0.1.4/verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared as a Lean 4 formalization of DMOI3-example-1.4.2 by repository curation; not independently reviewed.",
+      "proposed_split_rationale": "Development only pending family review; do not expose for test-set claims."
+    }
+  },
+  {
+    "id": "ind_006",
+    "nl_statement": "For every natural number n at least 28, there are natural numbers x and y such that 5x + 8y = n.",
+    "category": "induction",
+    "difficulty": 3,
+    "difficulty_rationale": "An existence theorem for all n from a threshold; the source motivates induction. Provisional pending rubric review.",
+    "expected_lean_statement": "theorem postage_representable_large (n : ℕ) (hn : 28 ≤ n) : ∃ five eight : ℕ, 5 * five + 8 * eight = n",
+    "source_item_id": "DMOI3-sec2.5-postage-threshold-28",
+    "source_location": "Section 2.5, induction section, postage-stamp investigation and accompanying claim immediately before the formal proof; HTML lines 305–340 in the retrieved page.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, postage-stamp investigation and claim (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3.html (license section); https://creativecommons.org/licenses/by-sa/4.0/; item locator: https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "bcd79ae4cab0062240de4a99c428327f180aacd8e39b7c9d3a9435583f6481b8",
+        "rights_note": "Publisher page states CC BY-SA 4.0 and permits adaptation with attribution. No independent source/license review or legal compatibility determination is recorded; do not treat this as rights clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text; edition identified on publisher page; individual print-page/printing not asserted.",
+        "source_item_id": "DMOI3-sec2.5-postage-threshold-28",
+        "source_location": "Section 2.5, induction section, postage-stamp investigation and accompanying claim immediately before the formal proof; HTML lines 305–340 in the retrieved page.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "it is possible to (exactly) make any amount of postage greater than 27 cents using just 5-cent and 8-cent stamps.",
+        "source_statement_sha256": "c6875c8172806754f83cdcdb22c9cf64eb4fd44499cf21c94c1da481bf4bc07c",
+        "source_statement_hash_scope": "SHA-256 of the exact UTF-8 transcription stored in source_statement_transcription; not a hash of the source webpage or PDF bytes.",
+        "rights_scope_note": "The publisher page identifies CC BY-SA 4.0. Item-level upstream rights and compatibility with intended redistribution require human review.",
+        "provenance_status": "item located on publisher-hosted edition page; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, DMOI3-sec2.5-postage-threshold-28; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Adapted the postage claim to an existential equation over natural-number stamp counts; “greater than 27” is represented by 28 ≤ n.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "postage_representation_5_8",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family for representations by 5-cent and 8-cent stamps; independently review mathematical family and split.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean --json ../lean_project/generated/_scratch/candidate_v015_ind_006_strict.lean (repository strict verifier; type-compared against the exact statement with a proof placeholder)",
+        "theorem_sha256": "bcd79ae4cab0062240de4a99c428327f180aacd8e39b7c9d3a9435583f6481b8",
+        "evidence": "success=True; exit_code=0; axiom_dependencies=[\"propext\", \"Quot.sound\"]; candidate_sha256=f686cd19be895cb516f61bb3d9919ac3e9087da0df8de08fe7c52725a485332f; verification_source_sha256=2a7f307cdd0dd96e7e7c037bc4b2dc64d08c09186fdedeea33e77dce6d5b3f31; errors=[]. Full result in this batch verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared by repository curation from DMOI3-sec2.5-postage-threshold-28; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional family-aware split proposal; requires independent review before inclusion."
+    }
+  },
+  {
+    "id": "mod_005",
+    "nl_statement": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: an induction/divisibility argument; difficulty requires curator review.",
+    "expected_lean_statement": "theorem pow_seven_sub_one_dvd_six (n : ℕ) : 6 ∣ 7 ^ n - 1",
+    "source_item_id": "DMOI3-section-2.5-exercise-3",
+    "source_location": "Section 2.5, Exercises, item 3 (browser-rendered source page lines 789–803); exact item asks to prove the displayed divisibility claim for all natural n.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 3 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locator)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent source/license review and compatibility with dataset redistribution/publication are not complete; this is not rights clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-3",
+        "source_location": "Section 2.5, Exercises, item 3 (browser-rendered source page lines 789–803); exact item asks to prove the displayed divisibility claim for all natural n.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+        "source_statement_sha256": "911aa025373350a18c4d11d156778dcc1aefc0f3a019b97e957f6d0f94f784e5",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription stored here; not a hash of source webpage/PDF bytes.",
+        "rights_scope_note": "Item is in the publisher-hosted DMOI3 text; page/PDF bytes are not archived. Publisher CC BY-SA notice observed; redistribution review pending.",
+        "provenance_status": "item locator and rendered wording inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 3 (DMOI3-section-2.5-exercise-3); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Converted “is a multiple of 6” to natural-number divisibility 6 ∣ 7^n - 1. Source solution explicitly treats n = 0; natural numbers are represented by ℕ.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "seven_power_congruence_mod_six",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family label; independent family and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic and theorem review pending.",
+      "proposed_split_rationale": "Provisional development placement to avoid treating an unreviewed record as held-out test data."
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_007",
+    "nl_statement": "Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.",
+    "category": "induction",
+    "difficulty": 3,
+    "difficulty_rationale": "Provisional source-driven rating; independent category and difficulty review pending.",
+    "expected_lean_statement": "theorem sum_squares_closed_form (n : ℕ) : (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6",
+    "source_item_id": "DMOI3-section-2.5-exercise-10",
+    "source_location": "Section 2.5, Exercises, item 10; publisher page lines 911–914.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 10 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locators)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "9b1a45c9477e00f074b0ccfabfdc9f4d6cbb19d2bee827eaf82980c81c19dcd7",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-10",
+        "source_location": "Section 2.5, exercise 10; publisher page lines 911–914.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.",
+        "source_statement_sha256": "e216cad282108670d95bd2c760fe0dc62939c715c1fd88e19aeed72e775c87e7",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Publisher-hosted item and CC BY-SA notice observed; source page bytes were not archived and redistribution review is pending.",
+        "provenance_status": "item and rendered statement inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 10 (DMOI3-section-2.5-exercise-10); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Represented the sum from 1 through n by a Finset sum over 0 through n; the added zero term is 0. The right side uses natural-number division by 6.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "sum_of_first_squares",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family label; independent family assignment and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "9b1a45c9477e00f074b0ccfabfdc9f4d6cbb19d2bee827eaf82980c81c19dcd7",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional development proposal; no test use until family and split are reviewed."
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_008",
+    "nl_statement": "Prove that every positive integer is either a power of 2, or can be written as the sum of distinct powers of 2.",
+    "category": "induction",
+    "difficulty": 3,
+    "difficulty_rationale": "Provisional source-driven rating; independent category and difficulty review pending.",
+    "expected_lean_statement": "theorem positive_nat_sum_distinct_powers_two (n : ℕ) (hn : 1 ≤ n) : ∃ s : Finset ℕ, n = ∑ k ∈ s, 2 ^ k",
+    "source_item_id": "DMOI3-section-2.5-exercise-19",
+    "source_location": "Section 2.5, Exercises, item 19; publisher page lines 1055–1079.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 19 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locators)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "00fa82528e208b267f47f795a4811032f6559f92e021f2ffe2645e266ff70aec",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-19",
+        "source_location": "Section 2.5, exercise 19; publisher page lines 1055–1079.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Prove that every positive integer is either a power of 2, or can be written as the sum of distinct powers of 2.",
+        "source_statement_sha256": "30e0c94ecd2d596f3243a19ebc8223e4371e5fa66789da12aba48fb051bbd61a",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Publisher-hosted item and CC BY-SA notice observed; source page bytes were not archived and redistribution review is pending.",
+        "provenance_status": "item and rendered statement inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 19 (DMOI3-section-2.5-exercise-19); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Reformulated the alternative “power or sum of distinct powers” as existence of a finite set of exponents whose powers sum to n; a singleton set represents the power-of-two case.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "binary_representation_by_distinct_powers",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family label; independent family assignment and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "00fa82528e208b267f47f795a4811032f6559f92e021f2ffe2645e266ff70aec",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional development proposal; no test use until family and split are reviewed."
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "ind_009",
+    "nl_statement": "Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).",
+    "category": "induction",
+    "difficulty": 4,
+    "difficulty_rationale": "Provisional source-driven rating; independent category and difficulty review pending.",
+    "expected_lean_statement": "theorem hockey_stick_binomial_identity (n : ℕ) : (∑ k ∈ Finset.range (n + 1), Nat.choose (4 + k) k) = Nat.choose (5 + n) n",
+    "source_item_id": "DMOI3-section-2.5-exercise-24",
+    "source_location": "Section 2.5, Exercises, item 24; publisher page lines 1153–1161.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 24 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locators)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "c5ef1a9cac36eea3f5d1b50f1a9a47f8d77bb9aa16ef2a845c45c93b0c71612b",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-24",
+        "source_location": "Section 2.5, exercise 24; publisher page lines 1153–1161.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).",
+        "source_statement_sha256": "f5c96dcf98145906e0709104c8d99b518f3776dc5b072c1a7ec084ab8afc28bb",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Publisher-hosted item and CC BY-SA notice observed; source page bytes were not archived and redistribution review is pending.",
+        "provenance_status": "item and rendered statement inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 24 (DMOI3-section-2.5-exercise-24); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Replaced the displayed diagonal sum by a finite sum indexed by k from 0 through n and used Nat.choose notation; the source’s endpoint formula is retained.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "hockey_stick_binomial_identity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family label; independent family assignment and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "c5ef1a9cac36eea3f5d1b50f1a9a47f8d77bb9aa16ef2a845c45c93b0c71612b",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional development proposal; no test use until family and split are reviewed."
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  {
+    "id": "mod_006",
+    "nl_statement": "Among positive natural-number moduli for which 16 and 25 have the same remainder, 9 is the largest.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: divisibility bounds or integer parameterization; independent review pending.",
+    "expected_lean_statement": "theorem largest_modulus_sixteen_twentyfive :\n    Nat.ModEq 9 16 25 ∧ ∀ n : ℕ, 0 < n → Nat.ModEq n 16 25 → n ≤ 9",
+    "source_item_id": "DMOI3-section-5.2-exercise-4",
+    "source_location": "Section 5.2, Exercises, item 4",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §5.2, exercise 4.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/source_archives/20261027_curl/dmoi3-colophon.html",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "afa6b4a590ffe3d6dd07e2b6f9342310e23c2eb9f1ebb1a53e7f8e2dcbd8e3a6",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-5.2-exercise-4",
+        "source_location": "Section 5.2, Exercises, item 4",
+        "retrieved_on": "2026-10-27",
+        "source_statement_transcription": "What is the largest n such that 16 and 25 are in the same remainder class modulo n?",
+        "source_statement_sha256": "c7b80c486223b063fef2e576590d784ceb4957d55cdfe8ff9370c4b5cb7f161e",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Exact publisher bytes archived; independent rights compatibility and API-use review remain pending.",
+        "provenance_status": "archived publisher source; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, DMOI3, 3rd ed., §5.2, exercise 4; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "changes_made": "Formalizes only the largest-modulus subquestion of exercise 4; remainder-class enumeration and the requested example above 100 are outside scope.",
+        "source_page_sha256": "55ee675093b26253d2db46280ac1cee2b95820e48e37c06323e5a9b2fef8d96b",
+        "source_page_sha256_status": "captured",
+        "source_page_archive": "data/source_archives/20261027_curl/dmoi3-number-theory.html"
+      },
+      "problem_family": "greatest_modulus_of_two_fixed_integers",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional distinct family; compare against all existing records before split approval.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "lake env lean --json lean_project/generated/_scratch/curation_v018_minimal_mod_006_largest_modulus.lean",
+        "theorem_sha256": "afa6b4a590ffe3d6dd07e2b6f9342310e23c2eb9f1ebb1a53e7f8e2dcbd8e3a6",
+        "candidate_sha256": "1cbf29ace022e89b9fadd554cd539182735556870a28c36524bdc89efe2c297a",
+        "verification_source_sha256": "02fc80bfbff2a179f4eec8a9d5ee75c4ca771994d76d0858e406781d3954d6d5",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.1.8/verification_minimal.json; strict source policy, exit code and axiom inspection passed. Initial full-Mathlib timeout preserved in verification.json; retry narrowed imports without changing the proposition."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited exercise and solution by Codex; independent semantic review pending.",
+      "proposed_split_rationale": "Development-only preparation; never exposed as held-out outcome evidence."
+    },
+    "required_imports": [
+      "Mathlib.Data.Nat.ModEq"
+    ],
+    "mathematical_assumptions": "Positive natural modulus; fixed integers 16 and 25."
+  },
+  {
+    "id": "div_012",
+    "nl_statement": "For integers x and y, 6x + 10y = 32 holds if and only if there is an integer k with x = 2 - 5k and y = 2 + 3k.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: divisibility bounds or integer parameterization; independent review pending.",
+    "expected_lean_statement": "theorem diophantine_six_ten (x y : ℤ) :\n    6 * x + 10 * y = 32 ↔ ∃ k : ℤ, x = 2 - 5 * k ∧ y = 2 + 3 * k",
+    "source_item_id": "DMOI3-section-5.2-exercise-15",
+    "source_location": "Section 5.2, Exercises, item 15",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §5.2, exercise 15.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/source_archives/20261027_curl/dmoi3-colophon.html",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "49f92ce3a31e0f546f096fa8e7b6de12596ef0d3a3f70f17654031ab6901fcb1",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-5.2-exercise-15",
+        "source_location": "Section 5.2, Exercises, item 15",
+        "retrieved_on": "2026-10-27",
+        "source_statement_transcription": "Solve the following linear Diophantine equation, using modular arithmetic (describe the general solutions). 6x + 10y = 32.",
+        "source_statement_sha256": "4aa6dea1aa121be47c989d9e3e61b8b62d9fcd661f8108ec81789c782ac963a4",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Exact publisher bytes archived; independent rights compatibility and API-use review remain pending.",
+        "provenance_status": "archived publisher source; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, DMOI3, 3rd ed., §5.2, exercise 15; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "changes_made": "Converts the solution exercise into an equivalence giving all integer solutions; the parameterization appears in the publisher solution. No required proof method is asserted in Lean.",
+        "source_page_sha256": "55ee675093b26253d2db46280ac1cee2b95820e48e37c06323e5a9b2fef8d96b",
+        "source_page_sha256_status": "captured",
+        "source_page_archive": "data/source_archives/20261027_curl/dmoi3-number-theory.html"
+      },
+      "problem_family": "linear_diophantine_general_solution",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional distinct family; compare against all existing records before split approval.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "lake env lean --json lean_project/generated/_scratch/curation_v018_minimal_div_012_diophantine.lean",
+        "theorem_sha256": "49f92ce3a31e0f546f096fa8e7b6de12596ef0d3a3f70f17654031ab6901fcb1",
+        "candidate_sha256": "e984751c23d0f09d4ea617d0643a0cca65e9599e6450472fc6ffbd6950a62443",
+        "verification_source_sha256": "a6cc3087596a94bc2eef45fd0cd8eb9aaf75114407192a775e89e847ab254e58",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.1.8/verification_minimal.json; strict source policy, exit code and axiom inspection passed. Initial full-Mathlib timeout preserved in verification.json; retry narrowed imports without changing the proposition."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited exercise and solution by Codex; independent semantic review pending.",
+      "proposed_split_rationale": "Development-only preparation; never exposed as held-out outcome evidence."
+    },
+    "required_imports": [
+      "Mathlib.Data.Int.Basic",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "mathematical_assumptions": "Integer domain for x, y and k; no positivity restrictions."
+  }
+]

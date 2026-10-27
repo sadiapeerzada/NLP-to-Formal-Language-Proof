@@ -1,0 +1,69 @@
+{
+  "status": "unreviewed_candidates_not_frozen",
+  "candidate_count": 7,
+  "strict_proof_verified_count": 7,
+  "eligible_count": 0,
+  "candidate_file_sha256": "018127defcbc3efaee0a67e3c6411b67281c784ac93ccb7ade47501f407e8dd5",
+  "reference_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+  "verification_sha256": "7a1a63f7b9f62b3585f588b143bfba3624441440ec91af8a567ac04b32ad4304",
+  "sources": [
+    {
+      "candidate_id": "lib_q_rational_density",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Archimedean/Basic.lean#L372",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/e93be6ddf3ae_Basic.lean",
+      "sha256": "e93be6ddf3aef0f5996697eae5f66972d6098ea8e8bfa341d9725aef5cffc127",
+      "item": "exists_rat_btwn",
+      "line": 372
+    },
+    {
+      "candidate_id": "lib_i_stirling",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Combinatorics/Enumerative/Stirling.lean#L144",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/a73d2d2eac29_Stirling.lean",
+      "sha256": "a73d2d2eac293e87def7ee0484133ed193bcf1ac6bcbb545ca4c809ca9d94cdd",
+      "item": "stirlingSecond_succ_succ",
+      "line": 144
+    },
+    {
+      "candidate_id": "lib_i_catalan",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Combinatorics/Enumerative/Catalan/Basic.lean#L61",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/02e122a3ccbd_Basic.lean",
+      "sha256": "02e122a3ccbd5fbcabfbf7a0e8aff3c6ca49f81b634dac76d5cd78d87bce91e4",
+      "item": "catalan_succ",
+      "line": 61
+    },
+    {
+      "candidate_id": "lib_q_rearrangement",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean#L294",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/85232d08ea50_Basic.lean",
+      "sha256": "85232d08ea50e7fb03dbcdb4738d9ed47ae3671c045fb9cd3bc377576cd4ea60",
+      "item": "mul_add_mul_le_mul_add_mul",
+      "line": 294
+    },
+    {
+      "candidate_id": "lib_q_pigeonhole",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Finset/Card.lean#L451",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/87c674ba5464_Card.lean",
+      "sha256": "87c674ba5464c7868fb3e253e58a695821bf8841bb4e076bac5d570236dc6229",
+      "item": "exists_ne_map_eq_of_card_lt_of_maps_to",
+      "line": 451
+    },
+    {
+      "candidate_id": "lib_d_prime_factor_exists",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Defs.lean#L407",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/617c1a2a927a_Defs.lean",
+      "sha256": "617c1a2a927a2a282092f11c8d254036454e7ffa2eab12f8dd16880cf83d0d61",
+      "item": "exists_prime_and_dvd",
+      "line": 407
+    },
+    {
+      "candidate_id": "lib_d_euclidean_gcd",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Gcd.lean#L74",
+      "source_archive": "data/curation_batches/v0.2.1/source_archive/672c96102205_Gcd.lean",
+      "sha256": "672c96102205b59a47742be74c959ed780ba319713baaa8a2eeede2cdc46cbea",
+      "item": "gcd_rec",
+      "line": 74
+    }
+  ],
+  "independence_status": "proposed_families_require_review_not_established",
+  "inference_calls_on_candidates": 0
+}

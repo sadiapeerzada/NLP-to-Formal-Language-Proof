@@ -44,3 +44,7 @@ provenance. Do not claim otherwise based on successful LaTeX formatting or
 Lean compilation.
 
 Completion audit on 27 October 2026 regenerated inventory tables for 37 candidates, added the reproducibility section, and kept all empirical results unavailable. `pdflatex -halt-on-error main.tex` was attempted and returned command-not-found; no PDF build is claimed. Official Springer author resources state their computer-science proceedings guidelines also cover CCIS: https://www.springer.com/gp/computer-science/lncs/forthcoming-proceedings . Conference-specific requirements still need confirmation.
+
+## Current local-study revision
+
+The current manuscript documents the proposed MLX substitution and its unapproved status. A real pre-results PDF build succeeded with Tectonic 0.17.0 and the official Springer 2.25 class. Use `docs/FINAL_PAPER_READINESS.md` and `data/verification/m1_m7_20261027/` for current build evidence; the earlier command-not-found note is historical. Study tables/figures and authentic model examples remain unavailable.

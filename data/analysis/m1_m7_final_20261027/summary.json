@@ -1,0 +1,30 @@
+{
+  "candidate_count": 89,
+  "proposed_splits": {
+    "development": 29,
+    "test": 60
+  },
+  "categories": {
+    "arithmetic_identity": 18,
+    "divisibility": 24,
+    "modular_arithmetic": 15,
+    "induction": 16,
+    "inequality": 16
+  },
+  "strict_proof_verified": 84,
+  "eligible_ids": [],
+  "independent_semantic_reviews": 0,
+  "structural_errors": [],
+  "review_warning_count": 183,
+  "proof_gaps": [
+    "ind_004",
+    "mod_005",
+    "ind_007",
+    "ind_008",
+    "ind_009"
+  ],
+  "research_model_generations": 0,
+  "paired_pilots": 0,
+  "paired_heldout_runs": 0,
+  "local_protocol_status": "proposed_local_substitution_requires_supervisor_approval"
+}

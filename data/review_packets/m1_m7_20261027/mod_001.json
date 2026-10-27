@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "mod_001",
+    "nl_statement": "For any integers a and b and positive integer m, if a is congruent to b modulo m, then a + 1 is congruent to b + 1 modulo m.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem cong_add_one (a b m : ℤ) (h : a ≡ b [ZMOD m]) : a + 1 ≡ b + 1 [ZMOD m]",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "integer_congruence_translation",
+      "family_review_status": "needs_review",
+      "family_review_note": "Congruence preserved by translation; singleton family proposal.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English explicitly says m is positive, but the Lean statement has no positivity hypothesis. The congruence claim may be stronger; fidelity is unresolved."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Decide whether positivity is essential to the intended English statement; amend only after human approval and record the decision."
+    }
+  },
+  "binding_sha256": "ee3f8904c6789cd7919aeb407100fb549450b6e0752d349e5916d6ab1465ea15",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "mod_001",
+    "binding_sha256": "ee3f8904c6789cd7919aeb407100fb549450b6e0752d349e5916d6ab1465ea15",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}
