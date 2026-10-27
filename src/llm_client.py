@@ -293,6 +293,14 @@ def complete_with_metadata(
             sleep(delay)
         except groq.APIStatusError as e:
             last_err = e
+            # Authentication, authorization and invalid payload failures cannot
+            # be repaired by retransmitting the same logical generation.
+            status = _optional_int(getattr(e, "status_code", None))
+            if status is not None and status < 500 and status not in {408, 409}:
+                raise request_failure(
+                    f"Groq rejected the request with HTTP {status}.",
+                    wrapper_attempts_made=attempt + 1,
+                ) from e
             if attempt == retries - 1:
                 break
             if total_wait_seconds + 1 > max_total_wait_seconds:
@@ -312,7 +320,7 @@ def complete_with_metadata(
             ) from e
     raise request_failure(
         f"LLM call failed after {retries} attempts and {total_wait_seconds:.0f}s "
-        f"of retry waiting: {last_err}",
+        f"of retry waiting: {type(last_err).__name__}",
         wrapper_attempts_made=retries,
     ) from last_err
 

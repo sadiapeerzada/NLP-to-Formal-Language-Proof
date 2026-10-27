@@ -8,6 +8,9 @@ import json
 import difflib
 from collections import Counter, defaultdict
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
+from dataset_validation import validate_curation_draft
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parents[1] / "generated"
@@ -43,6 +46,7 @@ def candidate_table(records: list[dict]) -> str:
         curation = record.get("curation", {})
         split = curation.get("split", "unassigned") if isinstance(curation, dict) else "unassigned"
         grouped[(str(split), str(record.get("category", "unknown")))].append(record)
+    eligible = set(validate_curation_draft(records).eligible_problem_ids)
     rows = []
     for (split, category), group in sorted(grouped.items()):
         difficulty = Counter(str(r.get("difficulty", "?")) for r in group)
@@ -50,15 +54,15 @@ def candidate_table(records: list[dict]) -> str:
         rows.append(
             f"{tex_escape(split)} & {tex_escape(category)} & {len(group)} & "
             f"{difficulty.get('1', 0)}/{difficulty.get('2', 0)}/{difficulty.get('3', 0)}/{difficulty.get('4', 0)} & "
-            f"{source_cited} & {len(group) - source_cited} & 0 \\\\"
+            f"{source_cited} & {len(group) - source_cited} & {sum(r['id'] in eligible for r in group)} \\\\"
         )
     total = len(records)
     cited_total = sum(bool(r.get("curation", {}).get("source_citation") or r.get("curation", {}).get("source_url") or r.get("curation", {}).get("source_metadata")) for r in records)
     dev = sum(str(r.get("curation", {}).get("split")) == "development" for r in records)
     test = sum(str(r.get("curation", {}).get("split")) == "test" for r in records)
     rows.append(r"\midrule")
-    rows.append(f"Total & All categories & {total} & -- & {cited_total} & {total - cited_total} & 0 \\\\")
-    rows.append(r"\multicolumn{7}{l}{Proposed split totals: development=" + str(dev) + ", test=" + str(test) + r"; eligible total=0.} \\")
+    rows.append(f"Total & All categories & {total} & -- & {cited_total} & {total - cited_total} & {len(eligible)} \\\\")
+    rows.append(r"\multicolumn{7}{l}{Proposed split totals: development=" + str(dev) + ", test=" + str(test) + r"; eligible total=" + str(len(eligible)) + r".} \\")
     return "\n".join([
         r"\begin{tabular}{llrrrrr}", r"\toprule",
         r"Proposed split & Category & Candidates & Difficulty 1/2/3/4 & Cited & No item citation & Eligible\\",
@@ -80,7 +84,7 @@ def semantic_table(records: list[dict]) -> str:
     rows = [r"\begin{tabular}{lr}", r"\toprule", r"Review state & Candidate count\\", r"\midrule"]
     for label in ("faithful", "not faithful", "uncertain", "pending/unreviewed"):
         rows.append(f"{label} & {counts[label]} \\\\")
-    rows.extend([r"\midrule", "Eligible frozen test records & 0 " + r"\\", r"\bottomrule", r"\end{tabular}"])
+    rows.extend([r"\midrule", "Eligible frozen test records (no freeze) & 0 " + r"\\", r"\bottomrule", r"\end{tabular}"])
     return "\n".join(rows)
 
 

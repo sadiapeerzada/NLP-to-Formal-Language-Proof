@@ -178,3 +178,12 @@ def test_current_repository_audit_does_not_emit_fake_metrics(tmp_path: Path) -> 
     assert report["metrics_computed"] is False
     assert report["study_tables_or_figure_generated"] is False
     assert (tmp_path / "analysis_readiness_v0.1.0.json").is_file()
+
+
+def test_readiness_audit_never_overwrites_prior_evidence(tmp_path: Path) -> None:
+    analysis.audit_current_repository(tmp_path)
+    artifact = tmp_path / 'analysis_readiness_v0.1.0.json'
+    original = artifact.read_bytes()
+    with pytest.raises(FileExistsError):
+        analysis.audit_current_repository(tmp_path)
+    assert artifact.read_bytes() == original

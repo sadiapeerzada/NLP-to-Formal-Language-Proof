@@ -122,6 +122,27 @@ class LlmClientRetryTests(unittest.TestCase):
         self.assertEqual(self.create.call_count, 3)
         self.assertEqual(self.sleep.call_args_list, [((2.0,), {}), ((2.0,), {})])
 
+    def test_permanent_http_error_is_not_retransmitted(self) -> None:
+        import httpx
+        error = llm_client.groq.BadRequestError(
+            "SECRET provider body", response=httpx.Response(
+                400, request=httpx.Request("POST", "https://api.groq.com")
+            ), body=None,
+        )
+        self.create.side_effect = error
+        with self.assertRaises(llm_client.CompletionRequestError) as caught:
+            llm_client.complete("prompt", cost_guard=self.cost_guard(), sleep=self.sleep)
+        self.assertEqual(self.create.call_count, 1)
+        self.sleep.assert_not_called()
+        self.assertNotIn("SECRET", str(caught.exception))
+        self.assertEqual(caught.exception.metadata["wrapper_attempts_made"], 1)
+
+    def test_exhausted_error_does_not_copy_provider_body(self) -> None:
+        self.create.side_effect = FakeRateLimitError("SECRET provider body")
+        with self.assertRaises(llm_client.CompletionRequestError) as caught:
+            llm_client.complete("prompt", cost_guard=self.cost_guard(), sleep=self.sleep)
+        self.assertNotIn("SECRET", str(caught.exception))
+
     def test_immediate_success_uses_one_total_attempt(self) -> None:
         self.create.return_value = self.response("completed")
 

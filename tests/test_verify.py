@@ -18,6 +18,7 @@ from verify import (
     VerificationPolicy,
     check_lean_file_detailed,
     promote_scratch_to_final,
+    _run_compiler,
 )
 
 
@@ -33,6 +34,48 @@ class VerifyTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.tempdir.cleanup()
 
+    def test_declaration_modifiers_and_inline_commands_do_not_bypass_policy(self) -> None:
+        for declaration in ("private axiom bad : False", "namespace X axiom bad : False", "private opaque bad : False"):
+            with self.subTest(declaration=declaration):
+                with patch("verify._run_compiler") as run:
+                    result = check_lean_file_detailed(declaration + "\ntheorem valid : True := by trivial", self.project, "policy")
+                self.assertFalse(result.success)
+                self.assertEqual(result.failure_kind, "proof_rejected")
+                run.assert_not_called()
+
+    def test_earlier_axiom_message_cannot_mask_unapproved_dependencies(self) -> None:
+        process = subprocess.CompletedProcess([], 0, stdout="\n".join([
+            json_diagnostic("information", "'valid' does not depend on any axioms"),
+            json_diagnostic("information", "'valid' depends on axioms: [unauthorized]"),
+        ]), stderr="")
+        result = self.run_result("theorem valid : True := by trivial", process)
+        self.assertFalse(result.success)
+        self.assertEqual(result.failure_kind, "proof_rejected")
+        self.assertEqual(result.axiom_dependencies, ["unauthorized"])
+
+    def test_compiler_timeout_kills_process_group_and_collects_output(self) -> None:
+        from unittest.mock import MagicMock
+        process = MagicMock()
+        process.pid = 12345
+        process.communicate.side_effect = [subprocess.TimeoutExpired("lake", 1), ("partial", "stderr")]
+        process.__enter__.return_value = process
+        with patch("verify.subprocess.Popen", return_value=process) as popen, patch("verify.os.killpg") as kill:
+            with self.assertRaises(subprocess.TimeoutExpired) as caught:
+                _run_compiler(["lake"], cwd=str(self.project), capture_output=True, text=True, timeout=1)
+        self.assertTrue(popen.call_args.kwargs["start_new_session"])
+        self.assertEqual(kill.call_args.args[0], process.pid)
+        self.assertEqual(caught.exception.output, "partial")
+        self.assertEqual(caught.exception.stderr, "stderr")
+
+    def test_timeout_retains_partial_compiler_output(self) -> None:
+        error = subprocess.TimeoutExpired("lake", 180, output=b"partial diagnostic", stderr=b"partial stderr")
+        with patch("verify._run_compiler", side_effect=error):
+            result = check_lean_file_detailed("theorem valid : True := by trivial", self.project, "timeout")
+        self.assertFalse(result.success)
+        self.assertEqual(result.failure_kind, "timeout")
+        self.assertEqual(result.to_record()["compiler_stdout"], "partial diagnostic")
+        self.assertEqual(result.to_record()["compiler_stderr"], "partial stderr")
+
     def test_default_timeout_has_headroom_for_pinned_mathlib_startup(self) -> None:
         # A valid theorem took 63.64 seconds to verify in the pinned environment.
         self.assertGreaterEqual(DEFAULT_POLICY.timeout_seconds, 120)
@@ -44,7 +87,7 @@ class VerifyTests(unittest.TestCase):
     def run_result(
         self, code: str, process: subprocess.CompletedProcess[str], *, allow_sorry: bool = False
     ):
-        with patch("verify.subprocess.run", return_value=process):
+        with patch("verify._run_compiler", return_value=process):
             return check_lean_file_detailed(code, self.project, "candidate", allow_sorry)
 
     def test_valid_named_theorem_with_allowed_axioms_succeeds(self) -> None:
@@ -86,7 +129,7 @@ class VerifyTests(unittest.TestCase):
                 stderr="",
             )
 
-        with patch("verify.subprocess.run", side_effect=compile_candidate):
+        with patch("verify._run_compiler", side_effect=compile_candidate):
             result = check_lean_file_detailed(
                 code,
                 self.project,
@@ -114,7 +157,7 @@ class VerifyTests(unittest.TestCase):
                 stderr="",
             )
 
-        with patch("verify.subprocess.run", side_effect=compile_candidate):
+        with patch("verify._run_compiler", side_effect=compile_candidate):
             result = check_lean_file_detailed(
                 code,
                 self.project,
@@ -146,7 +189,7 @@ class VerifyTests(unittest.TestCase):
                 command, 1, stdout=json.dumps(raw_diagnostic), stderr=""
             )
 
-        with patch("verify.subprocess.run", side_effect=compile_candidate):
+        with patch("verify._run_compiler", side_effect=compile_candidate):
             result = check_lean_file_detailed(
                 candidate,
                 self.project,
@@ -190,7 +233,7 @@ class VerifyTests(unittest.TestCase):
 
     def test_expected_statement_path_rejects_unapproved_theorem_axioms(self) -> None:
         with patch(
-            "verify.subprocess.run",
+            "verify._run_compiler",
             return_value=subprocess.CompletedProcess(
                 [],
                 0,
@@ -299,13 +342,13 @@ class VerifyTests(unittest.TestCase):
         self.assertTrue(result.success)
 
     def test_timeout_fails(self) -> None:
-        with patch("verify.subprocess.run", side_effect=subprocess.TimeoutExpired([], 60)):
+        with patch("verify._run_compiler", side_effect=subprocess.TimeoutExpired([], 60)):
             result = check_lean_file_detailed("theorem valid : True := by trivial", self.project, "candidate")
         self.assertFalse(result.success)
         self.assertIn("timed out", result.errors[0])
 
     def test_missing_executable_fails(self) -> None:
-        with patch("verify.subprocess.run", side_effect=FileNotFoundError("lake")):
+        with patch("verify._run_compiler", side_effect=FileNotFoundError("lake")):
             result = check_lean_file_detailed("theorem valid : True := by trivial", self.project, "candidate")
         self.assertFalse(result.success)
         self.assertIn("Could not invoke Lean", result.errors[0])
@@ -313,7 +356,7 @@ class VerifyTests(unittest.TestCase):
 
     def test_lean_timeout_is_classified_separately(self) -> None:
         with patch(
-            "verify.subprocess.run",
+            "verify._run_compiler",
             side_effect=subprocess.TimeoutExpired(["lake", "lean"], 60),
         ):
             result = check_lean_file_detailed(
@@ -342,7 +385,7 @@ class VerifyTests(unittest.TestCase):
 
     def test_scratch_name_cannot_escape_scratch_directory(self) -> None:
         process = subprocess.CompletedProcess([], 0, stdout="", stderr="")
-        with patch("verify.subprocess.run", return_value=process):
+        with patch("verify._run_compiler", return_value=process):
             result = check_lean_file_detailed(
                 "theorem valid : True := by trivial",
                 self.project,
@@ -393,7 +436,7 @@ class VerifyTests(unittest.TestCase):
 
     def test_stage_a_allows_sorry_but_not_admit(self) -> None:
         process = subprocess.CompletedProcess([], 0, stdout="", stderr="")
-        with patch("verify.subprocess.run", return_value=process):
+        with patch("verify._run_compiler", return_value=process):
             accepted = check_lean_file_detailed(
                 "theorem statement_only : True := by sorry",
                 self.project,

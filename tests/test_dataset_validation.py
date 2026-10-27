@@ -171,7 +171,7 @@ class DatasetValidationTests(unittest.TestCase):
             "status": "verified",
             "success": True,
             "lean_toolchain": "leanprover/lean4:v4.32.0",
-            "mathlib_revision": "test-revision",
+            "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
             "command": "lake env lean theorem.lean",
             "theorem_sha256": hashlib.sha256(
                 record["expected_lean_statement"].encode("utf-8")
@@ -361,6 +361,27 @@ class DatasetValidationTests(unittest.TestCase):
 
         self.assertTrue(report.is_valid, report.errors)
         self.assertEqual(report.eligible_problem_ids, ("reviewed",))
+
+    def test_proof_from_different_environment_is_ineligible(self) -> None:
+        for field, value in (("lean_toolchain", "leanprover/lean4:v4.14.0"),
+                             ("mathlib_revision", "different-revision")):
+            with self.subTest(field=field):
+                record = self.curation_record("wrong_pin", "family_one", "development")
+                self.complete_curation_review(record)
+                record["curation"]["theorem_verification"][field] = value
+                report = validate_curation_draft([record])
+                self.assertEqual(report.eligible_problem_ids, ())
+
+    def test_statement_elaboration_never_satisfies_proof_eligibility(self) -> None:
+        record = self.curation_record("statement_only", "family_one", "development")
+        self.complete_curation_review(record)
+        record["curation"]["theorem_verification"]["verification_scope"] = (
+            "exact_statement_type_elaboration_only; proof not verified"
+        )
+        report = validate_curation_draft([record])
+        self.assertTrue(report.is_valid, report.errors)
+        self.assertEqual(report.eligible_problem_ids, ())
+        self.assertTrue(any("theorem verification" in warning for warning in report.review_warnings))
 
     def test_missing_license_or_theorem_evidence_prevents_eligibility(self) -> None:
         record = self.curation_record("missing_evidence", "family_one", "development")

@@ -775,7 +775,8 @@ def audit_current_repository(output_dir: Path) -> dict[str, Any]:
         ],
     }
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "analysis_readiness_v0.1.0.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    with (output_dir / "analysis_readiness_v0.1.0.json").open("x", encoding="utf-8") as output:
+        output.write(json.dumps(result, indent=2) + "\n")
     return result
 
 
