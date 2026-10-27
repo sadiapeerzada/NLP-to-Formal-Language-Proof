@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "div_005",
+    "nl_statement": "If a natural number n is odd, then n squared is odd.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem odd_sq_of_odd (n : ℕ) (h : ∃ k, n = 2*k+1) : ∃ j, n ^ 2 = 2*j+1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review equivalence of the witness encoding and confirm imported arithmetic definitions."
+    }
+  },
+  "binding_sha256": "06cb828770296cc1bec3672a1c4892739e395c19471a45efa701c42a76b8c248",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_005",
+    "binding_sha256": "06cb828770296cc1bec3672a1c4892739e395c19471a45efa701c42a76b8c248",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

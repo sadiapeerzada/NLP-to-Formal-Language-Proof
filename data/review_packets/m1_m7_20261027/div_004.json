@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "div_004",
+    "nl_statement": "The sum of any two odd natural numbers is even.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem sum_two_odd_even (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1) : ∃ k, a + b = 2 * k",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_parity_products",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity result for a sum of odd natural numbers.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded using witnesses a = 2*i+1 and b = 2*j+1 rather than the Even/Odd predicates."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm witness formulation, natural-number multiplication notation, and fidelity to ordinary oddness."
+    }
+  },
+  "binding_sha256": "1a7349fdfa97554800003ecd45d900683826cf0d2bc34e2700c924422a3fe5f3",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_004",
+    "binding_sha256": "1a7349fdfa97554800003ecd45d900683826cf0d2bc34e2700c924422a3fe5f3",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

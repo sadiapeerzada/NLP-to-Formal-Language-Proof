@@ -1,0 +1,1652 @@
+{
+  "status": "BLOCKED",
+  "purpose": "readiness_only_not_experiment_results",
+  "candidate_count": 89,
+  "curation_validation": {
+    "errors": [],
+    "duplicate_candidate_groups": [
+      [
+        "arith_003",
+        "arith_003_mathlib"
+      ]
+    ],
+    "eligible_problem_ids": [],
+    "candidate_split_counts": {
+      "test": 60,
+      "development": 29
+    },
+    "eligible_split_counts": {
+      "test": 0,
+      "development": 0
+    },
+    "review_warnings": [
+      "Likely statement similarity between 'arith_003' and 'arith_003_mathlib'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'div_001' and 'div_005'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'lib_a_abs_product' and 'lib_q_triangle'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'lib_a_sqrt_square' and 'lib_q_sine'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'lib_d_prime_factorial' and 'lib_d_prime_parity'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'lib_q_log_tangent' and 'lib_q_sine'; human theorem/family duplicate review required.",
+      "Likely statement similarity between 'mod_002' and 'mod_003'; human theorem/family duplicate review required.",
+      "problem 'arith_001': curation.review_records must be an array.",
+      "problem 'arith_001': source/license evidence is incomplete; record is ineligible.",
+      "problem 'arith_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'arith_002': curation.review_records must be an array.",
+      "problem 'arith_002': source/license evidence is incomplete; record is ineligible.",
+      "problem 'arith_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'arith_003': curation.review_records must be an array.",
+      "problem 'arith_003': source/license evidence is incomplete; record is ineligible.",
+      "problem 'arith_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'arith_003_mathlib': curation.review_records must be an array.",
+      "problem 'arith_003_mathlib': source/license evidence is incomplete; record is ineligible.",
+      "problem 'arith_003_mathlib': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'arith_004': curation.review_records must be an array.",
+      "problem 'arith_004': source/license evidence is incomplete; record is ineligible.",
+      "problem 'arith_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'arith_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_001': curation.review_records must be an array.",
+      "problem 'div_001': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_002': curation.review_records must be an array.",
+      "problem 'div_002': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_003': curation.review_records must be an array.",
+      "problem 'div_003': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_004': curation.review_records must be an array.",
+      "problem 'div_004': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_005': curation.review_records must be an array.",
+      "problem 'div_005': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_005': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_006': curation.review_records must be an array.",
+      "problem 'div_006': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_006': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'div_007': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_008': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_009': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_010': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_010': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_011': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_011': source/license evidence is incomplete; record is ineligible.",
+      "problem 'div_012': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'div_012': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_001': curation.review_records must be an array.",
+      "problem 'ind_001': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_002': curation.review_records must be an array.",
+      "problem 'ind_002': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_003': curation.review_records must be an array.",
+      "problem 'ind_003': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_004': curation.review_records must be an array.",
+      "problem 'ind_004': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_004': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'ind_006': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'ind_006': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_007': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'ind_007': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_007': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_008': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'ind_008': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_008': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ind_009': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'ind_009': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ind_009': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ineq_001': curation.review_records must be an array.",
+      "problem 'ineq_001': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ineq_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ineq_002': curation.review_records must be an array.",
+      "problem 'ineq_002': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ineq_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ineq_003': curation.review_records must be an array.",
+      "problem 'ineq_003': source/license evidence is incomplete; record is ineligible.",
+      "problem 'ineq_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'ineq_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_abs_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_abs_product': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_abs_product': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_choose_symmetry': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_choose_symmetry': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_choose_symmetry': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_euclidean': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_euclidean': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_euclidean': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_exp_add': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_exp_add': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_exp_add': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_gcd_lcm': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_gcd_lcm': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_gcd_lcm': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_inverse_difference': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_inverse_difference': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_inverse_difference': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_log_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_log_product': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_log_product': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_min_max': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_min_max': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_min_max': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_power_add': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_power_add': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_power_add': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_sqrt_square': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_sqrt_square': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_sqrt_square': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_trig_unit': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_trig_unit': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_trig_unit': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_a_truncated_sub': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_a_truncated_sub': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_a_truncated_sub': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_bezout': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_bezout': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_bezout': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_coprime_power': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_coprime_power': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_coprime_power': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_coprime_successor': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_coprime_successor': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_coprime_successor': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_dvd_antisymmetry': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_dvd_antisymmetry': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_dvd_antisymmetry': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_euclid': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_euclid': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_euclid': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_factorization': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_factorization': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_factorization': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_frobenius': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_frobenius': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_frobenius': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_mersenne_gcd': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_mersenne_gcd': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_mersenne_gcd': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_prime_factorial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_prime_factorial': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_prime_factorial': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_prime_parity': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_prime_parity': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_prime_parity': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_totient_sum': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_totient_sum': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_totient_sum': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_d_unbounded_primes': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_d_unbounded_primes': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_d_unbounded_primes': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_alternating_binomial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_alternating_binomial': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_alternating_binomial': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_bernoulli': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_bernoulli': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_bernoulli': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_factorial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_factorial': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_factorial': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_fermat_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_fermat_product': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_fermat_product': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_fibonacci': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_fibonacci': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_fibonacci': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_telescope': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_telescope': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_telescope': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_i_vandermonde': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_i_vandermonde': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_i_vandermonde': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_cancel': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_cancel': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_cancel': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_canonical': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_canonical': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_canonical': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_crt': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_crt': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_crt': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_euler': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_euler': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_euler': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_fermat': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_fermat': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_fermat': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_gcd_obstruction': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_gcd_obstruction': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_gcd_obstruction': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_power': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_power': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_power': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_residue_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_residue_product': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_residue_product': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_m_wilson': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_m_wilson': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_m_wilson': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_amgm': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_amgm': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_amgm': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_cauchy': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_cauchy': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_cauchy': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_exp_tangent': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_exp_tangent': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_exp_tangent': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_finite_inclusion': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_finite_inclusion': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_finite_inclusion': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_integer_sqrt': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_integer_sqrt': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_integer_sqrt': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_log': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_log': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_log': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_log_tangent': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_log_tangent': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_log_tangent': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_quotient': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_quotient': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_quotient': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_reciprocal': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_reciprocal': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_reciprocal': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_sine': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_sine': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_sine': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_sqrt_monotone': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_sqrt_monotone': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_sqrt_monotone': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'lib_q_triangle': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'lib_q_triangle': source/license evidence is incomplete; record is ineligible.",
+      "problem 'lib_q_triangle': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'mod_001': curation.review_records must be an array.",
+      "problem 'mod_001': source/license evidence is incomplete; record is ineligible.",
+      "problem 'mod_001': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'mod_002': curation.review_records must be an array.",
+      "problem 'mod_002': source/license evidence is incomplete; record is ineligible.",
+      "problem 'mod_002': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'mod_003': curation.review_records must be an array.",
+      "problem 'mod_003': source/license evidence is incomplete; record is ineligible.",
+      "problem 'mod_003': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'mod_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'mod_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'mod_005': source/license evidence is incomplete; record is ineligible.",
+      "problem 'mod_005': successful pinned-environment theorem verification is missing; record is ineligible.",
+      "problem 'mod_006': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+      "problem 'mod_006': source/license evidence is incomplete; record is ineligible."
+    ]
+  },
+  "frozen_validation": {
+    "errors": [
+      "freeze manifest status must be 'frozen'; draft/unfrozen sets are rejected.",
+      "freeze manifest must record freeze_approved: true.",
+      "freeze manifest frozen_on must be an ISO date.",
+      "freeze manifest requires freeze_approval_evidence.",
+      "freeze manifest development_dataset must be an object.",
+      "freeze manifest test_dataset must be an object.",
+      "frozen dataset requires at least 60 eligible test records; found 0.",
+      "frozen dataset requires 15–20 eligible development records; found 0.",
+      "frozen dataset contains candidate records that are not all eligible.",
+      "manifest candidate_split_counts do not match current candidate counts.",
+      "freeze manifest dataset_author_ids must identify dataset authors for reviewer-independence checks.",
+      "freeze manifest requires locked_protocol_sha256.",
+      "freeze manifest requires a test_access_policy excluding test results from tuning and restricting inputs until protocol lock.",
+      "freeze manifest likely_duplicate_dispositions must be an array."
+    ],
+    "candidate_split_counts": {
+      "development": 29,
+      "test": 60
+    },
+    "eligible_split_counts": {
+      "test": 0,
+      "development": 0
+    },
+    "dataset_sha256": "bcddd248ad18623181562e09357b07c04039b0ff17879e17e419f2b6971c1118",
+    "development_dataset_sha256": "1dd7c77c8adea3df599a242f9edc384c616346a8e4f5c12d440b1223651b2a7b"
+  },
+  "protocol": {
+    "version": "0.2.0",
+    "status": "proposed_locked_for_review_not_preregistered",
+    "path": "configs/repair_experiment_protocol_v0.2.0.json",
+    "sha256": "ced0e392772700181188bddf3b59e67a5794980a28a0deaa4e03f5110e280861"
+  },
+  "prompt_sha256": {
+    "initial": "00ec7bc08fdf14274d021a308ebc27a51e17e46198b4dbc29002b958a1e04990",
+    "blind": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745",
+    "compiler_guided": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745"
+  },
+  "input_sha256": {
+    "data/research_dataset_draft_v0.1.0.json": "fec50bc77cb2782edba29ce08b680c63eb145092868853b3fc5efb947f025514",
+    "data/curation_batches/v0.1.0/candidate_records.json": "6082871fb51437bb2e2a3ccea9ee6c9392d9f3f4bf259e7cd0cc90ac57710eef",
+    "data/curation_batches/v0.1.1/candidate_records.json": "32dfab2e90fafd1c46accca8af6c7a41f34cbf518f932e203bd7710bbf129d0a",
+    "data/curation_batches/v0.1.2/candidate_records.json": "c1b748222eb968d80e9339e404bf75e76893d88041ab882b1c7e0e83296cdbc4",
+    "data/curation_batches/v0.1.3/candidate_records.json": "612a839f3404a2c4b8c3828f748513190ed3acfa5c40af8923c3572d80b5e17d",
+    "data/curation_batches/v0.1.4/candidate_records.json": "66c387a7004056bc95ab834f32fd985ff2e1f19d0941f2fe829f2627d40ccd58",
+    "data/curation_batches/v0.1.5/candidate_records.json": "8fe355435b6247f4d40030ddf5d88c001e1aeb51bc82949d16fe8baf3f956423",
+    "data/curation_batches/v0.1.6/candidate_records.json": "43a3e2d11da143b4853d4153a35e8a4f17522dc5788cfdbff206bcfe81cd3ff3",
+    "data/curation_batches/v0.1.7/candidate_records.json": "f70d531079a827b0a40fd17fc85003cf1e66aa854bce85bb59963f7bb7d61474",
+    "data/curation_batches/v0.1.8/candidate_records.json": "d0fc6b34163789ebf0e44629b3c68a67efb906db91ae93ebe3edd63654c3e6f2",
+    "data/curation_batches/v0.2.0/candidate_records.json": "ef24b400f4253dcd40466f72f3e5e73716357ff7bdf6d01fa35ca0ab5ab3468c"
+  },
+  "review_queue": [
+    {
+      "id": "arith_001",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "8aa2507ef8087049c265267ab36560cfbf928f35a0c321d5f2023006e753d649",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_001.json",
+      "review_packet_sha256": "d603580560590ea17783037fb940aa2b50afa6d84ef4cc0fc7a8db31cb8b9648",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_001': curation.review_records must be an array.",
+        "problem 'arith_001': source/license evidence is incomplete; record is ineligible.",
+        "problem 'arith_001': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "arith_002",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "ade996b0fd58fc4c5dd9cadf71cd51ed001593a261ea5e6b8c922362384d6eaa",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_002.json",
+      "review_packet_sha256": "1584ccd783e36e600b5f8eaee8a728f7c3d0114c44465e69fdc199f5906b7eef",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_002': curation.review_records must be an array.",
+        "problem 'arith_002': source/license evidence is incomplete; record is ineligible.",
+        "problem 'arith_002': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_001",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "27699ec76ae920b80676e6cd3f36ecc637b60270f00591ee30c387d12d61c710",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_001.json",
+      "review_packet_sha256": "2baf41269a7505fd405991a07051d7d8d5010d5a5a02a5513616969366ca2a09",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_001': curation.review_records must be an array.",
+        "problem 'div_001': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_001': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_002",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "nat_parity_products",
+      "statement_sha256": "6e1c9c3e7c702cc0656a065207fba94353e77b8b1aa63cab8eefd3767ad81418",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_002.json",
+      "review_packet_sha256": "9130f0de09e839719661e6ac32d4cec2a16cc7e8b21b48711a609ccc312c6354",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_002': curation.review_records must be an array.",
+        "problem 'div_002': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_002': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_003",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "nat_divisibility_factorization",
+      "statement_sha256": "7852d1e31cce78ba186cb1f1c575672517ce379c6c30c77047419866d09b7698",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_003.json",
+      "review_packet_sha256": "398ce10bbf485532fc6365bb82b18d167ac5f211eebf3f8152c02c3ef2de1eac",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_003': curation.review_records must be an array.",
+        "problem 'div_003': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_003': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "mod_001",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "integer_congruence_translation",
+      "statement_sha256": "fb24e795f43840cfec3cd5caabce7ab58976500b85f00142f33822d47a75eebc",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_001.json",
+      "review_packet_sha256": "229fca2c04ff77ed55dfc3ec5e2936831b69801831aa814109d493b5f19acf30",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'mod_001': curation.review_records must be an array.",
+        "problem 'mod_001': source/license evidence is incomplete; record is ineligible.",
+        "problem 'mod_001': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "mod_002",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "square_residue_classes",
+      "statement_sha256": "96163b0ec67b8462038d9492e8f660b5d9c940ee0ccb188759a0d88fbe66b5c9",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_002.json",
+      "review_packet_sha256": "ae5a0e835013a0317cb424a6e46740fc788baa24246770e5c2f25d5fa999dc45",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'mod_002': curation.review_records must be an array.",
+        "problem 'mod_002': source/license evidence is incomplete; record is ineligible.",
+        "problem 'mod_002': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_001",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "nat_finite_sum_identities",
+      "statement_sha256": "e4cb250b19802868466e306428f55fd9319a6ac3e7df3fcba5b1dc5c1524d0c7",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_001.json",
+      "review_packet_sha256": "17e4befeadcd4fbce07e0dba5c553d77dc534e71f6a6c265d4a9aec9d086ddda",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_001': curation.review_records must be an array.",
+        "problem 'ind_001': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_001': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_002",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "nat_finite_sum_identities",
+      "statement_sha256": "98541a2287bc63c9cf923fa343d158a3feadaef0a2136f5f4c07087f128fb05e",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_002.json",
+      "review_packet_sha256": "76262676bdec22377707098b423ceb4ce8da4c3518c4b4a82d4d1119322fac4d",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_002': curation.review_records must be an array.",
+        "problem 'ind_002': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_002': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_003",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "nat_power_growth",
+      "statement_sha256": "05a723b0710a38250fae28abed4aa7cb9ddc3cc79ba9719d094bf7ce68d8b9ce",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_003.json",
+      "review_packet_sha256": "5f3dc7940cab68dd9c19b55639bb61b589f14535a03ad05b0645d8e125ca697d",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_003': curation.review_records must be an array.",
+        "problem 'ind_003': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_003': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_004",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "nat_parity_products",
+      "statement_sha256": "0e04a3afbc42e84cfc8a8d53b74bcbc9e3bc5e90c2457400c128bc1d814cbcf6",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_004.json",
+      "review_packet_sha256": "f3fe30dc63b94305eb9a14850061abea69e882963c70d321af6ea436b8cee347",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_004': curation.review_records must be an array.",
+        "problem 'div_004': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_004': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ineq_001",
+      "category": "inequality",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "c40a79a816c13efc680305aa6a80628a6aa0f77c99d97e7efd7ceb67385165d2",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ineq_001.json",
+      "review_packet_sha256": "9dc5fecb1721dea4d7ad2e44c111038767c41f61c43c6b8232ba7db553cb0ede",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ineq_001': curation.review_records must be an array.",
+        "problem 'ineq_001': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ineq_001': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "arith_003",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "nat_distributivity",
+      "statement_sha256": "f6753dfc6a44f9da8a9408aee308175c68c5b27769f1e043ffdb3ce8c0aba0f5",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_003.json",
+      "review_packet_sha256": "e250bc1315e128bd43a64334651bf77e0ebfd5e883cc2777d83d37db385d9a6a",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_003': curation.review_records must be an array.",
+        "problem 'arith_003': source/license evidence is incomplete; record is ineligible.",
+        "problem 'arith_003': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "arith_003_mathlib",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "nat_distributivity",
+      "statement_sha256": "c3ebe91cf40cfdf918706406b345be1ccfc1eab8e15fc45311379bffb9613faa",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_003_mathlib.json",
+      "review_packet_sha256": "109a280bc21988d072a509e94d1dd4e13e2178d68cfa4be51406aaff96d5a2ef",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_003_mathlib': curation.review_records must be an array.",
+        "problem 'arith_003_mathlib': source/license evidence is incomplete; record is ineligible.",
+        "problem 'arith_003_mathlib': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "arith_004",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "2fb27c4682c2e2a727a529be908489dda11db38179fd7ccbc63e2fdd3f454aa7",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_004.json",
+      "review_packet_sha256": "3e4cd2174b22267366dcb402d630078ba1d9147d98b2b642d85ada058c0bedaf",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_004': curation.review_records must be an array.",
+        "problem 'arith_004': source/license evidence is incomplete; record is ineligible.",
+        "problem 'arith_004': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_005",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "7dcf22396430210f36f777a29cba9fac0f57eda7258f713f74f022758095c9fd",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_005.json",
+      "review_packet_sha256": "db4a0e5b21c855d0705ba56cbd43dc3ec954a6bbc023baf23fd0bf5d74e8c6e5",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_005': curation.review_records must be an array.",
+        "problem 'div_005': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_005': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_006",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "nat_square_identities",
+      "statement_sha256": "34d8efee4fce00c92f6e4a2199afc96cd444708d66b8bf7fdc5b15d5df377708",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_006.json",
+      "review_packet_sha256": "709b60f48d5579350a3d3ff187d9d30edf5ce3db4f7bd1b097a0ff4ebde9a5b7",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_006': curation.review_records must be an array.",
+        "problem 'div_006': source/license evidence is incomplete; record is ineligible.",
+        "problem 'div_006': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ineq_002",
+      "category": "inequality",
+      "proposed_split": "development",
+      "family": "nat_product_bound",
+      "statement_sha256": "529e4bf97f0d8c867d05933e0b4a46d91eb6c234f7bf05d85a8eb4fcb41f6d68",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ineq_002.json",
+      "review_packet_sha256": "ea560e6b35d17e0e83cf706c979357c75db3735309605c924f3d885992946baa",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ineq_002': curation.review_records must be an array.",
+        "problem 'ineq_002': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ineq_002': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ineq_003",
+      "category": "inequality",
+      "proposed_split": "development",
+      "family": "nat_power_growth",
+      "statement_sha256": "a2507539f9a6b380eb8ea0bb5bc1156106793cc73359ebcb8d2aace0917da42e",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ineq_003.json",
+      "review_packet_sha256": "22691b1fcc28e473f0eaf347d7be6ec6a0c45011407cbcb2a8ca9f7110c2b36e",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ineq_003': curation.review_records must be an array.",
+        "problem 'ineq_003': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ineq_003': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_004",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "nat_finite_sum_identities",
+      "statement_sha256": "de053969eca88b1059dbe401be7e7b114294e0f270fa947a1b274b975bb03b00",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_004.json",
+      "review_packet_sha256": "c1cbc1de2b3300d47749c65a46b594dab4fc921608582ddf0ce61a6b22b19940",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_004': curation.review_records must be an array.",
+        "problem 'ind_004': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_004': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "mod_003",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "square_residue_classes",
+      "statement_sha256": "60ba6c0198f85f92cb445a33aab7321c1c2b5eed0bebdb6ad182d41ac641483f",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_003.json",
+      "review_packet_sha256": "cd999d0346744cd1fb6f370b93a2ed7865351b295fa32f4552bdedebd4f7aed7",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'mod_003': curation.review_records must be an array.",
+        "problem 'mod_003': source/license evidence is incomplete; record is ineligible.",
+        "problem 'mod_003': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_007",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "integer_parity",
+      "statement_sha256": "5a1e3d397bc6653d1fc23b27d20f4f267829df27d903ae8ec8321cb284267a47",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_007.json",
+      "review_packet_sha256": "e8328f3b0b36403490b109446883de198a2c09fdf2450645b71c18854caf3c4d",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_007': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "div_008",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "integer_parity",
+      "statement_sha256": "05b9760863e9e1db0e4172b00041b5c2029e8da9bca46330ffd65743b22174b4",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_008.json",
+      "review_packet_sha256": "83bafd5fc16f9b7ab8b396f1f3f899dd31a821ec8de4127c120f5e46465ef936",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_008': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "div_009",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "integer_parity",
+      "statement_sha256": "8daacec71a934099f1ceea0f53d19937e41e4fbd54f6113874f8cf1104647b13",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_009.json",
+      "review_packet_sha256": "8b20664743aecd8197b2500dde8e96283c2e9a3037cef7397323b0b65e277355",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_009': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "ind_005",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "pascal_triangle_row_sum",
+      "statement_sha256": "b516fed7d21e8d697e102b7ac1edfcca3c7c900eff1869c50c8e311d2f9f7dcc",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_005.json",
+      "review_packet_sha256": "bbf122e9be74ebe1997f7e587635de6e53e1f5e93659702b4952b0c2901737d2",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "ineq_004",
+      "category": "inequality",
+      "proposed_split": "development",
+      "family": "linear_inequality_by_induction",
+      "statement_sha256": "4e211a2bdbb298f2e60e1c74bf395df4ca3a9bf5f0a84a22bf8efcd7371b0cc7",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ineq_004.json",
+      "review_packet_sha256": "91423c1214b68103c48b1aed7bd905b82197765ce2cc9c412fe9a3cf835d947a",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ineq_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "mod_004",
+      "category": "modular_arithmetic",
+      "proposed_split": "development",
+      "family": "integer_congruence_addition",
+      "statement_sha256": "f10f56441682b039739b6945f82aa3b46a6ae2326e6446c98688b6e6856d7a8f",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_004.json",
+      "review_packet_sha256": "9f091a50f0889409f7ddecd2c53fb3ffd8bb93f1b23267e73337cb8b3e3c4170",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'mod_004': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "arith_005",
+      "category": "arithmetic_identity",
+      "proposed_split": "development",
+      "family": "binomial_coefficient_boundary_values",
+      "statement_sha256": "c500d07706cc31193ffc87b4d639d9d873b5dce2965cff1ffef62bef5055a851",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/arith_005.json",
+      "review_packet_sha256": "a1b1be436a7ab4625c9c3c9dbb412129858eb2c6b7b509a181729ac083ce4960",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'arith_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement."
+      ]
+    },
+    {
+      "id": "ind_006",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "postage_representation_5_8",
+      "statement_sha256": "bcd79ae4cab0062240de4a99c428327f180aacd8e39b7c9d3a9435583f6481b8",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_006.json",
+      "review_packet_sha256": "dc3b57c99b05f841fcd016d7f6a5c6394bcc800e16deb7f32c66e7a770762063",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'ind_006': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'ind_006': source/license evidence is incomplete; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_010",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "integer_divisibility_closure",
+      "statement_sha256": "c9a2c2c1baeb4f8ab08a1903335f15059dd518e19459fef453cf3db3f03dd16c",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_010.json",
+      "review_packet_sha256": "edb30d5d034bc2168c5555e717a25f3bcc3679d327f5c4b24c3e05210d26a9e8",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_010': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'div_010': source/license evidence is incomplete; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_011",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "integer_divisibility_closure",
+      "statement_sha256": "62e72ce35a5a2c86d84ecf887092c7a9c548a6f2c2918e3fbd22ccdacf8b4923",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_011.json",
+      "review_packet_sha256": "c1ebbe50686b7cdc3caf4d5ff7e2960293bd863cb2ab1bee5f649d862a8f784b",
+      "verification_scope": "legacy_unspecified",
+      "blockers": [
+        "problem 'div_011': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'div_011': source/license evidence is incomplete; record is ineligible."
+      ]
+    },
+    {
+      "id": "mod_005",
+      "category": "modular_arithmetic",
+      "proposed_split": "development",
+      "family": "seven_power_congruence_mod_six",
+      "statement_sha256": "38807b1b9851b5e1cbc23820a26f98fe1d287dd3e26300af0f6acf6d292d6a5c",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_005.json",
+      "review_packet_sha256": "7c514add132b52840af4b813a9dd8fca7082c52e8108102989e9915bd2f85909",
+      "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+      "blockers": [
+        "problem 'mod_005': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'mod_005': source/license evidence is incomplete; record is ineligible.",
+        "problem 'mod_005': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_007",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "sum_of_first_squares",
+      "statement_sha256": "9b1a45c9477e00f074b0ccfabfdc9f4d6cbb19d2bee827eaf82980c81c19dcd7",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_007.json",
+      "review_packet_sha256": "636fc19e48951c4a9d55f5c24f211eb664a14e0ce93bbd46adc317ef70963c24",
+      "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+      "blockers": [
+        "problem 'ind_007': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'ind_007': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_007': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_008",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "binary_representation_by_distinct_powers",
+      "statement_sha256": "00fa82528e208b267f47f795a4811032f6559f92e021f2ffe2645e266ff70aec",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_008.json",
+      "review_packet_sha256": "ee86b0fdb36e6f7e53c7ee0c50f0c5ee7ca4651911df86e34ddc0ace463e023f",
+      "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+      "blockers": [
+        "problem 'ind_008': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'ind_008': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_008': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "ind_009",
+      "category": "induction",
+      "proposed_split": "development",
+      "family": "hockey_stick_binomial_identity",
+      "statement_sha256": "c5ef1a9cac36eea3f5d1b50f1a9a47f8d77bb9aa16ef2a845c45c93b0c71612b",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/ind_009.json",
+      "review_packet_sha256": "8a0a3e31d9ae9769fe57e7a3f4a5307baf6de5b486ed175f77acee38dab0a714",
+      "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+      "blockers": [
+        "problem 'ind_009': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'ind_009': source/license evidence is incomplete; record is ineligible.",
+        "problem 'ind_009': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "mod_006",
+      "category": "modular_arithmetic",
+      "proposed_split": "development",
+      "family": "greatest_modulus_of_two_fixed_integers",
+      "statement_sha256": "afa6b4a590ffe3d6dd07e2b6f9342310e23c2eb9f1ebb1a53e7f8e2dcbd8e3a6",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/mod_006.json",
+      "review_packet_sha256": "3cf7773d4e64cf2515315693b309dde709399311cc51bfb7fe3c69e2f417a416",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'mod_006': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'mod_006': source/license evidence is incomplete; record is ineligible."
+      ]
+    },
+    {
+      "id": "div_012",
+      "category": "divisibility",
+      "proposed_split": "development",
+      "family": "linear_diophantine_general_solution",
+      "statement_sha256": "49f92ce3a31e0f546f096fa8e7b6de12596ef0d3a3f70f17654031ab6901fcb1",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/div_012.json",
+      "review_packet_sha256": "6c309a57189b72b4edf35dfb8a155eabe7c6e4e730936649cc5db9aa4236af67",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'div_012': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'div_012': source/license evidence is incomplete; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_power_add",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "power_addition_law",
+      "statement_sha256": "424cbe42856c944338e2fd6d9933e863584473bcacdebab34c2962ba639e4f9b",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_power_add.json",
+      "review_packet_sha256": "492e0866e6ac9cb07e2e941c73b594fe23f0e6306d8dd123a801f37aa86df6b0",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_power_add': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_power_add': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_power_add': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_euclidean",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "integer_euclidean_reconstruction",
+      "statement_sha256": "74281691c6cc2b1f05b75f9d7cf3351ac0a6e5eb4d348444f7b7bfe00e376634",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_euclidean.json",
+      "review_packet_sha256": "ac41420e8e39e727fe86cec3eb0ab019d5d2c0892a1ab0492a1d72a9098c7698",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_euclidean': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_euclidean': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_euclidean': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_choose_symmetry",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "binomial_complement_symmetry",
+      "statement_sha256": "8308329c75a1fd70bbe6afe30faa1994a15c0cebb39a06931cac7e76cc25ed91",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_choose_symmetry.json",
+      "review_packet_sha256": "084645360fe5567c8cb274601b65c61de0f1db3de29b85bfdd2e8c395377321c",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_choose_symmetry': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_choose_symmetry': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_choose_symmetry': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_abs_product",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "absolute_value_multiplicativity",
+      "statement_sha256": "d6f7d22872a94589d2fddb50146a532fc77b721ea8809d2d8b7f7baa5434e0ec",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_abs_product.json",
+      "review_packet_sha256": "ecfd70fe3f4e558dc24d6cfa944d65878c745cd1754ed1334232813b77a9004c",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_abs_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_abs_product': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_abs_product': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_sqrt_square",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "principal_square_root_inverse",
+      "statement_sha256": "d6d43cc91bf6a9864f3cdc54cabddd2c89d767953312c12c0f58383f86634dfc",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_sqrt_square.json",
+      "review_packet_sha256": "2d6299c1fa4d3f04a638952a372aecf08b3339150f312564bb55cc134e9dc41c",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_sqrt_square': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_sqrt_square': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_sqrt_square': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_truncated_sub",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "truncated_subtraction_recovery",
+      "statement_sha256": "ec027b77e1b1aa02acb541550fcb37543faf5246df39fe04e110c4efa6545e6b",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_truncated_sub.json",
+      "review_packet_sha256": "a2a944b982a9309d03dff119abcb0534298f0f710d6f41625412cbf266469c5f",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_truncated_sub': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_truncated_sub': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_truncated_sub': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_inverse_difference",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "reciprocal_difference_identity",
+      "statement_sha256": "bde6e9ae554da889f049632c0b42f6ebf803b0a3f0beca211ead426b981a4c13",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_inverse_difference.json",
+      "review_packet_sha256": "aea5ea76d3c71f26e7f11fe1251347a240ee220dc3828997db0e9ee9f798e7c7",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_inverse_difference': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_inverse_difference': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_inverse_difference': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_gcd_lcm",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "gcd_lcm_product_identity",
+      "statement_sha256": "f991ff09cea83a0a3704eeb3f7249b285e714788b34d6ef35cd604ae8dbb4c3c",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_gcd_lcm.json",
+      "review_packet_sha256": "fa543acdca657af1588c3022f3fa46c3f2f771a8a781f3fb24cba843caaf306e",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_gcd_lcm': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_gcd_lcm': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_gcd_lcm': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_euclid",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "euclid_prime_product",
+      "statement_sha256": "d1ceae197b8657fb4fef9e6b0b1c22bc1ecbf11dcd4c4123df561a27f5219e61",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_euclid.json",
+      "review_packet_sha256": "b0afea65e7ef943c746e54c78791ce87851ec9e88b5f6f2a8782383d435d7381",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_euclid': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_euclid': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_euclid': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_unbounded_primes",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "unbounded_primes",
+      "statement_sha256": "c1502ff7c83f1e71782a0ff58da426eff20c98925365aa0ace3f3563412c6788",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_unbounded_primes.json",
+      "review_packet_sha256": "1f355ee2d74f77f349a210e60af81e7a81698a347d08d8a21fddc967b43e2f8b",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_unbounded_primes': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_unbounded_primes': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_unbounded_primes': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_bezout",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "bezout_integer_representation",
+      "statement_sha256": "d5a20ebe7d43b88277a2d81ab2fdc1124fc18dd63e527c625d9151c61c261d51",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_bezout.json",
+      "review_packet_sha256": "46e95723378e1402da918758f390049101adf8cba82364223bb4a6f0a9907ede",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_bezout': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_bezout': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_bezout': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_coprime_successor",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "consecutive_coprimality",
+      "statement_sha256": "53916b0015923ea11e36184f3a4033b1f9cea3dd1282056c4c5018581b91f599",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_coprime_successor.json",
+      "review_packet_sha256": "0fc227eac954bb1c8ca404ea3370d931900e8c243375e1cfc2749130838bc24d",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_coprime_successor': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_coprime_successor': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_coprime_successor': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_prime_factorial",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "prime_factorial_threshold",
+      "statement_sha256": "77571d97dfbf18c92274a848ae551b6b1a4f238641f5382e873e361f2fb23e52",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_prime_factorial.json",
+      "review_packet_sha256": "37419874e3df7e4029701f1e31e29a0363750a0123b3fd911b78793ec7392154",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_prime_factorial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_prime_factorial': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_prime_factorial': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_mersenne_gcd",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "mersenne_gcd_exponents",
+      "statement_sha256": "831b9a27e6c36c82bb66c616ce003424dbe57acf7d7fb8ed402677eee4958d20",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_mersenne_gcd.json",
+      "review_packet_sha256": "6781f7cfecb8f4d90a250b516b0845d61bb8fce04973b1c149038832c7fa3a26",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_mersenne_gcd': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_mersenne_gcd': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_mersenne_gcd': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_prime_parity",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "prime_parity_dichotomy",
+      "statement_sha256": "ca87691f752f40ae8e7bb7708d89bf455e2b03c96c697174c29dae245247c490",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_prime_parity.json",
+      "review_packet_sha256": "17587b86875fcbae12d27e9fb9572c78ddd7cbe96ad668574a78783a9d28f263",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_prime_parity': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_prime_parity': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_prime_parity': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_dvd_antisymmetry",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "divisibility_partial_order",
+      "statement_sha256": "704a8fb2e449cb3bc1548938e6e8723d98671842f9e54a2d0ab1a15961ba2507",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_dvd_antisymmetry.json",
+      "review_packet_sha256": "5238291a2345478a728a47f48f71742740cc05fc4c349a9a349b6f5e9acd7b1f",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_dvd_antisymmetry': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_dvd_antisymmetry': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_dvd_antisymmetry': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_coprime_power",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "coprimality_power_invariance",
+      "statement_sha256": "a591b06d074e7135023daecdb752e25bd817a5afdb92947b6f20d51ca8bb5bc4",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_coprime_power.json",
+      "review_packet_sha256": "41e02ccc3c1ba882793d088675ef5730f1cf10d9d5d3ca6546fe5c130ffef2e8",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_coprime_power': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_coprime_power': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_coprime_power': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_frobenius",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "coprime_positive_combination_obstruction",
+      "statement_sha256": "804e480c36df84d1e0356e180f91ff47821d9d4431218c3bf6c6c56bfcfabd90",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_frobenius.json",
+      "review_packet_sha256": "542d2668bd8aeff6ea8f92ee77b68a9598013e7c3a111ec6b1493993c38b2207",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_frobenius': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_frobenius': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_frobenius': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_factorial",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "factorial_successor_recurrence",
+      "statement_sha256": "865dcfa129360f658d43f67b29248300ecd2807a9d5fea9934bae22edd7cb471",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_factorial.json",
+      "review_packet_sha256": "25de6385090bb7f92af675cac097cc149dd944513424b2b672d4b8f853aa68c1",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_factorial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_factorial': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_factorial': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_fibonacci",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "fibonacci_successor_recurrence",
+      "statement_sha256": "c129796ba6480d03ef51d7c3c25015d7282112329ab40e5e2c87c09187ae7e52",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_fibonacci.json",
+      "review_packet_sha256": "67440ccad69900460269e1985f6b103d7492fa3553008ec32e56cd58054eb4d9",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_fibonacci': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_fibonacci': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_fibonacci': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_bernoulli",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "bernoulli_inequality",
+      "statement_sha256": "7b3fbb286e27e4dea355bf866b57268626464606a7e71a65e07654ba3e7cbf8d",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_bernoulli.json",
+      "review_packet_sha256": "cf3f7fa978aa24ac093c33983237e623368a0c0520475b44acad846eac50911e",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_bernoulli': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_bernoulli': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_bernoulli': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_vandermonde",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "vandermonde_convolution",
+      "statement_sha256": "0f95cd3cdb6c0d941e9c70c37b5ac0c772ab369d7384736a151e3e4f0a62a389",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_vandermonde.json",
+      "review_packet_sha256": "4d39ee75a5428ad9e1e20e25dcf55feb139efa6350c146947fd3501ee8d9575e",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_vandermonde': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_vandermonde': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_vandermonde': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_fermat_product",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "fermat_number_product",
+      "statement_sha256": "be4c6d646b240cfc1f3ae05899b4ef89f0879648304f2fbc672622fdca6a6dbf",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_fermat_product.json",
+      "review_packet_sha256": "7e7b699fc0db4350766317b51051a403e5315307445ad7fbbf5d444967919caa",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_fermat_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_fermat_product': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_fermat_product': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_amgm",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "two_variable_quadratic_amgm",
+      "statement_sha256": "1aab3d7670c2c0999b33c89faebe2bbb691579dd5315fcafbdf246900ab62499",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_amgm.json",
+      "review_packet_sha256": "0f6af6bb0097c254cf880ab66b5ee4522b8e428f29618b60e46bdbb2d4efdecd",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_amgm': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_amgm': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_amgm': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_cauchy",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "two_dimensional_cauchy_schwarz",
+      "statement_sha256": "7e949397f06e74ad0536e80eb9fbd487bd67f7af5eac19f13af598d1894017e8",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_cauchy.json",
+      "review_packet_sha256": "71a191f654096e41ec2796ffb8d56dd5d4202bedbae978928982bd2586815cd1",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_cauchy': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_cauchy': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_cauchy': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_triangle",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "real_absolute_triangle_inequality",
+      "statement_sha256": "52bb7995d8e7907e1ce6fe98bb4e19cc31f1729bc192ad45031cd4b5ce3009cc",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_triangle.json",
+      "review_packet_sha256": "4d8d33371c02db90b78ca11d880fb0d1aabe42098d26e589a27dd880e8a04b1d",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_triangle': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_triangle': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_triangle': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_reciprocal",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "positive_reciprocal_antitone",
+      "statement_sha256": "9ff6511db53e6e5722a59dda87893c0b9d91f66cfa5971f11fc75ab436d96f86",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_reciprocal.json",
+      "review_packet_sha256": "98cd4882310e80bb8df5c47e01f5bde9fd2149df676af69a25ff23be03cc6075",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_reciprocal': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_reciprocal': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_reciprocal': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_log",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "integer_logarithm_lower_power_bound",
+      "statement_sha256": "4133e0c5dfedc9f6de5c3f5be8b46b8cc4a4cb32758d9e19671979282b05e8c6",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_log.json",
+      "review_packet_sha256": "e2d127940cda559d8eb5d58292a46dc520699e418550e7975a1988ef7bbbbe26",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_log': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_log': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_log': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_sqrt_monotone",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "principal_square_root_monotonicity",
+      "statement_sha256": "edb32f0bbce5046d878e749e99c21f43a6db694e3bc58bbd1b8f998884098126",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_sqrt_monotone.json",
+      "review_packet_sha256": "4d6bb6c9f75fccd6c30d65ba006e7c10cc9c5b8322b2eb4bfbd18d8b8a1f4004",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_sqrt_monotone': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_sqrt_monotone': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_sqrt_monotone': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_exp_tangent",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "exponential_tangent_bound",
+      "statement_sha256": "1db4f60170a4a62becf8764e4231f3cbf7fab0b80cd44a53a4e4821b00ca7e4f",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_exp_tangent.json",
+      "review_packet_sha256": "7b58d0dc31d08b116400cfbb0edfb036af7acf43086fd59c4528917ef834dfc6",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_exp_tangent': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_exp_tangent': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_exp_tangent': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_sine",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "sine_linear_bound",
+      "statement_sha256": "a03d3d21de8c4c71674360df269c0046fbe35728494325cc94dcb673933734db",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_sine.json",
+      "review_packet_sha256": "24a78f37d26e1f85d3486f0ae7ba96039f9b7654a4ec9f323298c5efecce897c",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_sine': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_sine': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_sine': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_quotient",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "natural_quotient_bound",
+      "statement_sha256": "e382499d083a5deac0c4aa0a67327bd4f7a4ffa7d8c5df426aa6f768fad5ab4d",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_quotient.json",
+      "review_packet_sha256": "ba80e244c0da97cfb2ade2ecdae03ca6d607d553e9b26e0913207228cd51f60d",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_quotient': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_quotient': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_quotient': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_crt",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "chinese_remainder_compatibility",
+      "statement_sha256": "dfedbbac87f761cd6776b65cf0aa41f0744099eb9d54d62a8f7170713dc5dcb9",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_crt.json",
+      "review_packet_sha256": "326d1db090e91dcfeb31d4a70d2946d524b3dcc6b5b37922c9248a9be1e2fdc0",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_crt': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_crt': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_crt': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_cancel",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "congruence_cancellation_adjusted_modulus",
+      "statement_sha256": "f6bfb7af88db4221da91811170c6d1087522ef1e304522ad2d422be19cbc0e5a",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_cancel.json",
+      "review_packet_sha256": "8c10f3663d7510f6634ebd778429fa554f8d17807ab1eb1d6f9b6170d2256cbb",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_cancel': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_cancel': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_cancel': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_canonical",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "canonical_remainder_uniqueness",
+      "statement_sha256": "b3f6a4bf45cca419e7dbab38b91a3193ac2ae8d803a29e1cbcf1280fb614d45a",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_canonical.json",
+      "review_packet_sha256": "ddf1f7a83b20d30616c28bde5c92c887bb66ac2c6b26abc348606de87ca076cf",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_canonical': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_canonical': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_canonical': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_fermat",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "fermat_little_theorem",
+      "statement_sha256": "b4bc86f54028ef33430566e36522ab64f5b5591fe4d10539d4ef6be0098dd93c",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_fermat.json",
+      "review_packet_sha256": "026783a5d0cfbe834a932f6c3c1d15654d258a8d7928605a01ffb49dd122fa02",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_fermat': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_fermat': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_fermat': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_wilson",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "wilson_factorial_congruence",
+      "statement_sha256": "3d23e6905936c1662a9d6c05461022f37c4eef9ae902c4db8b27c9742e7bd4fc",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_wilson.json",
+      "review_packet_sha256": "7c45d88b38ff0be8bd9e37c01a71e510e8f4aec7378314d3064f4d6a411abbc3",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_wilson': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_wilson': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_wilson': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_power",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "congruence_power_preservation",
+      "statement_sha256": "c5ec70f85fc3052513ae63bba837b7f83f7a6a226e4a0e99c3080315f8b846eb",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_power.json",
+      "review_packet_sha256": "dd85ebb3de9392f5cd13c1c1d358fc933006dfb0f1504b213b40a43428886d08",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_power': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_power': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_power': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_gcd_obstruction",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "linear_congruence_gcd_obstruction",
+      "statement_sha256": "7154fc3ad5b6697ad5d6c2f8d18811d7d54ee845916bc62e61fdf1797c4caa9d",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_gcd_obstruction.json",
+      "review_packet_sha256": "238ab45c402e5e2ff043341e9a7e7b99180d611a202d071031c9ef32223fe3b3",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_gcd_obstruction': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_gcd_obstruction': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_gcd_obstruction': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_residue_product",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "residue_multiplication_reduction",
+      "statement_sha256": "aedb15967740679556ba7d23a3b40c2888208a295b4f048c6bd8b20e3ba9d622",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_residue_product.json",
+      "review_packet_sha256": "0d68655c0080de6d142eb08a1d2ec80ab666d80a3839debe94b7b597afe80eb3",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_residue_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_residue_product': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_residue_product': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_trig_unit",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "trigonometric_unit_circle_identity",
+      "statement_sha256": "77936b45aca34bbf41ae8287ef86ce114ad3f59c72c2d511f7dc0240b4dec07c",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_trig_unit.json",
+      "review_packet_sha256": "e7286fe8f4fdbbc27aed31000a0ea67710c93b331b9238f5c95e408650f33911",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_trig_unit': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_trig_unit': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_trig_unit': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_log_product",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "real_logarithm_product_law",
+      "statement_sha256": "1555cce7167595ff761de1721d0d9cb11be0b388a7ec6e1bb38c0e0badd7dc4d",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_log_product.json",
+      "review_packet_sha256": "4eb38435a75067287787afe7f1a7aebcf46b0987e3b310dbeeb8519a3c288cdc",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_log_product': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_log_product': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_log_product': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_exp_add",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "exponential_addition_law",
+      "statement_sha256": "aa90042d657cce36f86e7ebdb1afbcbf52d3faa39402d6910721ff8e39bab167",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_exp_add.json",
+      "review_packet_sha256": "59666ece583836923e686efc35e8141cc81a2b0b9b6b35d0611be7f6c2c93d9e",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_exp_add': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_exp_add': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_exp_add': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_a_min_max",
+      "category": "arithmetic_identity",
+      "proposed_split": "test",
+      "family": "lattice_min_max_sum",
+      "statement_sha256": "5ffd7bfbff36d847db36ae6ffaf73545a902b6599098e6cec5b48ce8560bacc8",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_a_min_max.json",
+      "review_packet_sha256": "5577f7782280ef62ef2e152ce642643dfe34033990aff94bb0960b1818dae9fd",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_a_min_max': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_a_min_max': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_a_min_max': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_factorization",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "prime_factorization_product_exponents",
+      "statement_sha256": "d962041f872f4af0957a7b05bb1c8ffc32867b95da7463cc3efb67152ae9c843",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_factorization.json",
+      "review_packet_sha256": "05d65dee1e162ad6c28410c89f2489148e7f74ef69cd800a82cfec41c29484ef",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_factorization': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_factorization': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_factorization': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_d_totient_sum",
+      "category": "divisibility",
+      "proposed_split": "test",
+      "family": "totient_divisor_sum",
+      "statement_sha256": "ef55f0d56c27a1fedbef11fd0f7f7ead42cffde9a66f80873c8062db8a303762",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_d_totient_sum.json",
+      "review_packet_sha256": "3cbf3d3e0e016299ffc47df81a71f9fc0b471e5244ca22df423524d2fecd5694",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_d_totient_sum': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_d_totient_sum': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_d_totient_sum': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_telescope",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "finite_integer_telescoping",
+      "statement_sha256": "2ff61f2ad3c74cfd5f1c2d0af7cb96f1ec3ee727a1583c74b0e9d8a7433829bd",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_telescope.json",
+      "review_packet_sha256": "193c0747afcdb042e969d21a6639f9e76adffcc5ba74a59d779e6262dbe661d1",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_telescope': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_telescope': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_telescope': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_i_alternating_binomial",
+      "category": "induction",
+      "proposed_split": "test",
+      "family": "alternating_binomial_cancellation",
+      "statement_sha256": "d0aa99b548a9992ab98f6dea07518d6d3126dd31a9c965fe8259991ae46107a8",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_i_alternating_binomial.json",
+      "review_packet_sha256": "8754603761a94c23c8d38b1da0e3b697aa0bb8fbbd98b0cb6f3bf919c4572ed5",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_i_alternating_binomial': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_i_alternating_binomial': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_i_alternating_binomial': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_integer_sqrt",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "integer_square_root_floor_bound",
+      "statement_sha256": "9c4ad7ef48f2f9056ab28fb8532e3d316565f5b6a76a220bac8fb1422eb534a4",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_integer_sqrt.json",
+      "review_packet_sha256": "acfcea7b22e9508f0039080de11ca2f558732a7056dd5d4027728f7bc5cda224",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_integer_sqrt': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_integer_sqrt': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_integer_sqrt': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_finite_inclusion",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "finite_set_inclusion_cardinality",
+      "statement_sha256": "de1cd1e448e05bfd1e24797802adccd110260fce5c4b6e60bfa77d328911fbd5",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_finite_inclusion.json",
+      "review_packet_sha256": "28209ec0aed4c7a30a7c27384671745daab55cabaeace2161898ec776a0bcf92",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_finite_inclusion': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_finite_inclusion': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_finite_inclusion': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_q_log_tangent",
+      "category": "inequality",
+      "proposed_split": "test",
+      "family": "logarithm_tangent_bound",
+      "statement_sha256": "12cd07f759e3d9b20928a6cb950b6b490eb8176ac713f3a113182d25238dfaa9",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_q_log_tangent.json",
+      "review_packet_sha256": "544673afca895610e028dd4da0120fd2123e93ed1d07cb09b57f19734acd381e",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_q_log_tangent': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_q_log_tangent': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_q_log_tangent': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    },
+    {
+      "id": "lib_m_euler",
+      "category": "modular_arithmetic",
+      "proposed_split": "test",
+      "family": "euler_totient_unit_group_exponent",
+      "statement_sha256": "a721d25efc78fd7c656de9c555af40762375555835e801a3eee92be6a474da81",
+      "review_packet": "data/analysis/m1_m7_readiness_20261027/review_packets/lib_m_euler.json",
+      "review_packet_sha256": "0cfda04d73c7e906f4e4edc3e0d13d44d1c144590e7f43652de6a1112d88471a",
+      "verification_scope": "strict_proof",
+      "blockers": [
+        "problem 'lib_m_euler': missing independent human review records for assumption_mismatch, duplicate_review, problem_family, self_containment, semantic_fidelity, split_assignment, theorem_statement.",
+        "problem 'lib_m_euler': source/license evidence is incomplete; record is ineligible.",
+        "problem 'lib_m_euler': successful pinned-environment theorem verification is missing; record is ineligible."
+      ]
+    }
+  ],
+  "api_calls": 0,
+  "dataset_frozen": false
+}

@@ -267,6 +267,9 @@ class PipelineTests(unittest.TestCase):
 
         isolated_proof = self.project / "generated" / "runs" / "test-run" / "p1.lean"
         record = json.loads(self.output_path.read_text())
+        self.assertFalse(record["end_to_end_faithful_success"])
+        self.assertEqual(record["semantic_review_status"], "unreviewed_generated_statement")
+        self.assertEqual(record["outcome_scope"], "compiler_verification_only")
         self.assertEqual(historical_proof.read_text(), "historical proof")
         self.assertEqual(isolated_proof.read_text(), result["final_proof"])
         self.assertEqual(record["lean_file_path"], str(isolated_proof.resolve()))

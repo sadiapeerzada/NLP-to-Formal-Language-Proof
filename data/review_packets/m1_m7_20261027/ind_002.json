@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ind_002",
+    "nl_statement": "For any natural number n, the sum of the first n odd numbers equals n squared.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sum_odd_sq (n : ℕ) : (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The English description 'first n odd numbers' depends on an indexing convention; Lean uses range n and terms 2*i+1."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Confirm the zero-based enumeration and that the resulting sum is the intended one."
+    }
+  },
+  "binding_sha256": "001e3510a88e6dbd4d5464bdf8115976399b2b2e20d40ece3ed1249cd3f20384",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_002",
+    "binding_sha256": "001e3510a88e6dbd4d5464bdf8115976399b2b2e20d40ece3ed1249cd3f20384",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

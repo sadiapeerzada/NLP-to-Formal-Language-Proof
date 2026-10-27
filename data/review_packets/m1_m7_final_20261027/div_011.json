@@ -1,0 +1,109 @@
+{
+  "record": {
+    "id": "div_011",
+    "nl_statement": "For integers a, b, and c, if a divides both b and c, then a divides both b + c and b − c.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Requires constructing divisibility witnesses for both sum and difference. Provisional pending rubric review.",
+    "expected_lean_statement": "theorem dvd_add_sub_int (a b c : ℤ) (hab : a ∣ b) (hac : a ∣ c) : a ∣ b + c ∧ a ∣ b - c",
+    "source_item_id": "DMOI3-sec5.2-exercise-2",
+    "source_location": "Section 5.2, Introduction to Number Theory, exercise 2; HTML lines 1139–1141 and continuation in the retrieved page.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 5.2, exercise 2 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3.html (license section); https://creativecommons.org/licenses/by-sa/4.0/; item locator: https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "62e72ce35a5a2c86d84ecf887092c7a9c548a6f2c2918e3fbd22ccdacf8b4923",
+        "rights_note": "Publisher page states CC BY-SA 4.0 and permits adaptation with attribution. No independent source/license review or legal compatibility determination is recorded; do not treat this as rights clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text; edition identified on publisher page; individual print-page/printing not asserted.",
+        "source_item_id": "DMOI3-sec5.2-exercise-2",
+        "source_location": "Section 5.2, Introduction to Number Theory, exercise 2; HTML lines 1139–1141 and continuation in the retrieved page.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Suppose a, b, and c are integers. Prove that if a divides b and a divides c then a divides b+c and a divides b-c.",
+        "source_statement_sha256": "61e834b650ab365889a8d42aef7f3ce90bfd11b5b048db7dafc700062ff74d07",
+        "source_statement_hash_scope": "SHA-256 of the exact UTF-8 transcription stored in source_statement_transcription; not a hash of the source webpage or PDF bytes.",
+        "rights_scope_note": "The publisher page identifies CC BY-SA 4.0. Item-level upstream rights and compatibility with intended redistribution require human review.",
+        "provenance_status": "item located on publisher-hosted edition page; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, DMOI3-sec5.2-exercise-2; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Reworded the exercise as a declarative theorem and made its conjunction explicit; retained the integer domain and both conclusions.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "integer_divisibility_closure",
+      "family_review_status": "needs_review",
+      "family_review_note": "Grouped with div_010 as closure properties of integer divisibility; both provisionally assigned to test to keep this family together.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean --json ../lean_project/generated/_scratch/candidate_v015_div_011_strict.lean (repository strict verifier; type-compared against the exact statement with a proof placeholder)",
+        "theorem_sha256": "62e72ce35a5a2c86d84ecf887092c7a9c548a6f2c2918e3fbd22ccdacf8b4923",
+        "evidence": "success=True; exit_code=0; axiom_dependencies=[\"propext\", \"Quot.sound\"]; candidate_sha256=0697b6e641097463b5e746f78cbe7dd70ccc368f44b67416417bc3edcee80ba0; verification_source_sha256=88a47ae8ead522a6691fad0abf141aea1dd5a7a0c09f84261f46bd8dcab037e3; errors=[]. Full result in this batch verification.log.",
+        "strict_verifier_timeout_seconds": 180
+      },
+      "reference_lean_statement_provenance": "Prepared by repository curation from DMOI3-sec5.2-exercise-2; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional family-aware split proposal; requires independent review before inclusion."
+    }
+  },
+  "binding_sha256": "fc5fc7f9fb9a2440b0974af9e1d424e34af03f6920cee0003bac4b222f356217",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_011",
+    "binding_sha256": "fc5fc7f9fb9a2440b0974af9e1d424e34af03f6920cee0003bac4b222f356217",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

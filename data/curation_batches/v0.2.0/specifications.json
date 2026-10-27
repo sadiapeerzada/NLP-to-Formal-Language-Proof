@@ -1,0 +1,470 @@
+[
+  [
+    "a_power_add",
+    "arithmetic_identity",
+    "power_addition_law",
+    "For natural numbers a, m and n, a raised to m+n equals a raised to m times a raised to n.",
+    "(a m n : ℕ) : a ^ (m + n) = a ^ m * a ^ n",
+    "exact pow_add a m n",
+    "pow_add"
+  ],
+  [
+    "a_euclidean",
+    "arithmetic_identity",
+    "integer_euclidean_reconstruction",
+    "For any integers a and b, the remainder of a upon division by b plus b times the integer quotient equals a, including when b is zero.",
+    "(a b : ℤ) : a % b + b * (a / b) = a",
+    "exact Int.emod_add_mul_ediv a b",
+    "emod_add_mul_ediv"
+  ],
+  [
+    "a_choose_symmetry",
+    "arithmetic_identity",
+    "binomial_complement_symmetry",
+    "For natural numbers n and k with k at most n, choosing k objects from n gives the same binomial coefficient as choosing n-k objects.",
+    "(n k : ℕ) (h : k ≤ n) : n.choose k = n.choose (n - k)",
+    "exact (Nat.choose_symm h).symm",
+    "choose_symm"
+  ],
+  [
+    "a_abs_product",
+    "arithmetic_identity",
+    "absolute_value_multiplicativity",
+    "For real numbers x and y, the absolute value of their product is the product of their absolute values.",
+    "(x y : ℝ) : |x * y| = |x| * |y|",
+    "exact abs_mul x y",
+    "abs_mul"
+  ],
+  [
+    "a_sqrt_square",
+    "arithmetic_identity",
+    "principal_square_root_inverse",
+    "For a nonnegative real number x, the square of its principal square root is x.",
+    "(x : ℝ) (h : 0 ≤ x) : (Real.sqrt x) ^ 2 = x",
+    "exact Real.sq_sqrt h",
+    "sq_sqrt"
+  ],
+  [
+    "a_truncated_sub",
+    "arithmetic_identity",
+    "truncated_subtraction_recovery",
+    "For natural numbers a and b with b at most a, adding b to a-b recovers a.",
+    "(a b : ℕ) (h : b ≤ a) : a - b + b = a",
+    "exact Nat.sub_add_cancel h",
+    "sub_add_cancel"
+  ],
+  [
+    "a_inverse_difference",
+    "arithmetic_identity",
+    "reciprocal_difference_identity",
+    "For nonzero real numbers x and y, 1/x minus 1/y equals (y-x)/(x*y).",
+    "(x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0) : 1 / x - 1 / y = (y - x) / (x * y)",
+    "field_simp <;> ring",
+    "inv_sub_inv"
+  ],
+  [
+    "a_gcd_lcm",
+    "arithmetic_identity",
+    "gcd_lcm_product_identity",
+    "For natural numbers a and b, their greatest common divisor times their least common multiple equals their product.",
+    "(a b : ℕ) : Nat.gcd a b * Nat.lcm a b = a * b",
+    "exact Nat.gcd_mul_lcm a b",
+    "gcd_mul_lcm"
+  ],
+  [
+    "d_euclid",
+    "divisibility",
+    "euclid_prime_product",
+    "For a natural prime p and natural numbers a and b, p divides their product if and only if it divides at least one factor.",
+    "(p a b : ℕ) (hp : p.Prime) : p ∣ a * b ↔ p ∣ a ∨ p ∣ b",
+    "exact hp.dvd_mul",
+    "Prime.dvd_mul"
+  ],
+  [
+    "d_unbounded_primes",
+    "divisibility",
+    "unbounded_primes",
+    "For every natural number n, there is a natural prime p at least n.",
+    "(n : ℕ) : ∃ p : ℕ, n ≤ p ∧ p.Prime",
+    "exact Nat.exists_infinite_primes n",
+    "exists_infinite_primes"
+  ],
+  [
+    "d_bezout",
+    "divisibility",
+    "bezout_integer_representation",
+    "For integers a and b, their nonnegative greatest common divisor is an integer linear combination of a and b.",
+    "(a b : ℤ) : ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y",
+    "exact ⟨Int.gcdA a b, Int.gcdB a b, Int.gcd_eq_gcd_ab a b⟩",
+    "gcd_eq_gcd_ab"
+  ],
+  [
+    "d_coprime_successor",
+    "divisibility",
+    "consecutive_coprimality",
+    "Every natural number n is coprime to n+1.",
+    "(n : ℕ) : Nat.Coprime n (n + 1)",
+    "exact (Nat.coprime_self_add_right (m := n) (n := 1)).2 (Nat.coprime_one_right n)",
+    "coprime_self_add_right"
+  ],
+  [
+    "d_prime_factorial",
+    "divisibility",
+    "prime_factorial_threshold",
+    "For a natural prime p and a natural number n, p divides n factorial if and only if p is at most n.",
+    "(p n : ℕ) (hp : p.Prime) : p ∣ n.factorial ↔ p ≤ n",
+    "exact hp.dvd_factorial",
+    "Prime.dvd_factorial"
+  ],
+  [
+    "d_mersenne_gcd",
+    "divisibility",
+    "mersenne_gcd_exponents",
+    "For natural numbers a, b and c, the greatest common divisor of a^b-1 and a^c-1 equals a raised to gcd(b,c), minus one; subtraction is natural-number subtraction.",
+    "(a b c : ℕ) : Nat.gcd (a ^ b - 1) (a ^ c - 1) = a ^ Nat.gcd b c - 1",
+    "exact Nat.pow_sub_one_gcd_pow_sub_one a b c",
+    "pow_sub_one_gcd_pow_sub_one"
+  ],
+  [
+    "d_prime_parity",
+    "divisibility",
+    "prime_parity_dichotomy",
+    "Every natural prime is either two or odd.",
+    "(p : ℕ) (hp : p.Prime) : p = 2 ∨ Odd p",
+    "simpa only [Nat.odd_iff] using hp.eq_two_or_odd",
+    "Prime.eq_two_or_odd"
+  ],
+  [
+    "d_dvd_antisymmetry",
+    "divisibility",
+    "divisibility_partial_order",
+    "If two natural numbers divide each other, they are equal.",
+    "(a b : ℕ) (hab : a ∣ b) (hba : b ∣ a) : a = b",
+    "exact Nat.dvd_antisymm hab hba",
+    "dvd_antisymm"
+  ],
+  [
+    "d_coprime_power",
+    "divisibility",
+    "coprimality_power_invariance",
+    "For natural numbers a and b and a positive natural exponent n, a^n is coprime to b if and only if a is coprime to b.",
+    "(a b n : ℕ) (hn : 0 < n) : Nat.Coprime (a ^ n) b ↔ Nat.Coprime a b",
+    "exact Nat.coprime_pow_left_iff hn a b",
+    "coprime_pow_left_iff"
+  ],
+  [
+    "d_frobenius",
+    "divisibility",
+    "coprime_positive_combination_obstruction",
+    "If natural numbers m and n are coprime and a and b are nonzero natural numbers, m*a+n*b cannot equal m*n.",
+    "(m n a b : ℕ) (h : Nat.Coprime m n) (ha : a ≠ 0) (hb : b ≠ 0) : m * a + n * b ≠ m * n",
+    "simpa only [mul_comm m a, mul_comm n b] using h.mul_add_mul_ne_mul ha hb",
+    "Coprime.mul_add_mul_ne_mul"
+  ],
+  [
+    "i_factorial",
+    "induction",
+    "factorial_successor_recurrence",
+    "For every natural number n, (n+1) factorial equals (n+1) times n factorial.",
+    "(n : ℕ) : (n + 1).factorial = (n + 1) * n.factorial",
+    "exact Nat.factorial_succ n",
+    "factorial_succ"
+  ],
+  [
+    "i_fibonacci",
+    "induction",
+    "fibonacci_successor_recurrence",
+    "For every natural number n, the Fibonacci number at n+2 equals the sum of the Fibonacci numbers at n and n+1, using F(0)=0 and F(1)=1.",
+    "(n : ℕ) : Nat.fib (n + 2) = Nat.fib n + Nat.fib (n + 1)",
+    "exact Nat.fib_add_two",
+    "fib_add_two"
+  ],
+  [
+    "i_bernoulli",
+    "induction",
+    "bernoulli_inequality",
+    "For any real x at least -1 and natural number n, 1+n*x is at most (1+x)^n.",
+    "(x : ℝ) (n : ℕ) (h : -1 ≤ x) : 1 + (n : ℝ) * x ≤ (1 + x) ^ n",
+    "exact one_add_mul_le_pow (by linarith) n",
+    "one_add_mul_le_pow"
+  ],
+  [
+    "i_vandermonde",
+    "induction",
+    "vandermonde_convolution",
+    "For natural numbers m, n and k, choosing k elements from m+n equals the sum, over i from 0 through k, of choose(m,i) times choose(n,k-i).",
+    "(m n k : ℕ) : (m + n).choose k = ∑ i ∈ Finset.range (k + 1), m.choose i * n.choose (k - i)",
+    "simpa only [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk] using Nat.add_choose_eq m n k",
+    "add_choose_eq"
+  ],
+  [
+    "i_fermat_product",
+    "induction",
+    "fermat_number_product",
+    "For every natural n, the product of Fermat numbers F(k)=2^(2^k)+1 for k from 0 through n-1 equals F(n)-2, with natural-number subtraction.",
+    "(n : ℕ) : (∏ k ∈ Finset.range n, Nat.fermatNumber k) = Nat.fermatNumber n - 2",
+    "exact Nat.prod_fermatNumber n",
+    "prod_fermatNumber"
+  ],
+  [
+    "q_amgm",
+    "inequality",
+    "two_variable_quadratic_amgm",
+    "For real numbers x and y, twice their product is at most the sum of their squares.",
+    "(x y : ℝ) : 2 * x * y ≤ x ^ 2 + y ^ 2",
+    "nlinarith [sq_nonneg (x - y)]",
+    "two_mul_le_add_sq"
+  ],
+  [
+    "q_cauchy",
+    "inequality",
+    "two_dimensional_cauchy_schwarz",
+    "For real numbers a,b,c,d, (a*c+b*d)^2 is at most (a^2+b^2)*(c^2+d^2).",
+    "(a b c d : ℝ) : (a * c + b * d) ^ 2 ≤ (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)",
+    "nlinarith [sq_nonneg (a * d - b * c)]",
+    "sq_add_sq_mul_sq_add_sq"
+  ],
+  [
+    "q_triangle",
+    "inequality",
+    "real_absolute_triangle_inequality",
+    "For real x and y, the absolute value of x+y is at most the sum of their absolute values.",
+    "(x y : ℝ) : |x + y| ≤ |x| + |y|",
+    "exact abs_add_le x y",
+    "abs_add_le"
+  ],
+  [
+    "q_reciprocal",
+    "inequality",
+    "positive_reciprocal_antitone",
+    "If real numbers x and y satisfy 0<x and x≤y, then 1/y≤1/x.",
+    "(x y : ℝ) (hx : 0 < x) (hxy : x ≤ y) : 1 / y ≤ 1 / x",
+    "exact one_div_le_one_div_of_le hx hxy",
+    "one_div_le_one_div_of_le"
+  ],
+  [
+    "q_log",
+    "inequality",
+    "integer_logarithm_lower_power_bound",
+    "For natural base b and positive natural n, b raised to the natural logarithm floor log base b of n is at most n, using Mathlib's totalized natural logarithm.",
+    "(b n : ℕ) (hn : n ≠ 0) : b ^ Nat.log b n ≤ n",
+    "exact Nat.pow_log_le_self b hn",
+    "pow_log_le_self"
+  ],
+  [
+    "q_sqrt_monotone",
+    "inequality",
+    "principal_square_root_monotonicity",
+    "For real x and y with x≤y, the principal square root of x is at most that of y, using the totalized real square root which is zero on negative inputs.",
+    "(x y : ℝ) (h : x ≤ y) : Real.sqrt x ≤ Real.sqrt y",
+    "exact Real.sqrt_le_sqrt h",
+    "sqrt_le_sqrt"
+  ],
+  [
+    "q_exp_tangent",
+    "inequality",
+    "exponential_tangent_bound",
+    "For every real x, x+1 is at most exp(x).",
+    "(x : ℝ) : x + 1 ≤ Real.exp x",
+    "exact Real.add_one_le_exp x",
+    "add_one_le_exp"
+  ],
+  [
+    "q_sine",
+    "inequality",
+    "sine_linear_bound",
+    "For every nonnegative real x, sin(x)≤x.",
+    "(x : ℝ) (hx : 0 ≤ x) : Real.sin x ≤ x",
+    "exact Real.sin_le hx",
+    "sin_le"
+  ],
+  [
+    "q_quotient",
+    "inequality",
+    "natural_quotient_bound",
+    "For natural numbers m and n, the natural quotient m/n is at most m, including when n is zero.",
+    "(m n : ℕ) : m / n ≤ m",
+    "exact Nat.div_le_self m n",
+    "div_le_self"
+  ],
+  [
+    "m_crt",
+    "modular_arithmetic",
+    "chinese_remainder_compatibility",
+    "If natural numbers a and b are congruent modulo gcd(n,m), there exists a natural number congruent to a modulo n and to b modulo m.",
+    "(a b n m : ℕ) (h : Nat.ModEq (Nat.gcd n m) a b) : ∃ k : ℕ, Nat.ModEq n k a ∧ Nat.ModEq m k b",
+    "exact ⟨Nat.chineseRemainder' h, (Nat.chineseRemainder' h).property⟩",
+    "chineseRemainder'"
+  ],
+  [
+    "m_cancel",
+    "modular_arithmetic",
+    "congruence_cancellation_adjusted_modulus",
+    "For positive natural m, if c*a and c*b are congruent modulo m, then a and b are congruent modulo m/gcd(m,c).",
+    "(m c a b : ℕ) (hm : 0 < m) (h : Nat.ModEq m (c * a) (c * b)) : Nat.ModEq (m / Nat.gcd m c) a b",
+    "exact h.cancel_left_div_gcd hm",
+    "cancel_left_div_gcd"
+  ],
+  [
+    "m_canonical",
+    "modular_arithmetic",
+    "canonical_remainder_uniqueness",
+    "If natural a and b are both less than m and congruent modulo m, then they are equal.",
+    "(m a b : ℕ) (ha : a < m) (hb : b < m) (h : Nat.ModEq m a b) : a = b",
+    "exact h.eq_of_lt_of_lt ha hb",
+    "eq_of_lt_of_lt"
+  ],
+  [
+    "m_fermat",
+    "modular_arithmetic",
+    "fermat_little_theorem",
+    "For a natural prime p and integer a, a^p is congruent to a modulo p.",
+    "(p : ℕ) (hp : p.Prime) (a : ℤ) : Int.ModEq (p : ℤ) (a ^ p) a",
+    "exact Int.ModEq.pow_prime_eq_self hp a",
+    "pow_prime_eq_self"
+  ],
+  [
+    "m_wilson",
+    "modular_arithmetic",
+    "wilson_factorial_congruence",
+    "For a natural prime p, the factorial of p-1 equals minus one in the ring of integers modulo p.",
+    "(p : ℕ) [Fact p.Prime] : ((p - 1).factorial : ZMod p) = -1",
+    "exact ZMod.wilsons_lemma p",
+    "wilsons_lemma"
+  ],
+  [
+    "m_power",
+    "modular_arithmetic",
+    "congruence_power_preservation",
+    "For integers a,b,m and a natural exponent n, congruence of a and b modulo m implies congruence of their nth powers modulo m.",
+    "(a b m : ℤ) (n : ℕ) (h : Int.ModEq m a b) : Int.ModEq m (a ^ n) (b ^ n)",
+    "exact h.pow n",
+    "ModEq.pow"
+  ],
+  [
+    "m_gcd_obstruction",
+    "modular_arithmetic",
+    "linear_congruence_gcd_obstruction",
+    "For integers a,b,m, if the greatest common divisor of a and m does not divide b, no integer x solves a*x congruent to b modulo m.",
+    "(a b m : ℤ) (h : ¬ (Int.gcd a m : ℤ) ∣ b) : ¬ ∃ x : ℤ, Int.ModEq m (a * x) b",
+    "intro ⟨x, hx⟩; apply h; have hd := hx.dvd; have ha : (Int.gcd a m : ℤ) ∣ a := Int.gcd_dvd_left a m; have hm : (Int.gcd a m : ℤ) ∣ m := Int.gcd_dvd_right a m; have ht := hm.trans hd; have hp := ha.mul_right x; have hs := dvd_add ht hp; simpa using hs",
+    "modEq_iff_dvd"
+  ],
+  [
+    "m_residue_product",
+    "modular_arithmetic",
+    "residue_multiplication_reduction",
+    "For natural a,b,m, the remainder of a*b modulo m equals the remainder of the product of their separate remainders modulo m, including when m is zero.",
+    "(a b m : ℕ) : (a * b) % m = ((a % m) * (b % m)) % m",
+    "exact Nat.mul_mod a b m",
+    "mul_mod"
+  ],
+  [
+    "a_trig_unit",
+    "arithmetic_identity",
+    "trigonometric_unit_circle_identity",
+    "For every real x, sin(x)^2+cos(x)^2 equals one.",
+    "(x : ℝ) : (Real.sin x) ^ 2 + (Real.cos x) ^ 2 = 1",
+    "exact Real.sin_sq_add_cos_sq x",
+    "sin_sq_add_cos_sq"
+  ],
+  [
+    "a_log_product",
+    "arithmetic_identity",
+    "real_logarithm_product_law",
+    "For nonzero real x and y, the totalized real logarithm of x*y equals log(x)+log(y), where Mathlib defines the logarithm using absolute values on negative inputs.",
+    "(x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0) : Real.log (x * y) = Real.log x + Real.log y",
+    "exact Real.log_mul hx hy",
+    "log_mul"
+  ],
+  [
+    "a_exp_add",
+    "arithmetic_identity",
+    "exponential_addition_law",
+    "For all real x and y, exp(x+y)=exp(x)*exp(y).",
+    "(x y : ℝ) : Real.exp (x + y) = Real.exp x * Real.exp y",
+    "exact Real.exp_add x y",
+    "exp_add"
+  ],
+  [
+    "a_min_max",
+    "arithmetic_identity",
+    "lattice_min_max_sum",
+    "For real x and y, their minimum plus their maximum equals their sum.",
+    "(x y : ℝ) : min x y + max x y = x + y",
+    "exact min_add_max x y",
+    "min_add_max"
+  ],
+  [
+    "d_factorization",
+    "divisibility",
+    "prime_factorization_product_exponents",
+    "For nonzero natural a and b, the prime-exponent factorization function of a*b is the pointwise sum of their prime-exponent factorization functions.",
+    "(a b : ℕ) (ha : a ≠ 0) (hb : b ≠ 0) : (a * b).factorization = a.factorization + b.factorization",
+    "exact Nat.factorization_mul ha hb",
+    "factorization_mul"
+  ],
+  [
+    "d_totient_sum",
+    "divisibility",
+    "totient_divisor_sum",
+    "For every natural n, the sum of Euler totient(d) over the positive divisors d of n equals n; Mathlib assigns the empty divisor set to zero.",
+    "(n : ℕ) : (∑ d ∈ n.divisors, Nat.totient d) = n",
+    "exact Nat.sum_totient n",
+    "sum_totient"
+  ],
+  [
+    "i_telescope",
+    "induction",
+    "finite_integer_telescoping",
+    "For every integer-valued function f on natural numbers and natural n, the sum of f(i+1)-f(i) for i from zero through n-1 equals f(n)-f(0).",
+    "(f : ℕ → ℤ) (n : ℕ) : (∑ i ∈ Finset.range n, (f (i + 1) - f i)) = f n - f 0",
+    "induction n with | zero => simp | succ n ih => rw [Finset.sum_range_succ, ih]; ring",
+    "sum_range_sub"
+  ],
+  [
+    "i_alternating_binomial",
+    "induction",
+    "alternating_binomial_cancellation",
+    "For every positive natural n, the alternating sum of the binomial coefficients in row n is zero, interpreted in the integers.",
+    "(n : ℕ) (hn : n ≠ 0) : (∑ k ∈ Finset.range (n + 1), ((-1 : ℤ) ^ k * (n.choose k : ℤ))) = 0",
+    "exact Int.alternating_sum_range_choose_of_ne hn",
+    "alternating_sum_range_choose_of_ne"
+  ],
+  [
+    "q_integer_sqrt",
+    "inequality",
+    "integer_square_root_floor_bound",
+    "For every natural n, the square of its natural-number square root is less than n+1.",
+    "(n : ℕ) : Nat.sqrt n ^ 2 < n + 1",
+    "exact Nat.sqrt_mul_sqrt_lt_succ' n",
+    "sqrt_mul_sqrt_lt_succ'"
+  ],
+  [
+    "q_finite_inclusion",
+    "inequality",
+    "finite_set_inclusion_cardinality",
+    "For finite sets s and t of natural numbers, if s is contained in t then the number of elements of s is at most the number of elements of t.",
+    "(s t : Finset ℕ) (h : s ⊆ t) : s.card ≤ t.card",
+    "exact Finset.card_le_card h",
+    "card_le_card"
+  ],
+  [
+    "q_log_tangent",
+    "inequality",
+    "logarithm_tangent_bound",
+    "For every positive real x, log(x) is at most x-1.",
+    "(x : ℝ) (hx : 0 < x) : Real.log x ≤ x - 1",
+    "exact Real.log_le_sub_one_of_pos hx",
+    "log_le_sub_one_of_pos"
+  ],
+  [
+    "m_euler",
+    "modular_arithmetic",
+    "euler_totient_unit_group_exponent",
+    "For coprime natural a and m, a raised to Euler totient(m) is congruent to one modulo m.",
+    "(a m : ℕ) (h : Nat.Coprime a m) : Nat.ModEq m (a ^ Nat.totient m) 1",
+    "exact Nat.ModEq.pow_totient h",
+    "ModEq.pow_totient"
+  ]
+]

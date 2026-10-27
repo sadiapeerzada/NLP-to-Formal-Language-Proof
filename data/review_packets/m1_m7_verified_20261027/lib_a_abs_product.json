@@ -1,0 +1,125 @@
+{
+  "record": {
+    "id": "lib_a_abs_product",
+    "nl_statement": "For real numbers x and y, the absolute value of their product is the product of their absolute values.",
+    "category": "arithmetic_identity",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_abs_product (x y : ℝ) : |x * y| = |x| * |y|",
+    "source_item_id": "abs_mul",
+    "source_location": "Mathlib/Algebra/Order/Ring/Abs.lean:49",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Abs.lean#L49",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Algebra/Order/Ring/Abs.lean:49, formal item abs_mul. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.0/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "d6f7d22872a94589d2fddb50146a532fc77b721ea8809d2d8b7f7baa5434e0ec",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "abs_mul",
+        "source_location": "Mathlib/Algebra/Order/Ring/Abs.lean:49",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.0/source_archive/2d76883de1b8_Abs.lean",
+        "source_page_sha256": "2d76883de1b832557bb342945af172261f17b536cce4194ae4fabf4234619d40",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "absolute_value_multiplicativity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.0/references_expanded.lean"
+        ],
+        "theorem_sha256": "d6f7d22872a94589d2fddb50146a532fc77b721ea8809d2d8b7f7baa5434e0ec",
+        "reference_code_sha256": "902afa1f82da27632dde56fc606bbf5ffcca7db3cafaa5aeac662ca1a3b7ed81",
+        "verification_source_sha256": "7b116ce104b59338fdcdf3e736fe4392c39b77f32db73dabef9afcd005680367",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.0/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (x y",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_a_abs_product (x y : ℝ) : |x * y| = |x| * |y| := by\n  exact abs_mul x y\n"
+  },
+  "binding_sha256": "271e583b785103ac02dd6896106ecdeeddaa92eef588c02527f9274ea2b1d7fe",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "lib_a_abs_product",
+    "binding_sha256": "271e583b785103ac02dd6896106ecdeeddaa92eef588c02527f9274ea2b1d7fe",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

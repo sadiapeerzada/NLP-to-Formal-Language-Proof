@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "div_006",
+    "nl_statement": "A natural number's square is even if and only if the number itself is even.",
+    "category": "divisibility",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem sq_even_iff_even (n : ℕ) : (∃ j, n ^ 2 = 2 * j) ↔ (∃ k, n = 2 * k)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Converse/equivalence variant of natural-number square parity.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Both directions use existential evenness encodings; no explicit family or reference review is recorded."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify the iff theorem, witness encodings, and natural-number boundary cases."
+    }
+  },
+  "binding_sha256": "29105283e9287faeca9b785a57d80caae3a1b393cd573d04164d289d597008d5",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_006",
+    "binding_sha256": "29105283e9287faeca9b785a57d80caae3a1b393cd573d04164d289d597008d5",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

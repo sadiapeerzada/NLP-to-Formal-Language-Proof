@@ -1,0 +1,97 @@
+{
+  "record": {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "import Nl2Lean.CandidateDefinitions\n/- Imported candidate definition (do not redeclare):\ndef geomSum : Nat → Nat\n  | 0 => 0\n  | n + 1 => geomSum n + 2 ^ n\n-/\ntheorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Geometric finite sum claim; definition/self-containment is unresolved.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Lean statement references geomSum n, but no definition for geomSum is present in the dataset record; self-containment is unestablished."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Locate and cite the intended definition or replace the statement with a self-contained Finset/closed-form expression after review.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.2.0/references_final_checked.lean"
+        ],
+        "theorem_sha256": "12f7654f3f6859bbfb7e923c87d382b20bb7ba5d24d18aeeb9dc0f0d562a4816",
+        "verification_source_sha256": "6084a546c5dae963d8a296d4a2428b6e6aedfb0db4789c7d991e408e5f550836",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.2.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "statement_preparation_note": "Explicit candidate definition/import context added; independent review remains pending. Original statement and evidence retained in historical file.",
+    "required_definitions": [
+      {
+        "path": "lean_project/Nl2Lean/CandidateDefinitions.lean",
+        "sha256": "b2998e3cbc82131b33b90691a00ab1347c0488b0850c988699aaba03d78c1d77",
+        "import": "Nl2Lean.CandidateDefinitions",
+        "review_status": "pending_independent_semantic_review"
+      }
+    ],
+    "required_imports": [
+      "Mathlib",
+      "Nl2Lean.CandidateDefinitions"
+    ]
+  },
+  "binding_sha256": "e4bb8d7af285f549847db8a0d695d2e9475a96d568c9cd6c631ee75c83c359ab",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_004",
+    "binding_sha256": "e4bb8d7af285f549847db8a0d695d2e9475a96d568c9cd6c631ee75c83c359ab",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

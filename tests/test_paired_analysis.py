@@ -187,3 +187,18 @@ def test_readiness_audit_never_overwrites_prior_evidence(tmp_path: Path) -> None
     with pytest.raises(FileExistsError):
         analysis.audit_current_repository(tmp_path)
     assert artifact.read_bytes() == original
+
+
+def test_local_provenance_rejects_smoke_and_mismatched_inventory():
+    errors=analysis.local_provenance_errors({'execution_mode':'local','provider':'mlx_local','phase':'neutral_smoke'})
+    assert any('held-out phase' in e for e in errors)
+    assert any('inventory' in e for e in errors)
+
+
+def test_local_candidate_without_generation_metadata_is_rejected():
+    root=Path(__file__).resolve().parents[1]
+    protocol=json.loads((root/'configs/repair_experiment_local_v0.3.0.json').read_text())
+    run={'execution_mode':'local','provider':'mlx_local','phase':'heldout',
+        'local_execution':{'model':protocol['model'],'decoding':protocol['decoding']},
+        'initial_candidate':{'candidate_sha256':'a'*64},'conditions':{}}
+    assert any('generation metadata' in e for e in analysis.local_provenance_errors(run))

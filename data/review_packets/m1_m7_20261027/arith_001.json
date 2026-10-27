@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "arith_001",
+    "nl_statement": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number square identities; keep related algebraic variants together.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "No record-specific discrepancy established from the pair alone; theorem meaning and reference provenance remain unreviewed."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Have a Lean/math reviewer compare the universal natural-number identity with the English statement and record evidence."
+    }
+  },
+  "binding_sha256": "06487da4f503c03478f307252eb6bd9e956eda9f5a52b0e74a586068e638d2ea",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "arith_001",
+    "binding_sha256": "06487da4f503c03478f307252eb6bd9e956eda9f5a52b0e74a586068e638d2ea",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

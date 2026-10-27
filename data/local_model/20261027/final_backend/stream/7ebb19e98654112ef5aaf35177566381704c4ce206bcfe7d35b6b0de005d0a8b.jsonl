@@ -1,0 +1,4 @@
+{"context": "neutral-smoke/initial", "prompt_sha256": "a48ba54e9a3e9424e093278ebb22ab78048172fd5d87c7b54c01441252d7e719", "generation_seed": 1301725576}
+{"token": 45578, "text": "READY", "generation_tokens": 1}
+{"token": 151645, "text": "", "generation_tokens": 2}
+{"status": "generation_finished", "completion_tokens": 2}

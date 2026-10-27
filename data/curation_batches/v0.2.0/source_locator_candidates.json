@@ -1,0 +1,1373 @@
+{
+  "dvd_factorial": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Factorial/Basic.lean",
+      "line": 81,
+      "declaration": "dvd_factorial"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Prime/Factorial.lean",
+      "line": 23,
+      "declaration": "Prime.dvd_factorial"
+    }
+  ],
+  "inv_sub_inv": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Field/Basic.lean",
+      "line": 139,
+      "declaration": "Commute.inv_sub_inv"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Field/Basic.lean",
+      "line": 187,
+      "declaration": "inv_sub_inv"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 638,
+      "declaration": "inv_sub_inv"
+    }
+  ],
+  "eq_of_lt_of_lt": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/ModEq.lean",
+      "line": 374,
+      "declaration": "eq_of_lt_of_lt"
+    }
+  ],
+  "card_le_card": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Finset/Card.lean",
+      "line": 66,
+      "declaration": "card_le_card"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Multiset/Defs.lean",
+      "line": 228,
+      "declaration": "card_le_card"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Set/Finite/Basic.lean",
+      "line": 801,
+      "declaration": "card_le_card"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Basic.lean",
+      "line": 626,
+      "declaration": "card_le_card"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean",
+      "line": 73,
+      "declaration": "IsInitial.card_le_card"
+    }
+  ],
+  "abs_add_le": [],
+  "dvd_antisymm": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+      "line": 142,
+      "declaration": "dvd_antisymm"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/PNat/Basic.lean",
+      "line": 349,
+      "declaration": "dvd_antisymm"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean",
+      "line": 843,
+      "declaration": "dvd_antisymm"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Dvd.lean",
+      "line": 76,
+      "declaration": "dvd_antisymm"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/DivMod/Lemmas.lean",
+      "line": 46,
+      "declaration": "dvd_antisymm"
+    }
+  ],
+  "fib_add_two": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/Fib/Basic.lean",
+      "line": 64,
+      "declaration": "fib_add_two"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Fib/Basic.lean",
+      "line": 75,
+      "declaration": "fib_add_two"
+    }
+  ],
+  "log_mul": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/WithZero.lean",
+      "line": 411,
+      "declaration": "log_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Submonoid/Membership.lean",
+      "line": 423,
+      "declaration": "log_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "line": 132,
+      "declaration": "log_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/Push/Attr.lean",
+      "line": 91,
+      "declaration": "log_mul"
+    }
+  ],
+  "factorization_mul": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Factorization/Defs.lean",
+      "line": 155,
+      "declaration": "factorization_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/UniqueFactorizationDomain/Finsupp.lean",
+      "line": 52,
+      "declaration": "factorization_mul"
+    }
+  ],
+  "sum_totient": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Totient.lean",
+      "line": 163,
+      "declaration": "sum_totient"
+    }
+  ],
+  "prod_fermatNumber": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/Fermat.lean",
+      "line": 56,
+      "declaration": "prod_fermatNumber"
+    }
+  ],
+  "one_add_mul_le_pow": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Order/Ring/Pow.lean",
+      "line": 100,
+      "declaration": "one_add_mul_le_pow"
+    }
+  ],
+  "pow_log_le_self": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Log.lean",
+      "line": 171,
+      "declaration": "pow_log_le_self"
+    }
+  ],
+  "wilsons_lemma": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/Wilson.lean",
+      "line": 43,
+      "declaration": "wilsons_lemma"
+    }
+  ],
+  "sin_sq_add_cos_sq": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Trigonometric.lean",
+      "line": 464,
+      "declaration": "sin_sq_add_cos_sq"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Trigonometric.lean",
+      "line": 662,
+      "declaration": "sin_sq_add_cos_sq"
+    }
+  ],
+  "modEq_iff_dvd": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/ModEq.lean",
+      "line": 111,
+      "declaration": "modEq_iff_dvd"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/ModEq.lean",
+      "line": 109,
+      "declaration": "modEq_iff_dvd"
+    }
+  ],
+  "pow_prime_eq_self": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+      "line": 651,
+      "declaration": "Int.ModEq.pow_prime_eq_self"
+    }
+  ],
+  "coprime_self_add_right": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/GCD/Basic.lean",
+      "line": 112,
+      "declaration": "coprime_self_add_right"
+    }
+  ],
+  "emod_add_mul_ediv": [
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/DivMod/Bootstrap.lean",
+      "line": 100,
+      "declaration": "emod_add_mul_ediv"
+    }
+  ],
+  "coprime_pow_left_iff": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/GCD/Basic.lean",
+      "line": 194,
+      "declaration": "coprime_pow_left_iff"
+    }
+  ],
+  "pow_sub_one_gcd_pow_sub_one": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/GCD/Basic.lean",
+      "line": 62,
+      "declaration": "pow_sub_one_gcd_pow_sub_one"
+    }
+  ],
+  "mul_mod": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean",
+      "line": 450,
+      "declaration": "mul_mod"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean",
+      "line": 908,
+      "declaration": "mul_mod"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Lemmas.lean",
+      "line": 810,
+      "declaration": "mul_mod"
+    }
+  ],
+  "chineseRemainder'": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/ModEq.lean",
+      "line": 422,
+      "declaration": "chineseRemainder'"
+    }
+  ],
+  "factorial_succ": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Factorial/Basic.lean",
+      "line": 55,
+      "declaration": "factorial_succ"
+    }
+  ],
+  "sum_range_sub": [],
+  "alternating_sum_range_choose_of_ne": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Choose/Sum.lean",
+      "line": 199,
+      "declaration": "Int.alternating_sum_range_choose_of_ne"
+    }
+  ],
+  "mul_add_mul_ne_mul": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/GCD/Basic.lean",
+      "line": 233,
+      "declaration": "Coprime.mul_add_mul_ne_mul"
+    }
+  ],
+  "sin_le": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Bounds.lean",
+      "line": 54,
+      "declaration": "sin_le"
+    }
+  ],
+  "exp_add": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/WithZero.lean",
+      "line": 408,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/DividedPowers/Basic.lean",
+      "line": 193,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Exponential.lean",
+      "line": 109,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Exponential.lean",
+      "line": 209,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Circle.lean",
+      "line": 128,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Normed/Algebra/Exponential.lean",
+      "line": 663,
+      "declaration": "exp_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/ERealExp.lean",
+      "line": 103,
+      "declaration": "exp_add"
+    }
+  ],
+  "exists_infinite_primes": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Prime/Infinite.lean",
+      "line": 33,
+      "declaration": "exists_infinite_primes"
+    }
+  ],
+  "choose_symm": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Choose/Basic.lean",
+      "line": 198,
+      "declaration": "choose_symm"
+    }
+  ],
+  "add_choose_eq": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Binomial.lean",
+      "line": 519,
+      "declaration": "add_choose_eq"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Choose/Vandermonde.lean",
+      "line": 31,
+      "declaration": "add_choose_eq"
+    }
+  ],
+  "sq_add_sq_mul_sq_add_sq": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Ring/Identities.lean",
+      "line": 26,
+      "declaration": "sq_add_sq_mul_sq_add_sq"
+    }
+  ],
+  "gcd_eq_gcd_ab": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/EuclideanDomain/Basic.lean",
+      "line": 206,
+      "declaration": "gcd_eq_gcd_ab"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/GCD.lean",
+      "line": 124,
+      "declaration": "gcd_eq_gcd_ab"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/GCD.lean",
+      "line": 172,
+      "declaration": "gcd_eq_gcd_ab"
+    }
+  ],
+  "pow_totient": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+      "line": 557,
+      "declaration": "ZMod.pow_totient"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+      "line": 564,
+      "declaration": "Nat.ModEq.pow_totient"
+    }
+  ],
+  "min_add_max": [],
+  "pow_add": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Defs.lean",
+      "line": 733,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Operations.lean",
+      "line": 325,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Operations.lean",
+      "line": 388,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/HahnSeries/Binomial.lean",
+      "line": 107,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/Comp.lean",
+      "line": 249,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/Ring/Common.lean",
+      "line": 1036,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Grind/Ring/Basic.lean",
+      "line": 213,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/BitVec/Lemmas.lean",
+      "line": 4248,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Lemmas.lean",
+      "line": 1090,
+      "declaration": "pow_add"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/Pow.lean",
+      "line": 38,
+      "declaration": "pow_add"
+    }
+  ],
+  "cancel_left_div_gcd": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/ModEq.lean",
+      "line": 378,
+      "declaration": "cancel_left_div_gcd"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/ModEq.lean",
+      "line": 219,
+      "declaration": "cancel_left_div_gcd"
+    }
+  ],
+  "eq_two_or_odd": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Prime/Basic.lean",
+      "line": 41,
+      "declaration": "Prime.eq_two_or_odd"
+    }
+  ],
+  "two_mul_le_add_sq": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean",
+      "line": 680,
+      "declaration": "two_mul_le_add_sq"
+    }
+  ],
+  "add_one_le_exp": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Complex/Exponential.lean",
+      "line": 631,
+      "declaration": "add_one_le_exp"
+    }
+  ],
+  "div_le_self": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Order/Field/Basic.lean",
+      "line": 84,
+      "declaration": "div_le_self"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Div/Basic.lean",
+      "line": 71,
+      "declaration": "div_le_self"
+    }
+  ],
+  "sqrt_le_sqrt": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Sqrt.lean",
+      "line": 50,
+      "declaration": "sqrt_le_sqrt"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Real/Sqrt.lean",
+      "line": 57,
+      "declaration": "sqrt_le_sqrt"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Real/Sqrt.lean",
+      "line": 209,
+      "declaration": "sqrt_le_sqrt"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Order.lean",
+      "line": 89,
+      "declaration": "sqrt_le_sqrt"
+    }
+  ],
+  "sqrt_mul_sqrt_lt_succ'": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Sqrt.lean",
+      "line": 115,
+      "declaration": "sqrt_mul_sqrt_lt_succ'"
+    }
+  ],
+  "gcd_mul_lcm": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/EuclideanDomain/Basic.lean",
+      "line": 306,
+      "declaration": "gcd_mul_lcm"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/PNat/Prime.lean",
+      "line": 86,
+      "declaration": "gcd_mul_lcm"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Lcm.lean",
+      "line": 38,
+      "declaration": "gcd_mul_lcm"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/Gcd.lean",
+      "line": 446,
+      "declaration": "gcd_mul_lcm"
+    }
+  ],
+  "sq_sqrt": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Real/Sqrt.lean",
+      "line": 49,
+      "declaration": "sq_sqrt"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Real/Sqrt.lean",
+      "line": 178,
+      "declaration": "sq_sqrt"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean",
+      "line": 648,
+      "declaration": "sq_sqrt"
+    }
+  ],
+  "log_le_sub_one_of_pos": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "line": 306,
+      "declaration": "log_le_sub_one_of_pos"
+    }
+  ],
+  "pow": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Probability/IdentDistrib.lean",
+      "line": 246,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/CategoryTheory/Equivalence.lean",
+      "line": 524,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/GroupTheory/OrderOfElement.lean",
+      "line": 104,
+      "declaration": "IsOfFinOrder.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Multiplicity.lean",
+      "line": 653,
+      "declaration": "FiniteMultiplicity.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Semisimple.lean",
+      "line": 266,
+      "declaration": "IsSemisimple.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/IsPrimePow.lean",
+      "line": 58,
+      "declaration": "IsPrimePow.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Idempotent.lean",
+      "line": 83,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Conj.lean",
+      "line": 52,
+      "declaration": "IsConj.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Even.lean",
+      "line": 141,
+      "declaration": "IsSquare.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/FiniteSupport/Basic.lean",
+      "line": 91,
+      "declaration": "HasFiniteMulSupport.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Star/SelfAdjoint.lean",
+      "line": 195,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Ring/Parity.lean",
+      "line": 148,
+      "declaration": "Odd.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/MonoidAlgebra/Degree.lean",
+      "line": 592,
+      "declaration": "Monic.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Regular/SMul.lean",
+      "line": 150,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Regular/Basic.lean",
+      "line": 197,
+      "declaration": "IsLeftRegular.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Regular/Basic.lean",
+      "line": 202,
+      "declaration": "IsRightRegular.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Regular/Basic.lean",
+      "line": 207,
+      "declaration": "IsRegular.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Monic.lean",
+      "line": 95,
+      "declaration": "Monic.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Splits.lean",
+      "line": 71,
+      "declaration": "Splits.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/IsMonicOfDegree.lean",
+      "line": 84,
+      "declaration": "IsMonicOfDegree.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Submonoid/Membership.lean",
+      "line": 388,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Units/Defs.lean",
+      "line": 417,
+      "declaration": "IsUnit.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean",
+      "line": 848,
+      "declaration": "Nonempty.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean",
+      "line": 1214,
+      "declaration": "Nontrivial.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean",
+      "line": 672,
+      "declaration": "Nonempty.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean",
+      "line": 755,
+      "declaration": "Nontrivial.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Computability/AkraBazzi/GrowsPolynomially.lean",
+      "line": 584,
+      "declaration": "GrowsPolynomially.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Computability/Primrec/Basic.lean",
+      "line": 114,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/ModEq.lean",
+      "line": 148,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Int/ModEq.lean",
+      "line": 196,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/PNat/Prime.lean",
+      "line": 261,
+      "declaration": "Coprime.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/MFDeriv/SpecificFunctions.lean",
+      "line": 962,
+      "declaration": "MDifferentiableWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/MFDeriv/SpecificFunctions.lean",
+      "line": 968,
+      "declaration": "MDifferentiableAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/MFDeriv/SpecificFunctions.lean",
+      "line": 972,
+      "declaration": "MDifferentiableOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/MFDeriv/SpecificFunctions.lean",
+      "line": 975,
+      "declaration": "MDifferentiable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/Algebra/Monoid.lean",
+      "line": 466,
+      "declaration": "ContMDiffWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/Algebra/Monoid.lean",
+      "line": 471,
+      "declaration": "ContMDiffAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/Algebra/Monoid.lean",
+      "line": 476,
+      "declaration": "ContMDiffOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Geometry/Manifold/Algebra/Monoid.lean",
+      "line": 481,
+      "declaration": "ContMDiff.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/SModEq/Basic.lean",
+      "line": 135,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Eigenspace/Basic.lean",
+      "line": 205,
+      "declaration": "HasUnifEigenvalue.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Eigenspace/Basic.lean",
+      "line": 463,
+      "declaration": "HasEigenvalue.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/PosDef.lean",
+      "line": 325,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Block.lean",
+      "line": 206,
+      "declaration": "BlockTriangular.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Symmetric.lean",
+      "line": 75,
+      "declaration": "IsSymm.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Hermitian.lean",
+      "line": 327,
+      "declaration": "IsHermitian.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/GeneralLinearGroup/FinTwo.lean",
+      "line": 257,
+      "declaration": "IsParabolic.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/Arithmetic.lean",
+      "line": 183,
+      "declaration": "Measurable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/Arithmetic.lean",
+      "line": 187,
+      "declaration": "AEMeasurable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.lean",
+      "line": 410,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/StronglyMeasurable/AEStronglyMeasurable.lean",
+      "line": 355,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/WittVector/Basic.lean",
+      "line": 115,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/MvPolynomial/Homogeneous.lean",
+      "line": 256,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/MvPolynomial/WeightedHomogeneous.lean",
+      "line": 279,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/MvPolynomial/MonomialOrder.lean",
+      "line": 568,
+      "declaration": "Monic.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Coprime/Lemmas.lean",
+      "line": 204,
+      "declaration": "IsCoprime.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Coprime/Lemmas.lean",
+      "line": 292,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/FractionalIdeal/Basic.lean",
+      "line": 537,
+      "declaration": "_root_.IsFractional.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Algebraic/Integral.lean",
+      "line": 335,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Algebraic/Basic.lean",
+      "line": 369,
+      "declaration": "Transcendental.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Finiteness/Subalgebra.lean",
+      "line": 57,
+      "declaration": "FG.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Finiteness/Ideal.lean",
+      "line": 106,
+      "declaration": "FG.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/RootsOfUnity/PrimitiveRoots.lean",
+      "line": 261,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Bialgebra/GroupLike.lean",
+      "line": 45,
+      "declaration": "IsGroupLikeElem.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/MvPowerSeries/Substitution.lean",
+      "line": 169,
+      "declaration": "HasSubst.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/MvPowerSeries/Evaluation.lean",
+      "line": 120,
+      "declaration": "HasEval.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/IntegralClosure/IsIntegralClosure/Basic.lean",
+      "line": 224,
+      "declaration": "IsIntegral.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/GroupTheory/Congruence/Defs.lean",
+      "line": 586,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/ModularForms/Basic.lean",
+      "line": 581,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/ArithmeticFunction/Defs.lean",
+      "line": 634,
+      "declaration": "IsMultiplicative.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/ArithmeticFunction/Misc.lean",
+      "line": 120,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/Padics/PadicVal/Basic.lean",
+      "line": 240,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/NumberTheory/Padics/PadicVal/Basic.lean",
+      "line": 397,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Symmetric.lean",
+      "line": 121,
+      "declaration": "IsSymmetric.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Asymptotics/Theta.lean",
+      "line": 215,
+      "declaration": "IsTheta.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Asymptotics/AsymptoticEquivalent.lean",
+      "line": 297,
+      "declaration": "IsEquivalent.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Asymptotics/Defs.lean",
+      "line": 1351,
+      "declaration": "IsBigOWith.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Asymptotics/Defs.lean",
+      "line": 1368,
+      "declaration": "IsBigO.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Asymptotics/Defs.lean",
+      "line": 1373,
+      "declaration": "IsLittleO.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Distribution/TemperateGrowth.lean",
+      "line": 284,
+      "declaration": "HasTemperateGrowth.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Convex/Mul.lean",
+      "line": 148,
+      "declaration": "ConvexOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Meromorphic/Basic.lean",
+      "line": 317,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Meromorphic/Basic.lean",
+      "line": 608,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Meromorphic/Basic.lean",
+      "line": 731,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Analytic/Constructions.lean",
+      "line": 657,
+      "declaration": "AnalyticWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Analytic/Constructions.lean",
+      "line": 670,
+      "declaration": "AnalyticAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Analytic/Constructions.lean",
+      "line": 677,
+      "declaration": "AnalyticOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Analytic/Constructions.lean",
+      "line": 683,
+      "declaration": "AnalyticOnNhd.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 104,
+      "declaration": "DifferentiableWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 113,
+      "declaration": "DifferentiableAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 121,
+      "declaration": "DifferentiableOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 128,
+      "declaration": "Differentiable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 173,
+      "declaration": "HasStrictFDerivAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 182,
+      "declaration": "HasFDerivWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Pow.lean",
+      "line": 191,
+      "declaration": "HasFDerivAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/ContDiff/Operations.lean",
+      "line": 507,
+      "declaration": "ContDiff.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/ContDiff/Operations.lean",
+      "line": 512,
+      "declaration": "ContDiffWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/ContDiff/Operations.lean",
+      "line": 517,
+      "declaration": "ContDiffAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/ContDiff/Operations.lean",
+      "line": 522,
+      "declaration": "ContDiffOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Pow.lean",
+      "line": 98,
+      "declaration": "HasStrictDerivAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Pow.lean",
+      "line": 105,
+      "declaration": "HasDerivWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Pow.lean",
+      "line": 109,
+      "declaration": "HasDerivAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 182,
+      "declaration": "Specializes.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 188,
+      "declaration": "Inseparable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 813,
+      "declaration": "Continuous.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 825,
+      "declaration": "Filter.Tendsto.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 830,
+      "declaration": "ContinuousWithinAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 835,
+      "declaration": "ContinuousAt.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/Monoid.lean",
+      "line": 840,
+      "declaration": "ContinuousOn.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/InfiniteSum/Basic.lean",
+      "line": 334,
+      "declaration": "HasProd.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Algebra/InfiniteSum/Basic.lean",
+      "line": 340,
+      "declaration": "Multipliable.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Topology/Instances/ENNReal/Lemmas.lean",
+      "line": 446,
+      "declaration": "Tendsto.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/FieldSimp/Lemmas.lean",
+      "line": 464,
+      "declaration": "Sign.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/Linarith/Parsing.lean",
+      "line": 98,
+      "declaration": "Sum.pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/Ring/Basic.lean",
+      "line": 437,
+      "declaration": "pow"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Tactic/Algebra/Basic.lean",
+      "line": 220,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Prelude.lean",
+      "line": 1791,
+      "declaration": "Nat.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Grind/Ring/Basic.lean",
+      "line": 586,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Grind/Ring/CommSolver.lean",
+      "line": 688,
+      "declaration": "Poly.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Basic.lean",
+      "line": 67,
+      "declaration": "UInt8.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Basic.lean",
+      "line": 238,
+      "declaration": "UInt16.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Basic.lean",
+      "line": 432,
+      "declaration": "UInt32.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Basic.lean",
+      "line": 603,
+      "declaration": "UInt64.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Basic.lean",
+      "line": 798,
+      "declaration": "USize.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Dyadic/Basic.lean",
+      "line": 180,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/BitVec/Basic.lean",
+      "line": 253,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Coprime.lean",
+      "line": 171,
+      "declaration": "Coprime.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Rat/Basic.lean",
+      "line": 205,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/OfNat.lean",
+      "line": 116,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/Basic.lean",
+      "line": 400,
+      "declaration": "pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Basic.lean",
+      "line": 255,
+      "declaration": "Int8.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Basic.lean",
+      "line": 628,
+      "declaration": "Int16.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Basic.lean",
+      "line": 1017,
+      "declaration": "Int32.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Basic.lean",
+      "line": 1426,
+      "declaration": "Int64.pow"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Basic.lean",
+      "line": 1818,
+      "declaration": "ISize.pow"
+    }
+  ],
+  "dvd_mul": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+      "line": 186,
+      "declaration": "dvd_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Prime/Defs.lean",
+      "line": 65,
+      "declaration": "dvd_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Nat/Prime/Defs.lean",
+      "line": 422,
+      "declaration": "Prime.dvd_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/RingTheory/Int/Basic.lean",
+      "line": 71,
+      "declaration": "Int.Prime.dvd_mul"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Gcd.lean",
+      "line": 385,
+      "declaration": "dvd_mul"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/Gcd.lean",
+      "line": 357,
+      "declaration": "dvd_mul"
+    }
+  ],
+  "one_div_le_one_div_of_le": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Order/Field/Basic.lean",
+      "line": 69,
+      "declaration": "one_div_le_one_div_of_le"
+    }
+  ],
+  "sub_add_cancel": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/Multiset/AddSub.lean",
+      "line": 331,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/EReal/Operations.lean",
+      "line": 434,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Grind/Module/Basic.lean",
+      "line": 162,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Lemmas.lean",
+      "line": 2975,
+      "declaration": "UInt8.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Lemmas.lean",
+      "line": 2977,
+      "declaration": "UInt16.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Lemmas.lean",
+      "line": 2979,
+      "declaration": "UInt32.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Lemmas.lean",
+      "line": 2981,
+      "declaration": "UInt64.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/UInt/Lemmas.lean",
+      "line": 2983,
+      "declaration": "USize.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/BitVec/Lemmas.lean",
+      "line": 3894,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Nat/Basic.lean",
+      "line": 991,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Rat/Lemmas.lean",
+      "line": 398,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/Int/Lemmas.lean",
+      "line": 331,
+      "declaration": "sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Lemmas.lean",
+      "line": 2655,
+      "declaration": "Int8.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Lemmas.lean",
+      "line": 2657,
+      "declaration": "Int16.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Lemmas.lean",
+      "line": 2659,
+      "declaration": "Int32.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Lemmas.lean",
+      "line": 2661,
+      "declaration": "Int64.sub_add_cancel"
+    },
+    {
+      "path": "/Users/sadiapeerzada/.elan/toolchains/leanprover--lean4---v4.32.0/src/lean/Init/Data/SInt/Lemmas.lean",
+      "line": 2663,
+      "declaration": "ISize.sub_add_cancel"
+    }
+  ],
+  "abs_mul": [
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Algebra/Order/Ring/Abs.lean",
+      "line": 49,
+      "declaration": "abs_mul"
+    },
+    {
+      "path": "lean_project/.lake/packages/mathlib/Mathlib/Data/EReal/Inv.lean",
+      "line": 70,
+      "declaration": "abs_mul"
+    }
+  ]
+}

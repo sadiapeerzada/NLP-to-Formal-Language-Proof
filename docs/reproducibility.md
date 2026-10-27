@@ -128,3 +128,10 @@ analysis output, never by copying values from historical charts or manually
 authored proofs.
 
 Current completion evidence (27 October 2026): [final readiness audit](../data/analysis/verified_readiness_20261027/readiness.json) and [completion report](FINAL_COMPLETION_REPORT.md). The pool has 37 candidates (29 proposed development, 8 proposed test), zero eligible records, and 95 review warnings. Exact source bytes are now archived separately under `data/source_archives/20261027_curl/`; source compatibility and independent semantic reviews remain pending.
+
+
+## Final local-study revision (after PR #8)
+
+The preferred proposed inference path is now local MLX, not a paid API. See `configs/repair_experiment_local_v0.3.0.json`, `docs/LOCAL_MODEL_EXECUTION_REPORT.md`, and `docs/FINAL_M1_M7_COMPLIANCE_REPORT.md`. The original protocol and historical inventories above remain as dated evidence. Local mode requires real approval, exact eligible input bytes and the frozen model inventory; `scripts/local_experiment.py --plan-only` makes no generations. Current proof overlays are loaded through `src/candidate_inventory.py` without rewriting historical candidate files. Markdown review packets and the latest readiness report are linked from the final dataset report.
+
+The pre-results paper builds with the official Springer class 2.25 and Tectonic 0.17.0; exact release/template hashes and actual build logs are in `data/verification/m1_m7_20261027/`. The binaries/template are obtained from their official sources, not vendored without redistribution review. Reproduce using a temporary copy of `paper/`, place matching `llncs.cls` and `splncs04.bst` in that temporary source directory, then run `tectonic --untrusted --keep-logs --outdir <fresh-output> <temporary-source>/main.tex`. First-run TeX resource downloads require network access. Successful typesetting does not turn unavailable results into findings.

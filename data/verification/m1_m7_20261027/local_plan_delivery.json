@@ -1,0 +1,52 @@
+{
+  "status": "proposed_local_substitution_requires_supervisor_approval",
+  "protocol_sha256": "198466d7396606391547c29f0e7d9b70b011d93abc1236c60d9e1f1ee0fb0b92",
+  "execution_enabled": false,
+  "model": {
+    "provider": "mlx_local",
+    "requested_model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "identifier_kind": "immutable_local_snapshot",
+    "immutable_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "model_inventory_file": "data/local_model/20261027/model_inventory.json",
+    "model_inventory_sha256": "24d68abbe5e1434e5263ad123cca517c2c1799c7465e104e83f6cb02baeac4f9",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4
+    },
+    "chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+    "tokenizer_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "backend": "mlx-lm",
+    "backend_version": "0.32.2",
+    "mlx_version": "0.32.4",
+    "same_requested_model_for_initial_and_all_repairs": true,
+    "fallback_model": null,
+    "license_evidence": "data/local_model/20261027/model_card.md",
+    "license_observed": "Apache-2.0; independent compatibility review pending"
+  },
+  "decoding": {
+    "temperature": 0.2,
+    "max_completion_tokens": 2000,
+    "reasoning_effort": null,
+    "generation_seed": 2027,
+    "generation_seed_policy": "sha256(base_seed:context:prompt_sha256)_first_uint32; context is problem_id/initial or problem_id/B|C/repair_index. Calls have independent KV caches. Reusing a logical context is rejected; seeds are backend/hardware scoped.",
+    "top_p": 1.0,
+    "max_context_tokens": 8192
+  },
+  "paid_inference_allowed": false,
+  "maximum_logical_generations_per_problem": 7,
+  "model_calls_made": 0,
+  "required_approvals": {
+    "api_execution_enabled": false,
+    "required_before_real_pilot": [
+      "genuine independent dataset/semantic and rights review with eligible development examples",
+      "supervisor approval of substituting local MLX generation for the requested API experiment",
+      "approved exact local protocol, model inventory, context/call/compute limits and development IDs",
+      "successful neutral backend smoke test; this is not the study pilot"
+    ],
+    "required_before_heldout": [
+      "eligible frozen development/test datasets with ordered hashes and family independence",
+      "approved and preregistered local protocol and model configuration",
+      "audited successful genuine local development A/B/C pilot"
+    ]
+  }
+}

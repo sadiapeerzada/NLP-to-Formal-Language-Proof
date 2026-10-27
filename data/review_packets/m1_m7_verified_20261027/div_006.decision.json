@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "div_006",
+  "binding_sha256": "f1c26e2ee5521f9f90ed2dfc79e41809cef664025c76d4f2691acd63d589c184",
+  "review_type": "semantic_fidelity",
+  "label": null,
+  "reviewer_id": null,
+  "reviewer_kind": "independent_human_review",
+  "reviewed_on": null,
+  "independence_attestation": null,
+  "evidence": null,
+  "evidence_artifact": null
+}

@@ -1,0 +1,30 @@
+{
+  "completed_on": "2026-10-28",
+  "collection_started_on": "2026-10-27",
+  "candidates": 96,
+  "candidate_splits": {
+    "development": 30,
+    "test": 66
+  },
+  "categories": {
+    "arithmetic_identity": 18,
+    "divisibility": 26,
+    "modular_arithmetic": 15,
+    "induction": 18,
+    "inequality": 19
+  },
+  "strict_proof_verified": 96,
+  "independently_reviewed": 0,
+  "eligible": 0,
+  "frozen": 0,
+  "structural_errors": 0,
+  "review_warnings": 192,
+  "reference_proof_gaps": [],
+  "paid_inference_requests": 0,
+  "mathematical_model_generations": 0,
+  "neutral_backend_generations": 3,
+  "genuine_paired_pilots": 0,
+  "genuine_heldout_trajectories": 0,
+  "protocol_sha256": "198466d7396606391547c29f0e7d9b70b011d93abc1236c60d9e1f1ee0fb0b92",
+  "item_cited_candidates": 75
+}

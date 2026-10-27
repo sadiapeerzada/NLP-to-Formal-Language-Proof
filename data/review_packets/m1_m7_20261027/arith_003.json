@@ -1,0 +1,65 @@
+{
+  "record": {
+    "id": "arith_003",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Natural-number distributivity statement.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003_mathlib"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003_mathlib, with a different theorem name."
+      },
+      "recommended_curator_action": "Adjudicate the duplicate group; do not count both as independent test examples."
+    }
+  },
+  "binding_sha256": "dd09e4741d47e5ecdcdbfb33e8afae3bcb89202283d588f2dd0f3ec3895b1027",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "arith_003",
+    "binding_sha256": "dd09e4741d47e5ecdcdbfb33e8afae3bcb89202283d588f2dd0f3ec3895b1027",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

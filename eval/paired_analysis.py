@@ -209,6 +209,44 @@ def load_run_manifests(runs_dir: Path) -> tuple[list[dict[str, Any]], list[dict[
     return runs, errors
 
 
+def local_provenance_errors(run: dict[str, Any]) -> list[str]:
+    """Validate local-run identity and RNG binding without loading any weights."""
+    if run.get("execution_mode") != "local":
+        return []
+    errors=[];context=run.get("local_execution") or {};model=context.get("model") or {}
+    if run.get("provider")!="mlx_local" or run.get("phase")!="heldout":
+        errors.append("local results require mlx_local provenance and held-out phase; pilot/smoke outputs are excluded")
+    inventory_path=REPOSITORY_ROOT/model.get("model_inventory_file", "__missing__")
+    if not inventory_path.is_file() or sha256_file(inventory_path)!=model.get("model_inventory_sha256"):
+        return errors+["local model inventory is missing or hash-mismatched"]
+    inventory=load_json(inventory_path)
+    if inventory.get("snapshot_revision")!=model.get("immutable_revision"):
+        errors.append("local snapshot identity differs from inventory")
+    initial=run.get("initial_candidate") or {}
+    attempts=[(f"{run.get('problem_id')}/initial",initial)]
+    for condition in ("B","C"):
+        for attempt in run.get("conditions",{}).get(condition,{}).get("attempts",[]):
+            attempts.append((f"{run.get('problem_id')}/{condition}/{attempt.get('repair_call_number')}",attempt))
+    for expected_context,attempt in attempts:
+        metadata=attempt.get("completion_metadata")
+        if not isinstance(metadata,dict):
+            if isinstance(attempt.get("candidate_sha256"), str):
+                errors.append("local candidate is missing genuine model-generation metadata")
+            continue  # Genuine failed/incomplete calls remain missing, never successes.
+        if run.get("local_generation_confirmed") is not True:
+            errors.append("local generated response lacks confirmed model provenance")
+        prompt_hash=sha256_bytes(str(attempt.get("prompt_text", "")).encode())
+        base=context.get("decoding",{}).get("generation_seed")
+        seed=int.from_bytes(hashlib.sha256(f"{base}:{expected_context}:{prompt_hash}".encode()).digest()[:4],"big")
+        if metadata.get("snapshot_revision")!=model.get("immutable_revision") or metadata.get("model")!=run.get("model_identifier"):
+            errors.append("local attempt used a different model/snapshot")
+        if metadata.get("generation_context")!=expected_context or metadata.get("generation_seed")!=seed or metadata.get("prompt_sha256")!=prompt_hash:
+            errors.append("local attempt seed/context/prompt binding mismatch")
+        if metadata.get("max_completion_tokens")!=2000 or metadata.get("temperature")!=0.2 or metadata.get("logical_generations")!=1 or metadata.get("api_attempts")!=0:
+            errors.append("local attempt generation budget/settings mismatch")
+    return errors
+
+
 def repeated_problem_runs(runs: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for run in runs:
@@ -320,8 +358,8 @@ def analyze_frozen(
 
     eligible_ids = [record["id"] for record in test_records]
     runs, malformed = load_run_manifests(runs_dir)
-    paired_runs = [run for run in runs if run.get("execution_mode") == "api"]
-    excluded_mode_runs = [run for run in runs if run.get("execution_mode") != "api"]
+    paired_runs = [run for run in runs if run.get("execution_mode") in {"api", "local"} and (run.get("execution_mode") != "local" or run.get("phase") == "heldout")]
+    excluded_mode_runs = [run for run in runs if run not in paired_runs]
     by_problem: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for run in paired_runs:
         problem_id = run.get("problem_id")
@@ -340,6 +378,7 @@ def analyze_frozen(
     config_hashes: set[str] = set()
     run_ids: set[str] = set()
     for problem_id, run in run_by_problem.items():
+        mismatches.extend(f"{problem_id}: {error}" for error in local_provenance_errors(run))
         if problem_id not in eligible_ids:
             mismatches.append(f"unexpected test problem {problem_id}")
         if run.get("dataset_sha256") != test_hash:
@@ -682,7 +721,7 @@ def analyze_frozen(
         "incomplete_or_failed_run_ids": [run.get("experiment_id") for run in paired_runs if run.get("status") != "completed"],
         "malformed_run_artifacts": malformed,
         "excluded_non_api_run_count": len(excluded_mode_runs),
-        "excluded_non_api_run_modes": dict(Counter(str(run.get("execution_mode")) for run in excluded_mode_runs)),
+        "excluded_non_study_run_modes": dict(Counter(str(run.get("execution_mode")) for run in excluded_mode_runs)),
         "repeated_runs_policy": "one replicate per problem required; repeated runs block analysis rather than being counted as independent problems",
         "missing_outcomes_policy": "full eligible denominator with missing as failure; complete-case exact McNemar also reported",
         "first_attempt_success_definition": "shared fixed-theorem initial candidate verifier success, counted once per problem",

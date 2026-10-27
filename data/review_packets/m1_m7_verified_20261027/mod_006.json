@@ -1,0 +1,121 @@
+{
+  "record": {
+    "id": "mod_006",
+    "nl_statement": "Among positive natural-number moduli for which 16 and 25 have the same remainder, 9 is the largest.",
+    "category": "modular_arithmetic",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: divisibility bounds or integer parameterization; independent review pending.",
+    "expected_lean_statement": "theorem largest_modulus_sixteen_twentyfive :\n    Nat.ModEq 9 16 25 ∧ ∀ n : ℕ, 0 < n → Nat.ModEq n 16 25 → n ≤ 9",
+    "source_item_id": "DMOI3-section-5.2-exercise-4",
+    "source_location": "Section 5.2, Exercises, item 4",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §5.2, exercise 4.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/source_archives/20261027_curl/dmoi3-colophon.html",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "afa6b4a590ffe3d6dd07e2b6f9342310e23c2eb9f1ebb1a53e7f8e2dcbd8e3a6",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-5.2-exercise-4",
+        "source_location": "Section 5.2, Exercises, item 4",
+        "retrieved_on": "2026-10-27",
+        "source_statement_transcription": "What is the largest n such that 16 and 25 are in the same remainder class modulo n?",
+        "source_statement_sha256": "c7b80c486223b063fef2e576590d784ceb4957d55cdfe8ff9370c4b5cb7f161e",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Exact publisher bytes archived; independent rights compatibility and API-use review remain pending.",
+        "provenance_status": "archived publisher source; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, DMOI3, 3rd ed., §5.2, exercise 4; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "changes_made": "Formalizes only the largest-modulus subquestion of exercise 4; remainder-class enumeration and the requested example above 100 are outside scope.",
+        "source_page_sha256": "55ee675093b26253d2db46280ac1cee2b95820e48e37c06323e5a9b2fef8d96b",
+        "source_page_sha256_status": "captured",
+        "source_page_archive": "data/source_archives/20261027_curl/dmoi3-number-theory.html"
+      },
+      "problem_family": "greatest_modulus_of_two_fixed_integers",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional distinct family; compare against all existing records before split approval.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "lake env lean --json lean_project/generated/_scratch/curation_v018_minimal_mod_006_largest_modulus.lean",
+        "theorem_sha256": "afa6b4a590ffe3d6dd07e2b6f9342310e23c2eb9f1ebb1a53e7f8e2dcbd8e3a6",
+        "candidate_sha256": "1cbf29ace022e89b9fadd554cd539182735556870a28c36524bdc89efe2c297a",
+        "verification_source_sha256": "02fc80bfbff2a179f4eec8a9d5ee75c4ca771994d76d0858e406781d3954d6d5",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.1.8/verification_minimal.json; strict source policy, exit code and axiom inspection passed. Initial full-Mathlib timeout preserved in verification.json; retry narrowed imports without changing the proposition."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited exercise and solution by Codex; independent semantic review pending.",
+      "proposed_split_rationale": "Development-only preparation; never exposed as held-out outcome evidence."
+    },
+    "required_imports": [
+      "Mathlib.Data.Nat.ModEq"
+    ],
+    "mathematical_assumptions": "Positive natural modulus; fixed integers 16 and 25."
+  },
+  "binding_sha256": "48065a4552163733b83d03d9cfcd0d68cf4a08b2a9dcf44213fe9d4976f5dc72",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "mod_006",
+    "binding_sha256": "48065a4552163733b83d03d9cfcd0d68cf4a08b2a9dcf44213fe9d4976f5dc72",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

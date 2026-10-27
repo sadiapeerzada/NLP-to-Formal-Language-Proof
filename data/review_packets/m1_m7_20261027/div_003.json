@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "div_003",
+    "nl_statement": "If a natural number n is divisible by 6, then it is divisible by both 2 and 3.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem div6_imp_div2_div3 (n : ℕ) (h : 6 ∣ n) : 2 ∣ n ∧ 3 ∣ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_divisibility_factorization",
+      "family_review_status": "needs_review",
+      "family_review_note": "Single divisibility implication; singleton family proposal.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The conjunction in Lean corresponds to 'both'; source provenance and theorem review are absent."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Verify divisibility conventions and the reference theorem, then record a source and review evidence."
+    }
+  },
+  "binding_sha256": "bdc00c9f1bbfbe8eb62149c8bdbf5f165ff68fe1c34597d8a16c53e7becd73ab",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_003",
+    "binding_sha256": "bdc00c9f1bbfbe8eb62149c8bdbf5f165ff68fe1c34597d8a16c53e7becd73ab",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

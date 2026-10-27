@@ -1,0 +1,121 @@
+{
+  "record": {
+    "id": "div_012",
+    "nl_statement": "For integers x and y, 6x + 10y = 32 holds if and only if there is an integer k with x = 2 - 5k and y = 2 + 3k.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional: divisibility bounds or integer parameterization; independent review pending.",
+    "expected_lean_statement": "theorem diophantine_six_ten (x y : ℤ) :\n    6 * x + 10 * y = 32 ↔ ∃ k : ℤ, x = 2 - 5 * k ∧ y = 2 + 3 * k",
+    "source_item_id": "DMOI3-section-5.2-exercise-15",
+    "source_location": "Section 5.2, Exercises, item 15",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §5.2, exercise 15.",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/source_archives/20261027_curl/dmoi3-colophon.html",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "49f92ce3a31e0f546f096fa8e7b6de12596ef0d3a3f70f17654031ab6901fcb1",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-5.2-exercise-15",
+        "source_location": "Section 5.2, Exercises, item 15",
+        "retrieved_on": "2026-10-27",
+        "source_statement_transcription": "Solve the following linear Diophantine equation, using modular arithmetic (describe the general solutions). 6x + 10y = 32.",
+        "source_statement_sha256": "4aa6dea1aa121be47c989d9e3e61b8b62d9fcd661f8108ec81789c782ac963a4",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Exact publisher bytes archived; independent rights compatibility and API-use review remain pending.",
+        "provenance_status": "archived publisher source; independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, DMOI3, 3rd ed., §5.2, exercise 15; CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3/sec_addtops-numbth.html",
+        "changes_made": "Converts the solution exercise into an equivalence giving all integer solutions; the parameterization appears in the publisher solution. No required proof method is asserted in Lean.",
+        "source_page_sha256": "55ee675093b26253d2db46280ac1cee2b95820e48e37c06323e5a9b2fef8d96b",
+        "source_page_sha256_status": "captured",
+        "source_page_archive": "data/source_archives/20261027_curl/dmoi3-number-theory.html"
+      },
+      "problem_family": "linear_diophantine_general_solution",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional distinct family; compare against all existing records before split approval.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "lake env lean --json lean_project/generated/_scratch/curation_v018_minimal_div_012_diophantine.lean",
+        "theorem_sha256": "49f92ce3a31e0f546f096fa8e7b6de12596ef0d3a3f70f17654031ab6901fcb1",
+        "candidate_sha256": "e984751c23d0f09d4ea617d0643a0cca65e9599e6450472fc6ffbd6950a62443",
+        "verification_source_sha256": "a6cc3087596a94bc2eef45fd0cd8eb9aaf75114407192a775e89e847ab254e58",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.1.8/verification_minimal.json; strict source policy, exit code and axiom inspection passed. Initial full-Mathlib timeout preserved in verification.json; retry narrowed imports without changing the proposition."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited exercise and solution by Codex; independent semantic review pending.",
+      "proposed_split_rationale": "Development-only preparation; never exposed as held-out outcome evidence."
+    },
+    "required_imports": [
+      "Mathlib.Data.Int.Basic",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "mathematical_assumptions": "Integer domain for x, y and k; no positivity restrictions."
+  },
+  "binding_sha256": "fa1236c177df04e75a6f97eb37424c85cfd76817b9ae515af8efc0d03464d166",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_012",
+    "binding_sha256": "fa1236c177df04e75a6f97eb37424c85cfd76817b9ae515af8efc0d03464d166",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

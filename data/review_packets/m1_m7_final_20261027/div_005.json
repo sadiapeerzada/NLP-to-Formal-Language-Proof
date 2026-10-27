@@ -1,0 +1,87 @@
+{
+  "record": {
+    "id": "div_005",
+    "nl_statement": "If a natural number n is odd, then n squared is odd.",
+    "category": "divisibility",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem odd_sq_of_odd (n : ℕ) (h : ∃ k, n = 2*k+1) : ∃ j, n ^ 2 = 2*j+1",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_square_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Parity property of a natural-number square.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "Oddness is encoded by an existential witness equation; the English uses the ordinary-language predicate."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review equivalence of the witness encoding and confirm imported arithmetic definitions.",
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/reference_verification/v0.1.0/references_checked.lean"
+        ],
+        "theorem_sha256": "7dcf22396430210f36f777a29cba9fac0f57eda7258f713f74f022758095c9fd",
+        "verification_source_sha256": "49f07b252d75fda1e573c8a2738118c095ecd2efba04b1dfaf5579a37fbaf139",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/reference_verification/v0.1.0/proof_overlay.json; candidate source has no placeholders; exact-type comparison and target axiom inspection passed. ReferenceExpected placeholders check types only."
+      }
+    },
+    "required_imports": [
+      "Mathlib"
+    ]
+  },
+  "binding_sha256": "fa45a2fb48a1d0c4f6000d7d7bd9359bcf73d44943ae04819a385dc879e1d993",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "div_005",
+    "binding_sha256": "fa45a2fb48a1d0c4f6000d7d7bd9359bcf73d44943ae04819a385dc879e1d993",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

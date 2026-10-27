@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exponential growth comparison over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "The Lean inequality n < 2^n corresponds to 'greater than n'; theorem assumptions and boundary case still need review."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Check boundary cases and document theorem-statement and fidelity review."
+    }
+  },
+  "binding_sha256": "369aeb776d71f584b30cfb34ab7af0d43f5ab2add03ee11a74689a214ef94ecc",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_003",
+    "binding_sha256": "369aeb776d71f584b30cfb34ab7af0d43f5ab2add03ee11a74689a214ef94ecc",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

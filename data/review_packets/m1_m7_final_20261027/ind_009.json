@@ -1,0 +1,110 @@
+{
+  "record": {
+    "id": "ind_009",
+    "nl_statement": "Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).",
+    "category": "induction",
+    "difficulty": 4,
+    "difficulty_rationale": "Provisional source-driven rating; independent category and difficulty review pending.",
+    "expected_lean_statement": "theorem hockey_stick_binomial_identity (n : ℕ) : (∑ k ∈ Finset.range (n + 1), Nat.choose (4 + k) k) = Nat.choose (5 + n) n",
+    "source_item_id": "DMOI3-section-2.5-exercise-24",
+    "source_location": "Section 2.5, Exercises, item 24; publisher page lines 1153–1161.",
+    "curation": {
+      "source_url": "https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html",
+      "source_citation": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd edition, section 2.5, exercise 24 (online text).",
+      "source_status": "verified",
+      "source_license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "https://discrete.openmathbooks.org/dmoi3/front-colophon.html (license notice); https://discrete.openmathbooks.org/dmoi3/sec_seq-induction.html (item locators)",
+        "observed_on": "2026-10-21",
+        "reviewed_on": null,
+        "statement_sha256": "c5ef1a9cac36eea3f5d1b50f1a9a47f8d77bb9aa16ef2a845c45c93b0c71612b",
+        "rights_note": "Publisher colophon states CC BY-SA 4.0. Independent rights/redistribution compatibility review remains pending; this field is not clearance."
+      },
+      "source_metadata": {
+        "source_author": "Oscar Levin",
+        "source_title": "Discrete Mathematics: An Open Introduction",
+        "source_edition": "3rd edition, online text",
+        "source_item_id": "DMOI3-section-2.5-exercise-24",
+        "source_location": "Section 2.5, exercise 24; publisher page lines 1153–1161.",
+        "retrieved_on": "2026-10-21",
+        "source_statement_transcription": "Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).",
+        "source_statement_sha256": "f5c96dcf98145906e0709104c8d99b518f3776dc5b072c1a7ec084ab8afc28bb",
+        "source_statement_hash_scope": "SHA-256 of exact UTF-8 transcription here, not a hash of source page/PDF bytes.",
+        "rights_scope_note": "Publisher-hosted item and CC BY-SA notice observed; source page bytes were not archived and redistribution review is pending.",
+        "provenance_status": "item and rendered statement inspected on publisher page; source-byte capture and independent review pending",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "required_attribution": "Oscar Levin, Discrete Mathematics: An Open Introduction, 3rd ed., §2.5, Exercise 24 (DMOI3-section-2.5-exercise-24); CC BY-SA 4.0; https://discrete.openmathbooks.org/dmoi3.html",
+        "changes_made": "Replaced the displayed diagonal sum by a finite sum indexed by k from 0 through n and used Nat.choose notation; the source’s endpoint formula is retained.",
+        "source_page_sha256": null,
+        "source_page_sha256_status": "not_captured"
+      },
+      "problem_family": "hockey_stick_binomial_identity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional family label; independent family assignment and cross-split leakage review pending.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "exact_statement_type_elaboration_only; proof not verified",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": "cd lean_project && lake env lean --json ../data/curation_batches/v0.1.7/statement_check.lean",
+        "theorem_sha256": "c5ef1a9cac36eea3f5d1b50f1a9a47f8d77bb9aa16ef2a845c45c93b0c71612b",
+        "verification_file_sha256": "f9b060a42495cdeefd4415477aa4ae35f9713f50df3e4e3ec2914478fe1fd8a7",
+        "evidence": "Lean exited 0. Source diagnostics contain hasSorry warning for ind_009's explicit proof placeholder; proposition elaborated. Proof correctness and theorem axioms were not checked. Full output in verification.log."
+      },
+      "reference_lean_statement_provenance": "Lean proposition prepared from the cited source item; independent semantic/theorem review pending.",
+      "proposed_split_rationale": "Provisional development proposal; no test use until family and split are reviewed."
+    }
+  },
+  "binding_sha256": "245c39c9eba8a50f0deeb95bd953faab0ab98404beb4b819d227f0153cb95f00",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_009",
+    "binding_sha256": "245c39c9eba8a50f0deeb95bd953faab0ab98404beb4b819d227f0153cb95f00",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

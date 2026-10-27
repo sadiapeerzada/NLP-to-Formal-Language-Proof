@@ -1,0 +1,429 @@
+{
+  "status": "unreviewed_candidates_not_frozen",
+  "candidate_count": 52,
+  "strict_proof_verified_count": 52,
+  "eligible_count": 0,
+  "candidate_file_sha256": "ef24b400f4253dcd40466f72f3e5e73716357ff7bdf6d01fa35ca0ab5ab3468c",
+  "reference_source_sha256": "7b116ce104b59338fdcdf3e736fe4392c39b77f32db73dabef9afcd005680367",
+  "verification_sha256": "f2899c8d28dc10d03abc53c6045f5bc09b9f6f67c2cb59420173e62080b90f13",
+  "sources": [
+    {
+      "candidate_id": "lib_a_power_add",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Group/Defs.lean#L733",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/9bdca0e59c61_Defs.lean",
+      "sha256": "9bdca0e59c61245d1c3e8d6e636bdbb853645fb75878549b9208041b151ef3b4",
+      "item": "pow_add",
+      "line": 733
+    },
+    {
+      "candidate_id": "lib_a_euclidean",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Int/DivMod/Bootstrap.lean#L100",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/bd55b51820db_Bootstrap.lean",
+      "sha256": "bd55b51820dbc53925d34190fcb5de38afc5d6b3528759101fe6da87973026c1",
+      "item": "emod_add_mul_ediv",
+      "line": 100
+    },
+    {
+      "candidate_id": "lib_a_choose_symmetry",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Choose/Basic.lean#L198",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/e364d90ba28b_Basic.lean",
+      "sha256": "e364d90ba28b43f131754ff4e27d81fd935a601369a46a218579703ff4e7c705",
+      "item": "choose_symm",
+      "line": 198
+    },
+    {
+      "candidate_id": "lib_a_abs_product",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Abs.lean#L49",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/2d76883de1b8_Abs.lean",
+      "sha256": "2d76883de1b832557bb342945af172261f17b536cce4194ae4fabf4234619d40",
+      "item": "abs_mul",
+      "line": 49
+    },
+    {
+      "candidate_id": "lib_a_sqrt_square",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/Real/Sqrt.lean#L178",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/1935b1e2996b_Sqrt.lean",
+      "sha256": "1935b1e2996b58fde92e5150455c1b5c22766baa22a5167566acf06bc3391a05",
+      "item": "sq_sqrt",
+      "line": 178
+    },
+    {
+      "candidate_id": "lib_a_truncated_sub",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Basic.lean#L991",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/4f5e4f1ae65f_Basic.lean",
+      "sha256": "4f5e4f1ae65f0c8744ec2921159215627c85dc77ba6d57e73fe277b6f46a5062",
+      "item": "sub_add_cancel",
+      "line": 991
+    },
+    {
+      "candidate_id": "lib_a_inverse_difference",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Field/Basic.lean#L187",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/4aa5c7c0a9a1_Basic.lean",
+      "sha256": "4aa5c7c0a9a17d356d084bfabe5a2a54c0fa108ef3a90282e23961710cf06643",
+      "item": "inv_sub_inv",
+      "line": 187
+    },
+    {
+      "candidate_id": "lib_a_gcd_lcm",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Lcm.lean#L38",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c4accc5e1030_Lcm.lean",
+      "sha256": "c4accc5e10306750e0c990d43eebf4b02bf8444bb3a56be6c4aef663bcf5018c",
+      "item": "gcd_mul_lcm",
+      "line": 38
+    },
+    {
+      "candidate_id": "lib_d_euclid",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Defs.lean#L422",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/617c1a2a927a_Defs.lean",
+      "sha256": "617c1a2a927a2a282092f11c8d254036454e7ffa2eab12f8dd16880cf83d0d61",
+      "item": "Prime.dvd_mul",
+      "line": 422
+    },
+    {
+      "candidate_id": "lib_d_unbounded_primes",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Infinite.lean#L33",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/a466db9136dd_Infinite.lean",
+      "sha256": "a466db9136dd0e4d239badd1cc0b7413eb49b618391c3f11e2cf807cb0135616",
+      "item": "exists_infinite_primes",
+      "line": 33
+    },
+    {
+      "candidate_id": "lib_d_bezout",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Int/GCD.lean#L172",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/13cf17d1beed_GCD.lean",
+      "sha256": "13cf17d1beed6c6a24bd471065f461a2449f6eb55101ff5a6e6828d7be28b568",
+      "item": "gcd_eq_gcd_ab",
+      "line": 172
+    },
+    {
+      "candidate_id": "lib_d_coprime_successor",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/GCD/Basic.lean#L112",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c46b9173200a_Basic.lean",
+      "sha256": "c46b9173200adac93cefa0f8d9ee02306930771a1960796335c32455f719c3ac",
+      "item": "coprime_self_add_right",
+      "line": 112
+    },
+    {
+      "candidate_id": "lib_d_prime_factorial",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Factorial.lean#L23",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/caa753877be8_Factorial.lean",
+      "sha256": "caa753877be8d9ab5a656e6b95f9819dd590bda428e472749d6103423edf4993",
+      "item": "Prime.dvd_factorial",
+      "line": 23
+    },
+    {
+      "candidate_id": "lib_d_mersenne_gcd",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/GCD/Basic.lean#L62",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c46b9173200a_Basic.lean",
+      "sha256": "c46b9173200adac93cefa0f8d9ee02306930771a1960796335c32455f719c3ac",
+      "item": "pow_sub_one_gcd_pow_sub_one",
+      "line": 62
+    },
+    {
+      "candidate_id": "lib_d_prime_parity",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Basic.lean#L41",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/b97e83d65681_Basic.lean",
+      "sha256": "b97e83d65681b68b3ad1f4bdfd36defd0a30aa173cf726b3d2807acf8bde5027",
+      "item": "Prime.eq_two_or_odd",
+      "line": 41
+    },
+    {
+      "candidate_id": "lib_d_dvd_antisymmetry",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Dvd.lean#L76",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/12cd37a3909f_Dvd.lean",
+      "sha256": "12cd37a3909fddc05c1f5541662d1a099c083aa1084777ded9d583c7a6780f96",
+      "item": "dvd_antisymm",
+      "line": 76
+    },
+    {
+      "candidate_id": "lib_d_coprime_power",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/GCD/Basic.lean#L194",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c46b9173200a_Basic.lean",
+      "sha256": "c46b9173200adac93cefa0f8d9ee02306930771a1960796335c32455f719c3ac",
+      "item": "coprime_pow_left_iff",
+      "line": 194
+    },
+    {
+      "candidate_id": "lib_d_frobenius",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/GCD/Basic.lean#L233",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c46b9173200a_Basic.lean",
+      "sha256": "c46b9173200adac93cefa0f8d9ee02306930771a1960796335c32455f719c3ac",
+      "item": "Coprime.mul_add_mul_ne_mul",
+      "line": 233
+    },
+    {
+      "candidate_id": "lib_i_factorial",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Factorial/Basic.lean#L55",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/adb824791ea4_Basic.lean",
+      "sha256": "adb824791ea4b48c09991b84c62abbd5306f2588c9409db0b3641c09351255b7",
+      "item": "factorial_succ",
+      "line": 55
+    },
+    {
+      "candidate_id": "lib_i_fibonacci",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Fib/Basic.lean#L75",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/7dfe6ccc3900_Basic.lean",
+      "sha256": "7dfe6ccc390046773b2d4305ee89a6d753fc4d5608057da20e0a9526c6d60680",
+      "item": "fib_add_two",
+      "line": 75
+    },
+    {
+      "candidate_id": "lib_i_bernoulli",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Pow.lean#L100",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/a73c572e7a79_Pow.lean",
+      "sha256": "a73c572e7a79a535fa40163d68e8ad4ed7d913b94974dda36c9fff077ccadfb5",
+      "item": "one_add_mul_le_pow",
+      "line": 100
+    },
+    {
+      "candidate_id": "lib_i_vandermonde",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Choose/Vandermonde.lean#L31",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/2a00982f5be6_Vandermonde.lean",
+      "sha256": "2a00982f5be6eb43dd92263310602ae50ac886d2c463966cce9c757e0e5fa3ef",
+      "item": "add_choose_eq",
+      "line": 31
+    },
+    {
+      "candidate_id": "lib_i_fermat_product",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/NumberTheory/Fermat.lean#L56",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c3d7abb8fbd3_Fermat.lean",
+      "sha256": "c3d7abb8fbd3dd2b587b7cb86d7825de03a60f56b104feb9023a5daf17923ff7",
+      "item": "prod_fermatNumber",
+      "line": 56
+    },
+    {
+      "candidate_id": "lib_q_amgm",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean#L680",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/85232d08ea50_Basic.lean",
+      "sha256": "85232d08ea50e7fb03dbcdb4738d9ed47ae3671c045fb9cd3bc377576cd4ea60",
+      "item": "two_mul_le_add_sq",
+      "line": 680
+    },
+    {
+      "candidate_id": "lib_q_cauchy",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Ring/Identities.lean#L26",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/06bb8faf4141_Identities.lean",
+      "sha256": "06bb8faf4141732619be73603683ef16b865471e4f99f80cc5b0a1284c84a004",
+      "item": "sq_add_sq_mul_sq_add_sq",
+      "line": 26
+    },
+    {
+      "candidate_id": "lib_q_triangle",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Group/Unbundled/Abs.lean#L125",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/8d28a915f785_Abs.lean",
+      "sha256": "8d28a915f785f4bca75dfa320261f52e82bf019e51e3d75161cac2351cdca920",
+      "item": "abs_add_le",
+      "line": 125
+    },
+    {
+      "candidate_id": "lib_q_reciprocal",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Field/Basic.lean#L69",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/1d6672beae57_Basic.lean",
+      "sha256": "1d6672beae57890d355067ff20de13b715bece8e87e0d088b7e959e773025f57",
+      "item": "one_div_le_one_div_of_le",
+      "line": 69
+    },
+    {
+      "candidate_id": "lib_q_log",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Log.lean#L171",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/9800e6942155_Log.lean",
+      "sha256": "9800e6942155e28138ed981a06340d7333aacccfafcd1aa35147147ae57d8e3f",
+      "item": "pow_log_le_self",
+      "line": 171
+    },
+    {
+      "candidate_id": "lib_q_sqrt_monotone",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/Real/Sqrt.lean#L209",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/1935b1e2996b_Sqrt.lean",
+      "sha256": "1935b1e2996b58fde92e5150455c1b5c22766baa22a5167566acf06bc3391a05",
+      "item": "sqrt_le_sqrt",
+      "line": 209
+    },
+    {
+      "candidate_id": "lib_q_exp_tangent",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/Complex/Exponential.lean#L631",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c9423cd25226_Exponential.lean",
+      "sha256": "c9423cd25226aa5d3bfc128eab6ae3ef453c8f559c2430f2e039bc66a77256ca",
+      "item": "add_one_le_exp",
+      "line": 631
+    },
+    {
+      "candidate_id": "lib_q_sine",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/SpecialFunctions/Trigonometric/Bounds.lean#L54",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/8445659af28d_Bounds.lean",
+      "sha256": "8445659af28d1930e729583704c3f696e3590e27ed351567785bbf58e7132376",
+      "item": "sin_le",
+      "line": 54
+    },
+    {
+      "candidate_id": "lib_q_quotient",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Div/Basic.lean#L71",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/67f894497257_Basic.lean",
+      "sha256": "67f894497257111dff81a5b3bab0f849cc53f31a3c62656333366ad62ab63a58",
+      "item": "div_le_self",
+      "line": 71
+    },
+    {
+      "candidate_id": "lib_m_crt",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/ModEq.lean#L422",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/678c7d5030c0_ModEq.lean",
+      "sha256": "678c7d5030c056efb633aaab3a1b44ceec599332b9f70f694b08f4cce27d1fea",
+      "item": "chineseRemainder'",
+      "line": 422
+    },
+    {
+      "candidate_id": "lib_m_cancel",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/ModEq.lean#L378",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/678c7d5030c0_ModEq.lean",
+      "sha256": "678c7d5030c056efb633aaab3a1b44ceec599332b9f70f694b08f4cce27d1fea",
+      "item": "cancel_left_div_gcd",
+      "line": 378
+    },
+    {
+      "candidate_id": "lib_m_canonical",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/ModEq.lean#L374",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/678c7d5030c0_ModEq.lean",
+      "sha256": "678c7d5030c056efb633aaab3a1b44ceec599332b9f70f694b08f4cce27d1fea",
+      "item": "eq_of_lt_of_lt",
+      "line": 374
+    },
+    {
+      "candidate_id": "lib_m_fermat",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/FieldTheory/Finite/Basic.lean#L651",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/e13bd133063e_Basic.lean",
+      "sha256": "e13bd133063e0349d955817f5f319f8c861f7d6136afa326cb477302348f1db3",
+      "item": "pow_prime_eq_self",
+      "line": 651
+    },
+    {
+      "candidate_id": "lib_m_wilson",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/NumberTheory/Wilson.lean#L43",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/7bd6ec0e909f_Wilson.lean",
+      "sha256": "7bd6ec0e909f037f8632e1b495f9647a61fe950f3bfe3af98a5a22914622aeb7",
+      "item": "wilsons_lemma",
+      "line": 43
+    },
+    {
+      "candidate_id": "lib_m_power",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Int/ModEq.lean#L196",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/d237580efab0_ModEq.lean",
+      "sha256": "d237580efab0126e0f53d266b49b536274d41564db5134a4a0ab7944418146a3",
+      "item": "ModEq.pow",
+      "line": 196
+    },
+    {
+      "candidate_id": "lib_m_gcd_obstruction",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Int/ModEq.lean#L109",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/d237580efab0_ModEq.lean",
+      "sha256": "d237580efab0126e0f53d266b49b536274d41564db5134a4a0ab7944418146a3",
+      "item": "modEq_iff_dvd",
+      "line": 109
+    },
+    {
+      "candidate_id": "lib_m_residue_product",
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Lemmas.lean#L810",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/ea32199d6ffe_Lemmas.lean",
+      "sha256": "ea32199d6ffe767e983140ec3bd624d2cee2e81b993e079b6dc26ad38b886d24",
+      "item": "mul_mod",
+      "line": 810
+    },
+    {
+      "candidate_id": "lib_a_trig_unit",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/Complex/Trigonometric.lean#L464",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/73147c3523fc_Trigonometric.lean",
+      "sha256": "73147c3523fc45f402b7e9487de2722817586a459ba624be52760fd8ef7bc391",
+      "item": "sin_sq_add_cos_sq",
+      "line": 464
+    },
+    {
+      "candidate_id": "lib_a_log_product",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean#L132",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/20c5a159b0a5_Basic.lean",
+      "sha256": "20c5a159b0a5632de083db76248bf527e8fc13283094d30c53c4489ad2aabed9",
+      "item": "log_mul",
+      "line": 132
+    },
+    {
+      "candidate_id": "lib_a_exp_add",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/Complex/Exponential.lean#L209",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c9423cd25226_Exponential.lean",
+      "sha256": "c9423cd25226aa5d3bfc128eab6ae3ef453c8f559c2430f2e039bc66a77256ca",
+      "item": "exp_add",
+      "line": 209
+    },
+    {
+      "candidate_id": "lib_a_min_max",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Monoid/Unbundled/MinMax.lean#L38",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/16a60f4fc32d_MinMax.lean",
+      "sha256": "16a60f4fc32d8b43debef4732d5f6beb0d9f3d669d315bd61c2d39922551f59b",
+      "item": "min_add_max",
+      "line": 38
+    },
+    {
+      "candidate_id": "lib_d_factorization",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Factorization/Defs.lean#L155",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/313a70752c2f_Defs.lean",
+      "sha256": "313a70752c2f3500c51f407c55e1aca328b6df381702da6c0fcf03585eb08298",
+      "item": "factorization_mul",
+      "line": 155
+    },
+    {
+      "candidate_id": "lib_d_totient_sum",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Totient.lean#L163",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/abe7494d1910_Totient.lean",
+      "sha256": "abe7494d1910ff650c84d90f043b9f31122b5ee9ef508f270a35336e4a349889",
+      "item": "sum_totient",
+      "line": 163
+    },
+    {
+      "candidate_id": "lib_i_telescope",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean#L896",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/4c32ecf01fc4_Basic.lean",
+      "sha256": "4c32ecf01fc4e2df35886863c7b9dcdfde8e482e2b882e1dec7b56ced0f43ac3",
+      "item": "sum_range_sub",
+      "line": 896
+    },
+    {
+      "candidate_id": "lib_i_alternating_binomial",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Choose/Sum.lean#L199",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/c7ce3caf261d_Sum.lean",
+      "sha256": "c7ce3caf261d7993044a2bfd52761152f9c24fe1066989e0c910af58a50c305d",
+      "item": "alternating_sum_range_choose_of_ne",
+      "line": 199
+    },
+    {
+      "candidate_id": "lib_q_integer_sqrt",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Sqrt.lean#L115",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/3ba3c0be75f7_Sqrt.lean",
+      "sha256": "3ba3c0be75f7d9c912f8f74e24710d1ce771e692b79dd4cbb0dd6bf638ae1414",
+      "item": "sqrt_mul_sqrt_lt_succ'",
+      "line": 115
+    },
+    {
+      "candidate_id": "lib_q_finite_inclusion",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Finset/Card.lean#L66",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/87c674ba5464_Card.lean",
+      "sha256": "87c674ba5464c7868fb3e253e58a695821bf8841bb4e076bac5d570236dc6229",
+      "item": "card_le_card",
+      "line": 66
+    },
+    {
+      "candidate_id": "lib_q_log_tangent",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean#L306",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/20c5a159b0a5_Basic.lean",
+      "sha256": "20c5a159b0a5632de083db76248bf527e8fc13283094d30c53c4489ad2aabed9",
+      "item": "log_le_sub_one_of_pos",
+      "line": 306
+    },
+    {
+      "candidate_id": "lib_m_euler",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/FieldTheory/Finite/Basic.lean#L564",
+      "source_archive": "data/curation_batches/v0.2.0/source_archive/e13bd133063e_Basic.lean",
+      "sha256": "e13bd133063e0349d955817f5f319f8c861f7d6136afa326cb477302348f1db3",
+      "item": "ModEq.pow_totient",
+      "line": 564
+    }
+  ],
+  "independence_status": "proposed_families_require_review_not_established",
+  "inference_calls_on_candidates": 0
+}

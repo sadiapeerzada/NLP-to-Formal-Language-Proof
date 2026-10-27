@@ -38,3 +38,9 @@ exist; it is not a zero-valued experimental result.
 Citation checks on 27 October 2026: miniF2F and ProofNet titles/authors matched their arXiv records; LeanDojo matched the NeurIPS proceedings page; Lean 4 matched Springer DOI 10.1007/978-3-030-79876-5_37; APRIL matched arXiv:2602.02990 (including ICLR VerifAI workshop reference); Beyond Compilation matched arXiv:2606.31002v4. Direct ACM DOI retrieval for Mathlib returned HTTP 403, so publisher-page verification remains unresolved rather than inferred from a successful lookup. Levin's publisher colophon states CC BY-SA 4.0. These are bibliographic checks, not validation of this manuscript's results or venue acceptance.
 
 Mathlib citation follow-up: the project-maintained citation page https://leanprover-community.github.io/cite.html and author manuscript https://arxiv.org/abs/1910.09336 provide primary-source confirmation of the publication. The direct ACM page still returned 403.
+
+## Final local-study revision (completed 28 October 2026)
+
+Current construction evidence: `data/analysis/m1_m7_delivery_20261028/summary.json` and `readiness.json`: 96 candidates (30 proposed development, 66 proposed test), 96 strict reference proofs, zero independent reviews/eligible/frozen examples, 192 review warnings. Source records and exact proof overlays are traceable under `data/curation_batches/v0.2.0/`, `v0.2.1/` and `data/reference_verification/`. Earlier inventory rows above describe previous snapshots.
+
+Actual local evidence is limited to three neutral READY backend checks. There are no genuine mathematical A/B/C pilot or held-out outcomes. Local substitution, model/protocol approval and dataset eligibility remain unresolved. No inferential/semantic advantage claim is supported. The official Springer/Tectonic pre-results PDF builds; author metadata, authentic model examples and empirical results remain missing.

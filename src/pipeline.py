@@ -265,6 +265,9 @@ def run(
                 results.append({
                     "schema_version": 2, "run_id": run_metadata["run_id"],
                     "experiment_config": config_name,
+                    "outcome_scope": "compiler_verification_only",
+                    "semantic_review_status": "unreviewed_generated_statement",
+                    "end_to_end_faithful_success": False,
                     "id": pid, "category": problem["category"], "difficulty": problem["difficulty"],
                     "models": stage_models, "solved": False, "repair_attempts": 0,
                     "initial_synthesis_success": None, "success_within_repair_budget": False,
@@ -332,6 +335,9 @@ def run(
             results.append({
                 "schema_version": 2, "run_id": run_metadata["run_id"],
                 "experiment_config": config_name,
+                "outcome_scope": "compiler_verification_only",
+                "semantic_review_status": "unreviewed_generated_statement",
+                "end_to_end_faithful_success": False,
                 "id": pid, "category": problem["category"], "difficulty": problem["difficulty"],
                 "models": stage_models,
                 "solved": result["solved"], "repair_attempts": result["repair_attempts"],

@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ind_001",
+    "nl_statement": "For any natural number n, the sum of the first n natural numbers equals n times (n + 1) divided by 2.",
+    "category": "induction",
+    "difficulty": 3,
+    "expected_lean_statement": "theorem gauss_sum (n : ℕ) : 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_finite_sum_identities",
+      "family_review_status": "needs_review",
+      "family_review_note": "Finite sum identity over a natural-number range.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English says the sum equals a quotient, while Lean states a doubled-sum identity over range (n + 1); indexing and natural division are implicit."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the range endpoints and algebraic equivalence, then rewrite the English wording or Lean statement if needed."
+    }
+  },
+  "binding_sha256": "ce8bd3a776e6281c1208907c41188c2269d5e906b19e0081246b4e24b7af7de3",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ind_001",
+    "binding_sha256": "ce8bd3a776e6281c1208907c41188c2269d5e906b19e0081246b4e24b7af7de3",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

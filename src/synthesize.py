@@ -41,12 +41,14 @@ def synthesize_and_verify(
     max_repair: int = 5,
     model: str | None = None,
     expected_statement: str | None = None,
+    completion_fn=None,
 ):
     """Returns a dict matching the results/<run>.jsonl schema (minus the
     top-level 'model'/'prompt_version' fields, added by the caller) plus the
     full per-attempt log for data/results/attempts/<id>.jsonl.
     """
-    model = model or FAST_MODEL
+    completion_fn = completion_fn or complete_with_metadata
+    model = model or getattr(completion_fn, "model_id", FAST_MODEL)
     reasoning_effort = reasoning_effort_for_model(model)
     start = time.time()
     attempts_log = []
@@ -58,7 +60,7 @@ def synthesize_and_verify(
     current_proof = None
     failure_stage = "synthesize"
     for attempt in range(1, max_repair + 2):  # +1 initial synth, then max_repair repairs
-        completion = complete_with_metadata(
+        completion = completion_fn(
             prompt,
             max_tokens=SYNTHESIS_MAX_COMPLETION_TOKENS,
             temperature=SYNTHESIS_TEMPERATURE,

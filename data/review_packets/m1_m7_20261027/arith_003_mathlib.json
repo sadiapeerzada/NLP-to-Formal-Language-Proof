@@ -1,0 +1,65 @@
+{
+  "record": {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "category": "arithmetic_identity",
+    "difficulty": 1,
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_distributivity",
+      "family_review_status": "needs_review",
+      "family_review_note": "Exact English duplicate and propositionally identical distributivity candidate.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "duplicate_review": {
+        "candidate_group": "exact_english_duplicate_arith_003",
+        "related_ids": [
+          "arith_003"
+        ],
+        "status": "needs_review",
+        "notes": "This record has an exact-English duplicate candidate, arith_003, with the same proposition under another theorem name."
+      },
+      "recommended_curator_action": "Adjudicate whether this is an environment variant or duplicate; retain family grouping and exclude duplicate count unless justified."
+    }
+  },
+  "binding_sha256": "5a2d7451cd9079f2c0bac3a6beeeb01ada0dae571c7c00db1e8fac15b66b5f95",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "arith_003_mathlib",
+    "binding_sha256": "5a2d7451cd9079f2c0bac3a6beeeb01ada0dae571c7c00db1e8fac15b66b5f95",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "record": {
+    "id": "lib_d_euclidean_gcd",
+    "nl_statement": "For natural m and n, gcd(m,n) equals gcd(n modulo m,m), including m=0 under totalized natural remainder.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_euclidean_gcd (m n : ℕ) : Nat.gcd m n = Nat.gcd (n % m) m",
+    "source_item_id": "gcd_rec",
+    "source_location": "Init/Data/Nat/Gcd.lean:74",
+    "curation": {
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Gcd.lean#L74",
+      "source_citation": "leanprover/lean4 at 8c9756b28d64dab099da31a4c09229a9e6a2ef35, Init/Data/Nat/Gcd.lean:74, formal item gcd_rec. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/LEAN_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "72311fc10804fc1cd2a7e87ee268508c1d3a2e633f138ac4f87b347dc3420f65",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover/lean4",
+        "source_item_id": "gcd_rec",
+        "source_location": "Init/Data/Nat/Gcd.lean:74",
+        "revision": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/672c96102205_Gcd.lean",
+        "source_page_sha256": "672c96102205b59a47742be74c959ed780ba319713baaa8a2eeede2cdc46cbea",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover/lean4, revision 8c9756b28d64dab099da31a4c09229a9e6a2ef35; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "euclidean_gcd_remainder_step",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "72311fc10804fc1cd2a7e87ee268508c1d3a2e633f138ac4f87b347dc3420f65",
+        "reference_code_sha256": "4873f729f144d98be1c541e5e073128760a70dfeaef1a68de8b5d333f8228b82",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (m n",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_d_euclidean_gcd (m n : ℕ) : Nat.gcd m n = Nat.gcd (n % m) m := by\n  exact Nat.gcd_rec m n\n"
+  },
+  "binding_sha256": "1c9005847defd9845f26f3b9040772a7256fb3e5203bc6d71681f486125c27c2",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "lib_d_euclidean_gcd",
+    "binding_sha256": "1c9005847defd9845f26f3b9040772a7256fb3e5203bc6d71681f486125c27c2",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

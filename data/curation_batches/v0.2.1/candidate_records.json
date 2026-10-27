@@ -1,0 +1,760 @@
+[
+  {
+    "id": "lib_q_rational_density",
+    "nl_statement": "Between any two distinct real numbers x<y there is a rational number q with x<q<y.",
+    "category": "inequality",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_rational_density (x y : ℝ) (h : x < y) : ∃ q : ℚ, x < q ∧ (q : ℝ) < y",
+    "source_item_id": "exists_rat_btwn",
+    "source_location": "Mathlib/Algebra/Order/Archimedean/Basic.lean:372",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Archimedean/Basic.lean#L372",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Algebra/Order/Archimedean/Basic.lean:372, formal item exists_rat_btwn. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "8d7084c575cfd7dfda8c71eac727f8629c057a8909425ea37783cf163ef6a879",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "exists_rat_btwn",
+        "source_location": "Mathlib/Algebra/Order/Archimedean/Basic.lean:372",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/e93be6ddf3ae_Basic.lean",
+        "source_page_sha256": "e93be6ddf3aef0f5996697eae5f66972d6098ea8e8bfa341d9725aef5cffc127",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "rational_density_in_reals",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "8d7084c575cfd7dfda8c71eac727f8629c057a8909425ea37783cf163ef6a879",
+        "reference_code_sha256": "71ee5ff048e19f926a515d8d6aff8a99d31a4973e959ed8a52ad6917c7729853",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "Provisional additional sourced development family; assigned before any mathematical model inference; independent family/split review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (x y",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_q_rational_density (x y : ℝ) (h : x < y) : ∃ q : ℚ, x < q ∧ (q : ℝ) < y := by\n  exact exists_rat_btwn h\n"
+  },
+  {
+    "id": "lib_i_stirling",
+    "nl_statement": "The Stirling numbers of the second kind satisfy S(n+1,k+1)=(k+1)*S(n,k+1)+S(n,k) for natural n and k.",
+    "category": "induction",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_i_stirling (n k : ℕ) : Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k",
+    "source_item_id": "stirlingSecond_succ_succ",
+    "source_location": "Mathlib/Combinatorics/Enumerative/Stirling.lean:144",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Combinatorics/Enumerative/Stirling.lean#L144",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Combinatorics/Enumerative/Stirling.lean:144, formal item stirlingSecond_succ_succ. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "54550cd85b16283d672302e63699b52efae4ba7d925b08f00b65c8bd7a48250c",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "stirlingSecond_succ_succ",
+        "source_location": "Mathlib/Combinatorics/Enumerative/Stirling.lean:144",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/a73d2d2eac29_Stirling.lean",
+        "source_page_sha256": "a73d2d2eac293e87def7ee0484133ed193bcf1ac6bcbb545ca4c809ca9d94cdd",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "stirling_second_recurrence",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "54550cd85b16283d672302e63699b52efae4ba7d925b08f00b65c8bd7a48250c",
+        "reference_code_sha256": "1332c5fe9829c75c726f6ba2df2bdc66ad6886cae23527d43b1f25a2482d7677",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (n k",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_i_stirling (n k : ℕ) : Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k := by\n  exact Nat.stirlingSecond_succ_succ n k\n"
+  },
+  {
+    "id": "lib_i_catalan",
+    "nl_statement": "For every natural n, the (n+1)st Catalan number is the sum of C(i)*C(n-i) over natural i from zero through n.",
+    "category": "induction",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_i_catalan (n : ℕ) : catalan (n + 1) = ∑ i : Fin n.succ, catalan i * catalan (n - i)",
+    "source_item_id": "catalan_succ",
+    "source_location": "Mathlib/Combinatorics/Enumerative/Catalan/Basic.lean:61",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Combinatorics/Enumerative/Catalan/Basic.lean#L61",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Combinatorics/Enumerative/Catalan/Basic.lean:61, formal item catalan_succ. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "89046046e3e7fe931f007f2e1511088be93cc8575de889926fbe9baaaedef596",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "catalan_succ",
+        "source_location": "Mathlib/Combinatorics/Enumerative/Catalan/Basic.lean:61",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/02e122a3ccbd_Basic.lean",
+        "source_page_sha256": "02e122a3ccbd5fbcabfbf7a0e8aff3c6ca49f81b634dac76d5cd78d87bce91e4",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "catalan_convolution_recurrence",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "89046046e3e7fe931f007f2e1511088be93cc8575de889926fbe9baaaedef596",
+        "reference_code_sha256": "2f3e06813d804b64e6e67153b7324cc3850fa566c7a97a1c10f82903c8b0ac1a",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (n",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_i_catalan (n : ℕ) : catalan (n + 1) = ∑ i : Fin n.succ, catalan i * catalan (n - i) := by\n  exact catalan_succ n\n"
+  },
+  {
+    "id": "lib_q_rearrangement",
+    "nl_statement": "For real numbers a≤b and c≤d, a*d+b*c is at most a*c+b*d.",
+    "category": "inequality",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_rearrangement (a b c d : ℝ) (hab : a ≤ b) (hcd : c ≤ d) : a * d + b * c ≤ a * c + b * d",
+    "source_item_id": "mul_add_mul_le_mul_add_mul",
+    "source_location": "Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean:294",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean#L294",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean:294, formal item mul_add_mul_le_mul_add_mul. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "b25f77f78bc14bb1439dca4960c21a0b26fd2b32293980e8f1edc5ab0ad53b17",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "mul_add_mul_le_mul_add_mul",
+        "source_location": "Mathlib/Algebra/Order/Ring/Unbundled/Basic.lean:294",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/85232d08ea50_Basic.lean",
+        "source_page_sha256": "85232d08ea50e7fb03dbcdb4738d9ed47ae3671c045fb9cd3bc377576cd4ea60",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "two_term_rearrangement",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "b25f77f78bc14bb1439dca4960c21a0b26fd2b32293980e8f1edc5ab0ad53b17",
+        "reference_code_sha256": "58f4dd27a1b424e26fb52e443b7e7305fe70df2d00690ea04ec6d0807423fc2f",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (a b c d",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_q_rearrangement (a b c d : ℝ) (hab : a ≤ b) (hcd : c ≤ d) : a * d + b * c ≤ a * c + b * d := by\n  nlinarith [mul_nonneg (sub_nonneg.mpr hab) (sub_nonneg.mpr hcd)]\n"
+  },
+  {
+    "id": "lib_q_pigeonhole",
+    "nl_statement": "If a function maps a finite set s of natural numbers into a smaller finite set t, two distinct elements of s have the same image.",
+    "category": "inequality",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_pigeonhole (s t : Finset ℕ) (f : ℕ → ℕ) (h : t.card < s.card) (hm : ∀ x ∈ s, f x ∈ t) : ∃ x ∈ s, ∃ y ∈ s, x ≠ y ∧ f x = f y",
+    "source_item_id": "exists_ne_map_eq_of_card_lt_of_maps_to",
+    "source_location": "Mathlib/Data/Finset/Card.lean:451",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Finset/Card.lean#L451",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Data/Finset/Card.lean:451, formal item exists_ne_map_eq_of_card_lt_of_maps_to. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "1d1719c70ab150e42eeffe36b73adc7836b01a813486efda8e36cb4415349839",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "exists_ne_map_eq_of_card_lt_of_maps_to",
+        "source_location": "Mathlib/Data/Finset/Card.lean:451",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/87c674ba5464_Card.lean",
+        "source_page_sha256": "87c674ba5464c7868fb3e253e58a695821bf8841bb4e076bac5d570236dc6229",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "finite_pigeonhole_collision",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "1d1719c70ab150e42eeffe36b73adc7836b01a813486efda8e36cb4415349839",
+        "reference_code_sha256": "1fefe2b35b169a67d2006fbc0cf00f46d0597d892f496f60f5c1e5a216f1a84d",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (s t",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_q_pigeonhole (s t : Finset ℕ) (f : ℕ → ℕ) (h : t.card < s.card) (hm : ∀ x ∈ s, f x ∈ t) : ∃ x ∈ s, ∃ y ∈ s, x ≠ y ∧ f x = f y := by\n  exact Finset.exists_ne_map_eq_of_card_lt_of_maps_to h hm\n"
+  },
+  {
+    "id": "lib_d_prime_factor_exists",
+    "nl_statement": "Every natural number n at least two has a prime divisor.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_prime_factor_exists (n : ℕ) (hn : 2 ≤ n) : ∃ p : ℕ, p.Prime ∧ p ∣ n",
+    "source_item_id": "exists_prime_and_dvd",
+    "source_location": "Mathlib/Data/Nat/Prime/Defs.lean:407",
+    "curation": {
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/81a5d257c8e410db227a6665ed08f64fea08e997/Mathlib/Data/Nat/Prime/Defs.lean#L407",
+      "source_citation": "leanprover-community/mathlib4 at 81a5d257c8e410db227a6665ed08f64fea08e997, Mathlib/Data/Nat/Prime/Defs.lean:407, formal item exists_prime_and_dvd. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/MATHLIB_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "40fdb2486c2e022d3850da2ed392590ab33b944fb4951c3a90114b6cb4357f63",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover-community/mathlib4",
+        "source_item_id": "exists_prime_and_dvd",
+        "source_location": "Mathlib/Data/Nat/Prime/Defs.lean:407",
+        "revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/617c1a2a927a_Defs.lean",
+        "source_page_sha256": "617c1a2a927a2a282092f11c8d254036454e7ffa2eab12f8dd16880cf83d0d61",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover-community/mathlib4, revision 81a5d257c8e410db227a6665ed08f64fea08e997; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "existence_of_prime_divisor",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "40fdb2486c2e022d3850da2ed392590ab33b944fb4951c3a90114b6cb4357f63",
+        "reference_code_sha256": "41de15c3452d8a80e7d8b3891efe14dc98082bf684403c6fe6873906808387b4",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (n",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_d_prime_factor_exists (n : ℕ) (hn : 2 ≤ n) : ∃ p : ℕ, p.Prime ∧ p ∣ n := by\n  exact Nat.exists_prime_and_dvd (by omega)\n"
+  },
+  {
+    "id": "lib_d_euclidean_gcd",
+    "nl_statement": "For natural m and n, gcd(m,n) equals gcd(n modulo m,m), including m=0 under totalized natural remainder.",
+    "category": "divisibility",
+    "difficulty": 2,
+    "difficulty_rationale": "Provisional library-derived rating; reference reuse is not generated-model difficulty evidence.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_euclidean_gcd (m n : ℕ) : Nat.gcd m n = Nat.gcd (n % m) m",
+    "source_item_id": "gcd_rec",
+    "source_location": "Init/Data/Nat/Gcd.lean:74",
+    "curation": {
+      "source_url": "https://github.com/leanprover/lean4/blob/8c9756b28d64dab099da31a4c09229a9e6a2ef35/src/lean/Init/Data/Nat/Gcd.lean#L74",
+      "source_citation": "leanprover/lean4 at 8c9756b28d64dab099da31a4c09229a9e6a2ef35, Init/Data/Nat/Gcd.lean:74, formal item gcd_rec. English is a new author-assisted paraphrase/adaptation, not a source quotation.",
+      "source_status": "verified",
+      "source_license": "Apache-2.0",
+      "source_license_verification_status": "needs_review",
+      "source_license_evidence": {
+        "status": "needs_review",
+        "evidence_reference": "data/curation_batches/v0.2.1/source_archive/LEAN_LICENSE",
+        "observed_on": "2026-10-27",
+        "reviewed_on": null,
+        "statement_sha256": "72311fc10804fc1cd2a7e87ee268508c1d3a2e633f138ac4f87b347dc3420f65",
+        "rights_note": "Repository license and original copyright headers archived. Independent item-scope, redistribution and model-input review pending."
+      },
+      "source_metadata": {
+        "source_author": "The mathlib community / Lean contributors; see archived file copyright header",
+        "source_title": "leanprover/lean4",
+        "source_item_id": "gcd_rec",
+        "source_location": "Init/Data/Nat/Gcd.lean:74",
+        "revision": "8c9756b28d64dab099da31a4c09229a9e6a2ef35",
+        "source_page_archive": "data/curation_batches/v0.2.1/source_archive/672c96102205_Gcd.lean",
+        "source_page_sha256": "672c96102205b59a47742be74c959ed780ba319713baaa8a2eeede2cdc46cbea",
+        "source_page_sha256_status": "captured_pinned_source_bytes",
+        "source_statement_transcription": null,
+        "original_english_statement": null,
+        "english_provenance": "Codex-authored mathematical paraphrase of formal source; independent semantic review pending.",
+        "changes_made": "Specialized source statement or derived consequence to the displayed domains. See explicit reference proof and exact source declaration; English was authored for review.",
+        "required_attribution": "leanprover/lean4, revision 8c9756b28d64dab099da31a4c09229a9e6a2ef35; Apache-2.0; original authors/copyright in archived source.",
+        "retrieved_on": "2026-10-27"
+      },
+      "problem_family": "euclidean_gcd_remainder_step",
+      "family_review_status": "needs_review",
+      "family_review_note": "Provisional mathematical family; independent cross-pool review must check generalizations and source overlap before counting independence.",
+      "split": "test",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "category_difficulty_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": null
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "review_records": [],
+      "theorem_verification": {
+        "status": "verified",
+        "success": true,
+        "verification_scope": "strict_proof",
+        "lean_toolchain": "leanprover/lean4:v4.32.0",
+        "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--json",
+          "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/curation_batches/v0.2.1/references_expanded.lean"
+        ],
+        "theorem_sha256": "72311fc10804fc1cd2a7e87ee268508c1d3a2e633f138ac4f87b347dc3420f65",
+        "reference_code_sha256": "4873f729f144d98be1c541e5e073128760a70dfeaef1a68de8b5d333f8228b82",
+        "verification_source_sha256": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf",
+        "axiom_dependencies": [
+          "propext",
+          "Quot.sound"
+        ],
+        "evidence": "data/curation_batches/v0.2.1/verification_expanded.json; overall exit 0, zero error/malformed diagnostics, explicit per-theorem axiom inspection; no placeholder proofs."
+      },
+      "reference_lean_statement_provenance": "Prepared from cited pinned formal source; exact displayed proposition verified in the complete reference batch.",
+      "proposed_split_rationale": "New candidate only, provisionally reserved for test curation; not evaluated with an LLM or used for model/prompt selection. Review and freeze required."
+    },
+    "required_imports": [
+      "Mathlib"
+    ],
+    "mathematical_assumptions": "Exact binders/hypotheses: (m n",
+    "reference_lean_code": "import Mathlib\nopen scoped BigOperators\ntheorem study_d_euclidean_gcd (m n : ℕ) : Nat.gcd m n = Nat.gcd (n % m) m := by\n  exact Nat.gcd_rec m n\n"
+  }
+]

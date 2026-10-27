@@ -372,6 +372,16 @@ class DatasetValidationTests(unittest.TestCase):
                 report = validate_curation_draft([record])
                 self.assertEqual(report.eligible_problem_ids, ())
 
+    def test_structured_compiler_argv_is_valid_evidence(self) -> None:
+        record = self.curation_record("argv", "family_one", "development")
+        self.complete_curation_review(record)
+        record["curation"]["theorem_verification"]["command"] = ["lake", "env", "lean", "--json", "reference.lean"]
+        self.assertEqual(validate_curation_draft([record]).eligible_problem_ids, ("argv",))
+        for invalid in ([], ["lake", ""], ["lake", None], {"command": "lake"}):
+            with self.subTest(command=invalid):
+                record["curation"]["theorem_verification"]["command"] = invalid
+                self.assertEqual(validate_curation_draft([record]).eligible_problem_ids, ())
+
     def test_statement_elaboration_never_satisfies_proof_eligibility(self) -> None:
         record = self.curation_record("statement_only", "family_one", "development")
         self.complete_curation_review(record)

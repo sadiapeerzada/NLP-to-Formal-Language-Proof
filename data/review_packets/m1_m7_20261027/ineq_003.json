@@ -1,0 +1,63 @@
+{
+  "record": {
+    "id": "ineq_003",
+    "nl_statement": "For any natural number n at least 1, n plus 1 is at most 2 to the power n.",
+    "category": "inequality",
+    "difficulty": 2,
+    "expected_lean_statement": "theorem succ_le_two_pow (n : ℕ) (h : 1 ≤ n) : n + 1 ≤ 2 ^ n",
+    "curation": {
+      "source_url": null,
+      "source_citation": null,
+      "source_status": "pending",
+      "source_license": null,
+      "source_license_verification_status": "pending",
+      "problem_family": "nat_power_growth",
+      "family_review_status": "needs_review",
+      "family_review_note": "Related exponential upper-bound theorem over natural numbers.",
+      "split": "development",
+      "split_status": "pending",
+      "semantic_fidelity": {
+        "label": null,
+        "review_status": "pending",
+        "reviewer_provenance": null,
+        "evidence": null
+      },
+      "theorem_statement_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "assumption_mismatch_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "self_containment_review": {
+        "status": "pending",
+        "reviewer_provenance": null,
+        "review_notes": "English 'at least 1' maps to h : 1 ≤ n; confirm the bound and exponential claim at the smallest permitted n."
+      },
+      "duplicate_review": {
+        "candidate_group": null,
+        "related_ids": [],
+        "status": "pending",
+        "notes": null
+      },
+      "recommended_curator_action": "Review the assumption and boundary case, then record theorem/fidelity decisions."
+    }
+  },
+  "binding_sha256": "a3952189e7e984b9ba8861eebac89c44127ded4e7e601db865f6bfcda91f4a7a",
+  "decision_template": {
+    "schema_version": 1,
+    "candidate_id": "ineq_003",
+    "binding_sha256": "a3952189e7e984b9ba8861eebac89c44127ded4e7e601db865f6bfcda91f4a7a",
+    "review_type": "semantic_fidelity",
+    "label": null,
+    "reviewer_id": null,
+    "reviewer_kind": "independent_human_review",
+    "reviewed_on": null,
+    "independence_attestation": null,
+    "evidence": null,
+    "evidence_artifact": null
+  }
+}

@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Callable, Literal
 from uuid import uuid4
 
-import groq
+from groq_compat import groq
 
 from cost_guard import (
     CostGuardConfig,
@@ -67,7 +67,7 @@ BLIND_FEEDBACK_FIELD = "No compiler diagnostics are provided in the blind-retry 
 
 CompletionFunction = Callable[..., CompletionResult]
 VerificationFunction = Callable[..., VerificationResult]
-ExecutionMode = Literal["api", "mock", "manual"]
+ExecutionMode = Literal["api", "mock", "manual", "local"]
 
 
 def _sha256_text(value: str) -> str:
@@ -262,14 +262,17 @@ def _call_model(
     *,
     model: str,
     cost_guard: CostReservationGuard | None = None,
+    generation_context: str | None = None,
 ) -> CompletionResult:
     arguments: dict[str, object] = {
         "max_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
         "temperature": DEFAULT_TEMPERATURE,
-        "retries": TRANSPORT_ATTEMPTS,
+        "retries": 1 if getattr(completion_fn, "provider", None) == "mlx_local" else TRANSPORT_ATTEMPTS,
         "model": model,
         "reasoning_effort": reasoning_effort_for_model(model),
     }
+    if getattr(completion_fn, "provider", None) == "mlx_local":
+        arguments["generation_context"] = generation_context
     if cost_guard is not None:
         arguments["cost_guard"] = cost_guard
     return completion_fn(prompt, **arguments)
@@ -416,7 +419,7 @@ def _stamp_condition_context(
                 )
 
 
-def _provider_error_record(error: Exception) -> dict[str, object]:
+def _provider_error_record(error: Exception, *, provider: str = "groq") -> dict[str, object]:
     cause = error.__cause__
     underlying = cause if cause is not None else error
     status_code = getattr(underlying, "status_code", None)
@@ -426,6 +429,8 @@ def _provider_error_record(error: Exception) -> dict[str, object]:
         error_category = "rate_limit"
     elif "timeout" in type(underlying).__name__.lower():
         error_category = "timeout"
+    elif provider == "mlx_local":
+        error_category = "local_backend_error"
     elif status_code in {401, 403}:
         error_category = "authentication"
     elif status_code == 404:
@@ -573,8 +578,8 @@ def _run_condition(
             "repair_call_number": repair_call_number,
             "prompt_sha256": prompt_sha256,
             "started_at_utc": attempt_started,
-            "provider": MODEL_PROVIDER if execution_mode == "api" else None,
-            "configured_provider": MODEL_PROVIDER,
+            "provider": manifest["configured_provider"] if execution_mode in {"api", "local"} else None,
+            "configured_provider": manifest["configured_provider"],
             "requested_model": model,
             "compiler_diagnostics_supplied": condition == "C",
             "compiler_diagnostics_status": (
@@ -620,10 +625,11 @@ def _run_condition(
         _atomic_manifest_update(manifest_path, manifest)
         try:
             completion = _call_model(
-                completion_fn, prompt, model=model, cost_guard=cost_guard
+                completion_fn, prompt, model=model, cost_guard=cost_guard,
+                generation_context=f"{problem_id}/{condition}/{repair_call_number}"
             )
         except (groq.APIError, RuntimeError) as error:
-            attempt.update(_provider_error_record(error))
+            attempt.update(_provider_error_record(error, provider=manifest["configured_provider"]))
             if cost_guard is not None:
                 attempt["cost_guard"] = cost_guard.snapshot()
             attempt["finished_at_utc"] = datetime.now(UTC).isoformat()
@@ -786,6 +792,11 @@ def run_experiment(
     experiment_id: str | None = None,
     dataset_sha256: str | None = None,
     dataset_path: Path | None = None,
+    local_protocol_path: Path | None = None,
+    local_approval_path: Path | None = None,
+    local_phase: str = "development_pilot",
+    development_path: Path | None = None,
+    freeze_path: Path | None = None,
 ) -> Path:
     """Run A/B/C, returning the run manifest path.
 
@@ -817,9 +828,9 @@ def run_experiment(
     )
     if not isinstance(model, str) or not model.strip():
         raise ValueError("Model identifier must be a non-empty string.")
-    if execution_mode not in {"api", "mock", "manual"}:
+    if execution_mode not in {"api", "mock", "manual", "local"}:
         raise ValueError("execution_mode must be 'api', 'mock', or 'manual'.")
-    if (execution_mode == "api") != (completion_fn is complete_with_metadata):
+    if execution_mode != "local" and (execution_mode == "api") != (completion_fn is complete_with_metadata):
         raise ValueError(
             "API mode requires the Groq completion client; injected completion "
             "functions must be labeled 'mock' or 'manual'."
@@ -827,7 +838,21 @@ def run_experiment(
     if isinstance(max_repair, bool) or not isinstance(max_repair, int) or not 0 <= max_repair <= 3:
         raise ValueError("max_repair must be an integer from 0 through 3.")
 
-    protocol_record = _protocol_metadata()
+    local_context = None
+    if execution_mode == "local":
+        from local_llm_client import LocalMLXClient
+        from local_protocol import execution_context
+        if not isinstance(completion_fn, LocalMLXClient) or local_protocol_path is None:
+            raise ValueError("Local mode requires the genuine MLX client and its protocol.")
+        if max_repair != 3:
+            raise ValueError("Local B/C conditions require the locked three-repair budget.")
+        local_context = execution_context(local_protocol_path, local_approval_path,
+            dataset_path, problem_id, theorem_statement, completion_fn, phase=local_phase,
+            development_path=development_path, freeze_path=freeze_path)
+        if model != local_context["model"]["requested_model_id"]:
+            raise ValueError("Requested model differs from approved local protocol.")
+    provider = local_context["provider"] if local_context else MODEL_PROVIDER
+    protocol_record = local_context["protocol"] if local_context else _protocol_metadata()
     if execution_mode == "api" and model != DEFAULT_MODEL:
         raise ValueError(
             "API mode requires the primary model recorded in the locked protocol."
@@ -874,26 +899,29 @@ def run_experiment(
     api_completion = execution_mode == "api"
     theorem_sha256 = _sha256_text(theorem_statement)
     configuration = {
-        "provider": MODEL_PROVIDER,
+        "provider": provider,
         "requested_model": model,
         "temperature": DEFAULT_TEMPERATURE,
         "max_completion_tokens": DEFAULT_MAX_COMPLETION_TOKENS,
         "reasoning_effort": reasoning_effort_for_model(model),
         "max_repair_calls": max_repair,
-        "transport_attempts_per_model_call": TRANSPORT_ATTEMPTS,
-        "groq_sdk_max_retries": SDK_MAX_RETRIES,
+        "transport_attempts_per_model_call": 1 if local_context else TRANSPORT_ATTEMPTS,
+        "groq_sdk_max_retries": 0 if local_context else SDK_MAX_RETRIES,
         "lean_project_dir": str(lean_project_dir),
         "execution_mode": execution_mode,
         "dataset_sha256": dataset_sha256,
     }
+    if local_context:
+        configuration["local_model"] = local_context["model"]
+        configuration["local_decoding"] = local_context["decoding"]
     configuration_sha256 = _canonical_sha256(configuration)
     manifest: dict[str, object] = {
         "schema_version": 1,
         "experiment_type": "paired_compiler_guided_repair",
         "protocol": protocol_record,
         "experiment_id": run_id,
-        "provider": MODEL_PROVIDER if api_completion else None,
-        "configured_provider": MODEL_PROVIDER,
+        "provider": provider if execution_mode in {"api", "local"} else None,
+        "configured_provider": provider,
         "model_identifier": model,
         "execution_mode": execution_mode,
         "api_generation_confirmed": False,
@@ -908,15 +936,18 @@ def run_experiment(
         "wall_clock_seconds": None,
         "theorem_statement": theorem_statement,
         "theorem_sha256": theorem_sha256,
-        "theorem_review_status": "not_verified_by_harness",
+        "theorem_review_status": "eligible_independently_reviewed_reference" if local_context else "not_verified_by_harness",
         "prompt_templates": {
             name: {
-                "path": str(path),
-                "sha256": _prompt_hashes()[name],
+                "path": local_context["prompt_templates"][name]["path"] if local_context else str(path),
+                "sha256": local_context["prompt_templates"][name]["sha256"] if local_context else _prompt_hashes()[name],
             }
             for name, path in PROMPT_PATHS.items()
         },
-        "model_identifier_semantics": "provider_alias_not_pinned",
+        "model_identifier_semantics": "immutable_local_snapshot" if local_context else "provider_alias_not_pinned",
+        "local_execution": local_context,
+        "phase": local_phase if local_context else None,
+        "local_generation_confirmed": False,
         "configuration": configuration,
         "environment": environment,
         "cost_guard": cost_guard.snapshot() if cost_guard is not None else None,
@@ -924,6 +955,9 @@ def run_experiment(
         "initial_verification": None,
         "conditions": {},
     }
+    if local_context:
+        from provenance import _git_metadata
+        manifest["git"] = _git_metadata(REPOSITORY_ROOT)
     _write_initial_manifest(manifest_path, manifest)
     if cost_guard is not None:
         def persist_cost_guard(snapshot: dict[str, object]) -> None:
@@ -932,7 +966,14 @@ def run_experiment(
 
         cost_guard.set_persist_callback(persist_cost_guard)
 
-    initial_prompt = _render_initial_prompt(theorem_statement)
+    initial_prompt = (
+        (REPOSITORY_ROOT / local_context["prompt_templates"]["initial"]["path"]).read_text().format(
+            theorem_statement=theorem_statement, nl_statement=local_context["input_natural_language"])
+        if local_context else _render_initial_prompt(theorem_statement)
+    )
+    if local_context:
+        completion_fn.trace_directory = experiment_dir / "generation_streams"
+        completion_fn.trace_directory.mkdir(exist_ok=False)
     initial_prompt_sha256 = _sha256_text(initial_prompt)
     initial_attempt_id = f"{run_id}-initial"
     initial_started = time.monotonic()
@@ -943,6 +984,7 @@ def run_experiment(
             initial_prompt,
             model=model,
             cost_guard=cost_guard,
+            generation_context=f"{problem_id}/initial",
         )
     except (groq.APIError, RuntimeError) as error:
         manifest["initial_candidate"] = {
@@ -956,11 +998,11 @@ def run_experiment(
             "configuration_sha256": configuration_sha256,
             "attempt_index": 0,
             "retry_reason": "initial_generation",
-            "provider": MODEL_PROVIDER if api_completion else None,
-            "configured_provider": MODEL_PROVIDER,
+            "provider": provider if execution_mode in {"api", "local"} else None,
+            "configured_provider": provider,
             "requested_model": model,
             "started_at_utc": initial_started_at,
-            **_provider_error_record(error),
+            **_provider_error_record(error, provider=provider),
             "cost_guard": cost_guard.snapshot() if cost_guard is not None else None,
             "finished_at_utc": datetime.now(UTC).isoformat(),
             "wall_clock_seconds": round(time.monotonic() - initial_started, 3),
@@ -1002,6 +1044,7 @@ def run_experiment(
 
     initial_candidate = extract_lean_block(initial_completion.content)
     manifest["api_generation_confirmed"] = api_completion
+    manifest["local_generation_confirmed"] = local_context is not None
     initial_candidate_sha256 = _sha256_text(initial_candidate)
     initial_candidate_id = _candidate_id(problem_id, initial_candidate_sha256)
     initial_candidate_path = experiment_dir / "initial_candidate.lean"
@@ -1023,7 +1066,7 @@ def run_experiment(
         "response_text": initial_completion.content,
         "prompt_sha256": initial_prompt_sha256,
         "prompt_text": initial_prompt,
-        "provider": MODEL_PROVIDER if api_completion else None,
+        "provider": provider if execution_mode in {"api", "local"} else None,
         "requested_model": model,
         "returned_model": initial_completion.metadata.get("response_model"),
         "completion_metadata": initial_completion.metadata,
