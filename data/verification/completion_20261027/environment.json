@@ -1,0 +1,8 @@
+{
+  "python": "3.13.7",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "starting_sha": "648ec7b9f025eb76e13f273b34055243890c9ea1",
+  "branch": "research/taimma2027-completion",
+  "groq_key_present": true,
+  "api_requests": 0
+}

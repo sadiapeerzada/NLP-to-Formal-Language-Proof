@@ -1,0 +1,3 @@
+Two sourced development candidates, pending all independent reviews. See candidate_records.json for exact citations, source-byte hashes, assumptions, imports and adaptation scope. Reference proofs are authored preparation, not model experiment outputs. Both initial verification attempts timed out; verification.json preserves those failures. No eligibility or proof success is claimed. Source adaptations: Oscar Levin, DMOI3 §5.2 exercises 4 and 15, CC BY-SA 4.0.
+
+Both reference proofs subsequently passed strict verification using narrower explicit imports; exact source/output/axiom evidence is in verification_minimal.json. No mathematical proposition changed. These are authored reference proofs, not model API generations. Initial timeout evidence remains unchanged.

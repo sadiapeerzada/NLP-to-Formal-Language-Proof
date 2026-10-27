@@ -1,0 +1,50 @@
+[
+  {
+    "file": "data/curation_batches/v0.1.8/div_012_diophantine.lean",
+    "file_sha256": "3ce4c0a545dde54f419451d6ccf23c48cc6f87f05c2db17a6986d55039548c5e",
+    "verification": {
+      "success": false,
+      "errors": [
+        "Compilation timed out after 180s."
+      ],
+      "exit_code": null,
+      "elapsed_seconds": 180.049,
+      "diagnostics_parsed": 0,
+      "axiom_dependencies": null,
+      "failure_kind": "timeout",
+      "diagnostic_text": null,
+      "candidate_sha256": "3ce4c0a545dde54f419451d6ccf23c48cc6f87f05c2db17a6986d55039548c5e",
+      "verification_source_text": "import Mathlib\n\ntheorem diophantine_six_ten (x y : \u2124) :\n    6 * x + 10 * y = 32 \u2194 \u2203 k : \u2124, x = 2 - 5 * k \u2227 y = 2 + 3 * k := by\n  constructor\n  \u00b7 intro h\n    refine \u27e8(y - 2) / 3, ?_, ?_\u27e9 <;> omega\n  \u00b7 rintro \u27e8k, rfl, rfl\u27e9\n    ring\n\n#print axioms diophantine_six_ten\n",
+      "verification_source_sha256": "db1be5407ae2e6fb6d1a72ef41d3e55531b8ccec05860fad8b7a5d03a97f82f4",
+      "diagnostics": null,
+      "malformed_diagnostics": [],
+      "diagnostic_state": "unavailable",
+      "compiler_stdout": null,
+      "compiler_stderr": null
+    }
+  },
+  {
+    "file": "data/curation_batches/v0.1.8/mod_006_largest_modulus.lean",
+    "file_sha256": "98caaa0f3e1f493bdbb70456955fa7d050f890c58fde08ddfc2b6c75da459086",
+    "verification": {
+      "success": false,
+      "errors": [
+        "Compilation timed out after 180s."
+      ],
+      "exit_code": null,
+      "elapsed_seconds": 180.053,
+      "diagnostics_parsed": 0,
+      "axiom_dependencies": null,
+      "failure_kind": "timeout",
+      "diagnostic_text": null,
+      "candidate_sha256": "98caaa0f3e1f493bdbb70456955fa7d050f890c58fde08ddfc2b6c75da459086",
+      "verification_source_text": "import Mathlib\n\ntheorem largest_modulus_sixteen_twentyfive :\n    Nat.ModEq 9 16 25 \u2227 \u2200 n : \u2115, 0 < n \u2192 Nat.ModEq n 16 25 \u2192 n \u2264 9 := by\n  constructor\n  \u00b7 decide\n  \u00b7 intro n hn h\n    have hd : n \u2223 9 := by\n      simpa using (Nat.modEq_iff_dvd' (by decide : 16 \u2264 25)).mp h\n    exact Nat.le_of_dvd (by decide) hd\n\n#print axioms largest_modulus_sixteen_twentyfive\n",
+      "verification_source_sha256": "4fe097505271dc4dc08915d594e6b10ba19dc477730a1745fbad7300893fb83d",
+      "diagnostics": null,
+      "malformed_diagnostics": [],
+      "diagnostic_state": "unavailable",
+      "compiler_stdout": null,
+      "compiler_stderr": null
+    }
+  }
+]

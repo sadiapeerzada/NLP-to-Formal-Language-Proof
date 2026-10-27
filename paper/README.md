@@ -42,3 +42,5 @@ no independently approved/preregistered protocol, no qualifying paired API
 runs, and no complete qualitative repair examples with authenticated API
 provenance. Do not claim otherwise based on successful LaTeX formatting or
 Lean compilation.
+
+Completion audit on 27 October 2026 regenerated inventory tables for 37 candidates, added the reproducibility section, and kept all empirical results unavailable. `pdflatex -halt-on-error main.tex` was attempted and returned command-not-found; no PDF build is claimed. Official Springer author resources state their computer-science proceedings guidelines also cover CCIS: https://www.springer.com/gp/computer-science/lncs/forthcoming-proceedings . Conference-specific requirements still need confirmation.

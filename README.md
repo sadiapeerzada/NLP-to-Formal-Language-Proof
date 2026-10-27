@@ -22,7 +22,7 @@ the research question.
 ## Research status
 
 **In progress — no completed A/B/C evaluation is reported here.** The current
-curation inventory contains **35 candidates**: 27 assigned to a proposed
+curation inventory contains **37 candidates**: 29 assigned to a proposed
 development split and 8 to a proposed test split. The validator reports
 **0 eligible records** in either split. Five categories are represented:
 arithmetic identity, divisibility, induction, inequality, and modular
@@ -39,10 +39,10 @@ historical, manual, or simulated results as model-generated results.
 The Springer CCIS/LNCS-format manuscript draft and its claims-to-evidence audit
 are in [`paper/`](paper/). The draft reports no A/B/C findings because the
 dataset has zero eligible records and there are no paired A/B/C run manifests.
-The latest inventory records 10 candidates with strict Lean proof-verification
-evidence, 0 with complete reviews, and 87 curation warnings. Fourteen sourced
-candidates have DMOI3 item citations, but source-page bytes were not archived
-for the latest acquisition batches and independent rights clearance is 0.
+The latest inventory records 12 candidates with strict Lean proof-verification
+evidence, 0 with complete reviews, and 95 curation warnings. Sixteen sourced
+candidates have DMOI3 item citations. Publisher source bytes were archived on
+27 October 2026; independent rights clearance remains 0.
 The original 21 draft records lack item-level source citations. See
 [`docs/reproducibility.md`](docs/reproducibility.md) for exact environment,
 validation, analysis, and paper-build instructions. This repository does not
@@ -56,7 +56,7 @@ revision plan. It does not predict acceptance.
 | Requirement | Done so far | Still required |
 |---|---|---|
 | **M1 — Genuine automated runs** | Paired runner and trace format implemented. No paired A/B/C run manifests found. Historical pilot files are not treated as paired API evidence because they lack required execution metadata and conditions. | Pass dataset, protocol, account, quota, and approval gates; then run and preserve a genuine API pilot and study. |
-| **M2 — Frozen independent test set** | 35 candidates: 27 proposed development, 8 proposed test; 0 eligible. Five categories represented. | Acquire and review enough rights-cleared examples for 15–20 eligible development and at least 60 eligible held-out test items; separate whole theorem families; freeze and hash. |
+| **M2 — Frozen independent test set** | 37 candidates: 29 proposed development, 8 proposed test; 0 eligible. Five categories represented. | Acquire and review enough rights-cleared examples for 15–20 eligible development and at least 60 eligible held-out test items; separate whole theorem families; freeze and hash. |
 | **M3 — Feedback baseline** | Protocol v0.2.0 and runner specify A one-shot, B blind retry, C compiler-guided repair, shared initial candidate, and up to three repairs for B/C. | Obtain independent protocol approval and validate the paired lifecycle in an approved pilot. |
 | **M4 — Semantic faithfulness** | Review templates and packets exist; independent completed reviews: 0. | Qualified independent reviewers must label English/Lean pairs; report end-to-end translation fidelity separately from fixed-theorem repair. |
 | **M5 — Metrics and statistics** | Paired-analysis code and synthetic tests exist. Readiness audit computed no study metrics. | Analyze genuine traces with denominators, uncertainty, paired tests, multiplicity correction, missing-run accounting, and resource usage. |
@@ -171,18 +171,18 @@ Before a record can be counted as eligible, curate and document:
    exact-byte manifest hash. Freeze only after required evidence-based reviews
    are complete and the target counts are met.
 
-The latest inventory snapshot is
+The historical versioned inventory snapshot is
 [`data/research_dataset_inventory_v0.2.2.json`](data/research_dataset_inventory_v0.2.2.json),
-and the latest audit is [`data/curation_audit_v0.1.3.md`](data/curation_audit_v0.1.3.md).
+and its historical audit is [`data/curation_audit_v0.1.3.md`](data/curation_audit_v0.1.3.md).
 They record 27 proposed development and 8 proposed test candidates, with zero
-eligible examples in both splits. There is one exact-English duplicate group
+eligible examples in both splits. The [current combined audit](data/analysis/verified_readiness_20261027/readiness.json) adds two development candidates, for 29 development / 8 test and zero eligible. There is one exact-English duplicate group
 (`arith_003` / `arith_003_mathlib`); likely-duplicate pairs and a declared
 cross-split family concern also await human adjudication. Proposed split
 assignments and source/license fields are not equivalent to completed review
 or rights clearance.
 
-The 14 newly cited DMOI3 items remain pending source-byte capture and rights
-review. Independent semantic-fidelity, theorem-statement, self-containment,
+The 16 cited DMOI3 candidates remain pending rights review. Exact publisher
+source bytes are now archived under `data/source_archives/20261027_curl/`. Independent semantic-fidelity, theorem-statement, self-containment,
 family, and split reviews are incomplete. Source licenses must be assessed at
 the relevant item/source level; public accessibility alone is not reuse
 permission. For example, the [miniF2F repository](https://github.com/facebookresearch/miniF2F)
@@ -206,8 +206,8 @@ PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python src/dataset_validation.py \
 This validates the base draft structure, IDs, allowed metadata, duplicate
 candidates, and family/split consistency. It reports zero eligible records
 for the base 21-record draft. The combined draft-plus-batch inventory was also
-checked with `validate_curation_draft`: 35 candidates, 0 eligible, 0
-structural errors, and 87 review warnings. A
+checked with `validate_curation_draft`: 37 candidates, 0 eligible, 0
+structural errors, and 95 review warnings. A
 successful structural validation is **not** proof of mathematical
 correctness, source authenticity, redistribution rights, semantic fidelity,
 or successful Lean compilation.
@@ -350,3 +350,5 @@ risk.
 For broader project context, see [`docs/architecture.md`](docs/architecture.md),
 [`docs/roadmap.md`](docs/roadmap.md), [`docs/dataset_card.md`](docs/dataset_card.md),
 [`docs/model_card.md`](docs/model_card.md), and [`docs/verification.md`](docs/verification.md).
+
+See [the 27 October completion report](docs/FINAL_COMPLETION_REPORT.md) for current verification outcomes and blockers. Latest combined audit: 37 candidates, 29 proposed development, 8 proposed test, zero eligible, 95 review warnings. The older versioned inventory files retain their historical counts.

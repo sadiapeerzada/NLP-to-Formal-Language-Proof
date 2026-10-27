@@ -3,7 +3,7 @@
 ## Current evidence state
 
 The paired analysis is currently blocked: the dataset manifest is draft,
-there are 35 candidates and zero eligible records, and there are no paired
+there are 37 candidates and zero eligible records, and there are no paired
 API experiment manifests. Thus the only valid current analysis output is a
 readiness audit; it does not contain study results. See
 [`paper/claims_to_evidence.md`](../paper/claims_to_evidence.md).
@@ -126,3 +126,5 @@ they are not vendored. Then follow `paper/README.md`. Current results sections
 are explicitly unavailable and must be populated only from a validated
 analysis output, never by copying values from historical charts or manually
 authored proofs.
+
+Current completion evidence (27 October 2026): [final readiness audit](../data/analysis/verified_readiness_20261027/readiness.json) and [completion report](FINAL_COMPLETION_REPORT.md). The pool has 37 candidates (29 proposed development, 8 proposed test), zero eligible records, and 95 review warnings. Exact source bytes are now archived separately under `data/source_archives/20261027_curl/`; source compatibility and independent semantic reviews remain pending.

@@ -1,0 +1,89 @@
+[
+  {
+    "file": "data/curation_batches/v0.1.8/div_012_diophantine.lean",
+    "file_sha256": "e984751c23d0f09d4ea617d0643a0cca65e9599e6450472fc6ffbd6950a62443",
+    "verification": {
+      "success": true,
+      "errors": [],
+      "exit_code": 0,
+      "elapsed_seconds": 14.082,
+      "diagnostics_parsed": 1,
+      "axiom_dependencies": [
+        "propext",
+        "Quot.sound"
+      ],
+      "failure_kind": null,
+      "diagnostic_text": null,
+      "candidate_sha256": "e984751c23d0f09d4ea617d0643a0cca65e9599e6450472fc6ffbd6950a62443",
+      "verification_source_text": "import Mathlib.Data.Int.Basic\nimport Lean.Elab.Tactic.Omega\n\ntheorem diophantine_six_ten (x y : \u2124) :\n    6 * x + 10 * y = 32 \u2194 \u2203 k : \u2124, x = 2 - 5 * k \u2227 y = 2 + 3 * k := by\n  constructor\n  \u00b7 intro h\n    refine \u27e8(y - 2) / 3, ?_, ?_\u27e9 <;> omega\n  \u00b7 rintro \u27e8k, rfl, rfl\u27e9\n    omega\n\n#print axioms diophantine_six_ten\n",
+      "verification_source_sha256": "a6cc3087596a94bc2eef45fd0cd8eb9aaf75114407192a775e89e847ab254e58",
+      "diagnostics": [
+        {
+          "caption": "",
+          "data": "'diophantine_six_ten' depends on axioms: [propext, Quot.sound]",
+          "endPos": {
+            "column": 6,
+            "line": 12
+          },
+          "fileName": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/lean_project/generated/_scratch/curation_v018_minimal_div_012_diophantine.lean",
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 12
+          },
+          "severity": "information"
+        }
+      ],
+      "malformed_diagnostics": [],
+      "diagnostic_state": "available",
+      "compiler_stdout": "{\"caption\":\"\",\"data\":\"'diophantine_six_ten' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":12},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/lean_project/generated/_scratch/curation_v018_minimal_div_012_diophantine.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":12},\"severity\":\"information\"}\n",
+      "compiler_stderr": ""
+    }
+  },
+  {
+    "file": "data/curation_batches/v0.1.8/mod_006_largest_modulus.lean",
+    "file_sha256": "1cbf29ace022e89b9fadd554cd539182735556870a28c36524bdc89efe2c297a",
+    "verification": {
+      "success": true,
+      "errors": [],
+      "exit_code": 0,
+      "elapsed_seconds": 21.638,
+      "diagnostics_parsed": 1,
+      "axiom_dependencies": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "failure_kind": null,
+      "diagnostic_text": null,
+      "candidate_sha256": "1cbf29ace022e89b9fadd554cd539182735556870a28c36524bdc89efe2c297a",
+      "verification_source_text": "import Mathlib.Data.Nat.ModEq\n\ntheorem largest_modulus_sixteen_twentyfive :\n    Nat.ModEq 9 16 25 \u2227 \u2200 n : \u2115, 0 < n \u2192 Nat.ModEq n 16 25 \u2192 n \u2264 9 := by\n  constructor\n  \u00b7 decide\n  \u00b7 intro n hn h\n    have hd : n \u2223 9 := by\n      simpa using (Nat.modEq_iff_dvd' (by decide : 16 \u2264 25)).mp h\n    exact Nat.le_of_dvd (by decide) hd\n\n#print axioms largest_modulus_sixteen_twentyfive\n",
+      "verification_source_sha256": "02fc80bfbff2a179f4eec8a9d5ee75c4ca771994d76d0858e406781d3954d6d5",
+      "diagnostics": [
+        {
+          "caption": "",
+          "data": "'largest_modulus_sixteen_twentyfive' depends on axioms: [propext, Classical.choice, Quot.sound]",
+          "endPos": {
+            "column": 6,
+            "line": 12
+          },
+          "fileName": "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/lean_project/generated/_scratch/curation_v018_minimal_mod_006_largest_modulus.lean",
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 12
+          },
+          "severity": "information"
+        }
+      ],
+      "malformed_diagnostics": [],
+      "diagnostic_state": "available",
+      "compiler_stdout": "{\"caption\":\"\",\"data\":\"'largest_modulus_sixteen_twentyfive' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":12},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/lean_project/generated/_scratch/curation_v018_minimal_mod_006_largest_modulus.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":12},\"severity\":\"information\"}\n",
+      "compiler_stderr": ""
+    }
+  }
+]

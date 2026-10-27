@@ -1,0 +1,14 @@
+# Remaining human actions
+
+Status: BLOCKED. No signature, decision, date or independent approval has been generated on a reviewer's behalf.
+
+1. Assign qualified independent mathematical reviewers to the 37 packets in `data/analysis/verified_readiness_20261027/review_packets/`. Review English/Lean faithfulness, quantifiers, types, assumptions, boundary cases, imports/definitions, category/difficulty, duplicates and theorem families. Record actual identity, date and evidence; use faithful / not faithful / uncertain. A compiler pass cannot supply this review.
+2. Have a rights reviewer resolve item-level attribution, license scope, redistribution/publication compatibility and third-party model-input permissions. Publisher bytes and license notice are archived; original 21 records still need legitimate item-level provenance. Do not certify rights by copying a public URL.
+3. Continue source acquisition and reference-proof engineering to at least 60 eligible test and 15–20 separate eligible development examples; resolve duplicate exclusions and whole-family assignments. The current count is 37 candidates and zero eligible. Freeze only after all checks and approvals pass.
+4. Independently review the exact protocol `configs/repair_experiment_protocol_v0.2.0.json`, prompts and analysis rules. Resolve order effects (B before C), comparable budgets, mutable aliases, ambiguous SDK retries, incomplete-case handling and preregistration. Save real approval/preregistration evidence tied to exact hashes before held-out access.
+5. Supply account-specific Groq model access, tier/billing and quota evidence. Review archived official pricing and conservative input-token framing bounds. Public model-list membership or a configured credential is insufficient.
+6. After the above, approve a concrete pilot package: eligible development ID and exact theorem/dataset hashes, model/settings, protocol/prompt hashes, fresh output directory, maximum logical calls, wrapper/SDK HTTP-attempt caps, total/per-problem USD caps, pricing/bound evidence and reviewer identity/date. These fields are not yet approvable because no eligible development item exists. No spend approval is requested prematurely.
+7. Audit genuine pilot traces and interruption handling before separately approving scale-up. Run the frozen held-out study exactly once under approved rules; preserve incomplete cases. Complete statistical analysis and authentic examples only from those traces.
+8. Provide author/affiliation/correspondence metadata and confirm the conference's applicable Springer template/page limits. Install LaTeX and official `llncs.cls` / `splncs04.bst`, build and inspect the PDF, then independently audit every claim against artifacts.
+
+No merge into main is authorized. Repository edits, offline tests, branch commit and push were authorized by the task; they do not authorize model spending or independent-review substitutions.
