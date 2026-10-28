@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "arith_001",
+    "nl_statement": "For any natural numbers a and b, (a + b) squared equals a squared plus 2ab plus b squared.",
+    "expected_lean_statement": "theorem add_sq_nat (a b : ℕ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_001",
+    "subject_sha256": "479fb3f939b02aeaca2df50f3b7e8e5a5c82c8fd61d33091b6a9fc14008ba89e",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Two universal natural inputs; polynomial expansion preserves every term and coefficient without extra hypotheses."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 18 column 1 (char 981)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_001.json",
+      "status": "completed",
+      "response_sha256": "e17689ded609f32d3de8aa69de47a815500b0882285b140de97a350e7477f61b"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and the Lean theorem provided are equivalent in terms of mathematical meaning. Both assert that the square of the sum of two natural numbers equals the sum of the squares of the individual numbers plus twice the product of the numbers. This is a statement of the algebraic identity (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2, which is true for any natural numbers a and b. There are no omitted domain restrictions, and the statement is equivalent in strength to the Lean theorem provided.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_001.json",
+      "response_sha256": "65f2f30209b52129471a519c9441b321254f935f1ce809e85c3cee451a837e55"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_001",
+      "theorem": "AuditReference0.add_sq_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ), (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_001",
+      "subject_sha256": "479fb3f939b02aeaca2df50f3b7e8e5a5c82c8fd61d33091b6a9fc14008ba89e",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 81,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Polynomial identity on all pairs 0..8.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

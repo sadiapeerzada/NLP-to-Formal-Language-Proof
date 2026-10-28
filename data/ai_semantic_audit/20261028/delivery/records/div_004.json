@@ -1,0 +1,85 @@
+{
+  "subject": {
+    "id": "div_004",
+    "nl_statement": "The sum of any two odd natural numbers is even.",
+    "expected_lean_statement": "theorem sum_two_odd_even (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1) : ∃ k, a + b = 2 * k",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_004",
+    "subject_sha256": "1d4cdd502c87b89b7f874b8bca02d3c130e7f58045278969cf559b7bb61507f5",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural a,b; existential odd witnesses precede the existential even-sum witness, matching sum of any two odd naturals."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_004.json",
+      "status": "completed",
+      "response_sha256": "510958d1134de94f531966511319cd4c96fa57586d42960d0176c756486f515b"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each of a and b",
+        "domains": "ℕ",
+        "assumptions": "existential hypotheses on a and b",
+        "equivalence": "conclusion a + b is even",
+        "strength": "same",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts that the sum of any two odd numbers is even, which is consistent with the Lean theorem stating that given a and b are odd (expressed as a = 2*i + 1 and b = 2*j + 1), their sum a + b is an even number (2 * k). There is no counterexample that refutes this claim within the natural numbers (ℕ), and thus the statement is true and equivalent to the Lean theorem.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_004.json",
+      "response_sha256": "46af5c0ec07044c54e632af4adc22e3b21430e6627d480e4753033e42ca713dd"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_004",
+      "theorem": "AuditReference0.sum_two_odd_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1), ∃ k, a + b = 2 * k",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_004",
+      "subject_sha256": "1d4cdd502c87b89b7f874b8bca02d3c130e7f58045278969cf559b7bb61507f5",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 16,
+      "filtered_by_assumptions": 65,
+      "failures": [],
+      "note": "Odd inputs existential witnesses reduce to parity.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

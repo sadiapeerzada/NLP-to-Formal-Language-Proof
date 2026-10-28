@@ -1,0 +1,88 @@
+{
+  "subject": {
+    "id": "arith_003_mathlib",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "expected_lean_statement": "theorem distributive_nat (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_003_mathlib",
+    "subject_sha256": "70f725901da6b47a112879c0ab360b2ea528a750f6a782a103b8d1570a3eaf26",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Same English and same alpha-equivalent proposition as arith_003; faithful proposition but must not count as an independent additional item."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_003_mathlib.json",
+      "status": "completed",
+      "response_sha256": "d2556b3c8f37ebc9d65cca9270c360bcd8b9de70621d0e9418ff068bea33207d"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and the Lean theorem both assert the commutative property of multiplication over addition for natural numbers. The statement assumes a and b are natural numbers and concludes that a multiplied by the sum of b and c equals the sum of a multiplied by b and a multiplied by c. This is equivalent to the distributive property of multiplication over addition in Lean's Nat type. There is no counterexample as this is a fundamental property of arithmetic. The statement is faithful as it is equivalent in meaning and implications to the Lean theorem.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_003_mathlib.json",
+      "response_sha256": "c409980c9d6242c321de1acea5fd480dcb4c33fa270abad492c2b899e3c33b3f"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_003_mathlib",
+      "theorem": "AuditReference0.distributive_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b c : ℕ), a * (b + c) = a * b + a * c",
+      "axioms": [],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_003_mathlib",
+      "subject_sha256": "70f725901da6b47a112879c0ab360b2ea528a750f6a782a103b8d1570a3eaf26",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 729,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Same distributivity predicate exposes duplicate semantics.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "Exact duplicate of arith_003."
+    ],
+    "proposed_action": "propose_exclude_duplicate",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

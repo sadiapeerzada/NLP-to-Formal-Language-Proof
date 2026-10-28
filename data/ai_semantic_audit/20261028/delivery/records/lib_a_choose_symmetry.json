@@ -1,0 +1,83 @@
+{
+  "subject": {
+    "id": "lib_a_choose_symmetry",
+    "nl_statement": "For natural numbers n and k with k at most n, choosing k objects from n gives the same binomial coefficient as choosing n-k objects.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_choose_symmetry (n k : ℕ) (h : k ≤ n) : n.choose k = n.choose (n - k)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_choose_symmetry",
+    "subject_sha256": "2a929c6bf9b93aac06d13b705479c1e8b1802fdf6d7846627150444ccfc3eb9b",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n,k with k<=n; natural n-k is ordinary nonnegative difference under the explicit bound."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 20 column 1 (char 1237)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_choose_symmetry.json",
+      "status": "completed",
+      "response_sha256": "90b96660c059b11952480f4dcf00091ee4b7edb9b3cee0ac434a2a01906db438"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each on n and k",
+        "domains": "both ℕ",
+        "assumptions": "one n > 0 and one h : k ≤ n",
+        "equivalence": "conclusion is equivalent",
+        "strength": "same",
+        "boundary_cases": "none",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The statement is true as choosing k items from n is equivalent to choosing n-k items from n, reflecting the symmetry property of binomial coefficients.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_choose_symmetry.json",
+      "response_sha256": "0bfbfe71f115bb7cf60e59ecdf810a8b446426269acd37cd6c02a2d209905749"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_choose_symmetry",
+      "theorem": "AuditReference14.study_a_choose_symmetry",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n k : ℕ) (h : k ≤ n), n.choose k = n.choose (n - k)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_choose_symmetry",
+      "subject_sha256": "2a929c6bf9b93aac06d13b705479c1e8b1802fdf6d7846627150444ccfc3eb9b",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 45,
+      "filtered_by_assumptions": 36,
+      "failures": [],
+      "note": "k<=n; truncated subtraction then ordinary.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "subject": {
+    "id": "div_002",
+    "nl_statement": "For any natural number n, n times (n + 1) is always even.",
+    "expected_lean_statement": "theorem n_mul_succ_even (n : ℕ) : Even (n * (n + 1))",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_002",
+    "subject_sha256": "8c9609834e06922f64c0ad58fba2959b995b22e511c8691911a1b272645693b6",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n including zero; consecutive product is even with no omitted hypothesis."
+    },
+    "phi_3_5": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "universal quantifier on n",
+        "domains": "natural numbers (ℕ)",
+        "assumptions": "none specified",
+        "equivalence": "proposition does not account for zero and negative cases",
+        "strength": "omits zero and negative cases, which are relevant for the domain of natural numbers",
+        "boundary_cases": "does not address the case when n is zero or negative",
+        "counterexample_search": "consider n = 0 or a negative integer",
+        "explanation": "the proposition fails for n = 0, as 0 times (0 + 1) is not even, and for negative integers, the product n * (n + 1) is not defined in the natural numbers",
+        "issues": [
+          "zero and negative cases omitted",
+          "proposition does not hold for all elements of the domain specified (ℕ)",
+          "lacks explicit handling of boundary cases"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_002.json",
+      "status": "completed",
+      "response_sha256": "16c22fca48968f24c7a9511dcea15d4a2bb9b43144184d5bc16710c7d193489c"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "weaker",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The statement is not true for all natural numbers n and therefore cannot be a faithful statement in Lean. It is equivalent to stating that n times (n + 1) is always even, which is not true as counterexample n = 1 (1 * (1 + 1) is not even).",
+        "issues": [
+          "The statement is not universally true."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_002.json",
+      "response_sha256": "3f29f788aaf5cf90f6cba38efec1495d45f6554f987b2696c56ebe53c31f0745"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_002",
+      "theorem": "AuditReference0.n_mul_succ_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), Even (n * (n + 1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_002",
+      "subject_sha256": "8c9609834e06922f64c0ad58fba2959b995b22e511c8691911a1b272645693b6",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Consecutive product.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

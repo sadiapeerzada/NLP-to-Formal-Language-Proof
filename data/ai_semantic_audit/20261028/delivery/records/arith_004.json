@@ -1,0 +1,95 @@
+{
+  "subject": {
+    "id": "arith_004",
+    "nl_statement": "For natural numbers a and b with b at most a, (a minus b) squared plus 2ab equals a squared plus b squared.",
+    "expected_lean_statement": "theorem sq_sub_nat (a b : ℕ) (h : b ≤ a) : (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_004",
+    "subject_sha256": "2ad9fe3d356c5287c01d8350c25394df4bb31f15004666e34347b3f2338c04b2",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b and b<=a explicitly match; subtraction-square identity retains 2ab, which differs from twice (a-b)b."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 17 column 1 (char 1008)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_004.json",
+      "status": "completed",
+      "response_sha256": "95a1a6d4a0a3030578f74bd25810bd687b94bf2a618b86b44aadcfc7973b027b"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each on left and right",
+        "domains": "ℕ",
+        "assumptions": "h : b ≤ a",
+        "equivalence": "conclusion is equivalent",
+        "strength": "same",
+        "boundary_cases": "specific endpoint check a = b",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The statement is an application of the square of a difference expanded identity and is true for natural numbers a and b where b is less than or equal to a.",
+        "issues": [
+          "The English statement uses 'squared' which implies a power of 2, but the Lean statement uses the exponentiation operator ^ which is consistent with the definition of power in Lean.",
+          "The English statement uses 'equals' while the Lean statement uses '=', which are equivalent notations in different contexts.",
+          "The English statement uses 'two ab' while the Lean statement uses '2 * a * b', which are equivalent notations but use different spacing.",
+          "The English statement uses 'at most a' while the Lean statement uses '≤ a', which are equivalent notations but use different spacing.",
+          "The English statement uses 'squared' while the Lean statement uses the exponentiation operator ^ which is consistent with the definition of power in Lean.",
+          "The English statement uses 'two ab' while the Lean statement uses '2 * a * b', which are equivalent notations but use different spacing.",
+          "The English statement uses 'at most a' while the Lean statement uses '≤ a', which are equivalent notations but use different spacing."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_004.json",
+      "response_sha256": "145a893f00585cf6bd3da866d1e0e66d5b60258365f3c596c8e8e55939c2708c"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_004",
+      "theorem": "AuditReference0.sq_sub_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_004",
+      "subject_sha256": "2ad9fe3d356c5287c01d8350c25394df4bb31f15004666e34347b3f2338c04b2",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 45,
+      "filtered_by_assumptions": 36,
+      "failures": [],
+      "note": "Truncation under b<=a.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "subject": {
+    "id": "div_010",
+    "nl_statement": "For integers a, b, and c, if a divides b, then a divides the product bc.",
+    "expected_lean_statement": "theorem dvd_mul_right_int (a b c : ℤ) (hab : a ∣ b) : a ∣ b * c",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_010",
+    "subject_sha256": "35a99406a4ded20476f026d740af331f52c1a3adf1b7b01a1d29c3737947b54a",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Integer a,b,c; divisibility premise a|b and conclusion a|(b*c) preserve the product scope and allow zero divisor."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_010.json",
+      "status": "completed",
+      "response_sha256": "6bcde64f362692e0720425835f41fe91c8bb7a0ffd8c59ea18262a713ba20ddb"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀ ∀",
+        "domains": "ℤ",
+        "assumptions": "hab : a ∣ b",
+        "equivalence": "conclusion is equivalent",
+        "strength": "stronger",
+        "boundary_cases": "none",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The English statement asserts a property of divisibility that is equivalent to the Lean theorem. It assumes a divides b (hab : a ∣ b) and concludes a divides the product bc (a ∣ b * c). There is an equivalence in terms of mathematical semantics, and the statement is stronger in Lean because it does not explicitly mention the requirement that a and c must be non-zero (which is inherent in the definition of divisibility in Lean). There is no counterexample that refutes the statement as written in English versus Lean.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_010.json",
+      "response_sha256": "a63dd64f550197e6f36852a3f2df5b9db50d75a5d003a9668efe0e856eb9d52b"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_010",
+      "theorem": "AuditReference9.dvd_mul_right_int",
+      "source": "data/curation_batches/v0.1.5/div_010_dvd_mul.lean",
+      "expected_type": "∀ (a b c : ℤ) (hab : a ∣ b), a ∣ b * c",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_010",
+      "subject_sha256": "35a99406a4ded20476f026d740af331f52c1a3adf1b7b01a1d29c3737947b54a",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 897,
+      "filtered_by_assumptions": 1300,
+      "failures": [],
+      "note": "Divisor zero included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

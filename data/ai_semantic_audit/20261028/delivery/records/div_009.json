@@ -1,0 +1,88 @@
+{
+  "subject": {
+    "id": "div_009",
+    "nl_statement": "For any integer n, the number n^3 − n is even.",
+    "expected_lean_statement": "theorem even_cube_sub_self (n : ℤ) : Even (n ^ 3 - n)",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_009",
+    "subject_sha256": "9714dde88c7824b9b60b9b635fcb69239634f83484911b76558eb6aa8010aa7d",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal integer n with integer cubic subtraction, not Nat truncation; Even(n^3-n) matches."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 23 column 1 (char 1660)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_009.json",
+      "status": "completed",
+      "response_sha256": "2e4b73bdf37f0df1a8b0e53941081c30bdfe568a59035dd5d95cd366d3c3ece1"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "Universal (∀) versus Existential (∃)",
+        "domains": "Z versus ℤ",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific endpoint check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a property of all integers (universal), while Lean uses a theorem (which is an equivalence claim) that is true for all integers (universal case). There is an equivalence of scope and domain, but the English statement is stronger in that it does not explicitly mention 'even numbers' while relying on an inherent property of integers (evenness of a cube minus an integer is an inherent property). There is a boundary case check on zero (n=0), which is covered as n^3-n is 0 (even) in this case.",
+        "issues": [
+          "The English statement uses a less specific term 'even numbers' while relying on an inherent property that is true in Lean's formalism."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_009.json",
+      "response_sha256": "e5ba8525bb68962dc6c57d5dd58e18d2d637d968d0e0126ee999ccbf022a7789"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_009",
+      "theorem": "AuditReference4.even_cube_sub_self",
+      "source": "data/curation_batches/v0.1.0/div_009_cube_sub_self_even.lean",
+      "expected_type": "∀ (n : ℤ), Even (n ^ 3 - n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_009",
+      "subject_sha256": "9714dde88c7824b9b60b9b635fcb69239634f83484911b76558eb6aa8010aa7d",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 13,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Integer subtraction.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

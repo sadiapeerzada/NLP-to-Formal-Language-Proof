@@ -1,0 +1,86 @@
+{
+  "subject": {
+    "id": "lib_m_residue_product",
+    "nl_statement": "For natural a,b,m, the remainder of a*b modulo m equals the remainder of the product of their separate remainders modulo m, including when m is zero.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_m_residue_product (a b m : ℕ) : (a * b) % m = ((a % m) * (b % m)) % m",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_m_residue_product",
+    "subject_sha256": "bb9717c53bc34f2c4c21424ae0aa061167e2308976726299ce92319678e1b49b",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b,m; both sides have outer remainder modulo m, including m=0 as explicitly requested."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each a, b, m",
+        "domains": "ℕ",
+        "assumptions": "modulo definition and multiplicative property",
+        "equivalence": "conclusion is equivalent to expected statement",
+        "strength": "same",
+        "boundary_cases": "m is zero",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The statement is true under the definition of modulo and multiplicative property, including case when m is zero.",
+        "issues": [
+          "Lean Nat subtraction is truncated; division and remainders are totalized."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_m_residue_product.json",
+      "response_sha256": "cbe02d296f9ebd5b593dc527a84959b44561710360d2a5b0d768a214be4bdb6c"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_m_residue_product",
+      "theorem": "AuditReference14.study_m_residue_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b m : ℕ), (a * b) % m = ((a % m) * (b % m)) % m",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_m_residue_product",
+      "subject_sha256": "bb9717c53bc34f2c4c21424ae0aa061167e2308976726299ce92319678e1b49b",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 729,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Modulus zero remainder identity.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

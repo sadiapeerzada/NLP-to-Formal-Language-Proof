@@ -1,0 +1,73 @@
+{
+  "subject": {
+    "id": "lib_d_dvd_antisymmetry",
+    "nl_statement": "If two natural numbers divide each other, they are equal.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_dvd_antisymmetry (a b : ℕ) (hab : a ∣ b) (hba : b ∣ a) : a = b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_dvd_antisymmetry",
+    "subject_sha256": "3c62ea19654d90d5c19782d53f88d916a4ce9d9f4dcf7e903775bbf9db3ed2a7",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural a,b and mutual divisibility premises; equality conclusion needs the natural domain, unlike signed integers."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_dvd_antisymmetry.json",
+      "status": "completed",
+      "response_sha256": "39371139c59972493873466773ed0057cedb5792116bcc28649acb9093f27de4"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_dvd_antisymmetry.json",
+      "response_sha256": "7f101666710efba36d2a1c1812fe9f857eb772db3af76ed6fab9357e15670818"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_dvd_antisymmetry",
+      "theorem": "AuditReference14.study_d_dvd_antisymmetry",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ) (hab : a ∣ b) (hba : b ∣ a), a = b",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_dvd_antisymmetry",
+      "subject_sha256": "3c62ea19654d90d5c19782d53f88d916a4ce9d9f4dcf7e903775bbf9db3ed2a7",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 72,
+      "failures": [],
+      "note": "Two divisibility assumptions.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

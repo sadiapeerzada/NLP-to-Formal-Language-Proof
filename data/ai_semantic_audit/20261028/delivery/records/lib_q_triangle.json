@@ -1,0 +1,96 @@
+{
+  "subject": {
+    "id": "lib_q_triangle",
+    "nl_statement": "For real x and y, the absolute value of x+y is at most the sum of their absolute values.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_triangle (x y : ℝ) : |x + y| ≤ |x| + |y|",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_triangle",
+    "subject_sha256": "fef2725294fb4f49201fa4ac730bbd709d6afaba10467c9c9bd0fe8466fe28bf",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Two universal reals; non-strict triangle inequality with each separate absolute value."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: domains",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_triangle.json",
+      "status": "completed",
+      "response_sha256": "a543ae0f55455530cd5a302a31952923e9e55f3c7591bdca8babacf075b3b059"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a well-known inequality in real numbers, which is equivalent to a Lean theorem stating that the absolute value of the sum of two real numbers is less than or equal to the sum of their absolute values. This is a standard inequality covered in real analysis and is consistent with the expected Lean statement.",
+        "issues": [
+          "The English statement assumes the variables x and y are real numbers, which is not explicitly stated in the Lean theorem but can be inferred from the context.",
+          "The Lean theorem uses the notation 'open scoped BigOperators' which indicates that it is a statement within a specific scope in Mathlib, but this does not impact the mathematical equivalence.",
+          "The Lean statement does not explicitly import Mathlib or define required terms, which may be an oversight but does not affect the mathematical equivalence."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_triangle.json",
+      "response_sha256": "3e23d20aa3f8c649a77e127ebf4da4846574a7fa9a6bfefb86498eab6d137632"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_triangle",
+      "theorem": "AuditReference14.study_q_triangle",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), |x + y| ≤ |x| + |y|",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_triangle",
+      "subject_sha256": "fef2725294fb4f49201fa4ac730bbd709d6afaba10467c9c9bd0fe8466fe28bf",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 169,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Absolute values, no sign assumptions.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

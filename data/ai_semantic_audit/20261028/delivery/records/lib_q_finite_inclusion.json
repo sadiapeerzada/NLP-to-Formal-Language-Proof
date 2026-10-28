@@ -1,0 +1,74 @@
+{
+  "subject": {
+    "id": "lib_q_finite_inclusion",
+    "nl_statement": "For finite sets s and t of natural numbers, if s is contained in t then the number of elements of s is at most the number of elements of t.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_finite_inclusion (s t : Finset ℕ) (h : s ⊆ t) : s.card ≤ t.card",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_finite_inclusion",
+    "subject_sha256": "ac53373b88b73e44f595703941d28c2111586e85cc8eb2baea89464b78c03490",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Finite natural sets s,t and subset premise; cardinality order matches, including empty sets."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_finite_inclusion.json",
+      "response_sha256": "986e3a3c5e03fc6386a5ae90ecf71421d842d9ebd75f0458b3c038f85b497b5a"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_finite_inclusion",
+      "theorem": "AuditReference14.study_q_finite_inclusion",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (s t : Finset ℕ) (h : s ⊆ t), s.card ≤ t.card",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_finite_inclusion",
+      "subject_sha256": "ac53373b88b73e44f595703941d28c2111586e85cc8eb2baea89464b78c03490",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 81,
+      "filtered_by_assumptions": 175,
+      "failures": [],
+      "note": "All subsets of {0,1,2,3}.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

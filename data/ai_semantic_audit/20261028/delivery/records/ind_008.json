@@ -1,0 +1,90 @@
+{
+  "subject": {
+    "id": "ind_008",
+    "nl_statement": "Prove that every positive integer is either a power of 2, or can be written as the sum of distinct powers of 2.",
+    "expected_lean_statement": "theorem positive_nat_sum_distinct_powers_two (n : ℕ) (hn : 1 ≤ n) : ∃ s : Finset ℕ, n = ∑ k ∈ s, 2 ^ k",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_008",
+    "subject_sha256": "7293879f5aaa7d14eaf5f8be5d80169933ea8e788a1bba291ac27fcc0e6d5c65",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Positive integers correspond to naturals >=1. A Finset of exponents enforces distinct powers; a singleton includes the power-of-two disjunct. Positivity prevents an empty witness sum."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 23 column 1 (char 2086)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_008.json",
+      "status": "completed",
+      "response_sha256": "a9c2743df36687f16471fd35ad4f607d56e3babbbbbbf84dee817674d27da280"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀ n > 0, ∃ s : Finset ℕ, n = ∑ k ∈ s, 2 ^ k",
+        "domains": "ℕ, Finset ℕ",
+        "assumptions": "n > 0",
+        "equivalence": "conclusion direct equivalence",
+        "strength": "same",
+        "boundary_cases": "n = 0 is not covered",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The statement directly asserts a pattern of decomposition for positive integers into distinct powers of 2.",
+        "issues": [
+          "The expected Lean statement is missing an import statement required for 'Finset'.",
+          "The statement implicitly assumes distinctness but does not explicitly mention it in the Lean statement.",
+          "The statement does not account for the case where n is a power of 2 itself."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_008.json",
+      "response_sha256": "f67a1ee38869684746e3e653587c314a31fddbd4253e6aaac536a31d6ae9ce66"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_008",
+      "theorem": "AuditReference1.AdditionalReferences.positive_nat_sum_distinct_powers_two",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ) (hn : 1 ≤ n), ∃ s : Finset ℕ, n = ∑ k ∈ s, 2 ^ k",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_008",
+      "subject_sha256": "7293879f5aaa7d14eaf5f8be5d80169933ea8e788a1bba291ac27fcc0e6d5c65",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 128,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Construct actual distinct-power Finset witness from binary digits; singleton covers first disjunct.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

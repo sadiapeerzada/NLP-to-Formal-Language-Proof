@@ -1,0 +1,95 @@
+{
+  "subject": {
+    "id": "lib_i_vandermonde",
+    "nl_statement": "For natural numbers m, n and k, choosing k elements from m+n equals the sum, over i from 0 through k, of choose(m,i) times choose(n,k-i).",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_i_vandermonde (m n k : ℕ) : (m + n).choose k = ∑ i ∈ Finset.range (k + 1), m.choose i * n.choose (k - i)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_i_vandermonde",
+    "subject_sha256": "23797a5721e51134baff85d4f1e33f8e38131f70a392a0d47f9e66505de50a7b",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural m,n,k, inclusive i=0..k sum; out-of-range Nat.choose terms are zero, consistent with combinatorial convention."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 22 column 1 (char 1247)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_i_vandermonde.json",
+      "status": "completed",
+      "response_sha256": "7c4834bb7e3680ad827055bca0a4e8dda55085abe6eee88092830d711df3bb69"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in terms of mathematical meaning. Both assert a combinatorial identity involving binomial coefficients. The English statement uses a summation notation while the Lean theorem uses a summation over a finite set range. There is an equivalence in terms of the final conclusion, but different notations and formalism are used in Lean versus English.",
+        "issues": [
+          "The English statement uses a summation notation while the Lean theorem uses a summation over a finite set range.",
+          "The English statement uses a different notation but conveys the same mathematical concept as the Lean theorem."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_i_vandermonde.json",
+      "response_sha256": "c03a3ec1c7fa8ba9b1253d5fb5c568621f45c8c46a2a59efe360ae4a347927a3"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_i_vandermonde",
+      "theorem": "AuditReference14.study_i_vandermonde",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n k : ℕ), (m + n).choose k = ∑ i ∈ Finset.range (k + 1), m.choose i * n.choose (k - i)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_i_vandermonde",
+      "subject_sha256": "23797a5721e51134baff85d4f1e33f8e38131f70a392a0d47f9e66505de50a7b",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 729,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Out-of-range binomial terms are zero.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

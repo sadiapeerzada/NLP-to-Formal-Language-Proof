@@ -1,0 +1,9 @@
+{
+  "reason": "Temporarily suspend only our MLX audit processes to give regression Lean compilers a contention-free window; all models resumed in finally. Reported model wall latency includes scheduling pauses.",
+  "started_at": "2026-10-28T07:44:25.958024+00:00",
+  "finished_at": "2026-10-28T07:44:25.958231+00:00",
+  "pids": [
+    5993,
+    14075
+  ]
+}

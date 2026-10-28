@@ -1,0 +1,795 @@
+{"context": "ai-audit-v1/ind_004", "prompt_sha256": "077495197c3b3d2d4413735797977caf44afcf78192f53a1f8eac797fc6a9e9e", "generation_seed": 2114591784}
+{"token": 426, "text": "{", "generation_tokens": 1}
+{"token": 13, "text": "\n", "generation_tokens": 2}
+{"token": 29871, "text": " ", "generation_tokens": 3}
+{"token": 376, "text": " \"", "generation_tokens": 4}
+{"token": 1643, "text": "label", "generation_tokens": 5}
+{"token": 1115, "text": "\":", "generation_tokens": 6}
+{"token": 376, "text": " \"", "generation_tokens": 7}
+{"token": 4661, "text": "unc", "generation_tokens": 8}
+{"token": 13946, "text": "ertain", "generation_tokens": 9}
+{"token": 613, "text": "\",", "generation_tokens": 10}
+{"token": 13, "text": "\n", "generation_tokens": 11}
+{"token": 29871, "text": " ", "generation_tokens": 12}
+{"token": 376, "text": " \"", "generation_tokens": 13}
+{"token": 12150, "text": "quant", "generation_tokens": 14}
+{"token": 14903, "text": "ifiers", "generation_tokens": 15}
+{"token": 1115, "text": "\":", "generation_tokens": 16}
+{"token": 426, "text": " {", "generation_tokens": 17}
+{"token": 13, "text": "\n", "generation_tokens": 18}
+{"token": 1678, "text": "   ", "generation_tokens": 19}
+{"token": 376, "text": " \"", "generation_tokens": 20}
+{"token": 20633, "text": "SUB", "generation_tokens": 21}
+{"token": 17637, "text": "JECT", "generation_tokens": 22}
+{"token": 29918, "text": "_", "generation_tokens": 23}
+{"token": 7249, "text": "JSON", "generation_tokens": 24}
+{"token": 1115, "text": "\":", "generation_tokens": 25}
+{"token": 376, "text": " \"", "generation_tokens": 26}
+{"token": 1576, "text": "The", "generation_tokens": 27}
+{"token": 2533, "text": " sum", "generation_tokens": 28}
+{"token": 310, "text": " of", "generation_tokens": 29}
+{"token": 10801, "text": " powers", "generation_tokens": 30}
+{"token": 310, "text": " of", "generation_tokens": 31}
+{"token": 29871, "text": " ", "generation_tokens": 32}
+{"token": 1891, "text": "ized", "generation_tokens": 33}
+{"token": 515, "text": " from", "generation_tokens": 34}
+{"token": 29871, "text": " ", "generation_tokens": 35}
+{"token": 29906, "text": "2", "generation_tokens": 36}
+{"token": 29985, "text": "^", "generation_tokens": 37}
+{"token": 29900, "text": "0", "generation_tokens": 38}
+{"token": 701, "text": " up", "generation_tokens": 39}
+{"token": 304, "text": " to", "generation_tokens": 40}
+{"token": 29871, "text": " ", "generation_tokens": 41}
+{"token": 29906, "text": "2", "generation_tokens": 42}
+{"token": 23733, "text": "^(", "generation_tokens": 43}
+{"token": 29876, "text": "n", "generation_tokens": 44}
+{"token": 29899, "text": "-", "generation_tokens": 45}
+{"token": 29896, "text": "1", "generation_tokens": 46}
+{"token": 19123, "text": ")\",", "generation_tokens": 47}
+{"token": 13, "text": "\n", "generation_tokens": 48}
+{"token": 1678, "text": "   ", "generation_tokens": 49}
+{"token": 376, "text": " \"", "generation_tokens": 50}
+{"token": 14044, "text": "lean", "generation_tokens": 51}
+{"token": 29918, "text": "_", "generation_tokens": 52}
+{"token": 20788, "text": "statement", "generation_tokens": 53}
+{"token": 1115, "text": "\":", "generation_tokens": 54}
+{"token": 376, "text": " \"", "generation_tokens": 55}
+{"token": 479, "text": "ge", "generation_tokens": 56}
+{"token": 290, "text": "om", "generation_tokens": 57}
+{"token": 11139, "text": "Sum", "generation_tokens": 58}
+{"token": 302, "text": " n", "generation_tokens": 59}
+{"token": 718, "text": " +", "generation_tokens": 60}
+{"token": 29871, "text": " ", "generation_tokens": 61}
+{"token": 29896, "text": "1", "generation_tokens": 62}
+{"token": 353, "text": " =", "generation_tokens": 63}
+{"token": 29871, "text": " ", "generation_tokens": 64}
+{"token": 29906, "text": "2", "generation_tokens": 65}
+{"token": 6228, "text": " ^", "generation_tokens": 66}
+{"token": 302, "text": " n", "generation_tokens": 67}
+{"token": 613, "text": "\",", "generation_tokens": 68}
+{"token": 13, "text": "\n", "generation_tokens": 69}
+{"token": 1678, "text": "   ", "generation_tokens": 70}
+{"token": 376, "text": " \"", "generation_tokens": 71}
+{"token": 6574, "text": "imp", "generation_tokens": 72}
+{"token": 4019, "text": "licit", "generation_tokens": 73}
+{"token": 29918, "text": "_", "generation_tokens": 74}
+{"token": 12150, "text": "quant", "generation_tokens": 75}
+{"token": 14903, "text": "ifiers", "generation_tokens": 76}
+{"token": 1115, "text": "\":", "generation_tokens": 77}
+{"token": 426, "text": " {", "generation_tokens": 78}
+{"token": 13, "text": "\n", "generation_tokens": 79}
+{"token": 418, "text": "     ", "generation_tokens": 80}
+{"token": 376, "text": " \"", "generation_tokens": 81}
+{"token": 20633, "text": "SUB", "generation_tokens": 82}
+{"token": 17637, "text": "JECT", "generation_tokens": 83}
+{"token": 29918, "text": "_", "generation_tokens": 84}
+{"token": 7249, "text": "JSON", "generation_tokens": 85}
+{"token": 1115, "text": "\":", "generation_tokens": 86}
+{"token": 376, "text": " \"", "generation_tokens": 87}
+{"token": 1454, "text": "for", "generation_tokens": 88}
+{"token": 599, "text": " all", "generation_tokens": 89}
+{"token": 302, "text": " n", "generation_tokens": 90}
+{"token": 297, "text": " in", "generation_tokens": 91}
+{"token": 29871, "text": " ", "generation_tokens": 92}
+{"token": 30347, "text": "\u2115", "generation_tokens": 93}
+{"token": 613, "text": "\",", "generation_tokens": 94}
+{"token": 13, "text": "\n", "generation_tokens": 95}
+{"token": 418, "text": "     ", "generation_tokens": 96}
+{"token": 376, "text": " \"", "generation_tokens": 97}
+{"token": 14044, "text": "lean", "generation_tokens": 98}
+{"token": 29918, "text": "_", "generation_tokens": 99}
+{"token": 20788, "text": "statement", "generation_tokens": 100}
+{"token": 1115, "text": "\":", "generation_tokens": 101}
+{"token": 376, "text": " \"", "generation_tokens": 102}
+{"token": 30288, "text": "\u03a0", "generation_tokens": 103}
+{"token": 302, "text": " n", "generation_tokens": 104}
+{"token": 29901, "text": ":", "generation_tokens": 105}
+{"token": 30347, "text": "\u2115", "generation_tokens": 106}
+{"token": 29892, "text": ",", "generation_tokens": 107}
+{"token": 23216, "text": " geom", "generation_tokens": 108}
+{"token": 11139, "text": "Sum", "generation_tokens": 109}
+{"token": 313, "text": " (", "generation_tokens": 110}
+{"token": 29876, "text": "n", "generation_tokens": 111}
+{"token": 718, "text": " +", "generation_tokens": 112}
+{"token": 29871, "text": " ", "generation_tokens": 113}
+{"token": 29896, "text": "1", "generation_tokens": 114}
+{"token": 29897, "text": ")", "generation_tokens": 115}
+{"token": 353, "text": " =", "generation_tokens": 116}
+{"token": 29871, "text": " ", "generation_tokens": 117}
+{"token": 29906, "text": "2", "generation_tokens": 118}
+{"token": 6228, "text": " ^", "generation_tokens": 119}
+{"token": 302, "text": " n", "generation_tokens": 120}
+{"token": 613, "text": "\",", "generation_tokens": 121}
+{"token": 13, "text": "\n", "generation_tokens": 122}
+{"token": 418, "text": "     ", "generation_tokens": 123}
+{"token": 376, "text": " \"", "generation_tokens": 124}
+{"token": 14044, "text": "lean", "generation_tokens": 125}
+{"token": 29918, "text": "_", "generation_tokens": 126}
+{"token": 20788, "text": "statement", "generation_tokens": 127}
+{"token": 1115, "text": "\":", "generation_tokens": 128}
+{"token": 376, "text": " \"", "generation_tokens": 129}
+{"token": 30288, "text": "\u03a0", "generation_tokens": 130}
+{"token": 302, "text": " n", "generation_tokens": 131}
+{"token": 29901, "text": ":", "generation_tokens": 132}
+{"token": 30347, "text": "\u2115", "generation_tokens": 133}
+{"token": 29892, "text": ",", "generation_tokens": 134}
+{"token": 23216, "text": " geom", "generation_tokens": 135}
+{"token": 11139, "text": "Sum", "generation_tokens": 136}
+{"token": 313, "text": " (", "generation_tokens": 137}
+{"token": 29876, "text": "n", "generation_tokens": 138}
+{"token": 718, "text": " +", "generation_tokens": 139}
+{"token": 29871, "text": " ", "generation_tokens": 140}
+{"token": 29896, "text": "1", "generation_tokens": 141}
+{"token": 29897, "text": ")", "generation_tokens": 142}
+{"token": 353, "text": " =", "generation_tokens": 143}
+{"token": 438, "text": " O", "generation_tokens": 144}
+{"token": 29898, "text": "(", "generation_tokens": 145}
+{"token": 29906, "text": "2", "generation_tokens": 146}
+{"token": 6228, "text": " ^", "generation_tokens": 147}
+{"token": 302, "text": " n", "generation_tokens": 148}
+{"token": 5513, "text": ")\"", "generation_tokens": 149}
+{"token": 13, "text": "\n", "generation_tokens": 150}
+{"token": 1678, "text": "   ", "generation_tokens": 151}
+{"token": 500, "text": " }", "generation_tokens": 152}
+{"token": 13, "text": "\n", "generation_tokens": 153}
+{"token": 29871, "text": " ", "generation_tokens": 154}
+{"token": 2981, "text": " },", "generation_tokens": 155}
+{"token": 13, "text": "\n", "generation_tokens": 156}
+{"token": 29871, "text": " ", "generation_tokens": 157}
+{"token": 376, "text": " \"", "generation_tokens": 158}
+{"token": 3129, "text": "dom", "generation_tokens": 159}
+{"token": 2708, "text": "ains", "generation_tokens": 160}
+{"token": 1115, "text": "\":", "generation_tokens": 161}
+{"token": 426, "text": " {", "generation_tokens": 162}
+{"token": 13, "text": "\n", "generation_tokens": 163}
+{"token": 1678, "text": "   ", "generation_tokens": 164}
+{"token": 376, "text": " \"", "generation_tokens": 165}
+{"token": 20633, "text": "SUB", "generation_tokens": 166}
+{"token": 17637, "text": "JECT", "generation_tokens": 167}
+{"token": 29918, "text": "_", "generation_tokens": 168}
+{"token": 7249, "text": "JSON", "generation_tokens": 169}
+{"token": 1115, "text": "\":", "generation_tokens": 170}
+{"token": 376, "text": " \"", "generation_tokens": 171}
+{"token": 30347, "text": "\u2115", "generation_tokens": 172}
+{"token": 613, "text": "\",", "generation_tokens": 173}
+{"token": 13, "text": "\n", "generation_tokens": 174}
+{"token": 1678, "text": "   ", "generation_tokens": 175}
+{"token": 376, "text": " \"", "generation_tokens": 176}
+{"token": 14044, "text": "lean", "generation_tokens": 177}
+{"token": 29918, "text": "_", "generation_tokens": 178}
+{"token": 20788, "text": "statement", "generation_tokens": 179}
+{"token": 1115, "text": "\":", "generation_tokens": 180}
+{"token": 376, "text": " \"", "generation_tokens": 181}
+{"token": 30347, "text": "\u2115", "generation_tokens": 182}
+{"token": 613, "text": "\",", "generation_tokens": 183}
+{"token": 13, "text": "\n", "generation_tokens": 184}
+{"token": 418, "text": "     ", "generation_tokens": 185}
+{"token": 376, "text": " \"", "generation_tokens": 186}
+{"token": 1111, "text": "co", "generation_tokens": 187}
+{"token": 6269, "text": "erc", "generation_tokens": 188}
+{"token": 1080, "text": "ions", "generation_tokens": 189}
+{"token": 1115, "text": "\":", "generation_tokens": 190}
+{"token": 426, "text": " {", "generation_tokens": 191}
+{"token": 13, "text": "\n", "generation_tokens": 192}
+{"token": 4706, "text": "       ", "generation_tokens": 193}
+{"token": 376, "text": " \"", "generation_tokens": 194}
+{"token": 20633, "text": "SUB", "generation_tokens": 195}
+{"token": 17637, "text": "JECT", "generation_tokens": 196}
+{"token": 29918, "text": "_", "generation_tokens": 197}
+{"token": 7249, "text": "JSON", "generation_tokens": 198}
+{"token": 1115, "text": "\":", "generation_tokens": 199}
+{"token": 376, "text": " \"", "generation_tokens": 200}
+{"token": 30347, "text": "\u2115", "generation_tokens": 201}
+{"token": 613, "text": "\",", "generation_tokens": 202}
+{"token": 13, "text": "\n", "generation_tokens": 203}
+{"token": 4706, "text": "       ", "generation_tokens": 204}
+{"token": 376, "text": " \"", "generation_tokens": 205}
+{"token": 14044, "text": "lean", "generation_tokens": 206}
+{"token": 29918, "text": "_", "generation_tokens": 207}
+{"token": 20788, "text": "statement", "generation_tokens": 208}
+{"token": 1115, "text": "\":", "generation_tokens": 209}
+{"token": 376, "text": " \"", "generation_tokens": 210}
+{"token": 30347, "text": "\u2115", "generation_tokens": 211}
+{"token": 29908, "text": "\"", "generation_tokens": 212}
+{"token": 13, "text": "\n", "generation_tokens": 213}
+{"token": 418, "text": "     ", "generation_tokens": 214}
+{"token": 500, "text": " }", "generation_tokens": 215}
+{"token": 13, "text": "\n", "generation_tokens": 216}
+{"token": 1678, "text": "   ", "generation_tokens": 217}
+{"token": 2981, "text": " },", "generation_tokens": 218}
+{"token": 13, "text": "\n", "generation_tokens": 219}
+{"token": 29871, "text": " ", "generation_tokens": 220}
+{"token": 376, "text": " \"", "generation_tokens": 221}
+{"token": 465, "text": "ass", "generation_tokens": 222}
+{"token": 398, "text": "um", "generation_tokens": 223}
+{"token": 1980, "text": "ptions", "generation_tokens": 224}
+{"token": 1115, "text": "\":", "generation_tokens": 225}
+{"token": 426, "text": " {", "generation_tokens": 226}
+{"token": 13, "text": "\n", "generation_tokens": 227}
+{"token": 418, "text": "     ", "generation_tokens": 228}
+{"token": 376, "text": " \"", "generation_tokens": 229}
+{"token": 20633, "text": "SUB", "generation_tokens": 230}
+{"token": 17637, "text": "JECT", "generation_tokens": 231}
+{"token": 29918, "text": "_", "generation_tokens": 232}
+{"token": 7249, "text": "JSON", "generation_tokens": 233}
+{"token": 1115, "text": "\":", "generation_tokens": 234}
+{"token": 376, "text": " \"", "generation_tokens": 235}
+{"token": 12248, "text": "pow", "generation_tokens": 236}
+{"token": 414, "text": "ers", "generation_tokens": 237}
+{"token": 310, "text": " of", "generation_tokens": 238}
+{"token": 29871, "text": " ", "generation_tokens": 239}
+{"token": 29906, "text": "2", "generation_tokens": 240}
+{"token": 613, "text": "\",", "generation_tokens": 241}
+{"token": 13, "text": "\n", "generation_tokens": 242}
+{"token": 418, "text": "     ", "generation_tokens": 243}
+{"token": 376, "text": " \"", "generation_tokens": 244}
+{"token": 14044, "text": "lean", "generation_tokens": 245}
+{"token": 29918, "text": "_", "generation_tokens": 246}
+{"token": 20788, "text": "statement", "generation_tokens": 247}
+{"token": 1115, "text": "\":", "generation_tokens": 248}
+{"token": 376, "text": " \"", "generation_tokens": 249}
+{"token": 30315, "text": "\u2200", "generation_tokens": 250}
+{"token": 29876, "text": "n", "generation_tokens": 251}
+{"token": 29901, "text": ":", "generation_tokens": 252}
+{"token": 30347, "text": "\u2115", "generation_tokens": 253}
+{"token": 29892, "text": ",", "generation_tokens": 254}
+{"token": 29871, "text": " ", "generation_tokens": 255}
+{"token": 29906, "text": "2", "generation_tokens": 256}
+{"token": 6228, "text": " ^", "generation_tokens": 257}
+{"token": 302, "text": " n", "generation_tokens": 258}
+{"token": 338, "text": " is", "generation_tokens": 259}
+{"token": 263, "text": " a", "generation_tokens": 260}
+{"token": 3081, "text": " power", "generation_tokens": 261}
+{"token": 310, "text": " of", "generation_tokens": 262}
+{"token": 29871, "text": " ", "generation_tokens": 263}
+{"token": 29906, "text": "2", "generation_tokens": 264}
+{"token": 29908, "text": "\"", "generation_tokens": 265}
+{"token": 13, "text": "\n", "generation_tokens": 266}
+{"token": 1678, "text": "   ", "generation_tokens": 267}
+{"token": 2981, "text": " },", "generation_tokens": 268}
+{"token": 13, "text": "\n", "generation_tokens": 269}
+{"token": 1678, "text": "   ", "generation_tokens": 270}
+{"token": 376, "text": " \"", "generation_tokens": 271}
+{"token": 2593, "text": "iff", "generation_tokens": 272}
+{"token": 1115, "text": "\":", "generation_tokens": 273}
+{"token": 426, "text": " {", "generation_tokens": 274}
+{"token": 13, "text": "\n", "generation_tokens": 275}
+{"token": 418, "text": "     ", "generation_tokens": 276}
+{"token": 376, "text": " \"", "generation_tokens": 277}
+{"token": 20633, "text": "SUB", "generation_tokens": 278}
+{"token": 17637, "text": "JECT", "generation_tokens": 279}
+{"token": 29918, "text": "_", "generation_tokens": 280}
+{"token": 7249, "text": "JSON", "generation_tokens": 281}
+{"token": 1115, "text": "\":", "generation_tokens": 282}
+{"token": 376, "text": " \"", "generation_tokens": 283}
+{"token": 10954, "text": "equals", "generation_tokens": 284}
+{"token": 613, "text": "\",", "generation_tokens": 285}
+{"token": 13, "text": "\n", "generation_tokens": 286}
+{"token": 418, "text": "     ", "generation_tokens": 287}
+{"token": 376, "text": " \"", "generation_tokens": 288}
+{"token": 14044, "text": "lean", "generation_tokens": 289}
+{"token": 29918, "text": "_", "generation_tokens": 290}
+{"token": 20788, "text": "statement", "generation_tokens": 291}
+{"token": 1115, "text": "\":", "generation_tokens": 292}
+{"token": 376, "text": " \"", "generation_tokens": 293}
+{"token": 479, "text": "ge", "generation_tokens": 294}
+{"token": 290, "text": "om", "generation_tokens": 295}
+{"token": 11139, "text": "Sum", "generation_tokens": 296}
+{"token": 313, "text": " (", "generation_tokens": 297}
+{"token": 29876, "text": "n", "generation_tokens": 298}
+{"token": 718, "text": " +", "generation_tokens": 299}
+{"token": 29871, "text": " ", "generation_tokens": 300}
+{"token": 29896, "text": "1", "generation_tokens": 301}
+{"token": 29897, "text": ")", "generation_tokens": 302}
+{"token": 353, "text": " =", "generation_tokens": 303}
+{"token": 438, "text": " O", "generation_tokens": 304}
+{"token": 29898, "text": "(", "generation_tokens": 305}
+{"token": 29906, "text": "2", "generation_tokens": 306}
+{"token": 6228, "text": " ^", "generation_tokens": 307}
+{"token": 302, "text": " n", "generation_tokens": 308}
+{"token": 5513, "text": ")\"", "generation_tokens": 309}
+{"token": 13, "text": "\n", "generation_tokens": 310}
+{"token": 1678, "text": "   ", "generation_tokens": 311}
+{"token": 2981, "text": " },", "generation_tokens": 312}
+{"token": 13, "text": "\n", "generation_tokens": 313}
+{"token": 1678, "text": "   ", "generation_tokens": 314}
+{"token": 376, "text": " \"", "generation_tokens": 315}
+{"token": 9171, "text": "zero", "generation_tokens": 316}
+{"token": 29918, "text": "_", "generation_tokens": 317}
+{"token": 4878, "text": "case", "generation_tokens": 318}
+{"token": 1115, "text": "\":", "generation_tokens": 319}
+{"token": 426, "text": " {", "generation_tokens": 320}
+{"token": 13, "text": "\n", "generation_tokens": 321}
+{"token": 418, "text": "     ", "generation_tokens": 322}
+{"token": 376, "text": " \"", "generation_tokens": 323}
+{"token": 20633, "text": "SUB", "generation_tokens": 324}
+{"token": 17637, "text": "JECT", "generation_tokens": 325}
+{"token": 29918, "text": "_", "generation_tokens": 326}
+{"token": 7249, "text": "JSON", "generation_tokens": 327}
+{"token": 1115, "text": "\":", "generation_tokens": 328}
+{"token": 376, "text": " \"", "generation_tokens": 329}
+{"token": 29876, "text": "n", "generation_tokens": 330}
+{"token": 29922, "text": "=", "generation_tokens": 331}
+{"token": 29900, "text": "0", "generation_tokens": 332}
+{"token": 613, "text": "\",", "generation_tokens": 333}
+{"token": 13, "text": "\n", "generation_tokens": 334}
+{"token": 418, "text": "     ", "generation_tokens": 335}
+{"token": 376, "text": " \"", "generation_tokens": 336}
+{"token": 14044, "text": "lean", "generation_tokens": 337}
+{"token": 29918, "text": "_", "generation_tokens": 338}
+{"token": 20788, "text": "statement", "generation_tokens": 339}
+{"token": 1115, "text": "\":", "generation_tokens": 340}
+{"token": 376, "text": " \"", "generation_tokens": 341}
+{"token": 479, "text": "ge", "generation_tokens": 342}
+{"token": 290, "text": "om", "generation_tokens": 343}
+{"token": 11139, "text": "Sum", "generation_tokens": 344}
+{"token": 29871, "text": " ", "generation_tokens": 345}
+{"token": 29896, "text": "1", "generation_tokens": 346}
+{"token": 353, "text": " =", "generation_tokens": 347}
+{"token": 29871, "text": " ", "generation_tokens": 348}
+{"token": 29906, "text": "2", "generation_tokens": 349}
+{"token": 6228, "text": " ^", "generation_tokens": 350}
+{"token": 29871, "text": " ", "generation_tokens": 351}
+{"token": 29900, "text": "0", "generation_tokens": 352}
+{"token": 613, "text": "\",", "generation_tokens": 353}
+{"token": 13, "text": "\n", "generation_tokens": 354}
+{"token": 418, "text": "     ", "generation_tokens": 355}
+{"token": 376, "text": " \"", "generation_tokens": 356}
+{"token": 14044, "text": "lean", "generation_tokens": 357}
+{"token": 29918, "text": "_", "generation_tokens": 358}
+{"token": 20788, "text": "statement", "generation_tokens": 359}
+{"token": 1115, "text": "\":", "generation_tokens": 360}
+{"token": 376, "text": " \"", "generation_tokens": 361}
+{"token": 479, "text": "ge", "generation_tokens": 362}
+{"token": 290, "text": "om", "generation_tokens": 363}
+{"token": 11139, "text": "Sum", "generation_tokens": 364}
+{"token": 29871, "text": " ", "generation_tokens": 365}
+{"token": 29900, "text": "0", "generation_tokens": 366}
+{"token": 353, "text": " =", "generation_tokens": 367}
+{"token": 29871, "text": " ", "generation_tokens": 368}
+{"token": 29896, "text": "1", "generation_tokens": 369}
+{"token": 29908, "text": "\"", "generation_tokens": 370}
+{"token": 13, "text": "\n", "generation_tokens": 371}
+{"token": 1678, "text": "   ", "generation_tokens": 372}
+{"token": 2981, "text": " },", "generation_tokens": 373}
+{"token": 13, "text": "\n", "generation_tokens": 374}
+{"token": 1678, "text": "   ", "generation_tokens": 375}
+{"token": 376, "text": " \"", "generation_tokens": 376}
+{"token": 22198, "text": "negative", "generation_tokens": 377}
+{"token": 29918, "text": "_", "generation_tokens": 378}
+{"token": 11436, "text": "cases", "generation_tokens": 379}
+{"token": 1115, "text": "\":", "generation_tokens": 380}
+{"token": 426, "text": " {", "generation_tokens": 381}
+{"token": 13, "text": "\n", "generation_tokens": 382}
+{"token": 418, "text": "     ", "generation_tokens": 383}
+{"token": 376, "text": " \"", "generation_tokens": 384}
+{"token": 20633, "text": "SUB", "generation_tokens": 385}
+{"token": 17637, "text": "JECT", "generation_tokens": 386}
+{"token": 29918, "text": "_", "generation_tokens": 387}
+{"token": 7249, "text": "JSON", "generation_tokens": 388}
+{"token": 1115, "text": "\":", "generation_tokens": 389}
+{"token": 376, "text": " \"", "generation_tokens": 390}
+{"token": 29876, "text": "n", "generation_tokens": 391}
+{"token": 29966, "text": "<", "generation_tokens": 392}
+{"token": 29900, "text": "0", "generation_tokens": 393}
+{"token": 613, "text": "\",", "generation_tokens": 394}
+{"token": 13, "text": "\n", "generation_tokens": 395}
+{"token": 418, "text": "     ", "generation_tokens": 396}
+{"token": 376, "text": " \"", "generation_tokens": 397}
+{"token": 14044, "text": "lean", "generation_tokens": 398}
+{"token": 29918, "text": "_", "generation_tokens": 399}
+{"token": 20788, "text": "statement", "generation_tokens": 400}
+{"token": 1115, "text": "\":", "generation_tokens": 401}
+{"token": 376, "text": " \"", "generation_tokens": 402}
+{"token": 29876, "text": "n", "generation_tokens": 403}
+{"token": 338, "text": " is", "generation_tokens": 404}
+{"token": 451, "text": " not", "generation_tokens": 405}
+{"token": 297, "text": " in", "generation_tokens": 406}
+{"token": 29871, "text": " ", "generation_tokens": 407}
+{"token": 30347, "text": "\u2115", "generation_tokens": 408}
+{"token": 29908, "text": "\"", "generation_tokens": 409}
+{"token": 13, "text": "\n", "generation_tokens": 410}
+{"token": 1678, "text": "   ", "generation_tokens": 411}
+{"token": 500, "text": " }", "generation_tokens": 412}
+{"token": 13, "text": "\n", "generation_tokens": 413}
+{"token": 29871, "text": " ", "generation_tokens": 414}
+{"token": 2981, "text": " },", "generation_tokens": 415}
+{"token": 13, "text": "\n", "generation_tokens": 416}
+{"token": 29871, "text": " ", "generation_tokens": 417}
+{"token": 376, "text": " \"", "generation_tokens": 418}
+{"token": 1686, "text": "equ", "generation_tokens": 419}
+{"token": 2561, "text": "ival", "generation_tokens": 420}
+{"token": 663, "text": "ence", "generation_tokens": 421}
+{"token": 1115, "text": "\":", "generation_tokens": 422}
+{"token": 426, "text": " {", "generation_tokens": 423}
+{"token": 13, "text": "\n", "generation_tokens": 424}
+{"token": 1678, "text": "   ", "generation_tokens": 425}
+{"token": 376, "text": " \"", "generation_tokens": 426}
+{"token": 20633, "text": "SUB", "generation_tokens": 427}
+{"token": 17637, "text": "JECT", "generation_tokens": 428}
+{"token": 29918, "text": "_", "generation_tokens": 429}
+{"token": 7249, "text": "JSON", "generation_tokens": 430}
+{"token": 1115, "text": "\":", "generation_tokens": 431}
+{"token": 376, "text": " \"", "generation_tokens": 432}
+{"token": 1576, "text": "The", "generation_tokens": 433}
+{"token": 2533, "text": " sum", "generation_tokens": 434}
+{"token": 15743, "text": " equals", "generation_tokens": 435}
+{"token": 29871, "text": " ", "generation_tokens": 436}
+{"token": 29906, "text": "2", "generation_tokens": 437}
+{"token": 29985, "text": "^", "generation_tokens": 438}
+{"token": 29876, "text": "n", "generation_tokens": 439}
+{"token": 26134, "text": " minus", "generation_tokens": 440}
+{"token": 29871, "text": " ", "generation_tokens": 441}
+{"token": 29896, "text": "1", "generation_tokens": 442}
+{"token": 613, "text": "\",", "generation_tokens": 443}
+{"token": 13, "text": "\n", "generation_tokens": 444}
+{"token": 1678, "text": "   ", "generation_tokens": 445}
+{"token": 376, "text": " \"", "generation_tokens": 446}
+{"token": 14044, "text": "lean", "generation_tokens": 447}
+{"token": 29918, "text": "_", "generation_tokens": 448}
+{"token": 20788, "text": "statement", "generation_tokens": 449}
+{"token": 1115, "text": "\":", "generation_tokens": 450}
+{"token": 376, "text": " \"", "generation_tokens": 451}
+{"token": 30315, "text": "\u2200", "generation_tokens": 452}
+{"token": 29876, "text": "n", "generation_tokens": 453}
+{"token": 29901, "text": ":", "generation_tokens": 454}
+{"token": 30347, "text": "\u2115", "generation_tokens": 455}
+{"token": 29892, "text": ",", "generation_tokens": 456}
+{"token": 23216, "text": " geom", "generation_tokens": 457}
+{"token": 11139, "text": "Sum", "generation_tokens": 458}
+{"token": 313, "text": " (", "generation_tokens": 459}
+{"token": 29876, "text": "n", "generation_tokens": 460}
+{"token": 718, "text": " +", "generation_tokens": 461}
+{"token": 29871, "text": " ", "generation_tokens": 462}
+{"token": 29896, "text": "1", "generation_tokens": 463}
+{"token": 29897, "text": ")", "generation_tokens": 464}
+{"token": 353, "text": " =", "generation_tokens": 465}
+{"token": 29871, "text": " ", "generation_tokens": 466}
+{"token": 29906, "text": "2", "generation_tokens": 467}
+{"token": 6228, "text": " ^", "generation_tokens": 468}
+{"token": 302, "text": " n", "generation_tokens": 469}
+{"token": 448, "text": " -", "generation_tokens": 470}
+{"token": 29871, "text": " ", "generation_tokens": 471}
+{"token": 29896, "text": "1", "generation_tokens": 472}
+{"token": 613, "text": "\",", "generation_tokens": 473}
+{"token": 13, "text": "\n", "generation_tokens": 474}
+{"token": 1678, "text": "   ", "generation_tokens": 475}
+{"token": 376, "text": " \"", "generation_tokens": 476}
+{"token": 9917, "text": "bound", "generation_tokens": 477}
+{"token": 653, "text": "ary", "generation_tokens": 478}
+{"token": 29918, "text": "_", "generation_tokens": 479}
+{"token": 11436, "text": "cases", "generation_tokens": 480}
+{"token": 1115, "text": "\":", "generation_tokens": 481}
+{"token": 426, "text": " {", "generation_tokens": 482}
+{"token": 13, "text": "\n", "generation_tokens": 483}
+{"token": 418, "text": "     ", "generation_tokens": 484}
+{"token": 376, "text": " \"", "generation_tokens": 485}
+{"token": 20633, "text": "SUB", "generation_tokens": 486}
+{"token": 17637, "text": "JECT", "generation_tokens": 487}
+{"token": 29918, "text": "_", "generation_tokens": 488}
+{"token": 7249, "text": "JSON", "generation_tokens": 489}
+{"token": 1115, "text": "\":", "generation_tokens": 490}
+{"token": 376, "text": " \"", "generation_tokens": 491}
+{"token": 29876, "text": "n", "generation_tokens": 492}
+{"token": 29922, "text": "=", "generation_tokens": 493}
+{"token": 29900, "text": "0", "generation_tokens": 494}
+{"token": 613, "text": "\",", "generation_tokens": 495}
+{"token": 13, "text": "\n", "generation_tokens": 496}
+{"token": 418, "text": "     ", "generation_tokens": 497}
+{"token": 376, "text": " \"", "generation_tokens": 498}
+{"token": 14044, "text": "lean", "generation_tokens": 499}
+{"token": 29918, "text": "_", "generation_tokens": 500}
+{"token": 20788, "text": "statement", "generation_tokens": 501}
+{"token": 1115, "text": "\":", "generation_tokens": 502}
+{"token": 376, "text": " \"", "generation_tokens": 503}
+{"token": 479, "text": "ge", "generation_tokens": 504}
+{"token": 290, "text": "om", "generation_tokens": 505}
+{"token": 11139, "text": "Sum", "generation_tokens": 506}
+{"token": 29871, "text": " ", "generation_tokens": 507}
+{"token": 29896, "text": "1", "generation_tokens": 508}
+{"token": 353, "text": " =", "generation_tokens": 509}
+{"token": 29871, "text": " ", "generation_tokens": 510}
+{"token": 29906, "text": "2", "generation_tokens": 511}
+{"token": 6228, "text": " ^", "generation_tokens": 512}
+{"token": 29871, "text": " ", "generation_tokens": 513}
+{"token": 29900, "text": "0", "generation_tokens": 514}
+{"token": 448, "text": " -", "generation_tokens": 515}
+{"token": 29871, "text": " ", "generation_tokens": 516}
+{"token": 29896, "text": "1", "generation_tokens": 517}
+{"token": 613, "text": "\",", "generation_tokens": 518}
+{"token": 13, "text": "\n", "generation_tokens": 519}
+{"token": 418, "text": "     ", "generation_tokens": 520}
+{"token": 376, "text": " \"", "generation_tokens": 521}
+{"token": 14044, "text": "lean", "generation_tokens": 522}
+{"token": 29918, "text": "_", "generation_tokens": 523}
+{"token": 20788, "text": "statement", "generation_tokens": 524}
+{"token": 1115, "text": "\":", "generation_tokens": 525}
+{"token": 376, "text": " \"", "generation_tokens": 526}
+{"token": 479, "text": "ge", "generation_tokens": 527}
+{"token": 290, "text": "om", "generation_tokens": 528}
+{"token": 11139, "text": "Sum", "generation_tokens": 529}
+{"token": 29871, "text": " ", "generation_tokens": 530}
+{"token": 29900, "text": "0", "generation_tokens": 531}
+{"token": 353, "text": " =", "generation_tokens": 532}
+{"token": 29871, "text": " ", "generation_tokens": 533}
+{"token": 29896, "text": "1", "generation_tokens": 534}
+{"token": 448, "text": " -", "generation_tokens": 535}
+{"token": 29871, "text": " ", "generation_tokens": 536}
+{"token": 29896, "text": "1", "generation_tokens": 537}
+{"token": 29908, "text": "\"", "generation_tokens": 538}
+{"token": 13, "text": "\n", "generation_tokens": 539}
+{"token": 1678, "text": "   ", "generation_tokens": 540}
+{"token": 500, "text": " }", "generation_tokens": 541}
+{"token": 13, "text": "\n", "generation_tokens": 542}
+{"token": 29871, "text": " ", "generation_tokens": 543}
+{"token": 2981, "text": " },", "generation_tokens": 544}
+{"token": 13, "text": "\n", "generation_tokens": 545}
+{"token": 29871, "text": " ", "generation_tokens": 546}
+{"token": 376, "text": " \"", "generation_tokens": 547}
+{"token": 710, "text": "str", "generation_tokens": 548}
+{"token": 1477, "text": "ength", "generation_tokens": 549}
+{"token": 1115, "text": "\":", "generation_tokens": 550}
+{"token": 426, "text": " {", "generation_tokens": 551}
+{"token": 13, "text": "\n", "generation_tokens": 552}
+{"token": 1678, "text": "   ", "generation_tokens": 553}
+{"token": 376, "text": " \"", "generation_tokens": 554}
+{"token": 20633, "text": "SUB", "generation_tokens": 555}
+{"token": 17637, "text": "JECT", "generation_tokens": 556}
+{"token": 29918, "text": "_", "generation_tokens": 557}
+{"token": 7249, "text": "JSON", "generation_tokens": 558}
+{"token": 1115, "text": "\":", "generation_tokens": 559}
+{"token": 376, "text": " \"", "generation_tokens": 560}
+{"token": 735, "text": "ex", "generation_tokens": 561}
+{"token": 627, "text": "act", "generation_tokens": 562}
+{"token": 613, "text": "\",", "generation_tokens": 563}
+{"token": 13, "text": "\n", "generation_tokens": 564}
+{"token": 1678, "text": "   ", "generation_tokens": 565}
+{"token": 376, "text": " \"", "generation_tokens": 566}
+{"token": 14044, "text": "lean", "generation_tokens": 567}
+{"token": 29918, "text": "_", "generation_tokens": 568}
+{"token": 20788, "text": "statement", "generation_tokens": 569}
+{"token": 1115, "text": "\":", "generation_tokens": 570}
+{"token": 376, "text": " \"", "generation_tokens": 571}
+{"token": 30288, "text": "\u03a0", "generation_tokens": 572}
+{"token": 302, "text": " n", "generation_tokens": 573}
+{"token": 29901, "text": ":", "generation_tokens": 574}
+{"token": 30347, "text": "\u2115", "generation_tokens": 575}
+{"token": 29892, "text": ",", "generation_tokens": 576}
+{"token": 23216, "text": " geom", "generation_tokens": 577}
+{"token": 11139, "text": "Sum", "generation_tokens": 578}
+{"token": 313, "text": " (", "generation_tokens": 579}
+{"token": 29876, "text": "n", "generation_tokens": 580}
+{"token": 718, "text": " +", "generation_tokens": 581}
+{"token": 29871, "text": " ", "generation_tokens": 582}
+{"token": 29896, "text": "1", "generation_tokens": 583}
+{"token": 29897, "text": ")", "generation_tokens": 584}
+{"token": 353, "text": " =", "generation_tokens": 585}
+{"token": 438, "text": " O", "generation_tokens": 586}
+{"token": 29898, "text": "(", "generation_tokens": 587}
+{"token": 29906, "text": "2", "generation_tokens": 588}
+{"token": 6228, "text": " ^", "generation_tokens": 589}
+{"token": 302, "text": " n", "generation_tokens": 590}
+{"token": 19123, "text": ")\",", "generation_tokens": 591}
+{"token": 13, "text": "\n", "generation_tokens": 592}
+{"token": 1678, "text": "   ", "generation_tokens": 593}
+{"token": 376, "text": " \"", "generation_tokens": 594}
+{"token": 12175, "text": "issues", "generation_tokens": 595}
+{"token": 1115, "text": "\":", "generation_tokens": 596}
+{"token": 518, "text": " [", "generation_tokens": 597}
+{"token": 13, "text": "\n", "generation_tokens": 598}
+{"token": 418, "text": "     ", "generation_tokens": 599}
+{"token": 376, "text": " \"", "generation_tokens": 600}
+{"token": 1576, "text": "The", "generation_tokens": 601}
+{"token": 9185, "text": " theorem", "generation_tokens": 602}
+{"token": 297, "text": " in", "generation_tokens": 603}
+{"token": 27092, "text": " SUB", "generation_tokens": 604}
+{"token": 17637, "text": "JECT", "generation_tokens": 605}
+{"token": 29918, "text": "_", "generation_tokens": 606}
+{"token": 7249, "text": "JSON", "generation_tokens": 607}
+{"token": 14661, "text": " suggests", "generation_tokens": 608}
+{"token": 385, "text": " an", "generation_tokens": 609}
+{"token": 7568, "text": " upper", "generation_tokens": 610}
+{"token": 3216, "text": " bound", "generation_tokens": 611}
+{"token": 29892, "text": ",", "generation_tokens": 612}
+{"token": 451, "text": " not", "generation_tokens": 613}
+{"token": 385, "text": " an", "generation_tokens": 614}
+{"token": 2684, "text": " exact", "generation_tokens": 615}
+{"token": 17193, "text": " equality", "generation_tokens": 616}
+{"token": 19602, "text": ".\",", "generation_tokens": 617}
+{"token": 13, "text": "\n", "generation_tokens": 618}
+{"token": 418, "text": "     ", "generation_tokens": 619}
+{"token": 376, "text": " \"", "generation_tokens": 620}
+{"token": 1576, "text": "The", "generation_tokens": 621}
+{"token": 9185, "text": " theorem", "generation_tokens": 622}
+{"token": 297, "text": " in", "generation_tokens": 623}
+{"token": 11060, "text": " LE", "generation_tokens": 624}
+{"token": 2190, "text": "AN", "generation_tokens": 625}
+{"token": 15894, "text": " assumes", "generation_tokens": 626}
+{"token": 599, "text": " all", "generation_tokens": 627}
+{"token": 302, "text": " n", "generation_tokens": 628}
+{"token": 526, "text": " are", "generation_tokens": 629}
+{"token": 5613, "text": " natural", "generation_tokens": 630}
+{"token": 3694, "text": " numbers", "generation_tokens": 631}
+{"token": 29892, "text": ",", "generation_tokens": 632}
+{"token": 429, "text": " ex", "generation_tokens": 633}
+{"token": 22368, "text": "cluding", "generation_tokens": 634}
+{"token": 5225, "text": " zero", "generation_tokens": 635}
+{"token": 29892, "text": ",", "generation_tokens": 636}
+{"token": 607, "text": " which", "generation_tokens": 637}
+{"token": 338, "text": " is", "generation_tokens": 638}
+{"token": 451, "text": " not", "generation_tokens": 639}
+{"token": 8703, "text": " stated", "generation_tokens": 640}
+{"token": 297, "text": " in", "generation_tokens": 641}
+{"token": 278, "text": " the", "generation_tokens": 642}
+{"token": 27092, "text": " SUB", "generation_tokens": 643}
+{"token": 17637, "text": "JECT", "generation_tokens": 644}
+{"token": 29918, "text": "_", "generation_tokens": 645}
+{"token": 7249, "text": "JSON", "generation_tokens": 646}
+{"token": 19602, "text": ".\",", "generation_tokens": 647}
+{"token": 13, "text": "\n", "generation_tokens": 648}
+{"token": 418, "text": "     ", "generation_tokens": 649}
+{"token": 376, "text": " \"", "generation_tokens": 650}
+{"token": 1576, "text": "The", "generation_tokens": 651}
+{"token": 27092, "text": " SUB", "generation_tokens": 652}
+{"token": 17637, "text": "JECT", "generation_tokens": 653}
+{"token": 29918, "text": "_", "generation_tokens": 654}
+{"token": 7249, "text": "JSON", "generation_tokens": 655}
+{"token": 26619, "text": " proposition", "generation_tokens": 656}
+{"token": 947, "text": " does", "generation_tokens": 657}
+{"token": 451, "text": " not", "generation_tokens": 658}
+{"token": 3633, "text": " account", "generation_tokens": 659}
+{"token": 363, "text": " for", "generation_tokens": 660}
+{"token": 278, "text": " the", "generation_tokens": 661}
+{"token": 2967, "text": " base", "generation_tokens": 662}
+{"token": 1206, "text": " case", "generation_tokens": 663}
+{"token": 746, "text": " when", "generation_tokens": 664}
+{"token": 302, "text": " n", "generation_tokens": 665}
+{"token": 29922, "text": "=", "generation_tokens": 666}
+{"token": 29900, "text": "0", "generation_tokens": 667}
+{"token": 9479, "text": " explicitly", "generation_tokens": 668}
+{"token": 29892, "text": ",", "generation_tokens": 669}
+{"token": 607, "text": " which", "generation_tokens": 670}
+{"token": 1122, "text": " may", "generation_tokens": 671}
+{"token": 3275, "text": " lead", "generation_tokens": 672}
+{"token": 304, "text": " to", "generation_tokens": 673}
+{"token": 22363, "text": " ambigu", "generation_tokens": 674}
+{"token": 537, "text": "ity", "generation_tokens": 675}
+{"token": 297, "text": " in", "generation_tokens": 676}
+{"token": 11060, "text": " LE", "generation_tokens": 677}
+{"token": 2190, "text": "AN", "generation_tokens": 678}
+{"token": 1213, "text": ".\"", "generation_tokens": 679}
+{"token": 13, "text": "\n", "generation_tokens": 680}
+{"token": 1678, "text": "   ", "generation_tokens": 681}
+{"token": 4514, "text": " ]", "generation_tokens": 682}
+{"token": 13, "text": "\n", "generation_tokens": 683}
+{"token": 29871, "text": " ", "generation_tokens": 684}
+{"token": 2981, "text": " },", "generation_tokens": 685}
+{"token": 13, "text": "\n", "generation_tokens": 686}
+{"token": 29871, "text": " ", "generation_tokens": 687}
+{"token": 376, "text": " \"", "generation_tokens": 688}
+{"token": 11808, "text": "counter", "generation_tokens": 689}
+{"token": 4773, "text": "example", "generation_tokens": 690}
+{"token": 29918, "text": "_", "generation_tokens": 691}
+{"token": 4478, "text": "search", "generation_tokens": 692}
+{"token": 1115, "text": "\":", "generation_tokens": 693}
+{"token": 426, "text": " {", "generation_tokens": 694}
+{"token": 13, "text": "\n", "generation_tokens": 695}
+{"token": 1678, "text": "   ", "generation_tokens": 696}
+{"token": 376, "text": " \"", "generation_tokens": 697}
+{"token": 20633, "text": "SUB", "generation_tokens": 698}
+{"token": 17637, "text": "JECT", "generation_tokens": 699}
+{"token": 29918, "text": "_", "generation_tokens": 700}
+{"token": 7249, "text": "JSON", "generation_tokens": 701}
+{"token": 1115, "text": "\":", "generation_tokens": 702}
+{"token": 376, "text": " \"", "generation_tokens": 703}
+{"token": 29876, "text": "n", "generation_tokens": 704}
+{"token": 29922, "text": "=", "generation_tokens": 705}
+{"token": 29900, "text": "0", "generation_tokens": 706}
+{"token": 613, "text": "\",", "generation_tokens": 707}
+{"token": 13, "text": "\n", "generation_tokens": 708}
+{"token": 1678, "text": "   ", "generation_tokens": 709}
+{"token": 376, "text": " \"", "generation_tokens": 710}
+{"token": 14044, "text": "lean", "generation_tokens": 711}
+{"token": 29918, "text": "_", "generation_tokens": 712}
+{"token": 20788, "text": "statement", "generation_tokens": 713}
+{"token": 1115, "text": "\":", "generation_tokens": 714}
+{"token": 376, "text": " \"", "generation_tokens": 715}
+{"token": 479, "text": "ge", "generation_tokens": 716}
+{"token": 290, "text": "om", "generation_tokens": 717}
+{"token": 11139, "text": "Sum", "generation_tokens": 718}
+{"token": 29871, "text": " ", "generation_tokens": 719}
+{"token": 29900, "text": "0", "generation_tokens": 720}
+{"token": 353, "text": " =", "generation_tokens": 721}
+{"token": 29871, "text": " ", "generation_tokens": 722}
+{"token": 29896, "text": "1", "generation_tokens": 723}
+{"token": 448, "text": " -", "generation_tokens": 724}
+{"token": 29871, "text": " ", "generation_tokens": 725}
+{"token": 29896, "text": "1", "generation_tokens": 726}
+{"token": 613, "text": "\",", "generation_tokens": 727}
+{"token": 13, "text": "\n", "generation_tokens": 728}
+{"token": 1678, "text": "   ", "generation_tokens": 729}
+{"token": 376, "text": " \"", "generation_tokens": 730}
+{"token": 14044, "text": "lean", "generation_tokens": 731}
+{"token": 29918, "text": "_", "generation_tokens": 732}
+{"token": 20788, "text": "statement", "generation_tokens": 733}
+{"token": 1115, "text": "\":", "generation_tokens": 734}
+{"token": 376, "text": " \"", "generation_tokens": 735}
+{"token": 479, "text": "ge", "generation_tokens": 736}
+{"token": 290, "text": "om", "generation_tokens": 737}
+{"token": 11139, "text": "Sum", "generation_tokens": 738}
+{"token": 29871, "text": " ", "generation_tokens": 739}
+{"token": 29896, "text": "1", "generation_tokens": 740}
+{"token": 353, "text": " =", "generation_tokens": 741}
+{"token": 29871, "text": " ", "generation_tokens": 742}
+{"token": 29906, "text": "2", "generation_tokens": 743}
+{"token": 6228, "text": " ^", "generation_tokens": 744}
+{"token": 29871, "text": " ", "generation_tokens": 745}
+{"token": 29900, "text": "0", "generation_tokens": 746}
+{"token": 448, "text": " -", "generation_tokens": 747}
+{"token": 29871, "text": " ", "generation_tokens": 748}
+{"token": 29896, "text": "1", "generation_tokens": 749}
+{"token": 613, "text": "\",", "generation_tokens": 750}
+{"token": 13, "text": "\n", "generation_tokens": 751}
+{"token": 1678, "text": "   ", "generation_tokens": 752}
+{"token": 376, "text": " \"", "generation_tokens": 753}
+{"token": 735, "text": "ex", "generation_tokens": 754}
+{"token": 9018, "text": "plan", "generation_tokens": 755}
+{"token": 362, "text": "ation", "generation_tokens": 756}
+{"token": 1115, "text": "\":", "generation_tokens": 757}
+{"token": 376, "text": " \"", "generation_tokens": 758}
+{"token": 1576, "text": "The", "generation_tokens": 759}
+{"token": 27092, "text": " SUB", "generation_tokens": 760}
+{"token": 17637, "text": "JECT", "generation_tokens": 761}
+{"token": 29918, "text": "_", "generation_tokens": 762}
+{"token": 7249, "text": "JSON", "generation_tokens": 763}
+{"token": 26619, "text": " proposition", "generation_tokens": 764}
+{"token": 338, "text": " is", "generation_tokens": 765}
+{"token": 20871, "text": " unclear", "generation_tokens": 766}
+{"token": 1048, "text": " about", "generation_tokens": 767}
+{"token": 278, "text": " the", "generation_tokens": 768}
+{"token": 14502, "text": " treatment", "generation_tokens": 769}
+{"token": 310, "text": " of", "generation_tokens": 770}
+{"token": 302, "text": " n", "generation_tokens": 771}
+{"token": 29922, "text": "=", "generation_tokens": 772}
+{"token": 29900, "text": "0", "generation_tokens": 773}
+{"token": 29892, "text": ",", "generation_tokens": 774}
+{"token": 607, "text": " which", "generation_tokens": 775}
+{"token": 338, "text": " is", "generation_tokens": 776}
+{"token": 12187, "text": " critical", "generation_tokens": 777}
+{"token": 363, "text": " for", "generation_tokens": 778}
+{"token": 278, "text": " the", "generation_tokens": 779}
+{"token": 2967, "text": " base", "generation_tokens": 780}
+{"token": 1206, "text": " case", "generation_tokens": 781}
+{"token": 297, "text": " in", "generation_tokens": 782}
+{"token": 278, "text": " the", "generation_tokens": 783}
+{"token": 26224, "text": " geometric", "generation_tokens": 784}
+{"token": 3652, "text": " series", "generation_tokens": 785}
+{"token": 1213, "text": ".\"", "generation_tokens": 786}
+{"token": 13, "text": "\n", "generation_tokens": 787}
+{"token": 29871, "text": " ", "generation_tokens": 788}
+{"token": 500, "text": " }", "generation_tokens": 789}
+{"token": 13, "text": "\n", "generation_tokens": 790}
+{"token": 29913, "text": "}", "generation_tokens": 791}
+{"token": 13, "text": "\n", "generation_tokens": 792}
+{"token": 32007, "text": "", "generation_tokens": 793}
+{"status": "generation_finished", "completion_tokens": 793}

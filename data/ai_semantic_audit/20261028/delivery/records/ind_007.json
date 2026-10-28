@@ -1,0 +1,90 @@
+{
+  "subject": {
+    "id": "ind_007",
+    "nl_statement": "Prove that the sum of n squares can be found as follows: 1^2 + 2^2 + 3^2 + ... + n^2 = n(n+1)(2n+1)/6.",
+    "expected_lean_statement": "theorem sum_squares_closed_form (n : ℕ) : (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_007",
+    "subject_sha256": "f31bff0663c00a6d618ac2290c060508771bd21ef8b159fe1198be3dab9cab85",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Sum includes k=0, adding a zero term to 1^2 through n^2. Natural division by six is exact for the closed-form numerator."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 20 column 1 (char 2010)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_007.json",
+      "status": "completed",
+      "response_sha256": "2645262537d4298cea183172fe77828fdf11bcdc35be7cd4206ca2ce310e82f2"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "induction versus closed form",
+        "domains": "finite set versus closed form expression",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement outlines a closed-form expression for the sum of the first n squares, while the Lean theorem statement asserts an inductive definition of this sum. The Lean statement is stronger as it directly references an inductive definition rather than a closed form expression.",
+        "issues": [
+          "The English statement assumes a closed form expression while the Lean statement uses an inductive definition."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_007.json",
+      "response_sha256": "61e288779fcefa9b45ec1740115786b223d1906ab1d295b6dba9dda536956ee3"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_007",
+      "theorem": "AuditReference1.AdditionalReferences.sum_squares_closed_form",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_007",
+      "subject_sha256": "f31bff0663c00a6d618ac2290c060508771bd21ef8b159fe1198be3dab9cab85",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Zero adds nothing; integer numerator divisible by six.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

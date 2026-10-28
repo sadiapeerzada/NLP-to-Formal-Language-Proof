@@ -1,0 +1,51 @@
+{
+  "snapshot_revision": "7b2052fd882fe017300d4d42a4eb06a27b816af4",
+  "files": {
+    "README.md": {
+      "sha256": "1c8c614c52ca8300267fc8be9980e281ac34eb3a44558456b3fe66a44f912585",
+      "bytes": 890
+    },
+    "added_tokens.json": {
+      "sha256": "5f5c94d30901fe9c961d776d51eadbda4454991a77b53d36e0be0571a8e72a7d",
+      "bytes": 293
+    },
+    "config.json": {
+      "sha256": "6db0d08266c26038265c3a523917ff89214c4fd5893adbbb2cbca3128b9fa1d0",
+      "bytes": 4149
+    },
+    "model.safetensors": {
+      "sha256": "37e64496aa28fa5d5e4f29561f435defcbf6f7c8387f360c0aed45d37b93dfd7",
+      "bytes": 2149696133
+    },
+    "model.safetensors.index.json": {
+      "sha256": "4ef199a5c6c29fa54d84d3710bfad4b5424b75bbd68872f9e1e12234bd3fd9c3",
+      "bytes": 32695
+    },
+    "special_tokens_map.json": {
+      "sha256": "474d699677e264edd3851559548cbbb61801ad8da6b249c81455007602313c34",
+      "bytes": 569
+    },
+    "tokenizer.json": {
+      "sha256": "d0f067e1e15cd0a36ebef3668024882cb67a80b86fb4b7b4b128481f0d474db7",
+      "bytes": 1844436
+    },
+    "tokenizer.model": {
+      "sha256": "9e556afd44213b6bd1be2b850ebbbd98f5481437a8021afaf58ee7fb1818d347",
+      "bytes": 499723
+    },
+    "tokenizer_config.json": {
+      "sha256": "cf1de23ab67807aed30e5145164c405c8c92890ca546112dd010de510fac3d1f",
+      "bytes": 3352
+    }
+  },
+  "quantization": {
+    "group_size": 64,
+    "bits": 4
+  },
+  "model_type": "phi3",
+  "chat_template": "{% for message in messages %}{% if message['role'] == 'system' and message['content'] %}{{'<|system|>\n' + message['content'] + '<|end|>\n'}}{% elif message['role'] == 'user' %}{{'<|user|>\n' + message['content'] + '<|end|>\n'}}{% elif message['role'] == 'assistant' %}{{'<|assistant|>\n' + message['content'] + '<|end|>\n'}}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ '<|assistant|>\n' }}{% else %}{{ eos_token }}{% endif %}",
+  "chat_template_sha256": "668ba2257fed4c556135513cd98f816fc6c3d56936bc42e15f1ced790b2f2c0c",
+  "tokenizer_revision": "7b2052fd882fe017300d4d42a4eb06a27b816af4",
+  "max_position_embeddings": 131072,
+  "weight_bytes": 2149696133
+}

@@ -1,0 +1,95 @@
+{
+  "subject": {
+    "id": "lib_q_cauchy",
+    "nl_statement": "For real numbers a,b,c,d, (a*c+b*d)^2 is at most (a^2+b^2)*(c^2+d^2).",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_cauchy (a b c d : ℝ) : (a * c + b * d) ^ 2 ≤ (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_cauchy",
+    "subject_sha256": "842015321110bf2a0ca934429b18aa6c2c0fb2cf5ac11f51f79fbaca78ced8c4",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Four universal reals; squared dot product and two squared norms are paired as in the English."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 19 column 1 (char 1149)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_cauchy.json",
+      "status": "completed",
+      "response_sha256": "0ec07a85f0e0c97405c4e0ddd58e17b57bd6dc3cafd03430a05f76fb4107b1d4"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in terms of mathematical meaning. Both assert that the square of the sum of the products of pairs of real numbers is less than or equal to the product of the sums of their squares. This is a statement of the Cauchy-Schwarz inequality in the context of real numbers. There is no counterexample that refutes this inequality, and it is a well-known result in mathematics. The inequality is strict unless a and c, or b and d, are both zero. The inequality is maintained under the usual operations on real numbers and respects the domains and scopes of the variables involved.",
+        "issues": [
+          "The English statement uses a less formal notation than Lean's formal type theory notation.",
+          "The inequality is not explicitly stated as a theorem in Mathlib, but it is equivalent to a theorem that is part of the library."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_cauchy.json",
+      "response_sha256": "7efb899bd5523c3856c9fc885bc72745b961119dea056908d128675bd4170e47"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_cauchy",
+      "theorem": "AuditReference14.study_q_cauchy",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b c d : ℝ), (a * c + b * d) ^ 2 ≤ (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_cauchy",
+      "subject_sha256": "842015321110bf2a0ca934429b18aa6c2c0fb2cf5ac11f51f79fbaca78ced8c4",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 625,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Exact rational vectors, including zero.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

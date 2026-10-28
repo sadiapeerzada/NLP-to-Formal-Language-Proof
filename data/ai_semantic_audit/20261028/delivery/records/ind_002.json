@@ -1,0 +1,91 @@
+{
+  "subject": {
+    "id": "ind_002",
+    "nl_statement": "For any natural number n, the sum of the first n odd numbers equals n squared.",
+    "expected_lean_statement": "theorem sum_odd_sq (n : ℕ) : (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_002",
+    "subject_sha256": "3291364dbe17d4ea97bac454f784b3b0a56c1c78f8181fb03d157f0dc4deb9fb",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Exactly n terms 2i+1 for i=0..n-1; empty sum and n^2 both zero at n=0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: quantifiers",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_002.json",
+      "status": "completed",
+      "response_sha256": "056470598bf2d829a5753f74d025bc2f65340695b430e92061a61a96974b4205"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a specific pattern for the sum of odd numbers resulting in a squared value. The Lean theorem expresses this pattern formally as an inductive definition. Both statements are equivalent in meaning as they assert that summing the first n odd numbers (which can be described as an inductive process starting from an initial value and following a specific pattern) results in n squared. There is no counterexample that refutes this pattern, and no boundary case is specified in the English statement that would lead to an alternate conclusion. The equivalence of the English statement and the Lean theorem is clear and direct.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_002.json",
+      "response_sha256": "c0d0833972dcceb4e3528af8de8652e23c07b01b262bd275e45f9c810f684541"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_002",
+      "theorem": "AuditReference0.sum_odd_sq",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_002",
+      "subject_sha256": "3291364dbe17d4ea97bac454f784b3b0a56c1c78f8181fb03d157f0dc4deb9fb",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Exactly n odd summands; empty sum n=0.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,1 @@
+/Users/sadiapeerzada/.cache/huggingface/hub/models--mlx-community--Phi-3.5-mini-instruct-4bit/snapshots/7b2052fd882fe017300d4d42a4eb06a27b816af4

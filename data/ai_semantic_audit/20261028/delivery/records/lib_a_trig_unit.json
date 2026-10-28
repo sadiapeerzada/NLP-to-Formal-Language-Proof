@@ -1,0 +1,86 @@
+{
+  "subject": {
+    "id": "lib_a_trig_unit",
+    "nl_statement": "For every real x, sin(x)^2+cos(x)^2 equals one.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_trig_unit (x : ℝ) : (Real.sin x) ^ 2 + (Real.cos x) ^ 2 = 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_trig_unit",
+    "subject_sha256": "1350d53a7f3fa950bcb606eb73a357bb8db316138a74f674fc29f585f57eebc9",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal real x; squared sine plus squared cosine equals one, with exponentiation applied to function values."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "specific Real numbers",
+        "assumptions": "specific Real numbers",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a fundamental trigonometric identity that is equivalent to a Lean theorem stating that for every real number x, the sum of the square of the sine of x and the square of the cosine of x equals one. This is a well-known and universally accepted trigonometric identity in mathematics. There is no counterexample that refutes this statement as it is true by definition in the Real numbers. The required import is Mathlib which provides the Real numbers and trigonometric functions. There is an implicit assumption that x is a Real number but it is not explicitly stated in the English statement as it is inherent in the mathematical context. The conclusion in Lean is equivalent to the English statement as it directly restates the trigonometric identity in formal notation.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_trig_unit.json",
+      "response_sha256": "bf92428d63a07396eb478603a3c33e345f88da36b93e53344984877ac9a77dab"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_trig_unit",
+      "theorem": "AuditReference14.study_a_trig_unit",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ), (Real.sin x) ^ 2 + (Real.cos x) ^ 2 = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_trig_unit",
+      "subject_sha256": "1350d53a7f3fa950bcb606eb73a357bb8db316138a74f674fc29f585f57eebc9",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 13,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Floating approximation only.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

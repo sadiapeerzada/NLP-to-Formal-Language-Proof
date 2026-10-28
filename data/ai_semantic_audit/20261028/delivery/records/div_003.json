@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "div_003",
+    "nl_statement": "If a natural number n is divisible by 6, then it is divisible by both 2 and 3.",
+    "expected_lean_statement": "theorem div6_imp_div2_div3 (n : ℕ) (h : 6 ∣ n) : 2 ∣ n ∧ 3 ∣ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_003",
+    "subject_sha256": "9f0e11d3603056a8f4cd8aafd53134bd8908d8d7ee7805a39d5e614cca93f5ba",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n; 6 divides n implies conjunction of divisibility by 2 and 3, not a disjunction."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_003.json",
+      "status": "completed",
+      "response_sha256": "5b633ece78993ecddad156d2b05182834eab0b8db559eafc27c8ae05c9eb2c74"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one variable n, one universal statement",
+        "domains": "natural numbers ℕ",
+        "assumptions": "n is divisible by 6 (h : 6 ∣ n)",
+        "equivalence": "conclusion n is divisible by both 2 and 3 (2 ∣ n ∧ 3 ∣ n)",
+        "strength": "stronger",
+        "boundary_cases": "n = 0 (zero boundary case)",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "This statement is true and follows directly from the definition of divisibility in natural numbers. Since 6 is divisible by both 2 and 3 (6 = 2 * 3), any number n divisible by 6 must be divisible by both 2 and 3 as well.",
+        "issues": [
+          "The statement is universally true and therefore is stronger than a simple conditional statement."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_003.json",
+      "response_sha256": "9ec263e12d57871c83dc1ef9b2138ecfda79a96ac67dd812c2840f33534cdafd"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_003",
+      "theorem": "AuditReference0.div6_imp_div2_div3",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : 6 ∣ n), 2 ∣ n ∧ 3 ∣ n",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_003",
+      "subject_sha256": "9f0e11d3603056a8f4cd8aafd53134bd8908d8d7ee7805a39d5e614cca93f5ba",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 2,
+      "filtered_by_assumptions": 7,
+      "failures": [],
+      "note": "Both divisors; zero included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "subject": {
+    "id": "lib_q_amgm",
+    "nl_statement": "For real numbers x and y, twice their product is at most the sum of their squares.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_amgm (x y : ℝ) : 2 * x * y ≤ x ^ 2 + y ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_amgm",
+    "subject_sha256": "5aa87f56a177bb6993225b741d08e32bbc3b073cbd5a2a2c119d29043ff3486e",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Real x,y without nonnegativity assumptions; exactly 2*x*y <= x^2+y^2, so the AM-GM-like name adds no missing hypothesis."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: quantifiers",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_amgm.json",
+      "status": "completed",
+      "response_sha256": "19ce22f37c69007da8e3fadc16599e6fc8264ea1f57be1613c9829f2e35fd4b3"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same, stronger, weaker, or ambiguous with reason",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a specific inequality involving real numbers x and y. The Lean theorem expresses this inequality formally within the Mathlib library conventions. There is an equivalence between the English statement and the Lean statement provided it respects the scope of quantifiers, variable domains, assumptions, and conclusion as specified in Mathlib. Without an explicit counterexample provided, one assumes the statement is true unless a counterexample is presented. There is an inherent strength in the Lean statement equivalent to or stronger than requested due to the totalization of division and remainders in Lean Nat subtraction.",
+        "issues": [
+          "The English statement assumes a specific inequality without mentioning boundary cases such as x and y being zero or one.",
+          "The Lean statement does not explicitly check endpoint cases such as division by zero."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_amgm.json",
+      "response_sha256": "368a2222d75c6305c61b4f9c8e6fbe08fb379db198ec87a2d0ffc836021dc5c2"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_amgm",
+      "theorem": "AuditReference14.study_q_amgm",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), 2 * x * y ≤ x ^ 2 + y ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_amgm",
+      "subject_sha256": "5aa87f56a177bb6993225b741d08e32bbc3b073cbd5a2a2c119d29043ff3486e",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 169,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "No nonnegativity assumption required.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into strength.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

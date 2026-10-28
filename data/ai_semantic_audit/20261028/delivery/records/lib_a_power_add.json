@@ -1,0 +1,73 @@
+{
+  "subject": {
+    "id": "lib_a_power_add",
+    "nl_statement": "For natural numbers a, m and n, a raised to m+n equals a raised to m times a raised to n.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_power_add (a m n : ℕ) : a ^ (m + n) = a ^ m * a ^ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_power_add",
+    "subject_sha256": "368ec042e98c1e478e7fca733b61fcff362f5b6bfaa0d66f94a5261e0d89b4d6",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural base and both natural exponents universally quantified; exponent sum and product order match, including 0^0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 17 column 1 (char 1089)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_power_add.json",
+      "status": "completed",
+      "response_sha256": "73197644fa7f034b224c74496d7aae6ae59e45003a62d7d7a7b88444fce16c2b"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_power_add.json",
+      "response_sha256": "3bc439eff8273db7c1e7512963a8f7663ef23370e2b36a7b9286227995af17a3"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_power_add",
+      "theorem": "AuditReference14.study_a_power_add",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a m n : ℕ), a ^ (m + n) = a ^ m * a ^ n",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_power_add",
+      "subject_sha256": "368ec042e98c1e478e7fca733b61fcff362f5b6bfaa0d66f94a5261e0d89b4d6",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 125,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Includes 0^0=1.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

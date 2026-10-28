@@ -1,0 +1,1134 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"caption\":\"\",\"data\":\"'AuditReference0.add_sq_nat' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":10},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":10},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_sub_sq_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":18},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":18},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.even_sq_of_even' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":24},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":24},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.n_mul_succ_even' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":33},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":33},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.div6_imp_div2_div3' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":38},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":38},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.cong_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":43},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":43},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Int.mul_add\\n\\nHint: Omit it from the simp argument list.\\n  simp [Int.m̵u̵l̵_̵add,̵ ̵I̵n̵t̵.̵a̵d̵d̵_mul, Int.mul_comm, Int.mul_assoc, Int.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":23,\"line\":56},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":12,\"line\":56},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Int.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Int.mul_add, Int.a̵d̵d̵_̵mul,̵ ̵I̵n̵t̵.̵m̵u̵l̵_comm, Int.mul_assoc, Int.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":36,\"line\":56},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":25,\"line\":56},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_mod_four' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":68},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":68},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.gauss_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":73},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":73},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sum_odd_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":82},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":82},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.two_pow_gt_self' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":89},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":89},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sum_two_odd_even' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":97},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":97},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_ge_self' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":102},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":102},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.mul_distrib_left' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":107},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":107},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.distributive_nat' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":112},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":112},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_sub_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":118},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":118},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm, Nat.pow_two]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":32,\"line\":124},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":21,\"line\":124},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.odd_sq_of_odd' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":127},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":127},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":38,\"line\":140},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":27,\"line\":140},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.mul_add\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.m̵u̵l̵_̵add,̵ ̵N̵a̵t̵.̵a̵d̵d̵_mul, Nat.mul_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":21,\"line\":146},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":10,\"line\":146},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":34,\"line\":146},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":23,\"line\":146},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_even_iff_even' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":148},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":148},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.prod_succ_ge' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":153},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":153},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.succ_le_two_pow' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":165},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":165},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.mul_add\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.m̵u̵l̵_̵add,̵ ̵N̵a̵t̵.̵a̵d̵d̵_mul, Nat.mul_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":32,\"line\":174},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":21,\"line\":174},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":45,\"line\":174},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":34,\"line\":174},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.mul_assoc\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.add_mul, Nat.mul_comm, N̵a̵t̵.̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":74,\"line\":174},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":61,\"line\":174},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":45,\"line\":179},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":34,\"line\":179},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.add_mul\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.a̵d̵d̵_̵mul,̵ ̵N̵a̵t̵.̵m̵u̵l̵_comm, Nat.mul_assoc, Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":45,\"line\":184},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":34,\"line\":184},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"This simp argument is unused:\\n  Nat.mul_assoc\\n\\nHint: Omit it from the simp argument list.\\n  simp [Nat.mul_add, Nat.add_mul, Nat.mul_comm, N̵a̵t̵.̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵Nat.mul_left_comm]\\n\\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\",\"endPos\":{\"column\":74,\"line\":184},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedSimpArgs\",\"pos\":{\"column\":61,\"line\":184},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_mod_three' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":187},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":187},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.geom_sum_eq' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":202},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":202},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.pow_seven_sub_one_dvd_six' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":214},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":214},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.sum_squares_closed_form' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":226},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":226},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":56,\"line\":228},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":54,\"line\":228},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.positive_nat_sum_distinct_powers_two' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":254},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":254},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.hockey_stick_binomial_identity' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":269},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":269},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_power_add' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":421},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":421},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_euclidean' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":425},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":425},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_choose_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":429},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":429},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_abs_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":433},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":433},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_sqrt_square' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":437},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":437},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_truncated_sub' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":441},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":441},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"this tactic is never executed\\n\\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\",\"endPos\":{\"column\":21,\"line\":444},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unreachableTactic\",\"pos\":{\"column\":17,\"line\":444},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'ring' tactic does nothing\\n\\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\",\"endPos\":{\"column\":21,\"line\":444},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedTactic\",\"pos\":{\"column\":17,\"line\":444},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_inverse_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":445},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":445},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_gcd_lcm' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":449},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":449},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_euclid' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":453},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":453},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_unbounded_primes' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":457},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":457},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_bezout' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":461},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":461},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_coprime_successor' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":465},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":465},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_prime_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":469},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":469},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_mersenne_gcd' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":473},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":473},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_prime_parity' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":477},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":477},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_dvd_antisymmetry' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":481},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":481},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_coprime_power' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":485},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":485},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":489},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":489},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_factorial' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":493},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":493},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_fibonacci' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":497},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":497},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_bernoulli' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":501},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":501},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_vandermonde' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":505},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":505},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_fermat_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":509},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":509},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_amgm' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":513},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":513},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_cauchy' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":517},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":517},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":521},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":521},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_reciprocal' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":525},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":525},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_log' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":529},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":529},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_sqrt_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":533},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":533},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_exp_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":537},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":537},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_sine' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":541},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":541},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_quotient' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":545},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":545},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_crt' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":549},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":549},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":553},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":553},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":557},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":557},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_fermat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":561},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":561},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_wilson' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":565},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":565},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_power' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":569},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":569},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_gcd_obstruction' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":573},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":573},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_residue_product' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":577},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":577},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_trig_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":581},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":581},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_log_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":585},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":585},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_exp_add' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":589},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":589},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":593},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":593},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":597},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":597},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_totient_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":601},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":601},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":605},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":605},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_alternating_binomial' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":609},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":609},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_integer_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":613},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":613},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_finite_inclusion' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":617},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":617},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_log_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":621},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":621},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_euler' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":625},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":625},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_rational_density' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":635},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":635},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_i_stirling' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":639},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":639},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_i_catalan' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":643},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":643},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_rearrangement' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":647},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":647},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_pigeonhole' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":651},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":651},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_d_prime_factor_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":655},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":655},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_d_euclidean_gcd' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":659},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":659},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.add_sq_nat' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":665},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":665},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":668},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":668},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_sub_sq_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":669},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":669},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":22,\"line\":672},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":672},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.even_sq_of_even' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":673},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":673},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.n_mul_succ_even' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":677},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":677},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":22,\"line\":680},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":680},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.div6_imp_div2_div3' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":681},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":681},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":26,\"line\":684},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":684},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.cong_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":685},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":685},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_mod_four' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":689},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":689},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.gauss_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":693},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":693},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sum_odd_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":697},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":697},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.two_pow_gt_self' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":701},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":701},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `ha` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":704},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":704},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hb` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":47,\"line\":704},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":45,\"line\":704},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sum_two_odd_even' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":705},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":705},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_ge_self' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":709},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":709},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.mul_distrib_left' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":713},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":713},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.distributive_nat' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":717},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":717},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":720},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":720},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_sub_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":721},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":721},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":22,\"line\":724},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":724},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.odd_sq_of_odd' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":725},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":725},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_even_iff_even' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":729},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":729},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.prod_succ_ge' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":733},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":733},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":22,\"line\":736},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":736},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.succ_le_two_pow' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":737},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":737},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.geom_sum_eq' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":741},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":741},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference0.sq_mod_three' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":745},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":745},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `ha` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":748},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":748},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hb` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":39,\"line\":748},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":37,\"line\":748},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference2.even_add_of_even' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":749},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":749},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference3.even_iff_even_three_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":753},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":753},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference4.even_cube_sub_self' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":757},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":757},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference5.pascal_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":761},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":761},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference6.add_three_lt_add_seven' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":765},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":765},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hab` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":46,\"line\":768},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":43,\"line\":768},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hcd` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":69,\"line\":768},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":66,\"line\":768},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference7.modEq_add_two' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":769},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":769},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference8.choose_zero_and_self' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":773},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":773},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":776},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":776},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference11.postage_representable_large' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":777},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":777},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hab` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":28,\"line\":780},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":780},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference9.dvd_mul_right_int' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":781},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":781},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hab` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":28,\"line\":784},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":784},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hac` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":42,\"line\":784},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":39,\"line\":784},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference10.dvd_add_sub_int' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":785},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":785},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.pow_seven_sub_one_dvd_six' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":789},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":789},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.sum_squares_closed_form' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":793},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":793},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":796},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":796},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.positive_nat_sum_distinct_powers_two' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":797},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":797},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference1.AdditionalReferences.hockey_stick_binomial_identity' depends on axioms: [propext,\\n Classical.choice,\\n Quot.sound]\",\"endPos\":{\"column\":6,\"line\":801},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":801},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference13.largest_modulus_sixteen_twentyfive' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":805},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":805},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference12.diophantine_six_ten' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":809},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":809},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_power_add' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":813},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":813},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_euclidean' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":817},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":817},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":820},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":820},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_choose_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":821},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":821},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_abs_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":825},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":825},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":22,\"line\":828},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":828},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_sqrt_square' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":829},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":829},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":832},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":832},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_truncated_sub' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":833},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":833},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hx` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":836},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":836},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hy` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":38,\"line\":836},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":36,\"line\":836},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_inverse_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":837},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":837},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_gcd_lcm' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":841},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":841},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hp` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":27,\"line\":844},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":844},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_euclid' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":845},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":845},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_unbounded_primes' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":849},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":849},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_bezout' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":853},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":853},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_coprime_successor' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":857},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":857},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hp` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":860},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":860},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_prime_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":861},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":861},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_mersenne_gcd' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":865},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":865},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hp` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":868},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":868},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_prime_parity' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":869},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":869},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hab` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":26,\"line\":872},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":872},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hba` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":40,\"line\":872},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":37,\"line\":872},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_dvd_antisymmetry' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":873},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":873},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":27,\"line\":876},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":876},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_coprime_power' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":877},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":877},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":28,\"line\":880},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":27,\"line\":880},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `ha` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":51,\"line\":880},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":49,\"line\":880},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hb` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":64,\"line\":880},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":62,\"line\":880},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":881},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":881},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_factorial' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":885},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":885},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_fibonacci' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":889},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":889},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":30,\"line\":892},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":29,\"line\":892},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_bernoulli' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":893},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":893},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_vandermonde' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":897},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":897},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_fermat_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":901},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":901},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_amgm' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":905},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":905},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_cauchy' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":909},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":909},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":913},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":913},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hx` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":916},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":916},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hxy` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":39,\"line\":916},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":36,\"line\":916},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_reciprocal' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":917},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":917},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":920},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":920},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_log' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":921},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":921},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":924},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":924},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_sqrt_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":925},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":925},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_exp_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":929},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":929},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hx` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":932},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":932},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_sine' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":933},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":933},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_quotient' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":937},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":937},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":28,\"line\":940},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":27,\"line\":940},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_crt' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":941},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":941},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hm` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":29,\"line\":944},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":27,\"line\":944},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":41,\"line\":944},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":40,\"line\":944},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":945},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":945},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `ha` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":27,\"line\":948},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":948},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hb` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":40,\"line\":948},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":38,\"line\":948},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":52,\"line\":948},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":51,\"line\":948},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":949},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":949},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hp` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":952},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":952},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_fermat' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":953},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":953},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_wilson' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":957},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":957},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":34,\"line\":960},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":33,\"line\":960},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_power' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":961},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":961},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":26,\"line\":964},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":25,\"line\":964},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_gcd_obstruction' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":965},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":965},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_residue_product' depends on axioms: [propext]\",\"endPos\":{\"column\":6,\"line\":969},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":969},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_trig_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":973},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":973},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hx` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":976},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":976},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hy` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":38,\"line\":976},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":36,\"line\":976},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_log_product' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":977},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":977},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_exp_add' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":981},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":981},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_a_min_max' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":985},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":985},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `ha` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":25,\"line\":988},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":988},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hb` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":38,\"line\":988},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":36,\"line\":988},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":989},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":989},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_d_totient_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":993},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":993},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":997},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":997},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":1000},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":1000},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_i_alternating_binomial' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1001},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1001},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_integer_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1005},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1005},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":31,\"line\":1008},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":30,\"line\":1008},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_finite_inclusion' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1009},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1009},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hx` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":1012},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":1012},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_q_log_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1013},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1013},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":1016},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":1016},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference14.study_m_euler' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1017},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1017},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":24,\"line\":1020},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":23,\"line\":1020},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_rational_density' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1021},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1021},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_i_stirling' does not depend on any axioms\",\"endPos\":{\"column\":6,\"line\":1025},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1025},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_i_catalan' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1029},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1029},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hab` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":30,\"line\":1032},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":27,\"line\":1032},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hcd` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":44,\"line\":1032},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":41,\"line\":1032},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_rearrangement' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1033},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1033},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `h` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":43,\"line\":1036},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":42,\"line\":1036},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"Variable name `hm` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":66,\"line\":1036},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":64,\"line\":1036},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_q_pigeonhole' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1037},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1037},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"Variable name `hn` is not explicitly referenced.\\n\\nThe binding can be removed (if unused) or named `_` (if used implicitly).\\n\\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\",\"endPos\":{\"column\":23,\"line\":1040},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"linter.unusedVariables\",\"pos\":{\"column\":21,\"line\":1040},\"severity\":\"warning\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_d_prime_factor_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1041},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1041},\"severity\":\"information\"}\n{\"caption\":\"\",\"data\":\"'AuditReference15.study_d_euclidean_gcd' depends on axioms: [propext, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":1045},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/lean_reference_check/all_references.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":1045},\"severity\":\"information\"}\n",
+  "stderr": "",
+  "elapsed_seconds": 46.15532633399994,
+  "source_sha256": "0aeeb93da73562056875632f9e20279290f6db30a66c8c2daec7bee836646806",
+  "input_sha256": {
+    "data/reference_verification/v0.1.0/references.lean": "ced97ccf92d44590baf68201739b22f19dfa2e2bef827f0bbe26bbf98c4430df",
+    "data/reference_verification/v0.2.0/references_module.lean": "b0f13a20fe98fd6a7034fb9b7623fe6aca6b0cdde9a3a47f913536ed5c606459",
+    "data/curation_batches/v0.1.0/div_007_even_sum.lean": "0bf4b0a25baf4a8935da937d982a82d12d62c561cd2ff2a04405ad5af7da1205",
+    "data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean": "75aa196d496401043456e249262f9cea96e7011de8a0705b508b6f197afd3da9",
+    "data/curation_batches/v0.1.0/div_009_cube_sub_self_even.lean": "7cde4ee6be6c4143fbfe34913b90054022e199d93ccd8fef63c6cdbc0c725e02",
+    "data/curation_batches/v0.1.1/ind_005_pascal_row_sum.lean": "d0ffb7da6e50ac516e5efeb0765aeaafa80acf2e3803bd22b3a51eb9e7ab24a1",
+    "data/curation_batches/v0.1.2/ineq_004_linear_inequality.lean": "6385daa430f7efd874c0e3cc1923c884ca0ec9f50859e70f49cdf2cc7043db0d",
+    "data/curation_batches/v0.1.3/mod_004_congruence_add.lean": "e34a7e4db5197b6d111c133de3c66ac340384709c6102e43c4c55ac3aaa36a8b",
+    "data/curation_batches/v0.1.4/arith_005_binomial_boundary_values.lean": "fc95490d1a93fbc810226d8ab5247c9906d3c4436170e873bc7f61955281e51d",
+    "data/curation_batches/v0.1.5/div_010_dvd_mul.lean": "696a265cb8f1df894822144b73faebb8a964b85dd719989cc5685e05965c7849",
+    "data/curation_batches/v0.1.5/div_011_dvd_add_sub.lean": "0697b6e641097463b5e746f78cbe7dd70ccc368f44b67416417bc3edcee80ba0",
+    "data/curation_batches/v0.1.5/ind_006_5_8_stamps.lean": "f686cd19be895cb516f61bb3d9919ac3e9087da0df8de08fe7c52725a485332f",
+    "data/curation_batches/v0.1.8/div_012_diophantine.lean": "e984751c23d0f09d4ea617d0643a0cca65e9599e6450472fc6ffbd6950a62443",
+    "data/curation_batches/v0.1.8/mod_006_largest_modulus.lean": "1cbf29ace022e89b9fadd554cd539182735556870a28c36524bdc89efe2c297a",
+    "data/curation_batches/v0.2.0/references_expanded.lean": "7b116ce104b59338fdcdf3e736fe4392c39b77f32db73dabef9afcd005680367",
+    "data/curation_batches/v0.2.1/references_expanded.lean": "45272f1c1eb3e1591fb15a57a854f4685b2dd191caee4a9918195ddab77d7ccf"
+  },
+  "comparisons": [
+    {
+      "candidate_id": "arith_001",
+      "theorem": "AuditReference0.add_sq_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ), (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "arith_002",
+      "theorem": "AuditReference0.sq_sub_sq_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_001",
+      "theorem": "AuditReference0.even_sq_of_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : Even n), Even (n ^ 2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_002",
+      "theorem": "AuditReference0.n_mul_succ_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), Even (n * (n + 1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_003",
+      "theorem": "AuditReference0.div6_imp_div2_div3",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : 6 ∣ n), 2 ∣ n ∧ 3 ∣ n",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_001",
+      "theorem": "AuditReference0.cong_add_one",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b m : ℤ) (h : a ≡ b [ZMOD m]), a + 1 ≡ b + 1 [ZMOD m]",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_002",
+      "theorem": "AuditReference0.sq_mod_four",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a : ℤ), a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_001",
+      "theorem": "AuditReference0.gauss_sum",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_002",
+      "theorem": "AuditReference0.sum_odd_sq",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), (Finset.range n).sum (fun i => 2 * i + 1) = n ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_003",
+      "theorem": "AuditReference0.two_pow_gt_self",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n < 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_004",
+      "theorem": "AuditReference0.sum_two_odd_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (ha : ∃ i, a = 2*i+1) (hb : ∃ j, b = 2*j+1), ∃ k, a + b = 2 * k",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ineq_001",
+      "theorem": "AuditReference0.sq_ge_self",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n ≤ n ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "arith_003",
+      "theorem": "AuditReference0.mul_distrib_left",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b c : ℕ), a * (b + c) = a * b + a * c",
+      "axioms": [],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "arith_003_mathlib",
+      "theorem": "AuditReference0.distributive_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b c : ℕ), a * (b + c) = a * b + a * c",
+      "axioms": [],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "arith_004",
+      "theorem": "AuditReference0.sq_sub_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), (a - b) ^ 2 + 2 * a * b = a ^ 2 + b ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_005",
+      "theorem": "AuditReference0.odd_sq_of_odd",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : ∃ k, n = 2*k+1), ∃ j, n ^ 2 = 2*j+1",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_006",
+      "theorem": "AuditReference0.sq_even_iff_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), (∃ j, n ^ 2 = 2 * j) ↔ (∃ k, n = 2 * k)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ineq_002",
+      "theorem": "AuditReference0.prod_succ_ge",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ), a * b + 1 ≤ (a + 1) * (b + 1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ineq_003",
+      "theorem": "AuditReference0.succ_le_two_pow",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : 1 ≤ n), n + 1 ≤ 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_004",
+      "theorem": "AuditReference1.AdditionalReferences.geom_sum_eq",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), geomSum n + 1 = 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_003",
+      "theorem": "AuditReference0.sq_mod_three",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_007",
+      "theorem": "AuditReference2.even_add_of_even",
+      "source": "data/curation_batches/v0.1.0/div_007_even_sum.lean",
+      "expected_type": "∀ (a b : ℤ) (ha : Even a) (hb : Even b), Even (a + b)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_008",
+      "theorem": "AuditReference3.even_iff_even_three_mul",
+      "source": "data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+      "expected_type": "∀ (n : ℤ), Even n ↔ Even (3 * n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_009",
+      "theorem": "AuditReference4.even_cube_sub_self",
+      "source": "data/curation_batches/v0.1.0/div_009_cube_sub_self_even.lean",
+      "expected_type": "∀ (n : ℤ), Even (n ^ 3 - n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_005",
+      "theorem": "AuditReference5.pascal_row_sum",
+      "source": "data/curation_batches/v0.1.1/ind_005_pascal_row_sum.lean",
+      "expected_type": "∀ (n : ℕ), ∑ k ∈ Finset.range (n + 1), Nat.choose n k = 2 ^ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ineq_004",
+      "theorem": "AuditReference6.add_three_lt_add_seven",
+      "source": "data/curation_batches/v0.1.2/ineq_004_linear_inequality.lean",
+      "expected_type": "∀ (n : ℕ), n + 3 < n + 7",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_004",
+      "theorem": "AuditReference7.modEq_add_two",
+      "source": "data/curation_batches/v0.1.3/mod_004_congruence_add.lean",
+      "expected_type": "∀ (a b c d n : ℤ) (_hn : 0 < n) (hab : a ≡ b [ZMOD n]) (hcd : c ≡ d [ZMOD n]), a + c ≡ b + d [ZMOD n]",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "arith_005",
+      "theorem": "AuditReference8.choose_zero_and_self",
+      "source": "data/curation_batches/v0.1.4/arith_005_binomial_boundary_values.lean",
+      "expected_type": "∀ (n : ℕ), Nat.choose n 0 = 1 ∧ Nat.choose n n = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_006",
+      "theorem": "AuditReference11.postage_representable_large",
+      "source": "data/curation_batches/v0.1.5/ind_006_5_8_stamps.lean",
+      "expected_type": "∀ (n : ℕ) (hn : 28 ≤ n), ∃ five eight : ℕ, 5 * five + 8 * eight = n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_010",
+      "theorem": "AuditReference9.dvd_mul_right_int",
+      "source": "data/curation_batches/v0.1.5/div_010_dvd_mul.lean",
+      "expected_type": "∀ (a b c : ℤ) (hab : a ∣ b), a ∣ b * c",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_011",
+      "theorem": "AuditReference10.dvd_add_sub_int",
+      "source": "data/curation_batches/v0.1.5/div_011_dvd_add_sub.lean",
+      "expected_type": "∀ (a b c : ℤ) (hab : a ∣ b) (hac : a ∣ c), a ∣ b + c ∧ a ∣ b - c",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_005",
+      "theorem": "AuditReference1.AdditionalReferences.pow_seven_sub_one_dvd_six",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), 6 ∣ 7 ^ n - 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_007",
+      "theorem": "AuditReference1.AdditionalReferences.sum_squares_closed_form",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_008",
+      "theorem": "AuditReference1.AdditionalReferences.positive_nat_sum_distinct_powers_two",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ) (hn : 1 ≤ n), ∃ s : Finset ℕ, n = ∑ k ∈ s, 2 ^ k",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "ind_009",
+      "theorem": "AuditReference1.AdditionalReferences.hockey_stick_binomial_identity",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), (∑ k ∈ Finset.range (n + 1), Nat.choose (4 + k) k) = Nat.choose (5 + n) n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "mod_006",
+      "theorem": "AuditReference13.largest_modulus_sixteen_twentyfive",
+      "source": "data/curation_batches/v0.1.8/mod_006_largest_modulus.lean",
+      "expected_type": "Nat.ModEq 9 16 25 ∧ ∀ n : ℕ, 0 < n → Nat.ModEq n 16 25 → n ≤ 9",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "div_012",
+      "theorem": "AuditReference12.diophantine_six_ten",
+      "source": "data/curation_batches/v0.1.8/div_012_diophantine.lean",
+      "expected_type": "∀ (x y : ℤ), 6 * x + 10 * y = 32 ↔ ∃ k : ℤ, x = 2 - 5 * k ∧ y = 2 + 3 * k",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_power_add",
+      "theorem": "AuditReference14.study_a_power_add",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a m n : ℕ), a ^ (m + n) = a ^ m * a ^ n",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_euclidean",
+      "theorem": "AuditReference14.study_a_euclidean",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℤ), a % b + b * (a / b) = a",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_choose_symmetry",
+      "theorem": "AuditReference14.study_a_choose_symmetry",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n k : ℕ) (h : k ≤ n), n.choose k = n.choose (n - k)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_abs_product",
+      "theorem": "AuditReference14.study_a_abs_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), |x * y| = |x| * |y|",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_sqrt_square",
+      "theorem": "AuditReference14.study_a_sqrt_square",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (h : 0 ≤ x), (Real.sqrt x) ^ 2 = x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_truncated_sub",
+      "theorem": "AuditReference14.study_a_truncated_sub",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), a - b + b = a",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_inverse_difference",
+      "theorem": "AuditReference14.study_a_inverse_difference",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0), 1 / x - 1 / y = (y - x) / (x * y)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_gcd_lcm",
+      "theorem": "AuditReference14.study_a_gcd_lcm",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ), Nat.gcd a b * Nat.lcm a b = a * b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_euclid",
+      "theorem": "AuditReference14.study_d_euclid",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p a b : ℕ) (hp : p.Prime), p ∣ a * b ↔ p ∣ a ∨ p ∣ b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_unbounded_primes",
+      "theorem": "AuditReference14.study_d_unbounded_primes",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), ∃ p : ℕ, n ≤ p ∧ p.Prime",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_bezout",
+      "theorem": "AuditReference14.study_d_bezout",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℤ), ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_coprime_successor",
+      "theorem": "AuditReference14.study_d_coprime_successor",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), Nat.Coprime n (n + 1)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_prime_factorial",
+      "theorem": "AuditReference14.study_d_prime_factorial",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p n : ℕ) (hp : p.Prime), p ∣ n.factorial ↔ p ≤ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_mersenne_gcd",
+      "theorem": "AuditReference14.study_d_mersenne_gcd",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b c : ℕ), Nat.gcd (a ^ b - 1) (a ^ c - 1) = a ^ Nat.gcd b c - 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_prime_parity",
+      "theorem": "AuditReference14.study_d_prime_parity",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p : ℕ) (hp : p.Prime), p = 2 ∨ Odd p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_dvd_antisymmetry",
+      "theorem": "AuditReference14.study_d_dvd_antisymmetry",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ) (hab : a ∣ b) (hba : b ∣ a), a = b",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_coprime_power",
+      "theorem": "AuditReference14.study_d_coprime_power",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b n : ℕ) (hn : 0 < n), Nat.Coprime (a ^ n) b ↔ Nat.Coprime a b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_frobenius",
+      "theorem": "AuditReference14.study_d_frobenius",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n a b : ℕ) (h : Nat.Coprime m n) (ha : a ≠ 0) (hb : b ≠ 0), m * a + n * b ≠ m * n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_factorial",
+      "theorem": "AuditReference14.study_i_factorial",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), (n + 1).factorial = (n + 1) * n.factorial",
+      "axioms": [],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_fibonacci",
+      "theorem": "AuditReference14.study_i_fibonacci",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), Nat.fib (n + 2) = Nat.fib n + Nat.fib (n + 1)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_bernoulli",
+      "theorem": "AuditReference14.study_i_bernoulli",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (n : ℕ) (h : -1 ≤ x), 1 + (n : ℝ) * x ≤ (1 + x) ^ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_vandermonde",
+      "theorem": "AuditReference14.study_i_vandermonde",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n k : ℕ), (m + n).choose k = ∑ i ∈ Finset.range (k + 1), m.choose i * n.choose (k - i)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_fermat_product",
+      "theorem": "AuditReference14.study_i_fermat_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), (∏ k ∈ Finset.range n, Nat.fermatNumber k) = Nat.fermatNumber n - 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_amgm",
+      "theorem": "AuditReference14.study_q_amgm",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), 2 * x * y ≤ x ^ 2 + y ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_cauchy",
+      "theorem": "AuditReference14.study_q_cauchy",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b c d : ℝ), (a * c + b * d) ^ 2 ≤ (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_triangle",
+      "theorem": "AuditReference14.study_q_triangle",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), |x + y| ≤ |x| + |y|",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_reciprocal",
+      "theorem": "AuditReference14.study_q_reciprocal",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (hx : 0 < x) (hxy : x ≤ y), 1 / y ≤ 1 / x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_log",
+      "theorem": "AuditReference14.study_q_log",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (b n : ℕ) (hn : n ≠ 0), b ^ Nat.log b n ≤ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_sqrt_monotone",
+      "theorem": "AuditReference14.study_q_sqrt_monotone",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (h : x ≤ y), Real.sqrt x ≤ Real.sqrt y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_exp_tangent",
+      "theorem": "AuditReference14.study_q_exp_tangent",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ), x + 1 ≤ Real.exp x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_sine",
+      "theorem": "AuditReference14.study_q_sine",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (hx : 0 ≤ x), Real.sin x ≤ x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_quotient",
+      "theorem": "AuditReference14.study_q_quotient",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n : ℕ), m / n ≤ m",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_crt",
+      "theorem": "AuditReference14.study_m_crt",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b n m : ℕ) (h : Nat.ModEq (Nat.gcd n m) a b), ∃ k : ℕ, Nat.ModEq n k a ∧ Nat.ModEq m k b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_cancel",
+      "theorem": "AuditReference14.study_m_cancel",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m c a b : ℕ) (hm : 0 < m) (h : Nat.ModEq m (c * a) (c * b)), Nat.ModEq (m / Nat.gcd m c) a b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_canonical",
+      "theorem": "AuditReference14.study_m_canonical",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m a b : ℕ) (ha : a < m) (hb : b < m) (h : Nat.ModEq m a b), a = b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_fermat",
+      "theorem": "AuditReference14.study_m_fermat",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p : ℕ) (hp : p.Prime) (a : ℤ), Int.ModEq (p : ℤ) (a ^ p) a",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_wilson",
+      "theorem": "AuditReference14.study_m_wilson",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p : ℕ) [Fact p.Prime], ((p - 1).factorial : ZMod p) = -1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_power",
+      "theorem": "AuditReference14.study_m_power",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b m : ℤ) (n : ℕ) (h : Int.ModEq m a b), Int.ModEq m (a ^ n) (b ^ n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_gcd_obstruction",
+      "theorem": "AuditReference14.study_m_gcd_obstruction",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b m : ℤ) (h : ¬ (Int.gcd a m : ℤ) ∣ b), ¬ ∃ x : ℤ, Int.ModEq m (a * x) b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_residue_product",
+      "theorem": "AuditReference14.study_m_residue_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b m : ℕ), (a * b) % m = ((a % m) * (b % m)) % m",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_trig_unit",
+      "theorem": "AuditReference14.study_a_trig_unit",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ), (Real.sin x) ^ 2 + (Real.cos x) ^ 2 = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_log_product",
+      "theorem": "AuditReference14.study_a_log_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0), Real.log (x * y) = Real.log x + Real.log y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_exp_add",
+      "theorem": "AuditReference14.study_a_exp_add",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), Real.exp (x + y) = Real.exp x * Real.exp y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_a_min_max",
+      "theorem": "AuditReference14.study_a_min_max",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ), min x y + max x y = x + y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_factorization",
+      "theorem": "AuditReference14.study_d_factorization",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ) (ha : a ≠ 0) (hb : b ≠ 0), (a * b).factorization = a.factorization + b.factorization",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_totient_sum",
+      "theorem": "AuditReference14.study_d_totient_sum",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), (∑ d ∈ n.divisors, Nat.totient d) = n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_telescope",
+      "theorem": "AuditReference14.study_i_telescope",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (f : ℕ → ℤ) (n : ℕ), (∑ i ∈ Finset.range n, (f (i + 1) - f i)) = f n - f 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_alternating_binomial",
+      "theorem": "AuditReference14.study_i_alternating_binomial",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ) (hn : n ≠ 0), (∑ k ∈ Finset.range (n + 1), ((-1 : ℤ) ^ k * (n.choose k : ℤ))) = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_integer_sqrt",
+      "theorem": "AuditReference14.study_q_integer_sqrt",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), Nat.sqrt n ^ 2 < n + 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_finite_inclusion",
+      "theorem": "AuditReference14.study_q_finite_inclusion",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (s t : Finset ℕ) (h : s ⊆ t), s.card ≤ t.card",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_log_tangent",
+      "theorem": "AuditReference14.study_q_log_tangent",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (hx : 0 < x), Real.log x ≤ x - 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_m_euler",
+      "theorem": "AuditReference14.study_m_euler",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a m : ℕ) (h : Nat.Coprime a m), Nat.ModEq m (a ^ Nat.totient m) 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_rational_density",
+      "theorem": "AuditReference15.study_q_rational_density",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (h : x < y), ∃ q : ℚ, x < q ∧ (q : ℝ) < y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_stirling",
+      "theorem": "AuditReference15.study_i_stirling",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (n k : ℕ), Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k",
+      "axioms": [],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_i_catalan",
+      "theorem": "AuditReference15.study_i_catalan",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), catalan (n + 1) = ∑ i : Fin n.succ, catalan i * catalan (n - i)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_rearrangement",
+      "theorem": "AuditReference15.study_q_rearrangement",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (a b c d : ℝ) (hab : a ≤ b) (hcd : c ≤ d), a * d + b * c ≤ a * c + b * d",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_q_pigeonhole",
+      "theorem": "AuditReference15.study_q_pigeonhole",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (s t : Finset ℕ) (f : ℕ → ℕ) (h : t.card < s.card) (hm : ∀ x ∈ s, f x ∈ t), ∃ x ∈ s, ∃ y ∈ s, x ≠ y ∧ f x = f y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_prime_factor_exists",
+      "theorem": "AuditReference15.study_d_prime_factor_exists",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ) (hn : 2 ≤ n), ∃ p : ℕ, p.Prime ∧ p ∣ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    {
+      "candidate_id": "lib_d_euclidean_gcd",
+      "theorem": "AuditReference15.study_d_euclidean_gcd",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (m n : ℕ), Nat.gcd m n = Nat.gcd (n % m) m",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    }
+  ],
+  "verified_count": 96,
+  "scope": "Reference proposition truth and exact theorem types, NOT English equivalence"
+}

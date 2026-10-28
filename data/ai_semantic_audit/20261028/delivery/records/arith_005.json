@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "arith_005",
+    "nl_statement": "Explain why the binomial coefficient “n choose 0” equals 1 and the binomial coefficient “n choose n” equals 1.",
+    "expected_lean_statement": "theorem choose_zero_and_self (n : ℕ) : Nat.choose n 0 = 1 ∧ Nat.choose n n = 1",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_005",
+    "subject_sha256": "222617564336d12fc12c2eeeabbcb91de6383dd4dc38a757d35f73d27bcd0cd3",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n is implicit in choosing objects; the two binomial boundary equalities form a conjunction, including n=0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_005.json",
+      "status": "completed",
+      "response_sha256": "18c629860bf866f8b147b7935327ebdca5eda741f537c8466681f57bd403b6b7"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The binomial coefficient n choose k is defined as the number of ways to choose k elements from a set of n distinct elements. By definition, choosing none elements (0 elements) from a set is exactly one way (the empty set), hence n choose 0 equals 1. Similarly, choosing all elements (n elements) from a set is exactly one way (the set itself), hence n choose n equals 1.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_005.json",
+      "response_sha256": "77bbcded333ce8ad2229abbf29d1c2abda01a8e76e16612a729e47e6cdb1b87c"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_005",
+      "theorem": "AuditReference8.choose_zero_and_self",
+      "source": "data/curation_batches/v0.1.4/arith_005_binomial_boundary_values.lean",
+      "expected_type": "∀ (n : ℕ), Nat.choose n 0 = 1 ∧ Nat.choose n n = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_005",
+      "subject_sha256": "222617564336d12fc12c2eeeabbcb91de6383dd4dc38a757d35f73d27bcd0cd3",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Both conjuncts at n=0 included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

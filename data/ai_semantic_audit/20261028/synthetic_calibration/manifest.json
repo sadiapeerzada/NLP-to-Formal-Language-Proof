@@ -1,0 +1,67 @@
+{
+  "kind": "development_only_synthetic_judge_calibration_not_study",
+  "prepared_at": "2026-10-28T07:36:35.674042+00:00",
+  "reviewer_kind": "ai_only_not_independent_human",
+  "candidate_count": 12,
+  "selection": {
+    "review_model": "mlx-community/Phi-4-mini-instruct-4bit",
+    "review_revision": "ac1c269cb4222a4e136a3d09edad301056c1f36a",
+    "upstream_revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+    "primary_experimental_model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "model_family_separation": "Phi vs Qwen; separate weights and training lineage; independence of errors is NOT established",
+    "selection": "Second audit model added after observing Phi-3.5 malformed responses and unsupported objections. Review-model/prompt adaptation is disclosed; no experimental repair model or prompts were tuned. New Phi generation is still not independent human review.",
+    "paid_inference": false
+  },
+  "subjects_sha256": "203ebfce45fad1a5aa50bc6752d3bc7fb7f61c560d9fbe7b8dc7744656eb3d7d",
+  "subject_bindings": {
+    "syn_01": "aa0d02ccb4d09449766d0907191497c1739a47f47ad94361b8911038a931eada",
+    "syn_02": "639c57dc41110cecc798252bf986fdaf1a59f9e245f1fb359cb8022832047ce7",
+    "syn_03": "a654510b3823ec3f971b02204ce4f75147e338e6d7f00bf582131e8a986e84b5",
+    "syn_04": "3bc1676a4bd01c8a8549506edadc05111f353e6e954c633543799de45980dd67",
+    "syn_05": "e95fd561c109ad4a8bd90efeacae71c67aaefe7bd4a7ca98a4c85415c4c5271a",
+    "syn_06": "1c32d66864027db6eac8323cbf21dd71e8310d5776eebb142f34d78f069ac365",
+    "syn_07": "d51bbd7a626ae45b149f97dfbf509e6497ba9ff8978ca2e4cc5083addb8f3d2f",
+    "syn_08": "02c9d642832b4d1a9ce96fbca693b34d03f7cf1bc952e19f62723d8590fb6dc7",
+    "syn_09": "70d3a48512983e20e515cd3beb3d16a5035903a860ceb8b023e9a54d4bac6e14",
+    "syn_10": "14509275c45335f6e6e991d148bb24d30244694cebf54f76ac006857c857e14f",
+    "syn_11": "910169095dd03ccb7a22b026991127fd8a765406a6f2a30cbbdab6d75021dfdb",
+    "syn_12": "26de75dd2ac425ad2103637824c24f8ee7b3e31e71acbe53f46ce17478eafe07"
+  },
+  "prompt_sha256": {
+    "syn_01": "d490861c83d61ac1358daf98d67fa1bad7e15d3d800092d0383dca8c69b7582c",
+    "syn_02": "498038ffbf758c59c33ae599e1e1cf696f55f52ce89378205fff3da07c686457",
+    "syn_03": "d949ae829a47b030063d8d8bbed998571f3dd6cfbab4c5da15ed9c702cf72632",
+    "syn_04": "cd928113c1f18342d6a095a77023b58e56bfece7528e57a7f7e139d45841bdc8",
+    "syn_05": "93be4b01ccb2e66ec1f16b0404cac445c9d5157f3adc5697e00ba18ccab50218",
+    "syn_06": "9bded773f4bdbd4b7efe45a1377dac2df81162399bde7890a91d411546fbb81d",
+    "syn_07": "11ee43033bb6a71c927e4effb7e8456606a48e62dc20789947a5ecf7b8e81a2c",
+    "syn_08": "832377ccfa9d6e17e93b7be1fefd4a0ca482a1b3906fe675e442e8716c29363c",
+    "syn_09": "ec7919823635ce76666560b15ba618f10eda0a60721668b32923ed110f9368bd",
+    "syn_10": "8a089f64182c99dbd2c75bcffc237e648676dd3186e453da648a4a18dc5cb7f7",
+    "syn_11": "0254ded184bb60c333121dd45b34848c1da111936f4ddd1644f8a61b792c40d5",
+    "syn_12": "c55a37d0d539253c6b861931bdbec41e04786ae45f0433d04f2eaf7183ced74b"
+  },
+  "inventory_sha256": "ad4b6b6ff0918253105b7829ce77030a66e9d68109803d15062db3a511850a61",
+  "source_sha256": {
+    "scripts/ai_semantic_audit.py": "9b2926772c46c293363efc7bd8e211155d2a30d67366948efe02c447025c8327",
+    "src/ai_semantic_audit.py": "98afd1589e0b7baa7a42bacbff7d8813cdf54d851f01007f6217512c20e1e490",
+    "src/local_llm_client.py": "a3d3a68fea4d59184538fa518da2755cb756a6129d41d1332472db1bf2f8941e",
+    "prompts/ai_semantic_audit_v2.txt": "476179713ee8b455f3483aff96ad4fe7711eeb1043c1f498ef74cb4ce0895569",
+    "scripts/ai_audit_calibration.py": "e75d20eb7148ebb3d09a12f4b76268504494a04815cea6b72fbaccbe1acba6de"
+  },
+  "settings": {
+    "seed": 284729,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_completion_tokens": 900,
+    "max_context_tokens": 8192
+  },
+  "execution_order": "stored dataset order; one independent conversation per candidate",
+  "visibility": "English, theorem type, imports and explicit custom definitions only; no reference proofs, previous labels or split assignments",
+  "paid_inference_requests": 0,
+  "study_gate_changes": false,
+  "limitations": [
+    "Synthetic coding-AI-authored controls; not human-adjudicated gold. No statistical accuracy or generalization claim.",
+    "Controls include strength mismatches even when both propositions are true. Literal quantifier preservation is the declared audit criterion."
+  ]
+}

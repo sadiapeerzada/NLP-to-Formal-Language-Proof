@@ -1,0 +1,75 @@
+{
+  "subject": {
+    "id": "arith_002",
+    "nl_statement": "For any natural numbers a and b, a squared minus b squared equals (a + b) times (a - b), assuming a is at least b.",
+    "expected_lean_statement": "theorem sq_sub_sq_nat (a b : ℕ) (h : b ≤ a) : a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_002",
+    "subject_sha256": "501a999c3cc55a27df39dad131b5a9b5eb9995255bc58c4eb4f673ed2b28c22d",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural a,b with b<=a in both texts; truncated subtraction agrees with ordinary nonnegative difference under this premise."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 22 column 1 (char 1397)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_002.json",
+      "status": "completed",
+      "response_sha256": "ed2d8c142d0736285bc20b5ddcc0cd96cd0db1ca93c0b9d592504870ace0889c"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "Unterminated string starting at: line 4 column 14 (char 95)",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_002.json",
+      "response_sha256": "05ae37e822b7bb972d50e74ea880e98e3af77e71b7663066a253856bc4bbbcb8"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_002",
+      "theorem": "AuditReference0.sq_sub_sq_nat",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), a ^ 2 - b ^ 2 = (a + b) * (a - b)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_002",
+      "subject_sha256": "501a999c3cc55a27df39dad131b5a9b5eb9995255bc58c4eb4f673ed2b28c22d",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 45,
+      "filtered_by_assumptions": 36,
+      "failures": [],
+      "note": "Natural subtraction; b<=a only.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

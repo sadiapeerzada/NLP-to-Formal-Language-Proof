@@ -1,0 +1,106 @@
+{
+  "subject": {
+    "id": "ind_001",
+    "nl_statement": "For any natural number n, the sum of the first n natural numbers equals n times (n + 1) divided by 2.",
+    "expected_lean_statement": "theorem gauss_sum (n : ℕ) : 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_001",
+    "subject_sha256": "c65933d0201289840420c82df4ad8378f96d5fb9b3177be74ccb762c2e60a1e3",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "uncertain",
+      "note": "Inclusive range(n+1) includes 0 and n. Multiplying the sum by two avoids division and is equivalent to the stated closed form under the usual 1..n convention, but the endpoint phrase is ambiguous.",
+      "issue": "The phrase first n natural numbers may mean 0 through n-1 or 1 through n. The stated n(n+1)/2 formula indicates the latter, and Lean sums 0 through n. The intended usual convention is compatible but the English should explicitly state endpoints before benchmark freeze.",
+      "proposed_english": "For every natural number n, the sum of the integers from 1 through n (the empty sum when n=0) equals n(n+1)/2."
+    },
+    "phi_3_5": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "universal quantifier on n, existential quantifier on the sum",
+        "domains": "natural numbers, integers, real numbers",
+        "assumptions": "n is a natural number",
+        "equivalence": "the proposition does not account for the strictness of the sum operation or the definition of natural numbers within Mathlib",
+        "strength": "the proposition is a weaker form of the general theorem, lacking explicit domain specification and operation definitions",
+        "boundary_cases": "undefined for n = 0, potentially leading to incorrect conclusions",
+        "counterexample_search": "n = 0, where the proposition fails to hold",
+        "explanation": "the proposition lacks clarity on the definition of 'sum' and does not match the formalized theorem in Mathlib, which requires explicit domain specification and operation definitions",
+        "issues": [
+          "implicit domain of natural numbers",
+          "lack of definition for the sum operation",
+          "omission of zero and negative cases",
+          "absence of operation coercions",
+          "missing assumptions about the structure of natural numbers",
+          "no mention of the totalization of operations in Mathlib",
+          "potential misunderstanding of the equivalence between the English statement and the formalized theorem"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_001.json",
+      "status": "completed",
+      "response_sha256": "bd1ef819430add7f3cdde37c8020d1b5f64c334e8a908d0c37d4b2b3b55c688e"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "ℕ and (n + 1) in ℕ",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement accurately describes a well-known result in elementary number theory that is equivalent to the Lean theorem provided. Both the English statement and the Lean statement assert that the sum of the first n natural numbers (which is a closed interval starting at 1 and ending at n) is equal to n multiplied by (n + 1) divided by 2. This is a statement of equivalence as both lead to the same conclusion.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_001.json",
+      "response_sha256": "457a36f4e504f096141b800e036f96435b656d441a62880b99d2c1412a994bc1"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_001",
+      "theorem": "AuditReference0.gauss_sum",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), 2 * (Finset.range (n + 1)).sum id = n * (n + 1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_001",
+      "subject_sha256": "c65933d0201289840420c82df4ad8378f96d5fb9b3177be74ccb762c2e60a1e3",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Chosen interpretation is 1 through n, NOT proof that ambiguous English has this meaning.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication.",
+      "The phrase first n natural numbers may mean 0 through n-1 or 1 through n. The stated n(n+1)/2 formula indicates the latter, and Lean sums 0 through n. The intended usual convention is compatible but the English should explicitly state endpoints before benchmark freeze."
+    ],
+    "proposed_action": "propose_clarification",
+    "posthoc_quality_flags": {
+      "phi_3_5": [],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

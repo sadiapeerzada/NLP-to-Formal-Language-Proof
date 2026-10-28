@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "div_011",
+    "nl_statement": "For integers a, b, and c, if a divides both b and c, then a divides both b + c and b − c.",
+    "expected_lean_statement": "theorem dvd_add_sub_int (a b c : ℤ) (hab : a ∣ b) (hac : a ∣ c) : a ∣ b + c ∧ a ∣ b - c",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_011",
+    "subject_sha256": "fcee54a93397ba721c56b82cf9049b3c975261608c84740f27a817acefe614cd",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Integer a,b,c and both divisibility premises; both sum and difference conclusions are conjoined."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_011.json",
+      "status": "completed",
+      "response_sha256": "7577999115f322482e082592b742b5738e58c19e578787831bac2a5f3247ffea"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "Universal (∀) versus Existential (∃)",
+        "domains": "Integers (ℤ) versus Natural numbers (ℕ)",
+        "assumptions": "Divisibility (∣) versus Divides (|)",
+        "equivalence": "Conclusion is equivalent to expected theorem",
+        "strength": "stronger",
+        "boundary_cases": "Endpoints (0, min, max) and sign check",
+        "counterexample_search": "Specific candidate example or no found counterexample",
+        "explanation": "The English statement implies a universal claim about integers while Lean expresses a specific case (natural numbers).",
+        "issues": [
+          "Type mismatch (divides versus divides)",
+          "End behavior (zero and negative numbers) ignored in Lean theorem"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_011.json",
+      "response_sha256": "be2031031b51d15a026f36dc1a322962b295143fbc2b839ba5ae9c65a0988f48"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_011",
+      "theorem": "AuditReference10.dvd_add_sub_int",
+      "source": "data/curation_batches/v0.1.5/div_011_dvd_add_sub.lean",
+      "expected_type": "∀ (a b c : ℤ) (hab : a ∣ b) (hac : a ∣ c), a ∣ b + c ∧ a ∣ b - c",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_011",
+      "subject_sha256": "fcee54a93397ba721c56b82cf9049b3c975261608c84740f27a817acefe614cd",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 541,
+      "filtered_by_assumptions": 1656,
+      "failures": [],
+      "note": "Integer sum and difference.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

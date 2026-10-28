@@ -1,0 +1,83 @@
+{
+  "subject": {
+    "id": "lib_a_sqrt_square",
+    "nl_statement": "For a nonnegative real number x, the square of its principal square root is x.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_sqrt_square (x : ℝ) (h : 0 ≤ x) : (Real.sqrt x) ^ 2 = x",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_sqrt_square",
+    "subject_sha256": "aabfab7dd32fd6d1d6a04578dac4734220646066eed56149dfcfc3a9cc497a34",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Real x with nonnegativity premise; principal sqrt squared equals x, not sqrt(x^2)=x."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 19 column 1 (char 1146)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_sqrt_square.json",
+      "status": "completed",
+      "response_sha256": "01491f8172132bbd2cd21e9b958f162f45d41bf56068ea5463c777bcbcf79472"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "Real numbers",
+        "assumptions": "x is a nonnegative real number",
+        "equivalence": "conclusion is equivalent",
+        "strength": "same",
+        "boundary_cases": "x is zero",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The statement is true as per Mathlib conventions and is equivalent to the expected Lean statement.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_sqrt_square.json",
+      "response_sha256": "218db0a2f66df2c21b1d3f92629b57a161dbfc962acd18810fc6e09139c61e54"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_sqrt_square",
+      "theorem": "AuditReference14.study_a_sqrt_square",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (h : 0 ≤ x), (Real.sqrt x) ^ 2 = x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_sqrt_square",
+      "subject_sha256": "aabfab7dd32fd6d1d6a04578dac4734220646066eed56149dfcfc3a9cc497a34",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 7,
+      "filtered_by_assumptions": 6,
+      "failures": [],
+      "note": "Floating approximation, x>=0 only; not exact real verification.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

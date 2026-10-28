@@ -1,0 +1,82 @@
+{
+  "subject": {
+    "id": "lib_m_crt",
+    "nl_statement": "If natural numbers a and b are congruent modulo gcd(n,m), there exists a natural number congruent to a modulo n and to b modulo m.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_m_crt (a b n m : ℕ) (h : Nat.ModEq (Nat.gcd n m) a b) : ∃ k : ℕ, Nat.ModEq n k a ∧ Nat.ModEq m k b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_m_crt",
+    "subject_sha256": "28f331598fecca5ac7728392694d20c625188d560a9eefbbc7b2b6cd80b8d7f6",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b,n,m; congruence modulo gcd(n,m) implies one existential natural k satisfying both requested congruences, including zero-modulus equality constraints."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each a and b, one k",
+        "domains": "ℕ",
+        "assumptions": "a and b congruent modulo gcd(n,m)",
+        "equivalence": "conclusion a congruent modulo n and b congruent modulo m",
+        "strength": "same",
+        "boundary_cases": "n and m are natural numbers",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The English statement asserts a property of natural numbers and a conclusion about a third number k. The Lean theorem expresses this property formally. Both are equivalent in meaning and strength.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_m_crt.json",
+      "response_sha256": "abfa2342f5c6ddd4ef9a698b4c0c3fe2e828096c7fcf9ed0bc626d3f35937811"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_m_crt",
+      "theorem": "AuditReference14.study_m_crt",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b n m : ℕ) (h : Nat.ModEq (Nat.gcd n m) a b), ∃ k : ℕ, Nat.ModEq n k a ∧ Nat.ModEq m k b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_m_crt",
+      "subject_sha256": "28f331598fecca5ac7728392694d20c625188d560a9eefbbc7b2b6cd80b8d7f6",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 443,
+      "filtered_by_assumptions": 182,
+      "failures": [],
+      "note": "Enumerated witnesses include equality constraints for modulus zero; covers finite input grid.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "proposed_action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

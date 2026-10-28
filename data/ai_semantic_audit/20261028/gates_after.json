@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-28T07:56:35.457906+00:00",
+  "existing_gate_files_sha256": {
+    "src/semantic_review.py": "02a1ca943f5cfb0cd48436b7c2d06eb9bdd229e4b3eecf2ee95d38896b142007",
+    "src/dataset_validation.py": "56b9cfbcd40f153a110bb010625ed3fa3510e15f479772bae7e59b7e354d937a",
+    "src/local_protocol.py": "188832a628c665868438be991974f81bcb5a3a653818200fcd7fe8f5d2626b5d",
+    "src/repair_experiment.py": "5c687e1acef781a46fc994d8db76d96da6e92dc9f3337d3e2415f5253ad94fed",
+    "configs/repair_experiment_local_v0.3.0.json": "198466d7396606391547c29f0e7d9b70b011d93abc1236c60d9e1f1ee0fb0b92",
+    "data/research_dataset_manifest_v0.1.0.json": "7875d7e8666eab82bb5faebf6965f94153d0801fe30b8ed9bbd386f7e9623908"
+  },
+  "existing_gate_files_unchanged": true,
+  "eligible_split_counts": {
+    "test": 0,
+    "development": 0
+  },
+  "policy_change_approved": false,
+  "human_reviews_added": 0,
+  "heldout_runs": 0
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "posthoc_coding_ai_selected_claim_with_exact_automated_arithmetic",
+  "at": "2026-10-28T07:46:22.078822+00:00",
+  "claims": [
+    {
+      "candidate_id": "div_002",
+      "reviewer": "Phi-4-mini",
+      "response_sha256": "3f29f788aaf5cf90f6cba38efec1495d45f6554f987b2696c56ebe53c31f0745",
+      "actual_claim": "The statement is not true for all natural numbers n and therefore cannot be a faithful statement in Lean. It is equivalent to stating that n times (n + 1) is always even, which is not true as counterexample n = 1 (1 * (1 + 1) is not even).",
+      "coding_ai_selected_claim_check": "The model explicitly asserts n=1 is a counterexample because 1*(1+1) is not even.",
+      "python_evaluation": {
+        "n": 1,
+        "product": 2,
+        "product_mod_2": 0,
+        "even": true
+      },
+      "finding": "Claimed counterexample is refuted by exact arithmetic. This shows a judge error, not a dataset theorem counterexample.",
+      "lean_support": "Fresh all_references.lean includes the universal n_mul_succ_even theorem and exact-type check with approved axioms."
+    }
+  ]
+}

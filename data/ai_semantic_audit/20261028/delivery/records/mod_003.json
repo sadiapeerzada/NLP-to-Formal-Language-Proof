@@ -1,0 +1,95 @@
+{
+  "subject": {
+    "id": "mod_003",
+    "nl_statement": "The square of any natural number is congruent to 0 or 1 modulo 3.",
+    "expected_lean_statement": "theorem sq_mod_three (n : ℕ) : n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_003",
+    "subject_sha256": "79fa945357ead1007231d570779b4638f0e850d2f8240786b47e9ceedc396cba",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural input and residue disjunction 0 or 1 modulo three match the English."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: quantifiers",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_003.json",
+      "status": "completed",
+      "response_sha256": "49be545b567547107ceb9738e6c1c2d4c5723f5313ca4e7e1ae29b86565acc34"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a specific pattern for the square of natural numbers modulo 3, while the Lean theorem expresses this pattern as an equivalence of a square modulo 3 being either 0 or 1. The Lean statement is stronger as it directly asserts an equivalence rather than a pattern observation. There is an inherent boundary case at n=0 and n=1, but no counterexample is found as these cases satisfy the statement directly. The English statement assumes a pattern that is true for all natural numbers while the Lean statement directly asserts this pattern as an equivalence.",
+        "issues": [
+          "The English statement uses 'congruent' while the Lean statement uses 'mod'.",
+          "The English statement uses 'or' while the Lean statement uses a disjunction operator (∨).",
+          "The English statement uses 'or' while the Lean statement uses an equivalence operator (≡)."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_003.json",
+      "response_sha256": "2287f4d1e26f58e73c1af573e82d279f38722db56b85517509b596726e6ef70d"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_003",
+      "theorem": "AuditReference0.sq_mod_three",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n ^ 2 % 3 = 0 ∨ n ^ 2 % 3 = 1",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_003",
+      "subject_sha256": "79fa945357ead1007231d570779b4638f0e850d2f8240786b47e9ceedc396cba",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Natural remainder.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

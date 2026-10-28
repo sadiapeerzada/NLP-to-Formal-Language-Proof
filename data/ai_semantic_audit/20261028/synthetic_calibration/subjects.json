@@ -1,0 +1,110 @@
+[
+  {
+    "id": "syn_01",
+    "nl_statement": "For every natural n, n plus zero equals n.",
+    "expected_lean_statement": "theorem control (n : ℕ) : n + 0 = n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_02",
+    "nl_statement": "For every natural n, n plus zero equals n.",
+    "expected_lean_statement": "theorem control (n : ℕ) : n + 1 = n + 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_03",
+    "nl_statement": "Every natural number is strictly greater than zero.",
+    "expected_lean_statement": "theorem control (n : ℕ) : 0 ≤ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_04",
+    "nl_statement": "For every natural n at least one, n minus one plus one equals n.",
+    "expected_lean_statement": "theorem control (n : ℕ) (h : 1 ≤ n) : n - 1 + 1 = n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_05",
+    "nl_statement": "For every natural n, n minus one plus one equals n.",
+    "expected_lean_statement": "theorem control (n : ℕ) (h : 1 ≤ n) : n - 1 + 1 = n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_06",
+    "nl_statement": "For every integer x, there exists an integer y with y greater than x.",
+    "expected_lean_statement": "theorem control (x : ℤ) : ∃ y : ℤ, x < y",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_07",
+    "nl_statement": "There exists a natural number greater than every natural number.",
+    "expected_lean_statement": "theorem control : ∀ n : ℕ, ∃ m : ℕ, n < m",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_08",
+    "nl_statement": "For every integer x, x squared is nonnegative.",
+    "expected_lean_statement": "theorem control (x : ℤ) : 0 ≤ x ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_09",
+    "nl_statement": "For natural a and b, if a divides b and b divides a, then a equals b.",
+    "expected_lean_statement": "theorem control (a b : ℕ) (h : a ∣ b) (g : b ∣ a) : a = b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_10",
+    "nl_statement": "For natural n, the sum of the numbers from zero through n equals n(n+1)/2.",
+    "expected_lean_statement": "theorem control (n : ℕ) : 2 * (∑ i ∈ Finset.range (n + 1), i) = n * (n + 1)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_11",
+    "nl_statement": "For every natural n, n is divisible by four if and only if n is divisible by two.",
+    "expected_lean_statement": "theorem control (n : ℕ) : 4 ∣ n → 2 ∣ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  {
+    "id": "syn_12",
+    "nl_statement": "For every positive integer m, zero is congruent to zero modulo m.",
+    "expected_lean_statement": "theorem control (m : ℤ) : Int.ModEq m 0 0",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  }
+]

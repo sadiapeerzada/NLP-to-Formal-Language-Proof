@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "lib_a_euclidean",
+    "nl_statement": "For any integers a and b, the remainder of a upon division by b plus b times the integer quotient equals a, including when b is zero.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_euclidean (a b : ℤ) : a % b + b * (a / b) = a",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_euclidean",
+    "subject_sha256": "58b2b19c678c9b89f5747d7e97411b9db3aae521b6de5f16a29dc16d76a4d2bc",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Both variables integers; remainder plus divisor times quotient equals dividend. English explicitly includes zero divisor and aligns with totalized Lean division."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 18 column 1 (char 1136)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_euclidean.json",
+      "status": "completed",
+      "response_sha256": "1a6456cbf6179c626d44e27ad43944209474ffe1c56ff62d4cb631245d3005c7"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each a and b",
+        "domains": "integers",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "when b is zero",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement implies a property of division and subtraction that is not universally true in Lean due to the truncation of division and handling of remainders differently than expected in typical arithmetic sense.",
+        "issues": [
+          "Division and subtraction operations in Lean may not directly correspond to their usual meanings in mathematics due to handling of remainders and division by zero.",
+          "The expected Lean statement assumes division and subtraction operations that lead to a stronger conclusion than the one provided in the English statement."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_euclidean.json",
+      "response_sha256": "80106b4bfbe1e1c49803d4af986c8a6816edd97675853bf9397a34e8f8ae3847"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_euclidean",
+      "theorem": "AuditReference14.study_a_euclidean",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℤ), a % b + b * (a / b) = a",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_euclidean",
+      "subject_sha256": "58b2b19c678c9b89f5747d7e97411b9db3aae521b6de5f16a29dc16d76a4d2bc",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 169,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Lean Euclidean remainder nonnegative for nonzero negative divisors; /0=0,%0=a.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

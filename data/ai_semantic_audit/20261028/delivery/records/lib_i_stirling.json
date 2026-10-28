@@ -1,0 +1,86 @@
+{
+  "subject": {
+    "id": "lib_i_stirling",
+    "nl_statement": "The Stirling numbers of the second kind satisfy S(n+1,k+1)=(k+1)*S(n,k+1)+S(n,k) for natural n and k.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_i_stirling (n k : ℕ) : Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_i_stirling",
+    "subject_sha256": "d54323c53ec31cd66442608400cdc616fd4ef11232c5e6d6f5784bd926e6b018",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n,k; second-kind Stirling recurrence with coefficient k+1 and indices n+1,k+1 matches, including zero boundaries."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement outlines a recursive formula for Stirling numbers of the second kind, while the Lean theorem expresses this relationship using Nat.stirlingSecond. Both correctly assert that S(n+1,k+1) equals (k+1)*S(n,k+1)+S(n,k) for natural numbers n and k. There is an equivalence in terms of mathematical conclusion and theorem strength.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_i_stirling.json",
+      "response_sha256": "bbd4f88c50f61d880208a6c46eb59316752bf5109153bb86290f3825d0ec9f5c"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_i_stirling",
+      "theorem": "AuditReference15.study_i_stirling",
+      "source": "data/curation_batches/v0.2.1/references_expanded.lean",
+      "expected_type": "∀ (n k : ℕ), Nat.stirlingSecond (n + 1) (k + 1) = (k + 1) * Nat.stirlingSecond n (k + 1) + Nat.stirlingSecond n k",
+      "axioms": [],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_i_stirling",
+      "subject_sha256": "d54323c53ec31cd66442608400cdc616fd4ef11232c5e6d6f5784bd926e6b018",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 81,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Exact recursive Stirling computation; may mirror definition.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

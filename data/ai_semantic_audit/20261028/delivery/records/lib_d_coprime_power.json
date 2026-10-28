@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "lib_d_coprime_power",
+    "nl_statement": "For natural numbers a and b and a positive natural exponent n, a^n is coprime to b if and only if a is coprime to b.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_coprime_power (a b n : ℕ) (hn : 0 < n) : Nat.Coprime (a ^ n) b ↔ Nat.Coprime a b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_coprime_power",
+    "subject_sha256": "1e8e9e6fea29f58beb2e3400571e0e871aef283fcaacd3504a8e05edf17f42b1",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b and positive natural exponent n; iff coprimality matches, with exponent-zero exception excluded."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_coprime_power.json",
+      "status": "completed",
+      "response_sha256": "f1796e351ed2281a7898065683f78d48872ed0c3373a26641f8be1b1dc3b1d9c"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "both sides",
+        "domains": "both sides",
+        "assumptions": "both sides",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in terms of mathematical meaning. Both assert that a^n is coprime to b if and only if a is coprime to b, under the assumption that n is a positive natural number. There is no difference in the scope of quantifiers, variable domains, or assumptions on either side. The conclusion on both sides is equivalent. There is a specific boundary case check on n being positive. There is no counterexample that refutes the equivalence.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_coprime_power.json",
+      "response_sha256": "94856764b91f3830ef34591a2113737c54ed89b7bf61f7ffb9035c1a56122473"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_coprime_power",
+      "theorem": "AuditReference14.study_d_coprime_power",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b n : ℕ) (hn : 0 < n), Nat.Coprime (a ^ n) b ↔ Nat.Coprime a b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_coprime_power",
+      "subject_sha256": "1e8e9e6fea29f58beb2e3400571e0e871aef283fcaacd3504a8e05edf17f42b1",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 125,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Positive exponent; n=0 excluded.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

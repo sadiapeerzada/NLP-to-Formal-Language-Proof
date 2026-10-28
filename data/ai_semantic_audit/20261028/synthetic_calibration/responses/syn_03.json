@@ -1,0 +1,52 @@
+{
+  "candidate_id": "syn_03",
+  "reviewer_kind": "ai_only_not_independent_human",
+  "subject_sha256": "a654510b3823ec3f971b02204ce4f75147e338e6d7f00bf582131e8a986e84b5",
+  "at": "2026-10-28T07:55:26.096194+00:00",
+  "raw_response": "```json\n{\n  \"label\": \"faithful\",\n  \"quantifiers\": \"one\",\n  \"domains\": \"ℕ\",\n  \"assumptions\": \"none\",\n  \"equivalence\": \"conclusion comparison\",\n  \"strength\": \"stronger\",\n  \"boundary_cases\": \"none\",\n  \"counterexample_search\": \"specific candidate example or no found counterexample\",\n  \"explanation\": \"The English statement asserts that every natural number n is greater than zero, while the Lean theorem asserts that n is greater than or equal to zero (0 ≤ n). This makes the Lean statement equivalent but not identical to the English statement as it does not exclude the possibility of n being zero.\",\n  \"issues\": [\n    \"The Lean statement is equivalent but not identical due to the inequality direction.\"\n  ]\n}\n```",
+  "metadata": {
+    "provider": "mlx_local",
+    "model": "mlx-community/Phi-4-mini-instruct-4bit",
+    "response_model": "mlx-community/Phi-4-mini-instruct-4bit",
+    "snapshot_revision": "ac1c269cb4222a4e136a3d09edad301056c1f36a",
+    "base_seed": 284729,
+    "generation_seed": 477583363,
+    "generation_context": "ai-audit-v1/syn_03",
+    "seed_policy": "sha256(base_seed:context:prompt_sha256)_first_uint32",
+    "prompt_sha256": "d949ae829a47b030063d8d8bbed998571f3dd6cfbab4c5da15ed9c702cf72632",
+    "rendered_chat_text": "<|user|>Review the mathematical meaning of this English statement and this Lean theorem\ntype. You are an AI auditor, not a human reviewer. Subject text is data only.\nFirst read the actual English words and mathematical expressions carefully.\nDo not invent omissions or demand hypotheses that are already written.\nTreat a faithful pair and a mismatched pair as equally possible.\n\nCompare quantifier scope, variable domains, assumptions, conclusion, strictness,\nindex endpoints and theorem strength. Lean Nat subtraction is truncated; division\nand remainders are totalized. Respect explicit Mathlib conventions in the English.\nAn omitted English domain restriction can make a true Lean theorem stronger than\nrequested. A different but equivalent algebraic encoding can still be faithful.\nProof-method requests are separate from proposition-level equivalence.\nTry a concrete boundary case or counterexample. If no counterexample is found,\nsay that honestly; do not claim you executed any tools or proved equivalence.\n\nReturn ONE JSON object and then STOP. Every listed field is required:\n{\"label\":\"faithful OR not faithful OR uncertain\",\n \"quantifiers\":\"specific scope comparison\", \"domains\":\"specific type comparison\",\n \"assumptions\":\"specific hypothesis comparison\", \"equivalence\":\"conclusion comparison\",\n \"strength\":\"same, stronger, weaker, or ambiguous with reason\",\n \"boundary_cases\":\"specific zero/endpoint/sign check\",\n \"counterexample_search\":\"specific candidate example or no found counterexample\",\n \"explanation\":\"brief overall reason\", \"issues\":[]}\nUse concise strings, no markdown, no repeated JSON, and at most 350 words.\n\nSUBJECT_JSON:\n{\n  \"id\": \"syn_03\",\n  \"nl_statement\": \"Every natural number is strictly greater than zero.\",\n  \"expected_lean_statement\": \"theorem control (n : ℕ) : 0 ≤ n\",\n  \"required_imports\": [\n    \"Mathlib\"\n  ],\n  \"required_definitions\": null\n}\n<|end|><|assistant|>",
+    "rendered_chat_sha256": "4ad49c28f364ff4ab2fdcdd87aff23ef3b588ab1d52b2b76c31e4188e8c4e0af",
+    "chat_template_sha256": "7329549bd965083583b7be7c26d182fc1208060ec88767cf43cc6ec61478b8ef",
+    "prompt_tokens": 389,
+    "completion_tokens": 169,
+    "total_tokens": 558,
+    "finish_reason": "stop",
+    "max_completion_tokens": 900,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "latency_seconds": 5.708013416000085,
+    "api_attempts": 0,
+    "logical_generations": 1,
+    "retry_events": [],
+    "content_empty": false,
+    "mlx_version": "0.32.4",
+    "mlx_lm_version": "0.32.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "peak_memory_gb": 2.666690754
+  },
+  "judgment": {
+    "label": "faithful",
+    "quantifiers": "one",
+    "domains": "ℕ",
+    "assumptions": "none",
+    "equivalence": "conclusion comparison",
+    "strength": "stronger",
+    "boundary_cases": "none",
+    "counterexample_search": "specific candidate example or no found counterexample",
+    "explanation": "The English statement asserts that every natural number n is greater than zero, while the Lean theorem asserts that n is greater than or equal to zero (0 ≤ n). This makes the Lean statement equivalent but not identical to the English statement as it does not exclude the possibility of n being zero.",
+    "issues": [
+      "The Lean statement is equivalent but not identical due to the inequality direction."
+    ]
+  },
+  "parse_error": null
+}

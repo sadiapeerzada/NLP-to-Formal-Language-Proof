@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "arith_003",
+    "nl_statement": "For any natural numbers a, b, and c, a times (b plus c) equals a times b plus a times c.",
+    "expected_lean_statement": "theorem mul_distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "arith_003",
+    "subject_sha256": "9d67ee341acbb83a8ee3ac483b3a0d79befb98d76dc05353bbd7f22960d46ff3",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal three-natural distributivity; exact semantic duplicate of arith_003_mathlib despite a different theorem name."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/arith_003.json",
+      "status": "completed",
+      "response_sha256": "a0cbd450809be24e86f3d334c1840da259604974265587948ffeccc2205750ee"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "This statement outlines the distributive property of multiplication over addition for natural numbers. It is an elementary arithmetic property that is consistent across different mathematical contexts and is equivalent in Lean and Mathlib.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/arith_003.json",
+      "response_sha256": "ed738ae1db36c0b98786e345bd814c912231ad660ae77f5b3f11371be2427f8a"
+    },
+    "lean_reference_check": {
+      "candidate_id": "arith_003",
+      "theorem": "AuditReference0.mul_distrib_left",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b c : ℕ), a * (b + c) = a * b + a * c",
+      "axioms": [],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "arith_003",
+      "subject_sha256": "9d67ee341acbb83a8ee3ac483b3a0d79befb98d76dc05353bbd7f22960d46ff3",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 729,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Same distributivity predicate exposes duplicate semantics.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

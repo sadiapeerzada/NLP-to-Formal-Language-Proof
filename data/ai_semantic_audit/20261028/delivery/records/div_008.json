@@ -1,0 +1,84 @@
+{
+  "subject": {
+    "id": "div_008",
+    "nl_statement": "Prove that for all integers n, it is the case that n is even if and only if 3n is even. That is, prove both implications: if n is even, then 3n is even, and if 3n is even, then n is even.",
+    "expected_lean_statement": "theorem even_iff_even_three_mul (n : ℤ) : Even n ↔ Even (3 * n)",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_008",
+    "subject_sha256": "e7a96d54e31b10f171c8bfc546c7b54672adb5056073e89bfbae27faf30211f6",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal integer n; Even n iff Even(3*n) preserves the two explicitly requested directions."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_008.json",
+      "status": "completed",
+      "response_sha256": "0a5f45055902cda55c5fc8433cc9db18df205e9cecb9b908e26ec57a10787829"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "universal (∀) and existential (∃)",
+        "domains": "integers (ℤ)",
+        "assumptions": "evenness (Even)",
+        "equivalence": "conclusion is equivalent",
+        "strength": "same",
+        "boundary_cases": "zero and negative numbers",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The statement is true as required and is equivalent to the expected Lean theorem.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_008.json",
+      "response_sha256": "e7a497e15afc0dc0c69d767912d0bc43d124a2d904df5368aae9f00ba9ce66ab"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_008",
+      "theorem": "AuditReference3.even_iff_even_three_mul",
+      "source": "data/curation_batches/v0.1.0/div_008_even_iff_three_mul.lean",
+      "expected_type": "∀ (n : ℤ), Even n ↔ Even (3 * n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_008",
+      "subject_sha256": "e7a96d54e31b10f171c8bfc546c7b54672adb5056073e89bfbae27faf30211f6",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 13,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Biconditional over negative and positive integers.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

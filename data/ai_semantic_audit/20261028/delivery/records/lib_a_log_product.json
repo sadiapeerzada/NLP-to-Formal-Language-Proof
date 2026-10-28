@@ -1,0 +1,94 @@
+{
+  "subject": {
+    "id": "lib_a_log_product",
+    "nl_statement": "For nonzero real x and y, the totalized real logarithm of x*y equals log(x)+log(y), where Mathlib defines the logarithm using absolute values on negative inputs.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_log_product (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0) : Real.log (x * y) = Real.log x + Real.log y",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_log_product",
+    "subject_sha256": "6984540ec472aa51544ed147d81ea4ab828294889135bb2bbf62be6dfd500085",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Nonzero real x,y and explicit Mathlib log-absolute convention avoid the usual positive-log restriction; both sign patterns are intentional."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: unattempted_reviewer_retired",
+      "response": null,
+      "status": "unattempted_reviewer_retired",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger, with reason",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement assumes the logarithm is defined on negative numbers, while Mathlib uses absolute values on negative numbers, resulting in different behaviors and outcomes.",
+        "issues": [
+          "The English statement uses Real.log on negative numbers directly, while Mathlib defines Real.log on absolute values.",
+          "The totalization of division and remainders in Lean may lead to different results than expected in the English statement."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_log_product.json",
+      "response_sha256": "c08fd1c3925753d19a43bfc34163d1bb4223933983acb64aaacba495b43dbdc1"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_log_product",
+      "theorem": "AuditReference14.study_a_log_product",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0), Real.log (x * y) = Real.log x + Real.log y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_log_product",
+      "subject_sha256": "6984540ec472aa51544ed147d81ea4ab828294889135bb2bbf62be6dfd500085",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 144,
+      "filtered_by_assumptions": 25,
+      "failures": [],
+      "note": "Mathlib totalized log uses absolute value; nonzero inputs; floating.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

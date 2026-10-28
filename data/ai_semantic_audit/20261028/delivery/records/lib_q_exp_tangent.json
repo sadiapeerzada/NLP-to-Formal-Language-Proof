@@ -1,0 +1,95 @@
+{
+  "subject": {
+    "id": "lib_q_exp_tangent",
+    "nl_statement": "For every real x, x+1 is at most exp(x).",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_exp_tangent (x : ℝ) : x + 1 ≤ Real.exp x",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_exp_tangent",
+    "subject_sha256": "46f342469c745c362afdf0c9361cfde77e356cca7a613bf1b9cbcc88cb253dfe",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal real x; non-strict x+1<=exp(x) with no positivity restriction matches."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Invalid \\escape: line 5 column 39 (char 126)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_exp_tangent.json",
+      "status": "completed",
+      "response_sha256": "4833b59b46eca7f3b817814dbb176c92809cc042442c3024915014d11bda2eab"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger, than requested",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a specific inequality between x+1 and Real.exp x for every real number x. However, the Lean theorem provided does not explicitly assert this inequality but rather defines a property of the Real.exp function in a general setting without a direct inequality comparison. This makes the statement not faithful in terms of direct equivalence.",
+        "issues": [
+          "The Lean theorem does not directly assert the inequality x+1 ≤ Real.exp x as requested in the English statement.",
+          "The inequality is not explicitly stated in the Lean theorem provided."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_exp_tangent.json",
+      "response_sha256": "8811bbda3dcc67ba741bfacc1bf7fd790d4cc22f3312211e492fc5ee330cbf7d"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_exp_tangent",
+      "theorem": "AuditReference14.study_q_exp_tangent",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ), x + 1 ≤ Real.exp x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_exp_tangent",
+      "subject_sha256": "46f342469c745c362afdf0c9361cfde77e356cca7a613bf1b9cbcc88cb253dfe",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 13,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Floating exponential grid only.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

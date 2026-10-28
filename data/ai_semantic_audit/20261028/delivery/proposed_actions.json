@@ -1,0 +1,866 @@
+[
+  {
+    "candidate_id": "arith_001",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "arith_002",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "div_001",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "div_002",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_003",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_001",
+    "action": "propose_revision",
+    "coding_ai_label": "not faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_002",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_001",
+    "action": "propose_clarification",
+    "coding_ai_label": "uncertain",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_002",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_003",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_004",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ineq_001",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "arith_003",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "arith_003_mathlib",
+    "action": "propose_exclude_duplicate",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "arith_004",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_005",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_006",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ineq_002",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ineq_003",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_004",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_003",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_007",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_008",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_009",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_005",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ineq_004",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_004",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "arith_005",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_006",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "div_010",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "div_011",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_005",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_007",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_008",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "ind_009",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "mod_006",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "div_012",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_power_add",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_euclidean",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_choose_symmetry",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_abs_product",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_sqrt_square",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_truncated_sub",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_inverse_difference",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_gcd_lcm",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_euclid",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "uncertain",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_unbounded_primes",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_bezout",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_coprime_successor",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_prime_factorial",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_mersenne_gcd",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_prime_parity",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_dvd_antisymmetry",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_coprime_power",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_frobenius",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_factorial",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_fibonacci",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_bernoulli",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_vandermonde",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_fermat_product",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_amgm",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_cauchy",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_triangle",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_reciprocal",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_log",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_sqrt_monotone",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_exp_tangent",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_sine",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_quotient",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "interrupted",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_crt",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_cancel",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_canonical",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_fermat",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_wilson",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_power",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_gcd_obstruction",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_residue_product",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_trig_unit",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_log_product",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_exp_add",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_a_min_max",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_factorization",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_totient_sum",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_telescope",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_alternating_binomial",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_integer_sqrt",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_finite_inclusion",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "invalid_format"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_log_tangent",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_m_euler",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_rational_density",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_stirling",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_i_catalan",
+    "action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_rearrangement",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_q_pigeonhole",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_prime_factor_exists",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  },
+  {
+    "candidate_id": "lib_d_euclidean_gcd",
+    "action": "retain_in_review_queue_no_acceptance",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ]
+  }
+]

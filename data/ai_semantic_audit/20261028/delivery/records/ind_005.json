@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "ind_005",
+    "nl_statement": "Use induction to prove ∑_{k=0}^{n} (n choose k) = 2^n. That is, the sum of the nth row of Pascal’s Triangle is 2^n.",
+    "expected_lean_statement": "theorem pascal_row_sum (n : ℕ) : ∑ k ∈ Finset.range (n + 1), Nat.choose n k = 2 ^ n",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_005",
+    "subject_sha256": "83a420007ac92be695785295ff2cb50b8394ad3c9e3ec720e5ca014d9b587599",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n, inclusive k=0..n binomial sum and 2^n match. The theorem type does not enforce the English request to use induction."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 18 column 1 (char 1321)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_005.json",
+      "status": "completed",
+      "response_sha256": "d14c213dd380d988471b7f57def5e493c5237831ab8607304e1187fe0dcbaefd"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "induction summation",
+        "domains": "ℕ Nat",
+        "assumptions": "Pascal's Triangle properties",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "n=0 endpoint check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement outlines a theorem that uses induction to prove that the sum of the elements in the nth row of Pascal's Triangle equals 2^n. This is equivalent to stating that the nth row of Pascal's Triangle consists of the elements n choose k for k in the range from 0 to n, and summing these elements yields 2^n. This is consistent with the expected Lean theorem which directly states that the sum of the elements in the nth row (indexed by k in Finset.range (n + 1)) is equal to 2^n.",
+        "issues": [
+          "Ensure induction is applied correctly on the summation range.",
+          "Verify that the properties of Pascal's Triangle are correctly translated into Lean's data types and operations."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_005.json",
+      "response_sha256": "64ca989c36aeca1bafa1d4a4763845012dec316a24e160c88988306101740ef3"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_005",
+      "theorem": "AuditReference5.pascal_row_sum",
+      "source": "data/curation_batches/v0.1.1/ind_005_pascal_row_sum.lean",
+      "expected_type": "∀ (n : ℕ), ∑ k ∈ Finset.range (n + 1), Nat.choose n k = 2 ^ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_005",
+      "subject_sha256": "83a420007ac92be695785295ff2cb50b8394ad3c9e3ec720e5ca014d9b587599",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Inclusive upper endpoint.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

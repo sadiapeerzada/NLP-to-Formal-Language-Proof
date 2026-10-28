@@ -1,0 +1,90 @@
+{
+  "subject": {
+    "id": "lib_d_prime_factorial",
+    "nl_statement": "For a natural prime p and a natural number n, p divides n factorial if and only if p is at most n.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_prime_factorial (p n : ℕ) (hp : p.Prime) : p ∣ n.factorial ↔ p ≤ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_prime_factorial",
+    "subject_sha256": "4414ae11825ae635dacf0e3506fcef294869356a27bd39be49ad426ed263e2d9",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural prime p and natural n, iff p|n! and p<=n; factorial zero and prime two fit both texts."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 19 column 1 (char 1427)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_prime_factorial.json",
+      "status": "completed",
+      "response_sha256": "1cbb1351efa16bd327666b4dfbd06870a2ac2b9cdfa24ddeda75bcaefb05b2ad"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "ℕ and p.Prime",
+        "assumptions": "p.Prime and n.ℕ",
+        "equivalence": "conclusion direct",
+        "strength": "same",
+        "boundary_cases": "specific zero and endpoint checks",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement directly translates into a Lean theorem that is equivalent in strength and scope to the expected statement.",
+        "issues": [
+          "Lean Nat subtraction is truncated; division and remainders are totalized.",
+          "Respect explicit Mathlib conventions in the English."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_prime_factorial.json",
+      "response_sha256": "0552b6645b29ae8004f0767567735a86cc639af206a382e589350344b67252cc"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_prime_factorial",
+      "theorem": "AuditReference14.study_d_prime_factorial",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p n : ℕ) (hp : p.Prime), p ∣ n.factorial ↔ p ≤ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_prime_factorial",
+      "subject_sha256": "4414ae11825ae635dacf0e3506fcef294869356a27bd39be49ad426ed263e2d9",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 54,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "n=0 factorial one.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "subject": {
+    "id": "mod_001",
+    "nl_statement": "For any integers a and b and positive integer m, if a is congruent to b modulo m, then a + 1 is congruent to b + 1 modulo m.",
+    "expected_lean_statement": "theorem cong_add_one (a b m : ℤ) (h : a ≡ b [ZMOD m]) : a + 1 ≡ b + 1 [ZMOD m]",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_001",
+    "subject_sha256": "ff235d691a0cac21c04752a866e42373e8ba0aef13743abe99b4bf9215470e7f",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "not faithful",
+      "note": "Universal integer modulus in Lean conflicts with the positive-modulus English restriction; extra instances include m=0,a=b=0.",
+      "issue": "The English restricts m to a positive integer. Lean quantifies over all integer m with no 0<m premise. Its congruence-preservation theorem is true but strictly generalizes the requested domain. This is a specification/strength mismatch, not a counterexample to theorem truth.",
+      "proposed_english": "For all integers a, b and m, if a is congruent to b modulo m, then a+1 is congruent to b+1 modulo m, using Mathlib's totalized integer congruence (modulus zero means equality).",
+      "alternative_action": "Prefer preserving the existing English and adding a positive-modulus premise to a separately reviewed Lean revision; do not silently replace the source record."
+    },
+    "phi_3_5": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "universal quantifiers for a and b, existential quantifier for m",
+        "domains": "integers for a, b, and m",
+        "assumptions": "a ≡ b [ZMOD m]",
+        "equivalence": "the English proposition is not equivalent to the Lean theorem",
+        "strength": "the English proposition is a weaker statement than the Lean theorem",
+        "boundary_cases": "consider the case when a = b and m = 1",
+        "counterexample_search": "search for a, b, and m such that a ≡ b [ZMOD 1] but a + 1 ≠ b + 1 [ZMOD 1]",
+        "explanation": "the English proposition lacks the generality of the Lean theorem, which correctly handles the case when a = b and m = 1",
+        "issues": [
+          "omission of the general case in the English proposition",
+          "lack of clarity on the handling of zero and negative cases",
+          "absence of explicit handling for the modulo operation with m = 1",
+          "missing consideration of the Lean theorem's totalization and domain restrictions"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_001.json",
+      "status": "completed",
+      "response_sha256": "c1f901d875dad17ae9a66f3e6ef66a994a2e9c057c680cdc5cb5aea51f4fee33"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same, stronger, weaker, or ambiguous with reason",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a property of addition and congruence in modular arithmetic. It assumes a and b are integers and m is a positive integer, and concludes that a and b being congruent modulo m implies a + 1 and b + 1 are congruent modulo m.",
+        "issues": [
+          "The English statement assumes a and b are elements of a commutative ring, but does not explicitly restrict them to integers.",
+          "The English statement does not explicitly restrict a and b to be elements of a commutative ring modulo m."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_001.json",
+      "response_sha256": "7135b799a9fb3a65cf9f9ac338359c4749d95124c9124c60991f84f30716024f"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_001",
+      "theorem": "AuditReference0.cong_add_one",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a b m : ℤ) (h : a ≡ b [ZMOD m]), a + 1 ≡ b + 1 [ZMOD m]",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_001",
+      "subject_sha256": "ff235d691a0cac21c04752a866e42373e8ba0aef13743abe99b4bf9215470e7f",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 418,
+      "filtered_by_assumptions": 596,
+      "failures": [],
+      "note": "NL-positive moduli only; omitted restriction separately flagged.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication.",
+      "The English restricts m to a positive integer. Lean quantifies over all integer m with no 0<m premise. Its congruence-preservation theorem is true but strictly generalizes the requested domain. This is a specification/strength mismatch, not a counterexample to theorem truth."
+    ],
+    "proposed_action": "propose_revision",
+    "posthoc_quality_flags": {
+      "phi_3_5": [],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into strength.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "subject": {
+    "id": "lib_d_bezout",
+    "nl_statement": "For integers a and b, their nonnegative greatest common divisor is an integer linear combination of a and b.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_bezout (a b : ℤ) : ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_bezout",
+    "subject_sha256": "96818dfa45be77cb1166b68bd4212cd5998383c55332994ca990b6d615a64b94",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Integer a,b and existential integer coefficients; Int.gcd is nonnegative natural and explicitly coerced to integer in the linear combination."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 21 column 1 (char 1622)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_bezout.json",
+      "status": "completed",
+      "response_sha256": "69d40c3c1c79f157c045e4614f21f098a985493dae983f9b2443e96b1724b6be"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀ a, b : ℤ; ∃ x, y : ℤ",
+        "domains": "ℤ",
+        "assumptions": "a and b are integers",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero check",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The English statement asserts that the nonnegative greatest common divisor (gcd) of any two integers a and b is an integer combination of a and b. This is equivalent to stating that an integer x and y exist such that the gcd equals a multiplied by x plus b multiplied by y. This is a stronger statement in Lean because it implies uniqueness (up to sign), while the expected statement does not explicitly assert uniqueness but implies it through the existence quantifier and the definition of gcd as a combination of a and b.",
+        "issues": [
+          "The English statement does not explicitly assert uniqueness (up to sign), while the Lean statement implies uniqueness through the existence quantifier and the definition of gcd as a combination of a and b."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_bezout.json",
+      "response_sha256": "f072f774563a6941eb4de711db67747c9e37d9e06f72af919894fb922f24a99a"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_bezout",
+      "theorem": "AuditReference14.study_d_bezout",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℤ), ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_bezout",
+      "subject_sha256": "96818dfa45be77cb1166b68bd4212cd5998383c55332994ca990b6d615a64b94",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 169,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Witness search bounded -12..12; absent witness would be inconclusive, not a mathematical counterexample.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

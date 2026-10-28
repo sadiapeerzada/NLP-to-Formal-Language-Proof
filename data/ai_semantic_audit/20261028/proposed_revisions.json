@@ -1,0 +1,20 @@
+[
+  {
+    "candidate_id": "mod_001",
+    "original_english_preserved": true,
+    "proposed_lean_statement": "theorem cong_add_one (a b m : ℤ) (_hm : 0 < m) (h : a ≡ b [ZMOD m]) : a + 1 ≡ b + 1 [ZMOD m]",
+    "proof_artifact": "data/ai_semantic_audit/20261028/semantic_bridges/proposed_revisions.lean",
+    "status": "proposal_not_applied_not_approved"
+  },
+  {
+    "candidate_id": "ind_001",
+    "proposed_english": "For every natural number n, the sum of the integers from 1 through n (the empty sum when n=0) equals n(n+1)/2.",
+    "lean_statement_preserved": true,
+    "status": "proposal_not_applied_not_approved"
+  },
+  {
+    "candidate_id": "arith_003_mathlib",
+    "proposed_action": "Exclude this exact duplicate of arith_003 from any future independent benchmark; retain both historical records and evidence.",
+    "status": "proposal_not_applied_not_approved"
+  }
+]

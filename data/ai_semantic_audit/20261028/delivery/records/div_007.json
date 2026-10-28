@@ -1,0 +1,84 @@
+{
+  "subject": {
+    "id": "div_007",
+    "nl_statement": "For all integers a and b, if a and b are even, then a + b is even.",
+    "expected_lean_statement": "theorem even_add_of_even (a b : ℤ) (ha : Even a) (hb : Even b) : Even (a + b)",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_007",
+    "subject_sha256": "8e7bba2a65f488d4cef462a27257c45755e4c9cc5525f599acba5e673f671ae1",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Integer a,b, two Even hypotheses and Even(a+b) conclusion agree; negative inputs are not excluded."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_007.json",
+      "status": "completed",
+      "response_sha256": "a4122f89d2764f8821b4d15a866192a5d5fa67c16d257d03ba390f75ba83a1db"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "Universal (∀) over integers (ℤ)",
+        "domains": "integers (ℤ)",
+        "assumptions": "evenness (Even a) and (Even b) are properties of integers (ℤ)",
+        "equivalence": "conclusion (Even (a + b)) is a logical consequence of (Even a) and (Even b)",
+        "strength": "same",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in meaning and mathematical correctness.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_007.json",
+      "response_sha256": "56254c1d55e5d0b09f82d1c2235e6a88472a0d8761d53e6dfc7085db10255d4a"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_007",
+      "theorem": "AuditReference2.even_add_of_even",
+      "source": "data/curation_batches/v0.1.0/div_007_even_sum.lean",
+      "expected_type": "∀ (a b : ℤ) (ha : Even a) (hb : Even b), Even (a + b)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_007",
+      "subject_sha256": "8e7bba2a65f488d4cef462a27257c45755e4c9cc5525f599acba5e673f671ae1",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 49,
+      "filtered_by_assumptions": 120,
+      "failures": [],
+      "note": "Negative even integers included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

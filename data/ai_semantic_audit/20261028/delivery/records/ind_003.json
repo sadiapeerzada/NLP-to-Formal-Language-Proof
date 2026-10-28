@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "ind_003",
+    "nl_statement": "For any natural number n, 2 to the power n is greater than n.",
+    "expected_lean_statement": "theorem two_pow_gt_self (n : ℕ) : n < 2 ^ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_003",
+    "subject_sha256": "e050bf7307988a8aedc14f1bae62aac7ce417034e4724d8bef61d7486320c5e8",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n with strict n<2^n, matching greater than rather than greater than or equal."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 41 column 1 (char 1446)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_003.json",
+      "status": "completed",
+      "response_sha256": "a5284310187402651b7eea47d8c2fcb0d0b4527bcdb162751863f52de5791dba"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "Universal (∀) versus Existential (∃)",
+        "domains": "Natural numbers (ℕ) versus Real numbers (ℝ)",
+        "assumptions": "None specified versus Assuming a counterexample",
+        "equivalence": "Conclusion is equivalent versus Not equivalent",
+        "strength": "stronger versus requested",
+        "boundary_cases": "End points (0 and n) versus Not specified",
+        "counterexample_search": "Specific candidate example versus No found counterexample",
+        "explanation": "The English statement asserts that for any natural number n, 2 raised to the power n is greater than n. This is equivalent to stating that n is less than 2 raised to the power n, which is a true statement in mathematics. However, the requested Lean theorem incorrectly states that n is greater than 2 raised to the power n. This is a stronger statement than requested and is not equivalent to the English statement. There is no counterexample since the statement is true, but it is not equivalent to the requested Lean statement due to the inequality direction being reversed.",
+        "issues": [
+          "The direction of the inequality in the requested Lean theorem is incorrect."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_003.json",
+      "response_sha256": "0e09a90dc59be9f3db5401b56ffc0bb9cd7670d7b0e1f139016f8ff5fbcecb33"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_003",
+      "theorem": "AuditReference0.two_pow_gt_self",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n < 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_003",
+      "subject_sha256": "e050bf7307988a8aedc14f1bae62aac7ce417034e4724d8bef61d7486320c5e8",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Strict inequality n=0.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

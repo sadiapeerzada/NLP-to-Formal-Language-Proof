@@ -1,0 +1,88 @@
+{
+  "subject": {
+    "id": "mod_005",
+    "nl_statement": "Prove that 7^n - 1 is a multiple of 6 for all n ∈ ℕ.",
+    "expected_lean_statement": "theorem pow_seven_sub_one_dvd_six (n : ℕ) : 6 ∣ 7 ^ n - 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_005",
+    "subject_sha256": "92aa97a6295870aa0334856aecd22dfaf23001e65e9cd5a696920dd79fcbdb96",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural exponent includes zero; 7^n>=1, so subtraction in naturals agrees with the integer multiple-of-six meaning."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: quantifiers",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_005.json",
+      "status": "completed",
+      "response_sha256": "707ec60973c13d7279029b725adef132d83892fd33f2702da6400fa7d13c4689"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀ n",
+        "domains": "ℕ",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts that 7 raised to the power of n minus 1 is always a multiple of 6 for all natural numbers n. This is equivalent to stating that the difference between 7 raised to the power of n and 1 is divisible by 6, which is a statement that can be proved in Lean. There are no boundary cases (like n=0) that would immediately disprove this statement, and no counterexamples are needed as 7^n - 1 is always a multiple of 6 due to the fact that 7^n is always 1 more than a multiple of 6 (since 7 is 1 more than 6). The statement is true as written and is equivalent to the required Lean statement.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_005.json",
+      "response_sha256": "fec5569f1735a017917dd84b26ef2a40d816ec27376c7e01f7349023a0db8f17"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_005",
+      "theorem": "AuditReference1.AdditionalReferences.pow_seven_sub_one_dvd_six",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), 6 ∣ 7 ^ n - 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_005",
+      "subject_sha256": "92aa97a6295870aa0334856aecd22dfaf23001e65e9cd5a696920dd79fcbdb96",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "n=0 yields zero; 7^n>=1 makes Nat/Int subtraction agree.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

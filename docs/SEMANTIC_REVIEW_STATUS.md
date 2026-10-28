@@ -4,6 +4,8 @@ Status: BLOCKED for review outcomes; workflow implementation is available.
 
 All 96 candidates remain pending independent semantic review. No reviewer ID, date, decision, signature, source permission or supervisor approval has been invented.
 
+The separate [AI-only audit](AI_SEMANTIC_AUDIT_REPORT.md) adds model/static assessments and automated checks without filling any human decision. Its proposed alternative review policy is [pending supervisor approval](AI_SEMANTIC_REVIEW_SUPERVISOR_REQUEST.md). AI audit records must not be imported as independent human reviews.
+
 Start at `data/review_packets/m1_m7_delivery_20261028/README.md`. Each Markdown packet includes English, Lean, exact binders/quantifiers, assumptions/imports, source, category/difficulty/family/split, complete proof-verification status and reviewer instructions. Companion JSON and `.decision.json` files bind decisions to English, Lean, imports and assumptions using SHA-256. Labels are faithful / not faithful / uncertain, initially blank.
 
 `src/semantic_review.py` imports authentic human decisions only with an externally supplied human-verified qualified Lean reviewer registry, actual reviewer identity/date, independence attestation, substantive explanation, and matching evidence-artifact bytes. It rejects unknown/self reviewers, stale statements, future dates, changed evidence, duplicates and conflicting completed decisions needing adjudication. Import writes a fresh candidate snapshot and receipt; historical records and unrelated license, family, split and eligibility statuses are not promoted. Hashes establish binding, not human identity: a qualified human must actually verify the registry/evidence; these records cannot be supplied by an agent pretending to be a reviewer.

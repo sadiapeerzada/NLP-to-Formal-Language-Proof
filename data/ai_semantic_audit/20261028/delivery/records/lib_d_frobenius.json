@@ -1,0 +1,91 @@
+{
+  "subject": {
+    "id": "lib_d_frobenius",
+    "nl_statement": "If natural numbers m and n are coprime and a and b are nonzero natural numbers, m*a+n*b cannot equal m*n.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_frobenius (m n a b : ℕ) (h : Nat.Coprime m n) (ha : a ≠ 0) (hb : b ≠ 0) : m * a + n * b ≠ m * n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_frobenius",
+    "subject_sha256": "b3df14107ff7d555b53b365f7a260edd59c3c0f2c1430ef6e4a82784b07ceb62",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural m,n coprime and nonzero natural a,b; inequality m*a+n*b!=m*n matches all hypotheses including allowed zero m,n."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_frobenius.json",
+      "status": "completed",
+      "response_sha256": "a234d62b3234973d87bedb8cc0a7d7fb617f1c2dcefef4dcf0d3a771d5c12254"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "m and n coprime; a and b nonzero natural numbers",
+        "domains": "ℕ (natural numbers)",
+        "assumptions": "m and n coprime; a and b nonzero natural numbers",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example",
+        "explanation": "The English statement asserts a property of coprime numbers and nonzero natural numbers that is not equivalent to the Lean theorem due to different handling of division and remainders in Lean's implementation versus the expected behavior in general mathematics.",
+        "issues": [
+          "Lean Nat subtraction is truncated; division and remainders are totalized.",
+          "The expected Lean theorem does not account for the totalization of division and remainders."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_frobenius.json",
+      "response_sha256": "7c0f82fd4c02d4ffb710a6cef3556de58d594ea939f89188702f3dbc7926379c"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_frobenius",
+      "theorem": "AuditReference14.study_d_frobenius",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n a b : ℕ) (h : Nat.Coprime m n) (ha : a ≠ 0) (hb : b ≠ 0), m * a + n * b ≠ m * n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_frobenius",
+      "subject_sha256": "b3df14107ff7d555b53b365f7a260edd59c3c0f2c1430ef6e4a82784b07ceb62",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 1125,
+      "filtered_by_assumptions": 900,
+      "failures": [],
+      "note": "Nonzero a,b and coprimality; m or n may be zero.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "subject": {
+    "id": "lib_a_truncated_sub",
+    "nl_statement": "For natural numbers a and b with b at most a, adding b to a-b recovers a.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_truncated_sub (a b : ℕ) (h : b ≤ a) : a - b + b = a",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_truncated_sub",
+    "subject_sha256": "99c5cc45c87cf7dbfc9f3f15ea111cb2ae89e740b86f6b95445573b8f4e04ce0",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b, b<=a premise and (a-b)+b=a conclusion match; the premise avoids truncation loss."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 19 column 1 (char 1069)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_truncated_sub.json",
+      "status": "completed",
+      "response_sha256": "5a10b3a8c6907d8d1b5aba16d0295b3588bc2f9c6adbf97411db91ac0294a883"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_truncated_sub.json",
+      "response_sha256": "b7368a77799e567f19205babf466a123b1d0ac517730a723ad5385793f75d4cf"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_truncated_sub",
+      "theorem": "AuditReference14.study_a_truncated_sub",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ) (h : b ≤ a), a - b + b = a",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_truncated_sub",
+      "subject_sha256": "99c5cc45c87cf7dbfc9f3f15ea111cb2ae89e740b86f6b95445573b8f4e04ce0",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 45,
+      "filtered_by_assumptions": 36,
+      "failures": [],
+      "note": "b<=a required.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

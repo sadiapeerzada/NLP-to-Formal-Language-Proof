@@ -1,0 +1,99 @@
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+Python(14429) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+Python(14430) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+1/96 arith_001: faithful; 27.3s
+2/96 arith_002: unparseable; 52.3s
+3/96 div_001: unparseable; 16.5s
+4/96 div_002: not faithful; 11.0s
+5/96 div_003: faithful; 16.2s
+6/96 mod_001: faithful; 13.7s
+7/96 mod_002: faithful; 17.9s
+8/96 ind_001: faithful; 15.1s
+9/96 ind_002: faithful; 15.3s
+10/96 ind_003: faithful; 18.6s
+11/96 div_004: faithful; 13.1s
+12/96 ineq_001: not faithful; 17.7s
+13/96 arith_003: faithful; 10.6s
+14/96 arith_003_mathlib: faithful; 14.3s
+15/96 arith_004: faithful; 26.0s
+16/96 div_005: faithful; 14.1s
+17/96 div_006: faithful; 15.3s
+18/96 ineq_002: faithful; 15.9s
+19/96 ineq_003: not faithful; 20.2s
+20/96 ind_004: faithful; 21.3s
+21/96 mod_003: faithful; 15.8s
+22/96 div_007: faithful; 9.1s
+23/96 div_008: faithful; 8.4s
+24/96 div_009: faithful; 16.2s
+25/96 ind_005: faithful; 16.0s
+26/96 ineq_004: not faithful; 15.2s
+27/96 mod_004: faithful; 12.9s
+28/96 arith_005: faithful; 12.2s
+29/96 ind_006: unparseable; 18.0s
+30/96 div_010: faithful; 14.8s
+31/96 div_011: faithful; 10.3s
+32/96 mod_005: faithful; 14.1s
+33/96 ind_007: faithful; 11.6s
+34/96 ind_008: faithful; 13.0s
+35/96 ind_009: faithful; 12.0s
+36/96 mod_006: unparseable; 13.0s
+37/96 div_012: faithful; 9.6s
+38/96 lib_a_power_add: unparseable; 11.0s
+39/96 lib_a_euclidean: faithful; 15.3s
+40/96 lib_a_choose_symmetry: faithful; 9.3s
+41/96 lib_a_abs_product: faithful; 11.1s
+42/96 lib_a_sqrt_square: faithful; 11.2s
+43/96 lib_a_truncated_sub: unparseable; 15.4s
+44/96 lib_a_inverse_difference: faithful; 9.0s
+45/96 lib_a_gcd_lcm: faithful; 7.5s
+46/96 lib_d_euclid: unparseable; 8.4s
+47/96 lib_d_unbounded_primes: faithful; 9.6s
+48/96 lib_d_bezout: faithful; 8.5s
+49/96 lib_d_coprime_successor: faithful; 9.7s
+50/96 lib_d_prime_factorial: faithful; 6.3s
+51/96 lib_d_mersenne_gcd: faithful; 7.3s
+52/96 lib_d_prime_parity: faithful; 6.6s
+53/96 lib_d_dvd_antisymmetry: unparseable; 6.5s
+54/96 lib_d_coprime_power: faithful; 7.6s
+55/96 lib_d_frobenius: not faithful; 7.6s
+56/96 lib_i_factorial: unparseable; 5.7s
+57/96 lib_i_fibonacci: faithful; 5.4s
+58/96 lib_i_bernoulli: unparseable; 5.1s
+59/96 lib_i_vandermonde: faithful; 7.4s
+60/96 lib_i_fermat_product: unparseable; 8.1s
+61/96 lib_q_amgm: faithful; 9.1s
+62/96 lib_q_cauchy: faithful; 9.0s
+63/96 lib_q_triangle: faithful; 8.6s
+64/96 lib_q_reciprocal: not faithful; 6.5s
+65/96 lib_q_log: faithful; 7.4s
+66/96 lib_q_sqrt_monotone: unparseable; 24.3s
+67/96 lib_q_exp_tangent: not faithful; 7.0s
+68/96 lib_q_sine: faithful; 6.2s
+69/96 lib_q_quotient: faithful; 5.4s
+70/96 lib_m_crt: faithful; 6.3s
+71/96 lib_m_cancel: faithful; 10.5s
+72/96 lib_m_canonical: faithful; 8.5s
+73/96 lib_m_fermat: faithful; 7.1s
+74/96 lib_m_wilson: faithful; 9.1s
+75/96 lib_m_power: faithful; 13.9s
+76/96 lib_m_gcd_obstruction: faithful; 11.4s
+77/96 lib_m_residue_product: faithful; 6.0s
+78/96 lib_a_trig_unit: faithful; 8.8s
+79/96 lib_a_log_product: not faithful; 6.8s
+80/96 lib_a_exp_add: faithful; 5.9s
+81/96 lib_a_min_max: not faithful; 7.1s
+82/96 lib_d_factorization: faithful; 7.6s
+83/96 lib_d_totient_sum: faithful; 5.8s
+84/96 lib_i_telescope: faithful; 8.2s
+85/96 lib_i_alternating_binomial: faithful; 7.4s
+86/96 lib_q_integer_sqrt: faithful; 9.8s
+87/96 lib_q_finite_inclusion: unparseable; 6.9s
+88/96 lib_q_log_tangent: not faithful; 7.5s
+89/96 lib_m_euler: faithful; 8.6s
+90/96 lib_q_rational_density: faithful; 6.2s
+91/96 lib_i_stirling: faithful; 7.0s
+92/96 lib_i_catalan: faithful; 7.1s
+93/96 lib_q_rearrangement: not faithful; 8.2s
+94/96 lib_q_pigeonhole: faithful; 7.3s
+95/96 lib_d_prime_factor_exists: faithful; 6.3s
+96/96 lib_d_euclidean_gcd: faithful; 6.8s

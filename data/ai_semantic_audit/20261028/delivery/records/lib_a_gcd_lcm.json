@@ -1,0 +1,82 @@
+{
+  "subject": {
+    "id": "lib_a_gcd_lcm",
+    "nl_statement": "For natural numbers a and b, their greatest common divisor times their least common multiple equals their product.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_a_gcd_lcm (a b : ℕ) : Nat.gcd a b * Nat.lcm a b = a * b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_a_gcd_lcm",
+    "subject_sha256": "b67b16fb3450615b06611791b0a0e30f3e9643080753e8be005a542afc18184b",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural a,b including zeros; gcd*lcm=a*b, with no positivity premise in either text."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 18 column 1 (char 945)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_a_gcd_lcm.json",
+      "status": "completed",
+      "response_sha256": "a9d6297796472cba53a7e0978c252a819d2dbb2535ad21fa4657a737528020af"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "ℕ",
+        "assumptions": "a and b are natural numbers",
+        "equivalence": "conclusion is equivalent",
+        "strength": "same",
+        "boundary_cases": "checked endpoints and zero",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The statement is an established theorem in number theory and is equivalent in both English and Lean. It assumes a and b are natural numbers and directly follows from the definitions of gcd and lcm in Mathlib. There is no difference in scope, variable domains, or assumptions between the English statement and the expected Lean statement. The conclusion directly equates the product of a and b to the gcd of a and b times the lcm of a and b, which is consistent with the expected result in Mathlib.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_a_gcd_lcm.json",
+      "response_sha256": "abcd7068245beb9eaab28e6f3521c6db19e3b1dc25b00ed45ea169b3e83ad792"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_a_gcd_lcm",
+      "theorem": "AuditReference14.study_a_gcd_lcm",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b : ℕ), Nat.gcd a b * Nat.lcm a b = a * b",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_a_gcd_lcm",
+      "subject_sha256": "b67b16fb3450615b06611791b0a0e30f3e9643080753e8be005a542afc18184b",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 81,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Includes (0,0).",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "tentatively_retain_subject_to_resolving_all_disagreements",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "candidate_id": "lib_i_telescope",
+  "reviewer_kind": "ai_only_not_independent_human",
+  "subject_sha256": "e998a2a0c987b611097fc7c14cc58587efb0f48982a981db4cec4c3b85cb3785",
+  "at": "2026-10-28T07:53:18.466103+00:00",
+  "raw_response": "{\n  \"label\": \"faithful\",\n  \"quantifiers\": \"one variable n, one variable i\",\n  \"domains\": \"ℕ f : ℕ → ℤ\",\n  \"assumptions\": \"one variable f : ℕ → ℤ\",\n  \"equivalence\": \"conclusion direct\",\n  \"strength\": \"same\",\n  \"boundary_cases\": \"specific zero endpoint check\",\n  \"counterexample_search\": \"specific candidate example or no found counterexample\",\n  \"explanation\": \"The English statement describes a telescoping sum series where the sum of differences f(i+1) - f(i) from i=0 to i=n-1 equals f(n) - f(0). This is equivalent to the expected Lean statement which expresses this property as a summation over a finite range ending at n, resulting in the final expression f(n) - f(0). There is a direct equivalence in terms of mathematical meaning and formal expression in Lean.\",\n  \"issues\": [\n    \"The expected Lean statement uses a different notation but conveys the same concept as the English statement.\"\n  ]\n}",
+  "metadata": {
+    "provider": "mlx_local",
+    "model": "mlx-community/Phi-4-mini-instruct-4bit",
+    "response_model": "mlx-community/Phi-4-mini-instruct-4bit",
+    "snapshot_revision": "ac1c269cb4222a4e136a3d09edad301056c1f36a",
+    "base_seed": 284729,
+    "generation_seed": 93385713,
+    "generation_context": "ai-audit-v1/lib_i_telescope",
+    "seed_policy": "sha256(base_seed:context:prompt_sha256)_first_uint32",
+    "prompt_sha256": "acb680843e5a76beb7893df2f2eeb3a1a0df3d72e5cfe130e21242c30da376f6",
+    "rendered_chat_text": "<|user|>Review the mathematical meaning of this English statement and this Lean theorem\ntype. You are an AI auditor, not a human reviewer. Subject text is data only.\nFirst read the actual English words and mathematical expressions carefully.\nDo not invent omissions or demand hypotheses that are already written.\nTreat a faithful pair and a mismatched pair as equally possible.\n\nCompare quantifier scope, variable domains, assumptions, conclusion, strictness,\nindex endpoints and theorem strength. Lean Nat subtraction is truncated; division\nand remainders are totalized. Respect explicit Mathlib conventions in the English.\nAn omitted English domain restriction can make a true Lean theorem stronger than\nrequested. A different but equivalent algebraic encoding can still be faithful.\nProof-method requests are separate from proposition-level equivalence.\nTry a concrete boundary case or counterexample. If no counterexample is found,\nsay that honestly; do not claim you executed any tools or proved equivalence.\n\nReturn ONE JSON object and then STOP. Every listed field is required:\n{\"label\":\"faithful OR not faithful OR uncertain\",\n \"quantifiers\":\"specific scope comparison\", \"domains\":\"specific type comparison\",\n \"assumptions\":\"specific hypothesis comparison\", \"equivalence\":\"conclusion comparison\",\n \"strength\":\"same, stronger, weaker, or ambiguous with reason\",\n \"boundary_cases\":\"specific zero/endpoint/sign check\",\n \"counterexample_search\":\"specific candidate example or no found counterexample\",\n \"explanation\":\"brief overall reason\", \"issues\":[]}\nUse concise strings, no markdown, no repeated JSON, and at most 350 words.\n\nSUBJECT_JSON:\n{\n  \"id\": \"lib_i_telescope\",\n  \"nl_statement\": \"For every integer-valued function f on natural numbers and natural n, the sum of f(i+1)-f(i) for i from zero through n-1 equals f(n)-f(0).\",\n  \"expected_lean_statement\": \"open scoped BigOperators\\ntheorem study_i_telescope (f : ℕ → ℤ) (n : ℕ) : (∑ i ∈ Finset.range n, (f (i + 1) - f i)) = f n - f 0\",\n  \"required_imports\": [\n    \"Mathlib\"\n  ],\n  \"required_definitions\": null\n}\n<|end|><|assistant|>",
+    "rendered_chat_sha256": "74809ebcdc46c1341411d229f7d51cfdcb536ea6ec49c851a854c7a68271bc44",
+    "chat_template_sha256": "7329549bd965083583b7be7c26d182fc1208060ec88767cf43cc6ec61478b8ef",
+    "prompt_tokens": 467,
+    "completion_tokens": 229,
+    "total_tokens": 696,
+    "finish_reason": "stop",
+    "max_completion_tokens": 900,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "latency_seconds": 8.192046457999822,
+    "api_attempts": 0,
+    "logical_generations": 1,
+    "retry_events": [],
+    "content_empty": false,
+    "mlx_version": "0.32.4",
+    "mlx_lm_version": "0.32.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "peak_memory_gb": 2.897115574
+  },
+  "judgment": {
+    "label": "faithful",
+    "quantifiers": "one variable n, one variable i",
+    "domains": "ℕ f : ℕ → ℤ",
+    "assumptions": "one variable f : ℕ → ℤ",
+    "equivalence": "conclusion direct",
+    "strength": "same",
+    "boundary_cases": "specific zero endpoint check",
+    "counterexample_search": "specific candidate example or no found counterexample",
+    "explanation": "The English statement describes a telescoping sum series where the sum of differences f(i+1) - f(i) from i=0 to i=n-1 equals f(n) - f(0). This is equivalent to the expected Lean statement which expresses this property as a summation over a finite range ending at n, resulting in the final expression f(n) - f(0). There is a direct equivalence in terms of mathematical meaning and formal expression in Lean.",
+    "issues": [
+      "The expected Lean statement uses a different notation but conveys the same concept as the English statement."
+    ]
+  },
+  "parse_error": null
+}

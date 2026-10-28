@@ -1,0 +1,90 @@
+{
+  "subject": {
+    "id": "lib_d_mersenne_gcd",
+    "nl_statement": "For natural numbers a, b and c, the greatest common divisor of a^b-1 and a^c-1 equals a raised to gcd(b,c), minus one; subtraction is natural-number subtraction.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_mersenne_gcd (a b c : ℕ) : Nat.gcd (a ^ b - 1) (a ^ c - 1) = a ^ Nat.gcd b c - 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_mersenne_gcd",
+    "subject_sha256": "535af04535e01b802324c17c88a11b41843fd8b558516b09cd048a701cb5b0d9",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "All three variables natural; the English explicitly declares truncated subtraction, essential for base zero and zero exponents."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Expecting ',' delimiter: line 19 column 21 (char 1569)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_mersenne_gcd.json",
+      "status": "completed",
+      "response_sha256": "f59c65c45fb60d2d9d87b30977c67797b0c37d2852470cdbc35975ff95951e4e"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each a, b, c",
+        "domains": "ℕ",
+        "assumptions": "one each a, b, c",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific endpoint check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement accurately describes a theorem in number theory concerning Mersenne numbers and greatest common divisors (gcd). It equates the gcd of a^b-1 and a^c-1 to a raised to the power of gcd(b,c)-1. This is consistent with the expected Lean statement provided.",
+        "issues": [
+          "The English statement assumes subtraction is natural-number subtraction, which is true in this context but not explicitly stated in the expected Lean statement."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_mersenne_gcd.json",
+      "response_sha256": "962303114d91efe001930fa66049dbc1eab8eb7f509f2cde01620111e9b24970"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_mersenne_gcd",
+      "theorem": "AuditReference14.study_d_mersenne_gcd",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (a b c : ℕ), Nat.gcd (a ^ b - 1) (a ^ c - 1) = a ^ Nat.gcd b c - 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_mersenne_gcd",
+      "subject_sha256": "535af04535e01b802324c17c88a11b41843fd8b558516b09cd048a701cb5b0d9",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 125,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "a=0 and zero exponents use Nat truncation, not integer -1.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

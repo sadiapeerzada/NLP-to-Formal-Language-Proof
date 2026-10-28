@@ -55,4 +55,8 @@ The [Springer manuscript](paper/main.tex) remains a pre-results draft. Its pre-r
 
 `RUN_REPORT.md`, legacy `data/results/` files, older versioned inventories and earlier completion reports retain their historical scope. Manually authored reference proofs, compiler demonstrations, synthetic tests and neutral smoke checks are never treated as model-generated A/B/C evidence.
 
-The previous preparation branch was merged as PR #8 (`d36c6d133e3b47a4ccd3f6048133cbae66fbf7f1`). Current work uses `research/taimma2027-final-experiments`; no automatic merge into main is authorized. [Remaining human actions](docs/REMAINING_HUMAN_ACTIONS.md) identify the genuine blockers.
+The original preparation branch was merged as PR #8 (`d36c6d1`), and the final preparation branch as PR #9 (`386c641`). The follow-up AI audit uses its own branch; no automatic merge into main is authorized. [Remaining human actions](docs/REMAINING_HUMAN_ACTIONS.md) identify the genuine blockers.
+
+## AI-only semantic audit
+
+The follow-up audit is on `research/ai-semantic-audit-20261028`. It preserves the 96 candidate records and all eligibility gates while adding a separate Phi-family model review, coding-assistant assessments, fresh Lean type checks, bounded mathematical probes and an explicit disagreement queue. AI reviews are not independent human reviews or approvals. See the [audit report](docs/AI_SEMANTIC_AUDIT_REPORT.md), [reproduction instructions](docs/AI_AUDIT_REPRODUCIBILITY.md), and [proposed supervisor policy amendment](docs/AI_SEMANTIC_REVIEW_SUPERVISOR_REQUEST.md).

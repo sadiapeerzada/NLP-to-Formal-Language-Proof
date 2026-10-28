@@ -1,0 +1,75 @@
+{
+  "subject": {
+    "id": "div_001",
+    "nl_statement": "If a natural number n is even, then n squared is even.",
+    "expected_lean_statement": "theorem even_sq_of_even (n : ℕ) (h : Even n) : Even (n ^ 2)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_001",
+    "subject_sha256": "6010a0ffbd68ccfa6f877efd3e24c330cc290315a7a84029711cb001a764f5c8",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n, Even n as premise, Even(n^2) as conclusion; evenness is existential and not a positivity constraint."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_001.json",
+      "status": "completed",
+      "response_sha256": "ccc2cffd28cd650c8979127e4ac9a9d20d381c7807016a3518fb3fa2e3b801ba"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_001.json",
+      "response_sha256": "0fc812c56c1db45c8d86cb0e78ca04e228c9a88a875246f0e6218f421b715bd5"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_001",
+      "theorem": "AuditReference0.even_sq_of_even",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : Even n), Even (n ^ 2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_001",
+      "subject_sha256": "6010a0ffbd68ccfa6f877efd3e24c330cc290315a7a84029711cb001a764f5c8",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 5,
+      "filtered_by_assumptions": 4,
+      "failures": [],
+      "note": "Conditional even square.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

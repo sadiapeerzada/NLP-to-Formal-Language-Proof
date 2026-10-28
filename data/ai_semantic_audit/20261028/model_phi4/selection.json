@@ -1,0 +1,9 @@
+{
+  "review_model": "mlx-community/Phi-4-mini-instruct-4bit",
+  "review_revision": "ac1c269cb4222a4e136a3d09edad301056c1f36a",
+  "upstream_revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "primary_experimental_model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "model_family_separation": "Phi vs Qwen; separate weights and training lineage; independence of errors is NOT established",
+  "selection": "Second audit model added after observing Phi-3.5 malformed responses and unsupported objections. Review-model/prompt adaptation is disclosed; no experimental repair model or prompts were tuned. New Phi generation is still not independent human review.",
+  "paid_inference": false
+}

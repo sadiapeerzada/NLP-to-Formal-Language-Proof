@@ -1,0 +1,71 @@
+{
+  "subject": {
+    "id": "lib_i_factorial",
+    "nl_statement": "For every natural number n, (n+1) factorial equals (n+1) times n factorial.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_i_factorial (n : ℕ) : (n + 1).factorial = (n + 1) * n.factorial",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_i_factorial",
+    "subject_sha256": "5ef6d97bd334cf52c2558635f25a80cde3984ebb541d06cd23a5ffb8514f6e7e",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n; successor factorial equals successor times factorial, including n=0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 18 column 1 (char 1005)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_i_factorial.json",
+      "status": "completed",
+      "response_sha256": "e5ed78cf0cc834e43f5b1595efebb77aa3e3bf6b70a056d05009152cd0096b42"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_i_factorial.json",
+      "response_sha256": "012cafc80cb124a3ca583a51df7a18e9dc743e76ee8ff47e8b8c2e44acbc3979"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_i_factorial",
+      "theorem": "AuditReference14.study_i_factorial",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), (n + 1).factorial = (n + 1) * n.factorial",
+      "axioms": [],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_i_factorial",
+      "subject_sha256": "5ef6d97bd334cf52c2558635f25a80cde3984ebb541d06cd23a5ffb8514f6e7e",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Zero endpoint.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

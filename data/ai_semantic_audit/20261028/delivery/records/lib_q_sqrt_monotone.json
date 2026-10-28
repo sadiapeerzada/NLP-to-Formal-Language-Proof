@@ -1,0 +1,75 @@
+{
+  "subject": {
+    "id": "lib_q_sqrt_monotone",
+    "nl_statement": "For real x and y with x≤y, the principal square root of x is at most that of y, using the totalized real square root which is zero on negative inputs.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_sqrt_monotone (x y : ℝ) (h : x ≤ y) : Real.sqrt x ≤ Real.sqrt y",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_sqrt_monotone",
+    "subject_sha256": "4a8a33d4e9743c9ec4df06cd28308d48f18605ba7e768ae8d719479cf6f2e8f4",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Real x<=y; English explicitly says sqrt is zero on negative inputs, so absence of nonnegativity hypotheses is intentional."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 20 column 1 (char 1319)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_sqrt_monotone.json",
+      "status": "completed",
+      "response_sha256": "c0bef2f95e1b93ee43ad01744b071ad902d1b11ba269e01d2a3c927675eda05c"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "Unclosed JSON fence",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_sqrt_monotone.json",
+      "response_sha256": "a9e0d85478eeabc721809218486fdb83b31dae4045267d9ff5a253b6b6c1e486"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_sqrt_monotone",
+      "theorem": "AuditReference14.study_q_sqrt_monotone",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x y : ℝ) (h : x ≤ y), Real.sqrt x ≤ Real.sqrt y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_sqrt_monotone",
+      "subject_sha256": "4a8a33d4e9743c9ec4df06cd28308d48f18605ba7e768ae8d719479cf6f2e8f4",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 91,
+      "filtered_by_assumptions": 78,
+      "failures": [],
+      "note": "Totalized sqrt negative input ->zero; floating approximation.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

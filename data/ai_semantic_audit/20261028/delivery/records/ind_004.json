@@ -1,0 +1,102 @@
+{
+  "subject": {
+    "id": "ind_004",
+    "nl_statement": "The sum of powers of 2 from 2^0 up to 2^(n-1) equals 2^n minus 1.",
+    "expected_lean_statement": "import Nl2Lean.CandidateDefinitions\n/- Imported candidate definition (do not redeclare):\ndef geomSum : Nat → Nat\n  | 0 => 0\n  | n + 1 => geomSum n + 2 ^ n\n-/\ntheorem geom_sum_eq (n : ℕ) : geomSum n + 1 = 2 ^ n",
+    "required_imports": [
+      "Mathlib",
+      "Nl2Lean.CandidateDefinitions"
+    ],
+    "required_definitions": [
+      {
+        "path": "lean_project/Nl2Lean/CandidateDefinitions.lean",
+        "sha256": "b2998e3cbc82131b33b90691a00ab1347c0488b0850c988699aaba03d78c1d77",
+        "import": "Nl2Lean.CandidateDefinitions",
+        "review_status": "pending_independent_semantic_review"
+      }
+    ]
+  },
+  "audit": {
+    "candidate_id": "ind_004",
+    "subject_sha256": "089384b0fb68c7ffb790e670c27d8545bc9eb248a3b222f77c48f93c0af1d401",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Imported geomSum recursively sums 2^0 through 2^(n-1). geomSum n+1=2^n and geomSum n=2^n-1 are equivalent over naturals because 2^n>=1, including the empty sum at n=0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Duplicate judgment key",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_004.json",
+      "status": "completed",
+      "response_sha256": "b3f334bd2135fa98d912555df4a89692f294d6f0ed5706a1e86fc4a05cccddc7"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a specific pattern in the summation of powers of 2, which is a well-known result in mathematics. The Lean theorem attempts to formalize this pattern within the constraints of candidate definitions provided by Mathlib and Nl2Lean candidate definitions. There is an inherent complexity in translating such a statement directly into a candidate definition due to the different handling of summation and subtraction in candidate definitions versus standard Lean definitions. However, the statement is true under candidate definitions as long as they respect the semantics of candidate summation and subtraction operations.",
+        "issues": [
+          "The candidate definition provided in Nl2Lean does not directly translate into a standard Lean definition due to the different handling of summation and subtraction operations in candidate definitions versus standard Lean definitions.",
+          "The expected Lean statement attempts to formalize the summation of powers of 2 as a candidate summation operation, which may not directly correspond to standard Lean summation semantics."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_004.json",
+      "response_sha256": "84e46285f1ef8fcfaabba72c2602deb5dd0cd05f7537227f943d36cb191978bc"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_004",
+      "theorem": "AuditReference1.AdditionalReferences.geom_sum_eq",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), geomSum n + 1 = 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_004",
+      "subject_sha256": "089384b0fb68c7ffb790e670c27d8545bc9eb248a3b222f77c48f93c0af1d401",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Recursive geomSum interpreted as finite sum, compare +1 and truncated-subtraction forms.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

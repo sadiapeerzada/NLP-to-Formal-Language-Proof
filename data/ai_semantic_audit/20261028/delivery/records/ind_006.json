@@ -1,0 +1,72 @@
+{
+  "subject": {
+    "id": "ind_006",
+    "nl_statement": "For every natural number n at least 28, there are natural numbers x and y such that 5x + 8y = n.",
+    "expected_lean_statement": "theorem postage_representable_large (n : ℕ) (hn : 28 ≤ n) : ∃ five eight : ℕ, 5 * five + 8 * eight = n",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_006",
+    "subject_sha256": "c9d802edb4d720339ddfe66d760fc72850aba274d6498344db54d2042ec0ba45",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n>=28; two existential nonnegative coefficients, ordered independently of their variable names, give 5x+8y=n."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_006.json",
+      "status": "completed",
+      "response_sha256": "e2115a2245e265c905d35e3f00d77f905415548434e64270346840b1a2c4cf63"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_006.json",
+      "response_sha256": "f0803d96cc443950c840a51ce2ef32ad4a435c0b9ba6a8764d2bfe7aaf15ffe8"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_006",
+      "theorem": "AuditReference11.postage_representable_large",
+      "source": "data/curation_batches/v0.1.5/ind_006_5_8_stamps.lean",
+      "expected_type": "∀ (n : ℕ) (hn : 28 ≤ n), ∃ five eight : ℕ, 5 * five + 8 * eight = n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_006",
+      "subject_sha256": "c9d802edb4d720339ddfe66d760fc72850aba274d6498344db54d2042ec0ba45",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 173,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Complete nonnegative witness search for each n from 28 through 200.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

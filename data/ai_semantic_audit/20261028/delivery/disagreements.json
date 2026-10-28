@@ -1,0 +1,1411 @@
+[
+  {
+    "candidate_id": "arith_001",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "arith_002",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_001",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_002",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_003",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_001",
+    "coding_ai_label": "not faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication.",
+      "The English restricts m to a positive integer. Lean quantifies over all integer m with no 0<m premise. Its congruence-preservation theorem is true but strictly generalizes the requested domain. This is a specification/strength mismatch, not a counterexample to theorem truth."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_002",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_001",
+    "coding_ai_label": "uncertain",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication.",
+      "The phrase first n natural numbers may mean 0 through n-1 or 1 through n. The stated n(n+1)/2 formula indicates the latter, and Lean sums 0 through n. The intended usual convention is compatible but the English should explicitly state endpoints before benchmark freeze."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_002",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_003",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_004",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ineq_001",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "arith_003",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "arith_003_mathlib",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "Exact duplicate of arith_003."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "arith_004",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_005",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_006",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ineq_002",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ineq_003",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_004",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_003",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_007",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_008",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_009",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_005",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ineq_004",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_004",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "arith_005",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_006",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_010",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_011",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_005",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_007",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_008",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "ind_009",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "mod_006",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "div_012",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_power_add",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_euclidean",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_choose_symmetry",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_abs_product",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_sqrt_square",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_truncated_sub",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_inverse_difference",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_gcd_lcm",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_euclid",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "uncertain",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_unbounded_primes",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_bezout",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_coprime_successor",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_prime_factorial",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_mersenne_gcd",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_prime_parity",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_dvd_antisymmetry",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_coprime_power",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_frobenius",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_factorial",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_fibonacci",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "not faithful",
+      "faithful"
+    ],
+    "reasons": [
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_bernoulli",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_vandermonde",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_fermat_product",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_amgm",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_cauchy",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_triangle",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_reciprocal",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_log",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_sqrt_monotone",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_exp_tangent",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_sine",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "invalid_format",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_quotient",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "interrupted",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_crt",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_cancel",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_canonical",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_fermat",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_wilson",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_power",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_gcd_obstruction",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_residue_product",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_trig_unit",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_log_product",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_exp_add",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_a_min_max",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_factorization",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_totient_sum",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_telescope",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_alternating_binomial",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_integer_sqrt",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_finite_inclusion",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "invalid_format"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_log_tangent",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_m_euler",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_rational_density",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_stirling",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_i_catalan",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_rearrangement",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "not faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_q_pigeonhole",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_prime_factor_exists",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  },
+  {
+    "candidate_id": "lib_d_euclidean_gcd",
+    "coding_ai_label": "faithful",
+    "phi_labels": [
+      "unattempted_reviewer_retired",
+      "faithful"
+    ],
+    "reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "resolution_status": "unresolved_no_automatic_majority_vote"
+  }
+]

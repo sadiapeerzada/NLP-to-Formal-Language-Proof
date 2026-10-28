@@ -1,0 +1,94 @@
+{
+  "subject": {
+    "id": "ineq_003",
+    "nl_statement": "For any natural number n at least 1, n plus 1 is at most 2 to the power n.",
+    "expected_lean_statement": "theorem succ_le_two_pow (n : ℕ) (h : 1 ≤ n) : n + 1 ≤ 2 ^ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ineq_003",
+    "subject_sha256": "0bd0c727f029a86fecae68ae7e4d787433627ded41f7beef0e82f43647bbf83e",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n and 1<=n are both present; n+1<=2^n is non-strict as requested."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: quantifiers",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ineq_003.json",
+      "status": "completed",
+      "response_sha256": "b888e8793de1c7b8c444fb44c4e741e94a1b75092158102ec80a98448ac70863"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts an inequality that is not true for all natural numbers n. It suggests that n+1 is less than or equal to 2 raised to the power of n, which is not true as n increases. This inequality is not universally valid in natural numbers and is therefore not faithfully equivalent to a statement that would be true in Lean's Nat subtraction and division operations.",
+        "issues": [
+          "The inequality n+1 ≤ 2^n is not true for all natural numbers n. It is true for n=1 but fails for n>1 (e.g., n=2 gives n+1=3 and 2^n=4, which does not satisfy the inequality).",
+          "The expected Lean statement is not a theorem in Lean's Natural numbers library as written but would be true if written as n+1 ≤ 2^n for n ≥ 1."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ineq_003.json",
+      "response_sha256": "86ce61da828d900814bdca693c047d384715b9c8278d01057439a9480ee4e0e6"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ineq_003",
+      "theorem": "AuditReference0.succ_le_two_pow",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ) (h : 1 ≤ n), n + 1 ≤ 2 ^ n",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ineq_003",
+      "subject_sha256": "0bd0c727f029a86fecae68ae7e4d787433627ded41f7beef0e82f43647bbf83e",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 8,
+      "filtered_by_assumptions": 1,
+      "failures": [],
+      "note": "Only n>=1 accepted by theorem.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

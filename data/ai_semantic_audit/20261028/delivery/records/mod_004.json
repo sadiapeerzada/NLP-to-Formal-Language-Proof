@@ -1,0 +1,105 @@
+{
+  "subject": {
+    "id": "mod_004",
+    "nl_statement": "Suppose a, b, c, and d are integers and n is a positive integer. If a is congruent to b modulo n and c is congruent to d modulo n, then a + c is congruent to b + d modulo n.",
+    "expected_lean_statement": "theorem modEq_add_two (a b c d n : ℤ) (_hn : 0 < n) (hab : a ≡ b [ZMOD n]) (hcd : c ≡ d [ZMOD n]) : a + c ≡ b + d [ZMOD n]",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_004",
+    "subject_sha256": "cfa88cb0023eaa1b92aaab47ee8c2a38546834fd2134a69edd9c8ee1e68dd4b5",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Four arbitrary integers and an explicit positive integer modulus premise; both congruences precede their sum congruence."
+    },
+    "phi_3_5": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "universal quantifiers for a, b, c, d, n; existential quantifier for n",
+        "domains": "integers for a, b, c, d, n",
+        "assumptions": "a ≡ b [ZMOD n], c ≡ d [ZMOD n], 0 < n",
+        "equivalence": "the English proposition is not a direct formalization of the Lean theorem",
+        "strength": "the English proposition lacks explicit quantifier scope and order, potentially omitting zero and negative cases",
+        "boundary_cases": "not specified, could lead to misunderstandologies",
+        "counterexample_search": "consider n=2, a=1, b=1, c=1, d=1; the proposition holds, but the Lean theorem requires n > 0",
+        "explanation": "the English proposition is ambiguous and lacks formal mathematical precision, particularly in handling zero and negative cases for n",
+        "issues": [
+          "implicit quantifier scope for n",
+          "explicit handling of zero and negative values for n",
+          "absence of zero and negative case handling in the Lean theorem",
+          "potential misunderstanding of the congruence relation for n=2",
+          "omission of formal proof method",
+          "ambiguity in the English proposition's treatment of n",
+          "Lean theorem'ized assumptions about n being positive"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_004.json",
+      "status": "completed",
+      "response_sha256": "d646d505a90bd4fdbaf73ae1d80ba60cf5b305a01e5b4c3d7f99d41889b1f779"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in terms of mathematical meaning. Both assert that if a is congruent to b modulo n, and c is congruent to d modulo n, then their sums a + c and b + d are congruent modulo n. This is a statement of modular addition properties, which is consistent across different but equivalent algebraic encodings in Lean. There is no counterexample that refutes this statement, and it respects the expected scope and domains of the variables involved.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_004.json",
+      "response_sha256": "2121f8639915800c45cf339dd15eaad918a06256526a6e92f3f62b729824d9ac"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_004",
+      "theorem": "AuditReference7.modEq_add_two",
+      "source": "data/curation_batches/v0.1.3/mod_004_congruence_add.lean",
+      "expected_type": "∀ (a b c d n : ℤ) (_hn : 0 < n) (hab : a ≡ b [ZMOD n]) (hcd : c ≡ d [ZMOD n]), a + c ≡ b + d [ZMOD n]",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_004",
+      "subject_sha256": "cfa88cb0023eaa1b92aaab47ee8c2a38546834fd2134a69edd9c8ee1e68dd4b5",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 3484,
+      "filtered_by_assumptions": 6120,
+      "failures": [],
+      "note": "Positive modulus; both input congruences.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

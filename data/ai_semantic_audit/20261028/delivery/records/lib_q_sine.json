@@ -1,0 +1,88 @@
+{
+  "subject": {
+    "id": "lib_q_sine",
+    "nl_statement": "For every nonnegative real x, sin(x)≤x.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_sine (x : ℝ) (hx : 0 ≤ x) : Real.sin x ≤ x",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_sine",
+    "subject_sha256": "7622458d4cf37359989b571749dcd49a3d42104e33c396629de14c7aca6fa30d",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Nonnegative real x premise is present; sin(x)<=x uses real sine and no unstated upper bound."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 27 column 1 (char 1322)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_sine.json",
+      "status": "completed",
+      "response_sha256": "0f239f8062b0ae62e47027eb0c386f5722ceb44de96d2455068562bf04d8a191"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀x.∀x : ℝ .x ≥ 0 .sin x ≤ x",
+        "domains": "ℝ",
+        "assumptions": "x : ℝ .x ≥ 0",
+        "equivalence": "x sin x ≤ x",
+        "strength": "stronger",
+        "boundary_cases": "x = 0",
+        "counterexample_search": "no found counterexample",
+        "explanation": "The English statement implies a less restrictive condition (x is nonnegative) while the Lean statement uses a more formal definition (x : ℝ .x ≥ 0). This makes the Lean statement stronger as it explicitly restricts x to nonnegative reals.",
+        "issues": [
+          "The Lean statement is stronger than the English statement due to explicit domain restrictions."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_sine.json",
+      "response_sha256": "5c275582436fa7cd0b56d1ef36b3b1b60707be5ddb6c15adaaa63fb72b7c13ce"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_sine",
+      "theorem": "AuditReference14.study_q_sine",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (x : ℝ) (hx : 0 ≤ x), Real.sin x ≤ x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_sine",
+      "subject_sha256": "7622458d4cf37359989b571749dcd49a3d42104e33c396629de14c7aca6fa30d",
+      "kind": "approximate_numeric_probe",
+      "checked_assignments": 7,
+      "filtered_by_assumptions": 6,
+      "failures": [],
+      "note": "Nonnegative x, floating sine grid.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

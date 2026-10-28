@@ -1,0 +1,57 @@
+{
+  "kind": "ai_only_audit_not_empirical_repair_results",
+  "candidate_count": 96,
+  "phi_3_5_completed": 68,
+  "phi_4_completed": 96,
+  "phi_3_5_interrupted": 1,
+  "phi_3_5_unattempted": 27,
+  "ai_review_attempts": 165,
+  "ai_review_completed_generations": 164,
+  "phi_3_5_labels": {
+    "invalid_format": 60,
+    "not faithful": 7,
+    "uncertain": 1
+  },
+  "phi_4_labels": {
+    "faithful": 72,
+    "invalid_format": 13,
+    "not faithful": 11
+  },
+  "coding_ai_labels": {
+    "faithful": 94,
+    "not faithful": 1,
+    "uncertain": 1
+  },
+  "phi_3_5_without_detected_quality_flags": 8,
+  "phi_4_without_detected_quality_flags": 10,
+  "fresh_lean_verified": 96,
+  "bounded_checks": 26467,
+  "exact_duplicate_groups": [
+    [
+      "arith_003",
+      "arith_003_mathlib"
+    ]
+  ],
+  "proposed_candidate_count_after_exact_duplicate_exclusion": 95,
+  "bounded_probe_failures": 0,
+  "unresolved_records": 96,
+  "actions": {
+    "retain_in_review_queue_no_acceptance": 84,
+    "propose_revision": 1,
+    "propose_clarification": 1,
+    "propose_exclude_duplicate": 1,
+    "tentatively_retain_subject_to_resolving_all_disagreements": 9
+  },
+  "independent_human_reviews": 0,
+  "eligible_split_counts": {
+    "test": 0,
+    "development": 0
+  },
+  "structural_errors": [],
+  "paid_inference_requests": 0,
+  "study_gate_changes": false,
+  "study_pilots": 0,
+  "heldout_repair_runs": 0,
+  "curation_fields_identical": true,
+  "dataset_sha256": "363a0d6d362e420fa98b1c5199b0e0b98b10f47da5b0f53e8bf2569e02d361ef"
+}

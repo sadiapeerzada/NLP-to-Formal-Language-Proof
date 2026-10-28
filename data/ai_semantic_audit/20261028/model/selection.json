@@ -1,0 +1,9 @@
+{
+  "review_model": "mlx-community/Phi-3.5-mini-instruct-4bit",
+  "review_revision": "7b2052fd882fe017300d4d42a4eb06a27b816af4",
+  "upstream_revision": "2fe192450127e6a83f7441aef6e3ca586c338b77",
+  "primary_experimental_model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "model_family_separation": "Phi vs Qwen; separate weights and training lineage; independence of errors is NOT established",
+  "selection": "Existing cached instruction model is primary Qwen; other cached generative models are also Qwen. Select MIT-licensed 3.8B Phi quantization for free local auditing, not experiment repair. No mathematical review outputs used for selection.",
+  "paid_inference": false
+}

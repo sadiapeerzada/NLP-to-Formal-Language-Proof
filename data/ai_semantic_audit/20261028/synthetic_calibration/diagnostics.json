@@ -1,0 +1,145 @@
+{
+  "kind": "development_only_synthetic_semantic_judge_diagnostics",
+  "controls": 12,
+  "expected_label_provenance": "Coding-AI-authored controls, not human-adjudicated gold.",
+  "usable_responses": 4,
+  "matches": 3,
+  "mismatches": 1,
+  "unusable": 8,
+  "generalization_accuracy_claim": false,
+  "study_experiment": false,
+  "results": [
+    {
+      "control_id": "syn_01",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [],
+      "usable_for_control_comparison": true,
+      "matches_authored_expectation": true,
+      "response_sha256": "f91b48b04a1d79027e5ab1515eeaae0d7331ed298780b053bbc219d46b207c6b"
+    },
+    {
+      "control_id": "syn_02",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [],
+      "usable_for_control_comparison": true,
+      "matches_authored_expectation": false,
+      "response_sha256": "e31f326c3ef0c4d9019b4fd93d83b1ee37c6ead8a5d5e896969e4d7610fdcaeb"
+    },
+    {
+      "control_id": "syn_03",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "78cf9b5004455feadf6bb81ee419590a08e0d3e19a60eae8743408ee8b83e102"
+    },
+    {
+      "control_id": "syn_04",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": null,
+      "quality_flags": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "9b18a987523b5928649ea210a4b52e54eb3d02df320517f11e21de92be7f8014"
+    },
+    {
+      "control_id": "syn_05",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "32e2870d3423acbc1091368d9276c3d1b6644a6fd286ffaf032a3f6e5f5c9b35"
+    },
+    {
+      "control_id": "syn_06",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [],
+      "usable_for_control_comparison": true,
+      "matches_authored_expectation": true,
+      "response_sha256": "e2c1fc61f6f7902ee0133bc147234381bb19f6c2d20e21b56dc4cf155c8423a1"
+    },
+    {
+      "control_id": "syn_07",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "not faithful",
+      "quality_flags": [],
+      "usable_for_control_comparison": true,
+      "matches_authored_expectation": true,
+      "response_sha256": "42adc6bb47853c69c784ebd5124fd599893cd07efb5bbaa4234703645fa8e091"
+    },
+    {
+      "control_id": "syn_08",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "979844d15f995e9d4cc22e4baca17a58879c464828df6e5720c68a8cd437526e"
+    },
+    {
+      "control_id": "syn_09",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": null,
+      "quality_flags": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "b383d9fb68d2d595f005a3b71810c3f43d754c0877a57b370cdd4deb631682b6"
+    },
+    {
+      "control_id": "syn_10",
+      "expected_label": "faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "25ce52735a0b88c0c6928a002afc4544a43651ea39ea3ed6ed6cfa4cabc7b024"
+    },
+    {
+      "control_id": "syn_11",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Prompt placeholder copied into counterexample_search."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "4850b2aa4477d47c4d7e82fc483e6552f2dced07841860d4007dbfb0f94e46ce"
+    },
+    {
+      "control_id": "syn_12",
+      "expected_label": "not faithful",
+      "actual_schema_valid_label": "faithful",
+      "quality_flags": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ],
+      "usable_for_control_comparison": false,
+      "matches_authored_expectation": null,
+      "response_sha256": "d10db40e55fa7e98d29fdf976d29af287610a60c5da5f930a336998d130ab324"
+    }
+  ]
+}

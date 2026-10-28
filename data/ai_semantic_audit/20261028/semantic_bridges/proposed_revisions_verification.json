@@ -1,0 +1,14 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/semantic_bridges/proposed_revisions.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"caption\":\"\",\"data\":\"'proposed_cong_add_one_positive' depends on axioms: [propext, Classical.choice, Quot.sound]\",\"endPos\":{\"column\":6,\"line\":8},\"fileName\":\"/Users/sadiapeerzada/NLP-to-Formal-Language-Proof/data/ai_semantic_audit/20261028/semantic_bridges/proposed_revisions.lean\",\"isSilent\":false,\"keepFullRange\":false,\"kind\":\"[anonymous]\",\"pos\":{\"column\":0,\"line\":8},\"severity\":\"information\"}\n",
+  "stderr": "",
+  "source_sha256": "f89c3e78be47bb5bd264a013d6e56573e6fd78e0751cdae9bf2fb8f5fdc66fef",
+  "elapsed_seconds": 168.65506837499993
+}

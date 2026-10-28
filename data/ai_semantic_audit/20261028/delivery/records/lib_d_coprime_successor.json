@@ -1,0 +1,91 @@
+{
+  "subject": {
+    "id": "lib_d_coprime_successor",
+    "nl_statement": "Every natural number n is coprime to n+1.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_coprime_successor (n : ℕ) : Nat.Coprime n (n + 1)",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_coprime_successor",
+    "subject_sha256": "4d14191b349536d69b116a89bd36a946080c69aaaf9be96e4644b1b9d8079e75",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n; coprimality of n,n+1 includes n=0 as intended."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 22 column 1 (char 1775)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_coprime_successor.json",
+      "status": "completed",
+      "response_sha256": "6a3a7a0336b76729213612b2a93268865a0ea96a516632440ea280f939011ad7"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "∀ n : ℕ",
+        "domains": "ℕ",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts that every natural number n is coprime to n+1, which implies that gcd(n, n+1) = 1 for all n in ℕ. This is true because n and n+1 are consecutive integers and consecutive integers are always coprime. There is no counterexample that refutes this statement as n cannot be 0 (as ℕ excludes 0) and n+1 is always greater than n, avoiding division by zero.",
+        "issues": [
+          "The Lean statement is equivalent to the English statement but is written as an open scoped theorem rather than a closed one. This does not change the mathematical truth but reflects a difference in how the statement is formalized in Lean versus Mathlib.",
+          "The Lean statement uses a different notation (Nat.Coprime) than one might expect from Mathlib's usual notation but is still equivalent in meaning."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_coprime_successor.json",
+      "response_sha256": "1ac5dfee0b8cb57bcc4a305cdc32e5c9d0455a45027699b4b7a437ed776d6f1f"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_coprime_successor",
+      "theorem": "AuditReference14.study_d_coprime_successor",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (n : ℕ), Nat.Coprime n (n + 1)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_coprime_successor",
+      "subject_sha256": "4d14191b349536d69b116a89bd36a946080c69aaaf9be96e4644b1b9d8079e75",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Zero included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

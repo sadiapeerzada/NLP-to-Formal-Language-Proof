@@ -1,0 +1,91 @@
+{
+  "subject": {
+    "id": "lib_q_log",
+    "nl_statement": "For natural base b and positive natural n, b raised to the natural logarithm floor log base b of n is at most n, using Mathlib's totalized natural logarithm.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_log (b n : ℕ) (hn : n ≠ 0) : b ^ Nat.log b n ≤ n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_log",
+    "subject_sha256": "31797af04e63d53b2eab6613df08b8279b8dee3051cc854fdbc0c9cad55628a7",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural base b, nonzero natural n; English explicitly adopts totalized Nat.log, including bases zero and one."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_q_log.json",
+      "status": "completed",
+      "response_sha256": "4e1f908e0a5867ef49baafc37cb3896cf2bbf6553a5840b18c89b4f4fc909516"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "one each",
+        "domains": "ℕ and Nat",
+        "assumptions": "n ≠ 0",
+        "equivalence": "conclusion comparison",
+        "strength": "stronger",
+        "boundary_cases": "specific zero check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement implies a less restrictive inequality than the one required by Mathlib conventions. The English statement does not explicitly exclude the case where n is 0, which would make the inequality true but not required by Mathlib conventions.",
+        "issues": [
+          "The English statement assumes the inequality is strict (b ^ Nat.log b n < n) rather than non-strict (b ^ Nat.log b n ≤ n) as required by Mathlib.",
+          "The English statement does not account for the totalization of division and remainders in Lean's Nat subtraction."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_log.json",
+      "response_sha256": "51ed2c725c97c733d1e63a228e8da280132b0ca98034d591f6b8edc507ddb87d"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_log",
+      "theorem": "AuditReference14.study_q_log",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (b n : ℕ) (hn : n ≠ 0), b ^ Nat.log b n ≤ n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_log",
+      "subject_sha256": "31797af04e63d53b2eab6613df08b8279b8dee3051cc854fdbc0c9cad55628a7",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 144,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Totalized Nat.log bases zero/one yield zero, including 0^0.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

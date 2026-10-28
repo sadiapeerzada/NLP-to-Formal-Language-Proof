@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "ind_009",
+    "nl_statement": "Use induction to prove (4 choose 0) + (5 choose 1) + (6 choose 2) + ... + (4+n choose n) = (5+n choose n).",
+    "expected_lean_statement": "theorem hockey_stick_binomial_identity (n : ℕ) : (∑ k ∈ Finset.range (n + 1), Nat.choose (4 + k) k) = Nat.choose (5 + n) n",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ind_009",
+    "subject_sha256": "ee28022b4986e164150346af5a0a055472e182692a83d10b9a32f63f832cbfb3",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n, inclusive k=0..n and binomial arguments 4+k,k match the displayed series and choose(5+n,n). Induction method is not encoded in the theorem type."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 25 column 1 (char 1355)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ind_009.json",
+      "status": "completed",
+      "response_sha256": "0fd5da334654b038a5b3e1d1d819e6290a98d04d7124c2a3c1cf22db7f27c81e"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "induction summation",
+        "domains": "ℕ Nat",
+        "assumptions": "binomial identity induction inductive definition binomial identity",
+        "equivalence": "conclusion exact match",
+        "strength": "same",
+        "boundary_cases": "n = 0 endpoint check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement outlines a proof of a summation formula for binomial coefficients using induction, which is equivalent to the Lean theorem provided.",
+        "issues": [
+          "Ensure induction step correctly sums elements and applies induction hypothesis correctly."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ind_009.json",
+      "response_sha256": "dcadc986affbaab1c5eb45b63adc8a58b5238d0d1d7eb3893f47c8b9ae7e78c7"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ind_009",
+      "theorem": "AuditReference1.AdditionalReferences.hockey_stick_binomial_identity",
+      "source": "data/reference_verification/v0.2.0/references_module.lean",
+      "expected_type": "∀ (n : ℕ), (∑ k ∈ Finset.range (n + 1), Nat.choose (4 + k) k) = Nat.choose (5 + n) n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ind_009",
+      "subject_sha256": "ee28022b4986e164150346af5a0a055472e182692a83d10b9a32f63f832cbfb3",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Hockey-stick orientation with both endpoints.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

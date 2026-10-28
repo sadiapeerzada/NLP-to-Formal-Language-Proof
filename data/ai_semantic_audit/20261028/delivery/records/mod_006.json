@@ -1,0 +1,75 @@
+{
+  "subject": {
+    "id": "mod_006",
+    "nl_statement": "Among positive natural-number moduli for which 16 and 25 have the same remainder, 9 is the largest.",
+    "expected_lean_statement": "theorem largest_modulus_sixteen_twentyfive :\n    Nat.ModEq 9 16 25 ∧ ∀ n : ℕ, 0 < n → Nat.ModEq n 16 25 → n ≤ 9",
+    "required_imports": [
+      "Mathlib.Data.Nat.ModEq"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_006",
+    "subject_sha256": "42aec48cb794a009bd21a5dea187fc4106743edb56a27ce509281eacd22d5cae",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Conjunction supplies modulus nine and universally bounds every positive candidate modulus; existence and largest-value requirements are both represented."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 21 column 1 (char 1335)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_006.json",
+      "status": "completed",
+      "response_sha256": "b4a878d6585ec4be5ef3bddde3b9e72a1bbaf44db98df3c3f025c0b491d4c1b6"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_006.json",
+      "response_sha256": "09daa5ead3147700decd56e1a7a1483855a7538919b5f63453b95d50b5563e9f"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_006",
+      "theorem": "AuditReference13.largest_modulus_sixteen_twentyfive",
+      "source": "data/curation_batches/v0.1.8/mod_006_largest_modulus.lean",
+      "expected_type": "Nat.ModEq 9 16 25 ∧ ∀ n : ℕ, 0 < n → Nat.ModEq n 16 25 → n ≤ 9",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_006",
+      "subject_sha256": "42aec48cb794a009bd21a5dea187fc4106743edb56a27ce509281eacd22d5cae",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 64,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Check all positive moduli 1..64 and explicit witness nine; finite, not maximality proof.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

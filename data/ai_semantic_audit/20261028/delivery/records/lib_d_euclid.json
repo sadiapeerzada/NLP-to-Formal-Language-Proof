@@ -1,0 +1,89 @@
+{
+  "subject": {
+    "id": "lib_d_euclid",
+    "nl_statement": "For a natural prime p and natural numbers a and b, p divides their product if and only if it divides at least one factor.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_d_euclid (p a b : ℕ) (hp : p.Prime) : p ∣ a * b ↔ p ∣ a ∨ p ∣ b",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_d_euclid",
+    "subject_sha256": "ceb12a172d8178298ed82c862446e182d16be9cdbaee638a71dd7b42cb7feacf",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural prime p and natural a,b; divisibility of product iff divisibility of at least one factor preserves disjunction and both directions."
+    },
+    "phi_3_5": {
+      "judgment": {
+        "label": "uncertain",
+        "quantifiers": "∀p ∈ ℕ, ∃a, ∃b, (p.Prime ∧ a ≠ 0 ∧ b ≠ ゼロ ∧ (p∣a * b ↔ p∣a ∨ p∣b))",
+        "domains": "ℕ, Prime",
+        "assumptions": "p is a natural prime, a and b are natural numbers",
+        "equivalence": "not equivalent",
+        "strength": "the expected Lean theorem is a generalization, not accounting for the zero case",
+        "boundary_cases": "p=0, a=0, b=0",
+        "counterexample_search": "consider p=0, a=0, b=0; p divides both sides trivially, but the expected theorem fails due to the zero case",
+        "explanation": "The provided expected Lean theorem does not account for the case when p is zero, which is a natural restriction in number theory.",
+        "issues": [
+          "Zero case not addressed",
+          "Implicit assumption that p is not zero",
+          "Lack of clarity on handling zero",
+          "Theorem does not fully capture the natural restriction"
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/lib_d_euclid.json",
+      "status": "completed",
+      "response_sha256": "2fe45cb8eca6c294c237bc1cc54efc7f77375380eaf3f28e2a56f017033fff95"
+    },
+    "phi_4": {
+      "judgment": null,
+      "parse_error": "issues must be a string list",
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_d_euclid.json",
+      "response_sha256": "7c755643317e696a5fb663ae5ce2975658a33a5dbf6729beaf4604fbce7da21f"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_d_euclid",
+      "theorem": "AuditReference14.study_d_euclid",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (p a b : ℕ) (hp : p.Prime), p ∣ a * b ↔ p ∣ a ∨ p ∣ b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_d_euclid",
+      "subject_sha256": "ceb12a172d8178298ed82c862446e182d16be9cdbaee638a71dd7b42cb7feacf",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 486,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Prime-domain sample, iff and disjunction.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-4 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [],
+      "phi_4": [
+        "Frozen schema parse failed; no accepted judgment."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

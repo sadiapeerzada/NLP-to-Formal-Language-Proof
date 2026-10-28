@@ -1,0 +1,215 @@
+{"context": "ai-audit-v1/lib_q_exp_tangent", "prompt_sha256": "2240f98bd9a8c9cdb0534912021a8b778e8e032c049a52ff235f08594ebf6689", "generation_seed": 1814687153}
+{"token": 168394, "text": "```", "generation_tokens": 1}
+{"token": 4108, "text": "json", "generation_tokens": 2}
+{"token": 198, "text": "\n", "generation_tokens": 3}
+{"token": 745, "text": "{\n", "generation_tokens": 4}
+{"token": 220, "text": "", "generation_tokens": 5}
+{"token": 392, "text": "  \"", "generation_tokens": 6}
+{"token": 3198, "text": "label", "generation_tokens": 7}
+{"token": 1243, "text": "\":", "generation_tokens": 8}
+{"token": 392, "text": " \"", "generation_tokens": 9}
+{"token": 2878, "text": "not", "generation_tokens": 10}
+{"token": 57899, "text": " faithful", "generation_tokens": 11}
+{"token": 1150, "text": "\",\n", "generation_tokens": 12}
+{"token": 220, "text": "", "generation_tokens": 13}
+{"token": 392, "text": "  \"", "generation_tokens": 14}
+{"token": 39719, "text": "quant", "generation_tokens": 15}
+{"token": 19873, "text": "ifiers", "generation_tokens": 16}
+{"token": 1243, "text": "\":", "generation_tokens": 17}
+{"token": 392, "text": " \"", "generation_tokens": 18}
+{"token": 134561, "text": "specific", "generation_tokens": 19}
+{"token": 12645, "text": " scope", "generation_tokens": 20}
+{"token": 19211, "text": " comparison", "generation_tokens": 21}
+{"token": 1150, "text": "\",\n", "generation_tokens": 22}
+{"token": 220, "text": "", "generation_tokens": 23}
+{"token": 392, "text": "  \"", "generation_tokens": 24}
+{"token": 129051, "text": "domains", "generation_tokens": 25}
+{"token": 1243, "text": "\":", "generation_tokens": 26}
+{"token": 392, "text": " \"", "generation_tokens": 27}
+{"token": 134561, "text": "specific", "generation_tokens": 28}
+{"token": 1490, "text": " type", "generation_tokens": 29}
+{"token": 19211, "text": " comparison", "generation_tokens": 30}
+{"token": 1150, "text": "\",\n", "generation_tokens": 31}
+{"token": 220, "text": "", "generation_tokens": 32}
+{"token": 392, "text": "  \"", "generation_tokens": 33}
+{"token": 456, "text": "ass", "generation_tokens": 34}
+{"token": 394, "text": "um", "generation_tokens": 35}
+{"token": 40977, "text": "ptions", "generation_tokens": 36}
+{"token": 1243, "text": "\":", "generation_tokens": 37}
+{"token": 392, "text": " \"", "generation_tokens": 38}
+{"token": 134561, "text": "specific", "generation_tokens": 39}
+{"token": 65604, "text": " hypothesis", "generation_tokens": 40}
+{"token": 19211, "text": " comparison", "generation_tokens": 41}
+{"token": 1150, "text": "\",\n", "generation_tokens": 42}
+{"token": 220, "text": "", "generation_tokens": 43}
+{"token": 392, "text": "  \"", "generation_tokens": 44}
+{"token": 53097, "text": "equ", "generation_tokens": 45}
+{"token": 161261, "text": "ivalence", "generation_tokens": 46}
+{"token": 1243, "text": "\":", "generation_tokens": 47}
+{"token": 392, "text": " \"", "generation_tokens": 48}
+{"token": 542, "text": "con", "generation_tokens": 49}
+{"token": 15482, "text": "clusion", "generation_tokens": 50}
+{"token": 19211, "text": " comparison", "generation_tokens": 51}
+{"token": 1150, "text": "\",\n", "generation_tokens": 52}
+{"token": 220, "text": "", "generation_tokens": 53}
+{"token": 392, "text": "  \"", "generation_tokens": 54}
+{"token": 146921, "text": "strength", "generation_tokens": 55}
+{"token": 1243, "text": "\":", "generation_tokens": 56}
+{"token": 392, "text": " \"", "generation_tokens": 57}
+{"token": 9851, "text": "strong", "generation_tokens": 58}
+{"token": 259, "text": "er", "generation_tokens": 59}
+{"token": 11, "text": ",", "generation_tokens": 60}
+{"token": 1572, "text": " than", "generation_tokens": 61}
+{"token": 17222, "text": " requested", "generation_tokens": 62}
+{"token": 1150, "text": "\",\n", "generation_tokens": 63}
+{"token": 220, "text": "", "generation_tokens": 64}
+{"token": 392, "text": "  \"", "generation_tokens": 65}
+{"token": 142504, "text": "boundary", "generation_tokens": 66}
+{"token": 115457, "text": "_cases", "generation_tokens": 67}
+{"token": 1243, "text": "\":", "generation_tokens": 68}
+{"token": 392, "text": " \"", "generation_tokens": 69}
+{"token": 134561, "text": "specific", "generation_tokens": 70}
+{"token": 12421, "text": " zero", "generation_tokens": 71}
+{"token": 14, "text": "/", "generation_tokens": 72}
+{"token": 70570, "text": "endpoint", "generation_tokens": 73}
+{"token": 73131, "text": "/sign", "generation_tokens": 74}
+{"token": 2371, "text": " check", "generation_tokens": 75}
+{"token": 1150, "text": "\",\n", "generation_tokens": 76}
+{"token": 220, "text": "", "generation_tokens": 77}
+{"token": 392, "text": "  \"", "generation_tokens": 78}
+{"token": 32128, "text": "counter", "generation_tokens": 79}
+{"token": 18582, "text": "example", "generation_tokens": 80}
+{"token": 23642, "text": "_search", "generation_tokens": 81}
+{"token": 1243, "text": "\":", "generation_tokens": 82}
+{"token": 392, "text": " \"", "generation_tokens": 83}
+{"token": 134561, "text": "specific", "generation_tokens": 84}
+{"token": 17098, "text": " candidate", "generation_tokens": 85}
+{"token": 4994, "text": " example", "generation_tokens": 86}
+{"token": 503, "text": " or", "generation_tokens": 87}
+{"token": 860, "text": " no", "generation_tokens": 88}
+{"token": 2491, "text": " found", "generation_tokens": 89}
+{"token": 9446, "text": " counter", "generation_tokens": 90}
+{"token": 18582, "text": "example", "generation_tokens": 91}
+{"token": 1150, "text": "\",\n", "generation_tokens": 92}
+{"token": 220, "text": "", "generation_tokens": 93}
+{"token": 392, "text": "  \"", "generation_tokens": 94}
+{"token": 490, "text": "ex", "generation_tokens": 95}
+{"token": 63091, "text": "planation", "generation_tokens": 96}
+{"token": 1243, "text": "\":", "generation_tokens": 97}
+{"token": 392, "text": " \"", "generation_tokens": 98}
+{"token": 976, "text": "The", "generation_tokens": 99}
+{"token": 7725, "text": " English", "generation_tokens": 100}
+{"token": 9710, "text": " statement", "generation_tokens": 101}
+{"token": 132407, "text": " asserts", "generation_tokens": 102}
+{"token": 261, "text": " a", "generation_tokens": 103}
+{"token": 4857, "text": " specific", "generation_tokens": 104}
+{"token": 80149, "text": " inequality", "generation_tokens": 105}
+{"token": 2870, "text": " between", "generation_tokens": 106}
+{"token": 1215, "text": " x", "generation_tokens": 107}
+{"token": 10, "text": "+", "generation_tokens": 108}
+{"token": 16, "text": "1", "generation_tokens": 109}
+{"token": 326, "text": " and", "generation_tokens": 110}
+{"token": 8702, "text": " Real", "generation_tokens": 111}
+{"token": 26804, "text": ".exp", "generation_tokens": 112}
+{"token": 1215, "text": " x", "generation_tokens": 113}
+{"token": 395, "text": " for", "generation_tokens": 114}
+{"token": 1753, "text": " every", "generation_tokens": 115}
+{"token": 1374, "text": " real", "generation_tokens": 116}
+{"token": 2086, "text": " number", "generation_tokens": 117}
+{"token": 1215, "text": " x", "generation_tokens": 118}
+{"token": 13, "text": ".", "generation_tokens": 119}
+{"token": 5551, "text": " However", "generation_tokens": 120}
+{"token": 11, "text": ",", "generation_tokens": 121}
+{"token": 290, "text": " the", "generation_tokens": 122}
+{"token": 80043, "text": " Lean", "generation_tokens": 123}
+{"token": 177750, "text": " theorem", "generation_tokens": 124}
+{"token": 5181, "text": " provided", "generation_tokens": 125}
+{"token": 2226, "text": " does", "generation_tokens": 126}
+{"token": 625, "text": " not", "generation_tokens": 127}
+{"token": 45615, "text": " explicitly", "generation_tokens": 128}
+{"token": 3696, "text": " assert", "generation_tokens": 129}
+{"token": 495, "text": " this", "generation_tokens": 130}
+{"token": 80149, "text": " inequality", "generation_tokens": 131}
+{"token": 889, "text": " but", "generation_tokens": 132}
+{"token": 7542, "text": " rather", "generation_tokens": 133}
+{"token": 37529, "text": " defines", "generation_tokens": 134}
+{"token": 261, "text": " a", "generation_tokens": 135}
+{"token": 4322, "text": " property", "generation_tokens": 136}
+{"token": 328, "text": " of", "generation_tokens": 137}
+{"token": 290, "text": " the", "generation_tokens": 138}
+{"token": 8702, "text": " Real", "generation_tokens": 139}
+{"token": 26804, "text": ".exp", "generation_tokens": 140}
+{"token": 1114, "text": " function", "generation_tokens": 141}
+{"token": 306, "text": " in", "generation_tokens": 142}
+{"token": 261, "text": " a", "generation_tokens": 143}
+{"token": 5985, "text": " general", "generation_tokens": 144}
+{"token": 9258, "text": " setting", "generation_tokens": 145}
+{"token": 2935, "text": " without", "generation_tokens": 146}
+{"token": 261, "text": " a", "generation_tokens": 147}
+{"token": 2823, "text": " direct", "generation_tokens": 148}
+{"token": 80149, "text": " inequality", "generation_tokens": 149}
+{"token": 19211, "text": " comparison", "generation_tokens": 150}
+{"token": 13, "text": ".", "generation_tokens": 151}
+{"token": 1328, "text": " This", "generation_tokens": 152}
+{"token": 4787, "text": " makes", "generation_tokens": 153}
+{"token": 290, "text": " the", "generation_tokens": 154}
+{"token": 9710, "text": " statement", "generation_tokens": 155}
+{"token": 625, "text": " not", "generation_tokens": 156}
+{"token": 57899, "text": " faithful", "generation_tokens": 157}
+{"token": 306, "text": " in", "generation_tokens": 158}
+{"token": 5941, "text": " terms", "generation_tokens": 159}
+{"token": 328, "text": " of", "generation_tokens": 160}
+{"token": 2823, "text": " direct", "generation_tokens": 161}
+{"token": 56509, "text": " equival", "generation_tokens": 162}
+{"token": 1082, "text": "ence", "generation_tokens": 163}
+{"token": 21444, "text": ".\",\n", "generation_tokens": 164}
+{"token": 220, "text": "", "generation_tokens": 165}
+{"token": 392, "text": "  \"", "generation_tokens": 166}
+{"token": 30149, "text": "issues", "generation_tokens": 167}
+{"token": 1243, "text": "\":", "generation_tokens": 168}
+{"token": 4240, "text": " [\n", "generation_tokens": 169}
+{"token": 271, "text": "   ", "generation_tokens": 170}
+{"token": 392, "text": " \"", "generation_tokens": 171}
+{"token": 976, "text": "The", "generation_tokens": 172}
+{"token": 80043, "text": " Lean", "generation_tokens": 173}
+{"token": 177750, "text": " theorem", "generation_tokens": 174}
+{"token": 2226, "text": " does", "generation_tokens": 175}
+{"token": 625, "text": " not", "generation_tokens": 176}
+{"token": 8516, "text": " directly", "generation_tokens": 177}
+{"token": 3696, "text": " assert", "generation_tokens": 178}
+{"token": 290, "text": " the", "generation_tokens": 179}
+{"token": 80149, "text": " inequality", "generation_tokens": 180}
+{"token": 1215, "text": " x", "generation_tokens": 181}
+{"token": 10, "text": "+", "generation_tokens": 182}
+{"token": 16, "text": "1", "generation_tokens": 183}
+{"token": 72554, "text": " \u2264", "generation_tokens": 184}
+{"token": 8702, "text": " Real", "generation_tokens": 185}
+{"token": 26804, "text": ".exp", "generation_tokens": 186}
+{"token": 1215, "text": " x", "generation_tokens": 187}
+{"token": 472, "text": " as", "generation_tokens": 188}
+{"token": 17222, "text": " requested", "generation_tokens": 189}
+{"token": 306, "text": " in", "generation_tokens": 190}
+{"token": 290, "text": " the", "generation_tokens": 191}
+{"token": 7725, "text": " English", "generation_tokens": 192}
+{"token": 9710, "text": " statement", "generation_tokens": 193}
+{"token": 21444, "text": ".\",\n", "generation_tokens": 194}
+{"token": 271, "text": "   ", "generation_tokens": 195}
+{"token": 392, "text": " \"", "generation_tokens": 196}
+{"token": 976, "text": "The", "generation_tokens": 197}
+{"token": 80149, "text": " inequality", "generation_tokens": 198}
+{"token": 382, "text": " is", "generation_tokens": 199}
+{"token": 625, "text": " not", "generation_tokens": 200}
+{"token": 45615, "text": " explicitly", "generation_tokens": 201}
+{"token": 16969, "text": " stated", "generation_tokens": 202}
+{"token": 306, "text": " in", "generation_tokens": 203}
+{"token": 290, "text": " the", "generation_tokens": 204}
+{"token": 80043, "text": " Lean", "generation_tokens": 205}
+{"token": 177750, "text": " theorem", "generation_tokens": 206}
+{"token": 5181, "text": " provided", "generation_tokens": 207}
+{"token": 14396, "text": ".\"\n", "generation_tokens": 208}
+{"token": 220, "text": "", "generation_tokens": 209}
+{"token": 10213, "text": "  ]\n", "generation_tokens": 210}
+{"token": 739, "text": "}\n", "generation_tokens": 211}
+{"token": 168394, "text": "```", "generation_tokens": 212}
+{"token": 200020, "text": "", "generation_tokens": 213}
+{"status": "generation_finished", "completion_tokens": 213}

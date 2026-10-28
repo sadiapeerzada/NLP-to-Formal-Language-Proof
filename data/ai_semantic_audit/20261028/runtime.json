@@ -1,0 +1,11 @@
+{
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "packages": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.21.0",
+    "huggingface-hub": "2.3.0"
+  },
+  "disk_free_bytes": 46913511424
+}

@@ -1,0 +1,90 @@
+{
+  "subject": {
+    "id": "ineq_001",
+    "nl_statement": "For any natural number n, n is at most n squared.",
+    "expected_lean_statement": "theorem sq_ge_self (n : ℕ) : n ≤ n ^ 2",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ineq_001",
+    "subject_sha256": "bdee887e37866d3fa67f3c81e745898d2251c88287cec8cb9c0f8536596b679a",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal natural n and non-strict n<=n^2, including equality at n=0 and n=1."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 20 column 1 (char 1358)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ineq_001.json",
+      "status": "completed",
+      "response_sha256": "da21e230e0a0a345c5bc022a9da441bf6154c1c5811db1d00060ea81409764dd"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "one each",
+        "domains": "ℕ",
+        "assumptions": "none",
+        "equivalence": "weaker",
+        "strength": "weaker",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts a property that is not universally true for all natural numbers n. It is equivalent to stating n is less than or equal to n squared (n ≤ n^2), which is true but not a meaningful inequality as n is always less than or equal to n squared (n ≤ n^2 is an obvious inequality). The Lean theorem is equivalent to stating n is less than or equal to n squared (n ≤ n^2), which is true but trivial and not meaningful in this context.",
+        "issues": [
+          "The inequality is trivial and not meaningful in this context.",
+          "The English statement is equivalent to stating n is less than or equal to n squared (n ≤ n^2), which is true but trivial."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ineq_001.json",
+      "response_sha256": "fee371ba6a417173f8d801cc8b4744512b10aebbf9cdf454df9ff510daab1549"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ineq_001",
+      "theorem": "AuditReference0.sq_ge_self",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (n : ℕ), n ≤ n ^ 2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ineq_001",
+      "subject_sha256": "bdee887e37866d3fa67f3c81e745898d2251c88287cec8cb9c0f8536596b679a",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Zero and one equality endpoints.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

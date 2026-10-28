@@ -1,0 +1,85 @@
+{
+  "subject": {
+    "id": "ineq_004",
+    "nl_statement": "Prove that n + 3 < n + 7 for all values of n ∈ ℕ. You can do this proof with algebra (without induction), but the goal of this exercise is to write out a valid induction proof.",
+    "expected_lean_statement": "theorem add_three_lt_add_seven (n : ℕ) : n + 3 < n + 7",
+    "required_imports": null,
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "ineq_004",
+    "subject_sha256": "ed94f52c16bf0971faf6c1f1ba8fd1f4c44be47603f602683ca2006dbbc0eb51",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural n and strict n+3<n+7 match. Proposition-level faithfulness does not certify a requested induction proof method."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Missing substantive field: explanation",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/ineq_004.json",
+      "status": "completed",
+      "response_sha256": "4f97c6c4fb150efbcbf85582129259713b9f0c5b172cfc6d5280c1fd359eeb5c"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "not faithful",
+        "quantifiers": "universal (∀) versus inductive (induction)",
+        "domains": "specific (ℕ) versus implied (nat numbers)",
+        "assumptions": "none specified versus inductive step (n + 1) versus base case (n = 0)",
+        "equivalence": "conclusion not equivalent versus final conclusion (true) versus final conclusion (true)",
+        "strength": "ambiguous versus final conclusion (true versus true)",
+        "boundary_cases": "specific (n = 0) versus final conclusion (true versus true)",
+        "counterexample_search": "specific candidate (n = 0) versus final conclusion (true versus true)",
+        "explanation": "The English statement requests an induction proof of an inequality that is true by simple algebraic manipulation, while the Lean theorem asks for an inductive proof without specifying the inductive step or base case.",
+        "issues": [
+          "Confusion between universal and inductive quantifiers",
+          "Different expectations on how induction should be applied",
+          "The final conclusion in Lean is true, but the requested proof method is different from induction."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/ineq_004.json",
+      "response_sha256": "aba5d550c858e11ea7216c4dcf610e28f240c9b1e57a8434aba29a07086fd4e2"
+    },
+    "lean_reference_check": {
+      "candidate_id": "ineq_004",
+      "theorem": "AuditReference6.add_three_lt_add_seven",
+      "source": "data/curation_batches/v0.1.2/ineq_004_linear_inequality.lean",
+      "expected_type": "∀ (n : ℕ), n + 3 < n + 7",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "ineq_004",
+      "subject_sha256": "ed94f52c16bf0971faf6c1f1ba8fd1f4c44be47603f602683ca2006dbbc0eb51",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 9,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Proposition only; proof-method request is not checked.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted.",
+      "At least one model raises a semantic concern; raw explanation requires adjudication."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": []
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

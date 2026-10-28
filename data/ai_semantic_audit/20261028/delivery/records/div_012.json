@@ -1,0 +1,87 @@
+{
+  "subject": {
+    "id": "div_012",
+    "nl_statement": "For integers x and y, 6x + 10y = 32 holds if and only if there is an integer k with x = 2 - 5k and y = 2 + 3k.",
+    "expected_lean_statement": "theorem diophantine_six_ten (x y : ℤ) :\n    6 * x + 10 * y = 32 ↔ ∃ k : ℤ, x = 2 - 5 * k ∧ y = 2 + 3 * k",
+    "required_imports": [
+      "Mathlib.Data.Int.Basic",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "div_012",
+    "subject_sha256": "541693e21886132f15b7e56f1f4141541cee701aaef1fc7c32077223a03cc359",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Integer x,y and biconditional with existential integer k preserve all solutions, including negative k and opposite signs of the two steps."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 27 column 1 (char 1341)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/div_012.json",
+      "status": "completed",
+      "response_sha256": "ac15724d2698acec05fbfa31f7e26c540a851683e1ef3b8d28bfaa69b14c8380"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "both sides",
+        "domains": "integers",
+        "assumptions": "none",
+        "equivalence": "conclusion comparison",
+        "strength": "same",
+        "boundary_cases": "none",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement and Lean theorem are equivalent in terms of mathematical meaning. Both assert a biconditional relationship between an equation involving x and y and a parametric solution involving an integer k.",
+        "issues": []
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/div_012.json",
+      "response_sha256": "2028cd53284e0b2472173913dfc833dd0fff86c9688708eee5666335b3ba6c58"
+    },
+    "lean_reference_check": {
+      "candidate_id": "div_012",
+      "theorem": "AuditReference12.diophantine_six_ten",
+      "source": "data/curation_batches/v0.1.8/div_012_diophantine.lean",
+      "expected_type": "∀ (x y : ℤ), 6 * x + 10 * y = 32 ↔ ∃ k : ℤ, x = 2 - 5 * k ∧ y = 2 + 3 * k",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "div_012",
+      "subject_sha256": "541693e21886132f15b7e56f1f4141541cee701aaef1fc7c32077223a03cc359",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 169,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Eliminate integer existential with exact forced witness (y-2)/3; no bounded existential approximation.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into equivalence. Prompt placeholder copied into counterexample_search.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into counterexample_search."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

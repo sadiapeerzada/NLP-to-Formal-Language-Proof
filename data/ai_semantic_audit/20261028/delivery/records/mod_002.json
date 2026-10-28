@@ -1,0 +1,94 @@
+{
+  "subject": {
+    "id": "mod_002",
+    "nl_statement": "The square of any integer is congruent to 0 or 1 modulo 4.",
+    "expected_lean_statement": "theorem sq_mod_four (a : ℤ) : a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "mod_002",
+    "subject_sha256": "a7aa18d2f1043c52675cbe429f2bacf880cdde74803ca07b51b933b26ded7d8f",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Universal integer a, so negative squares are included; remainder disjunction exactly expresses residue 0 or 1 modulo four."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "Extra data: line 20 column 4 (char 1071)",
+      "response": "data/ai_semantic_audit/20261028/phi_pass1/responses/mod_002.json",
+      "status": "completed",
+      "response_sha256": "73f1fdb2efa6839f1668ac354417afc6c726b613998698f8dc2a84a3c339c61a"
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "specific scope comparison",
+        "domains": "specific type comparison",
+        "assumptions": "specific hypothesis comparison",
+        "equivalence": "conclusion comparison",
+        "strength": "same, stronger, weaker, or ambiguous with reason",
+        "boundary_cases": "specific zero/endpoint/sign check",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The English statement asserts that the square of any integer is either 0 or 1 modulo 4. This is true, as squaring an integer either results in a number divisible by 4 (which would be equivalent to 0 modulo 4) or an odd number (which squared is 1 modulo 4). There is no counterexample that refutes this claim within the integers (ℤ). The Lean theorem correctly reflects this statement by setting an equivalence condition that checks if an integer squared modulo 4 is either 0 or 1. There is an equivalence in terms of conclusion between the English statement and the Lean theorem provided.",
+        "issues": [
+          "The English statement assumes that 'any integer' refers to all integers without specifying a boundary case such as negative integers or zero. However, this is covered in the Lean theorem which checks modulo 4 equivalence directly."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/mod_002.json",
+      "response_sha256": "1a65b5171525015a3dc9118807609c659a9f6a09236cfb1b6617363f1f7fd9b1"
+    },
+    "lean_reference_check": {
+      "candidate_id": "mod_002",
+      "theorem": "AuditReference0.sq_mod_four",
+      "source": "data/reference_verification/v0.1.0/references.lean",
+      "expected_type": "∀ (a : ℤ), a ^ 2 % 4 = 0 ∨ a ^ 2 % 4 = 1",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "mod_002",
+      "subject_sha256": "a7aa18d2f1043c52675cbe429f2bacf880cdde74803ca07b51b933b26ded7d8f",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 13,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Negative integers included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Frozen schema parse failed; no accepted judgment.",
+      "Phi-4 response quality: Prompt placeholder copied into quantifiers. Prompt placeholder copied into domains. Prompt placeholder copied into assumptions. Prompt placeholder copied into equivalence. Prompt placeholder copied into strength. Prompt placeholder copied into boundary_cases. Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ.",
+      "At least one model response failed the frozen strict JSON schema; its label is NOT counted."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Frozen schema parse failed; no accepted judgment."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into quantifiers.",
+        "Prompt placeholder copied into domains.",
+        "Prompt placeholder copied into assumptions.",
+        "Prompt placeholder copied into equivalence.",
+        "Prompt placeholder copied into strength.",
+        "Prompt placeholder copied into boundary_cases.",
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}

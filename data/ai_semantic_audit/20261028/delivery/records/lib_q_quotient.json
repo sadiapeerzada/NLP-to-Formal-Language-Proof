@@ -1,0 +1,86 @@
+{
+  "subject": {
+    "id": "lib_q_quotient",
+    "nl_statement": "For natural numbers m and n, the natural quotient m/n is at most m, including when n is zero.",
+    "expected_lean_statement": "open scoped BigOperators\ntheorem study_q_quotient (m n : ℕ) : m / n ≤ m",
+    "required_imports": [
+      "Mathlib"
+    ],
+    "required_definitions": null
+  },
+  "audit": {
+    "candidate_id": "lib_q_quotient",
+    "subject_sha256": "8de27fb28a6bafc236a80341c5e9dde9720c4bdf063d15d21c4f867e83295bbf",
+    "reviewer_kind": "ai_only_not_independent_human",
+    "grants_eligibility": false,
+    "status": "unresolved_ai_audit_requires_adjudication",
+    "coding_assistant_assessment": {
+      "label": "faithful",
+      "note": "Natural m,n and quotient m/n<=m; English includes denominator zero, matching Nat /0=0."
+    },
+    "phi_3_5": {
+      "judgment": null,
+      "parse_error": "No completed exploratory judgment: interrupted",
+      "response": null,
+      "status": "interrupted",
+      "response_sha256": null
+    },
+    "phi_4": {
+      "judgment": {
+        "label": "faithful",
+        "quantifiers": "m and n",
+        "domains": "ℕ",
+        "assumptions": "m and n are natural numbers",
+        "equivalence": "m / n ≤ m",
+        "strength": "stronger",
+        "boundary_cases": "when n is zero",
+        "counterexample_search": "specific candidate example or no found counterexample",
+        "explanation": "The expected Lean statement omits the case where n is zero, which makes it stronger than the English statement.",
+        "issues": [
+          "The Lean statement should account for division by zero."
+        ]
+      },
+      "parse_error": null,
+      "response": "data/ai_semantic_audit/20261028/phi4_pass2/responses/lib_q_quotient.json",
+      "response_sha256": "6dc8fdbc4c2c7dbddbcd03c8cb6a626821e6ea59c9d08b0db27bbf32a3e66475"
+    },
+    "lean_reference_check": {
+      "candidate_id": "lib_q_quotient",
+      "theorem": "AuditReference14.study_q_quotient",
+      "source": "data/curation_batches/v0.2.0/references_expanded.lean",
+      "expected_type": "∀ (m n : ℕ), m / n ≤ m",
+      "axioms": [
+        "propext"
+      ],
+      "strict_verified": true
+    },
+    "mathematical_probe": {
+      "candidate_id": "lib_q_quotient",
+      "subject_sha256": "8de27fb28a6bafc236a80341c5e9dde9720c4bdf063d15d21c4f867e83295bbf",
+      "kind": "exact_bounded_probe",
+      "checked_assignments": 81,
+      "filtered_by_assumptions": 0,
+      "failures": [],
+      "note": "Nat /0=0 included.",
+      "status": "no_counterexample_in_stated_grid",
+      "scope": "Manually AI-translated proposition checks, not automatic English parsing or Lean evaluation; no unbounded semantic certification."
+    },
+    "disagreement_reasons": [
+      "Phi-3.5 response quality: Exploratory model did not complete a review; no verdict exists.",
+      "Phi-4 response quality: Prompt placeholder copied into counterexample_search. Faithful label accompanies nonempty issues; consistency requires adjudication.",
+      "Coding-AI/model labels or parse status differ."
+    ],
+    "proposed_action": "retain_in_review_queue_no_acceptance",
+    "posthoc_quality_flags": {
+      "phi_3_5": [
+        "Exploratory model did not complete a review; no verdict exists."
+      ],
+      "phi_4": [
+        "Prompt placeholder copied into counterexample_search.",
+        "Faithful label accompanies nonempty issues; consistency requires adjudication."
+      ]
+    },
+    "human_review_status": "unchanged_pending",
+    "policy_change_approved": false
+  }
+}
