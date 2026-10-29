@@ -1,0 +1,13 @@
+# Final paper readiness
+
+The revised **14-page** Springer manuscript is `paper/main.tex`; PDF: `paper/compiled_final_review_v2.pdf`; SHA-256 `9d25e9fd0130bd100ee104139a202f15f4fb1d1e086ea3baf873030d31c4adf2`. The original 12-page identifiable PDF and original experiment results remain preserved. The new manuscript is a reduced fixed-theorem empirical pilot, not a claim of complete autonomous NL-to-Lean evaluation.
+
+M7’s empirical rewrite is COMPLETE: the paper asks whether compiler diagnostics improve repair over equally call/output-capped blind retries, reports the negative/inconclusive outcomes, and includes four numbered required tables, two genuine figures, five actual before/after cases, an authentic compiler-error taxonomy, AI faithful/unfaithful/uncertain reference labels, recent direct repair/faithfulness work, and full public/private reproducibility limits. All ten cited keys were checked against primary sources; LeanDojo’s bibliography link was corrected. Actual model outputs and diagnostics, including failed/unchanged attempts, are preserved.
+
+Observed A=0/60, B=1/60 and C=1/58 are distinguished from matched B=C=1/58 and the separately planned C=1/60 sensitivity. Matched point estimates, intervals and tests use the same populations. Missingness identification bounds and the degeneracy/low-power limitations are explicit. The one seed and three-case final pilot are disclosed. No compiler-feedback superiority, equivalence, independent-human semantics, external preregistration or measured end-to-end accuracy is asserted.
+
+The compiled PDF passes actual text checks for counts, missingness, anonymity and unresolved markers. No overfull-box or unresolved-reference warning is present; ordinary bibliography underfull boxes remain. The current [TAIMMA call](https://easychair.org/cfp/taimma2027), checked 29 October 2026, recommends 12–15 full-paper pages and at least six short-paper pages; the current PDF is within the full-paper recommendation. Page count is not acceptance or category approval.
+
+Remaining final manuscript/publication steps: independent final editorial review, final author/contact/affiliation choice, venue submission category, supervisor acceptance of the reduced scope/deviations, and explicit approval of the newly enumerated public payload. Author/contact information remains withheld in this release candidate. No affiliation or expert approval is invented.
+
+**Full-compliance submission: NO-GO** because M1/M2/M3 remain partial. **Reduced pilot: ready for supervisor review**, not automatic submission. No new push/merge/submission is authorized by the prior version’s approval.

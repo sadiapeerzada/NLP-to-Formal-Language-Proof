@@ -1,3 +1,33 @@
+# Final review revision: fixed-theorem empirical pilot
+
+**Local revision awaiting fresh publication approval. No push or merge of this revision.**
+
+The canonical revised manuscript is [paper/final_manuscript.pdf](paper/final_manuscript.pdf)
+(14 pages). Observed rates are A=0/60, B=1/60, C=1/58 with two unavailable C
+outcomes. On 58 complete pairs B=C=1/58 (1.72%); the paired difference is zero
+without informative discordance. C=1/60 remains only the planned missing-as-failure
+sensitivity. Missingness bounds for the full-cohort C−B effect are 0 to +3.33 points.
+
+Run `python3 reanalyze_review_v2.py` for the revised observed/paired/sensitivity
+analysis, and `python3 verify_payload.py` for exact payload and baseline redacted
+evidence checks. Latest results: `results/review_v2/`; final evidence-backed gate:
+[docs/FINAL_SUBMISSION_GATE.md](docs/FINAL_SUBMISSION_GATE.md).
+
+M1/M2/M3 remain PARTIAL under the exact student-supplied requirements; M4/M5/M6/M7
+are COMPLETE in their documented scopes. M6 local original-byte reproducibility
+and M7 empirical manuscript rewrite do not imply submission authorization.
+Recommendation is NO-GO for a full-compliance submission; the reduced pilot is
+ready for supervisor/editorial review. The exact professor correspondence and
+original raw logs remain local. Public replay limitations are unchanged.
+
+The original 12-page public review PDF and original analysis remain historical
+artifacts. Source/metric changes in this revision do not overwrite old experimental
+records or add model attempts. All newly proposed files require fresh approval.
+
+---
+
+## Historical release-v1 description
+
 # Compiler-guided Lean proof repair: publication review bundle
 
 **Local candidate awaiting approval. No push, merge or conference submission.**
