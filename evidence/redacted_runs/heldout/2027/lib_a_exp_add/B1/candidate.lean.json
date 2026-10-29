@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_exp_add (x y : ℝ) : Real.exp (x + y) = Real.exp x * Real.exp y\n:= by\n  rw [Real.exp_add]",
+  "original_sha256": "87a0083ad1ea711b93ee41d187315e1e380270bc910b4b7d3493ee09b88f136c"
+}

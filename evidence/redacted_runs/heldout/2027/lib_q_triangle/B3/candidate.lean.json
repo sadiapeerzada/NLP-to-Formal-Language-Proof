@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_triangle (x y : ℝ) : |x + y| ≤ |x| + |y| :=\nby\n  apply le_trans (le_of_eq (abs_add_eq_add_of_nonneg (by linarith)))\n  apply abs_add_le_add",
+  "original_sha256": "4c1dce2efc2452ab96bade5a2fac660b5028736fd90eea2e739f926f7c87de52"
+}

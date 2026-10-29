@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_euclid (p a b : ℕ) (hp : p.Prime) : p ∣ a * b ↔ p ∣ a ∨ p ∣ b\n:= by\n  split\n  · intro h\n    cases h with ha hb\n    · exact or.inl ha\n    · exact or.inr hb\n  · intro h\n    cases h\n    · exact or.inl (div_mul_right p a b h)\n    · exact or.inr (div_mul_left p a b h)",
+  "original_sha256": "b80885ab3a81da11d0b697b5df6c82d92841bcc1b3b915f00c344cdf7af801a6"
+}

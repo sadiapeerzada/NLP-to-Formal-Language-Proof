@@ -1,0 +1,17 @@
+{
+  "reviewed_commit": "3b4909a20ed24cafd36cbe029a81f8946bc96d69",
+  "python_tests": {
+    "exit_code": 0,
+    "passed": 293,
+    "subtests_passed": 28,
+    "seconds": 131.82
+  },
+  "lean_build": {
+    "exit_code": 0,
+    "jobs": 8658
+  },
+  "original_artifact_validation_passed": true,
+  "successful_model_candidates_freshly_reverified": 2,
+  "new_inference_calls": 0,
+  "scope": "Full tests and Lean build were run on the preserved original research checkout. Public derivative bundle has its own reanalysis/payload checks, not a claimed full original test run."
+}

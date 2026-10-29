@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_gcd_lcm (a b : ℕ) : Nat.gcd a b * Nat.lcm a b = a * b\n:= by\n  have h1 : a * b = (a / Nat.gcd a b) * a + (b / Nat.gcd a b) * b := by\n    rw [Nat.gcd_eq_gcd_symm]\n  have h2 : Nat.lcm a b = a * b / Nat.gcd a b := by\n    rw [Nat.lcm_eq_mul_div_gcd]\n  rw [h1, h2]\n  ring",
+  "original_sha256": "666a10fa78f1acddb29a2cd62ef6d71a755b6d5fdd8015247dee7ddf76fd72cb"
+}

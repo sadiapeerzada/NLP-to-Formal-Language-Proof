@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem even_iff_even_three_mul (n : ℤ) : Even n ↔ Even (3 * n) :=\nby\n  split\n  · intro h\n    obtain ⟨k, hk⟩ := h\n    exact even_of_add_one_even (by rw [mul_one, hk, mul_one])\n\n  · intro h\n    obtain ⟨k, hk⟩ := h\n    rw [mul_one, hk, mul_one]\n    exact even_of_add_one_even (by rw [mul_one, hk, mul_one])",
+  "original_sha256": "70a05c0aec1d161b0236eb52e8e0891bd43c6177a81e300a879745b53b556be3"
+}

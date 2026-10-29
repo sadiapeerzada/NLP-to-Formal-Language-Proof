@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem sum_squares_closed_form (n : ℕ) : (∑ k ∈ Finset.range (n + 1), k ^ 2) = n * (n + 1) * (2 * n + 1) / 6\n:= by\n  induction n with i ih\n  · simp [Finset.sum_range_zero]\n  · have h := ih i\n    rw [Finset.sum_range_succ, add_assoc, mul_assoc, mul_comm i (i + 1), add_comm (i + 1), add_assoc, add_left_comm, add_right_comm]\n    ring",
+  "original_sha256": "c9b12be9077f939bea39c6e76aa273f235c4e32d18dc2d9306c84673a663a13f"
+}

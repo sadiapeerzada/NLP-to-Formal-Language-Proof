@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_a_abs_product (x y : ℝ) : |x * y| = |x| * |y| :=\nby\n  have h1 : |x * y| = x * y ∨ |x * y| = -x * y := by\n    apply abs_eq\n  have h2 : |x| * |y| = x * y ∨ |x| * |y| = -x * y := by\n    apply abs_mul\n  have h3 : x * y = |x * y| ∨ x * y = -|x * y| := by\n    apply mul_eq_abs\n  have h4 : x = |x| ∨ x = -|x| := by\n    apply eq_abs\n  have h5 : y = |y| ∨ y = -|y| := by\n    apply eq_abs\n  have h6 : |x * y| = |x| * |y| := by\n    by_cases h12 : x * y = |x * y|\n    · rw [h12, h1]\n    · rw [h12, h2]\n  exact h6",
+  "original_sha256": "d0202590b10f8a106ca7bbd759d1a9941f4363d657bf6e8e9e87b9b176497c5c"
+}

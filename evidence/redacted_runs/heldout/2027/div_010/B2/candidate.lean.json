@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem dvd_mul_right_int (a b c : ℤ) (hab : a ∣ b) : a ∣ b * c\n:= by\n  obtain ⟨k, hk⟩ := hab\n  exact int.mul_right_dvd hk c",
+  "original_sha256": "39eb2677c30ce85abcb0557551aaa50bbc77b5387c8aa4960dd01fe313c19041"
+}

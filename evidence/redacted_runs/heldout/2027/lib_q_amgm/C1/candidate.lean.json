@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_amgm (x y : ℝ) : 2 * x * y ≤ x ^ 2 + y ^ 2 := by\n  have h : x ^ 2 + y ^ 2 - 2 * x * y ≥ 0 := by\n    calc\n      x ^ 2 + y ^ 2 - 2 * x * y = (x - y) ^ 2 : by ring\n      _ ≥ 0 : by simp [sq_nonneg]\n  exact h",
+  "original_sha256": "e05341915ba82d9fc6f5d4f3261a28b1413c32665e0db70a7bdcc968a021a5d9"
+}

@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem even_add_of_even (a b : ℤ) (ha : Even a) (hb : Even b) : Even (a + b) :=\nby\n  obtain ⟨a', ha'⟩ := ha\n  obtain ⟨b', hb'⟩ := hb\n  exact even_add ha' hb'",
+  "original_sha256": "2c2b7f2cf1243d3c13391bbac3f344fd7ce22514ef0ab88f181e7f695a3fa84a"
+}

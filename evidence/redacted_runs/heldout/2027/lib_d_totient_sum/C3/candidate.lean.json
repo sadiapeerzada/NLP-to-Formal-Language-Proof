@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_d_totient_sum (n : ℕ) : (∑ d ∈ n.divisors, Nat.totient d) = n\n:= by\n  induction' n with a ha\n  · simp [Nat.divisors_zero, Nat.totient_zero]\n  · have h := study_d_totient_sum a\n    rw h\n    simp [Nat.divisors_pos, Nat.divisors_eq_divisors_of_pos ha, Nat.totient_add]",
+  "original_sha256": "6c87f16e14ceb511430014e16051d546602ba0b45271f03c95c2baac822ef2f4"
+}

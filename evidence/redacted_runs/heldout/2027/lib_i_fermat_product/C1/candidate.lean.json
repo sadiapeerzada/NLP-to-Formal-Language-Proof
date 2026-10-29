@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_i_fermat_product (n : ℕ) : (∏ k ∈ Finset.range n, Nat.fermatNumber k) = Nat.fermatNumber n - 2\n:= by\n  induction n with n ih\n  · simp [Nat.fermatNumber, Finset.range_zero, prod_empty]\n  · simp [Nat.fermatNumber, Finset.range_succ]\n    have h := ih n\n    rw [h]\n    simp",
+  "original_sha256": "59c274fad33834d2790e3da5c801d57dfebc8b8a4060f4bf9aa0089f106e7a6a"
+}

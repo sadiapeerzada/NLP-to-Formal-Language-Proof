@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_unbounded_primes (n : ℕ) : ∃ p : ℕ, n ≤ p ∧ p.Prime\n:= by\n  have : ∃ p : ℕ, p > n := Nat.prime.exists_prime_gt n\n  then obtain p where h : p > n := this.elim\n  have h_prime : p.Prime := Nat.prime.next_prime.prime h\n  exact ⟨p, h, h_prime⟩",
+  "original_sha256": "facb1c534b1d0fbb003d2e856b2ebae644fb9325b2e85527fdbb3d6b3afdb301"
+}

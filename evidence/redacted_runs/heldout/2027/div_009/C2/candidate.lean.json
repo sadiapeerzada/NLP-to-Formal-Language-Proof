@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem even_cube_sub_self (n : ℤ) : Even (n ^ 3 - n) :=\nby\n  have h = n ^ 3 - n = n * (n ^ 2 - 1)\n  rw [h]\n  have h1 = n ^ 2 - 1 = (n - 1) * (n + 1)\n  rw [h1]\n  have h2 = n * (n - 1) * (n + 1)\n  rw [h2]\n  have h3 = n * (n - 1) * (n + 1) % 2 = 0\n  rw [Even_def]\n  have h4 = (n % 2) * ((n - 1) % 2) * ((n + 1) % 2) % 2 = 0\n  rw [mod_mul_mod]\n  have h5 = (n % 2) * (n % 2) * (n % 2) % 2 = 0\n  rw [mod_pow]\n  exact h5",
+  "original_sha256": "8f97c05c3e4c0a3221f70d79f984ea086f01824e144a01e03dc559f5cb6f98bd"
+}

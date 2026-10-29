@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_d_prime_factor_exists (n : ℕ) (hn : 2 ≤ n) : ∃ p : ℕ, p.Prime ∧ p ∣ n\n:= by\n  have h1 : ∃ p : ℕ, p ≤ n ∧ p > 1 := by\n    use n\n    split\n    · exact hn\n    · exact ⟨n, by rw [nat.one_mul]; exact nat.prime.nat_of_prime n⟩\n  obtain ⟨p, hp1, hp2⟩ := h1\n  have hp3 : p.Prime := by\n    rw [hp2]\n    exact nat.prime_of_dvd_of_pos hp1\n  have hp4 : p ∣ n := by\n    exact hp1\n  exact ⟨p, hp3, hp4⟩",
+  "original_sha256": "1c95243b6891aec7e3bac636d8bd1796543e05369f074bd0eb6b34d753a6f39e"
+}

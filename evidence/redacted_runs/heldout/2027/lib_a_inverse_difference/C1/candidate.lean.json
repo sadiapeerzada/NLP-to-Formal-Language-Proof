@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_inverse_difference (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0) : 1 / x - 1 / y = (y - x) / (x * y) :=\nby\n  have h1 : 1 / x - 1 / y = (y - x) / (x * y) := by\n    rw [sub_eq_add_neg, div_add_div]\n    ring\n  exact h1",
+  "original_sha256": "7a80e0e82143657e81a339ca6d1a15f6f20d18fd753d8e6f6e29245e7ae18eaf"
+}

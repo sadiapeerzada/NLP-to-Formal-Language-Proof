@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_integer_sqrt (n : ℕ) : Nat.sqrt n ^ 2 < n + 1\n:= by\n  induction' n with n IH\n  · exact zero_lt_one\n  · have h1 := Nat.sqrt_le_of_sq_le (by exact IH)\n  have h2 := by linarith [h1]\n  exact h2",
+  "original_sha256": "0f80bf0bbdb59414200a0b990be15199d62a0f3a3668e2284aa25ddbefe277ac"
+}

@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_integer_sqrt (n : ℕ) : Nat.sqrt n ^ 2 < n + 1\n:= by\n  induction' n with n IH\n  · exact lt_of_pos_of_zero_lt (by exact zero_lt_one)\n  · have h1 : Nat.sqrt (n + 1) ^ 2 ≤ n + 1 := Nat.sqrt_le_of_sq_le (by exact IH)\n  have h2 : Nat.sqrt (n + 1) ^ 2 < n + 2 := by\n    rw [h1]\n    exact lt_of_le_of_lt h1 (by linarith)\n  exact h2",
+  "original_sha256": "da881881961caac4148511838e633521aef52504de8df44569db3fa4aeba2b04"
+}

@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_bezout (a b : ℤ) : ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y\n:= by\n  have h : ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y := Int.bezout a b\n  existsi h.1\n  existsi h.2\n  refl",
+  "original_sha256": "b3a9c1e689803677e4900f0b42b575dcd6789d22ed5045d99713f2de929fda94"
+}

@@ -1,0 +1,247 @@
+[
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/06bb8faf4141_Identities.lean",
+    "copyright_header": "/-\nCopyright (c) 2020 Bryan Gin-ge Chen. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Bryan Gin-ge Chen, Kevin Lacker\n-/",
+    "original_sha256": "06bb8faf4141732619be73603683ef16b865471e4f99f80cc5b0a1284c84a004"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/12cd37a3909f_Dvd.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "12cd37a3909fddc05c1f5541662d1a099c083aa1084777ded9d583c7a6780f96"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/13cf17d1beed_GCD.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Guy Leroy. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Sangwoo Jo (aka Jason), Guy Leroy, Johannes Hölzl, Mario Carneiro\n-/",
+    "original_sha256": "13cf17d1beed6c6a24bd471065f461a2449f6eb55101ff5a6e6828d7be28b568"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/16a60f4fc32d_MinMax.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Johannes Hölzl\n-/",
+    "original_sha256": "16a60f4fc32d8b43debef4732d5f6beb0d9f3d669d315bd61c2d39922551f59b"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/1935b1e2996b_Sqrt.lean",
+    "copyright_header": "/-\nCopyright (c) 2020 Mario Carneiro. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Mario Carneiro, Floris van Doorn, Yury Kudryashov\n-/",
+    "original_sha256": "1935b1e2996b58fde92e5150455c1b5c22766baa22a5167566acf06bc3391a05"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/1d6672beae57_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Robert Y. Lewis. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Robert Y. Lewis, Leonardo de Moura, Mario Carneiro, Floris van Doorn\n-/",
+    "original_sha256": "1d6672beae57890d355067ff20de13b715bece8e87e0d088b7e959e773025f57"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/20c5a159b0a5_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Abhimanyu Pallavi Sudhir, Jean Lo, Calle Sönne\n-/",
+    "original_sha256": "20c5a159b0a5632de083db76248bf527e8fc13283094d30c53c4489ad2aabed9"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/2a00982f5be6_Vandermonde.lean",
+    "copyright_header": "/-\nCopyright (c) 2021 Johan Commelin. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Johan Commelin\n-/",
+    "original_sha256": "2a00982f5be6eb43dd92263310602ae50ac886d2c463966cce9c757e0e5fa3ef"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/2d76883de1b8_Abs.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro\n-/",
+    "original_sha256": "2d76883de1b832557bb342945af172261f17b536cce4194ae4fabf4234619d40"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/313a70752c2f_Defs.lean",
+    "copyright_header": "/-\nCopyright (c) 2021 Stuart Presnell. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Stuart Presnell\n-/",
+    "original_sha256": "313a70752c2f3500c51f407c55e1aca328b6df381702da6c0fcf03585eb08298"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/3ba3c0be75f7_Sqrt.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Floris van Doorn (c) 2016 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Floris van Doorn, Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "3ba3c0be75f7d9c912f8f74e24710d1ce771e692b79dd4cbb0dd6bf638ae1414"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/4aa5c7c0a9a1_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Robert Y. Lewis. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Robert Y. Lewis, Leonardo de Moura, Johannes Hölzl, Mario Carneiro\n-/",
+    "original_sha256": "4aa5c7c0a9a17d356d084bfabe5a2a54c0fa108ef3a90282e23961710cf06643"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/4c32ecf01fc4_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2017 Johannes Hölzl. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Johannes Hölzl\n-/",
+    "original_sha256": "4c32ecf01fc4e2df35886863c7b9dcdfde8e482e2b882e1dec7b56ced0f43ac3"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/4f5e4f1ae65f_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Floris van Doorn, Leonardo de Moura\n-/",
+    "original_sha256": "4f5e4f1ae65f0c8744ec2921159215627c85dc77ba6d57e73fe277b6f46a5062"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/617c1a2a927a_Defs.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "617c1a2a927a2a282092f11c8d254036454e7ffa2eab12f8dd16880cf83d0d61"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/678c7d5030c0_ModEq.lean",
+    "copyright_header": "/-\nCopyright (c) 2017 Mario Carneiro. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Mario Carneiro\n-/",
+    "original_sha256": "678c7d5030c056efb633aaab3a1b44ceec599332b9f70f694b08f4cce27d1fea"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/67f894497257_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura\n-/",
+    "original_sha256": "67f894497257111dff81a5b3bab0f849cc53f31a3c62656333366ad62ab63a58"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/73147c3523fc_Trigonometric.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Abhimanyu Pallavi Sudhir\n-/",
+    "original_sha256": "73147c3523fc45f402b7e9487de2722817586a459ba624be52760fd8ef7bc391"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/7bd6ec0e909f_Wilson.lean",
+    "copyright_header": "/-\nCopyright (c) 2022 John Nicol. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: John Nicol\n-/",
+    "original_sha256": "7bd6ec0e909f037f8632e1b495f9647a61fe950f3bfe3af98a5a22914622aeb7"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/7dfe6ccc3900_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2019 Kevin Kappelmann. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Kevin Kappelmann, Kyle Miller, Mario Carneiro\n-/",
+    "original_sha256": "7dfe6ccc390046773b2d4305ee89a6d753fc4d5608057da20e0a9526c6d60680"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/8445659af28d_Bounds.lean",
+    "copyright_header": "/-\nCopyright (c) 2022 David Loeffler. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: David Loeffler, Yaël Dillies, Bhavik Mehta\n-/",
+    "original_sha256": "8445659af28d1930e729583704c3f696e3590e27ed351567785bbf58e7132376"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/85232d08ea50_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Yaël Dillies\n-/",
+    "original_sha256": "85232d08ea50e7fb03dbcdb4738d9ed47ae3671c045fb9cd3bc377576cd4ea60"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/87c674ba5464_Card.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad\n-/",
+    "original_sha256": "87c674ba5464c7868fb3e253e58a695821bf8841bb4e076bac5d570236dc6229"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/8d28a915f785_Abs.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Johannes Hölzl\n-/",
+    "original_sha256": "8d28a915f785f4bca75dfa320261f52e82bf019e51e3d75161cac2351cdca920"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/9800e6942155_Log.lean",
+    "copyright_header": "/-\nCopyright (c) 2020 Simon Hudon. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Simon Hudon, Yaël Dillies, Yury Kudryashov\n-/",
+    "original_sha256": "9800e6942155e28138ed981a06340d7333aacccfafcd1aa35147147ae57d8e3f"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/9bdca0e59c61_Defs.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Simon Hudon, Mario Carneiro\n-/",
+    "original_sha256": "9bdca0e59c61245d1c3e8d6e636bdbb853645fb75878549b9208041b151ef3b4"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/a466db9136dd_Infinite.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "a466db9136dd0e4d239badd1cc0b7413eb49b618391c3f11e2cf807cb0135616"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/a73c572e7a79_Pow.lean",
+    "copyright_header": "/-\nCopyright (c) 2019 Yury Kudryashov. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Yury Kudryashov\n-/",
+    "original_sha256": "a73c572e7a79a535fa40163d68e8ad4ed7d913b94974dda36c9fff077ccadfb5"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/abe7494d1910_Totient.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes\n-/",
+    "original_sha256": "abe7494d1910ff650c84d90f043b9f31122b5ee9ef508f270a35336e4a349889"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/adb824791ea4_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Mario Carneiro. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Mario Carneiro, Chris Hughes, Floris van Doorn, Yaël Dillies\n-/",
+    "original_sha256": "adb824791ea4b48c09991b84c62abbd5306f2588c9409db0b3641c09351255b7"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/b97e83d65681_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "b97e83d65681b68b3ad1f4bdfd36defd0a30aa173cf726b3d2807acf8bde5027"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/bd55b51820db_Bootstrap.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "bd55b51820dbc53925d34190fcb5de38afc5d6b3528759101fe6da87973026c1"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/c3d7abb8fbd3_Fermat.lean",
+    "copyright_header": "/-\nCopyright (c) 2024 Moritz Firsching. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Moritz Firsching, Ralf Stephan\n-/",
+    "original_sha256": "c3d7abb8fbd3dd2b587b7cb86d7825de03a60f56b104feb9023a5daf17923ff7"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/c46b9173200a_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura\n-/",
+    "original_sha256": "c46b9173200adac93cefa0f8d9ee02306930771a1960796335c32455f719c3ac"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/c4accc5e1030_Lcm.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Markus Himmel\n-/",
+    "original_sha256": "c4accc5e10306750e0c990d43eebf4b02bf8444bb3a56be6c4aef663bcf5018c"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/c7ce3caf261d_Sum.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Patrick Stevens\n-/",
+    "original_sha256": "c7ce3caf261d7993044a2bfd52761152f9c24fe1066989e0c910af58a50c305d"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/c9423cd25226_Exponential.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Abhimanyu Pallavi Sudhir\n-/",
+    "original_sha256": "c9423cd25226aa5d3bfc128eab6ae3ef453c8f559c2430f2e039bc66a77256ca"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/caa753877be8_Factorial.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "caa753877be8d9ab5a656e6b95f9819dd590bda428e472749d6103423edf4993"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/d237580efab0_ModEq.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes\n-/",
+    "original_sha256": "d237580efab0126e0f53d266b49b536274d41564db5134a4a0ab7944418146a3"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/e13bd133063e_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Joey van Langen, Casper Putz\n-/",
+    "original_sha256": "e13bd133063e0349d955817f5f319f8c861f7d6136afa326cb477302348f1db3"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/e364d90ba28b_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Chris Hughes. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Chris Hughes, Bhavik Mehta, Stuart Presnell, Antoine Chambert-Loir,\n  María-Inés de Frutos—Fernández\n-/",
+    "original_sha256": "e364d90ba28b43f131754ff4e27d81fd935a601369a46a218579703ff4e7c705"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.0/source_archive/ea32199d6ffe_Lemmas.lean",
+    "copyright_header": "/-\nCopyright (c) 2014 Floris van Doorn (c) 2016 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro, Floris van Doorn\n-/",
+    "original_sha256": "ea32199d6ffe767e983140ec3bd624d2cee2e81b993e079b6dc26ad38b886d24"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/02e122a3ccbd_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2022 Julian Kuelshammer. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Julian Kuelshammer\n-/",
+    "original_sha256": "02e122a3ccbd5fbcabfbf7a0e8aff3c6ca49f81b634dac76d5cd78d87bce91e4"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/617c1a2a927a_Defs.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad, Mario Carneiro\n-/",
+    "original_sha256": "617c1a2a927a2a282092f11c8d254036454e7ffa2eab12f8dd16880cf83d0d61"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/672c96102205_Gcd.lean",
+    "copyright_header": "/-\nCopyright (c) 2021 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Markus Himmel\n-/",
+    "original_sha256": "672c96102205b59a47742be74c959ed780ba319713baaa8a2eeede2cdc46cbea"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/85232d08ea50_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2016 Jeremy Avigad. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Jeremy Avigad, Leonardo de Moura, Mario Carneiro, Yaël Dillies\n-/",
+    "original_sha256": "85232d08ea50e7fb03dbcdb4738d9ed47ae3671c045fb9cd3bc377576cd4ea60"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/87c674ba5464_Card.lean",
+    "copyright_header": "/-\nCopyright (c) 2015 Microsoft Corporation. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Leonardo de Moura, Jeremy Avigad\n-/",
+    "original_sha256": "87c674ba5464c7868fb3e253e58a695821bf8841bb4e076bac5d570236dc6229"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/a73d2d2eac29_Stirling.lean",
+    "copyright_header": "/-\nCopyright (c) 2025 Beibei Xiong. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Beibei Xiong, Yu Shao, Weijie Jiang, Zhengfeng Yang\n-/",
+    "original_sha256": "a73d2d2eac293e87def7ee0484133ed193bcf1ac6bcbb545ca4c809ca9d94cdd"
+  },
+  {
+    "original_path": "data/curation_batches/v0.2.1/source_archive/e93be6ddf3ae_Basic.lean",
+    "copyright_header": "/-\nCopyright (c) 2018 Mario Carneiro. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Mario Carneiro\n-/",
+    "original_sha256": "e93be6ddf3aef0f5996697eae5f66972d6098ea8e8bfa341d9725aef5cffc127"
+  }
+]

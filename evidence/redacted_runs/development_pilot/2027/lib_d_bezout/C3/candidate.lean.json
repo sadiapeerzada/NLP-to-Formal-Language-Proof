@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_bezout (a b : ℤ) : ∃ x y : ℤ, (Int.gcd a b : ℤ) = a * x + b * y\n:= by\n  have h : ∃ x y, Int.gcd a b = a * x + b * y := Int.bezout a b\n  obtain ⟨x, y, h⟩ := h\n  exact ⟨x, y, h⟩",
+  "original_sha256": "c5771cef6025b50c7b988df26acaff4ce871c2688ebb3a25ab434cce00bb8e73"
+}

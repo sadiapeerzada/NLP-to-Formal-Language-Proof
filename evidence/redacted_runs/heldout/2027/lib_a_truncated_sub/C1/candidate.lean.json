@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_truncated_sub (a b : ℕ) (h : b ≤ a) : a - b + b = a := by\n  rw [add_assoc]\n  rfl",
+  "original_sha256": "6db4d0dac6eb16b754772b443d1cdb3ab320b605ef960339873a3b5f05243a9c"
+}

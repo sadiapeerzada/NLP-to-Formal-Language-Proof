@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_min_max (x y : ℝ) : min x y + max x y = x + y\n:= by\n  cases le_or_gt x y with\n  | inl h => calc\n    min x y + max x y = x + max x y : by simp [h]\n    ... = x + y : by simp [h]\n  | inr h => calc\n    min x y + max x y = min y x + y : by simp [h]\n    ... = y + min y x : by simp [h]\n    ... = y + x : by simp [h]",
+  "original_sha256": "244ab228609bdf72844df651e158de12e98e3ebe74038c86902ecfdd2c2fc3f4"
+}

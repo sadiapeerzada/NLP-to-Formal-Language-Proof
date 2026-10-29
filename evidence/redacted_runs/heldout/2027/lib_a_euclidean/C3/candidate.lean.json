@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_euclidean (a b : ℤ) : a % b + b * (a / b) = a\n:= by\n  cases b with\n  | 0 =>\n    have h : a % 0 + 0 * (a / 0) = a := by\n      rw [mod_zero, zero_mul]\n      exact eq_self a\n    exact h\n  | b' =>\n    have h : a % b' + b' * (a / b') = a := by\n      rw [mod_add_div_self]\n      exact eq_self a\n    exact h",
+  "original_sha256": "4839732ce42f39b5b95dc6eef9ec3d885bc1bd6703a51d802db5eda4ad4af4db"
+}

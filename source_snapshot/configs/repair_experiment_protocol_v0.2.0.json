@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.2.0",
+  "protocol_status": "proposed_locked_for_review_not_preregistered",
+  "study": "Compiler-Guided Repair for Natural-Language-to-Lean Formalization",
+  "experimental_unit": "problem",
+  "primary_question": "For a fixed reviewed Lean theorem and shared initial candidate, does compiler-guided repair improve verified proof success over blind retries and one-shot generation?",
+  "model": {
+    "provider": "groq",
+    "requested_model_id": "openai/gpt-oss-120b",
+    "identifier_kind": "mutable_provider_alias",
+    "immutable_revision": null,
+    "account_generation_access": "unverified",
+    "same_requested_model_for_initial_and_all_repairs": true,
+    "record_returned_model_verbatim": true,
+    "fallback_model": null
+  },
+  "decoding": {
+    "temperature": 0.2,
+    "max_completion_tokens": 2000,
+    "reasoning_effort": "low",
+    "generation_seed": null,
+    "generation_seed_policy": "No seed is sent by the current client; provider-side sampling is not claimed deterministic. Retries are transport attempts within one logical completion, never additional replicates."
+  },
+  "prompt_templates": {
+    "initial": {
+      "path": "prompts/repair_experiment_initial.txt",
+      "sha256": "00ec7bc08fdf14274d021a308ebc27a51e17e46198b4dbc29002b958a1e04990"
+    },
+    "blind": {
+      "path": "prompts/repair_experiment_blind.txt",
+      "sha256": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745"
+    },
+    "compiler_guided": {
+      "path": "prompts/repair_experiment_compiler_guided.txt",
+      "sha256": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745"
+    }
+  },
+  "conditions": {
+    "paired_initial_candidate": "Generate exactly one initial candidate and reuse its exact bytes, identifier, and SHA-256 for A, B, and C.",
+    "fixed_theorem_and_environment": "Use the same reviewed theorem, requested model, decoding settings, and Lean/Mathlib environment for all three conditions.",
+    "A": {
+      "name": "one_shot",
+      "repair_calls": 0
+    },
+    "B": {
+      "name": "blind_retry",
+      "maximum_repair_calls": 3,
+      "feedback": "Theorem, current candidate, and fixed blind-feedback text only; no compiler diagnostics, error messages, derived summaries, or diagnostic-bearing prior conversation."
+    },
+    "C": {
+      "name": "compiler_guided_repair",
+      "maximum_repair_calls": 3,
+      "feedback": "Only structured diagnostics from the immediately preceding failed Lean compilation; persist the exact diagnostic payload and verifier record."
+    },
+    "repair_calls_are_independent_samples": false
+  },
+  "repetition": {
+    "replicates_per_problem": 1,
+    "candidate_sampling_repetitions": 0,
+    "shared_initial_candidates_per_problem": 1,
+    "provider_seed": null,
+    "replicate_policy": "One matched A/B/C trajectory per eligible problem. No repeated generation is used to inflate the sample size."
+  },
+  "retry_and_stopping": {
+    "maximum_wrapper_attempts_per_logical_completion": 3,
+    "maximum_groq_sdk_retries_per_wrapper_attempt": 2,
+    "maximum_possible_http_attempts_per_logical_completion": 9,
+    "maximum_logical_completions_per_problem": 7,
+    "initial_provider_failure": "Mark paired run incomplete; do not start conditions without a shared initial candidate.",
+    "condition_stop_events": [
+      "verified success",
+      "provider or transport failure",
+      "empty or malformed output",
+      "verifier timeout or infrastructure/input failure",
+      "unavailable or malformed guided diagnostics",
+      "repair budget exhausted"
+    ],
+    "retry_accounting": "Logical completions, wrapper attempts, SDK retry budget, and potentially billable HTTP attempts are separate quantities. Reserve for every possible SDK HTTP attempt before each wrapper transmission; retain reservations for ambiguous outcomes."
+  },
+  "analysis": {
+    "primary_outcome": "verified proof success within the condition repair budget",
+    "primary_comparison": "C_vs_B",
+    "secondary_comparisons": [
+      "C_vs_A",
+      "B_vs_A"
+    ],
+    "alpha_two_sided": 0.05,
+    "individual_binary_interval": "Wilson 95% confidence interval",
+    "paired_difference_interval": {
+      "method": "problem-level paired bootstrap percentile interval",
+      "confidence_level": 0.95,
+      "resamples": 10000,
+      "seed": 20271021
+    },
+    "paired_significance_test": "two-sided exact McNemar test on complete matched binary outcomes",
+    "multiple_comparison_correction": "Holm step-down across the three planned comparisons",
+    "no_discordant_pairs": "Report comparison as non-informative; do not claim equivalence.",
+    "incomplete_runs": "Report full eligible-set denominator, complete-case paired analysis, and sensitivity analysis counting incomplete runs as failures.",
+    "category_analysis": "Descriptive only; show denominators and intervals.",
+    "historical_manual_results_as_model_pass_at_1": false
+  },
+  "lean_environment": {
+    "lean_toolchain_file": "lean_project/lean-toolchain",
+    "lean_toolchain": "leanprover/lean4:v4.32.0",
+    "lean_toolchain_sha256": "cc346fd7850a83fb7af3902dfc378f74d8eb8c59c6d34322488269ebfe7615b1",
+    "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+    "lake_manifest_file": "lean_project/lake-manifest.json",
+    "lake_manifest_sha256": "358f47cde2c850b720178b3f1d8ad076bbafa276e05f4096ac6e4ba8b196cf3a",
+    "lakefile_file": "lean_project/lakefile.toml",
+    "lakefile_sha256": "a1a504e5c0f71e5c1b59df52c83b53764b46e98b309dd0bb06580d6e74573348",
+    "verification_command": "lake env lean --json <isolated-verification-source.lean>"
+  },
+  "proof_safety": {
+    "forbidden_source_tokens": [
+      "sorry",
+      "sorryAx",
+      "admit"
+    ],
+    "forbidden_declarations": [
+      "axiom",
+      "constant",
+      "opaque"
+    ],
+    "allowed_axiom_dependencies": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "lean_compilation_establishes_semantic_fidelity": false
+  },
+  "execution_gate": {
+    "api_execution_enabled": false,
+    "required_before_real_pilot": [
+      "archived official pricing source with exact model-specific input/output rates, currency, source URL, and retrieval date",
+      "explicit human review of archived pricing evidence and input-framing/token-bound assumptions",
+      "verified account-specific generation access for the selected model; model-list membership alone is insufficient",
+      "independent semantic/theorem and dataset reviews plus eligible development example",
+      "explicit approval of exact theorem, model alias/revision, call limits, and spend cap",
+      "reservation persistence tested to complete successfully before every wrapper transmission"
+    ]
+  }
+}
