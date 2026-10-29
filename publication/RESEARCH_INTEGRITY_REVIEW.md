@@ -1,3 +1,5 @@
+> Historical release-v1 review. The current revision and submission gate are in `docs/` and `results/review_v2/`.
+
 # Publication-safety and research-integrity review
 
 Reviewed commit: `3b4909a20ed24cafd36cbe029a81f8946bc96d69`.
