@@ -1,17 +1,24 @@
 {
-  "reviewed_commit": "3b4909a20ed24cafd36cbe029a81f8946bc96d69",
+  "review_revision": 2,
   "python_tests": {
     "exit_code": 0,
-    "passed": 293,
-    "subtests_passed": 28,
-    "seconds": 131.82
+    "passed": 297,
+    "subtests_passed": 28
   },
   "lean_build": {
     "exit_code": 0,
     "jobs": 8658
   },
-  "original_artifact_validation_passed": true,
-  "successful_model_candidates_freshly_reverified": 2,
+  "reference_batch_exit_code": 0,
+  "reference_candidates": 96,
+  "model_successes_freshly_reverified": 2,
   "new_inference_calls": 0,
-  "scope": "Full tests and Lean build were run on the preserved original research checkout. Public derivative bundle has its own reanalysis/payload checks, not a claimed full original test run."
+  "metric_regeneration_byte_identical": true,
+  "original_final_study_artifacts_unchanged": 2394,
+  "scope": "Actual original-checkout verification; raw command logs remain private. Public aggregate and redacted pairing verifiers run separately.",
+  "source_log_hashes": {
+    "data/final_review/20261029_v2/local/pytest_final.log": "b84c633e276af8ee629f2bf15a456be3efd3df5c9904850f8e8dddfb216a1adc",
+    "data/final_review/20261029_v2/local/lean_build_final.log": "3f25549753701c30efc8b2eed815775d5e6a564241f2a82771822941861e6ea5",
+    "data/final_review/20261029_v2/local/references_final.log": "9fc05c6532a9733ae974b14457cc79cedf78e929809d80703fa9d38c6048cbff"
+  }
 }
