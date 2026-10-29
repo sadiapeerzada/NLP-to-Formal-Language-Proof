@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem pow_seven_sub_one_dvd_six (n : ℕ) : 6 ∣ 7 ^ n - 1 := by\n  induction n with n ih\n  · simp [pow_zero, sub_one]\n  · have : 7 * (7 ^ n) - 1 = 6 * (7 ^ n) + (7 ^ n - 1) := by\n      rw [mul_add, one_mul, add_comm]\n    rw [this]\n    exact dvd_add (by rw [mul_assoc; ih; pow_add; zero_mul]) (by rw [sub_one])",
+  "original_sha256": "3d398c0f707d07dc4e2ffc38db44d6e831d35cf3a22faab5cfda2ae9e5db4368"
+}

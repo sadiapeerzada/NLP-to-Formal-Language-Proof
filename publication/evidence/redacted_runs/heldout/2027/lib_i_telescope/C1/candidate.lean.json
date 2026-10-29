@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_i_telescope (f : ℕ → ℤ) (n : ℕ) : (∑ i ∈ Finset.range n, (f (i + 1) - f i)) = f n - f 0\n:= by\n  induction n with n IH\n  · simp [Finset.range_zero]\n  · simp [Finset.range_succ, IH]",
+  "original_sha256": "0e9fb4fd063ccd57056d8c99c474d3dd3caa199eb51d36f34fbb18ae15cb1646"
+}

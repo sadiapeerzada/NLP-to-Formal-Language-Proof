@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_rational_density (x y : ℝ) (h : x < y) : ∃ q : ℚ, x < q ∧ (q : ℝ) < y\n:= by\n  obtain ⟨n, d, q⟩ := classical.rational_between (x : ℝ) (y : ℝ) h\n  use q\n  split\n  - exact h\n  - exact lt_of_le_of_lt (le_of_lt_of_eq (eq_of_le_of_lt h)) (lt_of_pos_of_ne_zero (by norm_num) (by norm_num))",
+  "original_sha256": "cf5b24374453b2426487f626b23c70eefd659d22f70592cdf15c7ba7e04e5405"
+}

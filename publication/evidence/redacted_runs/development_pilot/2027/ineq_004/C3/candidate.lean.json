@@ -1,0 +1,4 @@
+{
+  "candidate_view": "theorem add_three_lt_add_seven (n : ℕ) : n + 3 < n + 7 := by\n  have h : 3 < 7 := by\n    exact lt_of_add_lt_add_right (by rw [add_assoc])\n  exact add_lt_add_right h n",
+  "original_sha256": "33a3512abf6427ea580d2734da40c81d8e0f672c71b9bfe2bde46a8616492df2"
+}

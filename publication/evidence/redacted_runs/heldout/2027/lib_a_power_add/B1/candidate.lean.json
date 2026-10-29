@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_power_add (a m n : ℕ) : a ^ (m + n) = a ^ m * a ^ n\n:= by\n  induction m with m IH\n  · rw [add_zero, pow_zero, one_mul]\n  · rw [add_succ, pow_add, IH, pow_mul]",
+  "original_sha256": "e469150b0c18259dc33c9713c2100505cf8a4e092baf528357ad52d11efd9d5e"
+}

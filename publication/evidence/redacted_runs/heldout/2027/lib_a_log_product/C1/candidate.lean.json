@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_log_product (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0) : Real.log (x * y) = Real.log x + Real.log y\n:= by\n  have hxy_pos : 0 < x * y := by\n    exact! mul_pos hx hy\n  calc\n    Real.log (x * y) = Real.log (abs (x * y)) : by rw [Real.log_abs]\n    ... = Real.log (abs x * abs y) : by rw [abs_mul]\n    ... = Real.log (abs x) + Real.log (abs y) : by rw [Real.log_mul]\n    ... = Real.log x + Real.log y : by rw [hx, hy, abs_of_pos, abs_of_pos]",
+  "original_sha256": "5596e5dbf6daa2160d08366cbdfe923c52870f7d91638e48669022978eb381d1"
+}

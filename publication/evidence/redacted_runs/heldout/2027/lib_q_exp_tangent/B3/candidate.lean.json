@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_exp_tangent (x : ℝ) : x + 1 ≤ Real.exp x\n:= by\n  have h_exp : 0 ≤ Real.exp x := by\n    apply Real.exp_nonneg\n  have h_sum : (0 : ℝ) ≤ ∑ i in finset.range (x + 1), 1 := by\n    apply le_sum\n    intro i\n    apply le_one\n  have h_exp_sum : Real.exp x ≤ Real.exp (x + 1) := by\n    apply Real.exp_le_exp_of_le\n    exact le_add_right zero_le_one\n  exact h_exp_sum",
+  "original_sha256": "fe2475bffc3fcdeb69d207392344d1473a542dc495a79846441e8cbf872cf99c"
+}

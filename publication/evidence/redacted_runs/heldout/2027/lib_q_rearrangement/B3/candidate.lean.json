@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_rearrangement (a b c d : ℝ) (hab : a ≤ b) (hcd : c ≤ d) : a * d + b * c ≤ a * c + b * d\n:= by\n  have h1 : a * d - a * c ≤ b * d - b * c := by\n    rw [sub_mul, sub_mul] at hab hcd \n    exact le_add_of_left_le_of_le hab hcd\n  have h2 : a * d - a * c = a * (d - c) := by ring\n  have h3 : b * d - b * c = b * (d - c) := by ring\n  rw [h2, h3] at h1 \n  exact h1",
+  "original_sha256": "8031e958d1fb96a3c998f224175919e227f8b4b31bd18dfa93aae2f8630e2d54"
+}

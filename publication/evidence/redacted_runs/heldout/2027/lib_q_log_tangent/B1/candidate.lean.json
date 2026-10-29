@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_log_tangent (x : ℝ) (hx : 0 < x) : Real.log x ≤ x - 1\n:= by\n  have h1 : 0 < x → x - 1 ≤ Real.log x + 1 - x := by\n    intro hx\n    rw [sub_add_cancel]\n    apply sub_le_sub_right\n    apply Real.log_le_add_one\n    exact hx\n  exact h1 hx",
+  "original_sha256": "96aff3ec4c06b26d43f57c3d2892b7e7130a7e3be65ba74c3302821232ca566a"
+}

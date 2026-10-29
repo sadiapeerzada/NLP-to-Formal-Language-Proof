@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_cauchy (a b c d : ℝ) : (a * c + b * d) ^ 2 ≤ (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2) :=\nby\n  have h1 : (a * c + b * d) ^ 2 = (a * c) ^ 2 + 2 * (a * c) * (b * d) + (b * d) ^ 2 := by\n    rw [mul_add]\n  have h2 : (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2) = (a ^ 2) * (c ^ 2) + (a ^ 2) * (d ^ 2) + (b ^ 2) * (c ^ 2) + (b ^ 2) * (d ^ 2) := by\n    rw [mul_add, mul_add]\n  have h3 : (a * c) ^ 2 ≤ (a ^ 2) * (c ^ 2) := by\n    rw [mul_self_le_mul_self]\n  have h4 : (b * d) ^ 2 ≤ (b ^ 2) * (d ^ 2) := by\n    rw [mul_self_le_mul_self]\n  have h5 : 2 * (a * c) * (b * d) ≤ 2 * (a ^ 2) * (c ^ 2) + 2 * (b ^ 2) * (d ^ 2) := by\n    rw [mul_le_mul]\n    exact le_add_of_le_add (mul_le_mul_left (le_of_eq (eq.symm h3))) (mul_le_mul_left (le_of_eq (eq.symm h4)))\n  exact le_add_add h3 h4 h5",
+  "original_sha256": "970aaea5f16845697b986849885edcf853c73541fb7fb3338bed91c612ed1969"
+}

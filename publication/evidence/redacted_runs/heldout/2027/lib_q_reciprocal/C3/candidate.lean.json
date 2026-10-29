@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_reciprocal (x y : ℝ) (hx : 0 < x) (hxy : x ≤ y) : 1 / y ≤ 1 / x\n:= by\n  have hxy_pos : 0 < y := by\n    exact div_pos hxy hx\n  have h_inv_x_le_inv_y : 1 / x ≤ 1 / y := by\n    rw [div_le_div_iff (by linarith [hx])]\n    exact hxy_pos\n  rw [le_comm] at h_inv_x_le_inv_y\n  exact h_inv_x_le_inv_y",
+  "original_sha256": "8b01617086b978874819d7fc1919ba0cd8dcad2904d145144c33f7d359eae7e5"
+}

@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_quotient (m n : ℕ) : m / n ≤ m := by\n  match n with\n  | 0 => exact le_refl m\n  | n + 1 => \n    have h1 : m / (n + 1) ≤ m := by\n      apply le_of_add_le_add_right\n      exact le_refl m\n    exact h1",
+  "original_sha256": "71c796bdb3f8519cbe84e9a48d0a3bb2b4f18362f28dc5d55d6c7082bfda719b"
+}

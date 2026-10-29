@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_m_residue_product (a b m : ℕ) : (a * b) % m = ((a % m) * (b % m)) % m\n:= by\n  have h1 : (a % m) * (b % m) % m ≤ (a * b) % m := by\n    apply mod_le; assumption\n  have h2 : (a * b) % m ≤ (a % m) * (b % m) % m := by\n    apply mod_le; apply mul_mod; [apply mod_le, apply mod_le]\n  exact le_antisymm h1 h2",
+  "original_sha256": "8cad94fda4980488be4b96fe2533ffd287a99c3ea99bbd749238768e1a83775d"
+}

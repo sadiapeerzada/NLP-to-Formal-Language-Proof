@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_finite_inclusion (s t : Finset ℕ) (h : s ⊆ t) : s.card ≤ t.card\n:= by\n  have h_card : ∀ x : ℕ, x ∈ s → x ∈ t := fun x hx => h hx\n  exact s.card_le_of_subset h_card",
+  "original_sha256": "c5c5695c337da0f95f4fcf2f059ffb616d169621876d9be1e4ad81c773f85a4c"
+}

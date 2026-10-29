@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_sqrt_square (x : ℝ) (h : 0 ≤ x) : (Real.sqrt x) ^ 2 = x := by\n  rw [Real.sqrt_def]\n  have h' : (Real.sqrt x) * (Real.sqrt x) = x := by\n    rw [Real.sqrt_def]\n    exact h\n  exact h'",
+  "original_sha256": "7fd730443479d1af568dabf785838a231f0a047a517104ab95cc03cf05c0a070"
+}

@@ -1,0 +1,80 @@
+{
+  "reviewed_commit": "3b4909a20ed24cafd36cbe029a81f8946bc96d69",
+  "protocol_unchanged_and_valid": true,
+  "eligible_cases": 60,
+  "complete_ABC_pairs": 58,
+  "conditions": {
+    "A": {
+      "successes": 0,
+      "known_failures": 60,
+      "unavailable": 0,
+      "eligible_denominator": 60,
+      "observed_denominator": 60,
+      "complete_pair_successes": 0
+    },
+    "B": {
+      "successes": 1,
+      "known_failures": 59,
+      "unavailable": 0,
+      "eligible_denominator": 60,
+      "observed_denominator": 60,
+      "complete_pair_successes": 1
+    },
+    "C": {
+      "successes": 1,
+      "known_failures": 57,
+      "unavailable": 2,
+      "eligible_denominator": 60,
+      "observed_denominator": 58,
+      "complete_pair_successes": 1
+    }
+  },
+  "missing_outcomes": [
+    {
+      "problem_id": "lib_a_trig_unit",
+      "condition": "C",
+      "step": "C1",
+      "B_outcome": false,
+      "rendered_prompt_matches_intent": true,
+      "input_tokens": 9653,
+      "output_cap": 2000,
+      "context_cap": 8192,
+      "generation_failure": {
+        "context": "heldout/2027/lib_a_trig_unit/C1",
+        "error_type": "RuntimeError",
+        "error": "Rendered input plus output cap exceeds the frozen context budget.",
+        "finished_at": "2026-10-28T11:54:46.612391+00:00"
+      },
+      "stream_frames": 0,
+      "observed_generated_tokens": 0,
+      "durable_completed_response": false,
+      "recoverable_without_new_inference": false,
+      "reason": "Frozen context cap rejects this prompt before generation; shortening diagnostics or changing cap violates frozen inputs."
+    },
+    {
+      "problem_id": "lib_i_bernoulli",
+      "condition": "C",
+      "step": "C1",
+      "B_outcome": false,
+      "rendered_prompt_matches_intent": true,
+      "input_tokens": 2205,
+      "output_cap": 2000,
+      "context_cap": 8192,
+      "generation_failure": null,
+      "stream_frames": 1,
+      "observed_generated_tokens": 0,
+      "durable_completed_response": false,
+      "recoverable_without_new_inference": false,
+      "reason": "Only the stream header survives; no token/candidate to verify. Frozen no-replay rule forbids repeating this terminal intent."
+    }
+  ],
+  "completed_generation_records": 410,
+  "missing_as_failure_C_minus_B": 0.0,
+  "complete_case_C_minus_B": 0.0,
+  "missingness_identification_bounds_C_minus_B_percentage_points": [
+    0.0,
+    3.3333333333333335
+  ],
+  "interpretation": "1/60 C is a conservative missing-as-failure sensitivity, not 60 observed C outcomes. Complete-case rates B=C=1/58. The zero bootstrap interval is conditional on treating missing as failure and does not measure missingness uncertainty. Neither equivalence nor a general feedback benefit is established.",
+  "inference_calls_performed_by_this_review": 0
+}

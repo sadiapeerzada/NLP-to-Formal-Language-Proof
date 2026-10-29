@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_factorization (a b : ℕ) (ha : a ≠ 0) (hb : b ≠ 0) : (a * b).factorization = a.factorization + b.factorization := by\n  have h1 : (a * b).factorization = (a * b).primeExponentFactorization := by\n    rw [factorization]\n  have h2 : a.factorization + b.factorization = (a.factorization ++ b.factorization).primeExponentFactorization := by\n    rw [primeExponentFactorization_add]\n    simp\n  have h3 : (a * b).primeExponentFactorization = (a.factorization ++ b.factorization).primeExponentFactorization := by\n    rw [h1, h2]\n  have h4 : (a * b).factorization = (a.factorization ++ b.factorization).factorization := by\n    rw [factorization, h3]\n  rw [h4]",
+  "original_sha256": "2b28b548ac393454d6f5fe5fb0d566983ac97a51747d0267135f8c9c2248f7f0"
+}

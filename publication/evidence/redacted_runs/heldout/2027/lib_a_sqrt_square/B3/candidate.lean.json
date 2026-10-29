@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_a_sqrt_square (x : ℝ) (h : 0 ≤ x) : (Real.sqrt x) ^ 2 = x := by\n  rw [Real.sqrt_def]\n  simp [h]",
+  "original_sha256": "293a7a58dbe07f6a091f6a8d6b9c0cc8fabb5fbcb28d9f56ecaf0acf8b6d390f"
+}

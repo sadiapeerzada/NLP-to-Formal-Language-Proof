@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_m_power (a b m : ℤ) (n : ℕ) (h : Int.ModEq m a b) : Int.ModEq m (a ^ n) (b ^ n) :=\nby\n  have h1 : a % m = b % m := h\n  have h2 : (a % m) ^ n = (b % m) ^ n := by\n    induction n with n ih\n    · rw [Nat.zero_power, Int.zero_mod, Int.zero_pow]\n    · rw [Nat.succ_add_one, Int.mod_add_div_self, ih, Int.mod_pow]\n  rw [h1, h2]",
+  "original_sha256": "c7b880092c9c88200b4827acb44f894f3ced4fdec760c85fdbc5e94cfb873e76"
+}

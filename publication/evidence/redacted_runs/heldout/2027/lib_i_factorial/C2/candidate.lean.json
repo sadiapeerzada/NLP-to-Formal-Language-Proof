@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_i_factorial (n : ℕ) : (n + 1).factorial = (n + 1) * n.factorial := by\n  simp [factorial_def]",
+  "original_sha256": "2a39f77f13e7300812dbd09e541ce5973a84cbad3f390a1aa3c83134308d8729"
+}

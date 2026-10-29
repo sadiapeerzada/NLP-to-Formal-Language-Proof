@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_sine (x : ℝ) (hx : 0 ≤ x) : Real.sin x ≤ x\n:= by\n  have key_sin_le_x : Real.sin x ≤ x\n  := by\n    apply Real.sin_le_self\n    exact hx\n  exact key_sin_le_x",
+  "original_sha256": "f83e84aaad45f17358cef2ad9d0bc37ee7efe02df5401b4f9e48aee686f345ce"
+}

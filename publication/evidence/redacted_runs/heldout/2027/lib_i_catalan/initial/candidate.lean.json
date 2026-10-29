@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_i_catalan (n : ℕ) : catalan (n + 1) = ∑ i : Fin (n + 1), catalan i * catalan (n - i) := by\n  induction' n with n ih\n  · simp [catalan, Fin.cases_on, catalan_zero, zero_add, mul_zero, add_zero, zero_mul, zero_add, Fin.zero]\n  · have : ∑ i : Fin (n + 2), catalan i * catalan (n - i + 1) = ∑ i : Fin (n + 1), catalan i * catalan (n - i) + catalan (n + 1) * catalan 0 := by\n      simp [catalan, Fin.cases_on, add_assoc, add_comm, add_zero, zero_add, zero_mul, zero_add, Fin.zero, Fin.succ, Fin.cases_on, catalan_succ]\n    rw [ih, this]\n    simp [catalan, Fin.cases_on, add_assoc, add_comm, add_zero, zero_add, zero_mul, zero_add, Fin.zero, Fin.succ, Fin.cases_on, catalan_succ]",
+  "original_sha256": "4403fe065adf9e5bcb3631d390dc26b8b9cd2ac2bf2063536679119e6f693f66"
+}

@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_d_coprime_successor (n : ℕ) : Nat.Coprime n (n + 1) := by\n  have h3 : Nat.gcd n (n + 1) = 1 := by\n    rw [Nat.gcd_add_one]\n    exact Nat.zero_le n\n  exact h3",
+  "original_sha256": "81c7afaeeac6ec575e21d170f8b6ba87edf53154920fe7ad76a70a624bdc0df7"
+}

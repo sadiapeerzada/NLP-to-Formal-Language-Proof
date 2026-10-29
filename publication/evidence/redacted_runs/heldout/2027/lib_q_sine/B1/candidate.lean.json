@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_q_sine (x : ℝ) (hx : 0 ≤ x) : Real.sin x ≤ x\n:= by\n  have key_sin_le_1 : Real.sin x ≤ 1\n  := by\n    have key_sin_abs_le_1 : abs (Real.sin x) ≤ 1\n    := by\n      apply abs_le\n      exact Real.sin_x_le_one\n    rw [abs_eq_self_of_nonneg (Real.sin_x_nonneg x)]\n    exact key_sin_abs_le_1\n  have key_sin_le_x : Real.sin x ≤ x\n  := by\n    have key_sin_abs_le_x : abs (Real.sin x) ≤ x\n    := by\n      apply abs_le\n      exact key_sin_le_1\n    rw [abs_eq_self_of_nonneg (Real.sin_x_nonneg x)]\n    exact key_sin_abs_le_x\n  exact key_sin_le_x",
+  "original_sha256": "52decd111bca984cfe5f4ef4a2fba9315c4abbc48bc5f6c11f74cfb7bb778cca"
+}

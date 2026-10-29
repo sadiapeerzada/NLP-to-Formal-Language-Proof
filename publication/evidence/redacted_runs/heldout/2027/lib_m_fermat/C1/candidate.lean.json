@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\ntheorem study_m_fermat (p : ℕ) (hp : p.Prime) (a : ℤ) : Int.ModEq (p : ℤ) (a ^ p) a\n:= by\n  have h1 : a ^ p = (if a = 0 then 0 else a * (a ^ (p - 1))) := by\n    by_cases h : a = 0\n    · simp [h]\n    · rw [pow_add_one, one_mul]\n  have h2 : Int.ModEq (p : ℤ) (a * (a ^ (p - 1))) (a * 1) := by\n    rw [h1]\n    apply Int.ModEq_mul\n    · exact hp.ne_zero\n    · exact Int.ModEq.refl (a * 1)\n  have h3 : Int.ModEq (p : ℤ) (a * 1) a := by\n    rw [Int.ModEq.refl (a * 1)]\n  exact h2.trans h3",
+  "original_sha256": "b91ada25d484d5b5ae172d5e3f665201177dd584278019fae5eac5144770a8ca"
+}

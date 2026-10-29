@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_i_fibonacci (n : ℕ) : Nat.fib (n + 2) = Nat.fib n + Nat.fib (n + 1) :=\nby\n  induction n with\n  | zero =>\n    calc\n      Nat.fib (0 + 2) = Nat.fib 2   := by refl\n      _               = 1 + 1       := by refl\n      _               = Nat.fib 0 + Nat.fib 1 := by refl\n  | succ n =>\n    calc\n      Nat.fib (succ n + 2) = Nat.fib (n + 3)   := by refl\n      _                    = Nat.fib (n + 2) + Nat.fib (n + 3 - 1) := by rw [Nat.fib_add]\n      _                    = Nat.fib (n + 2) + Nat.fib (n + 2)       := by refl\n      _                    = Nat.fib n + Nat.fib (n + 1) + Nat.fib (n + 2) := by rw [Nat.fib_add]\n      _                    = Nat.fib n + (Nat.fib (n + 1) + Nat.fib (n + 2)) := by refl\n      _                    = Nat.fib n + Nat.fib (n + 1) := by refl",
+  "original_sha256": "46a925c25562db92ac16c6055d5b3893b100f2b41e82d0736bbb3b1fe3e18e21"
+}

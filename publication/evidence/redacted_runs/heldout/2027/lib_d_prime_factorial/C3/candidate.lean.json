@@ -1,0 +1,4 @@
+{
+  "candidate_view": "open scoped BigOperators\n\ntheorem study_d_prime_factorial (p n : ℕ) (hp : p.Prime) : p ∣ n.factorial ↔ p ≤ n\n:= by\n  split\n  · intro h\n    obtain ⟨k, hk, hk'⟩ := h\n    have : p ≤ n := by\n      have : k ≤ n := by\n        rw [hk]\n        exact le_of_not_gt (λ hkn, by\n          have : n.factorial = 0 := by\n            rw [factorial_of_not_le hp hkn]\n            exact hk'\n          contradiction\n        )\n    exact this\n  · intro h\n    have : p ≤ n := h\n    obtain ⟨k, hk, hk'⟩ := exists_factorial_divisor hp\n    have : n ≤ k := by\n      rw [hk]\n      exact le_of_not_gt (λ hkn, by\n        have : p ∣ n.factorial := by\n          rw [factorial_of_le hkn]\n          exact h\n        contradiction\n      )\n    exact this",
+  "original_sha256": "502c437954d15b034793a9de8de9487dd21bb1e0cd0ebb15a0f6cf2e2263f4c0"
+}
