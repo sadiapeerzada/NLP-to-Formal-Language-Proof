@@ -1,0 +1,13 @@
+metric,condition,numerator,denominator,percent,contrast_c_minus_b_pp,family_bootstrap_low_pp,family_bootstrap_high_pp,code_path,source_path,notes
+test_first_repair_identical,B,17,60,28.33333,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,Completed repairs only; two unavailable C first repairs excluded
+test_repairs_2_3_identical,B,73,118,61.86441,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,Different branch predecessor candidates after step 1
+test_first_repair_identical,C,10,58,17.24138,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,Completed repairs only; two unavailable C first repairs excluded
+test_repairs_2_3_identical,C,60,114,52.63158,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,Different branch predecessor candidates after step 1
+dev_identical,B,22,45,48.88889,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,15 development problems; five families; one seed
+dev_unknown_name_removal,B,1,18,5.55556,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,Analyst-only; B never saw diagnostics
+dev_identical,C,23,45,51.11111,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,15 development problems; five families; one seed
+dev_unknown_name_removal,C,3,19,15.78947,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,"Syntactic disappearance, not certified proof repair"
+dev_identical,C_placebo,32,45,71.11111,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,15 development problems; five families; one seed
+dev_unknown_name_removal,C_placebo,2,17,11.76471,,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_dev_repair_metrics.csv,"Syntactic disappearance, not certified proof repair"
+test_first_repair_C_minus_B,C-B,,B:60;C:58,,-11.09195,-22.00441,-0.86232,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,"10,000 multinomial whole-family resamples; seed 20271021; post-hoc unadjusted CI"
+test_repairs_2_3_C_minus_B,C-B,,B:118;C:114,,-9.23283,,,analysis/manuscript_update_numbers.py,outputs/post_hoc/post_hoc_repair_metrics.csv,Descriptive; different predecessor candidates
