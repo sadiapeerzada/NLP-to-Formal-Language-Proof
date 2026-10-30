@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.3.0-local",
+  "protocol_status": "proposed_local_substitution_requires_supervisor_approval",
+  "study": "Compiler-Guided Repair for Natural-Language-to-Lean Formalization",
+  "experimental_unit": "problem",
+  "primary_question": "For a fixed reviewed Lean theorem and shared initial candidate, does compiler-guided repair improve verified proof success over blind retries and one-shot generation?",
+  "model": {
+    "provider": "mlx_local",
+    "requested_model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "identifier_kind": "immutable_local_snapshot",
+    "immutable_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "model_inventory_file": "data/local_model/20261027/model_inventory.json",
+    "model_inventory_sha256": "24d68abbe5e1434e5263ad123cca517c2c1799c7465e104e83f6cb02baeac4f9",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4
+    },
+    "chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+    "tokenizer_revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "backend": "mlx-lm",
+    "backend_version": "0.32.2",
+    "mlx_version": "0.32.4",
+    "same_requested_model_for_initial_and_all_repairs": true,
+    "fallback_model": null,
+    "license_evidence": "data/local_model/20261027/model_card.md",
+    "license_observed": "Apache-2.0; independent compatibility review pending"
+  },
+  "decoding": {
+    "temperature": 0.2,
+    "max_completion_tokens": 2000,
+    "reasoning_effort": null,
+    "generation_seed": 2027,
+    "generation_seed_policy": "sha256(base_seed:context:prompt_sha256)_first_uint32; context is problem_id/initial or problem_id/B|C/repair_index. Calls have independent KV caches. Reusing a logical context is rejected; seeds are backend/hardware scoped.",
+    "top_p": 1.0,
+    "max_context_tokens": 8192
+  },
+  "prompt_templates": {
+    "initial": {
+      "path": "prompts/repair_experiment_local_initial.txt",
+      "sha256": "394303364c26af8472de0d5483754e01c9f401b7761dd2cddd8b84dde9e4973c"
+    },
+    "blind": {
+      "path": "prompts/repair_experiment_blind.txt",
+      "sha256": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745"
+    },
+    "compiler_guided": {
+      "path": "prompts/repair_experiment_compiler_guided.txt",
+      "sha256": "98f5f2ca17094874da1b89f5b4cfc4f7eff00753dc56ac8d8cb7161fdaa57745"
+    }
+  },
+  "conditions": {
+    "paired_initial_candidate": "Generate exactly one initial candidate and reuse its exact bytes, identifier, and SHA-256 for A, B, and C.",
+    "fixed_theorem_and_environment": "Use the same reviewed theorem, requested model, decoding settings, and Lean/Mathlib environment for all three conditions.",
+    "A": {
+      "name": "one_shot",
+      "repair_calls": 0
+    },
+    "B": {
+      "name": "blind_retry",
+      "maximum_repair_calls": 3,
+      "feedback": "Theorem, current candidate, and fixed blind-feedback text only; no compiler diagnostics, error messages, derived summaries, or diagnostic-bearing prior conversation."
+    },
+    "C": {
+      "name": "compiler_guided_repair",
+      "maximum_repair_calls": 3,
+      "feedback": "Only structured diagnostics from the immediately preceding failed Lean compilation; persist the exact diagnostic payload and verifier record."
+    },
+    "repair_calls_are_independent_samples": false
+  },
+  "repetition": {
+    "replicates_per_problem": 1,
+    "candidate_sampling_repetitions": 0,
+    "shared_initial_candidates_per_problem": 1,
+    "provider_seed": null,
+    "replicate_policy": "One paired trajectory per problem. A single primary seed is proposed to retain problem-level binary outcomes and current exact McNemar analysis; three seeds are not claimed. Any multi-seed extension requires an approved problem-clustered analysis amendment before test access.",
+    "local_base_seeds": [
+      2027
+    ]
+  },
+  "retry_and_stopping": {
+    "maximum_wrapper_attempts_per_logical_completion": 1,
+    "maximum_groq_sdk_retries_per_wrapper_attempt": 0,
+    "maximum_possible_http_attempts_per_logical_completion": 0,
+    "maximum_logical_completions_per_problem": 7,
+    "initial_provider_failure": "Mark paired run incomplete; do not start conditions without a shared initial candidate.",
+    "condition_stop_events": [
+      "verified success",
+      "provider or transport failure",
+      "empty or malformed output",
+      "verifier timeout or infrastructure/input failure",
+      "unavailable or malformed guided diagnostics",
+      "repair budget exhausted"
+    ],
+    "retry_accounting": "No automatic local generation retries. Interrupted or failed calls are preserved as incomplete, never regenerated silently."
+  },
+  "analysis": {
+    "primary_outcome": "verified proof success within the condition repair budget",
+    "primary_comparison": "C_vs_B",
+    "secondary_comparisons": [
+      "C_vs_A",
+      "B_vs_A"
+    ],
+    "alpha_two_sided": 0.05,
+    "individual_binary_interval": "Wilson 95% confidence interval",
+    "paired_difference_interval": {
+      "method": "problem-level paired bootstrap percentile interval",
+      "confidence_level": 0.95,
+      "resamples": 10000,
+      "seed": 20271021
+    },
+    "paired_significance_test": "two-sided exact McNemar test on complete matched binary outcomes",
+    "multiple_comparison_correction": "Holm step-down across the three planned comparisons",
+    "no_discordant_pairs": "Report comparison as non-informative; do not claim equivalence.",
+    "incomplete_runs": "Report full eligible-set denominator, complete-case paired analysis, and sensitivity analysis counting incomplete runs as failures.",
+    "category_analysis": "Descriptive only; show denominators and intervals.",
+    "historical_manual_results_as_model_pass_at_1": false
+  },
+  "lean_environment": {
+    "lean_toolchain_file": "lean_project/lean-toolchain",
+    "lean_toolchain": "leanprover/lean4:v4.32.0",
+    "lean_toolchain_sha256": "cc346fd7850a83fb7af3902dfc378f74d8eb8c59c6d34322488269ebfe7615b1",
+    "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+    "lake_manifest_file": "lean_project/lake-manifest.json",
+    "lake_manifest_sha256": "358f47cde2c850b720178b3f1d8ad076bbafa276e05f4096ac6e4ba8b196cf3a",
+    "lakefile_file": "lean_project/lakefile.toml",
+    "lakefile_sha256": "a1a504e5c0f71e5c1b59df52c83b53764b46e98b309dd0bb06580d6e74573348",
+    "verification_command": "lake env lean --json <isolated-verification-source.lean>",
+    "candidate_definition_modules": [
+      {
+        "path": "lean_project/Nl2Lean/CandidateDefinitions.lean",
+        "sha256": "b2998e3cbc82131b33b90691a00ab1347c0488b0850c988699aaba03d78c1d77",
+        "review_status": "pending_independent_semantic_review"
+      }
+    ]
+  },
+  "proof_safety": {
+    "forbidden_source_tokens": [
+      "sorry",
+      "sorryAx",
+      "admit"
+    ],
+    "forbidden_declarations": [
+      "axiom",
+      "constant",
+      "opaque"
+    ],
+    "allowed_axiom_dependencies": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "lean_compilation_establishes_semantic_fidelity": false
+  },
+  "execution_gate": {
+    "api_execution_enabled": false,
+    "required_before_real_pilot": [
+      "genuine independent dataset/semantic and rights review with eligible development examples",
+      "supervisor approval of substituting local MLX generation for the requested API experiment",
+      "approved exact local protocol, model inventory, context/call/compute limits and development IDs",
+      "successful neutral backend smoke test; this is not the study pilot"
+    ],
+    "required_before_heldout": [
+      "eligible frozen development/test datasets with ordered hashes and family independence",
+      "approved and preregistered local protocol and model configuration",
+      "audited successful genuine local development A/B/C pilot"
+    ]
+  },
+  "parent_protocol_sha256": "ced0e392772700181188bddf3b59e67a5794980a28a0deaa4e03f5110e280861",
+  "local_execution_enabled": false,
+  "condition_execution_order": [
+    "B",
+    "C"
+  ],
+  "compute_policy": {
+    "paid_inference_allowed": false,
+    "max_logical_generations_per_problem": 7,
+    "max_completion_tokens_per_call": 2000,
+    "max_context_tokens": 8192,
+    "concurrency": 1
+  },
+  "implementation_files": [
+    {
+      "path": "src/local_llm_client.py",
+      "sha256": "a3d3a68fea4d59184538fa518da2755cb756a6129d41d1332472db1bf2f8941e"
+    },
+    {
+      "path": "src/model_client.py",
+      "sha256": "1db8406961c6abd746bea384fb0ff0eb94fd08674debbc870d3f847baaa9fe51"
+    },
+    {
+      "path": "src/local_protocol.py",
+      "sha256": "188832a628c665868438be991974f81bcb5a3a653818200fcd7fe8f5d2626b5d"
+    },
+    {
+      "path": "src/repair_experiment.py",
+      "sha256": "5c687e1acef781a46fc994d8db76d96da6e92dc9f3337d3e2415f5253ad94fed"
+    },
+    {
+      "path": "src/verify.py",
+      "sha256": "d486db8f8b9fb749854af2d68ebbf93d4125eec57847f1a130af802fe0d3243a"
+    },
+    {
+      "path": "src/dataset_validation.py",
+      "sha256": "56b9cfbcd40f153a110bb010625ed3fa3510e15f479772bae7e59b7e354d937a"
+    },
+    {
+      "path": "src/candidate_inventory.py",
+      "sha256": "20cd185fca5b26ec00afd8075fc8abcb5be51475ddae508f088706b6baf5828c"
+    },
+    {
+      "path": "src/semantic_review.py",
+      "sha256": "02a1ca943f5cfb0cd48436b7c2d06eb9bdd229e4b3eecf2ee95d38896b142007"
+    },
+    {
+      "path": "src/groq_compat.py",
+      "sha256": "3953f0c2118d41b94287ee4e0d573e32f8066a452f98a42b2af5069be2737f07"
+    },
+    {
+      "path": "scripts/local_experiment.py",
+      "sha256": "acd5697a2897bdeccf8b90bffe0679fd69471e47b48a74eb23704368ab2c3c92"
+    }
+  ]
+}

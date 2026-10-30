@@ -1,0 +1,83 @@
+{
+  "post_hoc": true,
+  "valid": true,
+  "checks": [
+    {
+      "check": "public_source_unit_tests",
+      "exit_code": 0,
+      "output": "...................                                                      [100%]\n19 passed in 0.20s\n"
+    },
+    {
+      "check": "public_dev_records",
+      "exit_code": 0,
+      "output": "{\n  \"valid\": true,\n  \"development_problems\": 15,\n  \"completed_response_journals_checked\": 150,\n  \"deterministic_donor_records_checked\": 45,\n  \"scope\": \"Stored candidate/prompt/journal bindings, seeds, caps, shared initials, donor selection using recorded token counts, and reported success denominators.\",\n  \"not_checked\": \"No fresh Lean execution or tokenizer recomputation; original donor ancestry and frozen implementation are established by the preserved private validation, not this offline check.\"\n}\n"
+    },
+    {
+      "check": "historical_public_reanalysis",
+      "exit_code": 0,
+      "output": "{\n  \"valid\": true,\n  \"cases\": 60,\n  \"completed_calls\": 410,\n  \"observed_rates\": {\n    \"A\": 0.0,\n    \"B\": 0.016666666666666666,\n    \"C\": 0.017241379310344827\n  },\n  \"paired_comparisons\": [\n    {\n      \"contrast\": \"C_vs_B\",\n      \"matched_cases\": 58,\n      \"risk_difference\": 0,\n      \"problem_interval\": [\n        0,\n        0\n      ],\n      \"family_interval\": [\n        0,\n        0\n      ]\n    },\n    {\n      \"contrast\": \"C_vs_A\",\n      \"matched_cases\": 58,\n      \"risk_difference\": 0.017241379310344827,\n      \"problem_interval\": [\n        0,\n        0.05172413793103448\n      ],\n      \"family_interval\": [\n        0,\n        0.05660377358490566\n      ]\n    },\n    {\n      \"contrast\": \"B_vs_A\",\n      \"matched_cases\": 60,\n      \"risk_difference\": 0.016666666666666666,\n      \"problem_interval\": [\n        0,\n        0.05\n      ],\n      \"family_interval\": [\n        0,\n        0.05454545454545454\n      ]\n    }\n  ],\n  \"all_resource_sums_means_medians_match\": true,\n  \"missingness_bounds_C_minus_B\": [\n    0,\n    0.03333333333333333\n  ],\n  \"scope\": \"Public raw-view reanalysis of original outcomes/resources; exact private prompt replay is not claimed.\"\n}\n"
+    }
+  ],
+  "frozen_source_view_checks": [
+    {
+      "path": "extensions/run_placebo.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "extensions/filename_normalization.py",
+      "matches_original_protocol_pin": false,
+      "public_derivative_changes": [
+        "Literal local identity-denylist entries replaced by an anonymous marker; scientific measurement logic unchanged."
+      ]
+    },
+    {
+      "path": "extensions/donors.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "extensions/build_placebo_protocol.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "analysis/common.py",
+      "matches_original_protocol_pin": false,
+      "public_derivative_changes": [
+        "Literal local identity-denylist entries replaced by an anonymous marker; scientific measurement logic unchanged."
+      ]
+    },
+    {
+      "path": "analysis/metrics.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "src/local_llm_client.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "src/verify.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "src/model_client.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    },
+    {
+      "path": "scripts/run_final_study.py",
+      "matches_original_protocol_pin": true,
+      "public_derivative_changes": []
+    }
+  ],
+  "whole_publication_files_scanned": 3353,
+  "PDFs_scanned": 19,
+  "private_content_findings": [],
+  "scope": "New public derivative unit tests and stored dev-record checks; existing public aggregate reanalysis; all publication text/PDF metadata scanning. Exact file/token checks follow in verify_payload.py.",
+  "model_calls": 0,
+  "network_writes": false
+}
