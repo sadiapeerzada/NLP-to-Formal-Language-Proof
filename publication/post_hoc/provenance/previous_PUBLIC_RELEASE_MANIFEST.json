@@ -1,0 +1,530 @@
+{
+  "schema_version": 2,
+  "approval_status": "AWAITING_EXACT_REVISED_PAYLOAD_APPROVAL_NO_PUSH",
+  "source_study_commit": "3b4909a20ed24cafd36cbe029a81f8946bc96d69",
+  "public_parent_commit": "b5c7a638db02b8f7c39a09be626cae583d5e89ac",
+  "allowed_classifications": [
+    "SAFE TO PUBLISH",
+    "REQUIRES REDACTION",
+    "PRIVATE / LOCAL ONLY",
+    "LICENSING REVIEW REQUIRED"
+  ],
+  "new_or_revised_source_files": [
+    {
+      "source_path": "docs/FINAL_M1_M7_COMPLIANCE_REPORT.md",
+      "release_path": "docs/FINAL_M1_M7_COMPLIANCE_REPORT.md",
+      "source_sha256": "9be10b32060b64d31a562cbfaf49a71d47e8ca17bded5dd555b4aa1617d8427e",
+      "release_sha256": "616862d449473da05ceced2adef6021fd0bdb662cdbeea9664ec85af8380ea78",
+      "classification": "REQUIRES REDACTION",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": true,
+      "reason": "Private strings removed / JSON serialized only in derivative views; original scientific evidence unchanged."
+    },
+    {
+      "source_path": "docs/FINAL_EXPERIMENT_RESULTS.md",
+      "release_path": "docs/FINAL_EXPERIMENT_RESULTS.md",
+      "source_sha256": "875bc56fbf557fa2404b9ed5fad1d442d27c8ffc12fb92ee87a7aeb85495c5e0",
+      "release_sha256": "875bc56fbf557fa2404b9ed5fad1d442d27c8ffc12fb92ee87a7aeb85495c5e0",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/FINAL_PAPER_READINESS.md",
+      "release_path": "docs/FINAL_PAPER_READINESS.md",
+      "source_sha256": "85100d9ff13238879f401b21190b0a3741b7ad2f7c269545ae3eba199f906458",
+      "release_sha256": "85100d9ff13238879f401b21190b0a3741b7ad2f7c269545ae3eba199f906458",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/REPRODUCIBILITY_CHECKLIST.md",
+      "release_path": "docs/REPRODUCIBILITY_CHECKLIST.md",
+      "source_sha256": "96aedb6d94813cfb53b39ae995aa75a948c570f8c7e33b32c90c968cf609be09",
+      "release_sha256": "96aedb6d94813cfb53b39ae995aa75a948c570f8c7e33b32c90c968cf609be09",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/PAIRED_COMPARISON_AUDIT.md",
+      "release_path": "docs/PAIRED_COMPARISON_AUDIT.md",
+      "source_sha256": "ab288f600b4d6ccb86334d7008cc3affd010b8e50946142984188e5ff9e1bbfb",
+      "release_sha256": "ab288f600b4d6ccb86334d7008cc3affd010b8e50946142984188e5ff9e1bbfb",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/MISSING_C_OUTCOME_INVESTIGATION.md",
+      "release_path": "docs/MISSING_C_OUTCOME_INVESTIGATION.md",
+      "source_sha256": "8b3e763c23f60ef3d11f6898af9c9de28ee6827a1c9a840604d65e0c878d4073",
+      "release_sha256": "8b3e763c23f60ef3d11f6898af9c9de28ee6827a1c9a840604d65e0c878d4073",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/FINAL_SUBMISSION_GATE.md",
+      "release_path": "docs/FINAL_SUBMISSION_GATE.md",
+      "source_sha256": "3ab436ee7566d78da44f1c267165d740be8301135bdbad37011e21a7ad345618",
+      "release_sha256": "3ab436ee7566d78da44f1c267165d740be8301135bdbad37011e21a7ad345618",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "docs/COMPILER_ERROR_TAXONOMY.md",
+      "release_path": "docs/COMPILER_ERROR_TAXONOMY.md",
+      "source_sha256": "c9a38aa2ece148a66151ff298f06ed57ca851505bdf02196c83edb61eeea43ac",
+      "release_sha256": "c9a38aa2ece148a66151ff298f06ed57ca851505bdf02196c83edb61eeea43ac",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/main.tex",
+      "release_path": "paper/main.tex",
+      "source_sha256": "437ba55289e2908d87f2106d0c958ca6a25ca53743b41ea3d369cbdf76f24a46",
+      "release_sha256": "437ba55289e2908d87f2106d0c958ca6a25ca53743b41ea3d369cbdf76f24a46",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/references.bib",
+      "release_path": "paper/references.bib",
+      "source_sha256": "59d3381b7ae04b9594f796a80cc8779ff1b692bbb342968b11db323eff699b7e",
+      "release_sha256": "59d3381b7ae04b9594f796a80cc8779ff1b692bbb342968b11db323eff699b7e",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/compiled_final_review_v2.pdf",
+      "release_path": "paper/final_manuscript.pdf",
+      "source_sha256": "9d25e9fd0130bd100ee104139a202f15f4fb1d1e086ea3baf873030d31c4adf2",
+      "release_sha256": "9d25e9fd0130bd100ee104139a202f15f4fb1d1e086ea3baf873030d31c4adf2",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/error_rates.pdf",
+      "release_path": "paper/generated/review_v2/error_rates.pdf",
+      "source_sha256": "7e24f8684572e5705b75df2c25178304ee0dcd247f99b25a519f673e913233b9",
+      "release_sha256": "7e24f8684572e5705b75df2c25178304ee0dcd247f99b25a519f673e913233b9",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/error_rates.png",
+      "release_path": "paper/generated/review_v2/error_rates.png",
+      "source_sha256": "0bd5e3131f45c9d345dcc167237558840599baccb159220b90329bb49dd82baa",
+      "release_sha256": "0bd5e3131f45c9d345dcc167237558840599baccb159220b90329bb49dd82baa",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/matched_resources.tex",
+      "release_path": "paper/generated/review_v2/matched_resources.tex",
+      "source_sha256": "d07d56952073f786e719b1542c43775919ac280c58b30d9cb870a6c876510fa0",
+      "release_sha256": "d07d56952073f786e719b1542c43775919ac280c58b30d9cb870a6c876510fa0",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/paired.tex",
+      "release_path": "paper/generated/review_v2/paired.tex",
+      "source_sha256": "f98415b384ea25cfd38b0c06eb3a174ca3893cecc6f6ec8d69d8eed4154b8874",
+      "release_sha256": "f98415b384ea25cfd38b0c06eb3a174ca3893cecc6f6ec8d69d8eed4154b8874",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/qualitative.tex",
+      "release_path": "paper/generated/review_v2/qualitative.tex",
+      "source_sha256": "b4ad51be2dfda5587a061f2349a503f7604f3d84a968a00274b0ee18bbd16baa",
+      "release_sha256": "b4ad51be2dfda5587a061f2349a503f7604f3d84a968a00274b0ee18bbd16baa",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/resources.tex",
+      "release_path": "paper/generated/review_v2/resources.tex",
+      "source_sha256": "c87be05e79693f6ae9769ff73607c51a0afdf977b28315895aa01c7d3b3f24af",
+      "release_sha256": "c87be05e79693f6ae9769ff73607c51a0afdf977b28315895aa01c7d3b3f24af",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/success_budget.pdf",
+      "release_path": "paper/generated/review_v2/success_budget.pdf",
+      "source_sha256": "2cc541737cbc6b83d8c554caba4f084caee018b6438f55884dbc615eacd6e1fc",
+      "release_sha256": "2cc541737cbc6b83d8c554caba4f084caee018b6438f55884dbc615eacd6e1fc",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/success_budget.png",
+      "release_path": "paper/generated/review_v2/success_budget.png",
+      "source_sha256": "ceb42f30dcd024a5e6e0972baa5b135a8820c0e9a556db74ac960a89d00ffa64",
+      "release_sha256": "ceb42f30dcd024a5e6e0972baa5b135a8820c0e9a556db74ac960a89d00ffa64",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/table1.tex",
+      "release_path": "paper/generated/review_v2/table1.tex",
+      "source_sha256": "017ff5b63367fbf6c749025ded1ef98b545f9d6a541e998df816481e0ef7d102",
+      "release_sha256": "017ff5b63367fbf6c749025ded1ef98b545f9d6a541e998df816481e0ef7d102",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/table2.tex",
+      "release_path": "paper/generated/review_v2/table2.tex",
+      "source_sha256": "9dd9c3ccee2da03830ef5fe3f078192764f7ee31c272da8f23d8aab82d9f2ddd",
+      "release_sha256": "9dd9c3ccee2da03830ef5fe3f078192764f7ee31c272da8f23d8aab82d9f2ddd",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/table3.tex",
+      "release_path": "paper/generated/review_v2/table3.tex",
+      "source_sha256": "b8796471110e9c8e176369800869c62ab4a5ebda4675cb9df6eace375a8ec3f3",
+      "release_sha256": "b8796471110e9c8e176369800869c62ab4a5ebda4675cb9df6eace375a8ec3f3",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/generated/review_v2/table4.tex",
+      "release_path": "paper/generated/review_v2/table4.tex",
+      "source_sha256": "24b5d7ea0f4988594c6c705342577012de7bc7819bf4318ae9f4b7cf3384f37b",
+      "release_sha256": "24b5d7ea0f4988594c6c705342577012de7bc7819bf4318ae9f4b7cf3384f37b",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/analysis_verified/results.json",
+      "release_path": "results/review_v2/analysis_verified/results.json",
+      "source_sha256": "b25521424fad62d157e71c2c9604f82f91fe0e4dc5e1a5a4f377cf90c41da9ea",
+      "release_sha256": "b25521424fad62d157e71c2c9604f82f91fe0e4dc5e1a5a4f377cf90c41da9ea",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/analysis_verified/case_outcomes.json",
+      "release_path": "results/review_v2/analysis_verified/case_outcomes.json",
+      "source_sha256": "c8c476a783bebbd280c75142c305f6834f22c6faeca7149d25b5b1fda638aaf5",
+      "release_sha256": "c8c476a783bebbd280c75142c305f6834f22c6faeca7149d25b5b1fda638aaf5",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/paired_resources.json",
+      "release_path": "results/review_v2/paired_resources.json",
+      "source_sha256": "d4700222cdb0d13fc84463ebe324e74d00c0bc98e7e9879f2c1e8ce6b061ae09",
+      "release_sha256": "d4700222cdb0d13fc84463ebe324e74d00c0bc98e7e9879f2c1e8ce6b061ae09",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/diagnostic_subtypes.json",
+      "release_path": "results/review_v2/diagnostic_subtypes.json",
+      "source_sha256": "9f2f26abba1e77a250529aa68c4a34ec8542cffe7d1d1099ef806f151758dd25",
+      "release_sha256": "9f2f26abba1e77a250529aa68c4a34ec8542cffe7d1d1099ef806f151758dd25",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/qualitative_cases.json",
+      "release_path": "results/review_v2/qualitative_cases.json",
+      "source_sha256": "cac3d5782d735974c5bdd7ec10f694468912e6b4e02b9131a6137e38142e7811",
+      "release_sha256": "cac3d5782d735974c5bdd7ec10f694468912e6b4e02b9131a6137e38142e7811",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/missingness_recovery.json",
+      "release_path": "results/review_v2/missingness_recovery.json",
+      "source_sha256": "cb39015b0082ba7db397a5cd7f29c7ffd64504242ce14c66f8e0c7a1711283e3",
+      "release_sha256": "cb39015b0082ba7db397a5cd7f29c7ffd64504242ce14c66f8e0c7a1711283e3",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/environment_verification.json",
+      "release_path": "results/review_v2/environment_verification.json",
+      "source_sha256": "f1f6172a678d4ee8387c6343047c5a623b86a7d2f58dbd46c04795b7294f5100",
+      "release_sha256": "f1f6172a678d4ee8387c6343047c5a623b86a7d2f58dbd46c04795b7294f5100",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/reproducibility_verification.json",
+      "release_path": "results/review_v2/reproducibility_verification.json",
+      "source_sha256": "b6f93630c654b7955f7435cf244f10f53d672b33c8f2df2c3d712e5a38916329",
+      "release_sha256": "b6f93630c654b7955f7435cf244f10f53d672b33c8f2df2c3d712e5a38916329",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/reference_axiom_validation.json",
+      "release_path": "results/review_v2/reference_axiom_validation.json",
+      "source_sha256": "1a7588ff2bd2db27dd5871c0e981cfcecdbe1a204672eb0faffb8c8250ffd98d",
+      "release_sha256": "1a7588ff2bd2db27dd5871c0e981cfcecdbe1a204672eb0faffb8c8250ffd98d",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/render_manifest.json",
+      "release_path": "results/review_v2/render_manifest.json",
+      "source_sha256": "23e1cae1a780a77e69caa0fc4bb9158f7e42bbadfbcf38dff6ebfb2b8274d082",
+      "release_sha256": "23e1cae1a780a77e69caa0fc4bb9158f7e42bbadfbcf38dff6ebfb2b8274d082",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/manuscript_claims.json",
+      "release_path": "results/review_v2/manuscript_claims.json",
+      "source_sha256": "d78f2d8fb152dc680adb7191ed601f67423424e0567ed360550f3620107dcff4",
+      "release_sha256": "d78f2d8fb152dc680adb7191ed601f67423424e0567ed360550f3620107dcff4",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/paper_build_manifest.json",
+      "release_path": "results/review_v2/paper_build_manifest.json",
+      "source_sha256": "2cb1f11e3a882539a7a8266da90556c174c05ca9de2dc37791ec50b0667f2be2",
+      "release_sha256": "2cb1f11e3a882539a7a8266da90556c174c05ca9de2dc37791ec50b0667f2be2",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/citation_verification.json",
+      "release_path": "results/review_v2/citation_verification.json",
+      "source_sha256": "aff70e2d93b74fe415d1b4df5e1e1600cdda3a490c60a9f91ad76f6de698b5b9",
+      "release_sha256": "aff70e2d93b74fe415d1b4df5e1e1600cdda3a490c60a9f91ad76f6de698b5b9",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/compliance_matrix.json",
+      "release_path": "results/review_v2/compliance_matrix.json",
+      "source_sha256": "f2cc1f0a714da1de924af9bb1407f0d9181ab96dc4dadb88952a50a69e8c95b1",
+      "release_sha256": "40ff7f6fd9a00fcd052c1e6c24177f74d760571933fbae7b6fc8025a834872e6",
+      "classification": "REQUIRES REDACTION",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": true,
+      "reason": "Private strings removed / JSON serialized only in derivative views; original scientific evidence unchanged."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/call_environment_consistency.json",
+      "release_path": "results/review_v2/call_environment_consistency.json",
+      "source_sha256": "5423574d9fc7fc4a38225edae401e5166c74f314e2bef1d80c738db78196357c",
+      "release_sha256": "5423574d9fc7fc4a38225edae401e5166c74f314e2bef1d80c738db78196357c",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/pdf_layout_checks.json",
+      "release_path": "results/review_v2/pdf_layout_checks.json",
+      "source_sha256": "c76e51188bc661d0d58d10ac06230e0cf3d0aad64aea623d6633c134a68a13f4",
+      "release_sha256": "c76e51188bc661d0d58d10ac06230e0cf3d0aad64aea623d6633c134a68a13f4",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/paper_build_manifest.json",
+      "release_path": "paper/build_manifest.json",
+      "source_sha256": "2cb1f11e3a882539a7a8266da90556c174c05ca9de2dc37791ec50b0667f2be2",
+      "release_sha256": "ed2f824ae47aaea214efc867538f07d64d3777805a57e832f320b31051f15445",
+      "classification": "REQUIRES REDACTION",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": true,
+      "reason": "Private strings removed / JSON serialized only in derivative views; original scientific evidence unchanged."
+    },
+    {
+      "source_path": "eval/final_review_analysis.py",
+      "release_path": "source_snapshot/eval/final_review_analysis.py",
+      "source_sha256": "9c1f625202878f2a44484312210ce00dfc5a5c1934f4886c1f6ac0737fefc135",
+      "release_sha256": "9c1f625202878f2a44484312210ce00dfc5a5c1934f4886c1f6ac0737fefc135",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "tests/test_final_review_analysis.py",
+      "release_path": "source_snapshot/tests/test_final_review_analysis.py",
+      "source_sha256": "406420d75c3a74c62886a9c03eb3730d22f7a916a59f8f87f576f0f91e3dd751",
+      "release_sha256": "406420d75c3a74c62886a9c03eb3730d22f7a916a59f8f87f576f0f91e3dd751",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "scripts/render_final_review.py",
+      "release_path": "source_snapshot/scripts/render_final_review.py",
+      "source_sha256": "d6b632bbdf47e4d1f1d6b404cfd7350be9d0201f5a47a4ea112b4363b23d16ae",
+      "release_sha256": "d6b632bbdf47e4d1f1d6b404cfd7350be9d0201f5a47a4ea112b4363b23d16ae",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "scripts/investigate_missing_final.py",
+      "release_path": "source_snapshot/scripts/investigate_missing_final.py",
+      "source_sha256": "c1ed37bc446ae5c6022740a4882a8e529d696a68f58825d950bd1f8784c35337",
+      "release_sha256": "c1ed37bc446ae5c6022740a4882a8e529d696a68f58825d950bd1f8784c35337",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "scripts/verify_final_review.py",
+      "release_path": "source_snapshot/scripts/verify_final_review.py",
+      "source_sha256": "14b9b84d6fd0a915c56c96a135b94496f22d0f46bd85b6965cc327439dbfd899",
+      "release_sha256": "14b9b84d6fd0a915c56c96a135b94496f22d0f46bd85b6965cc327439dbfd899",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "scripts/write_final_review_reports.py",
+      "release_path": "source_snapshot/scripts/write_final_review_reports.py",
+      "source_sha256": "e505e977075f629a6f3d17f426f913855677e1ca542bb1da9417997b38f1210f",
+      "release_sha256": "52a51ff8d03fc4b9401c23a1bf45ad2b4f559363365f71b29125a1144c535f89",
+      "classification": "REQUIRES REDACTION",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": true,
+      "reason": "Private strings removed / JSON serialized only in derivative views; original scientific evidence unchanged."
+    },
+    {
+      "source_path": "paper/scripts/write_final_review.py",
+      "release_path": "source_snapshot/paper/scripts/write_final_review.py",
+      "source_sha256": "48ba0c8ac57b604ad41223761408188d3f2a9a4333bb41153fc5b913826eecb7",
+      "release_sha256": "48ba0c8ac57b604ad41223761408188d3f2a9a4333bb41153fc5b913826eecb7",
+      "classification": "SAFE TO PUBLISH",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": false,
+      "reason": "Reviewed scientific result/source or anonymized manuscript."
+    },
+    {
+      "source_path": "paper/scripts/build_final_review.py",
+      "release_path": "source_snapshot/paper/scripts/build_final_review.py",
+      "source_sha256": "cfccd33685f178f3e3609974c86403b0117c39bc6fec1a6e404869b63d888acb",
+      "release_sha256": "da4515e2a3480151d45c857d60ed7db8b469ef4d812e28f492897716e24cc04e",
+      "classification": "REQUIRES REDACTION",
+      "released_view_classification": "SAFE TO PUBLISH",
+      "transformed": true,
+      "reason": "Private strings removed / JSON serialized only in derivative views; original scientific evidence unchanged."
+    }
+  ],
+  "excluded_source_classes": [
+    {
+      "source_path": "docs/NL2Lean_TAIMMA2027_Student_Revision_Report(10).md",
+      "classification": "PRIVATE / LOCAL ONLY",
+      "reason": "Student-supplied supervisory review/correspondence; public matrix is a derived technical summary, not publication of the correspondence."
+    },
+    {
+      "source_path": "data/final_review/20261029_v2/local/",
+      "classification": "PRIVATE / LOCAL ONLY",
+      "reason": "Raw command output, absolute paths, forensic inventories and originals remain local; public summaries and hashes are provided."
+    },
+    {
+      "source_path": "data/final_study/v1/",
+      "classification": "REQUIRES REDACTION",
+      "reason": "Original exact prompts/logs/manifests retained privately; only labeled redacted final-run views are included."
+    },
+    {
+      "source_path": "data/source_archives/",
+      "classification": "LICENSING REVIEW REQUIRED",
+      "reason": "Full provider/publisher archives are unnecessary to redistribute; licenses/source URLs/hashes/attribution retained instead."
+    },
+    {
+      "source_path": "local model weights, tokenizer and TeX binaries/templates",
+      "classification": "LICENSING REVIEW REQUIRED",
+      "reason": "Not redistributed; restore pinned public upstream artifacts subject to their terms."
+    },
+    {
+      "source_path": "original author metadata and private Git ancestry",
+      "classification": "PRIVATE / LOCAL ONLY",
+      "reason": "No personal author/contact metadata or private research/audit commits in release history."
+    }
+  ],
+  "unchanged_previously_approved_files": "Retained from public_parent_commit; enumerated and rescanned in the exact payload inventory.",
+  "old_source_file_decisions": "provenance/history/PUBLIC_RELEASE_MANIFEST_v1.json",
+  "all_original_final_study_artifacts_unchanged": true,
+  "reproducibility": "Public redacted evidence/reanalysis plus privately preserved original-byte proof/prompt/metric validation. Do not relabel changed public prompt bytes with original hashes."
+}

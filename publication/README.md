@@ -1,3 +1,20 @@
+# Compiler-Guided Proof Repair in Lean 4: A Controlled Local-Model Pilot on Fixed Theorem Types
+
+The latest [post-hoc manuscript](post_hoc/outputs/post_hoc/manuscript/post_hoc_pilot.pdf)
+and [exploratory results](post_hoc/outputs/post_hoc/SUMMARY.md) extend the original
+fixed-theorem study with process analyses, calibrated uncertainty and a separately
+frozen 15-development-problem placebo control. Exact McNemar p=1.0 at zero
+discordance does not establish equivalence. The original held-out outcomes are
+unchanged. See the [public reproduction boundary](post_hoc/PUBLIC_REPRODUCIBILITY_BOUNDARY.md).
+Study 2 model execution remains deferred. This branch is pushed for review;
+it does not authorize merging or conference submission.
+
+Run `python3 verify_payload.py` to verify the entire exact public inventory.
+
+---
+
+## Historical approved publication snapshot
+
 # Final review revision: fixed-theorem empirical pilot
 
 **Local revision awaiting fresh publication approval. No push or merge of this revision.**

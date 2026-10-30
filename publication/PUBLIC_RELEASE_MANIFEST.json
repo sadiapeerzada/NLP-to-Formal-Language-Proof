@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "approval_status": "AWAITING_EXACT_REVISED_PAYLOAD_APPROVAL_NO_PUSH",
+  "approval_status": "USER_AUTHORIZED_PUSH_REVIEW_BRANCH_ONLY",
   "source_study_commit": "3b4909a20ed24cafd36cbe029a81f8946bc96d69",
   "public_parent_commit": "b5c7a638db02b8f7c39a09be626cae583d5e89ac",
   "allowed_classifications": [
@@ -526,5 +526,14 @@
   "unchanged_previously_approved_files": "Retained from public_parent_commit; enumerated and rescanned in the exact payload inventory.",
   "old_source_file_decisions": "provenance/history/PUBLIC_RELEASE_MANIFEST_v1.json",
   "all_original_final_study_artifacts_unchanged": true,
-  "reproducibility": "Public redacted evidence/reanalysis plus privately preserved original-byte proof/prompt/metric validation. Do not relabel changed public prompt bytes with original hashes."
+  "reproducibility": "Public redacted evidence/reanalysis plus privately preserved original-byte proof/prompt/metric validation. Do not relabel changed public prompt bytes with original hashes.",
+  "post_hoc_extension": {
+    "approval": "User explicitly authorized pushing after completion; merging is not authorized.",
+    "source_views": "post_hoc/SOURCE_VIEW_MANIFEST.json",
+    "exact_payload_inventory": "PUBLIC_PAYLOAD_MANIFEST.json",
+    "boundary": "post_hoc/PUBLIC_REPRODUCIBILITY_BOUNDARY.md",
+    "private_ancestry_excluded": true,
+    "original_heldout_records_modified": false,
+    "Study2_model_execution": false
+  }
 }
