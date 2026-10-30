@@ -414,8 +414,6 @@ is auditable paired evidence and failure analysis for fixed-theorem
 synthesis, not autonomous NL-to-statement accuracy or independent
 human semantic validation.
 
-\bibliographystyle{splncs04}
-\bibliography{references}
 \appendix
 \section{Dataset Provenance and Semantic Audit Details}
 \label{app:dataset}
@@ -500,5 +498,10 @@ were identical. Aggregate reanalysis is public; exact prompt replay and complete
 source-evidence validation require the preserved originals. This is a disclosed
 public reproducibility limit, not a replacement or revision of the experiment.
 
+% Bibliography intentionally comes after the complete appendix.
+% Flush any outstanding appendix floats before starting the reference list.
+\clearpage
+\bibliographystyle{splncs04}
+\bibliography{references}
 
 \end{document}
