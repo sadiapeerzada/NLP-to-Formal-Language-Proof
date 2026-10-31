@@ -10,7 +10,7 @@
 
 % ---- Anonymous-review switch: \reviewtrue hides author, affiliation, email ----
 \newif\ifreview
-\reviewfalse
+\reviewtrue
 
 \begin{document}
 
@@ -21,10 +21,11 @@
   \authorrunning{Anonymous author}
   \institute{Anonymous institution}
 \else
-  \author{Sadia Peerzada}
-  \authorrunning{S. Peerzada}
-  \institute{Aligarh Muslim University, Aligarh, India\\
-  \email{sadiapeerzada2006@gmail.com}}
+  % Author details intentionally excluded from this public PR until review
+  % anonymity requirements are confirmed.
+  \author{Author details withheld}
+  \authorrunning{Anonymous author}
+  \institute{Affiliation withheld}
 \fi
 \maketitle
 
