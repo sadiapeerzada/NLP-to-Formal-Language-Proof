@@ -1,0 +1,25 @@
+name: Lean pilot public evidence audit
+on:
+  pull_request:
+    paths:
+      - 'submission_20261031/**'
+      - '.github/workflows/lean-pilot-public-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check syntax
+        run: python -B -m py_compile submission_20261031/public_audit.py submission_20261031/tests/test_public_audit.py
+      - name: Verify released aggregates only
+        run: python -B submission_20261031/public_audit.py
+      - name: Run focused tests
+        run: python -B -m unittest discover -s submission_20261031/tests -v
+      - name: Run existing redacted-case verifier
+        run: python -B publication/reanalyze.py
